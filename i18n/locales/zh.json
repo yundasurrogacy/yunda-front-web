@@ -1,0 +1,1236 @@
+{
+ "menu": {
+    "forIntendedParents": "准父母",
+    "surrogacyProcess": "代孕流程",
+    "surrogacyCosts": "代孕价格",
+    "findYourEggDonor": "卵子捐赠者",
+    "lgbtqSingleParents": "单身父母和同性恋群体",
+    "partnerIvfClinics": "合作的IVF医院",
+    "becomeAParent": "开启成为父母的旅程",
+    "forSurrogates": "代孕妈妈",
+    "surrogacyJourneyOverview": "代孕流程",
+    "eligibilityToBecomeASurrogate": "资格要求",
+    "ourScreeningProcess": "我们的筛查流程",
+    "compensationBenefits": "薪酬与福利",
+    "surrogateReferralProgram": "代孕母推荐计划",
+    "becomeASurrogates": "成为代孕妈妈",
+    "logIn": "登录",
+    "aboutUs": "关于我们",
+    "contactUs": "联系我们",
+    "careers": "加入我们",
+    "phone": "电话：",
+    "email": "邮箱：",
+    "wechat": "微信："
+  },
+  "home": {
+    "commitmentSection": {
+      "title": "专业 · 透明 · 温暖 · 守护",
+      "description": "这是我们对每一段旅程的持久承诺。"
+    },
+    "costSection": {
+      "title1": "从预算规划到安心迎接",
+      "title2": "——准父母的代孕费用规划",
+      "description1": "每段代孕旅程都是独特的，费用因胚胎情况、诊所选择、保险安排等有所不同，通常涵盖机构服务费、法律费用、代孕母补偿、医疗与保险支出。",
+      "description2": "在孕达，大多数客户的代孕总费用约为 $150,000 至 $200,000 美元，其中包括：",
+      "item1": "$55,000–$70,000+ 的代孕母补偿及孕期支持",
+      "item2": "法律、医疗、保险等第三方服务费用",
+      "item3": "所有款项通过信托账户分阶段支付，安全透明",
+      "description4": "我们为每位客户提供清晰的费用结构与个性化预算建议，让您在每一步都安心踏实，专注迎接新生命的到来。"
+    },
+    "globalSupportSection": {
+      "title": "全球支持，助力每一个家庭",
+      "description": "孕达是一家专注于跨境辅助生殖服务的专业机构，业务覆盖全美所有合法代孕州，与全球多家顶尖生殖中心、心理顾问及保险机构建立稳定合作网络，为不同背景的家庭——包括高龄备孕者、LGBTQ+群体及单身准父母——提供全流程定制支持。",
+      "button": "开启成为父母的旅程"
+    },
+    "heroSection": {
+      "title": "专业 · 透明 · 温暖 · 守护",
+      "description": "——是我们不变的服务承诺"
+    },
+    "journeySection": {
+      "title1": "从计划到新生",
+      "title2": "——准父母的代孕四步旅程",
+      "description": "在孕达，我们始终相信，每一段成为父母的旅程都值得被认真对待。我们以全程陪伴与专业支持，为您护航，从最初的沟通到宝宝的诞生。",
+      "step1": {
+        "title": "前期咨询与周期规划",
+        "description": "一对一深入了解您的背景、需求与时间安排，协助制定专属周期计划，并推荐合适的IVF诊所与医生。"
+      },
+      "step2": {
+        "title": "代母匹配与医疗审核",
+        "description": "根据您的偏好推荐代母档案，安排视频面试，确认匹配后协助完成体检与医疗清关，确保符合移植要求。"
+      },
+      "step3": {
+        "title": "法律流程与胚胎移植",
+        "description": "由孕达的法律团队起草并审核合同，处理亲子权判决流程。代母同步启动用药周期，完成胚胎移植。"
+      },
+      "step4": {
+        "title": "孕期管理与宝宝诞生",
+        "description": "孕期中，代母获得情绪与健康双重支持。项目经理团队提供每周汇报、处理突发状况，直到宝宝顺利出生并交接到您怀中。"
+      }
+    },
+    "legalExpertiseSection": {
+      "title": "法律保障实力",
+      "description1": "我们的最大优势在于拥有业内领先的法律团队，深度参与每一个项目的前期评估、合同审核、身份建立与出生登记，擅长处理复杂的跨境与多方法律问题，确保所有流程在合规、安全、受监管的框架下顺利进行，坚决杜绝任何地下操作和法律风险。",
+      "advisor": "Judith Hoechst - 法律顾问"
+    },
+    "statsSection": {
+      "stat1": "年深耕辅助生殖行业",
+      "stat2": "组全球家庭选择孕达",
+      "stat3": "个完整试管婴儿与代孕项目落地",
+      "stat4": "的客户满意度"
+    },
+    "surrogateCareSection": {
+      "title": "代孕妈妈关怀",
+      "item1": "专属项目协调员",
+      "item2": "营养指导与心理支持",
+      "item3": "每日健康跟进",
+      "button": "开启成为代孕母的旅程"
+    }
+  },
+  "parentsPrice": {
+    "detailedBreakdown": {
+      "agencyFees": {
+        "title": "代孕服务机构费用",
+        "amount": "$50,000",
+        "description1": "全周期中英文双语服务与流程协调",
+        "description2": "招募合格代孕妈妈、筛查与资料整理",
+        "description3": "配备专属项目经理，提供一对一服务",
+        "description4": "协调沟通诊所、律师、保险等相关方"
+      },
+      "screeningAdmin": {
+        "title": "代孕妈妈筛查及管理费用",
+        "amount": "$5,000",
+        "description1": "背景调查、医疗资料审核与心理评估",
+        "description2": "与试管婴儿诊所对接及资料提交",
+        "description3": "文件翻译及跨境材料准备",
+        "description4": "法律文件协助与合同流程管理"
+      },
+      "surrogateCompensation": {
+        "title": "代孕妈妈补偿与报销费用",
+        "amount": "$50,000+",
+        "description1": "每月生活补贴",
+        "description2": "孕期服装补贴",
+        "description3": "差旅/育儿费用报销",
+        "description4": "胚胎移植补贴",
+        "description5": "医疗检查出行补贴 （*注：有经验或双胎代孕妈妈费用可能更高）"
+      },
+      "legalFees": {
+        "title": "法律费用",
+        "amount": "约 $6,500",
+        "description1": "起草并审核代孕合同",
+        "description2": "文件公证（可远程）",
+        "description3": "全程法律顾问服务",
+        "description4": "亲子权判决（PBO）：约 $6,500 (孕中后期启动）"
+      },
+      "insuranceSupport": {
+        "title": "医疗保险与相关安排",
+        "amount": "费用待定",
+        "description1": "协助安排孕期保险或自费方案",
+        "description2": "代母人身及风险保险",
+        "description3": "新生儿医疗保险协助（如有需要）"
+      },
+      "additionalCosts": {
+        "title": "其他可能产生的附加费用",
+        "amount": "",
+        "description1": "双胎补偿: $15,000",
+        "description2": "剖腹产补偿: $5,000",
+        "description3": "卧床托育补贴",
+        "description4": "母乳补贴：$250/周",
+        "description5": "特殊术前检查或治疗费用: $2,500–$5,000",
+        "description6": "HIV阳性客户额外协调费用: $10,000"
+      }
+    },
+    "additionalTerms": {
+      "title": "孕达代孕套餐附加条款说明",
+      "description": "在孕达，我们致力于为每一位准父母提供清晰、可预期的费用管理体系。以下为整个代孕周期中可能涉及的附加项目说明，所有内容均会在后续签署的法律合同中明确列出。请注意，此费用表为预估预算，实际发生费用将根据孕母的具体情况进行调整，未使用部分将在周期结束后如数退还。费用估算基于孕母居住地附近医院的常规分娩安排，如有特殊医疗变动或指定分娩地点，费用也将相应更新。",
+      "surrogateBenefits": {
+        "title": "代母福利津贴可能包括：",
+        "bedrest": "卧床津贴",
+        "twinPregnancy": "双胞胎补偿",
+        "csection": "剖腹产补偿",
+        "communicableDisease": "传染病补偿（如HIV、乙肝等）",
+        "childcare": "托儿补偿:每日每孩补贴 (需提供有效收据证明)",
+        "housekeeping": "家政服务补偿:每周一次报销 (需提供收据)",
+        "lostWages": "工资损失补偿: 根据孕母实际工作证明核算",
+        "breastMilk": "母乳补偿：每周支付",
+        "uterineLoss": "子宫损失补偿：部分切除/全切除"
+      },
+      "notIncluded": {
+        "title": "服务包中未包含的内容：",
+        "ivfCosts": "客户所选试管婴儿诊所及医生的所有费用",
+        "newbornExpenses": "宝宝出生后在医院产生的婴儿相关医疗费用（如NICU、新生儿疫苗等）",
+        "clientTravel": "客户赴美期间的差旅、住宿等个人支出"
+      },
+      "insuranceNotes": {
+        "title": "孕母保险相关说明：",
+        "description1": "若适逢美国医疗保险开放期，我们将筛选并提供符合代孕需求的医疗保险，供客户选择并购买",
+        "description2": "若孕母无法购买保险，我们将协助安排自费分娩方案，参考费用为：产科医生约 $5,000，住院分娩约 $8,000",
+        "description3": "若孕母已有雇主保险，我们仍会为其购买一份补充保险，以确保医疗风险全面覆盖",
+        "description4": "所有保险方案均无法100%覆盖全部费用，客户需承担包括免赔额、共付额、保险拒赔部分等额外支出"
+      }
+    },
+    "confidenceSection": {
+      "title": "准备好规划你的旅程了吗？",
+      "description": "让我们从一次个性化咨询开始——无压力，只为答疑解惑。"
+    },
+    "heroSection": {
+      "title": "代孕需要多少钱？",
+      "description": "代孕是一次充满爱与希望的旅程，也需要清晰的财务规划。在孕达，我们非常重视费用的透明与可控性。\n无论您是刚刚开始了解代孕，还是已经拥有胚胎。\n我们都将为您提供详尽的费用拆解与清晰的付款节奏，确保整个过程安心无忧，没有隐藏收费。\n\n我们的标准项目涵盖全流程服务协调、代母补偿、法律协助、保险对接及出生交接等。\n如果您希望获得更灵活、更安心的保障方案，我们也提供升级选项与个性化服务。",
+      "button": "开启成为父母的旅程"
+    },
+    "stepsTimeline": {
+      "title": "全周期费用",
+      "step1": {
+        "title": "机构全程协作",
+        "subtitle": "双语支持、代孕匹配、旅程全流程协作管理"
+      },
+      "step2": {
+        "title": "医疗筛查与行政支持",
+        "subtitle": "背景审查、诊所对接、文件处理等全方位协助"
+      },
+      "step3": {
+        "title": "代孕补偿方案",
+        "subtitle": "基础补偿 + 每月津贴 + 差旅与孕期报销"
+      },
+      "step4": {
+        "title": "法律支持服务",
+        "subtitle": "合同拟定、公证签署、预出生令（PBO）申请"
+      },
+      "step5": {
+        "title": "保险规划保障",
+        "subtitle": "孕期医疗保险、新生儿保险等风险防控支持"
+      },
+      "step6": {
+        "title": "其他可选费用",
+        "subtitle": "双胞胎、剖腹产、育儿补贴、母乳寄送等个性化需求"
+      }
+    }
+  },
+  "parentsProcess": {
+    "confidenceSection": {
+      "title": "一段安心与关爱的旅程",
+      "description1": "代孕不仅是一种医学手段，更是您实现家庭梦想的重要一步。从初次咨询到宝宝平安出生，孕达始终陪伴在侧，提供全流程的指导与支持。",
+      "description2": "我们知道，这段旅程可能会让人感到信息繁杂、环节众多。但正因如此，越来越多的准父母选择孕达——我们经验丰富，流程清晰，服务真诚，致力于让每一步都安心、可控、充满信任感。"
+    },
+    "stepDetail": {
+      "stepPrefix": "步骤"
+    },
+    "stepsTimeline": {
+      "title": "代孕旅程 —— 六个关键步骤",
+      "step1": {
+        "title": "开始旅程",
+        "subtitle": "前期咨询与签约",
+        "duration": "（1–3 周）"
+      },
+      "step2": {
+        "title": "医疗准备阶段",
+        "subtitle": "试管婴儿协调与诊所支持",
+        "duration": "（2–3 个月）"
+      },
+      "step3": {
+        "title": "寻找合适的代孕妈妈",
+        "subtitle": "代孕人筛选与医学预审",
+        "duration": "（2–3 个月）"
+      },
+      "step4": {
+        "title": "夯实基础保障",
+        "subtitle": "法律合同与信托账户建立",
+        "duration": "（1–1.5 个月）"
+      },
+      "step5": {
+        "title": "胚胎移植阶段",
+        "subtitle": "胚胎移植与怀孕确认",
+        "duration": "（约 2 个月）"
+      },
+      "step6": {
+        "title": "迎接宝宝",
+        "subtitle": "孕期支持与顺利分娩",
+        "duration": "（约 9 个月）"
+      }
+    },
+    "surrogacyProcess": {
+      "step1": {
+        "title": "开始旅程",
+        "duration": "1–3 周",
+        "tasks": {
+          "task1": "填写准父母配对申请表",
+          "task2": "与孕达团队一对一咨询",
+          "task3": "签署孕达服务协议"
+        },
+        "description": "每段代孕旅程都是独一无二的，我们会从了解您的故事开始。您将填写一份匹配表，告诉我们您的胚胎情况、理想诊所、移植时间等初步想法。之后，我们的顾问会与您进行一对一的沟通，为您量身定制整个周期的规划。等您准备就绪，我们便签署服务协议，正式开启这段特别的旅程。"
+      },
+      "step2": {
+        "title": "医疗准备阶段",
+        "duration": "2–3 个月",
+        "tasks": {
+          "task1": "协调美国试管婴儿诊所或对接自选诊所",
+          "task2": "进行医疗检查与赴美行程准备",
+          "task3": "胚胎培育或跨境运送支持"
+        },
+        "description": "我们会根据您的情况推荐值得信赖的试管婴儿诊所和医生，也欢迎您使用自选诊所。无论您是需要胚胎制作，还是已有胚胎需要转移，我们都会协助安排体检、签证及赴美行程，全程陪伴每一步，确保流程顺畅、有序。"
+      },
+      "step3": {
+        "title": "匹配与筛选",
+        "duration": "2–3 个月",
+        "tasks": {
+          "task1": "获取代孕人背景与健康信息",
+          "task2": "安排视频初见（如有需要）",
+          "task3": "确认匹配并进入医学审核流程",
+          "task4": "提交资料至诊所，安排全面医疗审核"
+        },
+        "description": "这是代孕旅程中一个非常关键又温暖的阶段。我们将为您推荐符合您期待的代母人选，资料清晰透明，您也可以选择视频见面。选定后，我们会协助提交她的病历，安排体检。如果暂时没有合适的人选，我们可以根据您的偏好定向招募，直到您遇见那个“对的人”。"
+      },
+      "step4": {
+        "title": "法律与信托设立",
+        "duration": "1–1.5 个月",
+        "tasks": {
+          "task1": "设立第三方信托账户，管理款项",
+          "task2": "双方合同审核与签署",
+          "task3": "医生出具的医学许可信函",
+          "task4": "双方签署正式代孕合同(客户可远程美国公证完成)",
+          "task5": "启动出生前法庭手续（PBO）"
+        },
+        "description": "为了让您的旅程安心无忧，我们会帮您开设独立的信托账户，用于后续所有费用的实报实销管理（如代母补偿、律师费用、保险等）。与此同时，我们会为双方安排专业律师起草并审核合同，确保法律层面清晰明确。合同签署后，您的旅程进入了稳定发展的阶段。"
+      },
+      "step5": {
+        "title": "移植与确认",
+        "duration": "约 2 个月",
+        "tasks": {
+          "task1": "代孕妈妈开始服药周期（4–6 周）",
+          "task2": "进行胚胎移植手术",
+          "task3": "移植后 10–14 天进行 HCG 怀孕检测",
+          "task4": "移植后约 4–5 周完成胎心确认",
+          "task5": "第三期款项支付与信托维护"
+        },
+        "description": "当一切准备就绪，代母将开始胚胎移植前的用药周期。完成移植后，10–14天内我们会安排验孕，约4–5周后通过B超确认胎心。一旦确认怀孕，您将进行第三次付款，并保持信托账户内有足够余额，以支持后续流程的顺利进行。"
+      },
+      "step6": {
+        "title": "孕期陪伴与顺利分娩",
+        "duration": "约 9 个月",
+        "tasks": {
+          "task1": "产科定期检查与实时更新",
+          "task2": "孕达客户经理每周跟进汇报",
+          "task3": "完成出生前法庭判令（PBO）",
+          "task4": "协调医院分娩与出生文件",
+          "task5": "协助申请旅行证件与护照，回国无忧"
+        },
+        "description": "整个孕期，代母将定期接受产检，而我们会通过每周沟通与报告，确保您时刻了解进展。从产检安排、突发状况应对，到分娩前的准备，我们的团队都会细致陪伴。宝宝出生前，我们会完成亲子权法律文件，确保出生证上登记的是您。出生后，我们将协助您完成接娃、出院及所有必要的回国手续，迎接新生命的开始。"
+      }
+    },
+    "processHeroSection": {
+      "title": "一段温柔又坚定的旅程，从这里开始",
+      "subtitle": "通过代孕迎接宝宝，是一段充满爱与勇气的旅程。",
+      "description": "通过代孕迎接宝宝，是一段充满爱与勇气的旅程。\n在孕达，我们不仅是您的服务团队，更希望成为一路相伴、真正关心您的伙伴。\n每位准父母的故事都不同。有的刚开始了解代孕，有的已经做好了胚胎准备。\n无论您处在哪一个阶段，我们都会细致地陪您走好每一步。\n整个周期通常需要 12到16个月，但这段路，我们愿意与您一同温柔前行。",
+      "button": "成为准父母"
+    }
+  },
+  "parentsIvf": {
+    "heroSection": {
+      "title": "为什么选择优质的生殖诊所很重要",
+      "description": "代孕旅程的第一步往往始于胚胎的创建。优质的试管婴儿诊所不仅决定了胚胎的质量，也会影响整个代孕周期的效率和成功率。\n我们与全美及亚洲多家知名生殖中心建立长期合作关系，为您量身推荐适合的医生与医疗方案。",
+      "button": "开启成为父母的旅程"
+    },
+    "supportSection": {
+      "title": "我们如何为您提供支持",
+      "items": {
+        "recommendClinics": {
+          "title": "推荐优质诊所",
+          "description": "根据您的需求，推荐成功率高的诊所和医生。"
+        },
+        "coordinateConsultations": {
+          "title": "协助预约咨询",
+          "description": "为您安排诊所面对面或线上初诊，确保流程顺畅。"
+        },
+        "handleShipping": {
+          "title": "管理胚胎运输",
+          "description": "协助您完成符合美国法律与FDA规范的国际胚胎运输流程。"
+        },
+        "prepareDocuments": {
+          "title": "准备医疗材料",
+          "description": "帮助您在海外完成筛查文件的填写与提交。"
+        },
+        "workWithChosen": {
+          "title": "配合您已有的诊所",
+          "description": "若您已有合作诊所，我们也可直接与诊所团队对接，全程协同推进。"
+        }
+      }
+    },
+    "medicalServices": {
+      "title": "医疗服务覆盖范围一览",
+      "items": {
+        "eggDonation": {
+          "title": "捐卵与取卵",
+          "description": "我们为您匹配合适的卵子捐赠者，并协调完成取卵手术用于试管婴儿（IVF）。"
+        },
+        "embryoCreation": {
+          "title": "胚胎创建与冷冻",
+          "description": "完成受精后，胚胎将在实验室中培养并冷冻，以备未来移植使用。"
+        },
+        "embryoShipping": {
+          "title": "胚胎运输（国际）",
+          "description": "协助从香港、日本等国家或地区，将胚胎合法运输至美国诊所。"
+        },
+        "embryoTransfer": {
+          "title": "胚胎移植",
+          "description": "在代孕妈妈身体准备好后，于诊所进行正式的胚胎移植。"
+        },
+        "geneticTesting": {
+          "title": "PGT-A 染色体筛查",
+          "description": "可选服务，进行胚胎染色体筛查，以提升着床与妊娠成功率。"
+        },
+        "embryoThawing": {
+          "title": "胚胎解冻与代孕母亲准备",
+          "description": "胚胎解冻后，结合激素监测治疗，精准安排移植时机。"
+        }
+      }
+    },
+    "clinicsSection": {
+      "title": "我们信赖的部分试管婴儿诊所合作伙伴"
+    },
+    "faqSection": {
+      "title": "常见问题",
+      "items": {
+        "chooseClinic": {
+          "question": "我可以选择自己的试管婴儿（IVF）诊所吗？",
+          "answer": "可以。您可以选择任何符合美国 FDA 规定的诊所，我们也乐意为您提供协调支持。"
+        },
+        "embryoShipping": {
+          "question": "可以将胚胎从海外运送到美国吗？需要哪些文件？",
+          "answer": "可以。我们会协助准备所有所需的法律、医疗与物流文件，确保运输安全合规。"
+        },
+        "frozenEmbryos": {
+          "question": "冷冻胚胎可以用于代孕吗？",
+          "answer": "当然可以。冷冻胚胎在代孕中非常常见，也被广泛证明是安全有效的。"
+        },
+        "eggDonationCreation": {
+          "question": "我还没有胚胎，可以同时进行卵子捐赠和胚胎培育吗？",
+          "answer": "可以。我们可以与合作诊所同步安排捐卵与胚胎培育流程，节省您的整体时间。"
+        },
+        "medicalCosts": {
+          "question": "医疗费用包含在代孕套餐中吗？",
+          "answer": "部分包含。IVF诊所产生的医疗费用通常单独结算，但我们会协助您选择优质诊所并进行沟通协调。"
+        }
+      }
+    },
+    "confidenceSection": {
+      "title": "准备好开启这段旅程了吗？",
+      "description": "从一次个性化咨询开始吧——无压力，只为解答你的疑问。",
+      "button": "开启成为父母的旅程"
+    }
+  },
+  "parentsSingle": {
+    "heroSection": {
+      "title": "爱，成就家庭",
+      "description": "孕达欢迎每一位追梦成家的朋友，无论您是单身父母、同志群体还是跨性别人士，\n我们都将以专业和尊重，陪伴您安全、顺利地开启这段爱的旅程。",
+      "button": "成为准父母"
+    },
+    "testimonialSection": {
+      "title": "“我们成为爸爸了”",
+      "quote": "“第二次走代孕旅程时，我们选择了孕达。这一次，我们希望一切更顺利、更透明，而孕达团队超出了我们的预期。我们的专属顾问从第一天起就细心、真诚、及时回应每一个问题。\n\n我们特别感激他们为同志家庭提供的法律和医疗支持，每一个步骤都感觉被尊重、被理解。整个流程中的固定费用结构也让我们省去了很多不确定和焦虑。现在，我们终于带着我们的宝宝回家了。”",
+      "quote2": "—— 一对幸福的双爸爸家庭"
+    },
+    "offerSection": {
+      "title": "我们的支持和优势",
+      "items": {
+        "inclusive": {
+          "title": "包容且无偏见的流程",
+          "description": "在每一个阶段——法律、医疗、情感，我们都秉持尊重与无偏见的原则，给予您专业且有温度的支持。"
+        },
+        "matching": {
+          "title": "友善 LGBTQ+ 与单身家庭的匹配机制",
+          "description": "我们合作的代孕妈妈与诊所均拥抱多元家庭形态，支持同性伴侣与单亲家庭的生育选择。"
+        },
+        "legal": {
+          "title": "LGBTQ+ 友好的法律支持",
+          "description": "我们提供量身定制的法律服务，包括 PBO（出生前法院命令）规划与出生证明办理。"
+        },
+        "global": {
+          "title": "丰富的国际服务经验",
+          "description": "我们特别擅长服务来自亚洲、美国及世界各地的多元文化家庭，熟悉不同背景下的需求与挑战。"
+        },
+        "multilingual": {
+          "title": "中英双语无障碍沟通",
+          "description": "从初步咨询到旅程结束，全程提供流畅的中英双语支持，确保每一位客户都能安心理解每一步。"
+        },
+        "personalized": {
+          "title": "为独特的家庭结构提供一对一指导",
+          "description": "无论您身处世界的哪个角落，我们都会为您的家庭提供量身定制的一对一支持与陪伴。"
+        }
+      }
+    },
+    "faqSection": {
+      "title": "常见问题",
+      "items": {
+        "sameSexLegal": {
+          "question": "同性伴侣在美国能被合法认定为父母吗？",
+          "answer": "可以。美国许多州支持“出生前法院命令”（PBO），确保双方可被合法认定为孩子的父母。孕达会为您处理所有法律流程。"
+        },
+        "singleParent": {
+          "question": "我是单身，可以进行代孕吗？",
+          "answer": "当然可以。我们会根据您的个性化需求，制定专属的代孕方案，全面支持您的独立育儿旅程。"
+        },
+        "coupleInChina": {
+          "question": "我们是生活在中国的同性伴侣，可以在美国做代孕吗？",
+          "answer": "可以。从合同签署到匹配代孕人，整个流程都可以远程完成。孕达将为您全程提供清晰引导与支持。"
+        },
+        "bringBabyBack": {
+          "question": "宝宝出生后能带回中国吗？",
+          "answer": "可以。我们会协助您办理美国护照、中国旅行证、社会安全号（SSN）、海牙认证（Apostille）等文件，确保宝宝顺利入境回国。"
+        },
+        "bothNames": {
+          "question": "我们的两个名字都能写在出生证明上吗？",
+          "answer": "可以。如果在 LGBTQ+ 友好的州份申请 PBO（出生前法院命令），法律上可将您双方的名字同时列入出生证明。"
+        }
+      }
+    },
+    "confidenceSection": {
+      "title": "准备好开始家庭旅程了吗？",
+      "description": "让我们用关怀、清晰与尊重，陪伴您实现梦想中的家庭。",
+      "button": "开启成为父母的旅程"
+    }
+  },
+  "eggDonation": {
+    "heroSection": {
+      "title": "寻找您的卵子捐赠者",
+      "description1": "在辅助生育的旅程中，卵子捐赠是一项重要而温暖的选择。\n对于卵巢功能衰退、无法自行排卵、染色体异常，或同性恋、单身男性准父母来说，卵子捐赠可以帮助他们实现拥有孩子的梦想。",
+      "description2": "\n\n孕达提供专业可靠的卵子捐赠服务，我们的捐卵者来自全美各地，经过严格筛查，拥有良好的健康、学历与个人背景。\n客户可根据偏好（如种族、身高、学历等）筛选理想人选，我们将协助匹配并保障全流程合规、透明与高效。",
+      "button": "开启成为父母的旅程"
+    },
+    "frozenEggsSection": {
+      "title": "可以使用冷冻卵子而不是新鲜卵子吗？",
+      "description": "可以，孕达提供两种捐卵方式：新鲜卵子周期和冷冻卵子库。对于希望尽快启动周期或不愿等待捐赠者同步周期的客户，冷冻卵子是非常合适的选择。我们合作的卵子库拥有丰富、多样的冷冻卵子资源，部分为亚洲面孔、学术背景优质的捐赠者，且可立即使用。",
+      "category": "项目",
+      "freshEggs": "新鲜卵子",
+      "frozenEggs": "冷冻卵子",
+      "timeline": "周期安排：",
+      "successRate": "成功率：",
+      "embryoYield": "胚胎数量：",
+      "cost": "价格：",
+      "donorAccess": "可选信息：",
+      "freshEggsDetails": {
+        "timeline": "需要与捐卵者同步周期，准备时间约4–6周",
+        "successRate": "通常更高（因卵子未冷冻，活性更强）",
+        "embryoYield": "一次可取10–20颗卵，胚胎数量更多",
+        "cost": "总成本相对较高（包括补偿金、同步管理等）",
+        "donorAccess": "可自选捐赠者、支持视频见面或开放式捐赠"
+      },
+      "frozenEggsDetails": {
+        "timeline": "可立即启动周期，节省等待时间",
+        "successRate": "稍低于新鲜卵子，但技术成熟，仍具高可行性",
+        "embryoYield": "通常以6–8颗卵为单位，胚胎数量较少",
+        "cost": "成本较低，性价比更高",
+        "donorAccess": "大多为匿名，无法进一步沟通或了解个性背景"
+      }
+    },
+    "usProcessSection": {
+      "title": "建胚过程需要我本人在美国吗？",
+      "usingDonor": "如您使用捐卵服务",
+      "usingDonorDesc": "无需前往美国",
+      "providingSperm": "如您本人提供精子",
+      "providingSpermDesc": "可在香港、日本等地采集后通过专业冷链运输至美国，无需亲自前往；",
+      "providingEggs": "如您本人提供卵子",
+      "providingEggsDesc": "通常需在美国进行取卵周期，停留约10–14天。如不便赴美，可选择我们的卵子库",
+      "conclusion": "我们将协助您完成所有协调，包括采集安排、运输流程、美国端诊所对接，确保每一步都合规、安全、高效。如需评估您的具体方案，请点击下方按钮联系我们的顾问团队。"
+    },
+    "stepsTimeline": {
+      "title": "我们的卵子捐赠 + 试管婴儿流程",
+      "step1": {
+        "title": "初步咨询与捐卵者匹配",
+        "subtitle1": "与孕达协调员进行初步电话沟通",
+        "subtitle2": "提交已有的医疗报告",
+        "subtitle3": "获取 5–6 份捐卵者档案（可选视频面试）",
+        "subtitle4": "签署合作协议并完成付款以确认匹配"
+      },
+      "step2": {
+        "title": "医疗与心理评估阶段",
+        "subtitle1": "协调诊所预约及咨询",
+        "subtitle2": "完成基因、传染病、超声等体检项目",
+        "subtitle3": "安排心理评估",
+        "subtitle4": "诊所发出《医疗适合证明》",
+        "subtitle5": "捐卵者在用药前完成 IVF 专属保险"
+      },
+      "step3": {
+        "title": "促排周期与胚胎形成",
+        "subtitle1": "捐卵者在孕达全程支持下出行",
+        "subtitle2": "开始用药并定期进行监测",
+        "subtitle3": "在麻醉下完成取卵手术",
+        "subtitle4": "体外受精 + 胚胎培养",
+        "subtitle5": "胚胎发育至第 5/6 天进行 PGT-A 基因检测",
+        "subtitle6": "检测结果将在 2–3 周内出具并反馈"
+      }
+    },
+    "confidenceSection": {
+      "title": "准备好开启这段旅程了吗？",
+      "description": "从一次个性化咨询开始吧——无压力，只为解答你的疑问。",
+      "button": "开始成为父母的旅程"
+    }
+  },
+  "surrogacyJourney": {
+    "heroSection": {
+      "title": "成为代孕妈妈的每一步",
+      "description": "从提交申请的那一刻起，到宝宝出生后的恢复期，代孕不仅是一段帮助他人成就家庭的旅程，更是一次充满意义、自我成长与爱心传递的经历。在孕达，我们理解代孕妈妈的付出与期待，并将为您提供从初筛、匹配、医疗检查到妊娠生产全过程的全方位支持。虽然每位代孕者的周期各有不同，但大多数流程会在 16 至 18 个月 内完成。以下将为您详细介绍整个流程，让您更清晰了解每一步的内容、所需准备以及孕达在每一阶段如何陪伴您安心前行。",
+      "button": "成为代孕妈妈"
+    },
+    "stepsTimeline": {
+      "title": "代孕流程——8个关键步骤",
+      "step1": {
+        "title": "提交申请",
+        "subtitle": "通过填写在线申请表，开启你的代孕旅程。代孕不仅仅是获得报酬，更是一种让他人实现为人父母梦想的方式。"
+      },
+      "step2": {
+        "title": "心理评估",
+        "subtitle": "由持牌心理治疗师评估你的情绪与心理状态，确保你已经做好成为代孕妈妈的准备。"
+      },
+      "step3": {
+        "title": "背景审核",
+        "subtitle": "为了确保所有人的安全，我们将进行全面的背景调查，包括法律记录、儿童照护历史与家庭环境等。"
+      },
+      "step4": {
+        "title": "匹配准父母",
+        "subtitle": "我们会根据双方的偏好和期待，为你匹配合适的准父母，并安排轻松的视频见面会，由专属顾问全程支持。"
+      },
+      "step5": {
+        "title": "医疗检查",
+        "subtitle": "你将前往生殖诊所进行身体检查，所有费用由我们承担。如果你有伴侣，他也可能需要进行简单的血液检测。"
+      },
+      "step6": {
+        "title": "法律协议",
+        "subtitle": "通过医疗审核后，双方将分别与独立律师合作，起草并签署代孕协议，确保你的权益与选择受到充分尊重。"
+      },
+      "step7": {
+        "title": "胚胎移植与妊娠",
+        "subtitle": "合同签署完成后，你将开始服药并进行胚胎移植。怀孕确认后，你将定期产检，并持续获得照护与补贴。"
+      },
+      "step8": {
+        "title": "分娩与后续支持",
+        "subtitle": "分娩是一个充满意义的时刻。分娩后你将获得充分的休息与支持。许多代孕妈妈在旅程结束后，仍会选择与帮助过的家庭保持联系。"
+      }
+    },
+    "testimonials": {
+      "title": "代母感言",
+      "testimonial1": {
+        "name": "Emily，32岁，加利福尼亚州",
+        "quote": "成为一名代孕妈妈，是我做过最有力量的事情。孕达在整个过程中都给予了我全方位支持。看到准父母第一次抱起他们的孩子——那一刻，我永远不会忘记。",
+        "role": "小学教师"
+      },
+      "testimonial2": {
+        "name": "Jessica，29岁，德克萨斯州",
+        "quote": "和孕达的合作非常愉快。他们沟通坦诚、清晰，真正关心我的状态——不仅是身体上的，也包括情绪和心理上的照顾。",
+        "role": "儿科护士 & 两个孩子的母亲"
+      },
+      "testimonial3": {
+        "name": "Carmen，30岁，俄勒冈州",
+        "quote": "一开始我有些紧张，但孕达耐心地解答了我所有的问题。每周更新、定期关心，让我感觉自己正在参与一件非常有意义的事情。",
+        "role": "行政助理"
+      },
+      "testimonial4": {
+        "name": "Amber，35岁，内华达州",
+        "quote": "作为一位母亲，我深知孩子能带来多么深沉的爱。能帮助另一个家庭拥有这样的爱，是我一生珍视的经历。孕达始终让我感受到尊重与被珍惜。",
+        "role": "全职妈妈"
+      }
+    },
+    "confidenceSection": {
+      "title": "也许你正是我们正在寻找的人？",
+      "description": "欢迎预约与孕达顾问的一对一交流，了解成为代孕妈妈的条件与报酬详情。",
+      "button": "成为代孕妈妈"
+    }
+  },
+  "surrogacyEligibility": {
+    "heroSection": {
+      "title": "成为代孕妈妈",
+      "description": "在孕达，我们相信，每一个愿意帮助他人成就家庭梦想的女性都值得被尊重和支持。\n成为代孕妈妈不仅是一次生命的承诺，更是一段充满意义的旅程。\n我们将为您提供全面的保障与陪伴，让您在温暖和安全中完成这份非凡的使命。",
+      "button": "成为代孕妈妈"
+    },
+    "qualificationsSection": {
+      "title": "基础条件",
+      "introduction": "为了确保每一次代孕都在安全、健康、合法的前提下进行，以下是成为代孕母的基础条件：",
+      "items": {
+        "item1": "年龄在21至40岁之间",
+        "item2": "至少经历过一次 健康、无重大并发症的顺产经历",
+        "item3": "目前生活稳定，具备良好的家庭支持与育儿经验",
+        "item4": "是美国公民或永久居民（绿卡持有者）",
+        "item5": "生活方式健康，不吸烟、不酗酒，无药物滥用史",
+        "item6": "无任何犯罪记录或虐待儿童的历史"
+      },
+      "additionalNote": "我们欢迎已婚、单身、有孩子或在职的女性报名申请。只要您拥有健康的身体、乐于帮助他人、愿意接受代孕过程的承诺，我们都非常乐意与您携手开启这段美好旅程。"
+    },
+    "disqualifyingFactors": {
+      "title": "无法成为的常见原因",
+      "introduction": "无法成为代孕妈妈的常见原因",
+      "items": {
+        "item1": "从未生育过",
+        "item2": "产检或分娩过程出现严重并发症",
+        "item3": "BMI超过诊所设定的健康标准（通常为33）",
+        "item4": "精神健康不稳定或服用抗抑郁药物（个案视情况评估）",
+        "item5": "当前经济不稳定或无固定收入来源",
+        "item6": "居住州份不支持代孕法律流程（我们会协助评估）"
+      }
+    },
+    "gentleNote": {
+      "title": "温馨提示",
+      "description": "不符合代孕条件，并不代表您不健康、不优秀。代孕是一项涉及医学与法律的特殊旅程，因此需要在最佳状态下开始。我们鼓励每一位女性如实填写申请表，让专业评估为您提供答案。"
+    },
+    "confidenceSection": {
+      "title": "也许你正是我们正在寻找的人？",
+      "description": "欢迎预约与孕达顾问的一对一交流，了解成为代孕妈妈的条件与报酬详情。",
+      "button": "成为代孕妈妈"
+    }
+  },
+  "surrogacyScreening": {
+    "heroSection": {
+      "title": "因为你的健康与准备，我们认真对待每一步",
+      "description": "在孕达，我们深知，代孕不仅仅是一次帮助他人的旅程，更是一次对身体、情感与信任的全方位投入。\n因此，我们设立了一套温暖、专业又全面的筛选流程，来帮助你准备好迈出第一步。\n这个过程不仅帮助我们了解你是否适合代孕，也让你有足够时间了解整个流程、提出疑问、建立信心。",
+      "button": "成为代孕妈妈"
+    },
+    "processSection": {
+      "includesTitle": "孕达的代孕母筛选流程包括:",
+      "includesList": {
+        "item1": "完整的线上申请表填写",
+        "item2": "与顾问团队的一对一初步咨询",
+        "item3": "持牌心理师进行心理评估",
+        "item4": "背景调查（含刑事记录与儿童保护）",
+        "item5": "医疗记录审核（含过往怀孕史）",
+        "item6": "前往生殖中心进行体检（含子宫检查与抽血）",
+        "item7": "配偶/伴侣筛查（如适用）",
+        "item8": "医疗保险与财务状况评估"
+      },
+      "includesNote": "我们承担所所有筛查环节费用均由我们承担，我们会在整个过程中陪伴你、回答你的每一个疑问。通过筛查后，我们会为你匹配最适合的准父母，开启美好的下一步。",
+      "candidateTitle": "什么样的女性适合成为代孕母？",
+      "candidateIntro": "为了保障代孕母和准父母的健康与权益，并确保整个代孕旅程顺利安全，我们对申请者设定了一系列医学、生活习惯及法律方面的筛选标准。这些标准依据美国顶级试管婴儿诊所及美国生殖医学学会（ASRM）的指导建议制定，是确保成功周期的重要保障。",
+      "candidateList": {
+        "item1": "年龄要求：21-40岁",
+        "item2": "BMI要求：低于32",
+        "item3": "至少过去 12 个月内无吸烟行为",
+        "item4": "无毒品使用史，生活方式健康",
+        "item5": "至少有一次健康妊娠与顺产经历",
+        "item6": "无重大产科并发症或慢性疾病史",
+        "item7": "生活健康稳定，作息规律",
+        "item8": "拥有良好的家庭或社交支持系统",
+        "item9": "无犯罪记录或虐待历史",
+        "item10": "拥有基本的经济稳定性"
+      }
+    },
+    "confidenceSection": {
+      "title": "也许你正是我们正在寻找的人？",
+      "description": "欢迎预约与孕达顾问的一对一交流，了解成为代孕妈妈的条件与报酬详情。",
+      "button": "成为代孕妈妈"
+    }
+  },
+  "surrogacyBenefit": {
+    "heroSection": {
+      "title": "加入孕达，您将获得什么？",
+      "description": "在孕达，我们相信代孕是一段伟大而深刻的旅程，理应得到应有的回报与尊重。\n作为我们的代孕母，您将享受到一个既清晰透明、又灵活贴心的补偿计划。\n每位代孕母的补偿方案都由我们团队根据您的经验、居住地、是否拥有可用保险等因素定制而成。\n我们与全美领先的信托和保险合作伙伴（SeedTrust & ART Risk）协作，确保每一笔费用都及时、安全地支付给您，并保障您和家人的权益。",
+      "button": "成为代孕妈妈"
+    },
+    "familySupportSection": {
+      "title": "孕达的代孕关怀方案：",
+      "description": "在孕达，我们知道这段旅程不仅关乎孕育新生命，更影响着您自己的生活和家庭。因此，我们特别设计了 Family Support Plan，确保您的家人在您接受治疗和分娩时也获得应有的支持：",
+      "items": {
+        "item1": "医生建议的卧床休息期间，我们协助支付家庭清洁、托儿和误工支出",
+        "item2": "配偶/伴侣需陪同出行时，可获得陪护误工补偿",
+        "item3": "若您愿意继续哺乳，我们提供相应津贴",
+        "item4": "全程一对一专属孕达顾问支持"
+      }
+    },
+    "compensationSection": {
+      "title": "您的代孕补偿方案可能包括：",
+      "items": {
+        "item1": "基础补偿金：首次代孕者可获得 $50,000–$70,000+，从胎心确认后按月发放",
+        "item2": "每月津贴：用于交通、餐食、育儿及其他日常杂支",
+        "item3": "IVF用药补助：在开始用药时一次性支付",
+        "item4": "胚胎移植补偿：按每次移植手术计费",
+        "item5": "孕期与恢复支持：包括孕妇装、营养补贴及产后恢复支持",
+        "item6": "特殊手术补偿：视手术类型不同，范围为 $500–$5,000",
+        "item7": "多胎奖励金：双胞胎或多胞胎额外 $10,000+，分期支付",
+        "item8": "剖腹产补偿：首次剖腹产 $5,000，二次及以上 $3,000",
+        "item9": "母乳补偿：若双方同意，按 $250/周 计费",
+        "item10": "误工补偿：如需请假，代孕妈妈及配偶最高可获得 $10,000",
+        "item11": "家政支持：最高 $200/周，总额不超过 $3,000（需提供收据）",
+        "item12": "保险支持：提供或报销孕期医疗保险费用",
+        "item13": "人寿保险：为代孕妈妈提供 $250,000 的保障；为准父母提供 $100,000 的保障"
+      }
+    },
+    "paymentScheduleSection": {
+      "title": "付款分阶段进行：",
+      "items": {
+        "item1": "胚胎移植完成后即可获得相应津贴",
+        "item2": "确认胎心后开始按月支付基础补偿金",
+        "item3": "分娩后14天内支付尾款",
+        "item4": "其他补贴（如母乳补偿、丧失工资等）将按需或周期性发放"
+      }
+    },
+    "protectionSection": {
+      "title": "法律与安全保障：",
+      "items": {
+        "item1": "保险保障：全面评估或为代孕妈妈提供孕期保险",
+        "item2": "人寿保险：为代孕妈妈提供高达 $250,000 的人寿保障",
+        "item3": "法律代表：由顶级生殖法律律师团队提供专业法律支持"
+      }
+    },
+    "conclusionText": "成为代孕母意味着成为改变别人世界的奇迹缔造者。而在孕达，我们确保你拥有同样被珍惜的待遇。我们提供的不只是补偿，而是一份有温度的陪伴、一份值得信赖的合作、一次被全程守护的旅程。让我们一起，做一件美丽的事。",
+    "confidenceSection": {
+      "title": "也许你正是我们正在寻找的人？",
+      "description": "欢迎预约与孕达顾问的一对一交流，了解成为代孕妈妈的条件与报酬详情。",
+      "button": "成为代孕妈妈"
+    }
+  },
+  "surrogacyReferral": {
+    "heroSection": {
+      "title": "代孕推荐奖励计划",
+      "description": "帮助一位有爱心的女性成就他人家庭——您可获得高达 $5,000 的推荐奖励每年，有成千上万的准父母怀抱着拥有孩子的梦想，而代孕妈妈正是实现这些梦想的关键。\n如果您认识一位身体健康、内心温暖、愿意帮助他人的女性，我们诚挚邀请您将她推荐加入我们的代孕项目。\n\n作为感谢，每成功推荐一位代孕妈妈，您将获得最高 $5,000 的奖励。",
+      "button": "联系我们"
+    },
+    "whyMattersSection": {
+      "title": "为什么您的推荐如此重要？",
+      "description": "代孕不仅是身体上的付出，更是一种生命的礼物。\n推荐一位合适的代孕母亲，不仅改变了她的人生，也为一个家庭带来了希望与幸福。\n您不仅是“推荐人”，更是这段美丽旅程的参与者和见证者。"
+    },
+    "earningsSection": {
+      "title": "推荐奖励如何发放？",
+      "tableHeaders": {
+        "milestone": "阶段",
+        "bonus": "奖励"
+      },
+      "milestones": {
+        "accepted": "正式通过孕达的申请审核",
+        "screening": "完成心理和医学筛查",
+        "matching": "与准父母成功匹配",
+        "transfer": "完成胚胎移植",
+        "pregnancy": "胎心确认"
+      },
+      "bonuses": {
+        "accepted": "$500",
+        "screening": "$1,000",
+        "matching": "$1,500",
+        "transfer": "$1,000",
+        "pregnancy": "$1,000"
+      },
+      "totalTitle": "累计最高奖励: $5,000",
+      "terms1": "奖金将在每个阶段完成后 14 个工作日内发放",
+      "terms2": "推荐人姓名必须出现在申请人首次填写的表格中"
+    },
+    "eligibilitySection": {
+      "title": "谁适合成为代孕妈妈？",
+      "intro": "我们寻找健康、有爱心、愿意帮助他人的女性。如果她：",
+      "requirements": {
+        "age": "年龄21-39岁",
+        "residence": "美国居民",
+        "pregnancy": "至少有一次健康分娩经验",
+        "bmi": "BMI低于32",
+        "lifestyle": "不吸烟，无毒品使用史",
+        "support": "有良好的家庭支持",
+        "health": "无严重妊娠并发症或健康问题"
+      }
+    },
+    "compensationSection": {
+      "title": "您的朋友将获得什么？",
+      "benefits": {
+        "base": "$50,000-$70,000+基础补偿",
+        "allowances": "每月津贴：交通、餐食、托儿等费用",
+        "medication": "用药补贴 & 胚胎移植补贴",
+        "surgery": "剖腹产/特殊手术补助",
+        "breastmilk": "哺乳补偿：$250/周（如双方同意）",
+        "bedrest": "因卧床而失去工资时的补偿（最高 $10,000）",
+        "insurance": "保险审查或直接为她提供覆盖妊娠的健康保险",
+        "lifeInsurance": "高达 $250,000 的人寿保险",
+        "support": "全程由指定协调人一对一服务，法律与情绪支持",
+        "processing": "所有补偿通过 SeedTrust 信托账户 安全发放"
+      }
+    },
+    "confidenceSection": {
+      "title":"",
+      "description": "已有上百位非凡女性选择与孕达合作，\n帮助他人实现家庭梦想的同时，也收获了自我成长与内在丰盈。\n推荐一位值得信赖的她，不仅是对她的肯定，也是对我们的信任.\n我们将以诚挚的感谢回馈这份支持。",
+      "button": "联系我们"
+    }
+  },
+  "footer": {
+    "sections": {
+      "becomeAParent": "成为准父母",
+      "intendedParent": "准父母",
+      "process": "代孕流程",
+      "surrogacyCost": "代孕价格",
+      "eggDonors": "卵子捐赠者",
+      "singleParentsLgbtq": "单身父母和同性恋群体",
+      "becomeASurrogate": "成为代孕妈妈",
+      "surrogates": "代孕妈妈",
+      "surrogacyJourney": "代孕流程",
+      "eligibility": "资格要求",
+      "surrogateReferral": "代孕母推荐计划",
+      "partnerClinics": "合作的IVF医院",
+      "screening": "我们的筛查流程",
+      "benefits": "薪酬与福利"
+    },
+    "socialLinks": {
+      "instagram": "INSTAGRAM",
+      "facebook": "FACEBOOK",
+      "youtube": "YOUTUBE",
+      "linkedin": "LINKEDIN"
+    },
+    "phoneNumber": "626-563-8656",
+    "wechatId": "YundaUS1",
+    "legalDisclaimer": "孕达代孕是一家独立的代孕机构，不从事医学或法律实践。我们通过促进联系和服务来支持客户，但所有医疗和法律决定仍由有许可的专业人员负责。"
+  },
+  "common": {
+    "yes": "是",
+    "no": "否",
+    "continue": "继续",
+    "ok": "确定"
+  },
+  "surrogacy": {
+    "application": {
+      "title": "代孕母申请表",
+      "qualificationQuestions": {
+        "age": "您的年龄在21到42岁之间吗？",
+        "pregnancy": "您是否至少有过一次足月且无主要并发症的妊娠？",
+        "childcare": "您目前是否在稳定的家庭环境中抵养至少一个孩子？",
+        "citizenship": "您是美国公民、永久居民或有效长期签证持有者（有效期2年以上）吗？",
+        "education": "您是否完成了高中学业并获得了毕业证书或GED？"
+      },
+      "messages": {
+        "notQualified": "谢谢您的申请——希望不久后再次相遇。",
+        "qualified": "恭喜——您正式符合资格！",
+        "seeIfYouQualify": "查看您是否符合资格"
+      }
+    }
+  },
+  "surrogate": {
+    "application": {
+      "pageTitle": "代孕母申请表",
+      "congratulations": {
+        "title": "恭喜您符合代孕申请资格！",
+        "message1": "很高兴地告诉您，根据您在第一部分的回答，您已符合成为孕达代孕母的基本资格。这是迈向帮助他人圆梦家庭的重要一步，我们深感荣幸能够陪伴您走完这段充满爱与意义的旅程。",
+        "message2": "接下来，请填写一份更详细的问卷，内容涵盖您的背景、健康经历以及代孕过程中的个人偏好。这将帮助我们更全面地了解您，并确保为您匹配到在情感、理念与合作方面最合适的准父母。",
+        "thanks": "感谢您愿意迈出这一步，给予他人最珍贵的希望。"
+      },
+      "sections": {
+        "contactInfo": "联系方式",
+        "aboutYou": "关于您自己",
+        "pregnancyHealth": "准生育与健康经历",
+        "financialLegal": "政府资助",
+        "consent": "最终同意"
+      },
+      "form": {
+        "lastName": "姓氏",
+        "firstName": "名字",
+        "dateOfBirth": "出生日期",
+        "email": "电子邮箱",
+        "cellPhone": "手机号码",
+        "city": "城市",
+        "country": "国家",
+        "stateProvince": "州/省",
+        "zipCode": "邮政编码",
+        "citizenship": "美国公民或签证身份",
+        "smsConsent": "我同意接收有关本申请和服务的短信通知",
+        "howDidYouHear": "您是通过什么渠道了解我们？",
+        "friendReferral": "朋友推荐",
+        "socialMedia": "社交媒体",
+        "googleSearch": "Google搜索",
+        "other": "其他：",
+        "occupation": "您目前的职业是什么？",
+        "previousSurrogate": {
+          "question": "您是否曾做过代孕母？",
+          "description": "如有，请简要说明时间与经历"
+        },
+        "maritalStatus": {
+          "question": "婚姻状态",
+          "options": {
+            "married": "已婚",
+            "engaged": "已订婚",
+            "cohabitating": "同居关系",
+            "livingSeparately": "实际分居",
+            "single": "单身",
+            "divorcedFinalized": "离婚（已完成）",
+            "divorcedInProcess": "离婚中",
+            "legallySeparated": "法律分居",
+            "separatedInformally": "分居"
+          }
+        },
+        "partnerSupport": {
+          "question": "您的伴侣/配偶是否会支持您完成这段旅程？",
+          "options": {
+            "yes": "是",
+            "no": "否",
+            "notApplicable": "不适用"
+          }
+        },
+        "education": {
+          "highSchool": "您有高中毕业证书或GED同等学历吗？"
+        },
+        "income": {
+          "question": "您家庭的年收入总额是多少？",
+          "options": {
+            "under30k": "$30,000以下",
+            "between30k50k": "$30,000–$50,000",
+            "between50k75k": "$50,000–$75,000",
+            "between75k100k": "$75,000–$100,000",
+            "over100k": "$100,000以上",
+            "preferNotToSay": "不愿意说"
+          }
+        },
+        "pregnancy": {
+          "givenBirth": {
+            "question": "您是否曾顺利分娩?",
+            "description": "如是，请说明胎次、出生年份及有无分娩并发症:"
+          },
+          "currentlyPregnant": "您目前怀孕了吗？",
+          "breastfeeding": "您目前在母乳喂养吗？",
+          "stillbirth": "您是否曾经历死产?",
+          "height": "身高（英寸/厘米）",
+          "weight": "体重（磅）"
+        },
+        "health": {
+          "medicalHistory": {
+            "question": "您是否有以下病史？(多选)",
+            "conditions": {
+              "diabetes": "糖尿病",
+              "hypertension": "高血压",
+              "bipolarDisorder": "躁郁症",
+              "multipleMiscarriages": "两次以上自然流产",
+              "seizureDisorder": "癫痫或神经系统异常",
+              "none": "以上都没有"
+            }
+          },
+          "medications": {
+            "question": "您目前是否在服用任何处方药？"
+          }
+        },
+        "assistance": {
+          "question": "政府资助",
+          "programs": {
+            "foodStamps": "食品券",
+            "medicaid": "医疗补助",
+            "cashAssistance": "现金援助/福利",
+            "financialAid": "学费补助",
+            "wic": "妇婴营养补助",
+            "ssi": "社会保障补助",
+            "publicHousing": "公共住房",
+            "childcare": "政府补贴托儿服务",
+            "studentLoans": "学生贷款或助学金",
+            "other": "其他：",
+            "none": "以上都没有"
+          }
+        },
+        "legal": {
+          "criminalRecord": {
+            "question": "您是否有犯罪记录?",
+            "explain": "请解释"
+          },
+          "legalMatters": {
+            "question": "您或伴侣是否有正在进行中的法律事务(破产、诉讼、离婚等)?",
+            "explain": "请解释"
+          },
+          "cpsHistory": "您或伴侣是否曾涉及儿童保护局(CPS)的调查或案件?"
+        },
+        "finalConsent": {
+          "text": "我同意提交本人的个人信息，并接受孕达通过邮件、短信、电话或邮寄形式发送的服务更新和信息。我已知悉隐私政策，并了解我可以随时选择退出订阅。",
+          "disclaimer": "您的所有信息将被严格保密，不会被出售或提供给任何第三方。"
+        },
+        "submitButton": "提交申请",
+        "yes": "是",
+        "no": "否",
+        "noStatesAvailable": "没有可用的州/省",
+        "selectStateProvince": "选择州/省"
+      }
+    }
+  },
+  "parent": {
+    "application": {
+      "pageTitle": "准父母申请表",
+      "welcome": {
+        "title": "迎接新生命，从沟通开始。",
+        "message1": "我们希望更多了解您的故事、期待、疑问和所需支持。填写这份简短申请，有助于我们为您的家庭之路提供最合适的帮助。",
+        "message2": "提交后，我们的团队会为您定制专属信息包——无压力、无强制，仅为您量身定制的指引。",
+        "message3": "我们自豪地支持来自世界各地的准父母。",
+        "scrollPrompt": "下滑页面，开始填写。"
+      },
+      "sections": {
+        "basicInfo": "基本信息",
+        "contactInfo": "联系信息",
+        "familyProfile": "家庭资料",
+        "programInterests": "项目意向",
+        "referral": "渠道及初步沟通",
+        "consent": "同意"
+      },
+      "form": {
+        "firstName": "名字（只有名字会显示在公开资料中）",
+        "lastName": "姓氏",
+        "pronouns": {
+          "label": "代词",
+          "options": {
+            "sheHer": "她/她的",
+            "heHim": "他/他的",
+            "theyThem": "TA/TA的",
+            "other": "其他："
+          }
+        },
+        "genderIdentity": {
+          "label": "性别认同",
+          "options": {
+            "male": "男性",
+            "female": "女性",
+            "transMale": "跨性别男性",
+            "transFemale": "跨性别女性",
+            "nonBinary": "非二元性别",
+            "preferSelfDescribe": "自我描述："
+          }
+        },
+        "dateOfBirth": "出生日期",
+        "ethnicity": {
+          "label": "族裔",
+          "selectAll": "（可多选）",
+          "options": {
+            "asian": "亚洲人",
+            "white": "白人/高加索人",
+            "black": "黑人/非洲裔美国人",
+            "hispanic": "西班牙裔/拉丁裔",
+            "middleEastern": "中东裔",
+            "nativeAmerican": "美洲原住民/阿拉斯加原住民",
+            "pacificIslander": "太平洋岛民",
+            "mixedRace": "混血",
+            "preferNotToSay": "不愿透露",
+            "other": "其他（请指明）："
+          }
+        },
+        "cellPhone": "手机号码",
+        "email": "电子邮箱",
+        "smsConsent": {
+          "label": "我同意接收有关本申请和服务的短信通知",
+          "disclaimer": "勾选此项即表示您同意接收与申请流程相关的短信通知。标准短信资费适用。您可随时通过短信退订或在账户中更新偏好。"
+        },
+        "languages": {
+          "label": "主要语言（选择所有适用选项）",
+          "note": "孕达的主要服务语言是英语，但我们有讲普通话的顾问和可用的翻译人员在您的整个旅程中支持您——包括与您的代母沟通。",
+          "options": {
+            "english": "英语",
+            "mandarin": "普通话",
+            "cantonese": "粤语",
+            "spanish": "西班牙语",
+            "french": "法语",
+            "korean": "韩语",
+            "japanese": "日语",
+            "hindi": "印地语",
+            "vietnamese": "越南语",
+            "russian": "俄语",
+            "arabic": "阿拉伯语",
+            "portuguese": "葡萄牙语",
+            "tagalog": "塔加禄语",
+            "german": "德语",
+            "italian": "意大利语",
+            "other": "其他（请指明）："
+          }
+        },
+        "sexualOrientation": {
+          "label": "性取向",
+          "options": {
+            "heterosexual": "异性恋",
+            "lgbtqia": "LGBTQIA+",
+            "preferSelfDescribe": "偏好自我描述："
+          }
+        },
+        "city": "城市",
+        "country": "国家",
+        "stateProvince": "州/省",
+        "services": {
+          "question": "您可能需要哪些服务？",
+          "options": {
+            "surrogacyEggDonor": "代孕及捐卵服务",
+            "surrogacyOnly": "仅代孕",
+            "eggDonorOnly": "仅捐卵（不含代孕，由合作机构Everie Egg Donation提供）",
+            "thirdPartySurrogate": "仅捐卵（与第三方代孕机构合作）",
+            "bringYourOwnSurrogate": "自带代母",
+            "bringYourOwnSurrogateEgg": "自带代母+捐卵服务",
+            "notSure": "暂不确定，需要建议"
+          }
+        },
+        "timing": {
+          "question": "您希望何时开启家庭计划？",
+          "options": {
+            "asap": "越快越好",
+            "next6Months": "未来6个月内",
+            "nextYear": "未来一年内",
+            "notSure": "暂不确定，想进一步了解"
+          }
+        },
+        "childrenCount": {
+          "question": "您希望通过本计划迎来几个孩子？",
+          "options": {
+            "oneChild": "一个孩子",
+            "twins": "双胞胎",
+            "moreThanTwo": "两个以上",
+            "notSure": "暂不确定"
+          }
+        },
+        "referralSource": "您是如何了解到孕达代孕的？",
+        "initialQuestions": "您有任何想进一步了解的问题或话题吗？",
+        "consentAgreement": {
+          "label": "我同意分享我的个人信息，并根据隐私政策通过电子邮件、短信、电话或邮寄接收孕达代孕的未来更新。我理解我可以随时退出。",
+          "disclaimer": "您的信息将被严格保密，不会分享或出售给任何第三方。"
+        },
+        "submitButton": "提交申请",
+        "noStatesAvailable": "没有可用的州/省",
+        "selectStateProvince": "选择州/省"
+      }
+    }
+  },
+  "modal": {
+    "success": {
+      "surrogate": {
+        "title": "申请已提交！",
+        "message": "感谢您的申请。我们的团队将审查并在48小时内与您联系。"
+      },
+      "parent": {
+        "title": "申请已提交！",
+        "message": "感谢您对孕达代孕的兴趣。我们的团队将审查您的申请并在24-48小时内为您发送个性化信息包。"
+      }
+    },
+    "error": {
+      "title": "提交失败",
+      "consentRequired": {
+        "title": "需要同意",
+        "message": "请勾选同意框以提交您的申请。"
+      },
+      "tryAgain": "重试",
+      "unexpectedError": "发生意外错误。请稍后重试。",
+      "ok": "确定"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "关于我们 - 孕达代孕",
+      "description": "了解孕达代孕 - 专业承诺与贴心关怀的结合。了解我们经验丰富、致力于您代孕旅程的团队。"
+    },
+    "hero": {
+      "title": "专业之上，更有温度 — Yunda Surrogacy",
+      "paragraph1": "在孕达，我们不仅仅是一家代孕机构，更是您在人生重要旅程中可信赖的伙伴。\n我们的团队汇聚了生殖法律、医疗协调、跨境项目管理等多个领域的专业人才，更重要的是：我们拥有亲身经历。",
+      "paragraph2": "我们之中有通过代孕成为父母的人，也有曾经作为代孕妈妈或为生育平权奔走多年的支持者。\n我们坐过焦急的候诊椅，也牵过彼此的手走进手术室；我们感受过希望、等待与迎接新生命的激动。\n这份事业对我们来说，不只是职业，更是使命。",
+      "paragraph3": "从第一次咨询到新生命来到人间的那一刻，我们始终用专业、真诚与细致守护您的每一步。\n无论您是给予希望的代孕妈妈，还是满怀期待的准父母，",
+      "highlight": "孕达都将以诚挚的尊重与坚定的陪伴，与您同行。"
+    },
+    "team": {
+      "kaylaLuo": {
+        "name": "Kayla Luo",
+        "title": "创始人 & 运营总监",
+        "bio": {
+          "paragraph1": "Kayla 毕业于康奈尔大学，并在哥伦比亚大学完成研究生学业。她精通中文、英文和德语，在辅助生殖领域拥有超过八年的从业经验。",
+          "paragraph2": "在创立Yunda Surrogacy之前，Kayla曾从事国际生殖顾问工作，协助跨文化背景的客户顺利完成包括代孕和捐卵在内的生育旅程。",
+          "paragraph3": "Kayla投身这个行业不仅因为专业，更源自于个人经历。作为一位通过代孕迎来两个孩子的母亲，她亲身经历了这段旅程中的喜悦与挑战。从遭遇不专业律师，到面对信息不透明的困境，这段经历促使她萌生了一个坚定的想法——亲自打造一个更专业、更温暖、更合规的代孕平台。",
+          "paragraph4": "在 Yunda，Kayla始终坚持法律合规、情感关怀与高度专业并重的理念，致力于为代孕妈妈和准父母们提供值得信赖的服务。工作之余，Kayla热爱旅行、阅读和陪伴两个孩子成长——他们每天都提醒她，这项事业的意义有多么深远。"
+        }
+      },
+      "zoeBoyd": {
+        "name": "Zoe Fang Boyd",
+        "title": "客户总监",
+        "bio": {
+          "paragraph1": "Zoe 毕业于加州州立大学洛杉矶分校（California State University, Los Angeles），在进入辅助生殖行业前，曾在两家知名生殖中心——Huntington Reproductive Center 和 Santa Monica Fertility Center 担任护士长达九年。",
+          "paragraph2": "她于 2016 年投身于生殖医疗行业，坚定地将此作为她的长期事业，并始终怀抱热情，致力于帮助有生育需求的家庭通过试管婴儿技术实现梦想。",
+          "paragraph3": "在 Yunda，她主要负责协助国际客户顺利完成试管婴儿相关流程，包括代孕与捐卵服务，并在整个旅程中提供专业、个性化的支持。她深信：每一个人都应获得真诚、透明的帮助与陪伴。",
+          "paragraph4": "Zoe 热爱旅行与户外运动，闲暇时光喜欢与家人朋友共度，也热衷于探索植物性健康食谱。同时，她也积极参与生殖公益组织的志愿活动，在生活和工作中践行她对爱的承诺。",
+          "paragraph5": "如果您希望了解我们如何为客户提供支持，或探索合作机会，欢迎随时联系 Zoe！"
+        }
+      }
+    },
+    "careers": {
+      "title": "想参与助力家庭诞生、创造真实改变吗？",
+      "description": "我们始终在寻找有爱心、有责任感的伙伴，加入 孕达 不断壮大的团队。欢迎浏览我们在 Indeed 上发布的职位信息——期待与你相遇！",
+      "button": "查看职位"
+    }
+  }
+}

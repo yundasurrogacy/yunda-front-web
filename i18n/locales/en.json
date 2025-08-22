@@ -1,0 +1,1236 @@
+{
+  "menu": {
+    "forIntendedParents": "FOR INTENDED PARENTS",
+    "surrogacyProcess": "SURROGACY PROCESS",
+    "surrogacyCosts": "SURROGACY COSTS",
+    "findYourEggDonor": "FIND YOUR EGG DONOR",
+    "lgbtqSingleParents": "LGBTQ+ & SINGLE PARENTS",
+    "partnerIvfClinics": "PARTNER IVF CLINICS",
+    "becomeAParent": "BECOME A PARENT",
+    "forSurrogates": "FOR SURROGATES",
+    "surrogacyJourneyOverview": "SURROGACY JOURNEY OVERVIEW",
+    "eligibilityToBecomeASurrogate": "ELIGIBILITY TO BECOME A SURROGATE",
+    "ourScreeningProcess": "OUR SCREENING PROCESS",
+    "compensationBenefits": "COMPENSATION & BENEFITS",
+    "surrogateReferralProgram": "SURROGATE REFERRAL PROGRAM",
+    "becomeASurrogates": "BECOME A SURROGATES",
+    "logIn": "LOG IN",
+    "aboutUs": "ABOUT US",
+    "contactUs": "CONTACT US",
+    "careers": "CAREERS",
+    "phone": "PHONE:",
+    "email": "EMAIL:",
+    "wechat": "WECHAT:"
+  },
+  "home": {
+    "commitmentSection": {
+      "title": "Professionalism. Transparency. Warmth. Protection.",
+      "description": "This is our lasting commitment to every journey we help build."
+    },
+    "costSection": {
+      "title1": "From Budget Planning to Baby's Arrival",
+      "title2": "Surrogacy Costs for Intended Parents",
+      "description1": "Every surrogacy journey is unique. Costs may vary based on factors like embryo status, clinic selection, and insurance needs. Typical expenses include agency fees, legal services, surrogate compensation, medical care, and insurance.",
+      "description2": "At Yunda, most intended parents can expect to spend $150,000 to $200,000 USD, which includes:",
+      "item1": "$55,000–$70,000+ USD in surrogate compensation and pregnancy support",
+      "item2": "Legal, medical, and insurance-related third-party costs",
+      "item3": "All payments are securely managed through a milestone-based escrow account",
+      "description4": "We provide every client with a clear cost breakdown and personalized financial planning, so you can move forward with confidence and focus on welcoming your baby."
+    },
+    "globalSupportSection": {
+      "title": "Global Support For Every Family",
+      "description": "Yunda Surrogacy is a professional agency specializing in cross-border assisted reproduction, offering services across all legally supported surrogacy states in the U.S. We partner with world-class fertility clinics, mental health professionals, and insurance providers to deliver fully customized, end-to-end support for intended parents from all backgrounds- including older couples, LGBTQ+ individuals, and single parents.",
+      "button": "BECOME A PARENT"
+    },
+    "heroSection": {
+      "title": "Professionalism. Transparency. Warmth. Protection.",
+      "description": "Our unwavering promise to every family and every surrogate."
+    },
+    "journeySection": {
+      "title1": "From Planning to Parenthood",
+      "title2": "- A 4-Step Journey for Intended Parents",
+      "description": "At Yunda, we believe every path to parenthood deserves care, attention, and respect. With professional guidance and constant support, we walk alongside you—from the first conversation to the moment you meet your baby.",
+      "step1": {
+        "title": "Consultation & Planning",
+        "description": "We begin with a one-on-one conversation to understand your background, preferences, and timeline. Based on your needs, we design a personalized plan and recommend suitable IVF clinics and physicians."
+      },
+      "step2": {
+        "title": "Surrogate Matching & Medical Screening",
+        "description": "We share surrogate profiles tailored to your preferences and arrange video interviews. Once matched, we coordinate all necessary medical evaluations to ensure the surrogate is approved for embryo transfer."
+      },
+      "step3": {
+        "title": "Legal Process & Embryo Transfer",
+        "description": "Our in-house legal team prepares and reviews all contracts and manages the pre-birth order process. Meanwhile, the surrogate begins her medication cycle and completes the embryo transfer under clinical supervision."
+      },
+      "step4": {
+        "title": "Pregnancy Support & Baby's Arrival",
+        "description": "Throughout the pregnancy, the surrogate receives both emotional and medical care. Your dedicated case manager provides weekly updates and helps coordinate any issues, leading up to the safe birth and handover of your baby."
+      }
+    },
+    "legalExpertiseSection": {
+      "title": "Our Legal Expertise",
+      "description1": "Our most defining strength is our legal team, recognized for its depth and expertise in reproductive law. From early-stage risk evaluation to contract negotiation, parentage establishment, and birth certification, our legal experts are involved at every step—ensuring each journey is secure, ethical, and fully compliant. We do not rely on external firms—we build legal protection from within.",
+      "advisor": "Judith Hoechst - Legal Advisor"
+    },
+    "statsSection": {
+      "stat1": "Years of experience in third-party reproduction",
+      "stat2": "Families served worldwide",
+      "stat3": "Full IVF and surrogacy journeys completed",
+      "stat4": "Client satisfaction rate sustained over the years"
+    },
+    "surrogateCareSection": {
+      "title": "Surrogate Care",
+      "item1": "Case Coordinator",
+      "item2": "Nutrition & Counseling",
+      "item3": "Daily Check-in",
+      "button": "BECOME A SURROGATE"
+    }
+  },
+  "parentsPrice": {
+    "detailedBreakdown": {
+      "agencyFees": {
+        "title": "Surrogacy Agency Fees",
+        "amount": "$50,000",
+        "description1": "End-to-end bilingual journey coordination",
+        "description2": "Surrogate recruitment, screening, and profile preparation",
+        "description3": "One-on-one case manager for personalized guidance",
+        "description4": "Communication with all third-party professionals"
+      },
+      "screeningAdmin": {
+        "title": "Screening & Admin",
+        "amount": "$5,000",
+        "description1": "Background, medical, and psychological screening",
+        "description2": "Coordination with IVF clinic and records submission",
+        "description3": "Translation and cross-border document handling",
+        "description4": "Legal coordination (pre-match & post-match)"
+      },
+      "surrogateCompensation": {
+        "title": "Surrogate Compensation",
+        "amount": "$50,000+",
+        "description1": "Monthly allowance",
+        "description2": "Maternity clothing",
+        "description3": "Local travel and childcare",
+        "description4": "Embryo transfer support",
+        "description5": "Medical appointment reimbursements"
+      },
+      "legalFees": {
+        "title": "Legal Fees",
+        "amount": "~$6,500",
+        "description1": "Surrogacy agreement drafting and review",
+        "description2": "Remote or in-person notarization",
+        "description3": "Legal representation throughout the journey",
+        "description4": "Pre-Birth Order (parentage rights): ~$6,500"
+      },
+      "insuranceSupport": {
+        "title": "Insurance Support",
+        "amount": "$TBD",
+        "description1": "Pregnancy insurance planning or cash-pay options",
+        "description2": "Life insurance and complications rider",
+        "description3": "Newborn medical insurance assistance"
+      },
+      "additionalCosts": {
+        "title": "Additional Costs (If Applicable)",
+        "amount": "~$6,500",
+        "description1": "Twin pregnancy: $15,000",
+        "description2": "C-section: $5,000",
+        "description3": "Bedrest childcare support",
+        "description4": "Breast milk pumping: $250/week",
+        "description5": "Special medical needs (e.g. hysteroscopy): $2,500–$5,000",
+        "description6": "HIV-positive intended parent coverage: $10,000"
+      }
+    },
+    "additionalTerms": {
+      "title": "Additional Terms for Yunda Surrogacy Package",
+      "description": "At Yunda, we are committed to offering transparent and predictable cost management for every intended parent. The following outlines potential additional expenses that may arise during the surrogacy process. These terms will also be incorporated into the formal legal agreement. Please note that all figures are estimates — you will be responsible only for actual costs incurred by the surrogate, and any unused funds will be refunded after final reconciliation at the end of the journey. All estimates assume delivery occurs at a standard hospital near the surrogate’s place of residence. If you request a specific location or if medical needs change, costs may vary accordingly.",
+      "surrogateBenefits": {
+        "title": "Surrogate Benefits May Include:",
+        "bedrest": "Bedrest stipend",
+        "twinPregnancy": "Twin pregnancy compensation",
+        "csection": "C-section compensation",
+        "communicableDisease": "Communicable disease compensation (e.g., HIV, hepatitis)",
+        "childcare": "Childcare allowance: per child per day (with receipts)",
+        "housekeeping": "Housekeeping assistance: per week (with receipts)",
+        "lostWages": "Lost wages: Based on the surrogate’s documented employment",
+        "breastMilk": "Breast milk compensation: per week",
+        "uterineLoss": "Uterine loss compensation: Partial removal / Full hysterectomy"
+      },
+      "notIncluded": {
+        "title": "Not Included in the Package:",
+        "ivfCosts": "IVF clinic and fertility doctor costs (selected by the client)",
+        "newbornExpenses": "Newborn-related medical expenses after birth (e.g., NICU care, vaccines)",
+        "clientTravel": "Client’s travel, accommodation, and personal expenses during the journey"
+      },
+      "insuranceNotes": {
+        "title": "Surrogate Insurance Notes:",
+        "description1": "If the surrogate qualifies during open enrollment, we will present a selection of compliant medical plans for your review and purchase",
+        "description2": "If insurance is not available, we will help arrange cash-pay options with the OB and hospital; common estimates include ~$5,000 for OB care and ~$8,000 for hospital delivery",
+        "description3": "If the surrogate has employer-provided insurance, we will still arrange for a secondary policy to ensure full pregnancy coverage",
+        "description4": "Note: Neither primary nor secondary insurance can guarantee 100% coverage — you are responsible for any deductibles, co-pays, or out-of-pocket expenses not reimbursed by insurance"
+      }
+    },
+    "confidenceSection": {
+      "title": "Ready to Plan Your Journey?",
+      "description": "Let’s start with a personalized consultation—no pressure, just answers."
+    },
+    "heroSection": {
+      "title": "How Much Does Surrogacy Cost?",
+      "description": "Surrogacy is a journey of love—and a financial decision that deserves clarity.  At Yunda, we believe in full transparency, detailed breakdowns, and no hidden fees.",
+      "button": "BECOME A PARENT"
+    },
+    "stepsTimeline": {
+      "title": "Cost Overview",
+      "step1": {
+        "title": "Agency Coordination",
+        "subtitle": "Bilingual support, surrogate matching, full journey coordination"
+      },
+      "step2": {
+        "title": "Medical Screening & Admin",
+        "subtitle": "Background checks, clinic liaison, document handling"
+      },
+      "step3": {
+        "title": "Surrogate Compensation",
+        "subtitle": "Base pay + monthly allowance + travel & maternity reimbursements"
+      },
+      "step4": {
+        "title": "Legal Support",
+        "subtitle": "Contract drafting, notarization, PBO filing"
+      },
+      "step5": {
+        "title": "Insurance Planning",
+        "subtitle": "Pregnancy coverage, newborn medical insurance support"
+      },
+      "step6": {
+        "title": "Optional Costs",
+        "subtitle": "Twins, C-section, childcare, breast milk pumping & more"
+      }
+    }
+  },
+  "parentsProcess": {
+    "confidenceSection": {
+      "title": "A Journey with Confidence and Care",
+      "description1": "Surrogacy is not just a medical process — it’s a path toward building the family you’ve been dreaming of. From your first consultation to holding your baby in your arms, Yunda Surrogacy is here to guide and support you every step of the way.",
+      "description2": "We understand that this journey can feel overwhelming at times. That’s why intended parents choose Yunda — for our experience, transparency, and heartfelt commitment to making every detail feel clear, smooth, and supported."
+    },
+    "stepDetail": {
+      "stepPrefix": "Step"
+    },
+    "stepsTimeline": {
+      "title": "Surrogacy Journey – 6 Key Steps",
+      "step1": {
+        "title": "Getting Started",
+        "subtitle": "Initial Consultation & Agreement",
+        "duration": "(1–3 Weeks)"
+      },
+      "step2": {
+        "title": "Medical Preparation",
+        "subtitle": "IVF Coordination & Clinic Support",
+        "duration": "(2–3 Months)"
+      },
+      "step3": {
+        "title": "Finding the Right Match",
+        "subtitle": "Surrogate Selection & Medical Pre-Screening",
+        "duration": "(2–3 Months)"
+      },
+      "step4": {
+        "title": "Securing the Foundation",
+        "subtitle": "Legal & Trust Account Setup",
+        "duration": "(1–1.5 Months)"
+      },
+      "step5": {
+        "title": "The Big Moment",
+        "subtitle": "Embryo Transfer & Pregnancy Confirmation",
+        "duration": "(Approx. 2 Months)"
+      },
+      "step6": {
+        "title": "Welcoming Baby",
+        "subtitle": "Pregnancy Support & Delivery",
+        "duration": "(Approx. 9 Months)"
+      }
+    },
+    "surrogacyProcess": {
+      "step1": {
+        "title": "Getting Started",
+        "duration": "1–3 Weeks",
+        "tasks": {
+          "task1": "Fill out Intended Parent Matching Form",
+          "task2": "One-on-one consultation with Yunda team",
+          "task3": "Sign the Yunda Service Agreement"
+        },
+        "description": "Once you begin with Yunda, you’ll meet your dedicated case manager who will guide you through your personalized surrogacy plan. Whether you already have embryos or are just starting out, we’ll help clarify your goals and timeline. You’ll sign a service agreement to officially begin your journey with Yunda."
+      },
+      "step2": {
+        "title": "Medical Preparation",
+        "duration": "2–3 Months",
+        "tasks": {
+          "task1": "IVF clinic coordination or connect with your chosen provider",
+          "task2": "Medical testing and U.S. travel planning",
+          "task3": "Embryo creation or shipment support"
+        },
+        "description": "This stage focuses on preparing medically for the surrogacy process. Whether you're creating embryos or working with existing ones, Yunda helps with clinic coordination, medical documentation, and all logistical details—ensuring a smooth start to your cycle."
+      },
+      "step3": {
+        "title": "Surrogate Matching & Screening",
+        "duration": "2–3 Months",
+        "tasks": {
+          "task1": "Receive surrogate profiles with background and health info",
+          "task2": "Intro video calls with candidates (if desired)",
+          "task3": "Lock in match and begin medical clearance",
+          "task4": "Medical records submitted and full screening scheduled"
+        },
+        "description": "You’ll be introduced to pre-screened, qualified surrogates based on your preferences. Once a match is confirmed, we’ll proceed with detailed medical clearance and ensure the surrogate is fully approved to move forward."
+      },
+      "step4": {
+        "title": "Legal & Trust Setup",
+        "duration": "1–1.5 Months",
+        "tasks": {
+          "task1": "Set up escrow account",
+          "task2": "Contract review and signing for both parties",
+          "task3": "Physician’s medical clearance letter",
+          "task4": "Sign contracts securely, even from abroad",
+          "task5": "Begin Pre-Birth Order planning"
+        },
+        "description": "We assist with setting up a third-party trust account to manage reimbursements and fees transparently. Your legal team will handle all necessary agreements to ensure your parental rights and expectations are protected."
+      },
+      "step5": {
+        "title": "Transfer & Confirmation",
+        "duration": "Approx. 2 Months",
+        "tasks": {
+          "task1": "Surrogate begins medication cycle (4–6 weeks)",
+          "task2": "Embryo transfer at fertility clinic",
+          "task3": "HCG test confirms pregnancy (10–14 days)",
+          "task4": "Fetal heartbeat scan (4–5 weeks post-transfer)",
+          "task5": "Third payment & escrow minimum maintained"
+        },
+        "description": "The embryo transfer marks an exciting milestone. After confirmation through pregnancy tests and ultrasound, you’ll be one step closer to parenthood."
+      },
+      "step6": {
+        "title": "Pregnancy Support & Delivery",
+        "duration": "Approx. 9 Months",
+        "tasks": {
+          "task1": "Ongoing OB care and regular updates",
+          "task2": "Weekly check-ins from your Yunda case manager",
+          "task3": "Pre-Birth Order finalized",
+          "task4": "Hospital coordination and post-birth documents",
+          "task5": "Support with travel permits, passport, and return home"
+        },
+        "description": "From the first trimester to delivery, Yunda provides comprehensive care and guidance. We support you and your surrogate throughout the pregnancy and ensure all legal and travel documents are ready for a smooth homecoming with your baby."
+      }
+    },
+    "processHeroSection": {
+      "title": "A Gentle Start to an Extraordinary Journey",
+      "subtitle": "Welcoming a baby through surrogacy is a path full of love and intention.",
+      "description": "At Yunda Surrogacy, we're here not just as a service provider, but as caring partners beside you every step of the way. Every family begins this journey differently. Some are just beginning to explore, while others have embryos ready. No matter where you are, we'll walk with you—at your pace, with clarity and heart. The full journey usually takes 12 to 16 months, and we'll make every step feel supported.",
+      "button": "BECOME A PARENT"
+    }
+  },
+  "parentsIvf": {
+    "heroSection": {
+      "title": "Why Your IVF Clinic Matters",
+      "description": "Your surrogacy journey often begins with embryo creation. The right clinic not only impacts embryo quality—it shapes your entire experience. Yunda partners with top U.S. and Asian fertility centers to ensure success from day one.",
+      "button": "BECOME A PARENT"
+    },
+    "supportSection": {
+      "title": "How We Support You",
+      "items": {
+        "recommendClinics": {
+          "title": "Recommend Trusted Clinics",
+          "description": "We suggest high-success-rate clinics and doctors based on your goals."
+        },
+        "coordinateConsultations": {
+          "title": "Coordinate Consultations",
+          "description": "Book in-person or virtual IVF appointments for you."
+        },
+        "handleShipping": {
+          "title": "Handle Embryo Shipping",
+          "description": "Manage legal & FDA-compliant international embryo transport."
+        },
+        "prepareDocuments": {
+          "title": "Prepare Medical Documents",
+          "description": "Help you complete screening paperwork abroad."
+        },
+        "workWithChosen": {
+          "title": "Work With Your Chosen Clinic",
+          "description": "Already have a clinic? We coordinate directly with them too."
+        }
+      }
+    },
+    "medicalServices": {
+      "title": "Typical Medical Services Covered",
+      "items": {
+        "eggDonation": {
+          "title": "Egg Donation & Retrieval",
+          "description": "We match you with an egg donor and coordinate retrieval for IVF."
+        },
+        "embryoCreation": {
+          "title": "Embryo Creation & Freezing",
+          "description": "Embryos are fertilized, cultured, and frozen for future transfer."
+        },
+        "embryoShipping": {
+          "title": "Embryo Shipping (International)",
+          "description": "Legal transport from Hong Kong, Japan, and other countries to U.S. clinics."
+        },
+        "embryoTransfer": {
+          "title": "Embryo Transfer",
+          "description": "Carried out at the IVF clinic once your surrogate is ready."
+        },
+        "geneticTesting": {
+          "title": "PGT-A Genetic Testing",
+          "description": "Optional chromosome screening to increase implantation success."
+        },
+        "embryoThawing": {
+          "title": "Embryo Thawing & Surrogate Preparation",
+          "description": "Thawed embryos + monitored hormone treatment to optimize transfer timing."
+        }
+      }
+    },
+    "clinicsSection": {
+      "title": "Some of Our Trusted IVF Clinic Partners"
+    },
+    "faqSection": {
+      "title": "FAQs",
+      "items": {
+        "chooseClinic": {
+          "question": "Can I choose my own IVF clinic?",
+          "answer": "Yes. You're welcome to work with any FDA-compliant clinic. We're happy to assist with coordination."
+        },
+        "embryoShipping": {
+          "question": "Can embryos be shipped from abroad to the U.S.? What documents are required?",
+          "answer": "Yes. We assist with all legal, medical, and logistical documents required for safe transfer."
+        },
+        "frozenEmbryos": {
+          "question": "Can frozen embryos be used for surrogacy?",
+          "answer": "Absolutely. Frozen embryos are safe, effective, and commonly used."
+        },
+        "eggDonationCreation": {
+          "question": "I don't have embryos yet. Can I do egg donation and embryo creation together?",
+          "answer": "Yes. We can coordinate both processes with our clinic partners to save time."
+        },
+        "medicalCosts": {
+          "question": "Are medical costs included in the surrogacy package?",
+          "answer": "Partially. Medical expenses from IVF clinics are billed separately, but we help you select and communicate with the best clinics."
+        }
+      }
+    },
+    "confidenceSection": {
+      "title": "Need Help Choosing a Clinic?",
+      "description": "Whether you're starting from scratch or already have embryos, Yunda will match you with the right clinic and guide you through every medical step.",
+      "button": "BECOME A PARENT"
+    }
+  },
+  "parentsSingle": {
+    "heroSection": {
+      "title": "Love Creates Families",
+      "description": "At Yunda, we proudly welcome LGBTQ+ individuals, single parents, and non-traditional families with open arms, professional support, and unwavering respect.",
+      "button": "BECOME A PARENT"
+    },
+    "testimonialSection": {
+      "title": "\"We're Dads Now\"",
+      "quote": "\"Going through surrogacy for the second time, we chose Yunda for a smoother, more transparent journey — and they exceeded all expectations. Our coordinator was incredibly thoughtful and responsive. Most importantly, we felt safe and respected every step of the way as a same-sex couple. The structured costs helped reduce stress, and now we're home… as new dads.\"",
+      "quote2": "— A happy two-dad family"
+    },
+    "offerSection": {
+      "title": "What We Offer LGBTQ+ & Single Parents",
+      "items": {
+        "inclusive": {
+          "title": "Inclusive & Judgment-Free Process",
+          "description": "Respectful, unbiased support at every stage—legal, medical, and emotional."
+        },
+        "matching": {
+          "title": "LGBTQ+ Friendly Matching",
+          "description": "Surrogates and clinics that embrace and support same-sex and single-parent families."
+        },
+        "legal": {
+          "title": "Legal Expertise",
+          "description": "PBO planning and birth certificate setup tailored for LGBTQ+ and single parents."
+        },
+        "global": {
+          "title": "Global Experience",
+          "description": "Specialized in serving families from Asia, the U.S., and worldwide."
+        },
+        "multilingual": {
+          "title": "Multilingual Support",
+          "description": "Seamless communication in both English and Chinese."
+        },
+        "personalized": {
+          "title": "Personalized Guidance",
+          "description": "1-on-1 support for your unique family structure, no matter where you live."
+        }
+      }
+    },
+    "faqSection": {
+      "title": "FAQs",
+      "items": {
+        "sameSexLegal": {
+          "question": "Can same-sex couples legally be recognized as parents in the U.S.?",
+          "answer": "Yes. Many states allow Pre-Birth Orders (PBOs) so you can be listed as legal parents. Yunda handles legal planning for you."
+        },
+        "singleParent": {
+          "question": "Can I pursue surrogacy as a single parent?",
+          "answer": "Absolutely. We'll tailor your surrogacy plan to meet your needs as a single parent."
+        },
+        "coupleInChina": {
+          "question": "We're a same-sex couple living in China – can we do surrogacy in the U.S.?",
+          "answer": "Yes. Everything from contracts to surrogate matching can be done remotely. We'll guide you through it all."
+        },
+        "bringBabyBack": {
+          "question": "Can we bring our baby back to China after birth?",
+          "answer": "Yes. We assist with U.S. passport, Chinese Travel Permit, SSN, and Hague Apostille to ensure smooth re-entry."
+        },
+        "bothNames": {
+          "question": "Can both of our names appear on the birth certificate?",
+          "answer": "Yes. With a PBO in an LGBTQ+-friendly state, both names can legally be listed."
+        }
+      }
+    },
+    "confidenceSection": {
+      "title": "Ready to Start Your Journey?",
+      "description": "Let us help you build the family you've dreamed of—with care, clarity, and respect for who you are.",
+      "button": "BECOME A PARENT"
+    }
+  },
+  "eggDonation": {
+    "heroSection": {
+      "title": "Find Your Egg Donor",
+      "description1": "Egg donation is a meaningful path for intended parents who are unable to conceive with their own eggs—due to medical conditions, age, or being a single or same-sex male parent.",
+      "description2": "At Yunda, we provide a compassionate and professional egg donation program with fully screened donors across the U.S. You can choose donors based on ethnicity, education, and appearance, with guidance every step of the way.",
+      "button": "BECOME A PARENT"
+    },
+    "frozenEggsSection": {
+      "title": "Should I Use Frozen Eggs Instead of Fresh Eggs?",
+      "description": "Yes, both options are available. Frozen eggs are a great fit for those who want to start quickly or prefer not to sync with a donor's cycle. We partner with trusted egg banks offering diverse donor profiles, including donors of Asian descent with strong academic backgrounds.",
+      "category": "Category",
+      "freshEggs": "Fresh Eggs",
+      "frozenEggs": "Frozen Eggs",
+      "timeline": "Timeline:",
+      "successRate": "Success Rate:",
+      "embryoYield": "Embryo Yield:",
+      "cost": "Cost:",
+      "donorAccess": "Donor Access:",
+      "freshEggsDetails": {
+        "timeline": "Requires syncing with donor (4–6 weeks)",
+        "successRate": "Typically higher (no freezing = better viability)",
+        "embryoYield": "10–20 eggs per cycle, more embryos",
+        "cost": "Higher (donor comp + cycle costs)",
+        "donorAccess": "Choose donor; video call/open donation possible"
+      },
+      "frozenEggsDetails": {
+        "timeline": "Can start immediately",
+        "successRate": "Slightly lower, but clinically reliable",
+        "embryoYield": "6–8 eggs per batch, fewer embryos",
+        "cost": "Lower and more predictable",
+        "donorAccess": "Mostly anonymous with limited info"
+      }
+    },
+    "usProcessSection": {
+      "title": "Do I Need to Be in the U.S. for This Process?",
+      "usingDonor": "If using an egg donor",
+      "usingDonorDesc": "No U.S. travel is needed",
+      "providingSperm": "If providing your own sperm",
+      "providingSpermDesc": "You can collect samples in Hong Kong, Japan, or elsewhere—Yunda will handle certified medical shipping",
+      "providingEggs": "If providing your own eggs",
+      "providingEggsDesc": "You will typically need to travel to the U.S. for the retrieval cycle (approx. 10–14 days), unless using frozen eggs from our donor bank",
+      "conclusion": "Yunda handles all cross-border logistics, clinic coordination, and legal compliance."
+    },
+    "stepsTimeline": {
+      "title": "Our Streamlined Egg Donation + IVF Process",
+      "step1": {
+        "title": "Consultation & Donor Selection",
+        "subtitle1": "Intro call with a Yunda coordinator",
+        "subtitle2": "Submit existing medical reports",
+        "subtitle3": "Receive 5–6 donor profiles (video interviews available)",
+        "subtitle4": "Sign engagement letter and make payment to confirm"
+      },
+      "step2": {
+        "title": "Medical & Psychological Screening",
+        "subtitle1": "Coordinate clinic consultations",
+        "subtitle2": "Complete genetic, infectious disease, and ultrasound screenings",
+        "subtitle3": "Arrange psychological assessment",
+        "subtitle4": "Clinic issues Medical Clearance",
+        "subtitle5": "IVF insurance arranged for donor before medication begins"
+      },
+      "step3": {
+        "title": "Stimulation Cycle & Embryo Creation",
+        "subtitle1": "Donor travels with full support from Yunda",
+        "subtitle2": "Begin medication with clinic monitoring",
+        "subtitle3": "Egg retrieval performed under anesthesia",
+        "subtitle4": "Fertilization and embryo culture in IVF lab",
+        "subtitle5": "PGT-A testing conducted on Day 5/6 embryos",
+        "subtitle6": "Share genetic testing results within 2–3 weeks"
+      }
+    },
+    "confidenceSection": {
+      "title": "Ready to Explore Your Egg Donation Journey?",
+      "description": "Let’s start with a personalized consultation—no pressure, just answers.",
+      "button": "BECOME A PARENT"
+    }
+  },
+  "surrogacyJourney": {
+    "heroSection": {
+      "title": "Surrogacy Journey Overview",
+      "description": "From the moment you apply to become a surrogate to the postpartum recovery after delivery, this journey is not only about helping others build their families—it's also a deeply meaningful experience of compassion, growth, and connection. At Yunda Surrogacy, we recognize the importance of your role and are committed to guiding and supporting you at every step. While every journey is unique, the average surrogacy process typically takes 16 to 18 months.",
+      "button": "BECOME A SURROGATE"
+    },
+    "stepsTimeline": {
+      "title": "Surrogacy Process – 8 Key Steps",
+      "step1": {
+        "title": "Submit Application",
+        "subtitle": "Begin your journey by filling out our online application. Surrogacy is not only about receiving compensation—it's about helping someone become a parent."
+      },
+      "step2": {
+        "title": "Psychological Evaluation",
+        "subtitle": "A licensed therapist will assess your emotional readiness to become a surrogate. This ensures you are mentally and emotionally prepared for the journey ahead."
+      },
+      "step3": {
+        "title": "Background Check",
+        "subtitle": "For everyone's safety, we'll run a full background check. This includes legal, child welfare, and in-home history to ensure a stable environment."
+      },
+      "step4": {
+        "title": "Matching with Intended Parents",
+        "subtitle": "Based on shared preferences and expectations, we'll match you with intended parents. You'll meet them in a casual video call, supported by our case manager."
+      },
+      "step5": {
+        "title": "Medical Screening",
+        "subtitle": "You'll visit a fertility clinic for physical screening. All costs are covered. If you have a partner, he may also undergo simple blood tests."
+      },
+      "step6": {
+        "title": "Legal Agreements",
+        "subtitle": "After medical clearance, both sides will work with independent attorneys to draft and sign the surrogacy contract. Your rights and choices are fully respected."
+      },
+      "step7": {
+        "title": "Embryo Transfer & Pregnancy",
+        "subtitle": "With contracts signed, you'll start medications for embryo transfer. After transfer, you'll attend regular doctor visits and receive ongoing care and compensation."
+      },
+      "step8": {
+        "title": "Birth & Beyond",
+        "subtitle": "The birth is a special moment for everyone. After delivery, you'll return home with support and rest. Many surrogates choose to stay in touch with the families they've helped."
+      }
+    },
+    "testimonials": {
+      "title": "Surrogate Testimonials",
+      "testimonial1": {
+        "name": "Emily, 32 years old, California",
+        "quote": "Becoming a surrogate was the most empowering thing I've ever done. Yunda supported me every step, and seeing the parents hold their baby for the first time—I'll never forget that moment.",
+        "role": "Elementary School Teacher"
+      },
+      "testimonial2": {
+        "name": "Jessica, 29 years old, Texas",
+        "quote": "I had a great experience working with Yunda. The communication was honest and clear, and they truly cared about my well-being—not just physically, but emotionally too.",
+        "role": "Pediatric Nurse & Mom of Two"
+      },
+      "testimonial3": {
+        "name": "Carmen, 30 years old, Oregon",
+        "quote": "I was nervous at first, but Yunda answered all my questions patiently. The weekly updates, the check-ins, and their care made me feel like I was part of something truly meaningful.",
+        "role": "Administrative Assistant"
+      },
+      "testimonial4": {
+        "name": "Amber, 35 years old, Nevada",
+        "quote": "As a mom myself, I know how much love a child brings. Helping another family feel that love was something I'll cherish forever. Yunda made sure I felt respected and appreciated throughout.",
+        "role": "Full-Time Mom"
+      }
+    },
+    "confidenceSection": {
+      "title": "Think You Might Be a Good Fit?",
+      "description": "Talk with a Yunda advisor one-on-one to learn more about eligibility and compensation.",
+      "button": "BECOME A SURROGATE"
+    }
+  },
+  "surrogacyEligibility": {
+    "heroSection": {
+      "title": "Eligibility to Become a Surrogate",
+      "description": "At Yunda Surrogacy, we believe that women who are willing to help others grow a family deserve the highest respect, support, and care. Becoming a surrogate is a meaningful commitment—and we're here to walk with you every step of the way.",
+      "button": "BECOME A SURROGATE"
+    },
+    "qualificationsSection": {
+      "title": "Basic Qualifications",
+      "introduction": "To ensure a healthy and secure journey for everyone, we ask that all surrogates meet the following minimum qualifications:",
+      "items": {
+        "item1": "Be 21 to 40 years old",
+        "item2": "Have had at least one full-term, uncomplicated vaginal birth",
+        "item3": "Currently live in a stable home with reliable support",
+        "item4": "Be a U.S. citizen or permanent resident (Green Card holder)",
+        "item5": "Live a healthy lifestyle, including being a non-smoker",
+        "item6": "Have no criminal background or child abuse history"
+      },
+      "additionalNote": "We welcome women of all backgrounds—single, married, working moms or stay-at-home—if you are physically and emotionally ready to give this incredible gift, we'd love to hear from you."
+    },
+    "disqualifyingFactors": {
+      "title": "Common Disqualifying Factors",
+      "introduction": "You may not qualify for surrogacy if you:",
+      "items": {
+        "item1": "Have never given birth",
+        "item2": "Had serious complications in previous pregnancies",
+        "item3": "Have a BMI above the acceptable limit (usually 33)",
+        "item4": "Are currently on antidepressants or have ongoing mental health issues",
+        "item5": "Do not have financial stability or family support",
+        "item6": "Reside in a state that restricts surrogacy (our team can help verify)"
+      }
+    },
+    "gentleNote": {
+      "title": "A Gentle Note",
+      "description": "Not qualifying for surrogacy is never a judgment of your character. It simply means that at this time, your body or environment may not align with the medical or legal standards for surrogacy. We're happy to offer other ways to stay involved and support hopeful parents."
+    },
+    "confidenceSection": {
+      "title": "Think You Might Be a Good Fit?",
+      "description": "Talk with a Yunda advisor one-on-one to learn more about eligibility and compensation.",
+      "button": "BECOME A SURROGATE"
+    }
+  },
+  "surrogacyScreening": {
+    "heroSection": {
+      "title": "Our Screening Process",
+      "description": "At Yunda Surrogacy, we believe that every surrogate deserves to be fully informed, cared for, and protected. That's why we've designed a thorough, respectful, and supportive screening process to ensure you're ready—physically, emotionally, and practically—for the surrogacy journey ahead. Our screening process helps us understand your unique story and ensure that you are a great fit for this life-changing experience. It also gives you a chance to ask questions and feel confident every step of the way.",
+      "button": "BECOME A SURROGATE"
+    },
+    "processSection": {
+      "includesTitle": "Our Surrogate Screening Includes:",
+      "includesList": {
+        "item1": "Comprehensive online application",
+        "item2": "Introductory consultation with our care team",
+        "item3": "Psychological screening by a licensed therapist",
+        "item4": "Background check for safety assurance",
+        "item5": "Medical record review (including past pregnancies)",
+        "item6": "In-person fertility clinic exam",
+        "item7": "Partner screening (if applicable)",
+        "item8": "Insurance and financial assessment"
+      },
+      "includesNote": "We cover all screening costs and guide you closely through each step. There's no pressure—only support. Once you're medically and psychologically cleared, we'll move on to matching you with the perfect intended parents.",
+      "candidateTitle": "What Makes a Strong and Healthy Surrogate Candidate?",
+      "candidateIntro": "To protect both surrogates and intended parents, and to ensure a healthy, successful journey, all candidates must meet the following medical, lifestyle, and legal requirements. These standards are based on guidelines from top IVF clinics and the American Society for Reproductive Medicine (ASRM).",
+      "candidateList": {
+        "item1": "Age Requirement: 21–40 Years",
+        "item2": "BMI Requirement: Under 32",
+        "item3": "Non-Smoking for at Least 12 Months",
+        "item4": "Drug-Free Lifestyle",
+        "item5": "At Least One Prior Healthy Pregnancy",
+        "item6": "No Major Obstetric or Chronic Medical History",
+        "item7": "Healthy and Stable Lifestyle",
+        "item8": "Strong Support System",
+        "item9": "No Criminal or Abuse History",
+        "item10": "Financial Stability"
+      }
+    },
+    "confidenceSection": {
+      "title": "Think You Might Be a Good Fit?",
+      "description": "Talk with a Yunda advisor one-on-one to learn more about eligibility and compensation.",
+      "button": "BECOME A SURROGATE"
+    }
+  },
+  "surrogacyBenefit": {
+    "heroSection": {
+      "title": "Compensation & Benefits for Surrogates",
+      "description": "At Yunda Surrogacy, we believe surrogacy is a profound and life-changing journey — one that deserves meaningful rewards and deep respect. As a Yunda surrogate, you'll receive a clear, personalized, and compassionate compensation plan tailored just for you. Your package is designed based on your experience, where you live, and whether you have eligible health insurance. We proudly partner with SeedTrust (the nation's leading escrow service) and ART Risk (the premier surrogacy insurance provider) to ensure every payment is made safely, on time, and with your protection and peace of mind at the center",
+      "button": "BECOME A SURROGATE"
+    },
+    "familySupportSection": {
+      "title": "Our Surrogate Screening Includes:",
+      "description": "More than payment — it's about support, respect, and being seen. We've designed a Family Support Plan to make sure you and your family are truly cared for every step of the way:",
+      "items": {
+        "item1": "Support for housekeeping, childcare, and wage loss if you're placed on doctor-ordered bed rest",
+        "item2": "Partner wage compensation if travel is required",
+        "item3": "Weekly compensation if you choose to provide breast milk post-delivery",
+        "item4": "Dedicated Yunda coordinator for one-on-one support throughout the journey"
+      }
+    },
+    "compensationSection": {
+      "title": "Your Surrogate Compensation Package May Include:",
+      "items": {
+        "item1": "Personalized Base Compensation: $50,000 to $70,000+ for first-time surrogates, paid monthly starting from confirmed heartbeat",
+        "item2": "Monthly Allowance: Covers transportation, meals, childcare, and miscellaneous expenses",
+        "item3": "IVF Medication Stipend: One-time payment at medication start",
+        "item4": "Embryo Transfer Compensation: Per transfer procedure",
+        "item5": "Pregnancy & Recovery Support: Clothing, nutrition, and recovery benefits",
+        "item6": "Special Procedure Compensation: $500–$5,000 depending on procedure",
+        "item7": "Multiples Bonus: $10,000+ for twins or triplets, paid in installments",
+        "item8": "C-section Compensation: $5,000 for first, $3,000 for repeat",
+        "item9": "Breast Milk Compensation: $250/week if agreed",
+        "item10": "Lost Wages: Up to $10,000 for surrogate and partner if required",
+        "item11": "Housekeeping Support: Up to $200/week, max $3,000",
+        "item12": "Insurance Coverage or Reimbursement",
+        "item13": "Life Insurance: $250,000 for surrogate, $100,000 for intended parents"
+      }
+    },
+    "paymentScheduleSection": {
+      "title": "Payment Schedule:",
+      "items": {
+        "item1": "VF-related stipends begin after medication or transfer",
+        "item2": "Base compensation starts after heartbeat confirmation",
+        "item3": "Final balance paid within 14 days post-delivery",
+        "item4": "Other benefits paid as needed or on rolling basis"
+      }
+    },
+    "protectionSection": {
+      "title": "Legal & Safety Protection:",
+      "items": {
+        "item1": "Full insurance review or provision",
+        "item2": "$250,000 life insurance policy for surrogates",
+        "item3": "Legal representation by top reproductive law attorneys"
+      }
+    },
+    "conclusionText": "Becoming a surrogate means becoming a miracle-maker who changes someone's world. At Yunda, we make sure you're just as cherished in return. We offer more than compensation — we offer heartfelt support, a partnership built on trust, and a journey where you're cared for every step of the way.",
+    "confidenceSection": {
+      "title": "Think You Might Be a Good Fit?",
+      "description": "Talk with a Yunda advisor one-on-one to learn more about eligibility and compensation.",
+      "button": "BECOME A SURROGATE"
+    }
+  },
+  "surrogacyReferral": {
+    "heroSection": {
+      "title": "Surrogate Referral Program",
+      "description": "Help a Loving Woman Become a Hero — And Earn up to $5,000 Every year, thousands of hopeful parents dream of having a child — and gestational surrogates make those dreams come true. If you know someone with a generous heart and a strong body who may be interested in becoming a surrogate, we invite you to refer her to our program. And as a token of appreciation, you could receive up to $5,000 for each successful referral.",
+      "button": "CONTACT US"
+    },
+    "whyMattersSection": {
+      "title": "Why Your Referral Matters",
+      "description": "You're not just helping a friend begin a powerful and meaningful journey—you're helping another family finally hold the baby they've dreamed of. And we'll thank you for it, every step of the way."
+    },
+    "earningsSection": {
+      "title": "How Much Can You Earn?",
+      "tableHeaders": {
+        "milestone": "Milestone",
+        "bonus": "Your Bonus"
+      },
+      "milestones": {
+        "accepted": "Surrogate is officially accepted by Yunda",
+        "screening": "Passes medical and psychological screening",
+        "matching": "Matches with Intended Parents",
+        "transfer": "Embryo Transfer is completed",
+        "pregnancy": "Pregnancy confirmed with fetal heartbeat"
+      },
+      "bonuses": {
+        "accepted": "$500",
+        "screening": "$1,000",
+        "matching": "$1,500",
+        "transfer": "$1,000",
+        "pregnancy": "$1,000"
+      },
+      "totalTitle": "Total Possible Referral Reward: $5,000",
+      "terms1": "Bonuses are paid within 14 business days after each milestone.",
+      "terms2": "You must be listed as the referral in your friend's initial application."
+    },
+    "eligibilitySection": {
+      "title": "Who Makes a Great Surrogate?",
+      "intro": "We're looking for women who are:",
+      "requirements": {
+        "age": "Age 21–39",
+        "residence": "U.S. residents",
+        "pregnancy": "Have had at least one healthy pregnancy",
+        "bmi": "BMI under 32",
+        "lifestyle": "Non-smokers, drug-free",
+        "support": "Emotionally supported by family or friends",
+        "health": "No serious pregnancy complications or chronic health issues"
+      }
+    },
+    "compensationSection": {
+      "title": "What Will Your Friend Receive?",
+      "benefits": {
+        "base": "$50,000–$70,000+ in base compensation",
+        "allowances": "Monthly allowances (transportation, food, childcare)",
+        "medication": "Medication and embryo transfer stipends",
+        "surgery": "C-section/special surgery bonuses",
+        "breastmilk": "Breast milk compensation: $250/week (if applicable)",
+        "bedrest": "Wage protection for bed rest (up to $10,000)",
+        "insurance": "Insurance coverage or review",
+        "lifeInsurance": "Life insurance up to $250,000",
+        "support": "One-on-one support, legal & emotional care",
+        "processing": "All compensation is processed securely through SeedTrust"
+      }
+    },
+    "confidenceSection": {
+      "title":"",
+      "description": "Over a hundred incredible women have already partnered with Yunda to help others build their families—and in doing so, they've also experienced personal growth and fulfillment. A referral is a gesture of belief in her—and our thank you is a promise to you.",
+      "button": "CONTACT US"
+    }
+  },
+  "footer": {
+    "sections": {
+      "becomeAParent": "BECOME A PARENT",
+      "intendedParent": "INTENDED PARENT",
+      "process": "SURROGACY PROCESS",
+      "surrogacyCost": "SURROGACY COST",
+      "eggDonors": "EGG DONORS",
+      "singleParentsLgbtq": "SINGLE PARENTS & LGBTQ+",
+      "becomeASurrogate": "BECOME A SURROGATE",
+      "surrogates": "SURROGATES",
+      "surrogacyJourney": "SURROGACY JOURNEY",
+      "eligibility": "ELIGIBILITY",
+      "surrogateReferral": "SURROGATE REFERRAL",
+      "partnerClinics": "Partner IVF Clinics",
+      "screening": "Our Screening Process",
+      "benefits": "Compensation & Benefits"
+    },
+    "socialLinks": {
+      "instagram": "INSTAGRAM",
+      "facebook": "FACEBOOK",
+      "youtube": "YOUTUBE",
+      "linkedin": "LINKEDIN"
+    },
+    "phoneNumber": "626-563-8656",
+    "wechatId": "YundaUS1",
+    "legalDisclaimer": "Yunda Surrogacy is an independent surrogacy agency and does not practice medicine or law. We support clients by facilitating connections and services, but all medical and legal decisions remain the responsibility of licensed professionals."
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "continue": "Continue",
+    "ok": "OK"
+  },
+  "surrogacy": {
+    "application": {
+      "title": "Surrogates Application",
+      "qualificationQuestions": {
+        "age": "Are you between 21 and 42 years old?",
+        "pregnancy": "Have you had at least one full-term pregnancy with no major complications?",
+        "childcare": "Are you currently raising at least one child in a stable home environment?",
+        "citizenship": "Are you a U.S. citizen, permanent resident, or valid long-term visa holder (valid for 2+ years)?",
+        "education": "Have you completed high school and received a diploma or GED?"
+      },
+      "messages": {
+        "notQualified": "Thanks for applying – We hope to cross paths again soon.",
+        "qualified": "Congratulations – You're officially qualified!",
+        "seeIfYouQualify": "See if you qualify"
+      }
+    }
+  },
+  "surrogate": {
+    "application": {
+      "pageTitle": "Surrogates Application",
+      "congratulations": {
+        "title": "Congratulations – You Qualify!",
+        "message1": "We're thrilled to let you know that based on your answers, you meet the basic requirements to become a surrogate with Yunda Surrogacy. That's a beautiful first step toward helping someone build their family — and we're so honored to walk this journey with you.",
+        "message2": "The next step is to complete a more detailed questionnaire about your background, health history, and preferences. This helps us understand you better and ensures that we can match you with intended parents who are the right fit — emotionally, ethically, and practically.",
+        "thanks": "Thank you for considering this incredible act of generosity."
+      },
+      "sections": {
+        "contactInfo": "Contact Information",
+        "aboutYou": "About you",
+        "pregnancyHealth": "Pregnancy & Health History",
+        "financialLegal": "Financial & Legal Background",
+        "consent": "Final Consent"
+      },
+      "form": {
+        "lastName": "Last Name",
+        "firstName": "First Name",
+        "dateOfBirth": "Date of Birth",
+        "email": "Email Address",
+        "cellPhone": "Cell Phone",
+        "city": "City",
+        "country": "Country",
+        "stateProvince": "State / Province",
+        "zipCode": "Zip Code",
+        "citizenship": "U.S. Citizenship Status",
+        "smsConsent": "I consent to receive text messages at this number",
+        "howDidYouHear": "How did you hear about Yunda Surrogacy?",
+        "friendReferral": "Friend referral",
+        "socialMedia": "Social media",
+        "googleSearch": "Google search",
+        "other": "Other:",
+        "occupation": "What is your current occupation?",
+        "previousSurrogate": {
+          "question": "Have you ever been a surrogate before?",
+          "description": "If yes, please briefly describe the time and experience:"
+        },
+        "maritalStatus": {
+          "question": "What is your marital status?",
+          "options": {
+            "married": "Married",
+            "engaged": "Engaged",
+            "cohabitating": "In a relationship (co-habitating)",
+            "livingSeparately": "In a relationship (living separately)",
+            "single": "Single",
+            "divorcedFinalized": "Divorced (finalized)",
+            "divorcedInProcess": "Divorced (in process)",
+            "legallySeparated": "Legally separated",
+            "separatedInformally": "Separated (not legally)"
+          }
+        },
+        "partnerSupport": {
+          "question": "Will your spouse/partner support you through this journey?",
+          "options": {
+            "yes": "Yes",
+            "no": "No",
+            "notApplicable": "Not Applicable"
+          }
+        },
+        "education": {
+          "highSchool": "Do you have a high school diploma or GED equivalent?"
+        },
+        "income": {
+          "question": "What is your household's combined annual income?",
+          "options": {
+            "under30k": "Under $30,000",
+            "between30k50k": "$30,000–$50,000",
+            "between50k75k": "$50,000–$75,000",
+            "between75k100k": "$75,000–$100,000",
+            "over100k": "Over $100,000",
+            "preferNotToSay": "Prefer not to say"
+          }
+        },
+        "pregnancy": {
+          "givenBirth": {
+            "question": "Have you given birth before?",
+            "description": "If yes, please specify the parity, year of birth, and any complications during delivery:"
+          },
+          "currentlyPregnant": "Are you currently pregnant?",
+          "breastfeeding": "Are you currently breastfeeding?",
+          "stillbirth": "Have you ever experienced a stillbirth?",
+          "height": "Height (Inch / cm)",
+          "weight": "Weight (Pounds)"
+        },
+        "health": {
+          "medicalHistory": {
+            "question": "Do you have a history of the following?",
+            "conditions": {
+              "diabetes": "Diabetes",
+              "hypertension": "Hypertension",
+              "bipolarDisorder": "Bipolar Disorder",
+              "multipleMiscarriages": "More than 2 miscarriages",
+              "seizureDisorder": "Seizure Disorder",
+              "none": "None of the above"
+            }
+          },
+          "medications": {
+            "question": "Are you currently taking any prescription medications?"
+          }
+        },
+        "assistance": {
+          "question": "Are you receiving any of the following government assistance programs?",
+          "programs": {
+            "foodStamps": "Food Stamps",
+            "medicaid": "Medicaid",
+            "cashAssistance": "Cash Assistance/Welfare",
+            "financialAid": "Financial Aid",
+            "wic": "WIC",
+            "ssi": "SSI",
+            "publicHousing": "Public Housing/Section 8",
+            "childcare": "Government Subsidized Childcare",
+            "studentLoans": "Student Loans/Grants",
+            "other": "Other:",
+            "none": "None of the above"
+          }
+        },
+        "legal": {
+          "criminalRecord": {
+            "question": "Have you ever been convicted of a crime?",
+            "explain": "Please explain"
+          },
+          "legalMatters": {
+            "question": "Do you or your partner currently have unresolved legal matters (bankruptcy, divorce, lawsuits, etc.)?",
+            "explain": "Please explain"
+          },
+          "cpsHistory": "Have you or your partner ever had a case with Child Protective Services (CPS)?"
+        },
+        "finalConsent": {
+          "text": "I consent to sharing my personal and sensitive information with Yunda Surrogacy, and receiving future communication via text, email, phone, or post according to the Privacy Policy.",
+          "disclaimer": "Your information will be kept strictly confidential and will not be shared or sold to any third parties."
+        },
+        "submitButton": "Submit Application",
+        "yes": "Yes",
+        "no": "No",
+        "noStatesAvailable": "No states/provinces available",
+        "selectStateProvince": "Select a state/province"
+      }
+    }
+  },
+  "parent": {
+    "application": {
+      "pageTitle": "Intended Parent Application",
+      "welcome": {
+        "title": "Welcoming a child into your life starts with a conversation.",
+        "message1": "We'd love to learn more about you — your hopes, your questions, and the kind of support you're looking for. By completing this brief application, you'll help us understand how to best support your path to parenthood.",
+        "message2": "Once submitted, our team will follow up with a personalized information package — no pressure, no commitment,\njust guidance made for you.",
+        "message3": "We proudly support intended parents from around the world.",
+        "scrollPrompt": "Just scroll down to begin."
+      },
+      "sections": {
+        "basicInfo": "Basic Information",
+        "contactInfo": "Contact Information",
+        "familyProfile": "Family Profile",
+        "programInterests": "Program Interests",
+        "referral": "Referral",
+        "consent": "Consent"
+      },
+      "form": {
+        "firstName": "First Name (only first name will appear in your public profile)",
+        "lastName": "Last Name",
+        "pronouns": {
+          "label": "Pronouns",
+          "options": {
+            "sheHer": "She/Her",
+            "heHim": "He/Him",
+            "theyThem": "They/Them（TA)",
+            "other": "Other:"
+          }
+        },
+        "genderIdentity": {
+          "label": "Gender Identity",
+          "options": {
+            "male": "Male",
+            "female": "Female",
+            "transMale": "Transgender Male / Trans Man",
+            "transFemale": "Transgender Female / Trans Woman",
+            "nonBinary": "Non-binary / Genderqueer",
+            "preferSelfDescribe": "Prefer to self-describe:"
+          }
+        },
+        "dateOfBirth": "Date of Birth",
+        "ethnicity": {
+          "label": "Ethnicity",
+          "selectAll": "(Select all that apply)",
+          "options": {
+            "asian": "Asian",
+            "white": "White / Caucasian",
+            "black": "Black / African American",
+            "hispanic": "Hispanic / Latino / Latina / Latinx",
+            "middleEastern": "Middle Eastern",
+            "nativeAmerican": "Native American / Alaska Native",
+            "pacificIslander": "Pacific Islander",
+            "mixedRace": "Mixed Race",
+            "preferNotToSay": "Prefer not to say",
+            "other": "Other (please specify):"
+          }
+        },
+        "cellPhone": "Cell Phone",
+        "email": "Email Address",
+        "smsConsent": {
+          "label": "I consent to receive text messages at this number",
+          "disclaimer": "By checking this box, you agree to receive mobile messages related to your application and services. Standard messaging and data rates may apply. You may opt out anytime by replying via SMS or updating your preferences in your profile."
+        },
+        "languages": {
+          "label": "Primary Language(s) (Select all that apply)",
+          "note": "Yunda's primary service language is English, but we have consultants who speak Mandarin and interpreters available to support you throughout your journey — including communication with your surrogate.",
+          "options": {
+            "english": "English",
+            "mandarin": "Mandarin Chinese",
+            "cantonese": "Cantonese",
+            "spanish": "Spanish",
+            "french": "French",
+            "korean": "Korean",
+            "japanese": "Japanese",
+            "hindi": "Hindi",
+            "vietnamese": "Vietnamese",
+            "russian": "Russian",
+            "arabic": "Arabic",
+            "portuguese": "Portuguese",
+            "tagalog": "Tagalog",
+            "german": "German",
+            "italian": "Italian",
+            "other": "Other (please specify):"
+          }
+        },
+        "sexualOrientation": {
+          "label": "Sexual Orientation",
+          "options": {
+            "heterosexual": "Heterosexual",
+            "lgbtqia": "LGBTQIA+",
+            "preferSelfDescribe": "Prefer to self-describe:"
+          }
+        },
+        "city": "City",
+        "country": "Country",
+        "stateProvince": "State / Province",
+        "services": {
+          "question": "Which services do you think you might need?",
+          "options": {
+            "surrogacyEggDonor": "Surrogacy & Egg Donor Services",
+            "surrogacyOnly": "Surrogacy Services Only",
+            "eggDonorOnly": "Egg Donor Services Only (via our partner Everie Egg Donation, no surrogate)",
+            "thirdPartySurrogate": "Egg Donor Services Only (with 3rd-party surrogate)",
+            "bringYourOwnSurrogate": "Bring Your Own Surrogate",
+            "bringYourOwnSurrogateEgg": "Bring Your Own Surrogate + Egg Donor Services",
+            "notSure": "Not sure, need help"
+          }
+        },
+        "timing": {
+          "question": "When do you hope to begin your journey?",
+          "options": {
+            "asap": "As soon as possible",
+            "next6Months": "Within the next 6 months",
+            "nextYear": "Within the next year",
+            "notSure": "Not sure, I would like to know more"
+          }
+        },
+        "childrenCount": {
+          "question": "How many children are you hoping to have through this journey?",
+          "options": {
+            "oneChild": "One child",
+            "twins": "Twins",
+            "moreThanTwo": "More than two",
+            "notSure": "Not sure yet"
+          }
+        },
+        "referralSource": "How did you hear about Yunda Surrogacy?",
+        "initialQuestions": "Do you have any initial questions for our team?",
+        "consentAgreement": {
+          "label": "I agree to share my personal information and receive future updates from Yunda Surrogacy via email, text, phone, or post in accordance with the Privacy Policy. I understand I can opt out at any time.",
+          "disclaimer": "Your information will be kept strictly confidential and will not be shared or sold to any third parties."
+        },
+        "submitButton": "Submit Application",
+        "noStatesAvailable": "No states/provinces available",
+        "selectStateProvince": "Select a state/province"
+      }
+    }
+  },
+  "modal": {
+    "success": {
+      "surrogate": {
+        "title": "Application Submitted!",
+        "message": "Thank you for your application. Our team will review it and contact you within 48 hours."
+      },
+      "parent": {
+        "title": "Application Submitted!",
+        "message": "Thank you for your interest in Yunda Surrogacy. Our team will review your application and send you a personalized information package within 24-48 hours."
+      }
+    },
+    "error": {
+      "title": "Submission Failed",
+      "consentRequired": {
+        "title": "Consent Required",
+        "message": "Please check the consent box to submit your application."
+      },
+      "tryAgain": "Try Again",
+      "unexpectedError": "An unexpected error occurred. Please try again later.",
+      "ok": "OK"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Us - Yunda Surrogacy",
+      "description": "Learn about Yunda Surrogacy - Where Professional Commitment Meets Heartfelt Care. Meet our experienced team dedicated to your surrogacy journey."
+    },
+    "hero": {
+      "title": "Where Professional Commitment Meets Heartfelt Care",
+      "paragraph1": "At Yunda Surrogacy, we are more than a surrogacy agency—we are your dedicated partners on a deeply human journey. Our team brings together expertise in reproductive law, fertility coordination, clinical advocacy, and international case management—with something just as important: personal experience.",
+      "paragraph2": "Many of us are parents through surrogacy, former surrogates, or lifelong advocates for family-building. We've sat in waiting rooms. We've held hands during embryo transfers. We've felt the anticipation, the anxiety, and the indescribable joy. That's why we don't just work in this field—we live it.",
+      "paragraph3": "From your first consultation to the moment a baby is placed into loving arms, we ensure every step is handled with professionalism, empathy, and clarity. Whether you're a surrogate offering the gift of life or an intended parent dreaming of a family,",
+      "highlight": "Yunda walks beside you—with honesty, respect, and unwavering dedication."
+    },
+    "team": {
+      "kaylaLuo": {
+        "name": "Kayla Luo",
+        "title": "Founder & Director of Operations",
+        "bio": {
+          "paragraph1": "Kayla earned her degree from Cornell University and completed her graduate studies at Columbia University. She is fluent in Mandarin, English, and German, and brings over 8 years of experience in the field of assisted reproduction.",
+          "paragraph2": "Before founding Yunda Surrogacy, she worked as an international fertility consultant, helping clients from diverse cultural backgrounds complete their journeys through surrogacy and egg donation.",
+          "paragraph3": "Kayla's passion for this work stems from personal experience. As a mother of two children born through surrogacy, she has lived the joy and uncertainty of this process firsthand. Her encounters with unqualified legal advice and a lack of transparency fueled her commitment to creating a more ethical, warm, and professional surrogacy platform.",
+          "paragraph4": "At Yunda, Kayla is guided by the principles of legal integrity, emotional support, and clinical excellence. Outside of work, she enjoys traveling, reading, and spending time with her children—who remind her daily of the profound impact of this mission."
+        }
+      },
+      "zoeBoyd": {
+        "name": "Zoe Fang Boyd",
+        "title": "Client Director",
+        "bio": {
+          "paragraph1": "Zoe holds a degree from California State University, Los Angeles. Before entering the surrogacy industry, she worked for 9 years as a nurse at two of California's top fertility clinics—Huntington Reproductive Center and Santa Monica Fertility Center.",
+          "paragraph2": "Since 2016, Zoe has fully devoted herself to the fertility field, driven by a passion to help people achieve their dreams of parenthood through IVF, surrogacy, and egg donation.",
+          "paragraph3": "At Yunda, she supports international clients with tailored guidance throughout their medical journey, ensuring clarity and care every step of the way. She believes everyone deserves honest, transparent, and compassionate support.",
+          "paragraph4": "Zoe is an advocate for healthy living—she enjoys travel, outdoor adventures, and cooking plant-based meals for her family. She also volunteers with reproductive advocacy groups, bringing her care philosophy beyond the workplace.",
+          "paragraph5": "Interested in working with Yunda or exploring partnership opportunities? Let's connect."
+        }
+      }
+    },
+    "careers": {
+      "title": "Want to help build families and make a real difference?",
+      "description": "We're always looking for compassionate, driven individuals to join our growing team.\nYou're welcome to explore our open roles on Indeed\n— we'd love to meet you",
+      "button": "View Positions"
+    }
+  }
+}
