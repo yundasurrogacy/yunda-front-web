@@ -15,7 +15,7 @@
           playsinline
           @ended="handleVideoEnd"
         >
-          <source src="/videos/video1.mp4" type="video/mp4">
+          <source src="/videos/home-video.m4v" type="video/mp4">
         </video>
       </div>
     </div>
