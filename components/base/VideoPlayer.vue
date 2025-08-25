@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
   backgroundColor: 'transparent',
   controls: true,
   autoplay: false,
-  loop: false,
+  loop: true,
   muted: false,
   videoType: 'video/mp4'
 })

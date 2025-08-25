@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full min-h-50 lg:min-h-100 py-4 lg:py-20 px-8 lg:px-12 bg-gradient-to-b from-[var(--head-bg)] to-[var(--hero-center)]">
+  <div class="relative w-full min-h-50 lg:min-h-100 py-12 lg:py-20 px-8 lg:px-12 bg-gradient-to-b from-[var(--head-bg)] to-[var(--hero-center)]">
     <!-- Hero Background with Gradient -->
       <div class="lg:max-w-320 mx-auto text-center text-3 lg:text-5 ">
         <!-- Title -->

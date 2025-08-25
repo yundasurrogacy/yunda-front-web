@@ -1,7 +1,7 @@
 <template>
-  <section class="py-20 md:py-25 px-4 md:px-20 bg-[var(--olive-green)]" style="font-family: var(--font-primary)">
+  <section class="py-20 md:py-25 px-4 md:px-20 bg-[var(--olive-green)]">
     <div class="max-w-320 mx-auto z-10 text-center">
-      <h2 class="text-7.5 md:text-10 font-semibold text-center mb-12 md:mb-16 scroll-animate">
+      <h2 class="text-7.5 md:text-10 font-semibold text-center mb-12 md:mb-16 scroll-animate" style="font-family: var(--font-primary)">
         {{ $t('home.surrogateCareSection.title') }}
       </h2>
 
@@ -32,10 +32,11 @@
       </div>
 
       <div class="mt-12 md:mt-16 scroll-animate scroll-animate-delay-300">
-        <a href="/surrogate-qualification" class="px-4 py-3 bg-[var(--light-cream)] rounded-2.5 shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 text-[var(--dark-brown)] text-4 font-normal hover:opacity-90 transition-opacity">
+        <a href="/surrogate-qualification" class="inline-flex items-center justify-center bg-[var(--light-cream)] uppercase py-3 px-4 rounded-[10px] shadow-inner-white-soft hover:bg-[var(--head-bg)] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:translate-y-0">
           {{ $t('home.surrogateCareSection.button') }}
         </a>
       </div>
+      
     </div>
   </section>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="confidence-section bg-[#A9A67D] py-16 px-4">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl lg:text-4xl font-bold font-['Cormorant'] text-[#271F18] mb-6">{{ $t('parentsProcess.confidenceSection.title') }}<br class="lg:hidden"></h2>
+      <h2 class="text-7.5 lg:text-10 font-bold font-['Cormorant'] text-[#271F18] mb-6">{{ $t('parentsProcess.confidenceSection.title') }}<br class="lg:hidden"></h2>
       <p class="text-sm lg:text-xl text-[#271F18] font-['SourceSerif4'] max-w-300 mx-auto mb-8">
         {{ $t('parentsProcess.confidenceSection.description1') }}
         {{ $t('parentsProcess.confidenceSection.description2') }}
