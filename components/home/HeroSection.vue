@@ -56,7 +56,7 @@ const introVideo = ref(null)
 // Responsive video source
 const isMobile = ref(false)
 const videoSource = computed(() => {
-  return isMobile.value ? '/videos/small.m4v' : '/videos/YundaOpeneing.m4v'
+  return isMobile.value ? '/videos/small.mp4' : '/videos/YundaOpeneing.mp4'
 })
 
 // Responsive video aspect ratio
