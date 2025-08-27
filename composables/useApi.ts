@@ -1,7 +1,7 @@
 import type { SurrogateRequest, ParentRequest, ApiSuccessResponse, ApiErrorResponse } from '~/types/api'
 
 // API 基础配置
-const API_BASE_URL = 'http://yundasurrogacy.com/x-project/api'
+const API_BASE_URL = 'https://admin.yundasurrogacy.com/x-project/api'
 
 // API 端点
 const API_ENDPOINTS = {
