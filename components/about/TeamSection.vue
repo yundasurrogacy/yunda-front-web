@@ -10,12 +10,12 @@
           <p class="text-16px">{{ $t('about.team.kaylaLuo.title') }}</p>
         </div>
 
-        <div class="w-full lg:w-[215px] flex-shrink-0 flex justify-center">
+        <div class="w-full lg:w-[215px] flex-shrink-0 flex justify-center slide-left">
           <img src="~/public/images/base/kayla-luo.png" alt="Kayla Luo"
             class="w-40 h-60 lg:w-48 lg:h-72 object-cover" />
         </div>
 
-        <div class="flex-1 text-center lg:text-left">
+        <div class="flex-1 text-center lg:text-left slide-right">
           <!-- 桌面端标题在图片旁边 -->
           <h2 class="hidden lg:block text-30px lg:text-3xl font-semibold text-[#271F18] mb-2" style="font-family: var(--font-primary)">{{ $t('about.team.kaylaLuo.name') }}</h2>
           <p class="hidden lg:block text-16px lg:text-xl mb-6 lg:mb-4">{{ $t('about.team.kaylaLuo.title') }}</p>
@@ -44,12 +44,12 @@
           <p class="text-16px">{{ $t('about.team.zoeBoyd.title') }}</p>
         </div>
 
-        <div class="w-full lg:w-[215px] flex-shrink-0 flex justify-center">
+        <div class="w-full lg:w-[215px] flex-shrink-0 flex justify-center slide-right">
           <img src="~/public/images/base/zoe-fang-boyd.png" alt="Zoe Fang Boyd"
             class="w-40 h-60 lg:w-48 lg:h-72 object-cover" />
         </div>
 
-        <div class="flex-1 text-center lg:text-left">
+        <div class="flex-1 text-center lg:text-left slide-left">
           <!-- 桌面端标题在图片旁边 -->
           <h2 class="hidden lg:block text-30px lg:text-3xl font-semibold mb-2" style="font-family: var(--font-primary)">{{ $t('about.team.zoeBoyd.name') }}</h2>
           <p class="hidden lg:block text-16px lg:text-xl mb-6 lg:mb-4">{{ $t('about.team.zoeBoyd.title') }}</p>
@@ -77,6 +77,14 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { useScrollAnimation } from '@/composables/useScrollAnimation';
+
+const { initScrollAnimation } = useScrollAnimation();
+
+onMounted(() => {
+  initScrollAnimation();
+});
 </script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="career-section bg-[#A9A67D] py-20 px-6 lg:px-20">
-    <div class="container mx-auto text-center">
+    <div class="container mx-auto text-center scroll-animate">
       <h2 class="text-3xl lg:text-5xl font-semibold mb-8 max-w-4xl mx-auto" style="font-family: var(--font-primary)">
         {{ $t('about.careers.title') }}
       </h2>
@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+import { useScrollAnimation } from '~/composables/useScrollAnimation';
+
+useScrollAnimation();
 </script>
 
 <style scoped>
