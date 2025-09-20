@@ -129,10 +129,10 @@ const toggleMenu = () => {
               <!-- 联系信息 -->
               <div class="space-y-2 text-[#271F18] text-sm font-normal">
                 <div>
-                  <span class="font-semibold">{{ $t('menu.phone') }}</span> 626-563-8656
+              <span class="font-semibold">{{ $t('menu.phone') }}</span> <a href="tel:6265638656" class="text-[#271F18] underline hover:text-blue-600">626-563-8656</a>
                 </div>
                 <div>
-                  <span class="font-semibold">{{ $t('menu.email') }}</span> kaylal@yundasurrogacy.com
+              <span class="font-semibold">{{ $t('menu.email') }}</span> <a href="mailto:kaylal@yundasurrogacy.com" class="text-[#271F18] underline hover:text-blue-600">kaylal@yundasurrogacy.com</a>
                 </div>
                 <div>
                   <span class="font-semibold">{{ $t('menu.wechat') }}</span> YundaUS1

@@ -60,12 +60,22 @@
           <div class="space-y-4 text-3.5 md:text-4.5 text-left mb-8">
             <div>
               <p class="text-[var(--dark-brown)]  font-normal uppercase">{{ $t('menu.phone') }}</p>
-              <p class="text-[var(--dark-brown)]  font-normal">{{ $t('footer.phoneNumber') }}</p>
+              <a
+                :href="'tel:' + $t('footer.phoneNumber')"
+                class="text-[var(--dark-brown)] font-normal hover:underline"
+              >
+                {{ $t('footer.phoneNumber') }}
+              </a>
             </div>
 
             <div>
               <p class="text-[var(--dark-brown)] font-normal uppercase">{{ $t('menu.email') }}</p>
-              <p class="text-[var(--dark-brown)] font-normal">kaylal@yundasurrogacy.com</p>
+              <a
+                href="mailto:kaylal@yundasurrogacy.com"
+                class="text-[var(--dark-brown)] font-normal hover:underline"
+              >
+                kaylal@yundasurrogacy.com
+              </a>
             </div>
 
             <div>

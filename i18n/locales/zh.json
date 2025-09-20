@@ -904,8 +904,11 @@
         "contactInfo": "联系方式",
         "aboutYou": "关于您自己",
         "pregnancyHealth": "准生育与健康经历",
-        "financialLegal": "政府资助",
-        "consent": "最终同意"
+        "legalHealthQuestions": "选择题",
+        "consent": "最终同意",
+        "pregnancyHistory": "怀孕历史",
+        "gestationalInterview": "妊娠代孕访谈",
+        "uploadPhotos": "上传照片"
       },
       "form": {
         "lastName": "姓氏",
@@ -917,6 +920,11 @@
         "country": "国家",
         "stateProvince": "州/省",
         "zipCode": "邮政编码",
+        "height": "身高（英寸/厘米）",
+        "weight": "体重（磅）",
+        "bmi": "BMI",
+        "ethnicity": "种族",
+        "surrogacyExperienceCount": "有过几次代孕经验",
         "citizenship": "美国公民或签证身份",
         "smsConsent": "我同意接收有关本申请和服务的短信通知",
         "howDidYouHear": "您是通过什么渠道了解我们？",
@@ -925,6 +933,7 @@
         "googleSearch": "Google搜索",
         "other": "其他：",
         "occupation": "您目前的职业是什么？",
+        "educationLevel": "您的最高学历",
         "previousSurrogate": {
           "question": "您是否曾做过代孕母？",
           "description": "如有，请简要说明时间与经历"
@@ -1008,11 +1017,59 @@
             "none": "以上都没有"
           }
         },
-        "legal": {
-          "criminalRecord": {
-            "question": "您是否有犯罪记录?",
-            "explain": "请解释"
+        "legalHealthQuestions": {
+          "domesticViolence": "家庭暴力",
+          "substanceAbuse": "药物滥用",
+          "felonyCharges": "重罪指控",
+          "outstandingWarrant": "未执行逮捕令",
+          "formalProbation": "正式缓刑",
+          "arrests": "逮捕记录",
+          "childAbuseNeglect": "虐待/忽视儿童",
+          "childProtectionInvestigation": "儿童保护调查",
+          "backgroundCheckStatus": "背景调查状态",
+          "approved": "已批准",
+          "notApproved": "未批准"
+        },
+        "pregnancyHistory": {
+          "pregnancy": "生产记录",
+          "date": "分娩日期",
+          "weight": "出生体重",
+          "weeks": "孕周",
+          "babies": "胎儿数",
+          "delivery": "分娩方式",
+          "deliveryOptions": {
+            "vaginal": "顺产",
+            "cesarean": "剖腹产"
           },
+          "remove": "移除",
+          "add": "添加生产记录",
+          "seriousComplications": "严重孕期并发症",
+          "birthControl": "当前避孕方式",
+          "closestHospital": "最近的医院",
+          "closestNICU": "最近的三级新生儿重症监护室（NICU III）"
+        },
+        "gestationalInterview": {
+          "supportPerson": "在整个代孕过程中以及之后，谁会在情感上支持你？",
+          "languages": "你会说哪些语言？",
+          "motivation": "是什么驱动你想成为一名妊娠代孕母？",
+          "aboutYou": "请介绍一下你自己！",
+          "contactPreference": "在怀孕期间，你希望与准父母有多少联系？",
+          "hipaaConsent": "你是否愿意签署 HIPAA 授权表，以便准父母和机构可以获取与婴儿相关的医疗信息？",
+          "twinsAttitude": "你对于怀双胞胎的态度是什么？",
+          "tripletsReduction": "如医生建议减少胎儿数量，你是否愿意根据医疗建议遵循准父母的意愿？",
+          "terminationConsent": "如医生建议终止妊娠，你是否愿意根据医疗建议遵循准父母的意愿终止妊娠？"
+        },
+        "uploadPhotos": {
+          "label": "请至少上传 2 张照片",
+          "minTip": "至少需要 2 张照片"
+        },
+      "uploadPhotosMinTip": "请至少上传两张照片",
+      "uploadPhotosTip": "点击或拖拽图片到此处上传（至少2张）",
+      "legal": {
+        "criminalRecord": {
+          "question": "您是否有犯罪记录?",
+          "explain": "请解释"
+        },
           "legalMatters": {
             "question": "您或伴侣是否有正在进行中的法律事务(破产、诉讼、离婚等)?",
             "explain": "请解释"
@@ -1092,7 +1149,7 @@
         "cellPhone": "手机号码",
         "email": "电子邮箱",
         "smsConsent": {
-          "label": "我同意接收有关本申请和服务的短信通知",
+ "label": "我同意接收有关本申请和服务的短信通知",
           "disclaimer": "勾选此项即表示您同意接收与申请流程相关的短信通知。标准短信资费适用。您可随时通过短信退订或在账户中更新偏好。"
         },
         "languages": {
@@ -1189,7 +1246,27 @@
       },
       "tryAgain": "重试",
       "unexpectedError": "发生意外错误。请稍后重试。",
-      "ok": "确定"
+      "ok": "确定",
+      "required": {
+        "title": "请选择{field}",
+        "message": "请在“{field}”中选择一项"
+      },
+      "smsConsent": {
+        "title": "短信同意未勾选",
+        "message": "请勾选短信同意后再提交"
+      },
+      "uploadPhotosMin": {
+        "title": "照片数量不足",
+        "message": "请至少上传两张照片"
+      },
+      "uploadPhotosUploading": {
+        "title": "图片上传中",
+        "message": "请等待所有图片上传完成后再提交"
+      },
+      "contactSourceOther": {
+        "title": "请填写其它渠道",
+        "message": "选择“其它”时，请填写具体渠道信息"
+      }
     }
   },
   "about": {

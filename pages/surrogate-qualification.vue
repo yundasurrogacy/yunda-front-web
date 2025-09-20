@@ -17,7 +17,7 @@
           <div class="px-8 lg:px-16 py-10 lg:py-20">
             <!-- Question -->
             <p class="w-full mx-auto text-center text-4.5 lg:text-6 mb-8 lg:mb-10" style="font-family: var(--font-primary)">
-              {{ currentQuestion }}
+              {{ $t(questions[currentQuestionIndex]) }}
             </p>
             
             <!-- Buttons -->
@@ -46,7 +46,7 @@
           <div class="px-8 lg:px-20 py-10 lg:py-20">
             <!-- Message -->
             <p class="text-center text-5 lg:text-8 mb-8 lg:mb-10" style="font-family: var(--font-primary)">
-              {{ infoMessage }}
+              {{ $t(infoMessage) }}
             </p>
             
             <!-- Button -->
@@ -81,7 +81,6 @@ const router = useRouter()
 const showQuestion = ref(true)
 const showInfo = ref(false)
 const currentQuestionIndex = ref(0)
-const currentQuestion = ref('')
 const infoMessage = ref('')
 const selectedAnswer = ref(null)
 const answers = ref([]) // 记录所有答案
@@ -108,23 +107,17 @@ const handleAnswer = (answer) => {
 // Process the answer
 const processAnswer = () => {
   currentQuestionIndex.value++
-  
-  if (currentQuestionIndex.value < questions.length) {
-    // Show next question
-    currentQuestion.value = t(questions[currentQuestionIndex.value])
-    selectedAnswer.value = null // Reset selection
-  } else {
+  selectedAnswer.value = null // Reset selection
+  if (currentQuestionIndex.value >= questions.length) {
     // 所有问题回答完毕，检查是否有任何 'No' 的答案
     const hasNoAnswer = answers.value.includes(false)
-    
     if (hasNoAnswer) {
       // 有 'No' 的答案 - 显示不符合资格的消息
-      infoMessage.value = t('surrogacy.application.messages.notQualified')
+      infoMessage.value = 'surrogacy.application.messages.notQualified'
     } else {
       // 全部都是 'Yes' - 显示符合资格的消息
-      infoMessage.value = t('surrogacy.application.messages.qualified')
+      infoMessage.value = 'surrogacy.application.messages.qualified'
     }
-    
     showQuestion.value = false
     showInfo.value = true
   }
@@ -146,6 +139,6 @@ const handleInfoClose = () => {
 
 // Initialize on mount
 onMounted(() => {
-  currentQuestion.value = t(questions[0])
+  // 无需初始化 currentQuestion
 })
 </script>

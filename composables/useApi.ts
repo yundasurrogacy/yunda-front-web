@@ -1,14 +1,34 @@
-import type { SurrogateRequest, ParentRequest, ApiSuccessResponse, ApiErrorResponse } from '~/types/api'
+import type { SurrogateMotherApplicationData, IntendedParentApplicationData } from '~/types/api'
+
+// 响应类型定义
+export interface ApiSuccessResponse<T = any> {
+  code: number;
+  message: string;
+  data: T;
+}
+
+export interface ApiErrorResponse {
+  code: number;
+  message: string;
+  errors?: Array<{
+    field: string;
+    message: string;
+  }>;
+}
 
 // API 基础配置
-const API_BASE_URL = 'https://admin.yundasurrogacy.com/x-project/api'
-
+// const API_BASE_URL = 'https://admin.yundasurrogacy.com/x-project/api'
+// const API_BASE_URL = 'https://hasura-yundasurrogacy-1.weweknow.com/v1/graphql'
+const API_BASE_URL = 'https://yunda-admin-system.yundasurrogacy.com/api'
 // API 端点
+// const API_ENDPOINTS = {
+//   SURROGATE: `${API_BASE_URL}/surrogates`,
+//   PARENT: `${API_BASE_URL}/parents`
+// } as const
 const API_ENDPOINTS = {
-  SURROGATE: `${API_BASE_URL}/surrogates`,
-  PARENT: `${API_BASE_URL}/parents`
+  SURROGATE: `${API_BASE_URL}/applications`,
+  PARENT: `${API_BASE_URL}/applications`
 } as const
-
 // 通用的 API 错误处理
 const handleApiError = (error: any): never => {
   console.error('API Error:', error)
@@ -25,7 +45,7 @@ const handleApiError = (error: any): never => {
 }
 
 // 提交代孕母申请
-export const submitSurrogateApplication = async (data: SurrogateRequest): Promise<ApiSuccessResponse> => {
+export const submitSurrogateApplication = async (data: { application_type: string; application_data: SurrogateMotherApplicationData }): Promise<ApiSuccessResponse> => {
   try {
     const response = await $fetch<ApiSuccessResponse>(API_ENDPOINTS.SURROGATE, {
       method: 'POST',
@@ -42,7 +62,7 @@ export const submitSurrogateApplication = async (data: SurrogateRequest): Promis
 }
 
 // 提交准父母申请
-export const submitParentApplication = async (data: ParentRequest): Promise<ApiSuccessResponse> => {
+export const submitParentApplication = async (data: { application_type: string; application_data: IntendedParentApplicationData }): Promise<ApiSuccessResponse> => {
   try {
     const response = await $fetch<ApiSuccessResponse>(API_ENDPOINTS.PARENT, {
       method: 'POST',
@@ -51,7 +71,6 @@ export const submitParentApplication = async (data: ParentRequest): Promise<ApiS
         'Content-Type': 'application/json'
       }
     })
-    
     return response
   } catch (error) {
     return handleApiError(error)

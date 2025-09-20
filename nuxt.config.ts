@@ -2,8 +2,23 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  // devServer: {
+  //   port: 3000, // 你想要的端口号
+  // },
+  vite: {
+    server: {
+      // port: 3000,
+      proxy: {
+        '/api': {
+          target: 'https://yunda-admin-system.yundasurrogacy.com/api',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '/api')
+        }
+      }
+    }
+  },
 
-  ssr: false,
+  ssr: true,
   nitro: {
     preset: 'static',
   },
@@ -32,7 +47,25 @@ export default defineNuxtConfig({
           type: 'font/ttf',
           crossorigin: 'anonymous'
         }
+      ],
+      meta: [
+        { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' }
+      ],
+      script: [
+        {
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');`
+        },
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP', async: true },
+        {
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-H03SG1NBFP');
+                        `
+        },
+
       ]
+             
     }
   },
 

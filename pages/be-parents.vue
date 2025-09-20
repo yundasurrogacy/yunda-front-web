@@ -306,7 +306,6 @@ import { reactive, computed, watch, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getAllCountries, getStatesByCountry, getPhoneCodeByCountry } from '~/data/countries-states'
 import { useApi } from '~/composables/useApi'
-import type { ParentRequest, Ethnicity, PrimaryLanguage, ProgramInterest } from '~/types/api'
 import AppHeader from '@/components/base/AppHeader.vue';
 import AppFooter from '@/components/base/AppFooter.vue';
 import FormPhoneInput from '@/components/form/FormPhoneInput.vue';
@@ -480,39 +479,59 @@ const handleSubmit = async () => {
       }
     })
     
-    // 构建API请求数据
-    const requestData: ParentRequest = {
-      accountId: form.accountId,
-      city: form.city,
-      country: form.country,
-      countryCode: form.countryCode,
-      dateOfBirth: form.dateOfBirth,
-      email: form.email,
-      fullLegalName: `${form.firstName} ${form.lastName}`.trim(),
-      phoneNumber: form.phoneNumber,
-      stateProvince: form.stateProvince,
-      genderIdentity: form.genderIdentity,
-      genderSelfDescribe: form.genderSelfDescribe || '',
-      pronouns: form.pronouns,
-      pronounsSelfDescribe: form.pronounsSelfDescribe || '',
-      sexualOrientation: form.sexualOrientation,
-      sexualOrientationSelfDescribe: form.sexualOrientationSelfDescribe || '',
-      ethnicities,
-      ethnicitySelfDescribe: form.ethnicitySelfDescribe || '',
-      languages,
-      otherLanguage: form.otherLanguage || '',
-      desiredChildrenCount: form.desiredChildrenCount,
-      journeyStartTiming: form.journeyStartTiming,
-      programInterests: [form.programInterests], // API期望数组，但表单只选一个
-      initialQuestions: form.initialQuestions || '',
-      referralSource: form.referralSource || '',
-      consentAgreement: form.consentAgreement,
-      consentSMS: form.consentSMS
+    // 构建最新 GraphQL 类型结构的 API 请求数据
+    // 枚举类型转换
+    const { Pronouns, GenderIdentity, Ethnicity, PrimaryLanguage, SexualOrientation, ProgramInterest, JourneyStartTiming, DesiredChildrenCount } = await import('~/types/api')
+
+    const applicationData = {
+      basic_information: {
+        firstName: form.firstName,
+        lastName: form.lastName,
+        pronouns: form.pronouns,
+        pronouns_selected_key: Pronouns[form.pronouns as keyof typeof Pronouns],
+        gender_identity: form.genderIdentity,
+        gender_identity_selected_key: GenderIdentity[form.genderIdentity as keyof typeof GenderIdentity],
+        date_of_birth: form.dateOfBirth,
+        ethnicity: ethnicities.join(','),
+        ethnicity_selected_key: Ethnicity[ethnicities[0] as keyof typeof Ethnicity] || Ethnicity.OTHER
+      },
+      contact_information: {
+        cell_phone_country_code: form.countryCode,
+        cell_phone: form.phoneNumber,
+        is_agree_cell_phone_receive_messages: form.consentSMS,
+        email_address: form.email,
+        primary_languages: languages,
+        primary_languages_selected_keys: languages.map(l => PrimaryLanguage[l as keyof typeof PrimaryLanguage])
+      },
+      family_profile: {
+        sexual_orientation: form.sexualOrientation,
+        sexual_orientation_selected_key: SexualOrientation[form.sexualOrientation as keyof typeof SexualOrientation],
+        city: form.city,
+        country: form.country,
+        country_selected_key: form.country,
+        state_or_province: form.stateProvince,
+        state_or_province_selected_key: form.stateProvince
+      },
+      program_interests: {
+        interested_services: form.programInterests,
+        interested_services_selected_keys: ProgramInterest[form.programInterests as keyof typeof ProgramInterest],
+        journey_start_timing: form.journeyStartTiming,
+        journey_start_timing_selected_key: JourneyStartTiming[form.journeyStartTiming as keyof typeof JourneyStartTiming],
+        desired_children_count: form.desiredChildrenCount,
+        desired_children_count_selected_key: DesiredChildrenCount[form.desiredChildrenCount as keyof typeof DesiredChildrenCount]
+      },
+      referral: {
+        referral_source: form.referralSource,
+        initial_questions: form.initialQuestions
+      }
     }
     
-    console.log('Submitting data:', requestData)
+    console.log('Submitting data:', applicationData)
     
-    const response = await submitParentApplication(requestData)
+    const response = await submitParentApplication({
+      application_type: 'intended_parent',
+      application_data: applicationData
+    })
     console.log('Application submitted successfully:', response)
     
     // Show success modal

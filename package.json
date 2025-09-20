@@ -50,7 +50,9 @@
     "@iconify-json/lucide": "^1.2.30",
     "@iconify-json/radix-icons": "^1.2.2",
     "@internationalized/date": "^3.7.0",
-    "country-state-city": "^3.2.1"
+    "@nuxtjs/proxy": "^2.1.0",
+    "country-state-city": "^3.2.1",
+    "vue-i18n": "^11.1.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.10.1",
@@ -81,7 +83,7 @@
     "unocss-preset-animations": "^1.1.1",
     "unocss-preset-shadcn": "^0.5.0",
     "vee-validate": "^4.15.0",
-    "vue": "^3.5.13",
+    "vue": "3",
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.1.10"
   }

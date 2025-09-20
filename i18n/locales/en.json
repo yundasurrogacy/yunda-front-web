@@ -174,7 +174,7 @@
     },
     "heroSection": {
       "title": "How Much Does Surrogacy Cost?",
-      "description": "Surrogacy is a journey of love—and a financial decision that deserves clarity.  At Yunda, we believe in full transparency, detailed breakdowns, and no hidden fees.",
+      "description": "Surrogacy is a journey of love—and a financial decision that deserves clarity. At Yunda, we believe in full transparency, detailed breakdowns, and no hidden fees.",
       "button": "BECOME A PARENT"
     },
     "stepsTimeline": {
@@ -836,7 +836,7 @@
       }
     },
     "confidenceSection": {
-      "title":"",
+      "title": "",
       "description": "Over a hundred incredible women have already partnered with Yunda to help others build their families—and in doing so, they've also experienced personal growth and fulfillment. A referral is a gesture of belief in her—and our thank you is a promise to you.",
       "button": "CONTACT US"
     }
@@ -905,7 +905,11 @@
         "aboutYou": "About you",
         "pregnancyHealth": "Pregnancy & Health History",
         "financialLegal": "Financial & Legal Background",
-        "consent": "Final Consent"
+        "legalHealthQuestions": "Questions",
+        "consent": "Final Consent",
+        "pregnancyHistory": "Pregnancy History",
+        "gestationalInterview": "Gestational Surrogacy Interview",
+        "uploadPhotos": "Upload Photos"
       },
       "form": {
         "lastName": "Last Name",
@@ -917,6 +921,11 @@
         "country": "Country",
         "stateProvince": "State / Province",
         "zipCode": "Zip Code",
+        "height": "Height (in/cm)",
+        "weight": "Weight (lbs)",
+        "bmi": "BMI",
+        "ethnicity": "Ethnicity",
+        "surrogacyExperienceCount": "Number of Surrogacy Experiences",
         "citizenship": "U.S. Citizenship Status",
         "smsConsent": "I consent to receive text messages at this number",
         "howDidYouHear": "How did you hear about Yunda Surrogacy?",
@@ -925,6 +934,7 @@
         "googleSearch": "Google search",
         "other": "Other:",
         "occupation": "What is your current occupation?",
+        "educationLevel": "Education Level",
         "previousSurrogate": {
           "question": "Have you ever been a surrogate before?",
           "description": "If yes, please briefly describe the time and experience:"
@@ -1008,6 +1018,54 @@
             "none": "None of the above"
           }
         },
+        "legalHealthQuestions": {
+          "domesticViolence": "Domestic Violence",
+          "substanceAbuse": "Substance Abuse",
+          "felonyCharges": "Felony Charges",
+          "outstandingWarrant": "Outstanding Warrant",
+          "formalProbation": "Formal Probation",
+          "arrests": "Arrests",
+          "childAbuseNeglect": "Child Abuse/Neglect",
+          "childProtectionInvestigation": "Child Protection Investigation",
+          "backgroundCheckStatus": "Background Check Status",
+          "approved": "APPROVED",
+          "notApproved": "NOT APPROVED"
+        },
+        "pregnancyHistory": {
+          "pregnancy": "Pregnancy",
+          "date": "Date",
+          "weight": "Weight",
+          "weeks": "Weeks",
+          "babies": "# of Babies",
+          "delivery": "Delivery",
+          "deliveryOptions": {
+            "vaginal": "Vaginal",
+            "cesarean": "Cesarean"
+          },
+          "remove": "Remove",
+          "add": "Add Pregnancy",
+          "seriousComplications": "Serious Pregnancy Complications",
+          "birthControl": "Current form of Birth Control",
+          "closestHospital": "Closest Hospital",
+          "closestNICU": "Closest NICU III"
+        },
+        "gestationalInterview": {
+          "supportPerson": "Who will support you emotionally throughout and after your Surrogacy experience?",
+          "languages": "What languages do you speak?",
+          "motivation": "What drives you to want to be a Gestational Surrogate?",
+          "aboutYou": "Please tell us about yourself!",
+          "contactPreference": "How much contact would you like with your Intended Parents throughout the pregnancy?",
+          "hipaaConsent": "Are you willing to sign a HIPAA release form for the Intended Parents and Agency to be allowed to receive medical information pertaining to the baby(ies)?",
+          "twinsAttitude": "How would you feel about carrying twins?",
+          "tripletsReduction": "If doctors recommend reducing the number of fetuses, would you be willing to follow the Intended Parents’ wishes based on medical recommendations?",
+          "terminationConsent": "If doctors approve termination due to serious health conditions, would you be willing to follow the Intended Parents’ wishes and terminate the pregnancy based on medical recommendations?"
+        },
+        "uploadPhotos": {
+          "label": "Please upload at least 2 photos",
+          "minTip": "At least 2 photos are required"
+        },
+        "uploadPhotosMinTip": "At least 2 photos are required",
+        "uploadPhotosTip": "Click or drag images here to upload (minimum 2)",
         "legal": {
           "criminalRecord": {
             "question": "Have you ever been convicted of a crime?",
@@ -1189,7 +1247,27 @@
       },
       "tryAgain": "Try Again",
       "unexpectedError": "An unexpected error occurred. Please try again later.",
-      "ok": "OK"
+      "ok": "OK",
+      "required": {
+        "title": "Please select {field}",
+        "message": "Please select an option for '{field}'"
+      },
+      "smsConsent": {
+        "title": "SMS consent not checked",
+        "message": "Please check SMS consent before submitting"
+      },
+      "uploadPhotosMin": {
+        "title": "Not enough photos",
+        "message": "Please upload at least two photos"
+      },
+      "uploadPhotosUploading": {
+        "title": "Uploading photos",
+        "message": "Please wait for all photos to finish uploading before submitting"
+      },
+      "contactSourceOther": {
+        "title": "Please specify other channel",
+        "message": "When 'Other' is selected, please provide details"
+      }
     }
   },
   "about": {
