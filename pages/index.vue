@@ -1,6 +1,9 @@
 <template>
   <div>
     <AppHeader />
+      <h1 class="text-center text-3xl font-bold mt-6 mb-2">
+        {{$t('home.siteTitle')}}
+      </h1>
     <HeroSection />
     <StatsSection />
     <GlobalSupportSection />

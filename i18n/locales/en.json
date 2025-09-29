@@ -18,11 +18,13 @@
     "aboutUs": "ABOUT US",
     "contactUs": "CONTACT US",
     "careers": "CAREERS",
+    "blog": "BLOG",
     "phone": "PHONE:",
     "email": "EMAIL:",
     "wechat": "WECHAT:"
   },
   "home": {
+    "siteTitle": "YUNDA Surrogacy Agency",
     "commitmentSection": {
       "title": "Professionalism. Transparency. Warmth. Protection.",
       "description": "This is our lasting commitment to every journey we help build."

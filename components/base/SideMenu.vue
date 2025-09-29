@@ -124,6 +124,9 @@ const toggleMenu = () => {
                 <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
                   {{ $t('menu.careers') }}
                 </a>
+                  <a href="/blog" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
+                    {{ $t('menu.blog') }}
+                  </a>
               </div>
 
               <!-- 联系信息 -->
@@ -136,6 +139,9 @@ const toggleMenu = () => {
                 </div>
                 <div>
                   <span class="font-semibold">{{ $t('menu.wechat') }}</span> YundaUS1
+                </div>
+                <div class="mt-2 flex items-center">
+                  <img src="~/public/images/home/wx.jpg" alt="微信二维码" class="w-28 h-28 rounded shadow border border-gray-300" />
                 </div>
               </div>
             </div>
@@ -238,6 +244,9 @@ const toggleMenu = () => {
                 <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
                   {{ $t('menu.careers') }}
                 </a>
+                  <a href="/blog" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
+                    {{ $t('menu.blog') }}
+                  </a>
               </div>
 
               <!-- 联系信息 -->
@@ -250,6 +259,9 @@ const toggleMenu = () => {
                 </div>
                 <div>
                   <span class="font-semibold">{{ $t('menu.wechat') }}</span> YundaUS1
+                 <div class="mt-2 flex items-center">
+                   <img src="~/public/images/home/wx.jpg" alt="微信二维码" class="w-28 h-28 rounded shadow border border-gray-300" />
+                 </div>
                 </div>
               </div>
             </div>

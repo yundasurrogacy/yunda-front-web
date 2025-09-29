@@ -53,6 +53,10 @@
               <hr class="border-[var(--dark-brown)] my-2"> -->
               <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[var(--dark-brown)] font-normal uppercase hover:opacity-75 transition-opacity">{{ $t('menu.careers') }}</a>
               <hr class="border-[var(--dark-brown)] my-2">
+              <a href="/blog" class="block text-[var(--dark-brown)] font-normal uppercase hover:opacity-75 transition-opacity">
+                    {{ $t('menu.blog') }}
+              </a>
+              <hr class="border-[var(--dark-brown)] my-2">
             </div>
           </div>
 
@@ -81,6 +85,9 @@
             <div>
               <p class="text-[var(--dark-brown)] font-normal uppercase">{{ $t('menu.wechat') }}</p>
               <p class="text-[var(--dark-brown)] font-normal">{{ $t('footer.wechatId') }}</p>
+              <div class="mt-2 flex items-center">
+                <img src="~/public/images/home/wx.jpg" alt="微信二维码" class="w-28 h-28 rounded shadow border border-gray-300" />
+              </div>
             </div>
           </div>
 
