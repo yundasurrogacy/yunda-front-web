@@ -12,10 +12,10 @@ export default defineNuxtConfig({
         '/api': {
           target: 'https://yunda-admin-system.yundasurrogacy.com/api',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '/api')
-        }
-      }
-    }
+          rewrite: path => path.replace(/^\/api/, '/api'),
+        },
+      },
+    },
   },
 
   ssr: true,
@@ -33,22 +33,22 @@ export default defineNuxtConfig({
           href: '/fonts/Cormorant-Regular.ttf',
           as: 'font',
           type: 'font/ttf',
-          crossorigin: 'anonymous'
+          crossorigin: 'anonymous',
         },
         {
           rel: 'preload',
           href: '/fonts/Cormorant-SemiBold.ttf',
           as: 'font',
           type: 'font/ttf',
-          crossorigin: 'anonymous'
+          crossorigin: 'anonymous',
         },
         {
           rel: 'preload',
           href: '/fonts/SourceSerif4[opsz,wght].ttf',
           as: 'font',
           type: 'font/ttf',
-          crossorigin: 'anonymous'
-        }
+          crossorigin: 'anonymous',
+        },
       ],
       meta: [
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
@@ -58,11 +58,11 @@ export default defineNuxtConfig({
         { property: 'og:locale', content: 'en_US' },
         { property: 'og:site_name', content: 'Yunda Surrogacy' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@YundaSurrogacy' }
+        { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
         {
-          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');`
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');`,
         },
         { src: 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP', async: true },
         {
@@ -70,12 +70,12 @@ export default defineNuxtConfig({
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-H03SG1NBFP');
-                        `
+                        `,
         },
 
-      ]
-             
-    }
+      ],
+
+    },
   },
 
   modules: [
@@ -89,19 +89,19 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
   i18n: {
-    defaultLocale: "en",
-    strategy: "no_prefix",
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
     locales: [
-      { code: "zh", iso: "zh-CN", name: "简体中文", file: "zh.json" },
-      { code: "en", iso: "en-US", name: "English", file: "en.json" },
+      { code: 'zh', iso: 'zh-CN', name: '简体中文', file: 'zh.json' },
+      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
     ],
-    langDir: "locales/",
+    langDir: 'locales/',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
       alwaysRedirect: false,
-      fallbackLocale: 'en'
+      fallbackLocale: 'en',
     },
   },
 

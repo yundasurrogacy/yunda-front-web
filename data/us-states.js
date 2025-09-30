@@ -49,7 +49,7 @@ export const usStates = [
   { value: 'WV', label: 'West Virginia' },
   { value: 'WI', label: 'Wisconsin' },
   { value: 'WY', label: 'Wyoming' },
-  { value: 'DC', label: 'Washington, D.C.' }
+  { value: 'DC', label: 'Washington, D.C.' },
 ]
 
 export const countries = [
@@ -68,12 +68,12 @@ export const countries = [
   { value: 'BR', label: 'Brazil' },
   { value: 'IN', label: 'India' },
   { value: 'RU', label: 'Russia' },
-  { value: 'OTHER', label: 'Other' }
+  { value: 'OTHER', label: 'Other' },
 ]
 
 export const citizenshipStatus = [
   { value: 'US_Citizen', label: 'U.S. Citizen' },
   { value: 'Permenent_Resident', label: 'Permanent Resident' },
   { value: 'Visa_Holder', label: 'Visa Holder' },
-  { value: 'Other', label: 'Other' }
+  { value: 'Other', label: 'Other' },
 ]

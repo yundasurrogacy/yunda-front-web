@@ -1,46 +1,3 @@
-<template>
-  <section 
-    class="w-full py-8 lg:py-12"
-    :style="{ backgroundColor: backgroundColor }"
-  >
-    <div class="px-6 lg:px-20">
-      <div class="relative mx-auto max-w-full">
-        <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg">
-          <video
-            v-if="videoSrc && !videoError"
-            :controls="controls"
-            :autoplay="autoplay"
-            :loop="loop"
-            :muted="muted"
-            :poster="poster"
-            class="absolute top-0 left-0 w-full h-full object-contain"
-            @loadedmetadata="onVideoLoaded"
-            @error="onVideoError"
-            @canplay="onCanPlay"
-          >
-            <source :src="videoSrc" :type="videoType">
-            Your browser does not support the video tag.
-          </video>
-          <div 
-            v-else-if="videoError"
-            class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-gray-100"
-          >
-            <Icon name="mdi:video-off" class="text-4xl text-gray-400 mb-2" />
-            <span class="text-gray-600 font-medium">视频加载失败</span>
-            <span class="text-gray-500 text-sm mt-1">{{ errorMessage }}</span>
-          </div>
-          <div 
-            v-else 
-            class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200"
-          >
-            <span class="text-gray-500">未提供视频源</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -61,25 +18,25 @@ const props = withDefaults(defineProps<Props>(), {
   autoplay: false,
   loop: true,
   muted: false,
-  videoType: 'video/mp4'
+  videoType: 'video/mp4',
 })
 
 const videoError = ref(false)
 const errorMessage = ref('')
 
-const onVideoLoaded = (event: Event) => {
+function onVideoLoaded(event: Event) {
   console.log('Video metadata loaded', props.videoSrc)
   videoError.value = false
 }
 
-const onCanPlay = (event: Event) => {
+function onCanPlay(event: Event) {
   console.log('Video can play', props.videoSrc)
 }
 
-const onVideoError = (event: Event) => {
+function onVideoError(event: Event) {
   const video = event.target as HTMLVideoElement
   videoError.value = true
-  
+
   let message = '未知错误'
   if (video.error) {
     switch (video.error.code) {
@@ -97,16 +54,59 @@ const onVideoError = (event: Event) => {
         break
     }
   }
-  
+
   errorMessage.value = message
   console.error('Video loading error:', {
     src: props.videoSrc,
     type: props.videoType,
     error: video.error,
-    message: message
+    message,
   })
 }
 </script>
+
+<template>
+  <section
+    class="w-full py-8 lg:py-12"
+    :style="{ backgroundColor }"
+  >
+    <div class="px-6 lg:px-20">
+      <div class="relative mx-auto max-w-full">
+        <div class="relative h-0 overflow-hidden rounded-lg pb-[56.25%]">
+          <video
+            v-if="videoSrc && !videoError"
+            :controls="controls"
+            :autoplay="autoplay"
+            :loop="loop"
+            :muted="muted"
+            :poster="poster"
+            class="absolute left-0 top-0 h-full w-full object-contain"
+            @loadedmetadata="onVideoLoaded"
+            @error="onVideoError"
+            @canplay="onCanPlay"
+          >
+            <source :src="videoSrc" :type="videoType">
+            Your browser does not support the video tag.
+          </video>
+          <div
+            v-else-if="videoError"
+            class="absolute left-0 top-0 h-full w-full flex flex-col items-center justify-center bg-gray-100"
+          >
+            <Icon name="mdi:video-off" class="mb-2 text-4xl text-gray-400" />
+            <span class="text-gray-600 font-medium">视频加载失败</span>
+            <span class="mt-1 text-sm text-gray-500">{{ errorMessage }}</span>
+          </div>
+          <div
+            v-else
+            class="absolute left-0 top-0 h-full w-full flex items-center justify-center bg-gray-200"
+          >
+            <span class="text-gray-500">未提供视频源</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 
 <style scoped>
 </style>

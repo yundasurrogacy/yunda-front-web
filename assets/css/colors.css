@@ -1,13 +1,13 @@
 :root {
-  --primary-brown: #A96C42;
-  --light-cream: #FBF0DA;
-  --grayish-green: #BFC9BF;
-  --dark-brown: #271F18;
-  --olive-green: #A9A67D;
+  --primary-brown: #a96c42;
+  --light-cream: #fbf0da;
+  --grayish-green: #bfc9bf;
+  --dark-brown: #271f18;
+  --olive-green: #a9a67d;
   --black: #000000;
-  --white: #FFFFFF;
-  --head-bg:#FAF7F2;
-  --foot-bg:#fcfaf2;
-  --hero-center: #BFC9BFB3;
+  --white: #ffffff;
+  --head-bg: #faf7f2;
+  --foot-bg: #fcfaf2;
+  --hero-center: #bfc9bfb3;
   --faq-bg: #d2d8ce;
 }

@@ -1,4 +1,3 @@
-
 指令：pnpm nuxt cleanup清除缓存
 构建发布pnpm generate:prod
 先构建后混淆pnpm generate:obfuscated

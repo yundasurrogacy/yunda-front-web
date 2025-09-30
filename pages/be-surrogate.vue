@@ -528,6 +528,18 @@
 
 <script setup lang="ts">
 import { reactive, computed, watch, ref, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getAllCountries, getStatesByCountry, getPhoneCodeByCountry } from '~/data/countries-states'
+import { citizenshipStatus } from '~/data/us-states'
+import { useApi } from '~/composables/useApi'
+import type { SurrogateMotherApplicationData } from '~/types/api'
+import AppHeader from '@/components/base/AppHeader.vue'
+import AppFooter from '@/components/base/AppFooter.vue'
+import MessageModal from '@/components/base/MessageModal.vue'
+import FormCheckbox from '@/components/form/FormCheckbox.vue'
+import FormDatePicker from '@/components/form/FormDatePicker.vue'
+import FormInput from '@/components/form/FormInput.vue'
+import FormPhoneInput from '@/components/form/FormPhoneInput.vue'
 
 // 先声明 form
 const form = reactive({
@@ -625,20 +637,8 @@ const removePregnancy = (idx: number) => {
   form.pregnancyHistoryList.splice(idx, 1)
   pregnancyHistoryCollapse.value.splice(idx, 1)
 }
-import { useI18n } from 'vue-i18n'
-import { getAllCountries, getStatesByCountry, getPhoneCodeByCountry } from '~/data/countries-states'
-import { citizenshipStatus } from '~/data/us-states'
-import { useApi } from '~/composables/useApi'
-import type { SurrogateMotherApplicationData } from '~/types/api'
-import AppHeader from '@/components/base/AppHeader.vue';
-import AppFooter from '@/components/base/AppFooter.vue';
-import FormPhoneInput from '@/components/form/FormPhoneInput.vue';
-import FormInput from '@/components/form/FormInput.vue';
-import FormSelect from '@/components/form/FormSelect.vue';
-import FormCheckbox from '@/components/form/FormCheckbox.vue';
-import FormRadio from '@/components/form/FormRadio.vue';
-import FormDatePicker from '@/components/form/FormDatePicker.vue';
-import MessageModal from '@/components/base/MessageModal.vue';
+import FormRadio from '@/components/form/FormRadio.vue'
+import FormSelect from '@/components/form/FormSelect.vue'
 
 const { t } = useI18n()
 
@@ -761,7 +761,7 @@ const states = computed(() => {
 
 watch(() => form.country, (newCountry) => {
   form.state = ''
-  
+
   const phoneCode = getPhoneCodeByCountry(newCountry)
   if (phoneCode) {
     form.countryCode = phoneCode
@@ -778,108 +778,118 @@ const modalConfig = reactive({
   messageKey: '',
   buttonText: 'OK',
   message: '' as string | string[], // 兼容后端返回
-  fieldLabel: '' // 用于 required 校验字段名参数
+  fieldLabel: '', // 用于 required 校验字段名参数
 })
 
 // 新图片上传逻辑：异步上传图片，获取 URL
 async function uploadImages(files: File[]): Promise<string[]> {
-  const formData = new FormData();
-  files.forEach(file => {
-    formData.append('file', file);
-  });
+  const formData = new FormData()
+  files.forEach((file) => {
+    formData.append('file', file)
+  })
   try {
     const res = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/upload/form', {
       method: 'POST',
-      body: formData
-    });
-    const result = await res.json();
+      body: formData,
+    })
+    const result = await res.json()
     // 支持单文件和多文件返回
     if (result.success && result.data) {
       if (Array.isArray(result.data)) {
         // 多文件
-        return result.data.map((item: any) => item.url).filter(Boolean);
-      } else if (result.data.url) {
+        return result.data.map((item: any) => item.url).filter(Boolean)
+      }
+      else if (result.data.url) {
         // 单文件
-        return [result.data.url];
+        return [result.data.url]
       }
     }
-    throw new Error(result.message || '图片上传失败');
-  } catch (err: any) {
-    throw new Error(err.message || '图片上传失败');
+    throw new Error(result.message || '图片上传失败')
+  }
+  catch (err: any) {
+    throw new Error(err.message || '图片上传失败')
   }
 }
 
 async function onPhotoChange(e: Event) {
-  const files = (e.target as HTMLInputElement)?.files;
-  if (!files || files.length === 0) return;
-  uploadingPhotos.value = true;
+  const files = (e.target as HTMLInputElement)?.files
+  if (!files || files.length === 0)
+    return
+  uploadingPhotos.value = true
   try {
-    const urls = await uploadImages(Array.from(files));
-    form.uploadPhotos.push(...urls);
-  } catch (err: any) {
-  modalConfig.type = 'error';
-  modalConfig.titleKey = '';
-  modalConfig.message = err.message || '图片上传失败';
-  modalConfig.buttonText = '确定';
-  showModal.value = true;
-  } finally {
-    uploadingPhotos.value = false;
+    const urls = await uploadImages(Array.from(files))
+    form.uploadPhotos.push(...urls)
+  }
+  catch (err: any) {
+    modalConfig.type = 'error'
+    modalConfig.titleKey = ''
+    modalConfig.message = err.message || '图片上传失败'
+    modalConfig.buttonText = '确定'
+    showModal.value = true
+  }
+  finally {
+    uploadingPhotos.value = false
     nextTick(() => {
-      if (fileInputRef.value) fileInputRef.value.value = '';
-    });
+      if (fileInputRef.value)
+        fileInputRef.value.value = ''
+    })
   }
 }
 
 async function handleDrop(e: DragEvent) {
-  const files = e.dataTransfer?.files;
-  if (!files || files.length === 0) return;
-  const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
-  if (imageFiles.length === 0) return;
-  uploadingPhotos.value = true;
+  const files = e.dataTransfer?.files
+  if (!files || files.length === 0)
+    return
+  const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'))
+  if (imageFiles.length === 0)
+    return
+  uploadingPhotos.value = true
   try {
-    const urls = await uploadImages(imageFiles);
-    form.uploadPhotos.push(...urls);
-  } catch (err: any) {
-  modalConfig.type = 'error';
-  modalConfig.titleKey = '';
-  modalConfig.message = err.message || '图片上传失败';
-  modalConfig.buttonText = '确定';
-  showModal.value = true;
-  } finally {
-    uploadingPhotos.value = false;
+    const urls = await uploadImages(imageFiles)
+    form.uploadPhotos.push(...urls)
+  }
+  catch (err: any) {
+    modalConfig.type = 'error'
+    modalConfig.titleKey = ''
+    modalConfig.message = err.message || '图片上传失败'
+    modalConfig.buttonText = '确定'
+    showModal.value = true
+  }
+  finally {
+    uploadingPhotos.value = false
   }
 }
 
 function removePhoto(idx: number) {
-  form.uploadPhotos.splice(idx, 1);
+  form.uploadPhotos.splice(idx, 1)
 }
-const handleSubmit = async () => {
+async function handleSubmit() {
   // 校验上传照片数量（必须是 URL）
   if (!form.uploadPhotos || form.uploadPhotos.length < 2) {
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.uploadPhotosMin.title';
-    modalConfig.messageKey = 'modal.error.uploadPhotosMin.message';
-    modalConfig.buttonText = t('modal.error.ok');
-    showModal.value = true;
-    return;
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.uploadPhotosMin.title'
+    modalConfig.messageKey = 'modal.error.uploadPhotosMin.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
   }
   // 校验是否有未完成的图片上传
   if (uploadingPhotos.value) {
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.uploadPhotosUploading.title';
-    modalConfig.messageKey = 'modal.error.uploadPhotosUploading.message';
-    modalConfig.buttonText = t('modal.error.ok');
-    showModal.value = true;
-    return;
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.uploadPhotosUploading.title'
+    modalConfig.messageKey = 'modal.error.uploadPhotosUploading.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
   }
   // “如何得知”选择其它时，必须填写其它内容
   if (form.contactSource === 'OTHER' && !form.contactSourceOther?.trim()) {
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.contactSourceOther.title';
-    modalConfig.messageKey = 'modal.error.contactSourceOther.message';
-    modalConfig.buttonText = t('modal.error.ok');
-    showModal.value = true;
-    return;
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.contactSourceOther.title'
+    modalConfig.messageKey = 'modal.error.contactSourceOther.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
   }
   // 所有选择题必选校验（国际化）
   const requiredChoices = [
@@ -902,64 +912,64 @@ const handleSubmit = async () => {
     { value: form.legalHealthQuestions.arrests, label: 'surrogate.application.form.legalHealthQuestions.arrests' },
     { value: form.legalHealthQuestions.childAbuseNeglect, label: 'surrogate.application.form.legalHealthQuestions.childAbuseNeglect' },
     { value: form.legalHealthQuestions.childProtectionInvestigation, label: 'surrogate.application.form.legalHealthQuestions.childProtectionInvestigation' },
-    { value: form.legalHealthQuestions.backgroundCheckStatus, label: 'surrogate.application.form.legalHealthQuestions.backgroundCheckStatus' }
-  ];
+    { value: form.legalHealthQuestions.backgroundCheckStatus, label: 'surrogate.application.form.legalHealthQuestions.backgroundCheckStatus' },
+  ]
   for (const item of requiredChoices) {
     if (!item.value) {
-      modalConfig.type = 'error';
-      modalConfig.titleKey = 'modal.error.required.title';
-      modalConfig.messageKey = 'modal.error.required.message';
-      modalConfig.buttonText = t('modal.error.ok');
-      modalConfig.fieldLabel = item.label; // 传递字段名用于 $t 参数
-      showModal.value = true;
-      return;
+      modalConfig.type = 'error'
+      modalConfig.titleKey = 'modal.error.required.title'
+      modalConfig.messageKey = 'modal.error.required.message'
+      modalConfig.buttonText = t('modal.error.ok')
+      modalConfig.fieldLabel = item.label // 传递字段名用于 $t 参数
+      showModal.value = true
+      return
     }
   }
   // 校验短信同意
   if (!form.smsConsent) {
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.smsConsent.title';
-    modalConfig.messageKey = 'modal.error.smsConsent.message';
-    modalConfig.buttonText = t('modal.error.ok');
-    showModal.value = true;
-    return;
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.smsConsent.title'
+    modalConfig.messageKey = 'modal.error.smsConsent.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
   }
   // 校验最终同意
   if (!form.finalConsent) {
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.consentRequired.title';
-    modalConfig.messageKey = 'modal.error.consentRequired.message';
-    modalConfig.buttonText = t('modal.error.ok');
-    showModal.value = true;
-    return;
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.consentRequired.title'
+    modalConfig.messageKey = 'modal.error.consentRequired.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
   }
 
   try {
     // 转换布尔值
     const booleanFields = {
-      hasHighSchoolDiploma: form.hasHighSchoolDiploma === 'yes',
+      'hasHighSchoolDiploma': form.hasHighSchoolDiploma === 'yes',
       'pregnancyHistory.hasGivenBirth': form.pregnancyHistory.hasGivenBirth === 'yes',
       'pregnancyHistory.hasStillbirth': form.pregnancyHistory.hasStillbirth === 'yes',
       'pregnancyHistory.isBreastfeeding': form.pregnancyHistory.isBreastfeeding === 'yes',
       'pregnancyHistory.isPregnant': form.pregnancyHistory.isPregnant === 'yes',
       'healthHistory.isTakingMeds': form.healthHistory.isTakingMeds === 'yes',
-    };
+    }
 
     // 转换医疗状况数据
-    const medicalConditions: string[] = [];
+    const medicalConditions: string[] = []
     const conditionsMap: Record<string, string> = {
       diabetes: 'DIABETES',
       hypertension: 'HYPERTENSION',
       bipolarDisorder: 'BIPOLAR_DISORDER',
       multipleMiscarriages: 'MULTIPLE_MISCARRIAGES',
-      seizureDisorder: 'SEIZURE_DISORDER'
-    };
+      seizureDisorder: 'SEIZURE_DISORDER',
+    }
 
     Object.entries(form.healthHistory.medicalConditions).forEach(([key, value]) => {
       if (value && key !== 'none' && conditionsMap[key]) {
-        medicalConditions.push(conditionsMap[key]);
+        medicalConditions.push(conditionsMap[key])
       }
-    });
+    })
 
     // 构建API请求数据（修正为 SurrogateMotherApplicationData 类型）
     const requestData: SurrogateMotherApplicationData = {
@@ -979,12 +989,12 @@ const handleSubmit = async () => {
         zip_code: form.zipCode,
         height: form.height,
         weight: form.weight,
-        bmi: parseFloat(form.bmi) || 0,
+        bmi: Number.parseFloat(form.bmi) || 0,
         ethnicity: form.ethnicity,
         ethnicity_selected_key: form.ethnicity as any, // 如有枚举请替换
-        surrogacy_experience_count: parseInt(form.surrogacyExperienceCount) || 0,
+        surrogacy_experience_count: Number.parseInt(form.surrogacyExperienceCount) || 0,
         us_citizen_or_visa_status: form.citizenshipStatus,
-        us_citizen_or_visa_status_selected_key: form.citizenshipStatus as any // 如有枚举请替换
+        us_citizen_or_visa_status_selected_key: form.citizenshipStatus as any, // 如有枚举请替换
       },
       about_you: {
         contact_source: form.contactSource,
@@ -1000,7 +1010,7 @@ const handleSubmit = async () => {
         partner_support_selected_key: form.partnerSupport as any,
         has_high_school_diploma: booleanFields.hasHighSchoolDiploma,
         household_income: form.householdIncome,
-        household_income_selected_key: form.householdIncome as any
+        household_income_selected_key: form.householdIncome as any,
       },
       pregnancy_and_health: {
         has_given_birth: booleanFields['pregnancyHistory.hasGivenBirth'],
@@ -1027,12 +1037,12 @@ const handleSubmit = async () => {
           birth_weight: preg.weight,
           gestational_weeks: preg.weeks,
           number_of_babies: preg.babies,
-          delivery_method: preg.delivery
+          delivery_method: preg.delivery,
         })),
         serious_pregnancy_complications: form.pregnancyHistory.seriousComplications === 'yes',
         current_birth_control: form.pregnancyHistory.birthControl,
         closest_hospital: form.pregnancyHistory.closestHospital,
-        closest_nicu_iii: form.pregnancyHistory.closestNICU
+        closest_nicu_iii: form.pregnancyHistory.closestNICU,
       },
       gestational_surrogacy_interview: {
         emotional_support: form.gestationalInterview.supportPerson,
@@ -1043,57 +1053,60 @@ const handleSubmit = async () => {
         hipaa_release_willing: form.gestationalInterview.hipaaConsent === 'yes',
         twins_feeling: form.gestationalInterview.twinsAttitude,
         multiple_reduction_willing: form.gestationalInterview.tripletsReduction === 'yes',
-        termination_willing: form.gestationalInterview.terminationConsent === 'yes'
+        termination_willing: form.gestationalInterview.terminationConsent === 'yes',
       },
-      upload_photos: form.uploadPhotos.map(url => ({ name: '', url }))
-    };
+      upload_photos: form.uploadPhotos.map(url => ({ name: '', url })),
+    }
 
     // 按后端要求封装请求体
     const payload = {
       application_type: 'surrogate_mother',
-      application_data: requestData
-    };
-    console.log('Submitting data:', payload);
-    const response = await submitSurrogateApplication(payload);
-    console.log('Application submitted successfully:', response);
-    console.log('Application submitted successfully:', response.code);
+      application_data: requestData,
+    }
+    console.log('Submitting data:', payload)
+    const response = await submitSurrogateApplication(payload)
+    console.log('Application submitted successfully:', response)
+    console.log('Application submitted successfully:', response.code)
     // Show success modal
-  modalConfig.type = 'success';
-  modalConfig.titleKey = 'modal.success.surrogate.title';
-  modalConfig.messageKey = 'modal.success.surrogate.message';
-  modalConfig.buttonText = t('modal.error.ok');
-  showModal.value = true;
+    modalConfig.type = 'success'
+    modalConfig.titleKey = 'modal.success.surrogate.title'
+    modalConfig.messageKey = 'modal.success.surrogate.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
 
     // Reset form after successful submission
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 500);
-
-  } catch (error: any) {
-    console.error('Submission error:', error);
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 500)
+  }
+  catch (error: any) {
+    console.error('Submission error:', error)
 
     // Handle error response
-    modalConfig.type = 'error';
-    modalConfig.titleKey = 'modal.error.title';
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.title'
     // 错误信息如果是数组或字符串，仍然直接赋值 message（兼容后端返回）
     if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
       const errorMessages = error.response.data.errors.map((err: any) =>
-        err.field ? `${err.field}: ${err.message}` : err.message
-      );
-      modalConfig.message = errorMessages;
-      modalConfig.messageKey = '';
-    } else if (error.response?.data?.message) {
-      modalConfig.message = error.response.data.message;
-      modalConfig.messageKey = '';
-    } else if (error.message) {
-      modalConfig.message = error.message;
-      modalConfig.messageKey = '';
-    } else {
-      modalConfig.messageKey = 'modal.error.unexpectedError';
-      modalConfig.message = '';
+        err.field ? `${err.field}: ${err.message}` : err.message,
+      )
+      modalConfig.message = errorMessages
+      modalConfig.messageKey = ''
     }
-    modalConfig.buttonText = t('modal.error.tryAgain');
-    showModal.value = true;
+    else if (error.response?.data?.message) {
+      modalConfig.message = error.response.data.message
+      modalConfig.messageKey = ''
+    }
+    else if (error.message) {
+      modalConfig.message = error.message
+      modalConfig.messageKey = ''
+    }
+    else {
+      modalConfig.messageKey = 'modal.error.unexpectedError'
+      modalConfig.message = ''
+    }
+    modalConfig.buttonText = t('modal.error.tryAgain')
+    showModal.value = true
   }
 }
 </script>

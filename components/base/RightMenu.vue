@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import LanguageSwitcher from './LanguageSwitcher.vue';
+import { computed } from 'vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const props = defineProps<{
-  isOpen: boolean;
-}>();
+  isOpen: boolean
+}>()
 
-const emit = defineEmits(['update:isOpen']);
+const emit = defineEmits(['update:isOpen'])
 
 const internalIsOpen = computed({
   get: () => props.isOpen,
-  set: (value) => emit('update:isOpen', value),
-});
+  set: value => emit('update:isOpen', value),
+})
 
-const toggleMenu = () => {
-  internalIsOpen.value = !internalIsOpen.value;
-};
+function toggleMenu() {
+  internalIsOpen.value = !internalIsOpen.value
+}
 </script>
 
 <template>
@@ -23,28 +23,29 @@ const toggleMenu = () => {
     <Transition name="menu-overlay">
       <div v-if="internalIsOpen" class="fixed inset-0 z-50">
         <!-- 背景遮罩 -->
-        <div class="absolute inset-0 bg-black/45 backdrop-blur-sm transition-opacity duration-300" @click="toggleMenu"></div>
+        <div class="absolute inset-0 bg-black/45 backdrop-blur-sm transition-opacity duration-300" @click="toggleMenu" />
 
         <!-- 菜单内容 -->
         <Transition name="menu-slide-right">
-          <div class="fixed right-0 bg-[#BFC9BF] overflow-y-auto
-                   w-full"
-            v-if="internalIsOpen">
-            <div class="px-7 py-6 pt-8 flex items-center justify-center">
+          <div
+            v-if="internalIsOpen"
+            class="fixed right-0 w-full overflow-y-auto bg-[#BFC9BF]"
+          >
+            <div class="flex items-center justify-center px-7 py-6 pt-8">
               <LanguageSwitcher />
             </div>
-            
+
             <!-- 关闭按钮 -->
-            <button @click="toggleMenu" class="absolute top-6 right-6 p-0 z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <button class="absolute right-6 top-6 z-10 p-0" @click="toggleMenu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="h-9 w-9 text-[#271F18]">
-                <path d="M18 6L6 18"></path>
-                <path d="M6 6L18 18"></path>
+                class="h-9 w-9 text-[#271F18]"
+              >
+                <path d="M18 6L6 18" />
+                <path d="M6 6L18 18" />
               </svg>
             </button>
-
-
           </div>
         </Transition>
       </div>

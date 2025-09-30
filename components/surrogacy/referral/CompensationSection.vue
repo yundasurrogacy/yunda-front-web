@@ -1,12 +1,18 @@
+<script setup lang="ts">
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+</script>
+
 <template>
-  <section class="w-full bg-gradient-to-b from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] py-8 lg:py-20 px-4 lg:px-20">
-    <div class="max-w-300 mx-auto mb-10 scroll-animate">
-      <h2 class="text-7.5 lg:text-10 font-semibold mb-6 lg:mb-8 text-center lg:text-left" style="font-family: var(--font-primary)">
+  <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b px-4 py-8 lg:px-20 lg:py-20">
+    <div class="scroll-animate mx-auto mb-10 max-w-300">
+      <h2 class="mb-6 text-center text-7.5 font-semibold lg:mb-8 lg:text-left lg:text-10" style="font-family: var(--font-primary)">
         {{ $t('surrogacyReferral.compensationSection.title') }}
       </h2>
-      
+
       <div>
-        <div class="space-y-2 text-left ml-6">
+        <div class="ml-6 text-left space-y-2">
           <li>{{ $t('surrogacyReferral.compensationSection.benefits.base') }}</li>
           <li>{{ $t('surrogacyReferral.compensationSection.benefits.allowances') }}</li>
           <li>{{ $t('surrogacyReferral.compensationSection.benefits.medication') }}</li>
@@ -22,12 +28,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-</script>
 
 <style scoped>
 </style>

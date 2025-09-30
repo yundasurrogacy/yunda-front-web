@@ -1,20 +1,62 @@
+<script setup lang="ts">
+const steps = [
+  {
+    id: 1,
+    title: 'parentsProcess.stepsTimeline.step1.title',
+    subtitle: 'parentsProcess.stepsTimeline.step1.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step1.duration',
+  },
+  {
+    id: 2,
+    title: 'parentsProcess.stepsTimeline.step2.title',
+    subtitle: 'parentsProcess.stepsTimeline.step2.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step2.duration',
+  },
+  {
+    id: 3,
+    title: 'parentsProcess.stepsTimeline.step3.title',
+    subtitle: 'parentsProcess.stepsTimeline.step3.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step3.duration',
+  },
+  {
+    id: 4,
+    title: 'parentsProcess.stepsTimeline.step4.title',
+    subtitle: 'parentsProcess.stepsTimeline.step4.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step4.duration',
+  },
+  {
+    id: 5,
+    title: 'parentsProcess.stepsTimeline.step5.title',
+    subtitle: 'parentsProcess.stepsTimeline.step5.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step5.duration',
+  },
+  {
+    id: 6,
+    title: 'parentsProcess.stepsTimeline.step6.title',
+    subtitle: 'parentsProcess.stepsTimeline.step6.subtitle',
+    duration: 'parentsProcess.stepsTimeline.step6.duration',
+  },
+]
+</script>
+
 <template>
-  <section class="steps-timeline flex justify-center w-full">
+  <section class="steps-timeline w-full flex justify-center">
     <div class="container max-w-300">
       <!-- Title -->
       <h2 class="title">
         {{ $t('parentsPrice.stepsTimeline.title') }}
       </h2>
 
-
       <!-- Desktop Curved Timeline -->
       <div class="desktop-timeline">
         <div class="timeline-grid">
           <!-- Row 1: Start Point -->
           <div class="timeline-row row-1">
-            <div class="timeline-left"></div>
-            <div class="timeline-center"><div class="start-dot"></div></div>
-            <div class="timeline-right"></div>
+            <div class="timeline-left" />
+            <div class="timeline-center">
+              <div class="start-dot" />
+            </div>
+            <div class="timeline-right" />
           </div>
 
           <!-- Row 2: Step 1 (Left) -->
@@ -26,22 +68,24 @@
                     <span class="step-number">1</span>
                   </div>
                   <div class="step-text">
-                    <h3 class="step-title">{{ $t('parentsPrice.stepsTimeline.step1.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsPrice.stepsTimeline.step1.subtitle') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsPrice.stepsTimeline.step1.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsPrice.stepsTimeline.step1.subtitle') }}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="timeline-center"></div>
-            <div class="timeline-right">
-            </div>
+            <div class="timeline-center" />
+            <div class="timeline-right" />
           </div>
 
           <!-- Row 3: Step 2 (Right) -->
           <div class="timeline-row row-3">
-            <div class="timeline-left">
-            </div>
-            <div class="timeline-center"></div>
+            <div class="timeline-left" />
+            <div class="timeline-center" />
             <div class="timeline-right">
               <div class="step-content">
                 <div class="step-inner step-inner-reverse">
@@ -49,8 +93,12 @@
                     <span class="step-number">2</span>
                   </div>
                   <div class="step-text step-text-right">
-                    <h3 class="step-title">{{ $t('parentsPrice.stepsTimeline.step2.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsPrice.stepsTimeline.step2.subtitle') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsPrice.stepsTimeline.step2.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsPrice.stepsTimeline.step2.subtitle') }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -66,25 +114,30 @@
                     <span class="step-number">3</span>
                   </div>
                   <div class="step-text">
-                    <h3 class="step-title">{{ $t('parentsPrice.stepsTimeline.step3.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsPrice.stepsTimeline.step3.subtitle') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsPrice.stepsTimeline.step3.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsPrice.stepsTimeline.step3.subtitle') }}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="timeline-center"></div>
-            <div class="timeline-right">
-            </div>
+            <div class="timeline-center" />
+            <div class="timeline-right" />
           </div>
 
           <!-- Row 5: Step 4 (Right) -->
           <div class="timeline-row row-5">
             <div class="timeline-left">
               <div class="step-duration">
-                <p class="duration-text">{{ $t('parentsProcess.stepsTimeline.step4.duration') }}</p>
+                <p class="duration-text">
+                  {{ $t('parentsProcess.stepsTimeline.step4.duration') }}
+                </p>
               </div>
             </div>
-            <div class="timeline-center"></div>
+            <div class="timeline-center" />
             <div class="timeline-right">
               <div class="step-content">
                 <div class="step-inner step-inner-reverse">
@@ -92,9 +145,15 @@
                     <span class="step-number">4</span>
                   </div>
                   <div class="step-text step-text-right">
-                    <h3 class="step-title">{{ $t('parentsProcess.stepsTimeline.step4.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsProcess.stepsTimeline.step4.subtitle') }}</p>
-                    <p class="step-duration-mobile">{{ $t('parentsProcess.stepsTimeline.step4.duration') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsProcess.stepsTimeline.step4.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsProcess.stepsTimeline.step4.subtitle') }}
+                    </p>
+                    <p class="step-duration-mobile">
+                      {{ $t('parentsProcess.stepsTimeline.step4.duration') }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -110,17 +169,25 @@
                     <span class="step-number">5</span>
                   </div>
                   <div class="step-text">
-                    <h3 class="step-title">{{ $t('parentsProcess.stepsTimeline.step5.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsProcess.stepsTimeline.step5.subtitle') }}</p>
-                    <p class="step-duration-mobile">{{ $t('parentsProcess.stepsTimeline.step5.duration') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsProcess.stepsTimeline.step5.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsProcess.stepsTimeline.step5.subtitle') }}
+                    </p>
+                    <p class="step-duration-mobile">
+                      {{ $t('parentsProcess.stepsTimeline.step5.duration') }}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="timeline-center"></div>
+            <div class="timeline-center" />
             <div class="timeline-right">
               <div class="step-duration">
-                <p class="duration-text">{{ $t('parentsProcess.stepsTimeline.step5.duration') }}</p>
+                <p class="duration-text">
+                  {{ $t('parentsProcess.stepsTimeline.step5.duration') }}
+                </p>
               </div>
             </div>
           </div>
@@ -129,10 +196,12 @@
           <div class="timeline-row row-7">
             <div class="timeline-left">
               <div class="step-duration">
-                <p class="duration-text">{{ $t('parentsProcess.stepsTimeline.step6.duration') }}</p>
+                <p class="duration-text">
+                  {{ $t('parentsProcess.stepsTimeline.step6.duration') }}
+                </p>
               </div>
             </div>
-            <div class="timeline-center"></div>
+            <div class="timeline-center" />
             <div class="timeline-right">
               <div class="step-content">
                 <div class="step-inner step-inner-reverse">
@@ -140,9 +209,15 @@
                     <span class="step-number">6</span>
                   </div>
                   <div class="step-text step-text-right">
-                    <h3 class="step-title">{{ $t('parentsProcess.stepsTimeline.step6.title') }}</h3>
-                    <p class="step-subtitle">{{ $t('parentsProcess.stepsTimeline.step6.subtitle') }}</p>
-                    <p class="step-duration-mobile">{{ $t('parentsProcess.stepsTimeline.step6.duration') }}</p>
+                    <h3 class="step-title">
+                      {{ $t('parentsProcess.stepsTimeline.step6.title') }}
+                    </h3>
+                    <p class="step-subtitle">
+                      {{ $t('parentsProcess.stepsTimeline.step6.subtitle') }}
+                    </p>
+                    <p class="step-duration-mobile">
+                      {{ $t('parentsProcess.stepsTimeline.step6.duration') }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -151,56 +226,17 @@
 
           <!-- Row 8: End Point -->
           <div class="timeline-row row-8">
-            <div class="timeline-left"></div>
-            <div class="timeline-center"><div class="end-dot"></div></div>
-            <div class="timeline-right"></div>
+            <div class="timeline-left" />
+            <div class="timeline-center">
+              <div class="end-dot" />
+            </div>
+            <div class="timeline-right" />
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-const steps = [
-  {
-    id: 1,
-    title: 'parentsProcess.stepsTimeline.step1.title',
-    subtitle: 'parentsProcess.stepsTimeline.step1.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step1.duration'
-  },
-  {
-    id: 2,
-    title: 'parentsProcess.stepsTimeline.step2.title',
-    subtitle: 'parentsProcess.stepsTimeline.step2.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step2.duration'
-  },
-  {
-    id: 3,
-    title: 'parentsProcess.stepsTimeline.step3.title',
-    subtitle: 'parentsProcess.stepsTimeline.step3.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step3.duration'
-  },
-  {
-    id: 4,
-    title: 'parentsProcess.stepsTimeline.step4.title',
-    subtitle: 'parentsProcess.stepsTimeline.step4.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step4.duration'
-  },
-  {
-    id: 5,
-    title: 'parentsProcess.stepsTimeline.step5.title',
-    subtitle: 'parentsProcess.stepsTimeline.step5.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step5.duration'
-  },
-  {
-    id: 6,
-    title: 'parentsProcess.stepsTimeline.step6.title',
-    subtitle: 'parentsProcess.stepsTimeline.step6.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step6.duration'
-  }
-];
-</script>
 
 <style scoped>
 /* Base Section */
@@ -404,14 +440,16 @@ const steps = [
   justify-content: center;
   width: 100px;
   height: 100px;
-  background: radial-gradient(circle, 
-  rgba(255, 255, 255, 0.8), 
-  var(--grayish-green) 90%, 
-  rgba(100, 100, 100, 0.1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8),
+    var(--grayish-green) 90%,
+    rgba(100, 100, 100, 0.1) 100%
+  );
   border-radius: 50%;
   box-shadow:
-  inset 0 4px 10px rgba(255, 255, 255, 0.6),   /* 中间顶部高光 */
-  inset 0 -2px 8px rgba(0, 0, 0, 0.15);      /* 中间底部阴影 */
+    inset 0 4px 10px rgba(255, 255, 255, 0.6),
+    /* 中间顶部高光 */ inset 0 -2px 8px rgba(0, 0, 0, 0.15); /* 中间底部阴影 */
   flex-shrink: 0;
 }
 
@@ -449,12 +487,12 @@ const steps = [
 
 .step-duration {
   text-align: right;
-  align-items: center
+  align-items: center;
 }
 
 .step-inner-reverse .step-duration {
   text-align: left;
-  align-items: center
+  align-items: center;
 }
 
 .duration-text {
@@ -476,48 +514,47 @@ const steps = [
   .step-duration {
     display: none;
   }
-  
+
   .step-duration-mobile {
     display: block;
   }
-  
+
   .step-content {
     background-color: transparent;
   }
-  
+
   /* Row 2, 4, 6 (Left side) - extend right */
   .row-2 .step-content,
   .row-4 .step-content,
   .row-6 .step-content {
     margin-right: -55vw;
   }
-  
+
   /* Row 3, 5, 7 (Right side) - extend left */
   .row-3 .step-content,
   .row-5 .step-content,
   .row-7 .step-content {
     margin-left: -55vw;
-
   }
-  
+
   /* Smaller fonts for mobile */
   .step-title {
     font-size: 20px;
   }
-  
+
   .step-subtitle {
     font-size: 14px;
   }
-  
+
   .step-number {
     font-size: 40px;
   }
-  
+
   .step-circle {
     width: 60px;
     height: 60px;
   }
-  
+
   .step-duration-mobile {
     font-size: 20px;
   }

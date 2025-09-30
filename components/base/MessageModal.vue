@@ -1,63 +1,3 @@
-<template>
-  <Teleport to="body">
-    <Transition name="modal">
-      <div v-if="isVisible" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/50" @click="close"></div>
-        
-        <!-- Modal -->
-        <div class="relative bg-[var(--light-cream)] rounded-3 shadow-2xl max-w-md w-full p-8 max-h-[90vh] overflow-y-auto">
-          <!-- Icon -->
-          <div class="flex justify-center mb-6">
-            <div :class="[
-              'w-16 h-16 rounded-full flex items-center justify-center',
-              type === 'success' ? 'bg-green-100' : 'bg-red-100'
-            ]">
-              <!-- Success Icon -->
-              <svg v-if="type === 'success'" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <!-- Error Icon -->
-              <svg v-else class="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          </div>
-          
-          <!-- Title -->
-          <h3 class="text-6 font-['Cormorant'] font-semibold text-center mb-4">
-            {{ title }}
-          </h3>
-          
-          <!-- Message -->
-          <div class="text-4 text-[var(--dark-brown)] font-serif mb-6">
-            <!-- Single message -->
-            <p v-if="typeof message === 'string'" class="text-center">{{ message }}</p>
-            
-            <!-- Multiple messages/errors -->
-            <ul v-else-if="Array.isArray(message)" class="space-y-2">
-              <li v-for="(item, index) in message" :key="index" class="flex items-start">
-                <span class="text-red-500 mr-2">•</span>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Actions -->
-          <div class="flex justify-center">
-            <button
-              @click="close"
-              class="px-8 py-3 bg-[var(--grayish-green)] text-[#FFFCF6] text-4 font-semibold rounded-2.5 shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 hover:opacity-90 transition-opacity"
-            >
-              {{ buttonText }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </Transition>
-  </Teleport>
-</template>
-
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
@@ -74,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   title: 'Success',
   message: '',
   buttonText: 'OK',
-  modelValue: false
+  modelValue: false,
 })
 
 const emit = defineEmits<{
@@ -88,12 +28,75 @@ watch(() => props.modelValue, (newVal) => {
   isVisible.value = newVal
 })
 
-const close = () => {
+function close() {
   isVisible.value = false
   emit('update:modelValue', false)
   emit('close')
 }
 </script>
+
+<template>
+  <Teleport to="body">
+    <Transition name="modal">
+      <div v-if="isVisible" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/50" @click="close" />
+
+        <!-- Modal -->
+        <div class="relative max-h-[90vh] max-w-md w-full overflow-y-auto rounded-3 bg-[var(--light-cream)] p-8 shadow-2xl">
+          <!-- Icon -->
+          <div class="mb-6 flex justify-center">
+            <div
+              class="h-16 w-16 flex items-center justify-center rounded-full" :class="[
+                type === 'success' ? 'bg-green-100' : 'bg-red-100',
+              ]"
+            >
+              <!-- Success Icon -->
+              <svg v-if="type === 'success'" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <!-- Error Icon -->
+              <svg v-else class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h3 class="mb-4 text-center text-6 font-semibold font-['Cormorant']">
+            {{ title }}
+          </h3>
+
+          <!-- Message -->
+          <div class="mb-6 text-4 text-[var(--dark-brown)] font-serif">
+            <!-- Single message -->
+            <p v-if="typeof message === 'string'" class="text-center">
+              {{ message }}
+            </p>
+
+            <!-- Multiple messages/errors -->
+            <ul v-else-if="Array.isArray(message)" class="space-y-2">
+              <li v-for="(item, index) in message" :key="index" class="flex items-start">
+                <span class="mr-2 text-red-500">•</span>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex justify-center">
+            <button
+              class="rounded-2.5 bg-[var(--grayish-green)] px-8 py-3 text-4 text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90"
+              @click="close"
+            >
+              {{ buttonText }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
+</template>
 
 <style scoped>
 .modal-enter-active,

@@ -7,7 +7,7 @@ export enum Pronouns {
   SHE_HER = 'SHE_HER',
   HE_HIM = 'HE_HIM',
   THEY_THEM = 'THEY_THEM',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum GenderIdentity {
@@ -16,7 +16,7 @@ export enum GenderIdentity {
   TRANSGENDER_MALE = 'TRANSGENDER_MALE',
   TRANSGENDER_FEMALE = 'TRANSGENDER_FEMALE',
   NON_BINARY = 'NON_BINARY',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum Ethnicity {
@@ -29,7 +29,7 @@ export enum Ethnicity {
   PACIFIC_ISLANDER = 'PACIFIC_ISLANDER',
   MIXED_RACE = 'MIXED_RACE',
   PREFER_NOT_TO_SAY = 'PREFER_NOT_TO_SAY',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum PrimaryLanguage {
@@ -48,13 +48,13 @@ export enum PrimaryLanguage {
   TAGALOG = 'TAGALOG',
   GERMAN = 'GERMAN',
   ITALIAN = 'ITALIAN',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum SexualOrientation {
   HETEROSEXUAL = 'HETEROSEXUAL',
   LGBTQIA = 'LGBTQIA',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum ProgramInterest {
@@ -64,94 +64,94 @@ export enum ProgramInterest {
   THIRD_PARTY_SURROGATE = 'THIRD_PARTY_SURROGATE',
   BRING_YOUR_OWN_SURROGATE = 'BRING_YOUR_OWN_SURROGATE',
   BRING_YOUR_OWN_SURROGATE_EGG = 'BRING_YOUR_OWN_SURROGATE_EGG',
-  NOT_SURE = 'NOT_SURE'
+  NOT_SURE = 'NOT_SURE',
 }
 
 export enum JourneyStartTiming {
   ASAP = 'ASAP',
   NEXT_6_MONTHS = 'NEXT_6_MONTHS',
   NEXT_YEAR = 'NEXT_YEAR',
-  NOT_SURE = 'NOT_SURE'
+  NOT_SURE = 'NOT_SURE',
 }
 
 export enum DesiredChildrenCount {
   ONE_CHILD = 'ONE_CHILD',
   TWINS = 'TWINS',
   MORE_THAN_TWO = 'MORE_THAN_TWO',
-  NOT_SURE = 'NOT_SURE'
+  NOT_SURE = 'NOT_SURE',
 }
 
 // 基本信息
 export interface BasicInformation {
-  firstName: string;
-  lastName: string;
-  pronouns: string;
-  pronouns_selected_key: Pronouns;
-  gender_identity: string;
-  gender_identity_selected_key: GenderIdentity;
-  date_of_birth: string;
-  ethnicity: string;
-  ethnicity_selected_key: Ethnicity;
+  firstName: string
+  lastName: string
+  pronouns: string
+  pronouns_selected_key: Pronouns
+  gender_identity: string
+  gender_identity_selected_key: GenderIdentity
+  date_of_birth: string
+  ethnicity: string
+  ethnicity_selected_key: Ethnicity
 }
 
 // 联系信息组合
 export interface ContactInformation {
-  cell_phone_country_code: string;
-  cell_phone: string;
-  is_agree_cell_phone_receive_messages: boolean;
-  email_address: string;
-  primary_languages: string[];
-  primary_languages_selected_keys: PrimaryLanguage[];
+  cell_phone_country_code: string
+  cell_phone: string
+  is_agree_cell_phone_receive_messages: boolean
+  email_address: string
+  primary_languages: string[]
+  primary_languages_selected_keys: PrimaryLanguage[]
 }
 
 // 家庭资料组合
 export interface FamilyProfile {
-  sexual_orientation: string;
-  sexual_orientation_selected_key: SexualOrientation;
-  city: string;
-  country: string;
-  country_selected_key: string;
-  state_or_province: string;
-  state_or_province_selected_key: string;
+  sexual_orientation: string
+  sexual_orientation_selected_key: SexualOrientation
+  city: string
+  country: string
+  country_selected_key: string
+  state_or_province: string
+  state_or_province_selected_key: string
 }
 
 // 项目意向组合
 export interface ProgramInterests {
-  interested_services: string;
-  interested_services_selected_keys: ProgramInterest;
-  journey_start_timing: string;
-  journey_start_timing_selected_key: JourneyStartTiming;
-  desired_children_count: string;
-  desired_children_count_selected_key: DesiredChildrenCount;
+  interested_services: string
+  interested_services_selected_keys: ProgramInterest
+  journey_start_timing: string
+  journey_start_timing_selected_key: JourneyStartTiming
+  desired_children_count: string
+  desired_children_count_selected_key: DesiredChildrenCount
 }
 
 // 渠道及初步沟通组合
 export interface Referral {
-  referral_source: string;
-  initial_questions: string;
+  referral_source: string
+  initial_questions: string
 }
 
 // ========== 申请表 application_data 类型 ==========
 
 export interface IntendedParentApplicationData {
-  basic_information?: BasicInformation;
-  contact_information?: ContactInformation;
-  family_profile?: FamilyProfile;
-  program_interests?: ProgramInterests;
-  referral?: Referral;
+  basic_information?: BasicInformation
+  contact_information?: ContactInformation
+  family_profile?: FamilyProfile
+  program_interests?: ProgramInterests
+  referral?: Referral
 }
 
 // ========== 完整表结构类型 ==========
 
 export interface IntendedParent {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  basic_information?: BasicInformation;
-  contact_information?: ContactInformation;
-  family_profile?: FamilyProfile;
-  program_interests?: ProgramInterests;
-  referral?: Referral;
+  id: number
+  created_at: string
+  updated_at: string
+  basic_information?: BasicInformation
+  contact_information?: ContactInformation
+  family_profile?: FamilyProfile
+  program_interests?: ProgramInterests
+  referral?: Referral
 }
 // SurrogateMotherApplicationData 类型请补充在本文件下方
 // 代孕母相关类型定义
@@ -165,7 +165,7 @@ export enum EducationLevel {
   BACHELOR_DEGREE = 'BACHELOR_DEGREE',
   MASTER_DEGREE = 'MASTER_DEGREE',
   DOCTORATE = 'DOCTORATE',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum USCitizenOrVisaStatus {
@@ -175,14 +175,14 @@ export enum USCitizenOrVisaStatus {
   STUDENT_VISA = 'STUDENT_VISA',
   TOURIST_VISA = 'TOURIST_VISA',
   OTHER_VISA = 'OTHER_VISA',
-  NO_STATUS = 'NO_STATUS'
+  NO_STATUS = 'NO_STATUS',
 }
 
 export enum BackgroundCheckStatus {
   APPROVED = 'APPROVED',
   NOT_APPROVED = 'NOT_APPROVED',
   PENDING = 'PENDING',
-  NOT_REQUIRED = 'NOT_REQUIRED'
+  NOT_REQUIRED = 'NOT_REQUIRED',
 }
 
 export enum ContactSource {
@@ -190,7 +190,7 @@ export enum ContactSource {
   SOCIAL_MEDIA = 'SOCIAL_MEDIA',
   REFERRAL = 'REFERRAL',
   ADVERTISEMENT = 'ADVERTISEMENT',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 
 export enum MaritalStatus {
@@ -202,13 +202,13 @@ export enum MaritalStatus {
   DIVORCED_FINALIZED = 'DIVORCED_FINALIZED',
   DIVORCED_IN_PROCESS = 'DIVORCED_IN_PROCESS',
   LEGALLY_SEPARATED = 'LEGALLY_SEPARATED',
-  SEPARATED_INFORMALLY = 'SEPARATED_INFORMALLY'
+  SEPARATED_INFORMALLY = 'SEPARATED_INFORMALLY',
 }
 
 export enum PartnerSupport {
   YES = 'YES',
   NO = 'NO',
-  NOT_APPLICABLE = 'NOT_APPLICABLE'
+  NOT_APPLICABLE = 'NOT_APPLICABLE',
 }
 
 export enum HouseholdIncome {
@@ -217,7 +217,7 @@ export enum HouseholdIncome {
   BETWEEN_50K_75K = 'BETWEEN_50K_75K',
   BETWEEN_75K_100K = 'BETWEEN_75K_100K',
   OVER_100K = 'OVER_100K',
-  PREFER_NOT_TO_SAY = 'PREFER_NOT_TO_SAY'
+  PREFER_NOT_TO_SAY = 'PREFER_NOT_TO_SAY',
 }
 
 export enum MedicalCondition {
@@ -226,125 +226,125 @@ export enum MedicalCondition {
   BIPOLAR_DISORDER = 'BIPOLAR_DISORDER',
   MULTIPLE_MISCARRIAGES = 'MULTIPLE_MISCARRIAGES',
   SEIZURE_DISORDER = 'SEIZURE_DISORDER',
-  NONE = 'NONE'
+  NONE = 'NONE',
 }
 
 // ========== 基本信息组合 ==========
 
 export interface SurrogateContactInformation {
-  first_name: string;
-  last_name: string;
-  date_of_birth: string;
-  cell_phone_country_code: string;
-  cell_phone: string;
-  is_agree_cell_phone_receive_messages: boolean;
-  email_address: string;
-  city: string;
-  country: string;
-  country_selected_key: string;
-  state_or_province: string;
-  state_or_province_selected_key: string;
-  zip_code: string;
-  height: string;
-  weight: string;
-  bmi: number;
-  ethnicity: string;
-  ethnicity_selected_key: Ethnicity;
-  surrogacy_experience_count: number;
-  us_citizen_or_visa_status: string;
-  us_citizen_or_visa_status_selected_key: USCitizenOrVisaStatus;
+  first_name: string
+  last_name: string
+  date_of_birth: string
+  cell_phone_country_code: string
+  cell_phone: string
+  is_agree_cell_phone_receive_messages: boolean
+  email_address: string
+  city: string
+  country: string
+  country_selected_key: string
+  state_or_province: string
+  state_or_province_selected_key: string
+  zip_code: string
+  height: string
+  weight: string
+  bmi: number
+  ethnicity: string
+  ethnicity_selected_key: Ethnicity
+  surrogacy_experience_count: number
+  us_citizen_or_visa_status: string
+  us_citizen_or_visa_status_selected_key: USCitizenOrVisaStatus
 }
 
 export interface AboutYou {
-  contact_source: string;
-  contact_source_selected_key: ContactSource;
-  occupation: string;
-  education_level: string;
-  education_level_selected_key: EducationLevel;
-  is_former_surrogate: boolean;
-  surrogate_experience: string;
-  marital_status: string;
-  marital_status_selected_key: MaritalStatus;
-  partner_support: string;
-  partner_support_selected_key: PartnerSupport;
-  has_high_school_diploma: boolean;
-  household_income: string;
-  household_income_selected_key: HouseholdIncome;
+  contact_source: string
+  contact_source_selected_key: ContactSource
+  occupation: string
+  education_level: string
+  education_level_selected_key: EducationLevel
+  is_former_surrogate: boolean
+  surrogate_experience: string
+  marital_status: string
+  marital_status_selected_key: MaritalStatus
+  partner_support: string
+  partner_support_selected_key: PartnerSupport
+  has_high_school_diploma: boolean
+  household_income: string
+  household_income_selected_key: HouseholdIncome
 }
 
 export interface PregnancyHistory {
-  delivery_date: string;
-  birth_weight: string;
-  gestational_weeks: string;
-  number_of_babies: string;
-  delivery_method: string;
+  delivery_date: string
+  birth_weight: string
+  gestational_weeks: string
+  number_of_babies: string
+  delivery_method: string
 }
 
 export interface PregnancyAndHealth {
-  has_given_birth: boolean;
-  birth_details: string;
-  is_currently_pregnant: boolean;
-  is_breastfeeding: boolean;
-  has_stillbirth: boolean;
-  medical_conditions: string[];
-  medical_conditions_selected_keys: MedicalCondition[];
-  is_taking_medications: boolean;
-  medications_list: string;
-  domestic_violence: boolean;
-  substance_abuse: boolean;
-  felony_charges: boolean;
-  outstanding_warrant: boolean;
-  formal_probation: boolean;
-  arrests: boolean;
-  child_abuse_neglect: boolean;
-  child_protection_investigation: boolean;
-  background_check_status: string;
-  background_check_status_selected_key: BackgroundCheckStatus;
-  pregnancy_histories: PregnancyHistory[];
-  serious_pregnancy_complications: boolean;
-  current_birth_control: string;
-  closest_hospital: string;
-  closest_nicu_iii: string;
+  has_given_birth: boolean
+  birth_details: string
+  is_currently_pregnant: boolean
+  is_breastfeeding: boolean
+  has_stillbirth: boolean
+  medical_conditions: string[]
+  medical_conditions_selected_keys: MedicalCondition[]
+  is_taking_medications: boolean
+  medications_list: string
+  domestic_violence: boolean
+  substance_abuse: boolean
+  felony_charges: boolean
+  outstanding_warrant: boolean
+  formal_probation: boolean
+  arrests: boolean
+  child_abuse_neglect: boolean
+  child_protection_investigation: boolean
+  background_check_status: string
+  background_check_status_selected_key: BackgroundCheckStatus
+  pregnancy_histories: PregnancyHistory[]
+  serious_pregnancy_complications: boolean
+  current_birth_control: string
+  closest_hospital: string
+  closest_nicu_iii: string
 }
 
 export interface GestationalSurrogacyInterview {
-  emotional_support: string;
-  languages_spoken: string;
-  motivation: string;
-  self_introduction: string;
-  contact_preference: string;
-  hipaa_release_willing: boolean;
-  twins_feeling: string;
-  multiple_reduction_willing: boolean;
-  termination_willing: boolean;
+  emotional_support: string
+  languages_spoken: string
+  motivation: string
+  self_introduction: string
+  contact_preference: string
+  hipaa_release_willing: boolean
+  twins_feeling: string
+  multiple_reduction_willing: boolean
+  termination_willing: boolean
 }
 
 export interface UploadPhoto {
-  name: string;
-  url: string;
+  name: string
+  url: string
 }
 
 // ========== 申请表 application_data 类型 ==========
 
 export interface SurrogateMotherApplicationData {
-  contact_information?: SurrogateContactInformation;
-  about_you?: AboutYou;
-  pregnancy_and_health?: PregnancyAndHealth;
-  gestational_surrogacy_interview?: GestationalSurrogacyInterview;
-  upload_photos?: UploadPhoto[];
+  contact_information?: SurrogateContactInformation
+  about_you?: AboutYou
+  pregnancy_and_health?: PregnancyAndHealth
+  gestational_surrogacy_interview?: GestationalSurrogacyInterview
+  upload_photos?: UploadPhoto[]
 }
 
 // ========== 完整表结构类型 ==========
 
 export interface SurrogateMother {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  contact_information?: SurrogateContactInformation;
-  about_you?: AboutYou;
-  pregnancy_and_health?: PregnancyAndHealth;
-  gestational_surrogacy_interview?: GestationalSurrogacyInterview;
-  upload_photos?: UploadPhoto[];
+  id: number
+  created_at: string
+  updated_at: string
+  contact_information?: SurrogateContactInformation
+  about_you?: AboutYou
+  pregnancy_and_health?: PregnancyAndHealth
+  gestational_surrogacy_interview?: GestationalSurrogacyInterview
+  upload_photos?: UploadPhoto[]
 }
 
 // 申请表完整记录（对应 applications 表）

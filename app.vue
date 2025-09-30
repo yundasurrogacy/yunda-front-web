@@ -17,7 +17,7 @@ useHead({
 </script>
 
 <template>
-  <div style="font-family: var(--font-secondary)" class="text-[var(--dark-brown)] text-3.5 lg:text-5">
+  <div style="font-family: var(--font-secondary)" class="text-3.5 text-[var(--dark-brown)] lg:text-5">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

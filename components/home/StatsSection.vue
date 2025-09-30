@@ -1,70 +1,79 @@
+<script setup>
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+</script>
+
 <template>
-  <section class="py-20 md:py-25 px-4 md:px-20 bg-[var(--head-bg)]">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 md:gap-27.5 max-w-320 md:max-w-full mx-auto">
+  <section class="bg-[var(--head-bg)] px-4 py-20 md:px-20 md:py-25">
+    <div class="grid grid-cols-1 mx-auto max-w-320 gap-20 lg:grid-cols-4 md:grid-cols-2 md:max-w-full md:gap-27.5">
       <!-- Stat 1 -->
-      <div class="flex flex-col items-center text-center scroll-animate">
-        <div class="relative w-59 h-59 mb-5 rounded-full overflow-hidden"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);">
+      <div class="scroll-animate flex flex-col items-center text-center">
+        <div
+          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
+          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
+        >
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 md:text-16 font-['Cormorant'] italic font-semibold">10+</span>
+            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">10+</span>
           </div>
         </div>
-        <p class=" text-center leading-relaxed" v-html="$t('home.statsSection.stat1')"></p>
+        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat1')" />
       </div>
 
       <!-- Stat 2 -->
-      <div class="flex flex-col items-center text-center scroll-animate scroll-animate-delay-100">
-        <div class="relative w-59 h-59 mb-5 rounded-full overflow-hidden"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);">
+      <div class="scroll-animate scroll-animate-delay-100 flex flex-col items-center text-center">
+        <div
+          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
+          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
+        >
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 md:text-16 font-['Cormorant'] italic font-semibold">400+</span>
+            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">400+</span>
           </div>
         </div>
-        <p class=" text-center">{{ $t('home.statsSection.stat2') }}</p>
+        <p class="text-center">
+          {{ $t('home.statsSection.stat2') }}
+        </p>
       </div>
 
       <!-- Stat 3 -->
-      <div class="flex flex-col items-center text-center scroll-animate scroll-animate-delay-200">
-        <div class="relative w-59 h-59 mb-5 rounded-full overflow-hidden"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);">
+      <div class="scroll-animate scroll-animate-delay-200 flex flex-col items-center text-center">
+        <div
+          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
+          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
+        >
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 md:text-16 font-['Cormorant'] italic font-semibold">300+</span>
+            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">300+</span>
           </div>
         </div>
-        <p class=" text-center leading-relaxed" v-html="$t('home.statsSection.stat3')"></p>
+        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat3')" />
       </div>
 
       <!-- Stat 4 -->
-      <div class="flex flex-col items-center text-center scroll-animate scroll-animate-delay-300">
-        <div class="relative w-59 h-59 mb-5 rounded-full overflow-hidden"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);">
+      <div class="scroll-animate scroll-animate-delay-300 flex flex-col items-center text-center">
+        <div
+          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
+          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
+        >
           <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 md:text-16 font-['Cormorant'] italic font-semibold">95%+</span>
+            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">95%+</span>
           </div>
         </div>
-        <p class=" text-center leading-relaxed" v-html="$t('home.statsSection.stat4')"></p>
+        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat4')" />
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-</script>
-
 <style scoped>
 .ball {
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.9) 0%,             /* 中心亮 */
-    var(--grayish-green) 60%,               /* 中段本色 */
-    rgba(100, 100, 100, 0.25) 100%           /* 边缘暗 */
+    rgba(255, 255, 255, 0.9) 0%,
+    /* 中心亮 */ var(--grayish-green) 60%,
+    /* 中段本色 */ rgba(100, 100, 100, 0.25) 100% /* 边缘暗 */
   );
   box-shadow:
-    inset 0 2px 8px rgba(255, 255, 255, 0.6),    /* 顶部高光 */
-    inset 0 -2px 12px rgba(0, 0, 0, 0.15);       /* 底部阴影 */
+    inset 0 2px 8px rgba(255, 255, 255, 0.6),
+    /* 顶部高光 */ inset 0 -2px 12px rgba(0, 0, 0, 0.15); /* 底部阴影 */
 }
-
 </style>

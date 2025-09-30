@@ -1,24 +1,3 @@
-<template>
-  <div>
-    <AppHeader />
-    <HeroSection />
-    <StatsSection />
-    <GlobalSupportSection />
-    <LegalExpertiseSection />
-    <SurrogateCareSection />
-    <CommitmentSection />
-    <!-- <VideoPlayer
-      :video-src="'/videos/video1.mp4'"
-      :background-color="'#A9A67D'"
-      :controls="true"
-      :autoplay="false"
-     /> -->
-    <JourneySection />
-    <CostSection />
-    <AppFooter />
-  </div>
-</template>
-
 <script setup>
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
@@ -60,6 +39,27 @@ useHead({
   ],
 })
 </script>
+
+<template>
+  <div>
+    <AppHeader />
+    <HeroSection />
+    <StatsSection />
+    <GlobalSupportSection />
+    <LegalExpertiseSection />
+    <SurrogateCareSection />
+    <CommitmentSection />
+    <!-- <VideoPlayer
+      :video-src="'/videos/video1.mp4'"
+      :background-color="'#A9A67D'"
+      :controls="true"
+      :autoplay="false"
+     /> -->
+    <JourneySection />
+    <CostSection />
+    <AppFooter />
+  </div>
+</template>
 
 <style scoped>
 </style>

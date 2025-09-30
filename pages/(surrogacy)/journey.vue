@@ -1,7 +1,17 @@
+<script setup lang="ts">
+import AppFooter from '@/components/base/AppFooter.vue'
+import AppHeader from '@/components/base/AppHeader.vue'
+import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
+import HeroSection from '@/components/base/SUHeroSection.vue'
+import JourneyStepsTimeline from '@/components/surrogacy/journey/StepsTimeline.vue'
+import JourneyTestimonialsSection from '@/components/surrogacy/journey/TestimonialsSection.vue'
+import VideoPlayer from '~/components/base/VideoPlayer.vue'
+</script>
+
 <template>
   <div>
-    <AppHeader/>
-    <HeroSection 
+    <AppHeader />
+    <HeroSection
       :title="$t('surrogacyJourney.heroSection.title')"
       :description="$t('surrogacyJourney.heroSection.description')"
       :button-text="$t('surrogacyJourney.heroSection.button')"
@@ -14,21 +24,11 @@
      /> -->
     <JourneyStepsTimeline />
     <JourneyTestimonialsSection />
-    <ConfidenceSection 
+    <ConfidenceSection
       :title="$t('surrogacyJourney.confidenceSection.title')"
       :description="$t('surrogacyJourney.confidenceSection.description')"
       :button-text="$t('surrogacyJourney.confidenceSection.button')"
     />
-    <AppFooter/>
+    <AppFooter />
   </div>
 </template>
-
-<script setup lang="ts">
-import AppHeader from '@/components/base/AppHeader.vue';
-import AppFooter from '@/components/base/AppFooter.vue';
-import HeroSection from '@/components/base/SUHeroSection.vue';
-import JourneyStepsTimeline from '@/components/surrogacy/journey/StepsTimeline.vue';
-import JourneyTestimonialsSection from '@/components/surrogacy/journey/TestimonialsSection.vue';
-import ConfidenceSection from '@/components/base/SUConfidenceSection.vue';
-import VideoPlayer from '~/components/base/VideoPlayer.vue';
-</script>

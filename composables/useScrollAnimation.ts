@@ -1,4 +1,4 @@
-export const useScrollAnimation = () => {
+export function useScrollAnimation() {
   const observerRef = ref<IntersectionObserver | null>(null)
   const animatedElements = ref<Set<Element>>(new Set())
 
@@ -6,7 +6,7 @@ export const useScrollAnimation = () => {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.15
+      threshold: 0.15,
     }
 
     observerRef.value = new IntersectionObserver((entries) => {
@@ -61,6 +61,6 @@ export const useScrollAnimation = () => {
   })
 
   return {
-    initScrollAnimation
+    initScrollAnimation,
   }
 }

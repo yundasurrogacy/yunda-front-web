@@ -1,23 +1,22 @@
+<script setup lang="ts">
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+</script>
+
 <template>
-  <div class="career-section bg-[#A9A67D] py-20 px-6 lg:px-20">
-    <div class="container mx-auto text-center scroll-animate">
-      <h2 class="text-3xl lg:text-5xl font-semibold mb-8 max-w-4xl mx-auto" style="font-family: var(--font-primary)">
+  <div class="career-section bg-[#A9A67D] px-6 py-20 lg:px-20">
+    <div class="scroll-animate container mx-auto text-center">
+      <h2 class="mx-auto mb-8 max-w-4xl text-3xl font-semibold lg:text-5xl" style="font-family: var(--font-primary)">
         {{ $t('about.careers.title') }}
       </h2>
-      <p class="text-base lg:text-xl max-w-4xl mx-auto mb-12" v-html="$t('about.careers.description')">
-      </p>
-      <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="inline-flex items-center justify-center bg-[var(--light-cream)] lg:text-4 uppercase py-3 px-4 rounded-[10px] shadow-inner-white-soft hover:bg-[var(--head-bg)] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:translate-y-0">
+      <p class="mx-auto mb-12 max-w-4xl text-base lg:text-xl" v-html="$t('about.careers.description')" />
+      <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] lg:text-4 hover:-translate-y-0.5">
         {{ $t('about.careers.button') }}
       </a>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-</script>
 
 <style scoped>
 .shadow-inner-white-soft {

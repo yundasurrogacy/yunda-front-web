@@ -1,16 +1,30 @@
+<script setup lang="ts">
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+
+const supportItems = [
+  { id: 'recommendClinics' },
+  { id: 'coordinateConsultations' },
+  { id: 'handleShipping' },
+  { id: 'prepareDocuments' },
+  { id: 'workWithChosen' },
+]
+</script>
+
 <template>
-  <section class="w-full py-16 lg:py-20 px-4 lg:px-20 bg-gradient-to-b from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)]">
-    <div class="max-w-300 mx-auto scroll-animate">
+  <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
+    <div class="scroll-animate mx-auto max-w-300">
       <!-- Title -->
-      <h2 class="text-7.5 lg:text-10 font-semibold mb-12 lg:mb-16 text-center lg:text-left" style="font-family: var(--font-primary)">
+      <h2 class="mb-12 text-center text-7.5 font-semibold lg:mb-16 lg:text-left lg:text-10" style="font-family: var(--font-primary)">
         {{ $t('parentsIvf.supportSection.title') }}
       </h2>
 
       <!-- Support Items -->
       <div class="w-full space-y-2 lg:space-y-4">
-        <div v-for="item in supportItems" :key="item.id" class="flex flex-col lg:flex-row lg:items-start border-t-2 pt-4">
+        <div v-for="item in supportItems" :key="item.id" class="flex flex-col border-t-2 pt-4 lg:flex-row lg:items-start">
           <!-- Title -->
-          <h3 class=" text-center lg:text-left lg:w-110">
+          <h3 class="text-center lg:w-110 lg:text-left">
             {{ $t(`parentsIvf.supportSection.items.${item.id}.title`) }}
           </h3>
           <!-- Description -->
@@ -22,17 +36,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-
-const supportItems = [
-  { id: 'recommendClinics' },
-  { id: 'coordinateConsultations' },
-  { id: 'handleShipping' },
-  { id: 'prepareDocuments' },
-  { id: 'workWithChosen' }
-];
-</script>

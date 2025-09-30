@@ -1,78 +1,9 @@
-<template>
-  <div class="min-h-screen bg-[var(--foot-bg)] overflow-hidden">
-    <AppHeader/>
-    
-    <!-- Header -->
-    <div class="relative w-full h-30 lg:h-80 bg-[#d8d9ca] flex items-center justify-center">
-      <h1 class="text-center text-8 lg:text-16 font-semibold italic" style="font-family: var(--font-primary)">
-        {{ $t('surrogacy.application.title') }}
-      </h1>
-    </div>
-
-    <!-- Content area -->
-    <div class="relative min-h-[60vh] flex items-center justify-center px-4 lg:px-8 lg:py-40">
-      <div class="relative w-80vw lg:w-40vw">
-        <!-- Question Content -->
-        <div v-if="showQuestion" class="relative bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20 rounded-5">
-          <div class="px-8 lg:px-16 py-10 lg:py-20">
-            <!-- Question -->
-            <p class="w-full mx-auto text-center text-4.5 lg:text-6 mb-8 lg:mb-10" style="font-family: var(--font-primary)">
-              {{ $t(questions[currentQuestionIndex]) }}
-            </p>
-            
-            <!-- Buttons -->
-            <div class="space-y-4 flex flex-col items-center">
-              <button
-                @click="handleAnswer(true)"
-                class="min-w-60 lg:w-120 h-10 lg:h-15 bg-gradient-to-b from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-[rgba(246.29,236.19,216,0.50)] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] rounded-2.5 backdrop-blur-5 text-5 lg:text-6 hover:border-2 hover:border-[#B2BBB2] transition-all"
-                :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === true }" style="font-family: var(--font-primary)"
-              >
-                {{ $t('common.yes') }}
-              </button>
-              
-              <button
-                @click="handleAnswer(false)"
-                class="min-w-60 lg:w-120 h-10 lg:h-15 bg-gradient-to-b from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-[rgba(246.29,236.19,216,0.50)] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] rounded-2.5 backdrop-blur-5 text-5 lg:text-6 hover:border-2 hover:border-[#B2BBB2] transition-all"
-                :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === false }" style="font-family: var(--font-primary)"
-              >
-                {{ $t('common.no') }}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Info Content -->
-        <div v-if="showInfo" class="relative bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20 rounded-5">
-          <div class="px-8 lg:px-20 py-10 lg:py-20">
-            <!-- Message -->
-            <p class="text-center text-5 lg:text-8 mb-8 lg:mb-10" style="font-family: var(--font-primary)">
-              {{ $t(infoMessage) }}
-            </p>
-            
-            <!-- Button -->
-            <div class="flex justify-center">
-              <button
-                @click="handleInfoClose"
-                class="px-8 lg:px-12 py-2 lg:py-2.5 bg-[var(--grayish-green)] text-[#FFFCF6] rounded-full text-5 lg:text-6 hover:opacity-90 transition-opacity"
-              >
-                {{ $t('common.ok') }}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <AppFooter/>
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import AppHeader from '@/components/base/AppHeader.vue'
 import AppFooter from '@/components/base/AppFooter.vue'
+import AppHeader from '@/components/base/AppHeader.vue'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -91,21 +22,21 @@ const questions = [
   'surrogacy.application.qualificationQuestions.pregnancy',
   'surrogacy.application.qualificationQuestions.childcare',
   'surrogacy.application.qualificationQuestions.citizenship',
-  'surrogacy.application.qualificationQuestions.education'
+  'surrogacy.application.qualificationQuestions.education',
 ]
 
 // Handle answer selection
-const handleAnswer = (answer) => {
+function handleAnswer(answer) {
   selectedAnswer.value = answer
   // 记录答案
   answers.value.push(answer)
-  
+
   // 直接处理下一步
   processAnswer()
 }
 
 // Process the answer
-const processAnswer = () => {
+function processAnswer() {
   currentQuestionIndex.value++
   selectedAnswer.value = null // Reset selection
   if (currentQuestionIndex.value >= questions.length) {
@@ -114,7 +45,8 @@ const processAnswer = () => {
     if (hasNoAnswer) {
       // 有 'No' 的答案 - 显示不符合资格的消息
       infoMessage.value = 'surrogacy.application.messages.notQualified'
-    } else {
+    }
+    else {
       // 全部都是 'Yes' - 显示符合资格的消息
       infoMessage.value = 'surrogacy.application.messages.qualified'
     }
@@ -124,14 +56,15 @@ const processAnswer = () => {
 }
 
 // Handle info close
-const handleInfoClose = () => {
+function handleInfoClose() {
   // 检查是否有任何 'No' 的答案
   const hasNoAnswer = answers.value.includes(false)
-  
+
   if (!hasNoAnswer) {
     // 全部都是 'Yes' - 跳转到申请表单
     router.push('/be-surrogate')
-  } else {
+  }
+  else {
     // 有 'No' 的答案 - 跳转到首页
     router.push('/')
   }
@@ -142,3 +75,72 @@ onMounted(() => {
   // 无需初始化 currentQuestion
 })
 </script>
+
+<template>
+  <div class="min-h-screen overflow-hidden bg-[var(--foot-bg)]">
+    <AppHeader />
+
+    <!-- Header -->
+    <div class="relative h-30 w-full flex items-center justify-center bg-[#d8d9ca] lg:h-80">
+      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
+        {{ $t('surrogacy.application.title') }}
+      </h1>
+    </div>
+
+    <!-- Content area -->
+    <div class="relative min-h-[60vh] flex items-center justify-center px-4 lg:px-8 lg:py-40">
+      <div class="relative w-80vw lg:w-40vw">
+        <!-- Question Content -->
+        <div v-if="showQuestion" class="relative rounded-5 bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20">
+          <div class="px-8 py-10 lg:px-16 lg:py-20">
+            <!-- Question -->
+            <p class="mx-auto mb-8 w-full text-center text-4.5 lg:mb-10 lg:text-6" style="font-family: var(--font-primary)">
+              {{ $t(questions[currentQuestionIndex]) }}
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col items-center space-y-4">
+              <button
+                class="h-10 min-w-60 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-5 bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all lg:h-15 lg:w-120 hover:border-2 hover:border-[#B2BBB2] lg:text-6"
+                :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === true }"
+                style="font-family: var(--font-primary)" @click="handleAnswer(true)"
+              >
+                {{ $t('common.yes') }}
+              </button>
+
+              <button
+                class="h-10 min-w-60 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-5 bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all lg:h-15 lg:w-120 hover:border-2 hover:border-[#B2BBB2] lg:text-6"
+                :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === false }"
+                style="font-family: var(--font-primary)" @click="handleAnswer(false)"
+              >
+                {{ $t('common.no') }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Content -->
+        <div v-if="showInfo" class="relative rounded-5 bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20">
+          <div class="px-8 py-10 lg:px-20 lg:py-20">
+            <!-- Message -->
+            <p class="mb-8 text-center text-5 lg:mb-10 lg:text-8" style="font-family: var(--font-primary)">
+              {{ $t(infoMessage) }}
+            </p>
+
+            <!-- Button -->
+            <div class="flex justify-center">
+              <button
+                class="rounded-full bg-[var(--grayish-green)] px-8 py-2 text-5 text-[#FFFCF6] transition-opacity lg:px-12 lg:py-2.5 lg:text-6 hover:opacity-90"
+                @click="handleInfoClose"
+              >
+                {{ $t('common.ok') }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <AppFooter />
+  </div>
+</template>

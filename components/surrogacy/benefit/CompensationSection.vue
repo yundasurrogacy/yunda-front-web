@@ -1,8 +1,15 @@
+<script setup lang="ts">
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+const compensationItems = 13 // Number of compensation items
+</script>
+
 <template>
-  <section class="w-full py-16 lg:py-20 px-4 lg:px-20 bg-gradient-to-b from-[#FAF7F2] via-[#FBF0DA] to-[#FAF7F2]">
-    <div class="max-w-300 mx-auto scroll-animate">
+  <section class="w-full from-[#FAF7F2] via-[#FBF0DA] to-[#FAF7F2] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
+    <div class="scroll-animate mx-auto max-w-300">
       <!-- Title -->
-      <h2 class="text-7.5 lg:text-10 font-['Cormorant'] font-semibold mb-8 lg:mb-12" style="font-family: var(--font-primary)">
+      <h2 class="mb-8 text-7.5 font-semibold font-['Cormorant'] lg:mb-12 lg:text-10" style="font-family: var(--font-primary)">
         {{ $t('surrogacyBenefit.compensationSection.title') }}
       </h2>
 
@@ -15,10 +22,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-const compensationItems = 13; // Number of compensation items
-</script>

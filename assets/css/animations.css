@@ -2,7 +2,9 @@
 .scroll-animate-init {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
 }
 
 .scroll-animate.animate-in {
@@ -14,13 +16,17 @@
 .slide-left-init {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
 }
 
 .slide-right-init {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
 }
 
 .slide-left.animate-in,

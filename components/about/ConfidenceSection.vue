@@ -1,20 +1,22 @@
+<script setup lang="ts">
+</script>
+
 <template>
-  <div class="confidence-section bg-[#A9A67D] py-16 px-4">
+  <div class="confidence-section bg-[#A9A67D] px-4 py-16">
     <div class="container mx-auto text-center">
-      <h2 class="text-7.5 lg:text-10 font-bold font-['Cormorant'] text-[#271F18] mb-6">{{ $t('parentsProcess.confidenceSection.title') }}<br class="lg:hidden"></h2>
-      <p class="text-sm lg:text-xl text-[#271F18] font-['SourceSerif4'] max-w-300 mx-auto mb-8">
+      <h2 class="mb-6 text-7.5 text-[#271F18] font-bold font-['Cormorant'] lg:text-10">
+        {{ $t('parentsProcess.confidenceSection.title') }}<br class="lg:hidden">
+      </h2>
+      <p class="mx-auto mb-8 max-w-300 text-sm text-[#271F18] font-['SourceSerif4'] lg:text-xl">
         {{ $t('parentsProcess.confidenceSection.description1') }}
         {{ $t('parentsProcess.confidenceSection.description2') }}
       </p>
-      <button class="bg-[#FBF0DA] text-[#271F18] font-['SourceSerif4'] text-xs lg:text-base uppercase py-3 px-4 rounded-lg shadow-inner-white-soft backdrop-blur-lg">
+      <button class="shadow-inner-white-soft rounded-lg bg-[#FBF0DA] px-4 py-3 text-xs text-[#271F18] font-['SourceSerif4'] uppercase backdrop-blur-lg lg:text-base">
         {{ $t('home.processHeroSection.button') }}
       </button>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-</script>
 
 <style scoped>
 .shadow-inner-white-soft {

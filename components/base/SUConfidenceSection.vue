@@ -1,32 +1,31 @@
-<template>
-  <div class="relative w-full min-h-50 lg:min-h-100 bg-[var(--olive-green)] py-20 lg:py-40 px-8 lg:px-40">
-    <div class="container lg:max-w-320 mx-auto text-center text-3.5 lg:text-5 scroll-animate">
-      <h2 class="text-7.5 lg:text-10 font-semibold mb-6" style="font-family: var(--font-primary)">
-        {{ title }}
-      </h2>
-      <p class="mb-8 whitespace-pre-line">
-        {{ description }}
-      </p>
-      <a href="/surrogate-qualification" class="inline-flex items-center justify-center bg-[var(--light-cream)] uppercase py-3 px-4 rounded-[10px] shadow-inner-white-soft hover:bg-[var(--head-bg)] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:translate-y-0">
-        {{ buttonText }}
-      </a>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
-useScrollAnimation();
+defineProps<Props>()
+useScrollAnimation()
 // 定义 props 接收外部传入的文字内容
 interface Props {
   title: string
   description: string
   buttonText: string
 }
-
-defineProps<Props>()
 </script>
+
+<template>
+  <div class="relative min-h-50 w-full bg-[var(--olive-green)] px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
+    <div class="scroll-animate container mx-auto text-center text-3.5 lg:max-w-320 lg:text-5">
+      <h2 class="mb-6 text-7.5 font-semibold lg:text-10" style="font-family: var(--font-primary)">
+        {{ title }}
+      </h2>
+      <p class="mb-8 whitespace-pre-line">
+        {{ description }}
+      </p>
+      <a href="/surrogate-qualification" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+        {{ buttonText }}
+      </a>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .shadow-inner-white-soft {

@@ -1,22 +1,35 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
+
+const { initScrollAnimation } = useScrollAnimation()
+
+onMounted(() => {
+  initScrollAnimation()
+})
+</script>
+
 <template>
-  <section class="w-full py-16 lg:py-24 px-8 lg:px-0 bg-[var(--head-bg)]">
-    <div class="md:flex md:items-center h-auto lg:h-112">
+  <section class="w-full bg-[var(--head-bg)] px-8 py-16 lg:px-0 lg:py-24">
+    <div class="h-auto lg:h-112 md:flex md:items-center">
       <!-- Image Section -->
-      <div class="mb-8 md:mb-0 md:w-1/2 slide-left">
-        <img src="~/public/images/process/i-7.png" 
-             alt="Happy two-dad family" 
-             class="w-full object-cover" />
+      <div class="slide-left mb-8 md:mb-0 md:w-1/2">
+        <img
+          src="~/public/images/process/i-7.png"
+          alt="Happy two-dad family"
+          class="w-full object-cover"
+        >
       </div>
 
       <!-- Content Section -->
-      <div class="flex flex-col md:w-1/2 md:px-10 justify-between text-3.5 lg:text-5 slide-right">
+      <div class="slide-right flex flex-col justify-between text-3.5 md:w-1/2 md:px-10 lg:text-5">
         <!-- Title -->
-        <h2 class="text-6 lg:text-8 mb-6 md:mb-18 text-center md:text-left font-semibold" style="font-family: var(--font-primary)">
+        <h2 class="mb-6 text-center text-6 font-semibold md:mb-18 md:text-left lg:text-8" style="font-family: var(--font-primary)">
           {{ $t('parentsSingle.testimonialSection.title') }}
         </h2>
 
         <!-- Testimonial Text -->
-        <p class="leading-relaxed text-center md:text-left whitespace-pre-line">
+        <p class="whitespace-pre-line text-center leading-relaxed md:text-left">
           {{ $t('parentsSingle.testimonialSection.quote') }}
         </p>
         <p class="mt-6 text-center md:text-left">
@@ -26,14 +39,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { onMounted } from 'vue';
-import { useScrollAnimation } from '@/composables/useScrollAnimation';
-
-const { initScrollAnimation } = useScrollAnimation();
-
-onMounted(() => {
-  initScrollAnimation();
-});
-</script>

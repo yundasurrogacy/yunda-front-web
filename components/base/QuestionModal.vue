@@ -1,44 +1,65 @@
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
+  question: {
+    type: String,
+    required: true,
+  },
+})
+
+const emit = defineEmits(['update:modelValue', 'answer'])
+
+const selectedAnswer = ref(null)
+
+function handleAnswer(answer) {
+  selectedAnswer.value = answer
+}
+</script>
+
 <template>
   <Transition name="modal">
     <div v-if="modelValue" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-      
       <!-- Modal Container -->
-      <div class="relative max-w-300 lg:max-w-356 w-full animate-modal-in">
+      <div class="animate-modal-in relative max-w-300 w-full lg:max-w-356">
         <!-- Background blur effect -->
-        
-        <!-- Modal Content -->
-        <div class="relative bg-[var(--light-cream)] shadow-xl shadow-black/20 rounded-5">
-          <div class="px-8 lg:px-12 py-8 lg:py-12">
 
-          <!-- Question -->
-            <p class="text-center text-[var(--dark-brown)] text-8 lg:text-10 font-['Cormorant'] font-medium mb-8 lg:mb-10">
+        <!-- Modal Content -->
+        <div class="relative rounded-5 bg-[var(--light-cream)] shadow-black/20 shadow-xl">
+          <div class="px-8 py-8 lg:px-12 lg:py-12">
+            <!-- Question -->
+            <p class="mb-8 text-center text-8 text-[var(--dark-brown)] font-medium font-['Cormorant'] lg:mb-10 lg:text-10">
               {{ question }}
             </p>
-          
-          <!-- Buttons -->
-            <div class="space-y-4 flex flex-col items-center">
+
+            <!-- Buttons -->
+            <div class="flex flex-col items-center space-y-4">
               <button
-                @click="handleAnswer(true)"
-                class="w-120 h-15 bg-gradient-to-b from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-[rgba(246.29,236.19,216,0.50)] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] rounded-2.5 backdrop-blur-5 text-[var(--dark-brown)] text-6 lg:text-8 font-['Cormorant'] font-medium hover:border-2 hover:border-[#B2BBB2] transition-all"
+                class="h-15 w-120 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-6 text-[var(--dark-brown)] font-medium font-['Cormorant'] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all hover:border-2 hover:border-[#B2BBB2] lg:text-8"
                 :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === true }"
+                @click="handleAnswer(true)"
               >
                 {{ $t('common.yes') }}
               </button>
-              
+
               <button
-                @click="handleAnswer(false)"
-                class="w-120 h-15 bg-gradient-to-b from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-[rgba(246.29,236.19,216,0.50)] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] rounded-2.5 backdrop-blur-5 text-[var(--dark-brown)] text-6 lg:text-8 font-['Cormorant'] font-medium hover:border-2 hover:border-[#B2BBB2] transition-all"
+                class="h-15 w-120 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-6 text-[var(--dark-brown)] font-medium font-['Cormorant'] bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all hover:border-2 hover:border-[#B2BBB2] lg:text-8"
                 :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === false }"
+                @click="handleAnswer(false)"
               >
                 {{ $t('common.no') }}
               </button>
             </div>
-          
-          <!-- Continue Button (only show after selection) -->
+
+            <!-- Continue Button (only show after selection) -->
             <div v-if="selectedAnswer !== null" class="mt-8 flex justify-center">
               <button
+                class="rounded-full bg-[#F6ECD8] from-[#B2BBB2] to-[#B2BBB2] bg-gradient-to-b px-12 py-2.5 text-6 text-[#FFFCF6] font-medium font-['SourceSerif4'] bg-blend-overlay transition-opacity hover:opacity-90"
                 @click="$emit('answer', selectedAnswer)"
-                class="px-12 py-2.5 bg-gradient-to-b from-[#B2BBB2] to-[#B2BBB2] bg-[#F6ECD8] bg-blend-overlay rounded-full text-[#FFFCF6] text-6 font-['SourceSerif4'] font-medium hover:opacity-90 transition-opacity"
               >
                 {{ $t('common.continue') }}
               </button>
@@ -49,29 +70,6 @@
     </div>
   </Transition>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
-  },
-  question: {
-    type: String,
-    required: true
-  }
-})
-
-const emit = defineEmits(['update:modelValue', 'answer'])
-
-const selectedAnswer = ref(null)
-
-const handleAnswer = (answer) => {
-  selectedAnswer.value = answer
-}
-</script>
 
 <style scoped>
 .modal-enter-active,

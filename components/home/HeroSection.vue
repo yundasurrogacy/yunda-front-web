@@ -1,49 +1,5 @@
-<template>
-  <section class="relative w-full overflow-hidden" :class="showVideo ? '' : 'h-200 md:h-200'">
-    <!-- Video Intro -->
-    <div 
-      v-if="showVideo" 
-      class="relative w-full bg-black"
-      :class="videoFadeClass"
-    >
-      <div class="relative w-full" :style="{ paddingBottom: videoPaddingBottom }">
-        <video
-          ref="introVideo"
-          class="absolute inset-0 w-full h-full object-cover"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source :src="videoSource" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <!-- Main Content (shown immediately when video disabled, or after video when enabled) -->
-    <div v-if="!showVideo" class="absolute inset-0" :class="contentFadeClass">
-      <!-- Background Images -->
-      <div class="absolute inset-0">
-        <img src="~/public/images/home/index-bg.png" alt="Hero Background" class="w-full h-full object-cover">
-      </div>
-
-      <!-- Overlay Content -->
-      <div class="absolute inset-0 flex items-center justify-center px-4">
-        <div class="text-center max-w-320 md:max-w-full mx-auto">
-          <h1 class="text-[var(--light-cream)] text-7.5 md:text-10.5 font-semibold mb-4 md:mb-5" style="font-family: var(--font-primary)">
-            {{ $t('home.heroSection.title') }}
-          </h1>
-          <p class="text-[var(--light-cream)] text-4 md:text-5.5 font-normal">
-            {{ $t('home.heroSection.description') }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 // Video feature toggle - set to true when official video is ready
 const videoEnabled = ref(true)
@@ -66,23 +22,22 @@ const videoPaddingBottom = computed(() => {
   return isMobile.value ? '177.78%' : '56.25%'
 })
 
-
 onMounted(() => {
   // Check screen size
   const checkScreenSize = () => {
     isMobile.value = window.innerWidth < 768
   }
-  
+
   checkScreenSize()
   window.addEventListener('resize', checkScreenSize)
-  
+
   if (videoEnabled.value) {
     // Start fade-in animation for video
     setTimeout(() => {
       videoFadeClass.value = 'video-visible'
     }, 100)
   }
-  
+
   // Cleanup
   return () => {
     window.removeEventListener('resize', checkScreenSize)
@@ -104,6 +59,50 @@ onMounted(() => {
 //   }, 500)
 // }
 </script>
+
+<template>
+  <section class="relative w-full overflow-hidden" :class="showVideo ? '' : 'h-200 md:h-200'">
+    <!-- Video Intro -->
+    <div
+      v-if="showVideo"
+      class="relative w-full bg-black"
+      :class="videoFadeClass"
+    >
+      <div class="relative w-full" :style="{ paddingBottom: videoPaddingBottom }">
+        <video
+          ref="introVideo"
+          class="absolute inset-0 h-full w-full object-cover"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source :src="videoSource" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- Main Content (shown immediately when video disabled, or after video when enabled) -->
+    <div v-if="!showVideo" class="absolute inset-0" :class="contentFadeClass">
+      <!-- Background Images -->
+      <div class="absolute inset-0">
+        <img src="~/public/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover">
+      </div>
+
+      <!-- Overlay Content -->
+      <div class="absolute inset-0 flex items-center justify-center px-4">
+        <div class="mx-auto max-w-320 text-center md:max-w-full">
+          <h1 class="mb-4 text-7.5 text-[var(--light-cream)] font-semibold md:mb-5 md:text-10.5" style="font-family: var(--font-primary)">
+            {{ $t('home.heroSection.title') }}
+          </h1>
+          <p class="text-4 text-[var(--light-cream)] font-normal md:text-5.5">
+            {{ $t('home.heroSection.description') }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 
 <style scoped>
 .video-fade-in {
@@ -130,5 +129,4 @@ onMounted(() => {
   opacity: 1;
   transition: opacity 0.8s ease-in;
 }
-
 </style>

@@ -1,5 +1,5 @@
 {
- "menu": {
+  "menu": {
     "forIntendedParents": "准父母",
     "surrogacyProcess": "代孕流程",
     "surrogacyCosts": "代孕价格",
@@ -843,7 +843,7 @@
       }
     },
     "confidenceSection": {
-      "title":"",
+      "title": "",
       "description": "已有上百位非凡女性选择与孕达合作，\n帮助他人实现家庭梦想的同时，也收获了自我成长与内在丰盈。\n推荐一位值得信赖的她，不仅是对她的肯定，也是对我们的信任.\n我们将以诚挚的感谢回馈这份支持。",
       "button": "联系我们"
     }
@@ -1070,13 +1070,13 @@
           "label": "请至少上传 2 张照片",
           "minTip": "至少需要 2 张照片"
         },
-      "uploadPhotosMinTip": "请至少上传两张照片",
-      "uploadPhotosTip": "点击或拖拽图片到此处上传（至少2张）",
-      "legal": {
-        "criminalRecord": {
-          "question": "您是否有犯罪记录?",
-          "explain": "请解释"
-        },
+        "uploadPhotosMinTip": "请至少上传两张照片",
+        "uploadPhotosTip": "点击或拖拽图片到此处上传（至少2张）",
+        "legal": {
+          "criminalRecord": {
+            "question": "您是否有犯罪记录?",
+            "explain": "请解释"
+          },
           "legalMatters": {
             "question": "您或伴侣是否有正在进行中的法律事务(破产、诉讼、离婚等)?",
             "explain": "请解释"
@@ -1156,7 +1156,7 @@
         "cellPhone": "手机号码",
         "email": "电子邮箱",
         "smsConsent": {
- "label": "我同意接收有关本申请和服务的短信通知",
+          "label": "我同意接收有关本申请和服务的短信通知",
           "disclaimer": "勾选此项即表示您同意接收与申请流程相关的短信通知。标准短信资费适用。您可随时通过短信退订或在账户中更新偏好。"
         },
         "languages": {
@@ -1291,7 +1291,14 @@
     "clearFilters": "清除筛选",
     "pagination": {
       "previous": "上一页",
-      "next": "下一页"
+      "next": "下一页",
+      "first": "首页",
+      "last": "末页",
+      "showing": "显示",
+      "of": "共",
+      "results": "条结果",
+      "goTo": "跳转到",
+      "go": "跳转"
     },
     "noResults": {
       "title": "未找到相关文章",

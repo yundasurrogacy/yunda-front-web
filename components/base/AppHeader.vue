@@ -1,49 +1,48 @@
+<script setup>
+import { ref } from 'vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
+import RightMenu from './RightMenu.vue'
+import SideMenu from './SideMenu.vue'
+
+const isMenuOpen = ref(false)
+const isRightMenuOpen = ref(false)
+</script>
+
 <template>
   <!-- 占位元素，防止内容被固定的 header 遮挡 -->
-  <div class="w-full h-20 md:h-25"></div>
-  
-  <header class="fixed top-0 left-0 z-50 w-full h-20 md:h-25 bg-[var(--head-bg)] flex items-center justify-between px-4.5 md:px-20">
+  <div class="h-20 w-full md:h-25" />
+
+  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--head-bg)] px-4.5 md:h-25 md:px-20">
     <!-- Left Menu Button (always visible) -->
-    <button class="w-10 h-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
-      <img src="~/public/images/base/left_icon.svg" alt="Menu" class="w-10 h-10">
+    <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
+      <img src="~/public/images/base/left_icon.svg" alt="Menu" class="h-10 w-10">
     </button>
 
     <!-- Logo -->
-    <div class="flex-1 md:flex-none flex justify-center md:justify-start">
+    <div class="flex flex-1 justify-center md:flex-none md:justify-start">
       <NuxtLink to="/" class="inline-block">
-        <img src="~/public/images/base/logo.png" alt="Yunda Logo" class="w-20" />
+        <img src="~/public/images/base/logo.png" alt="Yunda Logo" class="w-20">
       </NuxtLink>
-
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center space-x-8">
-      <!--<a href="#" class="text-[#271F18] text-lg font-normal uppercase hover:opacity-75 transition-opacity">Log in</a>-->
+    <nav class="hidden items-center md:flex space-x-8">
+      <!-- <a href="#" class="text-[#271F18] text-lg font-normal uppercase hover:opacity-75 transition-opacity">Log in</a> -->
       <LanguageSwitcher />
     </nav>
 
     <!-- Right Menu Button (mobile only) -->
-    <button class="md:hidden w-10 h-10 flex items-center justify-center" @click="isRightMenuOpen = !isRightMenuOpen">
-      <img src="~/public/images/base/right_icon.svg" alt="Menu" class="w-10 h-10">
+    <button class="h-10 w-10 flex items-center justify-center md:hidden" @click="isRightMenuOpen = !isRightMenuOpen">
+      <img src="~/public/images/base/right_icon.svg" alt="Menu" class="h-10 w-10">
     </button>
   </header>
 
   <!-- SideMenu Component -->
-  <SideMenu v-model:isOpen="isMenuOpen" />
+  <SideMenu v-model:is-open="isMenuOpen" />
 
   <!-- RightMenu Component -->
-  <RightMenu v-model:isOpen="isRightMenuOpen" />
+  <RightMenu v-model:is-open="isRightMenuOpen" />
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import SideMenu from './SideMenu.vue';
-import RightMenu from './RightMenu.vue';
-import LanguageSwitcher from './LanguageSwitcher.vue';
-
-const isMenuOpen = ref(false);
-const isRightMenuOpen = ref(false);
-</script>
 
 <style scoped>
 /* Styles specific to AppHeader */

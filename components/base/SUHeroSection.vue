@@ -1,28 +1,5 @@
-<template>
-  <section class="su-hero-section relative w-full min-h-50 lg:min-h-100 py-20 lg:py-40 px-8 lg:px-40 bg-gradient-to-b from-[var(--head-bg)] to-[var(--hero-center)]">
-    <!-- Hero Background with Gradient -->
-      <div class="lg:max-w-320 mx-auto text-center text-3 lg:text-5 scroll-animate">
-        <!-- Title -->
-        <h1 class="text-7.5 lg:text-10 font-semibold mb-6 lg:mb-8 leading-tight" style="font-family: var(--font-primary)">
-          {{ title }}
-        </h1>
-
-        <!-- Description -->
-        <div class="leading-relaxed mb-8 lg:mb-12">
-          <p class="whitespace-pre-line">
-            {{ description }}
-          </p>
-        </div>
-        <!-- CTA Button -->
-        <a href="/surrogate-qualification" class="inline-flex items-center justify-center bg-[var(--light-cream)] uppercase py-3 px-4 rounded-[10px] shadow-inner-white-soft backdrop-blur-20 hover:bg-[var(--head-bg)] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:translate-y-0">
-          {{ buttonText }}
-        </a>
-      </div>
-  </section>
-</template>
-
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 // 定义 props 接收外部传入的文字内容
 interface Props {
@@ -42,7 +19,7 @@ onMounted(() => {
     if (element) {
       // 初始状态
       element.classList.add('scroll-animate-init')
-      
+
       // 稍后触发动画
       setTimeout(() => {
         element.classList.add('animate-in')
@@ -52,9 +29,32 @@ onMounted(() => {
 })
 </script>
 
+<template>
+  <section class="su-hero-section relative min-h-50 w-full from-[var(--head-bg)] to-[var(--hero-center)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
+    <!-- Hero Background with Gradient -->
+    <div class="scroll-animate mx-auto text-center text-3 lg:max-w-320 lg:text-5">
+      <!-- Title -->
+      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+        {{ title }}
+      </h1>
+
+      <!-- Description -->
+      <div class="mb-8 leading-relaxed lg:mb-12">
+        <p class="whitespace-pre-line">
+          {{ description }}
+        </p>
+      </div>
+      <!-- CTA Button -->
+      <a href="/surrogate-qualification" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+        {{ buttonText }}
+      </a>
+    </div>
+  </section>
+</template>
+
 <style scoped>
 .shadow-inner-white-soft {
-  box-shadow: -2px -2px 1px rgba(255, 255, 255, 0.50) inset;
+  box-shadow: -2px -2px 1px rgba(255, 255, 255, 0.5) inset;
 }
 
 .backdrop-blur-20 {

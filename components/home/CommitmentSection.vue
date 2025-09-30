@@ -1,19 +1,19 @@
+<script setup>
+import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+useScrollAnimation()
+</script>
+
 <template>
-  <section class="py-20 md:py-25 px-4 md:px-20 bg-[var(--primary-brown)]">
-    <div class="max-w-320 md:max-w-full mx-auto text-center">
-      <h2 class="text-[var(--light-cream)] text-6 md:text-8 scroll-animate" style="font-family: var(--font-primary)">
+  <section class="bg-[var(--primary-brown)] px-4 py-20 md:px-20 md:py-25">
+    <div class="mx-auto max-w-320 text-center md:max-w-full">
+      <h2 class="scroll-animate text-6 text-[var(--light-cream)] md:text-8" style="font-family: var(--font-primary)">
         {{ $t('home.commitmentSection.title') }}<br>
         {{ $t('home.commitmentSection.description') }}
       </h2>
     </div>
   </section>
 </template>
-
-<script setup>
-import { useScrollAnimation } from '~/composables/useScrollAnimation';
-
-useScrollAnimation();
-</script>
 
 <style scoped>
 </style>
