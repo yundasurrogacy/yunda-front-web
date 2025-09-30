@@ -155,7 +155,7 @@ async function fetchBlogs() {
     }
 
     // 使用新的博客 API 接口
-    const response = await $fetch(`http://192.168.2.101:3000/api/blog?${params.toString()}`, {
+    const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?${params.toString()}`, {
       method: 'GET',
     })
 
@@ -184,7 +184,7 @@ async function fetchBlogs() {
 // 获取分类统计
 async function fetchCategories() {
   try {
-    const response = await $fetch('http://192.168.2.101:3000/api/blog/categories', {
+    const response = await $fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog/categories', {
       method: 'GET',
     })
 
