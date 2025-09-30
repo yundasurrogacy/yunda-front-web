@@ -1,9 +1,6 @@
 <template>
   <div>
     <AppHeader />
-      <h1 class="text-center text-3xl font-bold mt-6 mb-2">
-        {{$t('home.siteTitle')}}
-      </h1>
     <HeroSection />
     <StatsSection />
     <GlobalSupportSection />
@@ -23,17 +20,45 @@
 </template>
 
 <script setup>
-import AppHeader from '../components/base/AppHeader.vue';
-import AppFooter from '../components/base/AppFooter.vue';
-import HeroSection from '../components/home/HeroSection.vue';
-import StatsSection from '../components/home/StatsSection.vue';
-import GlobalSupportSection from '../components/home/GlobalSupportSection.vue';
-import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue';
-import SurrogateCareSection from '../components/home/SurrogateCareSection.vue';
-import CommitmentSection from '../components/home/CommitmentSection.vue';
-import JourneySection from '../components/home/JourneySection.vue';
-import CostSection from '../components/home/CostSection.vue';
-import VideoPlayer from '~/components/base/VideoPlayer.vue';
+import AppFooter from '../components/base/AppFooter.vue'
+import AppHeader from '../components/base/AppHeader.vue'
+import CommitmentSection from '../components/home/CommitmentSection.vue'
+import CostSection from '../components/home/CostSection.vue'
+import GlobalSupportSection from '../components/home/GlobalSupportSection.vue'
+import HeroSection from '../components/home/HeroSection.vue'
+import JourneySection from '../components/home/JourneySection.vue'
+import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
+import StatsSection from '../components/home/StatsSection.vue'
+import SurrogateCareSection from '../components/home/SurrogateCareSection.vue'
+
+const { t } = useI18n()
+
+// SEO 配置
+useHead({
+  title: t('home.meta.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('home.meta.description'),
+    },
+    {
+      property: 'og:title',
+      content: t('home.meta.title'),
+    },
+    {
+      property: 'og:description',
+      content: t('home.meta.description'),
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      name: 'keywords',
+      content: t('home.meta.keywords'),
+    },
+  ],
+})
 </script>
 
 <style scoped>

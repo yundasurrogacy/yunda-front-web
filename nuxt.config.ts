@@ -25,6 +25,8 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Yunda Surrogacy - Professional Cross-Border Surrogacy Agency',
+      titleTemplate: '%s | Yunda Surrogacy',
       link: [
         {
           rel: 'preload',
@@ -49,7 +51,14 @@ export default defineNuxtConfig({
         }
       ],
       meta: [
-        { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' }
+        { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
+        { name: 'description', content: 'Yunda Surrogacy is a professional cross-border surrogacy agency providing comprehensive US surrogacy services. Expert team, transparent costs, warm support to help you achieve your parenthood dreams.' },
+        { name: 'keywords', content: 'surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'en_US' },
+        { property: 'og:site_name', content: 'Yunda Surrogacy' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@YundaSurrogacy' }
       ],
       script: [
         {

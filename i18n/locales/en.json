@@ -25,6 +25,11 @@
   },
   "home": {
     "siteTitle": "YUNDA Surrogacy Agency",
+    "meta": {
+      "title": "Yunda Surrogacy - Professional Cross-Border Surrogacy Agency | US Surrogacy Services",
+      "description": "Yunda Surrogacy is a professional cross-border surrogacy agency providing comprehensive US surrogacy services. Expert team, transparent costs, warm support to help you achieve your parenthood dreams.",
+      "keywords": "surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process"
+    },
     "commitmentSection": {
       "title": "Professionalism. Transparency. Warmth. Protection.",
       "description": "This is our lasting commitment to every journey we help build."
@@ -1270,6 +1275,35 @@
         "title": "Please specify other channel",
         "message": "When 'Other' is selected, please provide details"
       }
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing",
+      "description": "Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.",
+      "keywords": "surrogacy blog,surrogacy information,surrogacy knowledge,surrogacy experience,surrogacy cases,surrogacy law,IVF information"
+    },
+    "search": {
+      "placeholder": "Search blog articles..."
+    },
+    "loading": "Loading...",
+    "retry": "Retry",
+    "readMore": "Read More",
+    "clearFilters": "Clear Filters",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "noResults": {
+      "title": "No articles found",
+      "description": "Please try different search terms or clear the filters"
+    },
+    "detail": {
+      "placeholder": "This is where the detailed content of the blog article would be displayed. In a real application, this would show the complete article content retrieved from the database.",
+      "noContent": "No content available"
+    },
+    "error": {
+      "fetchFailed": "Failed to fetch blog data, please try again later"
     }
   },
   "about": {

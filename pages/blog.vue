@@ -1,200 +1,433 @@
 <template>
-  <div class="bg-[#F7F7F2] min-h-screen pb-16">
-    <!-- 顶部分栏区域 -->
-    <div class="max-w-6xl mx-auto pt-10 pb-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-0 items-center">
-      <div class="flex justify-center items-center h-full">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Blog Banner" class="rounded-lg object-cover w-full h-56 md:h-72" />
-      </div>
-      <div class="flex flex-col items-center justify-center bg-[#F7F7F2] h-full">
-        <h1 class="text-4xl font-bold text-[#271F18] mb-6 text-center">Blog</h1>
-        <div class="w-full max-w-md">
-          <label class="block text-[#271F18] text-base font-semibold mb-2">博客搜索</label>
-          <div class="relative">
-            <input v-model="search" type="text" class="w-full border rounded px-4 py-2 bg-[#EAF2EA] text-[#271F18] placeholder-[#6B6656]" placeholder="输入关键词。" />
-            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B6656]">
-              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <AppHeader />
 
-    <!-- 主体区：分类+三列九组卡片 -->
-    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-0">
-      <!-- 分类区 -->
-      <div class="pt-2 md:pt-0 md:col-span-1">
-        <h2 class="text-lg font-bold text-[#271F18] mb-4">Categories</h2>
-        <ul class="space-y-2">
-          <li v-for="cat in categories" :key="cat.name" class="flex justify-between items-center text-[#271F18] cursor-pointer"
-              :class="cat.name===activeCategory ? 'font-bold text-[#A9A67D]' : ''"
-              @click="selectCategory(cat.name)">
-            <span>{{cat.name}}</span>
-            <span class="text-[#A9A67D]">({{cat.count}})</span>
-          </li>
-        </ul>
-        <div class="mt-6">
-          <button class="bg-[#EAF2EA] text-[#271F18] px-4 py-2 rounded font-semibold shadow"
-                  :class="activeCategory==='全部' ? 'border border-[#A9A67D]' : ''"
-                  @click="selectCategory('全部')">所有blog {{blogs.length}}</button>
+    <!-- 博客页面主体 -->
+    <div class="bg-[#F7F7F2] min-h-screen">
+      <!-- 页面头部横幅 -->
+      <div class="bg-gradient-to-r from-[#A9A67D] to-[#8B9A7D] py-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+            {{ $t('blog.meta.title') }}
+          </h1>
+          <p class="text-xl text-white/90 max-w-3xl mx-auto">
+            {{ $t('blog.meta.description') }}
+          </p>
         </div>
       </div>
-      <!-- 三列九组 Blog 卡片 -->
-      <div class="md:col-span-3">
-        <div v-if="pagedBlogs.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          <div v-for="blog in pagedBlogs" :key="blog.id" class="bg-white rounded-xl shadow border border-gray-200 overflow-hidden flex flex-col">
-            <img v-if="blog.cover" :src="blog.cover" class="w-full h-48 object-cover" />
-            <div class="p-5 flex-1 flex flex-col">
-              <h2 class="text-lg font-bold text-[#271F18] mb-2">{{blog.title}}</h2>
-              <div class="flex items-center gap-2 text-xs text-[#A9A67D] mb-2">
-                <span>{{blog.author || 'Admin'}}</span>
-                <span>·</span>
-                <span>{{blog.date}}</span>
+
+      <!-- 搜索和筛选区域 -->
+      <div class="bg-white border-b border-gray-200 py-8">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+            <!-- 搜索框 -->
+            <div class="w-full md:w-96">
+              <div class="relative">
+                <input
+                  v-model="searchQuery"
+                  type="text"
+                  :placeholder="$t('blog.search.placeholder')"
+                  class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A9A67D] focus:border-transparent"
+                />
+                <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
               </div>
-              <div class="mb-2 text-[#6B6656] line-clamp-3">{{blog.content}}</div>
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span v-for="tag in blog.tags" :key="tag" class="bg-[#F7F7F2] border border-[#A9A67D] text-[#A9A67D] px-2 py-1 rounded text-xs">{{tag}}</span>
-              </div>
-              <button class="text-[#A9A67D] underline mt-auto" @click="viewBlog(blog)">阅读全文</button>
+            </div>
+
+            <!-- 分类筛选 -->
+            <div class="flex flex-wrap gap-2">
+              <button
+                v-for="category in categories"
+                :key="category"
+                @click="selectedCategory = category"
+                :class="[
+                  'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+                  selectedCategory === category
+                    ? 'bg-[#A9A67D] text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200',
+                ]"
+              >
+                {{ category }}
+                <span v-if="categoryCounts[category]" class="ml-1 opacity-75">
+                  ({{ categoryCounts[category] }})
+                </span>
+              </button>
             </div>
           </div>
         </div>
-        <div v-else class="text-center text-gray-400 py-12">暂无博客内容</div>
+      </div>
 
-        <!-- 分页区始终显示 -->
-        <div class="flex justify-center mt-8 gap-2 items-center">
-          <span class="text-[#6B6656] font-semibold mr-2">分页</span>
-          <button @click="goPage(1)" :disabled="page===1" class="px-2 py-1 rounded border bg-white text-[#271F18] border-gray-300 disabled:opacity-40">&lt;&lt;</button>
-          <button @click="goPage(page-1)" :disabled="page===1" class="px-2 py-1 rounded border bg-white text-[#271F18] border-gray-300 disabled:opacity-40">&lt;</button>
-          <button v-for="p in totalPages" :key="p" @click="goPage(p)"
-            :class="['px-3 py-1 rounded border', p===page ? 'bg-[#A9A67D] text-white border-[#A9A67D]' : 'bg-white text-[#271F18] border-gray-300']">
-            {{p}}
+      <!-- 博客内容区域 -->
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <!-- 加载状态 -->
+        <div v-if="loading" class="text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#A9A67D]"></div>
+          <p class="mt-4 text-gray-600">{{ $t('blog.loading') }}</p>
+        </div>
+
+        <!-- 错误状态 -->
+        <div v-else-if="error" class="text-center py-12">
+          <div class="text-red-500 text-lg">{{ error }}</div>
+          <button
+            @click="fetchBlogs"
+            class="mt-4 px-6 py-2 bg-[#A9A67D] text-white rounded-lg hover:bg-[#9A8F6D] transition-colors"
+          >
+            {{ $t('blog.retry') }}
           </button>
-          <button @click="goPage(page+1)" :disabled="page===totalPages" class="px-2 py-1 rounded border bg-white text-[#271F18] border-gray-300 disabled:opacity-40">&gt;</button>
-          <button @click="goPage(totalPages)" :disabled="page===totalPages" class="px-2 py-1 rounded border bg-white text-[#271F18] border-gray-300 disabled:opacity-40">&gt;&gt;</button>
+        </div>
+
+        <!-- 博客列表 -->
+        <div v-else-if="filteredBlogs.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article
+            v-for="blog in paginatedBlogs"
+            :key="blog.id"
+            class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group cursor-pointer"
+            @click="viewBlogDetail(blog)"
+          >
+            <!-- 博客封面图片 -->
+            <div class="aspect-[16/9] overflow-hidden">
+              <img
+                v-if="blog.cover_img_url"
+                :src="blog.cover_img_url"
+                :alt="blog.title"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                v-else
+                class="w-full h-full bg-gradient-to-br from-[#A9A67D]/20 to-[#8B9A7D]/20 flex items-center justify-center"
+              >
+                <div class="text-6xl text-[#A9A67D]/30">
+                  📝
+                </div>
+              </div>
+            </div>
+
+            <!-- 博客内容 -->
+            <div class="p-6">
+              <!-- 分类标签 -->
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-[#A9A67D]/10 text-[#A9A67D] text-sm font-medium rounded-full">
+                  {{ blog.category }}
+                </span>
+              </div>
+
+              <!-- 标题 -->
+              <h2 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#A9A67D] transition-colors line-clamp-2">
+                {{ blog.title }}
+              </h2>
+
+              <!-- 作者和时间 -->
+              <div class="flex items-center text-sm text-gray-500 mb-4">
+                <span class="mr-4">{{ blog.reference_author || '孕达团队' }}</span>
+                <span>{{ formatDate(blog.created_at) }}</span>
+              </div>
+
+              <!-- 标签 -->
+              <div v-if="blog.tags" class="flex flex-wrap gap-2 mb-4">
+                <span
+                  v-for="tag in blog.tags.split('|')"
+                  :key="tag"
+                  class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md"
+                >
+                  {{ tag }}
+                </span>
+              </div>
+
+              <!-- 阅读更多按钮 -->
+              <div class="flex items-center text-[#A9A67D] font-medium group-hover:text-[#9A8F6D] transition-colors">
+                <span>{{ $t('blog.readMore') }}</span>
+                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- 空状态 -->
+        <div v-else class="text-center py-12">
+          <div class="text-6xl mb-4">📭</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $t('blog.noResults.title') }}</h3>
+          <p class="text-gray-600 mb-6">{{ $t('blog.noResults.description') }}</p>
+          <button
+            @click="clearFilters"
+            class="px-6 py-2 bg-[#A9A67D] text-white rounded-lg hover:bg-[#9A8F6D] transition-colors"
+          >
+            {{ $t('blog.clearFilters') }}
+          </button>
+        </div>
+
+        <!-- 分页 -->
+        <div v-if="totalPages > 1" class="mt-12 flex justify-center">
+          <nav class="flex items-center space-x-2">
+            <button
+              @click="currentPage = Math.max(1, currentPage - 1)"
+              :disabled="currentPage === 1"
+              class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {{ $t('blog.pagination.previous') }}
+            </button>
+            
+            <button
+              v-for="page in visiblePages"
+              :key="page"
+              @click="currentPage = page"
+              :class="[
+                'px-4 py-2 border rounded-lg',
+                currentPage === page
+                  ? 'bg-[#A9A67D] text-white border-[#A9A67D]'
+                  : 'border-gray-300 hover:bg-gray-50',
+              ]"
+            >
+              {{ page }}
+            </button>
+            
+            <button
+              @click="currentPage = Math.min(totalPages, currentPage + 1)"
+              :disabled="currentPage === totalPages"
+              class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {{ $t('blog.pagination.next') }}
+            </button>
+          </nav>
         </div>
       </div>
     </div>
 
-    <!-- 详情弹窗 -->
-    <div v-if="showDetail" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div class="bg-white rounded-lg p-8 w-full max-w-2xl shadow-lg relative">
-        <button class="absolute top-3 right-3 text-gray-400 text-2xl" @click="showDetail = false">×</button>
-        <img v-if="detail.cover" :src="detail.cover" class="w-full h-72 object-cover rounded mb-3" />
-        <h2 class="text-3xl font-bold mb-2 text-[#271F18]">{{detail.title}}</h2>
-        <div class="flex items-center gap-2 text-xs text-[#A9A67D] mb-2">
-          <span>{{detail.author || 'Admin'}}</span>
-          <span>·</span>
-          <span>{{detail.date}}</span>
+    <!-- 博客详情弹窗 -->
+    <div
+      v-if="showDetail"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      @click.self="closeDetail"
+    >
+      <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <!-- 封面图片 -->
+        <div v-if="selectedBlog?.cover_img_url" class="aspect-[16/9] overflow-hidden">
+          <img
+            :src="selectedBlog.cover_img_url"
+            :alt="selectedBlog.title"
+            class="w-full h-full object-cover"
+          />
         </div>
-        <div class="mb-4 text-[#6B6656]">{{detail.content}}</div>
-        <div class="flex flex-wrap gap-2 mb-2">
-          <span v-for="tag in detail.tags" :key="tag" class="bg-[#F7F7F2] border border-[#A9A67D] text-[#A9A67D] px-2 py-1 rounded text-xs">{{tag}}</span>
+        
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="inline-block px-3 py-1 bg-[#A9A67D]/10 text-[#A9A67D] text-sm font-medium rounded-full mb-3">
+                {{ selectedBlog?.category }}
+              </span>
+              <h2 class="text-2xl font-bold text-gray-900">{{ selectedBlog?.title }}</h2>
+              <div class="flex items-center text-sm text-gray-500 mt-2">
+                <span class="mr-4">{{ selectedBlog?.reference_author || '孕达团队' }}</span>
+                <span>{{ formatDate(selectedBlog?.created_at) }}</span>
+              </div>
+            </div>
+            <button
+              @click="closeDetail"
+              class="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+        
+        <div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+          <div v-if="selectedBlog?.tags" class="flex flex-wrap gap-2 mb-6">
+            <span
+              v-for="tag in selectedBlog.tags.split('|')"
+              :key="tag"
+              class="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-md"
+            >
+              {{ tag }}
+            </span>
+          </div>
+          
+          <!-- 博客详细内容 -->
+          <div class="prose max-w-none">
+            <div class="text-gray-700 leading-relaxed whitespace-pre-wrap">
+              {{ selectedBlog?.content || $t('blog.detail.noContent') }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue'
+import AppFooter from '../components/base/AppFooter.vue'
+import AppHeader from '../components/base/AppHeader.vue'
 
-const blogs = ref<any[]>([]);
-const loading = ref(true);
-const error = ref('');
+const { t } = useI18n()
 
-// 分类相关
-const categoryNames = [
-  '代孕妈妈相关',
-  '准父母相关',
-  '孕达品牌相关',
-  '代孕流程相关',
-  '法律法规相关',
-  '行业动态相关',
-  '医学健康相关',
-  '教育科普相关',
-  '成功案例相关',
-  '心理情绪相关',
-];
+// SEO 配置
+useHead({
+  title: t('blog.meta.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('blog.meta.description'),
+    },
+    {
+      property: 'og:title',
+      content: t('blog.meta.title'),
+    },
+    {
+      property: 'og:description',
+      content: t('blog.meta.description'),
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
+
+// 响应式数据
+const blogs = ref<any[]>([])
+const loading = ref(true)
+const error = ref('')
+const searchQuery = ref('')
+const selectedCategory = ref('全部')
+const currentPage = ref(1)
+const pageSize = 9
+
+// 详情弹窗
+const showDetail = ref(false)
+const selectedBlog = ref<any>(null)
+
+// 分类列表
 const categories = computed(() => {
-  return categoryNames.map(name => ({
-    name,
-    count: blogs.value.filter(b => b.category === name).length
-  }));
-});
+  const cats = ['全部']
+  const uniqueCategories = [...new Set(blogs.value.map((blog) => blog.category))]
+  return [...cats, ...uniqueCategories]
+})
 
-const activeCategory = ref('全部');
-function selectCategory(name: string) {
-  activeCategory.value = name;
-  page.value = 1;
-}
+// 分类统计
+const categoryCounts = computed(() => {
+  const counts: Record<string, number> = {}
+  blogs.value.forEach((blog) => {
+    counts[blog.category] = (counts[blog.category] || 0) + 1
+  })
+  return counts
+})
 
-// 搜索和分类过滤
-const search = ref('');
+// 过滤后的博客
 const filteredBlogs = computed(() => {
-  let arr = blogs.value;
-  if (activeCategory.value !== '全部') {
-    arr = arr.filter(b => b.category === activeCategory.value);
-  }
-  if (search.value.trim()) {
-    const kw = search.value.trim().toLowerCase();
-    arr = arr.filter(b => b.title.toLowerCase().includes(kw) || b.content.toLowerCase().includes(kw));
-  }
-  return arr;
-});
+  let filtered = blogs.value
 
-// 分页
-const pageSize = 9;
-const page = ref(1);
-const totalPages = computed(() => Math.max(1, Math.ceil(filteredBlogs.value.length / pageSize)));
-const pagedBlogs = computed(() => filteredBlogs.value.slice((page.value-1)*pageSize, page.value*pageSize));
-function goPage(p: number) {
-  if (p < 1 || p > totalPages.value) return;
-  page.value = p;
+  // 按分类筛选
+  if (selectedCategory.value !== '全部') {
+    filtered = filtered.filter((blog) => blog.category === selectedCategory.value)
+  }
+
+  // 按标题搜索
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.trim().toLowerCase()
+    filtered = filtered.filter((blog) =>
+      blog.title.toLowerCase().includes(query),
+    )
+  }
+
+  return filtered
+})
+
+// 分页相关
+const totalPages = computed(() => Math.ceil(filteredBlogs.value.length / pageSize))
+
+const paginatedBlogs = computed(() => {
+  const start = (currentPage.value - 1) * pageSize
+  const end = start + pageSize
+  return filteredBlogs.value.slice(start, end)
+})
+
+const visiblePages = computed(() => {
+  const pages = []
+  const start = Math.max(1, currentPage.value - 2)
+  const end = Math.min(totalPages.value, start + 4)
+  
+  for (let i = start; i <= end; i++) {
+    pages.push(i)
+  }
+  return pages
+})
+
+// 方法
+function viewBlogDetail(blog: any) {
+  selectedBlog.value = blog
+  showDetail.value = true
 }
 
-const showDetail = ref(false);
-const detail = ref<any>({});
-function viewBlog(blog: any) {
-  detail.value = blog;
-  showDetail.value = true;
+function closeDetail() {
+  showDetail.value = false
+  selectedBlog.value = null
 }
 
-// 获取接口数据
+function clearFilters() {
+  searchQuery.value = ''
+  selectedCategory.value = '全部'
+  currentPage.value = 1
+}
+
+function formatDate(dateString: string) {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
+// 获取博客数据
 async function fetchBlogs() {
-  loading.value = true;
-  error.value = '';
   try {
-    const res = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog');
-    const data = await res.json();
-    console.log(data);
-    blogs.value = (data.blogs || []).map((b: { id: any; title: any; content: any; category: any; cover_img_url: any; created_at: string | any[]; }) => ({
-      id: b.id,
-      title: b.title,
-      content: b.content,
-      category: b.category,
-      cover: b.cover_img_url,
-      // author: '',
-      date: b.created_at ? b.created_at.slice(0, 10) : '',
-      // 其它字段可扩展
-    }));
-  } catch (e) {
-    error.value = '博客数据获取失败';
-  } finally {
-    loading.value = false;
+    loading.value = true
+    error.value = ''
+    
+    // 使用现有的博客 API 接口
+    const response = await $fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
+      method: 'GET',
+    })
+    
+    if (response && (response as any).blogs) {
+      blogs.value = (response as any).blogs
+    }
+    else {
+      throw new Error('Failed to fetch blogs')
+    }
+  }
+  catch (err) {
+    console.error('Error fetching blogs:', err)
+    error.value = t('blog.error.fetchFailed')
+  }
+  finally {
+    loading.value = false
   }
 }
+
+// 监听筛选条件变化，重置页码
+watch([searchQuery, selectedCategory], () => {
+  currentPage.value = 1
+})
 
 onMounted(() => {
-  fetchBlogs();
-});
+  fetchBlogs()
+})
 </script>
 
 <style scoped>
-.line-clamp-3 {
+.line-clamp-2 {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-clamp: 3;
 }
 </style>
