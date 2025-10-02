@@ -1283,8 +1283,29 @@
       "description": "Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.",
       "keywords": "surrogacy blog,surrogacy information,surrogacy knowledge,surrogacy experience,surrogacy cases,surrogacy law,IVF information"
     },
+    "title": "Blog",
+    "heroAlt": "Surrogacy Consultation",
     "search": {
       "placeholder": "Search blog articles..."
+    },
+    "categories": {
+      "all": "All",
+      "categoryRelatedToSurrogate": "Surrogate Related",
+      "categoryRelatedToParents": "Intended Parents Related",
+      "categoryRelatedToBrand": "Yunda Brand Related",
+      "categoryRelatedToProcess": "Surrogacy Process Related",
+      "categoryRelatedToLaw": "Legal & Regulatory Related",
+      "categoryRelatedToIndustry": "Industry News Related",
+      "categoryRelatedToMedical": "Medical & Health Related",
+      "categoryRelatedToEducation": "Educational & Informative",
+      "categoryRelatedToSuccess": "Success Stories Related",
+      "categoryRelatedToPsychology": "Psychology & Emotional Related"
+    },
+    "author": {
+      "default": "Yunda Team"
+    },
+    "tags": {
+      "title": "Related Tags"
     },
     "loading": "Loading...",
     "retry": "Retry",

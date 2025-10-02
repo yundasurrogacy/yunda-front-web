@@ -1282,8 +1282,29 @@
       "description": "孕达代孕知识博客，分享专业的代孕资讯、成功案例、医学知识、法律法规等，帮助准父母和代孕妈妈了解更多代孕相关信息。",
       "keywords": "代孕博客,代孕资讯,代孕知识,代孕经验,代孕案例,代孕法律,IVF资讯"
     },
+    "title": "博客",
+    "heroAlt": "代孕咨询",
     "search": {
       "placeholder": "搜索博客文章..."
+    },
+    "categories": {
+      "all": "全部",
+      "categoryRelatedToSurrogate": "代孕妈妈相关",
+      "categoryRelatedToParents": "准父母相关",
+      "categoryRelatedToBrand": "孕达品牌相关",
+      "categoryRelatedToProcess": "代孕流程相关",
+      "categoryRelatedToLaw": "法律法规相关",
+      "categoryRelatedToIndustry": "行业动态相关",
+      "categoryRelatedToMedical": "医学健康相关",
+      "categoryRelatedToEducation": "教育科普相关",
+      "categoryRelatedToSuccess": "成功案例相关",
+      "categoryRelatedToPsychology": "心理情绪相关"
+    },
+    "author": {
+      "default": "孕达团队"
+    },
+    "tags": {
+      "title": "相关标签"
     },
     "loading": "加载中...",
     "retry": "重试",

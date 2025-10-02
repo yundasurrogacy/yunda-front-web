@@ -44,7 +44,7 @@ const blogs = ref<Blog[]>([])
 const loading = ref(true)
 const error = ref('')
 const searchQuery = ref('')
-const selectedCategory = ref('全部')
+const selectedCategory = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 9
 
@@ -52,8 +52,22 @@ const itemsPerPage = 9
 const showDetail = ref(false)
 const selectedBlog = ref<Blog | null>(null)
 
+// 分类选项配置
+const categoryOptions = [
+  { key: 'categoryRelatedToSurrogate', value: '代孕妈妈相关' },
+  { key: 'categoryRelatedToParents', value: '准父母相关' },
+  { key: 'categoryRelatedToBrand', value: '孕达品牌相关' },
+  { key: 'categoryRelatedToProcess', value: '代孕流程相关' },
+  { key: 'categoryRelatedToLaw', value: '法律法规相关' },
+  { key: 'categoryRelatedToIndustry', value: '行业动态相关' },
+  { key: 'categoryRelatedToMedical', value: '医学健康相关' },
+  { key: 'categoryRelatedToEducation', value: '教育科普相关' },
+  { key: 'categoryRelatedToSuccess', value: '成功案例相关' },
+  { key: 'categoryRelatedToPsychology', value: '心理情绪相关' },
+]
+
 // 分类列表
-const categories = ref(['全部'])
+const categories = ref<string[]>([])
 
 // 分类统计
 const categoryCounts = ref<Record<string, number>>({})
@@ -92,7 +106,7 @@ function enableBodyScroll() {
 // 清除筛选
 function clearFilters() {
   searchQuery.value = ''
-  selectedCategory.value = '全部'
+  selectedCategory.value = 'all'  // 使用 key 而不是翻译文本
   currentPage.value = 1
   // 清除筛选后滚动到内容区域
   scrollToTop()
@@ -150,8 +164,12 @@ async function fetchBlogs() {
     }
 
     // 添加分类参数
-    if (selectedCategory.value !== '全部') {
-      params.append('category', selectedCategory.value)
+    if (selectedCategory.value && selectedCategory.value !== 'all') {
+      // 将分类 key 转换为对应的中文值发送给 API
+      const categoryOption = categoryOptions.find(option => option.key === selectedCategory.value)
+      if (categoryOption) {
+        params.append('category', categoryOption.value)
+      }
     }
 
     // 使用新的博客 API 接口
@@ -192,16 +210,39 @@ async function fetchCategories() {
       // 更新分类列表和统计
       const { categories: apiCategories, categoryCounts: apiCategoryCounts } = response as any
 
-      // 合并API返回的分类和现有分类
-      const allCategories = ['全部', ...apiCategories]
-      categories.value = allCategories
+      // 只显示API返回的有数据的分类，并添加'全部'选项
+      const validCategories = ['all'] // 先添加'全部'选项
+      
+      // 遍历API返回的分类，找到对应的key并添加到列表中
+      if (Array.isArray(apiCategories)) {
+        apiCategories.forEach((categoryValue: string) => {
+          // 根据中文值找到对应的key
+          const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+          if (categoryOption) {
+            validCategories.push(categoryOption.key)
+          }
+        })
+      }
+      
+      categories.value = validCategories
 
-      // 更新分类统计
-      Object.assign(categoryCounts.value, apiCategoryCounts)
+      // 更新分类统计（需要将中文分类名映射为key）
+      if (apiCategoryCounts) {
+        const mappedCounts: Record<string, number> = {}
+        Object.entries(apiCategoryCounts).forEach(([categoryValue, count]) => {
+          const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+          if (categoryOption) {
+            mappedCounts[categoryOption.key] = count as number
+          }
+        })
+        categoryCounts.value = mappedCounts
+      }
     }
   }
   catch (err) {
     console.error('Error fetching categories:', err)
+    // API失败时只显示'全部'选项
+    categories.value = ['all']
   }
 }
 
@@ -243,6 +284,8 @@ function scrollToTop() {
 }
 
 onMounted(() => {
+  // 初始化默认分类
+  selectedCategory.value = 'all'  // 使用 key 而不是翻译文本
   fetchCategories()
   fetchBlogs()
 })
@@ -268,7 +311,7 @@ onUnmounted(() => {
               <div class="relative">
                 <img
                   src="/images/blog-hero.jpg"
-                  alt="代孕咨询"
+                  :alt="$t('blog.heroAlt')"
                   class="h-[400px] w-full rounded-2xl object-cover shadow-2xl"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 >
@@ -281,7 +324,7 @@ onUnmounted(() => {
                       🤱
                     </div>
                     <p class="text-xl font-medium">
-                      代孕咨询
+                      {{ $t('blog.heroAlt') }}
                     </p>
                   </div>
                 </div>
@@ -291,7 +334,7 @@ onUnmounted(() => {
             <!-- 右侧：搜索区域 -->
             <div class="order-1 text-center lg:order-2 lg:text-left">
               <h1 class="mb-6 text-4xl text-white font-bold md:text-5xl">
-                Blog
+                {{ $t('blog.title') }}
               </h1>
               <p class="mb-8 text-xl text-white/90">
                 {{ $t('blog.meta.description') }}
@@ -344,7 +387,7 @@ onUnmounted(() => {
                   ]"
                   @click="selectedCategory = category"
                 >
-                  {{ category }}
+                  {{ $t(`blog.categories.${category}`) }}
                   <span
                     v-if="categoryCounts[category]"
                     class="ml-2 opacity-75"
@@ -356,7 +399,7 @@ onUnmounted(() => {
 
               <!-- 清除筛选按钮 -->
               <button
-                v-if="searchQuery || selectedCategory !== '全部'"
+                v-if="searchQuery || selectedCategory !== 'all'"
                 class="mt-4 w-full rounded-lg px-4 py-2 text-sm text-red-600 font-medium transition-colors hover:bg-red-50 hover:text-red-700"
                 @click="clearFilters"
               >
@@ -443,7 +486,7 @@ onUnmounted(() => {
 
                   <!-- 作者 -->
                   <div class="flex items-center text-xs text-gray-500">
-                    <span>{{ blog.reference_author || '孕达团队' }}</span>
+                    <span>{{ blog.reference_author || $t('blog.author.default') }}</span>
                   </div>
                 </div>
               </article>
@@ -673,7 +716,7 @@ onUnmounted(() => {
                   <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                   </svg>
-                  <span class="font-medium">{{ selectedBlog?.reference_author || '孕达团队' }}</span>
+                  <span class="font-medium">{{ selectedBlog?.reference_author || $t('blog.author.default') }}</span>
                 </div>
                 <div class="flex items-center">
                   <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -713,7 +756,7 @@ onUnmounted(() => {
                   <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
                 <h4 class="text-sm text-gray-700 font-medium">
-                  相关标签
+                  {{ $t('blog.tags.title') }}
                 </h4>
               </div>
               <div class="flex flex-wrap gap-2">
