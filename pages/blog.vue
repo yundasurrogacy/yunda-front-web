@@ -312,7 +312,7 @@ onUnmounted(() => {
                 <img
                   src="/images/blog-hero.jpg"
                   :alt="$t('blog.heroAlt')"
-                  class="h-[400px] w-full rounded-2xl object-cover shadow-2xl"
+                  class="w-full rounded-2xl object-cover shadow-2xl aspect-video"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 >
                 <div
@@ -431,10 +431,10 @@ onUnmounted(() => {
               </button>
               </div>
 
-            <!-- 博客列表 - 最多三列 -->
+            <!-- 博客列表 - 强制三列布局 -->
             <div
               v-else-if="blogs.length"
-              class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+              class="grid grid-cols-3 gap-4 lg:gap-6"
             >
               <article
                 v-for="blog in blogs"
