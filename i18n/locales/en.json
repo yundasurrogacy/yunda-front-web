@@ -1286,6 +1286,7 @@
     "title": "Blog",
     "heroAlt": "Surrogacy Consultation",
     "search": {
+      "title": "Blog Search",
       "placeholder": "Search blog articles..."
     },
     "categories": {

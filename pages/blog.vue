@@ -266,11 +266,15 @@ function scrollToTop() {
   // 滚动到博客内容区域的开始位置，留出一些空间给sticky导航
   const blogContent = document.querySelector('.blog-content-area') as HTMLElement
   if (blogContent) {
-    const elementPosition = blogContent.offsetTop
-    const offsetPosition = elementPosition - 100 // 留出100px的空间
+    // const elementPosition = blogContent.offsetTop
+    // const offsetPosition = elementPosition - 100 // 留出100px的空间
 
+    // window.scrollTo({
+    //   top: offsetPosition,
+    //   behavior: 'smooth',
+    // })
     window.scrollTo({
-      top: offsetPosition,
+      top: 0,
       behavior: 'smooth',
     })
   }
@@ -302,55 +306,42 @@ onUnmounted(() => {
 
     <!-- 博客页面主体 -->
     <div class="min-h-screen bg-[#F7F7F2]">
-      <!-- 第一屏：图片和搜索区域 -->
-      <div class="min-h-[500px] flex items-center from-[#A9A67D] to-[#8B9A7D] bg-gradient-to-r">
-        <div class="mx-auto max-w-7xl w-full px-4">
-          <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <!-- 左侧：大图 -->
-            <div class="order-2 lg:order-1">
-              <div class="relative">
-                <img
-                  src="/images/blog-hero.jpg"
-                  :alt="$t('blog.heroAlt')"
-                  class="w-full rounded-2xl object-cover shadow-2xl aspect-video"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-                <div
-                  class="h-[400px] w-full flex items-center justify-center rounded-2xl from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br shadow-2xl"
-                  style="display: none;"
-                >
-                  <div class="text-center text-white">
-                    <div class="mb-4 text-6xl">
-                      🤱
-                    </div>
-                    <p class="text-xl font-medium">
-                      {{ $t('blog.heroAlt') }}
-                    </p>
-                  </div>
-                </div>
+
+      <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
+
+
+      <div class="w-full flex flex-col lg:flex-row">
+        <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
+        <div class="lg:w-1/2 w-full bg-white flex items-center justify-center p-0" style="aspect-ratio: 16/9;">
+          <img
+            src="/images/blog-hero.jpg"
+            :alt="$t('blog.heroAlt')"
+            class="w-full h-full object-cover rounded-none m-0"
+            style="display:block;"
+          >
+        </div>
+        <!-- 右侧内容区域：背景色#FAF1E0，搜索卡片白色，输入框#CAD3D0 -->
+        <div class="lg:w-1/2 w-full flex flex-col items-center justify-center bg-[#FAF1E0] px-8 py-16">
+          <div class="w-full max-w-md mx-auto flex flex-col items-center">
+            <h1 class="text-5xl font-bold text-gray-900 text-center mb-10 font-[Cormorant,serif]">
+              {{ $t('blog.title') }}
+            </h1>
+            <!-- 搜索卡片区域 -->
+            <div class="w-full rounded-xl bg-white shadow-lg px-8 py-6 flex flex-col items-center">
+              <div class="mb-3 text-gray-700 text-base font-medium text-left w-full">
+                {{ $t('blog.search.title') }}
               </div>
-            </div>
-
-            <!-- 右侧：搜索区域 -->
-            <div class="order-1 text-center lg:order-2 lg:text-left">
-              <h1 class="mb-6 text-4xl text-white font-bold md:text-5xl">
-                {{ $t('blog.title') }}
-              </h1>
-              <p class="mb-8 text-xl text-white/90">
-                {{ $t('blog.meta.description') }}
-              </p>
-
-              <!-- 搜索框 -->
-              <div class="relative mx-auto max-w-md lg:mx-0">
+              <div class="relative w-full">
                 <input
                   v-model="searchQuery"
                   type="text"
                   :placeholder="$t('blog.search.placeholder')"
-                  class="w-full border-0 rounded-xl py-4 pl-12 pr-4 text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50"
+                  class="w-full border border-gray-300 rounded-xl py-4 pl-12 pr-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#A9A67D]/30"
+                  style="background-color: #CAD3D0;"
                 >
                 <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
                   <svg
-                    class="h-6 w-6 text-gray-400"
+                    class="h-6 w-6 text-gray-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -363,11 +354,11 @@ onUnmounted(() => {
                     />
                   </svg>
                 </div>
-      </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
       <!-- 第二屏：分类列表 + 内容展示 -->
       <div class="blog-content-area mx-auto max-w-7xl px-4 py-12">
@@ -431,10 +422,10 @@ onUnmounted(() => {
               </button>
               </div>
 
-            <!-- 博客列表 - 强制三列布局 -->
+            <!-- 博客列表 - 最多三列 -->
             <div
               v-else-if="blogs.length"
-              class="grid grid-cols-3 gap-4 lg:gap-6"
+              class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
             >
               <article
                 v-for="blog in blogs"
