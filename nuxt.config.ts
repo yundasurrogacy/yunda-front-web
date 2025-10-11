@@ -87,7 +87,36 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
   ],
+  
+  // Sitemap 配置
+  site: {
+    url: 'https://yundasurrogacy.com', // 替换为您的实际域名
+  },
+  
+  sitemap: {
+    // 自动发现路由
+    autoDiscovery: true,
+    // 排除不需要索引的页面
+    exclude: [
+      '/admin/**',
+      '/api/**',
+    ],
+    // 多语言支持
+    i18n: {
+      locales: ['en', 'zh'],
+      defaultLocale: 'en',
+    },
+    // URLs 配置
+    urls: async () => {
+      // 如果有动态页面（如博客文章），可以在这里添加
+      return [
+        // 示例：从 API 获取博客文章
+        // { loc: '/blog/article-1', lastmod: '2024-01-01' },
+      ]
+    },
+  },
   i18n: {
     defaultLocale: 'en',
     strategy: 'no_prefix',

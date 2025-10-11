@@ -60,6 +60,7 @@
     "@nuxt/icon": "^1.11.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "^9.5.4",
+    "@nuxtjs/sitemap": "^7.4.7",
     "@pinia/nuxt": "^0.5.1",
     "@unocss/eslint-plugin": "^66.0.0",
     "@unocss/nuxt": "^66.0.0",
