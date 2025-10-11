@@ -89,32 +89,57 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
   ],
-  
+
   // Sitemap 配置
   site: {
     url: 'https://yundasurrogacy.com', // 替换为您的实际域名
   },
-  
+
   sitemap: {
-    // 自动发现路由
-    autoDiscovery: true,
     // 排除不需要索引的页面
     exclude: [
       '/admin/**',
       '/api/**',
     ],
-    // 多语言支持
-    i18n: {
-      locales: ['en', 'zh'],
-      defaultLocale: 'en',
+    // 设置更新频率和优先级
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8,
     },
-    // URLs 配置
+    // URLs 配置 - 为每个页面添加多语言标签（hreflang）
     urls: async () => {
-      // 如果有动态页面（如博客文章），可以在这里添加
-      return [
-        // 示例：从 API 获取博客文章
-        // { loc: '/blog/article-1', lastmod: '2024-01-01' },
+      // 主要页面列表
+      const pages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
+        { loc: '/', priority: 1 },
+        { loc: '/about', priority: 0.9 },
+        { loc: '/be-parents', priority: 0.9 },
+        { loc: '/be-surrogate', priority: 0.9 },
+        { loc: '/blog', priority: 0.8 },
+        { loc: '/surrogate-qualification', priority: 0.8 },
+        // 父母相关页面
+        { loc: '/egg-donation', priority: 0.7 },
+        { loc: '/partner-ivf-clinics', priority: 0.7 },
+        { loc: '/single-parents-lgbtq', priority: 0.7 },
+        { loc: '/surrogacy-price', priority: 0.8 },
+        { loc: '/surrogacy-process', priority: 0.8 },
+        // 代孕者相关页面
+        { loc: '/benefit', priority: 0.7 },
+        { loc: '/eligibility', priority: 0.7 },
+        { loc: '/journey', priority: 0.7 },
+        { loc: '/referral', priority: 0.7 },
+        { loc: '/screening', priority: 0.7 },
       ]
+
+      // 为每个页面添加 hreflang 标签（多语言支持）
+      return pages.map(page => ({
+        loc: page.loc,
+        priority: page.priority,
+        alternatives: [
+          { href: page.loc, hreflang: 'en' },
+          { href: page.loc, hreflang: 'zh' },
+          { href: page.loc, hreflang: 'x-default' }, // 默认语言
+        ],
+      }))
     },
   },
   i18n: {
