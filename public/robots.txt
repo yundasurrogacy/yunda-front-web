@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*.pdf$
+Disallow: /*.docx$
+Sitemap: https://www.yundasurrogacy.com/sitemap.xml
