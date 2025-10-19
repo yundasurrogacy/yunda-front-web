@@ -1332,8 +1332,10 @@
       "noContent": "No content available"
     },
     "error": {
-      "fetchFailed": "Failed to fetch blog data, please try again later"
-    }
+      "fetchFailed": "Failed to fetch blog data, please try again later",
+      "invalidId": "Invalid blog ID"
+    },
+    "backToList": "Back to Blog List"
   },
   "about": {
     "meta": {

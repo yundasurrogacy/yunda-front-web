@@ -1331,8 +1331,10 @@
       "noContent": "暂无内容"
     },
     "error": {
-      "fetchFailed": "获取博客数据失败，请稍后重试"
-    }
+      "fetchFailed": "获取博客数据失败，请稍后重试",
+      "invalidId": "无效的博客ID"
+    },
+    "backToList": "返回博客列表"
   },
   "about": {
     "meta": {

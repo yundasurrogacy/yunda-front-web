@@ -1,9 +1,45 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
-import AppFooter from '../components/base/AppFooter.vue'
-import AppHeader from '../components/base/AppHeader.vue'
+import { onMounted, ref, watch } from 'vue'
+import AppFooter from '../../components/base/AppFooter.vue'
+import AppHeader from '../../components/base/AppHeader.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+// 根据当前语言获取博客标题
+function getBlogTitle(blog: Blog | null): string {
+  if (!blog)
+    return ''
+  // 如果当前语言是英文且有英文标题，则返回英文标题
+  if (locale.value === 'en' && blog.en_title)
+    return blog.en_title
+
+  // 否则返回中文标题
+  return blog.title
+}
+
+// 根据当前语言获取博客内容
+function getBlogContent(blog: Blog | null): string {
+  if (!blog)
+    return ''
+  // 如果当前语言是英文且有英文内容，则返回英文内容
+  if (locale.value === 'en' && blog.en_content)
+    return blog.en_content
+
+  // 否则返回中文内容
+  return blog.content
+}
+
+// 根据当前语言获取分类名称
+function getCategoryName(categoryValue: string): string {
+  // 根据中文分类值找到对应的翻译key
+  const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+  if (categoryOption) {
+    // 使用i18n翻译
+    return t(`blog.categories.${categoryOption.key}`)
+  }
+  // 如果找不到对应的翻译，直接返回原值
+  return categoryValue
+}
 
 // SEO 配置
 useHead({
@@ -32,6 +68,8 @@ interface Blog {
   id: number
   title: string
   content: string
+  en_title?: string
+  en_content?: string
   category: string
   cover_img_url: string
   tags: string
@@ -47,10 +85,7 @@ const searchQuery = ref('')
 const selectedCategory = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 9
-
-// 详情弹窗
-const showDetail = ref(false)
-const selectedBlog = ref<Blog | null>(null)
+const router = useRouter()
 
 // 分类选项配置
 const categoryOptions = [
@@ -77,30 +112,11 @@ const totalPages = ref(1)
 const pagination = ref<any>(null)
 const jumpToPage = ref(1)
 
-// 打开博客详情
+// 跳转到博客详情页
 function viewBlogDetail(blog: Blog) {
-  selectedBlog.value = blog
-  showDetail.value = true
-  // 禁用背景页面滚动
-  disableBodyScroll()
-}
-
-// 关闭博客详情
-function closeDetail() {
-  showDetail.value = false
-  selectedBlog.value = null
-  // 恢复背景页面滚动
-  enableBodyScroll()
-}
-
-// 禁用页面滚动
-function disableBodyScroll() {
-  document.body.style.overflow = 'hidden'
-}
-
-// 恢复页面滚动
-function enableBodyScroll() {
-  document.body.style.overflow = ''
+  console.log('点击博客:', blog.id, blog.title)
+  console.log('跳转到:', `/blog/${blog.id}`)
+  router.push(`/blog/${blog.id}`)
 }
 
 // 清除筛选
@@ -121,18 +137,6 @@ function jumpToPageHandler() {
     scrollToTop()
   }
   jumpToPage.value = page
-}
-
-// 格式化日期
-function formatDate(dateString: string) {
-  if (!dateString)
-    return ''
-  const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
 }
 
 // 格式化短日期
@@ -293,11 +297,6 @@ onMounted(() => {
   fetchCategories()
   fetchBlogs()
 })
-
-// 组件卸载时恢复页面滚动
-onUnmounted(() => {
-  enableBodyScroll()
-})
 </script>
 
 <template>
@@ -438,7 +437,7 @@ onUnmounted(() => {
                   <img
                     v-if="blog.cover_img_url"
                     :src="blog.cover_img_url"
-                    :alt="blog.title"
+                    :alt="getBlogTitle(blog)"
                     class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   >
                   <div
@@ -456,7 +455,7 @@ onUnmounted(() => {
                   <!-- 分类标签 -->
                   <div class="mb-2">
                     <span class="inline-block rounded-full bg-[#A9A67D]/10 px-3 py-1 text-xs text-[#A9A67D] font-medium">
-                      {{ blog.category }}
+                      {{ getCategoryName(blog.category) }}
                     </span>
                   </div>
 
@@ -467,12 +466,12 @@ onUnmounted(() => {
 
                   <!-- 标题 -->
                   <h2 class="line-clamp-2 mb-3 text-lg text-gray-900 font-bold transition-colors group-hover:text-[#A9A67D]">
-                    {{ blog.title }}
+                    {{ getBlogTitle(blog) }}
                   </h2>
 
                   <!-- 内容摘要 -->
                   <p class="line-clamp-3 mb-4 text-sm text-gray-600">
-                    {{ blog.content.substring(0, 120) }}{{ blog.content.length > 120 ? '...' : '' }}
+                    {{ getBlogContent(blog).substring(0, 120) }}{{ getBlogContent(blog).length > 120 ? '...' : '' }}
                   </p>
 
                   <!-- 作者 -->
@@ -671,99 +670,6 @@ onUnmounted(() => {
     </div>
 
     <AppFooter />
-
-    <!-- 博客详情弹窗 -->
-    <div
-      v-if="showDetail"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
-      @click.self="closeDetail"
-    >
-      <div class="max-h-[90vh] max-w-4xl w-full flex flex-col rounded-2xl bg-white shadow-2xl border border-gray-100 overflow-hidden">
-        <!-- 封面图片 -->
-        <div
-          v-if="selectedBlog?.cover_img_url"
-          class="aspect-square max-h-64 overflow-hidden"
-        >
-          <img
-            :src="selectedBlog.cover_img_url"
-            :alt="selectedBlog.title"
-            class="h-full w-full object-cover"
-          >
-        </div>
-        <!-- 弹窗头部 -->
-        <div class="flex-shrink-0 bg-gradient-to-r from-[#A9A67D]/5 to-[#8B9A7D]/5 p-6">
-          <div class="flex items-start justify-between">
-            <div class="flex-1 pr-6">
-              <div class="mb-4">
-                <span class="inline-flex items-center rounded-full bg-[#A9A67D] px-3 py-1 text-xs font-medium text-white shadow-sm">
-                  {{ selectedBlog?.category }}
-                </span>
-              </div>
-              <h1 class="text-3xl font-bold text-gray-900 leading-tight mb-4">
-                {{ selectedBlog?.title }}
-              </h1>
-              <div class="flex items-center space-x-4 text-sm text-gray-600">
-                <div class="flex items-center">
-                  <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="font-medium">{{ selectedBlog?.reference_author || $t('blog.author.default') }}</span>
-                </div>
-                <div class="flex items-center">
-                  <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                  </svg>
-                  <span>{{ selectedBlog?.created_at ? formatDate(selectedBlog.created_at) : '' }}</span>
-                </div>
-              </div>
-            </div>
-            <button
-              class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-all duration-200"
-              @click="closeDetail"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- 弹窗内容区域 -->
-        <div class="flex-1 overflow-y-auto bg-gray-50/30">
-          <div class="p-6">
-            <div class="prose prose-gray max-w-none">
-              <div class="whitespace-pre-wrap text-gray-700 leading-relaxed text-base">
-                {{ selectedBlog?.content || $t('blog.detail.noContent') }}
-              </div>
-            </div>
-
-            <!-- 标签区域 -->
-            <div
-              v-if="selectedBlog?.tags"
-              class="mt-8 pt-6 border-t border-gray-200"
-            >
-              <div class="flex items-center mb-4">
-                <svg class="w-5 h-5 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                </svg>
-                <h4 class="text-sm text-gray-700 font-medium">
-                  {{ $t('blog.tags.title') }}
-                </h4>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="tag in selectedBlog.tags.split('|')"
-                  :key="tag"
-                  class="inline-flex items-center rounded-full bg-white border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
-                >
-                  {{ tag }}
-                </span>
-              </div>
-            </div>
-        </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -782,92 +688,5 @@ onUnmounted(() => {
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* 弹窗内容样式优化 */
-.prose {
-  max-width: none;
-}
-
-.prose p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-  color: #374151;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.3;
-}
-
-.prose ul,
-.prose ol {
-  margin: 1.5rem 0;
-  padding-left: 2rem;
-}
-
-.prose li {
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
-}
-
-.prose strong {
-  font-weight: 600;
-  color: #111827;
-}
-
-.prose em {
-  font-style: italic;
-  color: #6b7280;
-}
-
-/* 弹窗滚动条样式 */
-.overflow-y-auto::-webkit-scrollbar {
-  width: 8px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-  background: #f8fafc;
-  border-radius: 4px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-  border: 2px solid #f8fafc;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* 弹窗动画效果 */
-.modal-enter-active,
-.modal-leave-active {
-  transition: all 0.3s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-  transform: scale(0.95);
-}
-
-/* 弹窗内容动画 */
-.content-enter-active {
-  transition: all 0.4s ease;
-}
-
-.content-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
 }
 </style>
