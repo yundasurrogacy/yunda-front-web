@@ -13,7 +13,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support. Apply to become a surrogate.',
+      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support.',
     },
     {
       property: 'og:title',
@@ -21,7 +21,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support. Apply to become a surrogate.',
+      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support.',
     },
     {
       property: 'og:type',
