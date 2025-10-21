@@ -29,18 +29,6 @@ function getBlogContent(blog: Blog | null): string {
   return blog.content
 }
 
-// 根据当前语言获取分类名称
-function getCategoryName(categoryValue: string): string {
-  // 根据中文分类值找到对应的翻译key
-  const categoryOption = categoryOptions.find(option => option.value === categoryValue)
-  if (categoryOption) {
-    // 使用i18n翻译
-    return t(`blog.categories.${categoryOption.key}`)
-  }
-  // 如果找不到对应的翻译，直接返回原值
-  return categoryValue
-}
-
 // SEO 配置
 useHead({
   title: t('blog.meta.title'),
@@ -101,6 +89,18 @@ const categoryOptions = [
   { key: 'categoryRelatedToPsychology', value: '心理情绪相关' },
 ]
 
+// 根据当前语言获取分类名称
+function getCategoryName(categoryValue: string): string {
+  // 根据中文分类值找到对应的翻译key
+  const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+  if (categoryOption) {
+    // 使用i18n翻译
+    return t(`blog.categories.${categoryOption.key}`)
+  }
+  // 如果找不到对应的翻译，直接返回原值
+  return categoryValue
+}
+
 // 分类列表
 const categories = ref<string[]>([])
 
@@ -114,15 +114,13 @@ const jumpToPage = ref(1)
 
 // 跳转到博客详情页
 function viewBlogDetail(blog: Blog) {
-  console.log('点击博客:', blog.id, blog.title)
-  console.log('跳转到:', `/blog/${blog.id}`)
   router.push(`/blog/${blog.id}`)
 }
 
 // 清除筛选
 function clearFilters() {
   searchQuery.value = ''
-  selectedCategory.value = 'all'  // 使用 key 而不是翻译文本
+  selectedCategory.value = 'all' // 使用 key 而不是翻译文本
   currentPage.value = 1
   // 清除筛选后滚动到内容区域
   scrollToTop()
@@ -216,7 +214,7 @@ async function fetchCategories() {
 
       // 只显示API返回的有数据的分类，并添加'全部'选项
       const validCategories = ['all'] // 先添加'全部'选项
-      
+
       // 遍历API返回的分类，找到对应的key并添加到列表中
       if (Array.isArray(apiCategories)) {
         apiCategories.forEach((categoryValue: string) => {
@@ -227,7 +225,7 @@ async function fetchCategories() {
           }
         })
       }
-      
+
       categories.value = validCategories
 
       // 更新分类统计（需要将中文分类名映射为key）
@@ -293,7 +291,7 @@ function scrollToTop() {
 
 onMounted(() => {
   // 初始化默认分类
-  selectedCategory.value = 'all'  // 使用 key 而不是翻译文本
+  selectedCategory.value = 'all' // 使用 key 而不是翻译文本
   fetchCategories()
   fetchBlogs()
 })
@@ -305,10 +303,7 @@ onMounted(() => {
 
     <!-- 博客页面主体 -->
     <div class="min-h-screen bg-[#F7F7F2]">
-
       <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
-
-
       <div class="w-full flex flex-col lg:flex-row">
         <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
         <div class="lg:w-1/2 w-full bg-white flex items-center justify-center p-0" style="aspect-ratio: 16/9;">
@@ -395,8 +390,8 @@ onMounted(() => {
               >
                 {{ $t('blog.clearFilters') }}
               </button>
-        </div>
-      </div>
+            </div>
+          </div>
 
           <!-- 右侧：博客内容展示 -->
           <div class="lg:col-span-3">
@@ -419,7 +414,7 @@ onMounted(() => {
               >
                 {{ $t('blog.retry') }}
               </button>
-              </div>
+            </div>
 
             <!-- 博客列表 - 最多三列 -->
             <div
@@ -446,9 +441,9 @@ onMounted(() => {
                   >
                     <div class="text-6xl text-[#A9A67D]/30">
                       🤱
-            </div>
-          </div>
-        </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- 博客内容 -->
                 <div class="p-5">
@@ -661,7 +656,7 @@ onMounted(() => {
                   @click="jumpToPageHandler"
                 >
                   {{ $t('blog.pagination.go') }}
-          </button>
+                </button>
               </div>
             </div>
           </div>
