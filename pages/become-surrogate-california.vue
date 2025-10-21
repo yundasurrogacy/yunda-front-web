@@ -8,11 +8,11 @@ const { t } = useI18n()
 
 // SEO 配置
 useHead({
-  title: 'Become a Surrogate in California | Safe, Legal & Rewarding Surrogacy with Yunda',
+  title: 'Become a Surrogate in California ',
   meta: [
     {
       name: 'description',
-      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support, and transparent compensation.',
+      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
     },
     {
       property: 'og:title',
