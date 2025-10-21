@@ -352,7 +352,7 @@ const yundaPillars = [
                 Start Application
               </NuxtLink>
               <NuxtLink
-                to="/contact"
+                to="/referral"
                 class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300 hover:bg-white hover:scale-105 hover:shadow-lg"
               >
                 Talk to a Coordinator
@@ -361,7 +361,7 @@ const yundaPillars = [
           </div>
           <div class="flex justify-center animate-fade-in-right">
             <div class="image-placeholder max-w-500  w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landing page1/become a surrogate mother.jpg" alt="Become a Surrogate mother">
+              <img src="public/images/landing page1/become-a-surrogate-mother.jpg" alt="Become a Surrogate mother">
             </div>
           </div>
         </div>
@@ -397,7 +397,7 @@ const yundaPillars = [
           <div class="flex flex-col items-center gap-8 text-center lg:w-2/3 animate-fade-in-right">
             <div class="max-w-150 w-full border border-[var(--primary-brown)]/50 rounded-5 border-dashed bg-white/60 p-6 text-3.5 text-[var(--primary-brown)] tracking-wide uppercase transition-all duration-500 hover:scale-105 hover:shadow-lg">
               <div class="image-placeholder">
-                <img src="/images/landing page1/women choose surrogacy.jpg" alt="Women choose surrogacy">
+                <img src="public/images/landing page1/women-choose-surrogacy.jpg" alt="Women choose surrogacy">
               </div>
             </div>
             <div class="max-w-150 w-full border border-[var(--olive-green)]/40 rounded-5 bg-white/90 p-8 shadow-black/10 shadow-lg transition-all duration-500 hover:shadow-xl">
@@ -744,7 +744,7 @@ const yundaPillars = [
         </h2>
         <div class="mt-8 flex justify-center animate-fade-in-up" style="animation-delay: 200ms;">
           <div class="image-placeholder max-w-160 w-full transition-all duration-500 hover:scale-105 hover:shadow-xl">
-            <img src="/images/landing page1/Yunda (Local Care, National Standards).jpg" alt="Why Yunda">
+            <img src="/images/landing page1/Yunda-Local-Care.jpg" alt="Why Yunda">
           </div>
         </div>
         <div class="grid mt-10 gap-8 lg:grid-cols-2">

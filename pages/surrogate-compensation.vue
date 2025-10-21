@@ -290,7 +290,7 @@ function toggleFaq(question: string) {
           </div>
           <div class="rounded-6 bg-white/70 p-8 text-center shadow-xl shadow-black/10 backdrop-blur">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landingpage2/Surrogate Compensation.jpg" alt="Surrogate Compensation">
+              <img src="/images/landingpage2/Surrogate-Compensation.jpg" alt="Surrogate Compensation">
             </div>
           </div>
         </div>
@@ -428,9 +428,9 @@ function toggleFaq(question: string) {
             <div class="relative max-w-400 w-full max-h-200">
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
               <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <img 
-                  src="/images/landingpage2/Surrogate Compensation Factors.jpg" 
-                  alt="Surrogate Compensation Factors" 
+                <img
+                  src="/images/landingpage2/Surrogate-Compensation-Factors.jpg"
+                  alt="Surrogate Compensation Factors"
                   class="w-full h-auto object-cover"
                 >
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -610,7 +610,7 @@ function toggleFaq(question: string) {
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
               <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
                 <img 
-                  src="/images/landingpage2/Surrogacy Requirements.jpg" 
+                  src="/images/landingpage2/Surrogacy-Requirements.jpg" 
                   alt="Surrogate Surrogacy Requirements" 
                   class="w-full h-auto object-cover"
                 >
@@ -776,7 +776,7 @@ function toggleFaq(question: string) {
             Start Application
           </NuxtLink>
           <NuxtLink
-            to="/contact"
+            to="/referral"
             class="rounded-full border border-white px-6 py-3 text-3.5 font-semibold uppercase text-white transition hover:bg-white/10"
           >
             Talk to a Coordinator

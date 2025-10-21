@@ -508,7 +508,7 @@ onUnmounted(() => {
         <div class="bg-gradient-to-r from-[var(--light-cream)] to-[var(--grayish-green)] rounded-2xl p-8 shadow-lg">
           <div class="aspect-video bg-white rounded-xl flex items-center justify-center border-2 border-dashed border-[var(--grayish-green)]">
             <div class="text-center">
-              <img src="/images/Compensation-and-Benefits.jpg" alt="California Surrogacy Compensation & Benefits">
+              <img src="/images/Compensation-Benefits.jpg" alt="California Surrogacy Compensation & Benefits">
             </div>
           </div>
         </div>
@@ -720,7 +720,7 @@ onUnmounted(() => {
         <div class="bg-gradient-to-r from-[var(--light-cream)] to-[var(--grayish-green)] rounded-2xl p-8 shadow-lg">
           <div class="aspect-video bg-white rounded-xl flex items-center justify-center border-2 border-dashed border-[var(--grayish-green)]">
             <div class="text-center">
-                <img src="/images/Legal-Medical-and-Emotional-Care.jpg" alt="California Surrogacy Legal, Medical & Emotional Care" class="w-full h-full object-cover">
+                <img src="/images/Legal-Medical-Emotional-Care.jpg" alt="California Surrogacy Legal, Medical & Emotional Care" class="w-full h-full object-cover">
             </div>
           </div>
         </div>

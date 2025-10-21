@@ -329,7 +329,7 @@ const processIcons = [
           </div>
           <div class="flex justify-center">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landingpage3/Surrogate Requirements.jpg" alt="Surrogate Requirements">
+              <img src="/images/landingpage3/Surrogate-Requirements.jpg" alt="Surrogate Requirements">
             </div>
           </div>
         </div>
@@ -427,7 +427,7 @@ const processIcons = [
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
               <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
                 <img 
-                  src="/images/landingpage3/Surrogacy Requirements.jpg" 
+                  src="/images/landingpage3/Surrogacy-Requirements.jpg" 
                   alt="Surrogacy Requirements" 
                   class="w-full h-auto object-cover"
                 >
@@ -479,7 +479,7 @@ const processIcons = [
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <img 
-          src="/images/landingpage3/IVF Surrogacy Process.jpg" 
+          src="/images/landingpage3/IVF-Surrogacy-Process.jpg" 
           alt="IVF Surrogacy Process" 
           class="w-full h-full object-cover"
         >
@@ -549,7 +549,6 @@ const processIcons = [
                 <div class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[var(--primary-brown)] bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
                   <span class="text-2xl font-bold text-[var(--primary-brown)]">{{ index + 1 }}</span>
                 </div>
-                <div class="absolute inset-0 rounded-full bg-[var(--primary-brown)] opacity-20 animate-ping"></div>
               </div>
               
               <!-- Step Content -->
@@ -618,7 +617,7 @@ const processIcons = [
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
               <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
                 <img 
-                  src="/images/landingpage3/Compensation & Support.jpg" 
+                  src="/images/landingpage3/Compensation-Support.jpg" 
                   alt="Compensation & Support" 
                   class="w-full h-auto object-cover"
                 >
