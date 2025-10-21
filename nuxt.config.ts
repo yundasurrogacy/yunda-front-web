@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Yunda Surrogacy - Professional Cross-Border Surrogacy Agency',
-      titleTemplate: '%s | Yunda Surrogacy',
+      titleTemplate: '%s',
       link: [
         {
           rel: 'preload',
@@ -111,14 +111,13 @@ fbq('track', 'SubmitApplication');
 
   // Sitemap 配置
   site: {
-    url: 'https://yundasurrogacy.com', // 替换为您的实际域名
+    url: 'https://www.yundasurrogacy.com', // 替换为您的实际域名
   },
 
   sitemap: {
     // 排除不需要索引的页面
     exclude: [
-      '/admin/**',
-      '/api/**',
+      
     ],
     // 设置更新频率和优先级
     defaults: {
