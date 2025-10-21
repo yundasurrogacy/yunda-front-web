@@ -29,6 +29,24 @@ function getBlogContent(blog: Blog | null): string {
   return blog.content
 }
 
+// 提取纯文本摘要（去除HTML标签）
+function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
+  const content = getBlogContent(blog)
+  if (!content)
+    return ''
+
+  // 移除 HTML 标签
+  const plainText = content.replace(/<[^>]*>/g, '')
+  // 移除多余的空白字符
+  const cleaned = plainText.replace(/\s+/g, ' ').trim()
+
+  // 截取指定长度
+  if (cleaned.length > maxLength) {
+    return `${cleaned.substring(0, maxLength)}...`
+  }
+  return cleaned
+}
+
 // SEO 配置
 useHead({
   title: t('blog.meta.title'),
@@ -142,10 +160,20 @@ function formatDateShort(dateString: string) {
   if (!dateString)
     return ''
   const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-  })
+
+  // 根据当前语言选择日期格式
+  if (locale.value === 'en') {
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+  else {
+    return date.toLocaleDateString('zh-CN', {
+      month: 'short',
+      day: 'numeric',
+    })
+  }
 }
 
 // 获取博客数据
@@ -466,7 +494,7 @@ onMounted(() => {
 
                   <!-- 内容摘要 -->
                   <p class="line-clamp-3 mb-4 text-sm text-gray-600">
-                    {{ getBlogContent(blog).substring(0, 120) }}{{ getBlogContent(blog).length > 120 ? '...' : '' }}
+                    {{ getBlogExcerpt(blog, 120) }}
                   </p>
 
                   <!-- 作者 -->

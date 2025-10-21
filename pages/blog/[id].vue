@@ -80,11 +80,22 @@ function formatDate(dateString: string) {
   if (!dateString)
     return ''
   const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+
+  // 根据当前语言选择日期格式
+  if (locale.value === 'en') {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  }
+  else {
+    return date.toLocaleDateString('zh-CN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  }
 }
 
 // 获取博客详情
@@ -249,8 +260,13 @@ onMounted(() => {
           <!-- 文章内容 -->
           <div class="p-8 md:p-12">
             <div class="prose prose-gray prose-lg max-w-none">
-              <div class="whitespace-pre-wrap leading-relaxed text-gray-700">
-                {{ getBlogContent(blog) || $t('blog.detail.noContent') }}
+              <div
+                v-if="getBlogContent(blog)"
+                class="leading-relaxed text-gray-700 whitespace-pre-wrap"
+                v-html="getBlogContent(blog)"
+              />
+              <div v-else class="text-gray-500">
+                {{ $t('blog.detail.noContent') }}
               </div>
             </div>
 
