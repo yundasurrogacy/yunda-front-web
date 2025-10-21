@@ -4,6 +4,15 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
+  useHead({
+  title: 'Become a Surrogate in Southern California | Yunda Surrogacy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Start your paid surrogacy journey with expert care, transparent compensation, and a supportive team. Apply today and help a family grow.',
+    },
+  ],
+})
 
 const surrogacyTabs = [
   {
