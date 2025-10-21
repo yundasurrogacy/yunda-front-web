@@ -94,7 +94,6 @@ async function fetchBlogDetail() {
     error.value = ''
 
     const blogId = route.params.id
-    console.log('博客 ID:', blogId)
 
     if (!blogId) {
       error.value = t('blog.error.invalidId')
@@ -106,15 +105,10 @@ async function fetchBlogDetail() {
       method: 'GET',
     })
 
-    console.log('API 响应:', response)
-    console.log('响应类型:', typeof response)
-    console.log('响应是否为对象:', response && typeof response === 'object')
-
     if (response && typeof response === 'object') {
       // 检查响应是否包含必要的字段
       if ('id' in response && 'title' in response) {
         blog.value = response as Blog
-        console.log('博客数据已设置:', blog.value)
       }
       else {
         console.error('响应数据格式不正确:', response)
@@ -132,7 +126,6 @@ async function fetchBlogDetail() {
   }
   finally {
     loading.value = false
-    console.log('加载完成，loading:', loading.value, 'error:', error.value, 'blog:', blog.value)
   }
 }
 
@@ -352,4 +345,3 @@ onMounted(() => {
   color: #6b7280;
 }
 </style>
-
