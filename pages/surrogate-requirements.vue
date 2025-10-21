@@ -11,7 +11,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process, embryo transfer, support, and how to become a surrogate.',
+      content: 'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process.',
     },
   ],
 })
