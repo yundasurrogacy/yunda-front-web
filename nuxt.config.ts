@@ -18,9 +18,41 @@ export default defineNuxtConfig({
     },
   },
 
-  ssr: false,
+  ssr: true,
   nitro: {
     preset: 'static',
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/about',
+        '/be-parents',
+        '/be-surrogate',
+        '/blog',
+        '/surrogate-qualification',
+        '/egg-donation',
+        '/partner-ivf-clinics',
+        '/single-parents-lgbtq',
+        '/surrogacy-price',
+        '/surrogacy-process',
+        '/benefit',
+        '/eligibility',
+        '/journey',
+        '/referral',
+        '/screening',
+        '/become-surrogate',
+        '/surrogate-compensation',
+        '/surrogate-requirements',
+        '/surrogate-journey',
+        '/become-surrogate-california'
+      ],
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://www.yundasurrogacy.com',
+    },
   },
 
   app: {

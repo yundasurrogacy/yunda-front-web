@@ -1,5 +1,19 @@
 <script setup lang="ts">
 const { locale } = useI18n()
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+
+const baseUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const canonicalUrl = computed(() => {
+  const path = route.path || '/'
+  if (!baseUrl.value)
+    return path
+
+  if (path === '/')
+    return `${baseUrl.value}/`
+
+  return `${baseUrl.value}${path.replace(/\/$/, '')}`
+})
 
 useHead({
   meta: [
@@ -8,6 +22,7 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'canonical', href: canonicalUrl },
   ],
   htmlAttrs: {
     lang: computed(() => locale.value),
