@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         '/journey',
         '/referral',
         '/screening',
-        '/become-surrogate',
+        '/become-a-surrogate-mother',
         '/surrogate-compensation',
         '/surrogate-requirements',
         '/surrogate-journey',
