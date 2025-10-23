@@ -84,14 +84,23 @@ interface Blog {
   updated_at: string
 }
 
-const blogs = ref<Blog[]>([])
-const loading = ref(true)
-const error = ref('')
 const searchQuery = ref('')
 const selectedCategory = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 9
 const router = useRouter()
+
+// 使用服务端渲染获取博客数据
+const { data: blogsData, pending: loading, error } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
+  key: 'blogs',
+  server: true,
+  default: () => ({ blogs: [], pagination: { totalPages: 1 } }),
+  transform: (data: any) => data,
+})
+
+const blogs = computed(() => blogsData.value?.blogs || [])
+const pagination = computed(() => blogsData.value?.pagination || { totalPages: 1 })
+const totalPages = computed(() => pagination.value?.totalPages || 1)
 
 // 分类选项配置
 const categoryOptions = [
@@ -119,15 +128,48 @@ function getCategoryName(categoryValue: string): string {
   return categoryValue
 }
 
+// 使用服务端渲染获取分类数据
+const { data: categoriesData } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog/categories', {
+  key: 'blog-categories',
+  server: true,
+  default: () => ({ categories: [], categoryCounts: {} }),
+  transform: (data: any) => data,
+})
+
 // 分类列表
-const categories = ref<string[]>([])
+const categories = computed(() => {
+  const apiCategories = categoriesData.value?.categories || []
+  const validCategories = ['all'] // 先添加'全部'选项
+
+  // 遍历API返回的分类，找到对应的key并添加到列表中
+  if (Array.isArray(apiCategories)) {
+    apiCategories.forEach((categoryValue: string) => {
+      // 根据中文值找到对应的key
+      const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+      if (categoryOption) {
+        validCategories.push(categoryOption.key)
+      }
+    })
+  }
+
+  return validCategories
+})
 
 // 分类统计
-const categoryCounts = ref<Record<string, number>>({})
+const categoryCounts = computed(() => {
+  const apiCategoryCounts = categoriesData.value?.categoryCounts || {}
+  const mappedCounts: Record<string, number> = {}
 
-// 分页相关
-const totalPages = ref(1)
-const pagination = ref<any>(null)
+  Object.entries(apiCategoryCounts).forEach(([categoryValue, count]) => {
+    const categoryOption = categoryOptions.find(option => option.value === categoryValue)
+    if (categoryOption) {
+      mappedCounts[categoryOption.key] = count as number
+    }
+  })
+
+  return mappedCounts
+})
+
 const jumpToPage = ref(1)
 
 // 跳转到博客详情页
@@ -176,12 +218,9 @@ function formatDateShort(dateString: string) {
   }
 }
 
-// 获取博客数据
-async function fetchBlogs() {
+// 刷新博客数据（用于筛选和分页）
+async function refreshBlogData() {
   try {
-    loading.value = true
-    error.value = ''
-
     // 构建查询参数
     const params = new URLSearchParams({
       page: currentPage.value.toString(),
@@ -202,91 +241,29 @@ async function fetchBlogs() {
       }
     }
 
-    // 使用新的博客 API 接口
-    const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?${params.toString()}`, {
-      method: 'GET',
-    })
+    // 使用 $fetch 重新获取数据
+    const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?${params.toString()}`)
 
     if (response && (response as any).blogs) {
-      blogs.value = (response as any).blogs
-      // 更新分页信息
-      const paginationData = (response as any).pagination
-      if (paginationData) {
-        pagination.value = paginationData
-        totalPages.value = paginationData.totalPages
-      }
-    }
-    else {
-      throw new Error('Failed to fetch blogs')
+      blogsData.value = response as any
     }
   }
   catch (err) {
-    console.error('Error fetching blogs:', err)
-    error.value = t('blog.error.fetchFailed')
-  }
-  finally {
-    loading.value = false
-  }
-}
-
-// 获取分类统计
-async function fetchCategories() {
-  try {
-    const response = await $fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog/categories', {
-      method: 'GET',
-    })
-
-    if (response && (response as any).categories) {
-      // 更新分类列表和统计
-      const { categories: apiCategories, categoryCounts: apiCategoryCounts } = response as any
-
-      // 只显示API返回的有数据的分类，并添加'全部'选项
-      const validCategories = ['all'] // 先添加'全部'选项
-
-      // 遍历API返回的分类，找到对应的key并添加到列表中
-      if (Array.isArray(apiCategories)) {
-        apiCategories.forEach((categoryValue: string) => {
-          // 根据中文值找到对应的key
-          const categoryOption = categoryOptions.find(option => option.value === categoryValue)
-          if (categoryOption) {
-            validCategories.push(categoryOption.key)
-          }
-        })
-      }
-
-      categories.value = validCategories
-
-      // 更新分类统计（需要将中文分类名映射为key）
-      if (apiCategoryCounts) {
-        const mappedCounts: Record<string, number> = {}
-        Object.entries(apiCategoryCounts).forEach(([categoryValue, count]) => {
-          const categoryOption = categoryOptions.find(option => option.value === categoryValue)
-          if (categoryOption) {
-            mappedCounts[categoryOption.key] = count as number
-          }
-        })
-        categoryCounts.value = mappedCounts
-      }
-    }
-  }
-  catch (err) {
-    console.error('Error fetching categories:', err)
-    // API失败时只显示'全部'选项
-    categories.value = ['all']
+    console.error('Error refreshing blogs:', err)
   }
 }
 
 // 监听筛选条件变化，重置页码并重新获取数据
 watch([searchQuery, selectedCategory], () => {
   currentPage.value = 1
-  fetchBlogs()
+  refreshBlogData()
   // 搜索/筛选后也滚动到内容区域
   scrollToTop()
 })
 
 // 监听页码变化，重新获取数据并滚动到顶部
 watch(currentPage, () => {
-  fetchBlogs()
+  refreshBlogData()
   // 滚动到页面顶部
   scrollToTop()
 })
@@ -320,8 +297,6 @@ function scrollToTop() {
 onMounted(() => {
   // 初始化默认分类
   selectedCategory.value = 'all' // 使用 key 而不是翻译文本
-  fetchCategories()
-  fetchBlogs()
 })
 </script>
 
@@ -438,7 +413,7 @@ onMounted(() => {
               </div>
               <button
                 class="mt-4 rounded-lg bg-[#A9A67D] px-6 py-2 text-white transition-colors hover:bg-[#9A8F6D]"
-                @click="fetchBlogs"
+                @click="refreshBlogData"
               >
                 {{ $t('blog.retry') }}
               </button>

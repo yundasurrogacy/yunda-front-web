@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -21,9 +20,18 @@ interface Blog {
   updated_at: string
 }
 
-const blog = ref<Blog | null>(null)
-const loading = ref(true)
-const error = ref('')
+// 使用服务端渲染获取博客详情数据
+const { data: blog, pending: loading, error } = await useFetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?id=${route.params.id}`, {
+  key: `blog-${route.params.id}`,
+  server: true,
+  default: () => null,
+  transform: (data: any) => {
+    if (data && typeof data === 'object' && 'id' in data && 'title' in data) {
+      return data as Blog
+    }
+    return null
+  },
+})
 
 // 分类选项配置
 const categoryOptions = [
@@ -98,48 +106,6 @@ function formatDate(dateString: string) {
   }
 }
 
-// 获取博客详情
-async function fetchBlogDetail() {
-  try {
-    loading.value = true
-    error.value = ''
-
-    const blogId = route.params.id
-
-    if (!blogId) {
-      error.value = t('blog.error.invalidId')
-      return
-    }
-
-    // 使用博客 API 接口获取详情
-    const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?id=${blogId}`, {
-      method: 'GET',
-    })
-
-    if (response && typeof response === 'object') {
-      // 检查响应是否包含必要的字段
-      if ('id' in response && 'title' in response) {
-        blog.value = response as Blog
-      }
-      else {
-        console.error('响应数据格式不正确:', response)
-        throw new Error('Invalid blog data format')
-      }
-    }
-    else {
-      console.error('API 返回空数据或格式错误')
-      throw new Error('Failed to fetch blog detail')
-    }
-  }
-  catch (err) {
-    console.error('获取博客详情错误:', err)
-    error.value = t('blog.error.fetchFailed')
-  }
-  finally {
-    loading.value = false
-  }
-}
-
 // 返回博客列表
 function goBack() {
   router.push('/blog')
@@ -171,10 +137,6 @@ useHead(() => ({
     },
   ],
 }))
-
-onMounted(() => {
-  fetchBlogDetail()
-})
 </script>
 
 <template>

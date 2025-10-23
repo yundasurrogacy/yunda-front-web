@@ -22,13 +22,12 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
-      crawlLinks: true,
+      crawlLinks: false,
       routes: [
         '/',
         '/about',
         '/be-parents',
         '/be-surrogate',
-        '/blog',
         '/surrogate-qualification',
         '/egg-donation',
         '/partner-ivf-clinics',
@@ -44,7 +43,7 @@ export default defineNuxtConfig({
         '/surrogate-compensation',
         '/surrogate-requirements',
         '/surrogate-journey',
-        '/become-surrogate-california'
+        '/become-surrogate-california',
       ],
     },
   },
@@ -149,7 +148,6 @@ fbq('track', 'SubmitApplication');
   sitemap: {
     // 排除不需要索引的页面
     exclude: [
-      
     ],
     // 设置更新频率和优先级
     defaults: {
