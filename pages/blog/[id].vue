@@ -88,7 +88,22 @@ function getBlogContent(blogData: Blog | null): string {
     return blogData.en_content || blogData.content || ''
   }
 }
+// 提取纯文本摘要（去除HTML标签）
+function getBlogExcerpt(blogData: Blog | null, maxLength: number = 159): string {
+  const content = getBlogContent(blogData)
+  if (!content)
+    return ''
 
+  // 移除 HTML 标签
+  const plainText = content.replace(/<[^>]*>/g, '')
+  // 移除多余的空白字符
+  const cleaned = plainText.replace(/\s+/g, ' ').trim()
+
+  // 截取指定长度
+  if (cleaned.length > maxLength) {
+    return `${cleaned.substring(0, maxLength)}...`
+  }
+  return cleaned
 // 根据当前语言获取分类名称
 function getCategoryName(categoryValue: string): string {
   // 根据中文分类值找到对应的翻译key
@@ -135,7 +150,7 @@ useHead(() => ({
   meta: [
     {
       name: 'description',
-      content: blog.value ? getBlogContent(blog.value).substring(0, 159) : t('blog.meta.description'),
+      content: blog.value ? getBlogExcerpt(blog.value, 159) : t('blog.meta.description'),
     },
     {
       property: 'og:title',
@@ -143,7 +158,7 @@ useHead(() => ({
     },
     {
       property: 'og:description',
-      content: blog.value ? getBlogContent(blog.value).substring(0, 159) : t('blog.meta.description'),
+      content: blog.value ? getBlogExcerpt(blog.value, 159) : t('blog.meta.description'),
     },
     {
       property: 'og:type',
