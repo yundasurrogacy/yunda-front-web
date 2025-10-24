@@ -928,9 +928,16 @@
         "country": "Country",
         "stateProvince": "State / Province",
         "zipCode": "Zip Code",
-        "height": "Height (in/cm)",
-        "weight": "Weight (lbs)",
+        "height": "Height（Feet）",
+        "weight": "Weight（Pound）",
         "bmi": "BMI",
+        "bmiAutoCalculated": "Automatically calculated based on height and weight",
+        "units": {
+          "feet": "ft",
+          "inches": "in",
+          "pounds": "lbs",
+          "bmi": "kg/m²"
+        },
         "ethnicity": "Ethnicity",
         "surrogacyExperienceCount": "Number of Surrogacy Experiences",
         "citizenship": "U.S. Citizenship Status",
@@ -990,8 +997,8 @@
           "currentlyPregnant": "Are you currently pregnant?",
           "breastfeeding": "Are you currently breastfeeding?",
           "stillbirth": "Have you ever experienced a stillbirth?",
-          "height": "Height (Inch / cm)",
-          "weight": "Weight (Pounds)"
+          "height": "Height (Feet)",
+          "weight": "Weight (Pound)"
         },
         "health": {
           "medicalHistory": {
@@ -1041,7 +1048,7 @@
         "pregnancyHistory": {
           "pregnancy": "Pregnancy",
           "date": "Date",
-          "weight": "Weight",
+          "weight": "Weight（lbs）",
           "weeks": "Weeks",
           "babies": "# of Babies",
           "delivery": "Delivery",

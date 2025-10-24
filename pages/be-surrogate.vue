@@ -29,7 +29,8 @@ const form = reactive({
   occupation: '',
   state: '',
   zipCode: '',
-  height: '',
+  heightFeet: '',
+  heightInches: '',
   weight: '',
   city: '',
   country: 'US',
@@ -113,6 +114,22 @@ function removePregnancy(idx: number) {
 }
 
 const { t } = useI18n()
+
+// 计算BMI
+const calculatedBMI = computed(() => {
+  const feet = Number.parseFloat(form.heightFeet) || 0
+  const inches = Number.parseFloat(form.heightInches) || 0
+  const weight = Number.parseFloat(form.weight) || 0
+
+  if (feet === 0 || weight === 0)
+    return 0
+
+  // 将英尺和英寸转换为总英寸
+  const totalInches = feet * 12 + inches
+  // BMI = (weight in lbs / (height in inches)^2) * 703
+  const bmi = (weight / (totalInches * totalInches)) * 703
+  return Math.round(bmi * 10) / 10 // 保留一位小数
+})
 
 const fileInputRef = ref<HTMLInputElement | null>(null)
 const uploadingPhotos = ref(false)
@@ -363,6 +380,17 @@ async function handleSubmit() {
     showModal.value = true
     return
   }
+  // 校验身高和体重
+  if (!form.heightFeet || !form.heightInches || !form.weight) {
+    modalConfig.type = 'error'
+    modalConfig.titleKey = 'modal.error.required.title'
+    modalConfig.messageKey = 'modal.error.required.message'
+    modalConfig.buttonText = t('modal.error.ok')
+    modalConfig.fieldLabel = 'surrogate.application.form.heightWeight'
+    showModal.value = true
+    return
+  }
+
   // 所有选择题必选校验（国际化）
   const requiredChoices = [
     { value: form.contactSource, label: 'surrogate.application.form.howDidYouHear' },
@@ -459,9 +487,9 @@ async function handleSubmit() {
         state_or_province: form.state,
         state_or_province_selected_key: form.state, // 如有多语言映射请替换
         zip_code: form.zipCode,
-        height: form.height,
-        weight: form.weight,
-        bmi: Number.parseFloat(form.bmi) || 0,
+        height: ((Number.parseFloat(form.heightFeet) || 0) * 12 + (Number.parseFloat(form.heightInches) || 0)).toString(), // 转换为总英寸
+        weight: Number.parseFloat(form.weight).toString(),
+        bmi: calculatedBMI.value,
         ethnicity: form.ethnicity,
         ethnicity_selected_key: form.ethnicity as any, // 如有枚举请替换
         surrogacy_experience_count: Number.parseInt(form.surrogacyExperienceCount) || 0,
@@ -648,9 +676,69 @@ async function handleSubmit() {
               required
             />
             <FormInput v-model="form.zipCode" :label="$t('surrogate.application.form.zipCode')" required />
-            <FormInput v-model="form.height" :label="$t('surrogate.application.form.height')" type="number" required />
-            <FormInput v-model="form.weight" :label="$t('surrogate.application.form.weight')" type="number" required />
-            <FormInput v-model="form.bmi" :label="$t('surrogate.application.form.bmi')" type="number" required />
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+              <div>
+                <label class="mb-4 block leading-6">
+                  {{ $t('surrogate.application.form.height') }} <span class="text-red-500">*</span>
+                </label>
+                <div class="flex gap-2">
+                  <input
+                    v-model="form.heightFeet"
+                    type="number"
+                    min="4"
+                    max="7"
+                    placeholder="5"
+                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                    required
+                  >
+                  <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.feet') }}</span>
+                  <input
+                    v-model="form.heightInches"
+                    type="number"
+                    min="0"
+                    max="11"
+                    placeholder="6"
+                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                    required
+                  >
+                  <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.inches') }}</span>
+                </div>
+              </div>
+              <div>
+                <label class="mb-4 block leading-6">
+                  {{ $t('surrogate.application.form.weight') }} <span class="text-red-500">*</span>
+                </label>
+                <div class="flex gap-2">
+                  <input
+                    v-model="form.weight"
+                    type="number"
+                    min="80"
+                    max="300"
+                    placeholder="140"
+                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                    required
+                  >
+                  <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.pounds') }}</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="mb-4 block leading-6">
+                {{ $t('surrogate.application.form.bmi') }} <span class="text-red-500">*</span>
+              </label>
+              <div class="flex gap-2">
+                <input
+                  :value="calculatedBMI"
+                  type="number"
+                  readonly
+                  class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.15)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                >
+                <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.bmi') }}</span>
+              </div>
+              <p class="mb-2 text-xs text-gray-500">
+                {{ $t('surrogate.application.form.bmiAutoCalculated') }}
+              </p>
+            </div>
             <FormInput v-model="form.ethnicity" :label="$t('surrogate.application.form.ethnicity')" required />
             <FormInput v-model="form.surrogacyExperienceCount" :label="$t('surrogate.application.form.surrogacyExperienceCount')" type="number" required />
             <FormSelect

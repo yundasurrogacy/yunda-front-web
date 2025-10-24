@@ -927,9 +927,16 @@
         "country": "国家",
         "stateProvince": "州/省",
         "zipCode": "邮政编码",
-        "height": "身高（英寸/厘米）",
+        "height": "身高（英尺）",
         "weight": "体重（磅）",
         "bmi": "BMI",
+        "bmiAutoCalculated": "根据身高和体重自动计算",
+        "units": {
+          "feet": "英尺",
+          "inches": "英寸",
+          "pounds": "磅",
+          "bmi": "kg/m²"
+        },
         "ethnicity": "种族",
         "surrogacyExperienceCount": "有过几次代孕经验",
         "citizenship": "美国公民或签证身份",
@@ -989,7 +996,7 @@
           "currentlyPregnant": "您目前怀孕了吗？",
           "breastfeeding": "您目前在母乳喂养吗？",
           "stillbirth": "您是否曾经历死产?",
-          "height": "身高（英寸/厘米）",
+          "height": "身高（英尺）",
           "weight": "体重（磅）"
         },
         "health": {
@@ -1040,7 +1047,7 @@
         "pregnancyHistory": {
           "pregnancy": "生产记录",
           "date": "分娩日期",
-          "weight": "出生体重",
+          "weight": "出生体重（磅）",
           "weeks": "孕周",
           "babies": "胎儿数",
           "delivery": "分娩方式",
