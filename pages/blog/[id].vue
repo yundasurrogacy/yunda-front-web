@@ -104,6 +104,7 @@ function getBlogExcerpt(blogData: Blog | null, maxLength: number = 159): string 
     return `${cleaned.substring(0, maxLength)}...`
   }
   return cleaned
+}
 // 根据当前语言获取分类名称
 function getCategoryName(categoryValue: string): string {
   // 根据中文分类值找到对应的翻译key
