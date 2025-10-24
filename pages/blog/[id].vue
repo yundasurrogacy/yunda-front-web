@@ -8,6 +8,7 @@ const router = useRouter()
 
 interface Blog {
   id: number
+  route_id?: string
   title: string
   content: string
   en_title?: string
@@ -21,13 +22,23 @@ interface Blog {
 }
 
 // 使用服务端渲染获取博客详情数据
-const { data: blog, pending: loading, error } = await useFetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?id=${route.params.id}`, {
+// 首先尝试通过route_id查询，如果失败则通过id查询
+const { data: blog, pending: loading, error } = await useFetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?route_id=${route.params.id}`, {
   key: `blog-${route.params.id}`,
   server: true,
   default: () => null,
-  transform: (data: any) => {
+  transform: async (data: any) => {
     if (data && typeof data === 'object' && 'id' in data && 'title' in data) {
       return data as Blog
+    }
+    // 如果通过route_id查询失败，尝试通过id查询
+    try {
+      const fallbackResponse = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?id=${route.params.id}`)
+      if (fallbackResponse && typeof fallbackResponse === 'object' && 'id' in fallbackResponse && 'title' in fallbackResponse) {
+        return fallbackResponse as Blog
+      }
+    } catch (e) {
+      console.error('Fallback query failed:', e)
     }
     return null
   },
@@ -51,24 +62,30 @@ const categoryOptions = [
 function getBlogTitle(blogData: Blog | null): string {
   if (!blogData)
     return ''
-  // 如果当前语言是英文且有英文标题，则返回英文标题
-  if (locale.value === 'en' && blogData.en_title)
-    return blogData.en_title
 
-  // 否则返回中文标题
-  return blogData.title
+  if (locale.value === 'zh') {
+    // 中文时：优先中文，再是英文
+    return blogData.title || blogData.en_title || ''
+  }
+  else {
+    // 英文时：优先英文，再是中文
+    return blogData.en_title || blogData.title || ''
+  }
 }
 
 // 根据当前语言获取博客内容
 function getBlogContent(blogData: Blog | null): string {
   if (!blogData)
     return ''
-  // 如果当前语言是英文且有英文内容，则返回英文内容
-  if (locale.value === 'en' && blogData.en_content)
-    return blogData.en_content
 
-  // 否则返回中文内容
-  return blogData.content
+  if (locale.value === 'zh') {
+    // 中文时：优先中文，再是英文
+    return blogData.content || blogData.en_content || ''
+  }
+  else {
+    // 英文时：优先英文，再是中文
+    return blogData.en_content || blogData.content || ''
+  }
 }
 
 // 根据当前语言获取分类名称

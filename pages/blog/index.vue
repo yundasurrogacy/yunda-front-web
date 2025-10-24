@@ -9,24 +9,30 @@ const { t, locale } = useI18n()
 function getBlogTitle(blog: Blog | null): string {
   if (!blog)
     return ''
-  // 如果当前语言是英文且有英文标题，则返回英文标题
-  if (locale.value === 'en' && blog.en_title)
-    return blog.en_title
 
-  // 否则返回中文标题
-  return blog.title
+  if (locale.value === 'zh') {
+    // 中文时：优先中文，再是英文
+    return blog.title || blog.en_title || ''
+  }
+  else {
+    // 英文时：优先英文，再是中文
+    return blog.en_title || blog.title || ''
+  }
 }
 
 // 根据当前语言获取博客内容
 function getBlogContent(blog: Blog | null): string {
   if (!blog)
     return ''
-  // 如果当前语言是英文且有英文内容，则返回英文内容
-  if (locale.value === 'en' && blog.en_content)
-    return blog.en_content
 
-  // 否则返回中文内容
-  return blog.content
+  if (locale.value === 'zh') {
+    // 中文时：优先中文，再是英文
+    return blog.content || blog.en_content || ''
+  }
+  else {
+    // 英文时：优先英文，再是中文
+    return blog.en_content || blog.content || ''
+  }
 }
 
 // 提取纯文本摘要（去除HTML标签）
@@ -72,6 +78,7 @@ useHead({
 
 interface Blog {
   id: number
+  route_id?: string
   title: string
   content: string
   en_title?: string
@@ -174,7 +181,13 @@ const jumpToPage = ref(1)
 
 // 跳转到博客详情页
 function viewBlogDetail(blog: Blog) {
-  router.push(`/blog/${blog.id}`)
+  // 只有当route_id存在时才使用route_id跳转，否则使用id
+  if (blog.route_id) {
+    router.push(`/blog/${blog.route_id}`)
+  }
+  else {
+    router.push(`/blog/${blog.id}`)
+  }
 }
 
 // 清除筛选
