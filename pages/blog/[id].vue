@@ -131,11 +131,11 @@ function goBack() {
 
 // SEO 配置
 useHead(() => ({
-  title: blog.value ? `${getBlogTitle(blog.value)} - ${t('blog.meta.title')}` : t('blog.meta.title'),
+  title: blog.value ? getBlogTitle(blog.value) : t('blog.meta.title'),
   meta: [
     {
       name: 'description',
-      content: blog.value ? getBlogContent(blog.value).substring(0, 160) : t('blog.meta.description'),
+      content: blog.value ? getBlogContent(blog.value).substring(0, 159) : t('blog.meta.description'),
     },
     {
       property: 'og:title',
@@ -143,7 +143,7 @@ useHead(() => ({
     },
     {
       property: 'og:description',
-      content: blog.value ? getBlogContent(blog.value).substring(0, 160) : t('blog.meta.description'),
+      content: blog.value ? getBlogContent(blog.value).substring(0, 159) : t('blog.meta.description'),
     },
     {
       property: 'og:type',
