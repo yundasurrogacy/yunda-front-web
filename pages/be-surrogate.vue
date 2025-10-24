@@ -97,7 +97,7 @@ const pregnancyHistoryCollapse = ref<boolean[]>([])
 
 // 初始化折叠状态（与列表长度同步）
 watch(() => form.pregnancyHistoryList.length, (len) => {
-  pregnancyHistoryCollapse.value = new Array(len).fill(true)
+  pregnancyHistoryCollapse.value = Array.from({ length: len }, () => true)
 })
 
 // 添加怀孕历史项时，折叠状态同步新增

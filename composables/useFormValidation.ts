@@ -25,7 +25,7 @@ export function useFormValidation() {
   // 邮编验证 - 美国邮编格式
   const validateZipCode = (zipCode: string): boolean => {
     // 支持 5 位数或 5+4 格式
-    return /^\d{5}(-\d{4})?$/.test(zipCode)
+    return /^\d{5}(?:-\d{4})?$/.test(zipCode)
   }
 
   // 验证准父母申请
