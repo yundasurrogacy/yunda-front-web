@@ -4,7 +4,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
-  useHead({
+useHead({
   title: 'Become a Surrogate in Southern California | Yunda Surrogacy',
   meta: [
     {
@@ -21,7 +21,8 @@ const surrogacyTabs = [
     title: 'Surrogacy Meaning: A Clear Way to Help a Family',
     content: [
       'You want your pregnancy experience to matter. Surrogacy meaning comes down to one idea: you carry so another family can hold their child.',
-      'You ask, what does surrogate mean in real life? It means you choose to help, and you keep your voice at every step.'    ],
+      'You ask, what does surrogate mean in real life? It means you choose to help, and you keep your voice at every step.',
+    ],
   },
   {
     id: 'gestational',
@@ -344,32 +345,32 @@ const yundaPillars = [
     <!-- Hero -->
     <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
-        <div class="absolute left-10 top-10 h-40 w-40 rounded-full bg-[var(--olive-green)] blur-[120px] animate-pulse" />
-        <div class="absolute bottom-10 right-10 h-60 w-60 rounded-full bg-[var(--primary-brown)]/70 blur-[160px] animate-pulse" style="animation-delay: 1s;" />
+        <div class="absolute left-10 top-10 h-40 w-40 animate-pulse rounded-full bg-[var(--olive-green)] blur-[120px]" />
+        <div class="absolute bottom-10 right-10 h-60 w-60 animate-pulse rounded-full bg-[var(--primary-brown)]/70 blur-[160px]" style="animation-delay: 1s;" />
       </div>
       <div class="relative mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-          <div class="text-center space-y-6 lg:text-left animate-fade-in-up">
-            <h1 class="text-8 font-semibold leading-tight lg:text-12 transition-all duration-700 hover:scale-105" style="font-family: var(--font-primary)">
+          <div class="animate-fade-in-up text-center space-y-6 lg:text-left">
+            <h1 class="text-8 font-semibold leading-tight transition-all duration-700 hover:scale-105 lg:text-12" style="font-family: var(--font-primary)">
               Become a Surrogate: A Supported, Transparent Path with Yunda
             </h1>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:bg-[var(--dark-brown)] hover:scale-105 hover:shadow-lg"
+                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--dark-brown)] hover:shadow-lg"
               >
                 Start Application
               </NuxtLink>
               <NuxtLink
                 to="/referral"
-                class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300 hover:bg-white hover:scale-105 hover:shadow-lg"
+                class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-lg"
               >
                 Talk to a Coordinator
               </NuxtLink>
             </div>
           </div>
-          <div class="flex justify-center animate-fade-in-right">
-            <div class="image-placeholder max-w-500  w-full transition-all duration-500 hover:scale-105">
+          <div class="flex animate-fade-in-right justify-center">
+            <div class="image-placeholder max-w-500 w-full transition-all duration-500 hover:scale-105">
               <img src="public/images/landing-page1/become-a-surrogate-mother.jpg" alt="Become a Surrogate mother">
             </div>
           </div>
@@ -381,8 +382,8 @@ const yundaPillars = [
     <section id="why" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
-          <div class="lg:w-1/3 animate-fade-in-left">
-            <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105" style="font-family: var(--font-primary)">
+          <div class="animate-fade-in-left lg:w-1/3">
+            <h2 class="text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
               Why Women Choose Surrogacy
             </h2>
             <p class="mt-4 text-4.5 leading-relaxed">
@@ -393,7 +394,7 @@ const yundaPillars = [
                 v-for="(tab, index) in surrogacyTabs"
                 :key="tab.id"
                 type="button"
-                class="border rounded-4 px-4 py-3 text-left transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                class="transform border rounded-4 px-4 py-3 text-left transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 :class="tab.id === activeTabId ? 'border-[var(--primary-brown)] bg-[var(--light-cream)] shadow-lg shadow-black/10 scale-105' : 'border-[var(--olive-green)]/40 bg-white hover:border-[var(--primary-brown)]/60 hover:bg-[var(--light-cream)]/50'"
                 :style="{ animationDelay: `${index * 100}ms` }"
                 @click="activeTabId = tab.id"
@@ -403,7 +404,7 @@ const yundaPillars = [
               </button>
             </div>
           </div>
-          <div class="flex flex-col items-center gap-8 text-center lg:w-2/3 animate-fade-in-right">
+          <div class="flex flex-col animate-fade-in-right items-center gap-8 text-center lg:w-2/3">
             <div class="max-w-150 w-full border border-[var(--primary-brown)]/50 rounded-5 border-dashed bg-white/60 p-6 text-3.5 text-[var(--primary-brown)] tracking-wide uppercase transition-all duration-500 hover:scale-105 hover:shadow-lg">
               <div class="image-placeholder">
                 <img src="public/images/landing-page1/Women-Choose-Surrogacy.jpg" alt="Women choose surrogacy">
@@ -413,15 +414,16 @@ const yundaPillars = [
               <h3 class="text-6 font-semibold uppercase transition-all duration-300" style="font-family: var(--font-primary)">
                 {{ activeTab.title }}
               </h3>
-              <div class="mt-6 text-4.25 leading-relaxed space-y-4 transition-all duration-500">
-                <p v-for="(paragraph, index) in activeTab.content" :key="paragraph" 
-                   class="transition-all duration-300"
-                   :style="{ animationDelay: `${index * 200}ms` }">
+              <div class="mt-6 text-4.25 leading-relaxed transition-all duration-500 space-y-4">
+                <p
+                  v-for="(paragraph, index) in activeTab.content" :key="paragraph"
+                  class="transition-all duration-300"
+                  :style="{ animationDelay: `${index * 200}ms` }"
+                >
                   {{ paragraph }}
                 </p>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -430,19 +432,19 @@ const yundaPillars = [
     <!-- Requirements -->
     <section id="requirements" class="bg-[var(--foot-bg)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Surrogacy Requirements & Qualifications
         </h2>
         <div class="mt-8 space-y-6">
           <article
             v-for="(dropdown, index) in requirementDropdowns"
             :key="dropdown.id"
-            class="rounded-5 border border-[var(--olive-green)]/30 bg-white/95 shadow-lg shadow-black/10 transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.02] animate-fade-in-up"
+            class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-5 bg-white/95 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl"
             :style="{ animationDelay: `${index * 150}ms` }"
           >
             <button
               type="button"
-              class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+              class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
               @click="toggleRequirement(dropdown.id)"
             >
               <h3 class="text-5 font-semibold uppercase transition-all duration-300" style="font-family: var(--font-primary)">
@@ -450,7 +452,7 @@ const yundaPillars = [
               </h3>
               <Icon
                 :name="isRequirementExpanded(dropdown.id) ? 'radix-icons:chevron-up' : 'radix-icons:chevron-down'"
-                class="h-6 w-6 text-[var(--primary-brown)] transition-all duration-300 transform"
+                class="h-6 w-6 transform text-[var(--primary-brown)] transition-all duration-300"
                 :class="isRequirementExpanded(dropdown.id) ? 'rotate-180' : 'rotate-0'"
               />
             </button>
@@ -464,18 +466,18 @@ const yundaPillars = [
             >
               <div
                 v-if="isRequirementExpanded(dropdown.id)"
-                class="border-t border-[var(--olive-green)]/30 px-6 py-5 text-4.25 leading-relaxed space-y-4 overflow-hidden"
+                class="overflow-hidden border-t border-[var(--olive-green)]/30 px-6 py-5 text-4.25 leading-relaxed space-y-4"
               >
                 <template v-for="(block, blockIndex) in dropdown.blocks" :key="`${dropdown.id}-${blockIndex}`">
-                  <p v-if="block.type === 'paragraph'" class="transition-all duration-300 animate-fade-in-up" :style="{ animationDelay: `${blockIndex * 100}ms` }">
+                  <p v-if="block.type === 'paragraph'" class="animate-fade-in-up transition-all duration-300" :style="{ animationDelay: `${blockIndex * 100}ms` }">
                     {{ block.text }}
                   </p>
-                  <div v-else-if="block.type === 'list'" class="space-y-3 transition-all duration-300 animate-fade-in-up" :style="{ animationDelay: `${blockIndex * 100}ms` }">
-                    <p v-if="block.label" class="text-3.5 font-semibold uppercase tracking-wide text-[var(--primary-brown)]">
+                  <div v-else-if="block.type === 'list'" class="animate-fade-in-up transition-all duration-300 space-y-3" :style="{ animationDelay: `${blockIndex * 100}ms` }">
+                    <p v-if="block.label" class="text-3.5 text-[var(--primary-brown)] font-semibold tracking-wide uppercase">
                       {{ block.label }}
                     </p>
                     <ul class="space-y-3">
-                      <li v-for="(item, itemIndex) in block.items" :key="item" class="flex items-start gap-3 transition-all duration-300 animate-fade-in-left" :style="{ animationDelay: `${(blockIndex * 100) + (itemIndex * 50)}ms` }">
+                      <li v-for="(item, itemIndex) in block.items" :key="item" class="flex animate-fade-in-left items-start gap-3 transition-all duration-300" :style="{ animationDelay: `${(blockIndex * 100) + (itemIndex * 50)}ms` }">
                         <Icon :name="block.icon" class="mt-0.5 h-4 w-4 text-[var(--primary-brown)] transition-all duration-300 hover:scale-125" />
                         <span>{{ item }}</span>
                       </li>
@@ -492,39 +494,41 @@ const yundaPillars = [
     <!-- Journey -->
     <section id="journey" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Your Surrogacy Journey: Steps & Timeline
         </h2>
-        <p class="mt-4 text-4.5 leading-relaxed animate-fade-in-up" style="animation-delay: 200ms;">
+        <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed" style="animation-delay: 200ms;">
           {{ journeyIntro }}
         </p>
-        
+
         <!-- Progress Timeline -->
-        <div class="mt-12 relative">
-          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--primary-brown)] via-[var(--olive-green)] to-[var(--primary-brown)] opacity-30"></div>
+        <div class="relative mt-12">
+          <div class="absolute bottom-0 left-8 top-0 w-0.5 from-[var(--primary-brown)] via-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-b opacity-30" />
           <div class="grid gap-8">
             <div
               v-for="(step, index) in journeySteps"
               :key="step.title"
-              class="relative flex items-start gap-6 animate-fade-in-up"
+              class="relative flex animate-fade-in-up items-start gap-6"
               :style="{ animationDelay: `${index * 200}ms` }"
             >
               <!-- Step Number Circle -->
               <div class="relative z-10 flex-shrink-0">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[var(--primary-brown)] bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
-                  <span class="text-2xl font-bold text-[var(--primary-brown)]">{{ index + 1 }}</span>
+                <div class="h-16 w-16 flex items-center justify-center border-4 border-[var(--primary-brown)] rounded-full bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                  <span class="text-2xl text-[var(--primary-brown)] font-bold">{{ index + 1 }}</span>
                 </div>
               </div>
-              
+
               <!-- Step Content -->
-              <div class="flex-1 border border-[var(--olive-green)]/40 rounded-5 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.02]">
+              <div class="flex-1 border border-[var(--olive-green)]/40 rounded-5 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl">
                 <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
                   {{ step.title }}
                 </h3>
                 <div class="mt-4 text-4.25 leading-relaxed space-y-3">
-                  <p v-for="(detail, detailIndex) in step.details" :key="detail" 
-                     class="transition-all duration-300 animate-fade-in-left"
-                     :style="{ animationDelay: `${(index * 200) + (detailIndex * 100)}ms` }">
+                  <p
+                    v-for="(detail, detailIndex) in step.details" :key="detail"
+                    class="animate-fade-in-left transition-all duration-300"
+                    :style="{ animationDelay: `${(index * 200) + (detailIndex * 100)}ms` }"
+                  >
                     {{ detail }}
                   </p>
                 </div>
@@ -532,11 +536,13 @@ const yundaPillars = [
             </div>
           </div>
         </div>
-        
-        <div class="mt-10 text-4.5 leading-relaxed space-y-6 animate-fade-in-up" style="animation-delay: 1400ms;">
-          <p v-for="(paragraph, index) in timelineParagraphs" :key="paragraph" 
-             class="transition-all duration-300"
-             :style="{ animationDelay: `${1400 + (index * 200)}ms` }">
+
+        <div class="mt-10 animate-fade-in-up text-4.5 leading-relaxed space-y-6" style="animation-delay: 1400ms;">
+          <p
+            v-for="(paragraph, index) in timelineParagraphs" :key="paragraph"
+            class="transition-all duration-300"
+            :style="{ animationDelay: `${1400 + (index * 200)}ms` }"
+          >
             {{ paragraph }}
           </p>
           <p class="transition-all duration-300" style="animation-delay: 1800ms;">
@@ -549,64 +555,69 @@ const yundaPillars = [
     <!-- Compensation -->
     <section id="compensation" class="bg-[var(--foot-bg)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up text-center" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Compensation & Benefits
         </h2>
-        <p class="text-center text-4.5 leading-relaxed mt-4 animate-fade-in-up" style="animation-delay: 200ms;">
+        <p class="mt-4 animate-fade-in-up text-center text-4.5 leading-relaxed" style="animation-delay: 200ms;">
           How We Support You Every Step of the Way
         </p>
 
         <!-- Compensation Overview Cards -->
         <div class="grid mt-12 gap-8 lg:grid-cols-3">
           <!-- Base Compensation Card -->
-          <div class="bg-gradient-to-br from-[var(--primary-brown)] to-[var(--dark-brown)] rounded-8 p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl animate-fade-in-up" style="animation-delay: 300ms;">
-            <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6 mx-auto">
-              <Icon name="radix-icons:star-filled" class="w-8 h-8 text-white" />
-
+          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 300ms;">
+            <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
+              <Icon name="radix-icons:star-filled" class="h-8 w-8 text-white" />
             </div>
-            
-            <h3 class="text-5 font-bold uppercase text-center mb-4" style="font-family: var(--font-primary)">
+
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
               Base Compensation
             </h3>
-            <div class="text-center mb-4">
+            <div class="mb-4 text-center">
               <span class="text-6 font-bold">$50,000 - $70,000+</span>
-              <p class="text-3.5 opacity-90 mt-2">First-time packages</p>
+              <p class="mt-2 text-3.5 opacity-90">
+                First-time packages
+              </p>
             </div>
-            <p class="text-4 leading-relaxed text-center opacity-90">
+            <p class="text-center text-4 leading-relaxed opacity-90">
               Milestone-based payments through secure escrow with clear schedules and categories.
             </p>
           </div>
 
           <!-- Monthly Support Card -->
-          <div class="bg-gradient-to-br from-[var(--olive-green)] to-[var(--primary-brown)] rounded-8 p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl animate-fade-in-up" style="animation-delay: 500ms;">
-            <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6 mx-auto">
-              <Icon name="radix-icons:calendar" class="w-8 h-8 text-white" />
+          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 500ms;">
+            <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
+              <Icon name="radix-icons:calendar" class="h-8 w-8 text-white" />
             </div>
-            <h3 class="text-5 font-bold uppercase text-center mb-4" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
               Monthly Support
             </h3>
-            <div class="text-center mb-4">
+            <div class="mb-4 text-center">
               <span class="text-6 font-bold">Ongoing</span>
-              <p class="text-3.5 opacity-90 mt-2">Living stipends</p>
+              <p class="mt-2 text-3.5 opacity-90">
+                Living stipends
+              </p>
             </div>
-            <p class="text-4 leading-relaxed text-center opacity-90">
+            <p class="text-center text-4 leading-relaxed opacity-90">
               Monthly stipends for everyday costs, plus maternity clothing and travel allowances.
             </p>
           </div>
 
           <!-- Additional Benefits Card -->
-          <div class="bg-gradient-to-br from-[var(--dark-brown)] to-[var(--olive-green)] rounded-8 p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl animate-fade-in-up" style="animation-delay: 700ms;">
-            <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6 mx-auto">
-              <Icon name="radix-icons:heart" class="w-8 h-8 text-white" />
+          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--dark-brown)] to-[var(--olive-green)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 700ms;">
+            <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
+              <Icon name="radix-icons:heart" class="h-8 w-8 text-white" />
             </div>
-            <h3 class="text-5 font-bold uppercase text-center mb-4" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
               Additional Benefits
             </h3>
-            <div class="text-center mb-4">
+            <div class="mb-4 text-center">
               <span class="text-6 font-bold">Comprehensive</span>
-              <p class="text-3.5 opacity-90 mt-2">Full support</p>
+              <p class="mt-2 text-3.5 opacity-90">
+                Full support
+              </p>
             </div>
-            <p class="text-4 leading-relaxed text-center opacity-90">
+            <p class="text-center text-4 leading-relaxed opacity-90">
               Travel, childcare, bedrest support, and pumping supplies when needed.
             </p>
           </div>
@@ -614,14 +625,14 @@ const yundaPillars = [
 
         <!-- Detailed Information Tabs -->
         <div class="mt-16">
-          <div class="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up" style="animation-delay: 900ms;">
+          <div class="mb-8 flex flex-wrap animate-fade-in-up justify-center gap-4" style="animation-delay: 900ms;">
             <button
               v-for="(tab, index) in compensationTabs"
               :key="tab.id"
               type="button"
-              class="px-6 py-3 rounded-full border-2 transition-all duration-300 font-semibold uppercase text-3.5"
-              :class="activeCompensationTab === tab.id 
-                ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg' 
+              class="border-2 rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300"
+              :class="activeCompensationTab === tab.id
+                ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg'
                 : 'border-[var(--olive-green)] bg-white text-[var(--dark-brown)] hover:border-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
               :style="{ animationDelay: `${1000 + (index * 100)}ms` }"
               @click="activeCompensationTab = tab.id"
@@ -631,25 +642,31 @@ const yundaPillars = [
           </div>
 
           <!-- Tab Content -->
-          <div class="bg-white/95 rounded-8 p-8 shadow-xl border border-[var(--olive-green)]/30 animate-fade-in-up" style="animation-delay: 1200ms;">
+          <div class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-8 shadow-xl" style="animation-delay: 1200ms;">
             <div v-if="activeCompensationTab === 'coverage'" class="space-y-6">
-              <h3 class="text-5 font-semibold uppercase text-[var(--primary-brown)] mb-6" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
                 What Surrogate Compensation Covers
               </h3>
               <div class="grid gap-6 lg:grid-cols-2">
                 <div class="space-y-4">
-                  <p v-for="(paragraph, index) in compensationCoverParagraphs" :key="paragraph" 
-                     class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left"
-                     :style="{ animationDelay: `${1300 + (index * 100)}ms` }">
+                  <p
+                    v-for="(paragraph, index) in compensationCoverParagraphs" :key="paragraph"
+                    class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300"
+                    :style="{ animationDelay: `${1300 + (index * 100)}ms` }"
+                  >
                     {{ paragraph }}
                   </p>
                 </div>
-                <div class="bg-[var(--light-cream)]/50 rounded-6 p-6">
-                  <h4 class="text-4 font-semibold uppercase text-[var(--primary-brown)] mb-4">Typical Inclusions</h4>
+                <div class="rounded-6 bg-[var(--light-cream)]/50 p-6">
+                  <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
+                    Typical Inclusions
+                  </h4>
                   <ul class="space-y-3">
-                    <li v-for="(item, index) in typicalInclusions" :key="item" 
-                        class="flex items-start gap-3 text-4 leading-relaxed transition-all duration-300 animate-fade-in-left hover:bg-white/50 p-2 rounded"
-                        :style="{ animationDelay: `${1400 + (index * 50)}ms` }">
+                    <li
+                      v-for="(item, index) in typicalInclusions" :key="item"
+                      class="flex animate-fade-in-left items-start gap-3 rounded p-2 text-4 leading-relaxed transition-all duration-300 hover:bg-white/50"
+                      :style="{ animationDelay: `${1400 + (index * 50)}ms` }"
+                    >
                       <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--primary-brown)] transition-all duration-300 hover:scale-125" />
                       <span>{{ item }}</span>
                     </li>
@@ -659,24 +676,30 @@ const yundaPillars = [
             </div>
 
             <div v-if="activeCompensationTab === 'payments'" class="space-y-6">
-              <h3 class="text-5 font-semibold uppercase text-[var(--primary-brown)] mb-6" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
                 How Payments Work
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
                 <div class="space-y-4">
-                  <p v-for="(paragraph, index) in paymentsParagraphs" :key="paragraph" 
-                     class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left"
-                     :style="{ animationDelay: `${1300 + (index * 100)}ms` }">
+                  <p
+                    v-for="(paragraph, index) in paymentsParagraphs" :key="paragraph"
+                    class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300"
+                    :style="{ animationDelay: `${1300 + (index * 100)}ms` }"
+                  >
                     {{ paragraph }}
                   </p>
                 </div>
-                <div class="bg-gradient-to-br from-[var(--light-cream)] to-white rounded-6 p-6 border border-[var(--olive-green)]/30">
-                  <h4 class="text-4 font-semibold uppercase text-[var(--primary-brown)] mb-4">Payment Timeline</h4>
+                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--light-cream)] to-white bg-gradient-to-br p-6">
+                  <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
+                    Payment Timeline
+                  </h4>
                   <div class="space-y-3">
-                    <div v-for="(milestone, index) in milestonesList" :key="milestone" 
-                         class="flex items-center gap-3 p-3 bg-white/70 rounded transition-all duration-300 hover:bg-white hover:shadow-md animate-fade-in-left"
-                         :style="{ animationDelay: `${1400 + (index * 100)}ms` }">
-                      <div class="w-8 h-8 bg-[var(--primary-brown)] rounded-full flex items-center justify-center text-white text-3 font-bold">
+                    <div
+                      v-for="(milestone, index) in milestonesList" :key="milestone"
+                      class="flex animate-fade-in-left items-center gap-3 rounded bg-white/70 p-3 transition-all duration-300 hover:bg-white hover:shadow-md"
+                      :style="{ animationDelay: `${1400 + (index * 100)}ms` }"
+                    >
+                      <div class="h-8 w-8 flex items-center justify-center rounded-full bg-[var(--primary-brown)] text-3 text-white font-bold">
                         {{ index + 1 }}
                       </div>
                       <span class="text-4">{{ milestone }}</span>
@@ -687,26 +710,32 @@ const yundaPillars = [
             </div>
 
             <div v-if="activeCompensationTab === 'benefits'" class="space-y-6">
-              <h3 class="text-5 font-semibold uppercase text-[var(--primary-brown)] mb-6" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
                 Benefits That Make Life Easier
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
                 <div class="space-y-4">
-                  <p v-for="(paragraph, index) in benefitsIntroParagraphs" :key="paragraph" 
-                     class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left"
-                     :style="{ animationDelay: `${1300 + (index * 100)}ms` }">
+                  <p
+                    v-for="(paragraph, index) in benefitsIntroParagraphs" :key="paragraph"
+                    class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300"
+                    :style="{ animationDelay: `${1300 + (index * 100)}ms` }"
+                  >
                     {{ paragraph }}
                   </p>
-                  <p class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left" style="animation-delay: 1400ms;">
+                  <p class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300" style="animation-delay: 1400ms;">
                     {{ benefitsClosingParagraph }}
                   </p>
                 </div>
-                <div class="bg-[var(--light-cream)]/50 rounded-6 p-6">
-                  <h4 class="text-4 font-semibold uppercase text-[var(--primary-brown)] mb-4">Support Examples</h4>
+                <div class="rounded-6 bg-[var(--light-cream)]/50 p-6">
+                  <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
+                    Support Examples
+                  </h4>
                   <ul class="space-y-3">
-                    <li v-for="(item, index) in supportExamples" :key="item" 
-                        class="flex items-start gap-3 text-4 leading-relaxed transition-all duration-300 animate-fade-in-left hover:bg-white/50 p-2 rounded"
-                        :style="{ animationDelay: `${1500 + (index * 50)}ms` }">
+                    <li
+                      v-for="(item, index) in supportExamples" :key="item"
+                      class="flex animate-fade-in-left items-start gap-3 rounded p-2 text-4 leading-relaxed transition-all duration-300 hover:bg-white/50"
+                      :style="{ animationDelay: `${1500 + (index * 50)}ms` }"
+                    >
                       <Icon name="radix-icons:dot-filled" class="mt-1 h-3 w-3 text-[var(--primary-brown)] transition-all duration-300 hover:scale-125" />
                       <span>{{ item }}</span>
                     </li>
@@ -716,24 +745,28 @@ const yundaPillars = [
             </div>
 
             <div v-if="activeCompensationTab === 'protection'" class="space-y-6">
-              <h3 class="text-5 font-semibold uppercase text-[var(--primary-brown)] mb-6" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
                 Legal, Insurance, and Protection
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
                 <div class="space-y-4">
-                  <p class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left" style="animation-delay: 1300ms;">
+                  <p class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300" style="animation-delay: 1300ms;">
                     {{ legalProtectionParagraph }}
                   </p>
-                  <p class="text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left" style="animation-delay: 1400ms;">
+                  <p class="animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300" style="animation-delay: 1400ms;">
                     {{ experiencedCarrierParagraph }}
                   </p>
                 </div>
-                <div class="bg-gradient-to-br from-[var(--light-cream)] to-white rounded-6 p-6 border border-[var(--olive-green)]/30">
-                  <h4 class="text-4 font-semibold uppercase text-[var(--primary-brown)] mb-4">Our Promise</h4>
+                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--light-cream)] to-white bg-gradient-to-br p-6">
+                  <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
+                    Our Promise
+                  </h4>
                   <div class="space-y-4">
-                    <p v-for="(paragraph, index) in clarityParagraphs" :key="paragraph" 
-                       class="text-4 leading-relaxed transition-all duration-300 animate-fade-in-left"
-                       :style="{ animationDelay: `${1500 + (index * 100)}ms` }">
+                    <p
+                      v-for="(paragraph, index) in clarityParagraphs" :key="paragraph"
+                      class="animate-fade-in-left text-4 leading-relaxed transition-all duration-300"
+                      :style="{ animationDelay: `${1500 + (index * 100)}ms` }"
+                    >
                       {{ paragraph }}
                     </p>
                   </div>
@@ -748,10 +781,10 @@ const yundaPillars = [
     <!-- Why Yunda -->
     <section id="why-yunda" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Why Yunda
         </h2>
-        <div class="mt-8 flex justify-center animate-fade-in-up" style="animation-delay: 200ms;">
+        <div class="mt-8 flex animate-fade-in-up justify-center" style="animation-delay: 200ms;">
           <div class="image-placeholder max-w-160 w-full transition-all duration-500 hover:scale-105 hover:shadow-xl">
             <img src="/images/landing-page1/Yunda-Local-Care.jpg" alt="Why Yunda">
           </div>
@@ -760,7 +793,7 @@ const yundaPillars = [
           <div
             v-for="(pillar, index) in yundaPillars"
             :key="pillar.title"
-            class="border border-[var(--primary-brown)]/30 rounded-5 bg-white/90 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:bg-[var(--light-cream)]/60 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.02] animate-fade-in-up"
+            class="animate-fade-in-up border border-[var(--primary-brown)]/30 rounded-5 bg-white/90 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--light-cream)]/60 hover:shadow-xl hover:-translate-y-2"
             :style="{ animationDelay: `${400 + (index * 200)}ms` }"
           >
             <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
@@ -777,26 +810,26 @@ const yundaPillars = [
     <!-- CTA -->
     <section class="relative overflow-hidden bg-[var(--dark-brown)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">
-        <div class="absolute left-1/4 top-0 h-60 w-60 rounded-full bg-[var(--primary-brown)]/40 blur-[160px] animate-pulse" />
-        <div class="absolute bottom-0 right-1/5 h-48 w-48 rounded-full bg-[var(--olive-green)]/50 blur-[140px] animate-pulse" style="animation-delay: 1s;" />
+        <div class="absolute left-1/4 top-0 h-60 w-60 animate-pulse rounded-full bg-[var(--primary-brown)]/40 blur-[160px]" />
+        <div class="absolute bottom-0 right-1/5 h-48 w-48 animate-pulse rounded-full bg-[var(--olive-green)]/50 blur-[140px]" style="animation-delay: 1s;" />
       </div>
       <div class="relative mx-auto max-w-260 px-5 text-center">
-        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10 transition-all duration-700 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" style="font-family: var(--font-primary)">
           Ready to Carry with Confidence?
         </h2>
-        <p class="mt-4 text-4.5 leading-relaxed transition-all duration-500 animate-fade-in-up" style="animation-delay: 200ms;">
+        <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed transition-all duration-500" style="animation-delay: 200ms;">
           Start with a plan that centers your voice, honors your experience, and delivers for the family you choose to help.
         </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-4 animate-fade-in-up" style="animation-delay: 400ms;">
+        <div class="mt-8 flex flex-wrap animate-fade-in-up justify-center gap-4" style="animation-delay: 400ms;">
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 hover:bg-[var(--light-cream)] hover:scale-110 hover:shadow-xl"
+            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 hover:scale-110 hover:bg-[var(--light-cream)] hover:shadow-xl"
           >
             Start Application
           </NuxtLink>
           <NuxtLink
             to="/journey"
-            class="border border-white rounded-full px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:bg-white/10 hover:scale-110 hover:shadow-xl"
+            class="border border-white rounded-full px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:shadow-xl"
           >
             Explore the Journey
           </NuxtLink>
@@ -882,7 +915,9 @@ html {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Improved focus states for accessibility */

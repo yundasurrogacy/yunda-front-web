@@ -5,7 +5,6 @@ import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
 import HeroSection from '@/components/base/SUHeroSection.vue'
 import JourneyStepsTimeline from '@/components/surrogacy/journey/StepsTimeline.vue'
 import JourneyTestimonialsSection from '@/components/surrogacy/journey/TestimonialsSection.vue'
-import VideoPlayer from '~/components/base/VideoPlayer.vue'
 </script>
 
 <template>

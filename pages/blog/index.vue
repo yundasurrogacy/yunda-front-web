@@ -322,23 +322,23 @@ onMounted(() => {
       <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
       <div class="w-full flex flex-col lg:flex-row">
         <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
-        <div class="lg:w-1/2 w-full bg-white flex items-center justify-center p-0" style="aspect-ratio: 16/9;">
+        <div class="w-full flex items-center justify-center bg-white p-0 lg:w-1/2" style="aspect-ratio: 16/9;">
           <img
             src="/images/blog-hero.jpg"
             :alt="$t('blog.heroAlt')"
-            class="w-full h-full object-cover rounded-none m-0"
+            class="m-0 h-full w-full rounded-none object-cover"
             style="display:block;"
           >
         </div>
         <!-- 右侧内容区域：背景色#FAF1E0，搜索卡片白色，输入框#CAD3D0 -->
-        <div class="lg:w-1/2 w-full flex flex-col items-center justify-center bg-[#FAF1E0] px-8 py-16">
-          <div class="w-full max-w-md mx-auto flex flex-col items-center">
-            <h1 class="text-5xl font-bold text-gray-900 text-center mb-10 font-[Cormorant,serif]">
+        <div class="w-full flex flex-col items-center justify-center bg-[#FAF1E0] px-8 py-16 lg:w-1/2">
+          <div class="mx-auto max-w-md w-full flex flex-col items-center">
+            <h1 class="mb-10 text-center text-5xl text-gray-900 font-bold font-[Cormorant,serif]">
               {{ $t('blog.title') }}
             </h1>
             <!-- 搜索卡片区域 -->
-            <div class="w-full rounded-xl bg-white shadow-lg px-8 py-6 flex flex-col items-center">
-              <div class="mb-3 text-gray-700 text-base font-medium text-left w-full">
+            <div class="w-full flex flex-col items-center rounded-xl bg-white px-8 py-6 shadow-lg">
+              <div class="mb-3 w-full text-left text-base text-gray-700 font-medium">
                 {{ $t('blog.search.title') }}
               </div>
               <div class="relative w-full">

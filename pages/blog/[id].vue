@@ -37,7 +37,8 @@ const { data: blog, pending: loading, error } = await useFetch(`https://yunda-ad
       if (fallbackResponse && typeof fallbackResponse === 'object' && 'id' in fallbackResponse && 'title' in fallbackResponse) {
         return fallbackResponse as Blog
       }
-    } catch (e) {
+    }
+    catch (e) {
       console.error('Fallback query failed:', e)
     }
     return null
@@ -164,7 +165,7 @@ useHead(() => ({
     <div class="min-h-screen bg-[#F7F7F2]">
       <!-- 加载状态 -->
       <div v-if="loading" class="flex items-center justify-center py-24">
-        <div class="inline-block size-12 animate-spin rounded-full border-4 border-[#A9A67D] border-b-transparent" />
+        <div class="inline-block size-12 animate-spin border-4 border-[#A9A67D] border-b-transparent rounded-full" />
         <p class="ml-4 text-lg text-gray-600">
           {{ $t('blog.loading') }}
         </p>
@@ -211,13 +212,13 @@ useHead(() => ({
           </div>
 
           <!-- 文章头部 -->
-          <div class="bg-gradient-to-r from-[#A9A67D]/5 to-[#8B9A7D]/5 p-8">
+          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-8">
             <div class="mb-4">
-              <span class="inline-flex items-center rounded-full bg-[#A9A67D] px-4 py-1.5 text-sm font-medium text-white shadow-sm">
+              <span class="inline-flex items-center rounded-full bg-[#A9A67D] px-4 py-1.5 text-sm text-white font-medium shadow-sm">
                 {{ getCategoryName(blog.category) }}
               </span>
             </div>
-            <h1 class="mb-6 font-[Cormorant,serif] text-4xl font-bold leading-tight text-gray-900 md:text-5xl">
+            <h1 class="mb-6 text-4xl text-gray-900 font-bold leading-tight font-[Cormorant,serif] md:text-5xl">
               {{ getBlogTitle(blog) }}
             </h1>
             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
@@ -238,10 +239,10 @@ useHead(() => ({
 
           <!-- 文章内容 -->
           <div class="p-8 md:p-12">
-            <div class="prose prose-gray prose-lg max-w-none">
+            <div class="max-w-none prose prose-gray prose-lg">
               <div
                 v-if="getBlogContent(blog)"
-                class="leading-relaxed text-gray-700 whitespace-pre-wrap"
+                class="whitespace-pre-wrap text-gray-700 leading-relaxed"
                 v-html="getBlogContent(blog)"
               />
               <div v-else class="text-gray-500">
@@ -258,7 +259,7 @@ useHead(() => ({
                 <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
-                <h4 class="text-sm font-medium text-gray-700">
+                <h4 class="text-sm text-gray-700 font-medium">
                   {{ $t('blog.tags.title') }}
                 </h4>
               </div>
@@ -266,7 +267,7 @@ useHead(() => ({
                 <span
                   v-for="tag in blog.tags.split('|')"
                   :key="tag"
-                  class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm transition-all duration-200 hover:border-gray-300 hover:bg-gray-50"
+                  class="inline-flex items-center border border-gray-200 rounded-full bg-white px-3 py-1.5 text-xs text-gray-700 font-medium shadow-sm transition-all duration-200 hover:border-gray-300 hover:bg-gray-50"
                 >
                   {{ tag }}
                 </span>

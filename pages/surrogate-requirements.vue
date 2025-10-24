@@ -229,20 +229,20 @@ const compensationHighlights = [
 const faqItems = [
   {
     question: 'Do surrogates get paid? How does the surrogate payment schedule work?',
-    answer: 'Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.'
+    answer: 'Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.',
   },
   {
     question: 'How much do surrogates make in the U.S.?',
-    answer: 'On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.'
+    answer: 'On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.',
   },
   {
     question: 'What counts as surrogate compensation vs. reimbursable surrogacy expenses?',
-    answer: 'Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.'
+    answer: 'Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.',
   },
   {
     question: 'What affects surrogate pay—experience, location, or medical factors?',
-    answer: 'Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.'
-  }
+    answer: 'Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.',
+  },
 ]
 
 const expandedFaq = ref<Record<string, boolean>>({})
@@ -297,14 +297,14 @@ const processIcons = [
   <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
     <AppHeader />
 
-    <section class="relative overflow-hidden bg-gradient-to-b from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] py-18 lg:py-24">
+    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
         <div class="absolute left-12 top-12 h-44 w-44 rounded-full bg-[var(--olive-green)] blur-[140px]" />
-        <div class="absolute right-16 bottom-14 h-60 w-60 rounded-full bg-[var(--primary-brown)]/70 blur-[180px]" />
+        <div class="absolute bottom-14 right-16 h-60 w-60 rounded-full bg-[var(--primary-brown)]/70 blur-[180px]" />
       </div>
       <div class="relative mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-          <div class="space-y-6 text-center lg:text-left">
+          <div class="text-center space-y-6 lg:text-left">
             <h1 class="text-8 font-semibold leading-tight lg:text-12" style="font-family: var(--font-primary)">
               Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate
             </h1>
@@ -314,13 +314,13 @@ const processIcons = [
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold uppercase text-white transition hover:bg-[var(--dark-brown)]"
+                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
               >
                 Check Your Eligibility
               </NuxtLink>
               <a
                 href="#quick-eligibility"
-                class="rounded-full border border-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold uppercase transition hover:bg-white"
+                class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition hover:bg-white"
                 @click.prevent="scrollToSection('quick-eligibility')"
               >
                 View Requirements
@@ -337,7 +337,7 @@ const processIcons = [
       <nav class="sticky left-0 top-24 z-40 mt-12">
         <div class="mx-auto max-w-280 px-5 lg:px-10">
           <div class="overflow-x-auto">
-            <ul class="flex gap-4 rounded-full border border-[var(--primary-brown)]/30 bg-white/85 px-5 py-3 shadow-lg shadow-black/10 backdrop-blur">
+            <ul class="flex gap-4 border border-[var(--primary-brown)]/30 rounded-full bg-white/85 px-5 py-3 shadow-black/10 shadow-lg backdrop-blur">
               <li
                 v-for="section in sections"
                 :key="section.id"
@@ -359,7 +359,7 @@ const processIcons = [
 
     <section id="intro" class="py-18 lg:py-24">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
-        <div class="rounded-6 border border-[var(--olive-green)]/40 bg-white/95 p-10 shadow-lg shadow-black/10">
+        <div class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-10 shadow-black/10 shadow-lg">
           <p class="text-5 leading-relaxed">
             Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.
           </p>
@@ -369,26 +369,26 @@ const processIcons = [
 
     <section id="quick-eligibility" class="bg-[var(--foot-bg)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up text-center mb-12" style="font-family: var(--font-primary)">
+        <h2 class="mb-12 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Who We're Looking For: Surrogacy Requirements (Quick Eligibility)
         </h2>
-        
+
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-start">
           <!-- Left Content -->
           <div class="space-y-8">
-            <p class="text-4.5 leading-relaxed text-center lg:text-left animate-fade-in-up" style="animation-delay: 200ms;">
+            <p class="animate-fade-in-up text-center text-4.5 leading-relaxed lg:text-left" style="animation-delay: 200ms;">
               Tap through each category to confirm you meet the baseline surrogate qualifications. These panels summarize what clinics and coordinators review before you become a surrogate.
             </p>
-            
+
             <!-- Tab Navigation -->
-            <div class="flex flex-wrap justify-center gap-3 lg:justify-start animate-fade-in-up" style="animation-delay: 400ms;">
+            <div class="flex flex-wrap animate-fade-in-up justify-center gap-3 lg:justify-start" style="animation-delay: 400ms;">
               <button
                 v-for="(tab, index) in requirementTabs"
                 :key="tab.id"
                 type="button"
-                class="px-6 py-3 rounded-full border-2 transition-all duration-300 font-semibold uppercase text-3.5 transform hover:scale-105"
-                :class="activeRequirementTab === tab.id 
-                  ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg' 
+                class="transform border-2 rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300 hover:scale-105"
+                :class="activeRequirementTab === tab.id
+                  ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg'
                   : 'border-[var(--olive-green)] bg-white text-[var(--dark-brown)] hover:border-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
                 :style="{ animationDelay: `${500 + (index * 100)}ms` }"
                 @click="activeRequirementTab = tab.id"
@@ -398,20 +398,20 @@ const processIcons = [
             </div>
 
             <!-- Tab Content -->
-            <div class="bg-white/95 rounded-8 p-8 shadow-xl border border-[var(--olive-green)]/30 animate-fade-in-up" style="animation-delay: 600ms;">
-              <div class="flex items-center gap-4 mb-6">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[var(--primary-brown)] to-[var(--dark-brown)] text-white shadow-lg transition-all duration-300 hover:scale-110">
+            <div class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-8 shadow-xl" style="animation-delay: 600ms;">
+              <div class="mb-6 flex items-center gap-4">
+                <div class="h-16 w-16 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
                   <Icon :name="requirementIcons[requirementTabs.findIndex((tab: any) => tab.id === activeRequirementTab)]" class="h-8 w-8" />
                 </div>
                 <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
                   {{ tabContent.title }}
                 </h3>
               </div>
-              <ul class="space-y-4 text-4.25 leading-relaxed">
+              <ul class="text-4.25 leading-relaxed space-y-4">
                 <li
                   v-for="(item, index) in tabContent.items"
                   :key="item"
-                  class="flex items-start gap-3 transition-all duration-300 animate-fade-in-left hover:bg-[var(--light-cream)]/30 p-3 rounded"
+                  class="flex animate-fade-in-left items-start gap-3 rounded p-3 transition-all duration-300 hover:bg-[var(--light-cream)]/30"
                   :style="{ animationDelay: `${700 + (index * 100)}ms` }"
                 >
                   <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--primary-brown)] transition-all duration-300 hover:scale-125" />
@@ -422,16 +422,16 @@ const processIcons = [
           </div>
 
           <!-- Right Image -->
-          <div class="flex justify-center lg:justify-end animate-fade-in-right" style="animation-delay: 300ms;">
+          <div class="flex animate-fade-in-right justify-center lg:justify-end" style="animation-delay: 300ms;">
             <div class="relative max-w-400 w-full">
-              <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
-              <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <img 
-                  src="/images/landingpage3/Surrogacy-Requirements.jpg" 
-                  alt="Surrogacy Requirements" 
-                  class="w-full h-auto object-cover"
+              <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
+              <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
+                <img
+                  src="/images/landingpage3/Surrogacy-Requirements.jpg"
+                  alt="Surrogacy Requirements"
+                  class="h-auto w-full object-cover"
                 >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
               </div>
             </div>
           </div>
@@ -440,22 +440,22 @@ const processIcons = [
     </section>
 
     <section id="medical-lifestyle" class="py-18 lg:py-24">
-      <div class="mx-auto max-w-280 px-5 lg:px-10 space-y-12">
+      <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
-          <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
             Medical & Lifestyle Requirements for Gestational Surrogacy
           </h2>
-          <div class="mt-4 w-32 h-1 bg-[var(--primary-brown)] mx-auto rounded-full animate-fade-in-up" style="animation-delay: 200ms;"></div>
+          <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
         <div class="grid gap-8 lg:grid-cols-2">
           <article
             v-for="(section, index) in medicalLifestyleSections"
             :key="section.heading"
-            class="rounded-8 border border-[var(--olive-green)]/30 bg-white/95 p-8 shadow-lg shadow-black/10 transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.02] animate-fade-in-up"
+            class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-8 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl"
             :style="{ animationDelay: `${300 + (index * 150)}ms` }"
           >
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--olive-green)] to-[var(--primary-brown)] text-white shadow-lg">
+            <div class="mb-6 flex items-center gap-4">
+              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                 <Icon name="radix-icons:heart-filled" class="h-6 w-6" />
               </div>
               <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
@@ -465,7 +465,7 @@ const processIcons = [
             <p
               v-for="(paragraph, pIndex) in section.body"
               :key="paragraph"
-              class="mt-3 text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left"
+              class="mt-3 animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300"
               :style="{ animationDelay: `${400 + (index * 150) + (pIndex * 100)}ms` }"
             >
               {{ paragraph }}
@@ -475,37 +475,37 @@ const processIcons = [
       </div>
     </section>
 
-    <section id="disqualify" class="relative py-18 lg:py-24 overflow-hidden">
+    <section id="disqualify" class="relative overflow-hidden py-18 lg:py-24">
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
-        <img 
-          src="/images/landingpage3/IVF-Surrogacy-Process.jpg" 
-          alt="IVF Surrogacy Process" 
-          class="w-full h-full object-cover"
+        <img
+          src="/images/landingpage3/IVF-Surrogacy-Process.jpg"
+          alt="IVF Surrogacy Process"
+          class="h-full w-full object-cover"
         >
-        <div class="absolute inset-0 bg-[var(--dark-brown)]/80"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--dark-brown)]/60 to-[var(--dark-brown)]/90"></div>
+        <div class="absolute inset-0 bg-[var(--dark-brown)]/80" />
+        <div class="absolute inset-0 from-transparent via-[var(--dark-brown)]/60 to-[var(--dark-brown)]/90 bg-gradient-to-b" />
       </div>
-      
-      <div class="relative z-10 mx-auto max-w-280 px-5 lg:px-10 space-y-12">
+
+      <div class="relative z-10 mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <!-- Title with Background -->
         <div class="text-center">
-          <h2 class="text-7 font-semibold uppercase lg:text-8 text-white transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 text-white font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
             What Can Disqualify You From Becoming a Surrogate
           </h2>
-          <div class="mt-4 w-24 h-1 bg-[var(--primary-brown)] mx-auto rounded-full animate-fade-in-up" style="animation-delay: 200ms;"></div>
+          <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
-        
+
         <!-- Content Cards -->
         <div class="grid gap-8 lg:grid-cols-2">
           <article
             v-for="(section, index) in disqualifySections"
             :key="section.title"
-            class="rounded-8 border border-white/20 bg-white/95 backdrop-blur-sm p-8 shadow-2xl transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-3xl hover:scale-[1.02] animate-fade-in-up"
+            class="hover:shadow-3xl animate-fade-in-up border border-white/20 rounded-8 bg-white/95 p-8 shadow-2xl backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)]"
             :style="{ animationDelay: `${300 + (index * 150)}ms` }"
           >
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--primary-brown)] to-[var(--dark-brown)] text-white shadow-lg">
+            <div class="mb-6 flex items-center gap-4">
+              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
                 <Icon name="radix-icons:exclamation-triangle" class="h-6 w-6" />
               </div>
               <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
@@ -515,7 +515,7 @@ const processIcons = [
             <p
               v-for="(paragraph, pIndex) in section.paragraphs"
               :key="paragraph"
-              class="mt-3 text-4.25 leading-relaxed transition-all duration-300 animate-fade-in-left"
+              class="mt-3 animate-fade-in-left text-4.25 leading-relaxed transition-all duration-300"
               :style="{ animationDelay: `${400 + (index * 150) + (pIndex * 100)}ms` }"
             >
               {{ paragraph }}
@@ -526,35 +526,35 @@ const processIcons = [
     </section>
 
     <section id="process" class="py-18 lg:py-24">
-      <div class="mx-auto max-w-280 px-5 lg:px-10 space-y-12">
+      <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
-          <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
             Screening & Clearance Steps: IVF Surrogacy Process
           </h2>
-          <div class="mt-4 w-32 h-1 bg-[var(--primary-brown)] mx-auto rounded-full animate-fade-in-up" style="animation-delay: 200ms;"></div>
+          <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
-        
+
         <!-- Process Timeline -->
         <div class="relative">
-          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--primary-brown)] via-[var(--olive-green)] to-[var(--primary-brown)] opacity-30 hidden lg:block"></div>
+          <div class="absolute bottom-0 left-8 top-0 hidden w-0.5 from-[var(--primary-brown)] via-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-b opacity-30 lg:block" />
           <div class="grid gap-8 lg:grid-cols-3">
             <article
               v-for="(step, index) in processSteps"
               :key="step.title"
-              class="relative flex items-start gap-6 animate-fade-in-up"
+              class="relative flex animate-fade-in-up items-start gap-6"
               :style="{ animationDelay: `${300 + (index * 200)}ms` }"
             >
               <!-- Step Number Circle -->
               <div class="relative z-10 flex-shrink-0">
-                <div class="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[var(--primary-brown)] bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
-                  <span class="text-2xl font-bold text-[var(--primary-brown)]">{{ index + 1 }}</span>
+                <div class="h-16 w-16 flex items-center justify-center border-4 border-[var(--primary-brown)] rounded-full bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                  <span class="text-2xl text-[var(--primary-brown)] font-bold">{{ index + 1 }}</span>
                 </div>
               </div>
-              
+
               <!-- Step Content -->
-              <div class="flex-1 rounded-8 border border-[var(--olive-green)]/30 bg-white/95 p-6 shadow-lg shadow-black/10 transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.02]">
-                <div class="flex items-center gap-4 mb-4">
-                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--olive-green)] to-[var(--primary-brown)] text-white shadow-lg">
+              <div class="flex-1 border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl">
+                <div class="mb-4 flex items-center gap-4">
+                  <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                     <Icon :name="processIcons[index]" class="h-6 w-6" />
                   </div>
                   <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
@@ -576,23 +576,23 @@ const processIcons = [
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-center">
           <!-- Left Content -->
           <div class="space-y-8">
-            <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-left" style="font-family: var(--font-primary)">
+            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
               Compensation & Support: Surrogate Pay, Escrow, and Benefits
             </h2>
-            <p class="text-4.5 leading-relaxed animate-fade-in-left" style="animation-delay: 200ms;">
+            <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
               We ensure your journey is supported with clear compensation, secure escrow, and comprehensive benefits throughout the entire process.
             </p>
-            
+
             <!-- Compensation Cards -->
             <div class="grid gap-6 lg:grid-cols-2">
               <article
                 v-for="(card, index) in compensationHighlights"
                 :key="card.title"
-                class="rounded-8 border border-[var(--olive-green)]/30 bg-white/95 p-6 shadow-lg shadow-black/10 transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.02] animate-fade-in-up"
+                class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl"
                 :style="{ animationDelay: `${300 + (index * 150)}ms` }"
               >
-                <div class="flex items-center gap-3 mb-4">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[var(--primary-brown)] to-[var(--dark-brown)] text-white shadow-lg">
+                <div class="mb-4 flex items-center gap-3">
+                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="radix-icons:star-filled" class="h-5 w-5" />
                   </div>
                   <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
@@ -602,7 +602,7 @@ const processIcons = [
                 <p
                   v-for="(paragraph, pIndex) in card.paragraphs"
                   :key="paragraph"
-                  class="mt-3 text-4 leading-relaxed transition-all duration-300 animate-fade-in-left"
+                  class="mt-3 animate-fade-in-left text-4 leading-relaxed transition-all duration-300"
                   :style="{ animationDelay: `${400 + (index * 150) + (pIndex * 100)}ms` }"
                 >
                   {{ paragraph }}
@@ -612,16 +612,16 @@ const processIcons = [
           </div>
 
           <!-- Right Image -->
-          <div class="flex justify-center lg:justify-end animate-fade-in-right" style="animation-delay: 200ms;">
+          <div class="flex animate-fade-in-right justify-center lg:justify-end" style="animation-delay: 200ms;">
             <div class="relative max-w-400 w-full">
-              <div class="absolute inset-0 bg-gradient-to-br from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 rounded-8 blur-xl"></div>
-              <div class="relative rounded-8 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <img 
-                  src="/images/landingpage3/Compensation-Support.jpg" 
-                  alt="Compensation & Support" 
-                  class="w-full h-auto object-cover"
+              <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
+              <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
+                <img
+                  src="/images/landingpage3/Compensation-Support.jpg"
+                  alt="Compensation & Support"
+                  class="h-auto w-full object-cover"
                 >
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
               </div>
             </div>
           </div>
@@ -631,22 +631,22 @@ const processIcons = [
 
     <section id="faq" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <div class="text-center mb-12">
-          <h2 class="text-7 font-semibold uppercase lg:text-8 transition-all duration-500 hover:scale-105 animate-fade-in-up" style="font-family: var(--font-primary)">
+        <div class="mb-12 text-center">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
             Frequently Asked Questions
           </h2>
-          <div class="mt-4 w-24 h-1 bg-[var(--primary-brown)] mx-auto rounded-full animate-fade-in-up" style="animation-delay: 200ms;"></div>
+          <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
         <div class="space-y-6">
           <article
             v-for="(item, index) in faqItems"
             :key="item.question"
-            class="rounded-8 border border-[var(--olive-green)]/30 bg-white/95 shadow-lg shadow-black/10 transition-all duration-300 hover:border-[var(--primary-brown)] hover:shadow-xl hover:scale-[1.01] animate-fade-in-up"
+            class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.01] hover:border-[var(--primary-brown)] hover:shadow-xl"
             :style="{ animationDelay: `${300 + (index * 150)}ms` }"
           >
             <button
               type="button"
-              class="flex w-full items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+              class="w-full flex items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
               @click="toggleFaq(item.question)"
             >
               <span class="text-4.5 font-semibold transition-all duration-300 hover:text-[var(--primary-brown)]">
@@ -654,7 +654,7 @@ const processIcons = [
               </span>
               <Icon
                 :name="expandedFaq[item.question] ? 'radix-icons:chevron-up' : 'radix-icons:chevron-down'"
-                class="h-6 w-6 text-[var(--primary-brown)] transition-all duration-300 transform"
+                class="h-6 w-6 transform text-[var(--primary-brown)] transition-all duration-300"
                 :class="expandedFaq[item.question] ? 'rotate-180' : 'rotate-0'"
               />
             </button>
@@ -668,9 +668,9 @@ const processIcons = [
             >
               <div
                 v-if="expandedFaq[item.question]"
-                class="border-t border-[var(--olive-green)]/30 px-8 py-6 text-4.25 leading-relaxed overflow-hidden"
+                class="overflow-hidden border-t border-[var(--olive-green)]/30 px-8 py-6 text-4.25 leading-relaxed"
               >
-                <p class="transition-all duration-300 animate-fade-in-up">
+                <p class="animate-fade-in-up transition-all duration-300">
                   {{ item.answer }}
                 </p>
               </div>
@@ -683,10 +683,10 @@ const processIcons = [
     <section class="relative overflow-hidden bg-[var(--dark-brown)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">
         <div class="absolute left-1/4 top-0 h-60 w-60 rounded-full bg-[var(--primary-brown)]/40 blur-[160px]" />
-        <div class="absolute right-1/5 bottom-0 h-48 w-48 rounded-full bg-[var(--olive-green)]/50 blur-[140px]" />
+        <div class="absolute bottom-0 right-1/5 h-48 w-48 rounded-full bg-[var(--olive-green)]/50 blur-[140px]" />
       </div>
       <div class="relative mx-auto max-w-240 px-5 text-center">
-        <h2 class="text-8 font-semibold uppercase tracking-wide lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" style="font-family: var(--font-primary)">
           Ready to Become a Surrogate?
         </h2>
         <p class="mt-4 text-4.5 leading-relaxed">
@@ -695,13 +695,13 @@ const processIcons = [
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-full bg-white px-6 py-3 text-3.5 font-semibold uppercase text-[var(--dark-brown)] transition hover:bg-[var(--light-cream)]"
+            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
           >
             Start Application
           </NuxtLink>
           <NuxtLink
             to="/journey"
-            class="rounded-full border border-white px-6 py-3 text-3.5 font-semibold uppercase text-white transition hover:bg-white/10"
+            class="border border-white rounded-full px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-white/10"
           >
             Explore the Journey
           </NuxtLink>
@@ -788,7 +788,9 @@ html {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Improved focus states for accessibility */
