@@ -20,32 +20,6 @@ export default defineNuxtConfig({
 
   ssr: true,
   nitro: {
-    preset: 'static',
-    prerender: {
-      crawlLinks: false,
-      routes: [
-        '/',
-        '/about',
-        '/be-parents',
-        '/be-surrogate',
-        '/surrogate-qualification',
-        '/egg-donation',
-        '/partner-ivf-clinics',
-        '/single-parents-lgbtq',
-        '/surrogacy-price',
-        '/surrogacy-process',
-        '/benefit',
-        '/eligibility',
-        '/journey',
-        '/referral',
-        '/screening',
-        '/become-a-surrogate-mother',
-        '/surrogate-compensation',
-        '/surrogate-requirements',
-        '/surrogate-journey',
-        '/become-surrogate-california',
-      ],
-    },
     preset: 'node-server',
     // 使用 SSR 模式，这样所有页面都可以被搜索引擎抓取,包括动态路由的 blog 文章
   },
