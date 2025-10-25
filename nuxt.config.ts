@@ -46,6 +46,8 @@ export default defineNuxtConfig({
         '/become-surrogate-california',
       ],
     },
+    preset: 'node-server',
+    // 使用 SSR 模式，这样所有页面都可以被搜索引擎抓取,包括动态路由的 blog 文章
   },
 
   runtimeConfig: {
@@ -177,6 +179,22 @@ fbq('track', 'SubmitApplication');
         { loc: '/referral', priority: 0.7 },
         { loc: '/screening', priority: 0.7 },
       ]
+      // 获取所有博客文章
+      let blogUrls: Array<{ loc: string, priority: number, lastmod?: string }> = []
+      try {
+        const blogResponse = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=1000')
+        const blogData = await blogResponse.json()
+        
+        if (blogData && blogData.blogs && Array.isArray(blogData.blogs)) {
+          blogUrls = blogData.blogs.map((blog: any) => ({
+            loc: `/blog/${blog.route_id || blog.id}`,
+            priority: 0.6,
+            lastmod: blog.updated_at || blog.created_at,
+          }))
+        }
+      } catch (error) {
+        console.error('Error fetching blog URLs for sitemap:', error)
+      }
 
       // 为每个页面添加 hreflang 标签（多语言支持）
       return pages.map(page => ({
@@ -188,6 +206,19 @@ fbq('track', 'SubmitApplication');
           { href: page.loc, hreflang: 'x-default' }, // 默认语言
         ],
       }))
+      // 为博客文章添加 hreflang 标签
+      const blogUrlsWithHreflang = blogUrls.map(blog => ({
+        loc: blog.loc,
+        priority: blog.priority,
+        lastmod: blog.lastmod,
+        alternatives: [
+          { href: blog.loc, hreflang: 'en' },
+          { href: blog.loc, hreflang: 'zh' },
+          { href: blog.loc, hreflang: 'x-default' },
+        ],
+      }))
+
+      return [...staticUrls, ...blogUrlsWithHreflang]
     },
   },
   i18n: {
