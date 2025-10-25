@@ -197,7 +197,7 @@ fbq('track', 'SubmitApplication');
       }
 
       // 为每个页面添加 hreflang 标签（多语言支持）
-      return pages.map(page => ({
+        const staticUrls = pages.map(page => ({
         loc: page.loc,
         priority: page.priority,
         alternatives: [
