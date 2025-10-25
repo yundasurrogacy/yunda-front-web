@@ -20,8 +20,10 @@ export default defineNuxtConfig({
 
   ssr: true,
   nitro: {
-    preset: 'node-server',
-    // 使用 SSR 模式，这样所有页面都可以被搜索引擎抓取,包括动态路由的 blog 文章
+    preset: 'static',
+    prerender: {
+      crawlLinks: true,
+    },
   },
 
   runtimeConfig: {
@@ -154,17 +156,17 @@ fbq('track', 'SubmitApplication');
         { loc: '/screening', priority: 0.7 },
       ]
       // 获取所有博客文章
-      let blogUrls: Array<{ loc: string, priority: number, lastmod?: string }> = []
+      const blogUrls = []
       try {
         const blogResponse = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=1000')
         const blogData = await blogResponse.json()
         
         if (blogData && blogData.blogs && Array.isArray(blogData.blogs)) {
-          blogUrls = blogData.blogs.map((blog: any) => ({
+         blogUrls.push(...blogData.blogs.map((blog: any) => ({
             loc: `/blog/${blog.route_id || blog.id}`,
             priority: 0.6,
             lastmod: blog.updated_at || blog.created_at,
-          }))
+          })))
         }
       } catch (error) {
         console.error('Error fetching blog URLs for sitemap:', error)
