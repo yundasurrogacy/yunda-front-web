@@ -487,7 +487,7 @@ async function handleSubmit() {
         state_or_province: form.state,
         state_or_province_selected_key: form.state, // 如有多语言映射请替换
         zip_code: form.zipCode,
-        height: ((Number.parseFloat(form.heightFeet) || 0) * 12 + (Number.parseFloat(form.heightInches) || 0)).toString(), // 转换为总英寸
+        height: ((Number.parseFloat(form.heightFeet) || 0) + (Number.parseFloat(form.heightInches) || 0) / 12).toString(), // 转换为总英尺
         weight: Number.parseFloat(form.weight).toString(),
         bmi: calculatedBMI.value,
         ethnicity: form.ethnicity,
