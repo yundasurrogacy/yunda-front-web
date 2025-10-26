@@ -1236,6 +1236,7 @@
           "disclaimer": "您的信息将被严格保密，不会分享或出售给任何第三方。"
         },
         "submitButton": "提交申请",
+        "submittingButton": "提交中...",
         "noStatesAvailable": "没有可用的州/省",
         "selectStateProvince": "选择州/省"
       }

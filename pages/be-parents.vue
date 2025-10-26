@@ -114,8 +114,14 @@ const modalConfig = reactive({
   message: '' as string | string[],
   buttonText: 'OK',
 })
+const isSubmitting = ref(false)
 
 async function handleSubmit() {
+  // Prevent duplicate submissions
+  if (isSubmitting.value) {
+    return
+  }
+
   // Validate consent agreement
   if (!form.consentAgreement) {
     modalConfig.type = 'error'
@@ -125,6 +131,8 @@ async function handleSubmit() {
     showModal.value = true
     return
   }
+
+  isSubmitting.value = true
 
   try {
     // 转换种族数据
@@ -241,6 +249,8 @@ async function handleSubmit() {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 500)
+
+    isSubmitting.value = false
   }
   catch (error: any) {
     console.error('Submission error:', error)
@@ -271,6 +281,8 @@ async function handleSubmit() {
 
     modalConfig.buttonText = t('modal.error.tryAgain')
     showModal.value = true
+
+    isSubmitting.value = false
   }
 }
 </script>
@@ -583,11 +595,11 @@ async function handleSubmit() {
           <div class="flex justify-center">
             <button
               type="submit"
-              :disabled="!form.consentAgreement"
+              :disabled="!form.consentAgreement || isSubmitting"
               class="rounded-2.5 bg-[var(--grayish-green)] px-12 py-4 text-20px text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
-              :class="form.consentAgreement ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
+              :class="form.consentAgreement && !isSubmitting ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
             >
-              {{ $t('parent.application.form.submitButton') }}
+              {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('parent.application.form.submitButton') }}
             </button>
           </div>
         </form>
