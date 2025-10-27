@@ -23,6 +23,34 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       crawlLinks: true,
+      // 排除 blog 相关页面，让它们动态渲染
+      ignore: [
+        '/blog',
+        '/blog/*',
+      ],
+      // 明确指定要预渲染的页面（除了 blog）
+      routes: [
+        '/',
+        '/about',
+        '/be-parents',
+        '/be-surrogate',
+        '/surrogate-qualification',
+        '/surrogate-journey',
+        '/surrogate-compensation',
+        '/surrogate-requirements',
+        '/become-a-surrogate-mother',
+        '/become-surrogate-california',
+        '/benefit',
+        '/eligibility',
+        '/journey',
+        '/referral',
+        '/screening',
+        '/egg-donation',
+        '/partner-ivf-clinics',
+        '/single-parents-lgbtq',
+        '/surrogacy-price',
+        '/surrogacy-process',
+      ],
     },
   },
 
@@ -134,14 +162,18 @@ fbq('track', 'SubmitApplication');
     },
     // URLs 配置 - 为每个页面添加多语言标签（hreflang）
     urls: async () => {
-      // 主要页面列表
+      // 主要页面列表（需要包含所有预渲染的页面）
       const pages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
         { loc: '/', priority: 1 },
         { loc: '/about', priority: 0.9 },
         { loc: '/be-parents', priority: 0.9 },
         { loc: '/be-surrogate', priority: 0.9 },
-        { loc: '/blog', priority: 0.8 },
         { loc: '/surrogate-qualification', priority: 0.8 },
+        { loc: '/surrogate-requirements', priority: 0.8 },
+        { loc: '/surrogate-journey', priority: 0.8 },
+        { loc: '/surrogate-compensation', priority: 0.8 },
+        { loc: '/become-a-surrogate-mother', priority: 0.8 },
+        { loc: '/become-surrogate-california', priority: 0.8 },
         // 父母相关页面
         { loc: '/egg-donation', priority: 0.7 },
         { loc: '/partner-ivf-clinics', priority: 0.7 },
@@ -154,6 +186,7 @@ fbq('track', 'SubmitApplication');
         { loc: '/journey', priority: 0.7 },
         { loc: '/referral', priority: 0.7 },
         { loc: '/screening', priority: 0.7 },
+        // 注意：blog 相关页面不在静态页面列表中，它们会在构建时动态获取并添加到 sitemap
       ]
       // 获取所有博客文章
       const blogUrls = []
