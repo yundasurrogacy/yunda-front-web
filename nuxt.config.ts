@@ -160,20 +160,21 @@ fbq('track', 'SubmitApplication');
       try {
         const blogResponse = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=1000')
         const blogData = await blogResponse.json()
-        
+
         if (blogData && blogData.blogs && Array.isArray(blogData.blogs)) {
-         blogUrls.push(...blogData.blogs.map((blog: any) => ({
+          blogUrls.push(...blogData.blogs.map((blog: any) => ({
             loc: `/blog/${blog.route_id || blog.id}`,
             priority: 0.6,
             lastmod: blog.updated_at || blog.created_at,
           })))
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.error('Error fetching blog URLs for sitemap:', error)
       }
 
       // 为每个页面添加 hreflang 标签（多语言支持）
-        const staticUrls = pages.map(page => ({
+      const staticUrls = pages.map(page => ({
         loc: page.loc,
         priority: page.priority,
         alternatives: [
@@ -209,8 +210,10 @@ fbq('track', 'SubmitApplication');
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
-      alwaysRedirect: false,
+      alwaysRedirect: true,
       fallbackLocale: 'en',
+      cookieCrossOrigin: false,
+      cookieSecure: false, // 方便localhost访问cookie
     },
   },
 
