@@ -1,19 +1,10 @@
 <script setup lang="ts">
-const { locale, setLocale } = useI18n()
+const { locale } = useI18n()
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 
-// 在客户端检测浏览器语言，如果不在 zh 和 en 范围内，则使用 en
-if (import.meta.client) {
-  const browserLang = navigator.language || (navigator as any).userLanguage
-  const isChinese = browserLang.toLowerCase().startsWith('zh')
-  const isEnglish = browserLang.toLowerCase().startsWith('en')
-
-  // 如果浏览器语言既不是中文也不是英文，则使用英文
-  if (!isChinese && !isEnglish) {
-    setLocale('en')
-  }
-}
+// 移除浏览器语言自动检测，完全依赖 i18n 配置和用户的手动选择
+// 默认情况下会使用英文（在 nuxt.config.ts 中设置为 defaultLocale: 'en'）
 
 const baseUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const canonicalUrl = computed(() => {

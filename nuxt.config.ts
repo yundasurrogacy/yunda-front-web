@@ -243,7 +243,8 @@ fbq('track', 'SubmitApplication');
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
-      alwaysRedirect: true,
+      // 禁用自动检测，强制使用默认语言（英文）
+      alwaysRedirect: false,
       fallbackLocale: 'en',
       cookieCrossOrigin: false,
       cookieSecure: false, // 方便localhost访问cookie
