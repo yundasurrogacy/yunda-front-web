@@ -239,13 +239,7 @@ fbq('track', 'SubmitApplication');
       { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
     ],
     langDir: 'locales/',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      cookieSecure: false,
-      alwaysRedirect: false,
-      fallbackLocale: 'en',
-    },
+    detectBrowserLanguage: false, // 完全禁用浏览器语言检测
     // 禁用翻译指令优化，避免问题并在未来版本中被移除
     bundle: {
       optimizeTranslationDirective: false,
