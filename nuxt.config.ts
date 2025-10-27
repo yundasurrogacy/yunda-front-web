@@ -248,6 +248,10 @@ fbq('track', 'SubmitApplication');
       cookieCrossOrigin: false,
       cookieSecure: false, // 方便localhost访问cookie
     },
+    // 禁用翻译指令优化，避免问题并在未来版本中被移除
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
   },
 
   css: [
