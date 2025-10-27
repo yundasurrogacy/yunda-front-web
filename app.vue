@@ -15,6 +15,10 @@ const canonicalUrl = computed(() => {
   return `${baseUrl.value}${path.replace(/\/$/, '')}`
 })
 
+// 创建一个响应式的 lang 值
+const htmlLang = computed(() => locale.value)
+const htmlClass = computed(() => `lang-${locale.value}`)
+
 useHead({
   meta: [
     { charset: 'utf-8' },
@@ -25,8 +29,8 @@ useHead({
     { rel: 'canonical', href: canonicalUrl },
   ],
   htmlAttrs: {
-    lang: computed(() => locale.value),
-    class: computed(() => `lang-${locale.value}`),
+    lang: htmlLang,
+    class: htmlClass,
   },
 })
 </script>
