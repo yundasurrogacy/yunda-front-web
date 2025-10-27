@@ -17,7 +17,9 @@ useScrollAnimation()
             <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">10+</span>
           </div>
         </div>
-        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat1')" />
+        <p class="text-center leading-relaxed">
+          {{ $t('home.statsSection.stat1') }}
+        </p>
       </div>
 
       <!-- Stat 2 -->
@@ -30,7 +32,7 @@ useScrollAnimation()
             <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">400+</span>
           </div>
         </div>
-        <p class="text-center">
+        <p class="text-center leading-relaxed">
           {{ $t('home.statsSection.stat2') }}
         </p>
       </div>
@@ -45,7 +47,9 @@ useScrollAnimation()
             <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">300+</span>
           </div>
         </div>
-        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat3')" />
+        <p class="text-center leading-relaxed">
+          {{ $t('home.statsSection.stat3') }}
+        </p>
       </div>
 
       <!-- Stat 4 -->
@@ -58,7 +62,9 @@ useScrollAnimation()
             <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">95%+</span>
           </div>
         </div>
-        <p class="text-center leading-relaxed" v-html="$t('home.statsSection.stat4')" />
+        <p class="text-center leading-relaxed">
+          {{ $t('home.statsSection.stat4') }}
+        </p>
       </div>
     </div>
   </section>
