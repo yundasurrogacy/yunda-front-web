@@ -201,7 +201,7 @@ useHead(() => ({
       </div>
 
       <!-- 博客详情内容 -->
-      <div v-else-if="blog" class="mx-auto max-w-4xl px-4 py-12">
+      <div v-else-if="blog" class="mx-auto max-w-4xl px-4 py-6">
         <!-- 返回按钮 -->
         <button
           class="mb-6 flex items-center text-[#A9A67D] transition-colors hover:text-[#9A8F6D]"
@@ -228,13 +228,13 @@ useHead(() => ({
           </div>
 
           <!-- 文章头部 -->
-          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-8">
+          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-6">
             <div class="mb-4">
               <span class="inline-flex items-center rounded-full bg-[#A9A67D] px-4 py-1.5 text-sm text-white font-medium shadow-sm">
                 {{ getCategoryName(blog.category) }}
               </span>
             </div>
-            <h1 class="mb-6 text-4xl text-gray-900 font-bold leading-tight font-[Cormorant,serif] md:text-5xl">
+            <h1 class="mb-4 text-4xl text-gray-900 font-bold leading-tight font-[Cormorant,serif] md:text-5xl">
               {{ getBlogTitle(blog) }}
             </h1>
             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
@@ -254,11 +254,11 @@ useHead(() => ({
           </div>
 
           <!-- 文章内容 -->
-          <div class="p-8 md:p-12">
-            <div class="max-w-none prose prose-gray prose-lg">
+          <div class="p-6 md:p-8">
+            <div class="max-w-none prose prose-gray prose-lg overflow-x-auto">
               <div
                 v-if="getBlogContent(blog)"
-                class="whitespace-pre-wrap text-gray-700 leading-relaxed"
+                class="whitespace-pre-wrap text-gray-700 leading-relaxed min-w-0"
                 v-html="getBlogContent(blog)"
               />
               <div v-else class="text-gray-500">
