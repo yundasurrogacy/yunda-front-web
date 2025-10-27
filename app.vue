@@ -1,10 +1,22 @@
 <script setup lang="ts">
-const { locale } = useI18n()
+const { locale, setLocale } = useI18n()
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 
-// 移除浏览器语言自动检测，完全依赖 i18n 配置和用户的手动选择
-// 默认情况下会使用英文（在 nuxt.config.ts 中设置为 defaultLocale: 'en'）
+// 在客户端检查 cookie，确保默认语言为英文
+if (import.meta.client) {
+  onMounted(() => {
+    const cookie = useCookie('i18n_redirected')
+    // 如果 cookie 不存在，设置为英文
+    if (!cookie.value) {
+      setLocale('en')
+    }
+    // 如果 cookie 存在但不是有效的语言代码（'en' 或 'zh'），也设置为英文
+    else if (cookie.value !== 'en' && cookie.value !== 'zh') {
+      setLocale('en')
+    }
+  })
+}
 
 const baseUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const canonicalUrl = computed(() => {

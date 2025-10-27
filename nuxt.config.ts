@@ -242,12 +242,16 @@ fbq('track', 'SubmitApplication');
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-      // 禁用自动检测，强制使用默认语言（英文）
-      alwaysRedirect: false,
-      fallbackLocale: 'en',
-      cookieCrossOrigin: false,
       cookieSecure: false, // 方便localhost访问cookie
+      // 禁用自动检测浏览器语言
+      // alwaysRedirect: false 表示不自动重定向
+      alwaysRedirect: false,
+      // 兜底语言设置为英文
+      fallbackLocale: 'en',
+      // redirectOn 定义在哪些页面触发语言检测和重定向
+      // 'root' 表示只在根路径 '/' 触发
+      // 因为我们使用 no_prefix 策略且 alwaysRedirect: false，所以这个配置影响很小
+      // redirectOn: 'root',
     },
     // 禁用翻译指令优化，避免问题并在未来版本中被移除
     bundle: {
