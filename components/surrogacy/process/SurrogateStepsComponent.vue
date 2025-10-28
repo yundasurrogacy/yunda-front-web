@@ -107,7 +107,7 @@ watch(() => props.activeStep, () => {
       <div class="w-1/3 overflow-y-auto rounded-xl bg-white p-8 shadow-lg">
         <div class="sticky top-0 mb-6 border-b border-gray-200 bg-white pb-4">
           <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-            7 Steps in the Surrogate Process
+            10 Steps in the Surrogate Process
           </h3>
           <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
             The surrogacy process can feel overwhelming. Understanding the journey through seven clear steps helps you know what to expect, what's required of you as a surrogate, and the general timeline. Each surrogacy journey is unique, and timing may not be exact.
@@ -144,7 +144,7 @@ watch(() => props.activeStep, () => {
                   >
                     {{ step.title }}
                   </h4>
-                  <p class="text-xs text-gray-500">
+                  <p v-if="step.duration" class="text-xs text-gray-500">
                     {{ step.duration }}
                   </p>
                 </div>
@@ -174,7 +174,7 @@ watch(() => props.activeStep, () => {
               <h2 class="text-3xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
                 {{ step.title }}
               </h2>
-              <p class="text-lg text-gray-600">
+              <p v-if="step.duration" class="text-lg text-gray-600">
                 {{ step.duration }}
               </p>
             </div>
