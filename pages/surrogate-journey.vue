@@ -1,27 +1,23 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { computed, reactive, ref } from 'vue'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateStepsComponent.vue'
 
-const { t } = useI18n()
-
-// SEO 配置
 useHead({
-  title: 'Become a Surrogate | Gestational Surrogacy Process Guide',
+  title: '6 Clear Surrogacy Steps: The Ultimate Surrogacy Process Guide',
   meta: [
     {
       name: 'description',
-      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support.',
+      content: 'Surrogacy process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
     },
     {
       property: 'og:title',
-      content: 'Become a Surrogate | Gestational Surrogacy Process Guide',
+      content: '6 Clear Surrogacy Steps: The Ultimate Surrogacy Process Guide',
     },
     {
       property: 'og:description',
-      content: 'Learn the surrogacy process step by step—quick eligibility, surrogacy requirements, IVF and embryo transfer timeline, and full support.',
+      content: 'Surrogacy process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
     },
     {
       property: 'og:type',
@@ -34,144 +30,435 @@ useHead({
   ],
 })
 
-// 代孕步驟數據
-const surrogacySteps = reactive([
+const readinessPillars = reactive([
   {
-    id: 1,
-    title: 'Apply & Talk With Us',
-    duration: '1-2 weeks',
-    description: 'Tell us your goals and timeline to become a surrogate. Share basic health history and delivery records. We confirm the fit with our surrogacy requirements.',
-    activities: [
-      'Complete initial application',
-      'Schedule consultation call',
-      'Share health history',
-      'Review surrogacy requirements',
-    ],
-    details: 'The first step in becoming a gestational carrier is completing our comprehensive application. This helps us understand your motivations, timeline, and ensure you meet our basic requirements. We\'ll schedule a consultation to discuss your goals and answer any questions you may have about the surrogacy process.',
+    title: 'Legal clarity & consent',
+    body: 'Law comes first. Independent attorneys explain consent, risks, privacy, and parentage. California courts support gestational surrogacy well. Many families choose a pre-birth order. That choice keeps delivery clean. This answers what is the surrogate process on the legal side.',
   },
   {
-    id: 2,
-    title: 'Pre-Screen & Records Review',
-    duration: '1-2 weeks',
-    description: 'Complete a short pre-screen and a background check. Do a quick mental-health consult. We set expectations for travel, appointments, and support.',
-    activities: [
-      'Background check completion',
-      'Mental health consultation',
-      'Medical records review',
-      'Support system evaluation',
-    ],
-    details: 'During this phase, we conduct thorough background checks and psychological evaluations to ensure you\'re ready for the surrogacy journey. Our mental health professionals will assess your emotional readiness and support system. We\'ll also review your medical records to ensure you meet all health requirements.',
+    title: 'Financial transparency & safety',
+    body: 'Money and safety matter too. SeedTrust runs escrow. The team releases funds by milestones. ART Risk guides insurance. That keeps the surrogacy steps transparent and fair.',
   },
   {
-    id: 3,
-    title: 'Match With Intended Parents',
-    duration: '2-4 weeks',
-    description: 'Review family profiles that align with your preferences. Meet the intended parents on a friendly video call. Confirm the match when everyone feels good about it.',
-    activities: [
-      'Review family profiles',
-      'Video call with intended parents',
-      'Discuss expectations',
-      'Confirm mutual match',
-    ],
-    details: 'This is one of the most important steps - finding the right match with intended parents. We\'ll share profiles of families looking for a surrogate, and you can review their stories, preferences, and expectations. Once you\'re interested, we\'ll arrange a video call so everyone can get to know each other and ensure it\'s a good fit.',
+    title: 'Medical & lab planning',
+    body: 'Now the clinic plan. Doctors and nurses show how is surrogacy performed in modern care. They design meds and timing. Labs build embryos. The ivf surrogacy process covers stimulation (if needed), retrieval, fertilization, and culture. The ivf surrogacy procedure sets transfer day. That is how does a surrogate mother get pregnant in a clinical sense—through embryo transfer, not intercourse.',
   },
   {
-    id: 4,
-    title: 'Medical Screening & Clearance',
-    duration: '2-3 weeks',
-    description: 'Visit the IVF clinic for labs, ultrasound, and a full exam. The doctor confirms you can move forward as a surrogate mother (gestational carrier). You get a clear plan for meds and monitoring.',
-    activities: [
-      'Comprehensive medical exam',
-      'Lab work and testing',
-      'Ultrasound examination',
-      'Medication protocol review',
-    ],
-    details: 'You\'ll visit the IVF clinic for a complete medical evaluation including blood work, ultrasounds, and a thorough physical exam. The reproductive endocrinologist will review your medical history and current health status to ensure you\'re medically cleared for surrogacy. You\'ll receive detailed information about the medication protocol and monitoring schedule.',
-  },
-  {
-    id: 5,
-    title: 'Legal Contracts & Insurance Setup',
-    duration: '3-4 weeks',
-    description: 'Independent attorneys review the agreement with you. You confirm terms, boundaries, and benefits in plain language. We coordinate insurance and logistics for appointments.',
-    activities: [
-      'Legal contract review',
-      'Independent legal counsel',
-      'Insurance coordination',
-      'Terms finalization',
-    ],
-    details: 'You\'ll work with independent legal counsel to review and negotiate the surrogacy agreement. This covers compensation, medical expenses, insurance, and all legal protections. The contract is written in clear language so you understand all terms and conditions. We also coordinate insurance coverage and logistics for all medical appointments.',
-  },
-  {
-    id: 6,
-    title: 'Cycle Prep for Embryo Transfer',
-    duration: '4-6 weeks',
-    description: 'Start the IVF and surrogacy medication plan. Attend monitoring visits to check lining and hormones. Your nurse explains the surrogacy implantation process step by step.',
-    activities: [
-      'Begin medication protocol',
-      'Regular monitoring visits',
-      'Hormone level checks',
-      'Uterine lining preparation',
-    ],
-    details: 'You\'ll begin the medication protocol to prepare your body for embryo transfer. This includes daily medications and regular monitoring visits to check your hormone levels and uterine lining. Your nurse coordinator will guide you through each step and explain what to expect during the implantation process.',
-  },
-  {
-    id: 7,
-    title: 'Embryo Transfer Day',
-    duration: '1 day',
-    description: 'Arrive for the embryo transfer at the clinic. Rest per clinic advice after the embryo transfer to the surrogate mother. You return for bloodwork to confirm pregnancy.',
-    activities: [
-      'Embryo transfer procedure',
-      'Post-transfer rest period',
-      'Initial pregnancy testing',
-      'Follow-up appointments',
-    ],
-    details: 'The embryo transfer is a simple, outpatient procedure that takes about 30 minutes. You\'ll rest for a short period after the transfer, then return home. About 10-14 days later, you\'ll return for blood work to confirm if the pregnancy was successful. This is an exciting milestone in your surrogacy journey!',
-  },
-  {
-    id: 8,
-    title: 'Pregnancy Care & Support',
-    duration: '9 months',
-    description: 'Celebrate the first positive test, then confirm heartbeat. Follow your OB schedule and the clinic\'s plan. Our team checks in, coordinates travel, and keeps everyone aligned.',
-    activities: [
-      'Regular OB appointments',
-      'Pregnancy monitoring',
-      'Support team check-ins',
-      'Intended parents updates',
-    ],
-    details: 'Once pregnancy is confirmed, you\'ll transition to regular obstetric care while maintaining contact with our support team. We coordinate all appointments, provide ongoing support, and keep the intended parents updated on your progress. Our team is available 24/7 for any questions or concerns.',
-  },
-  {
-    id: 9,
-    title: 'Delivery & Baby Handover',
-    duration: '1-3 days',
-    description: 'Deliver at your chosen hospital with your care team. The baby goes to the intended parents right away. You focus on recovery and family time.',
-    activities: [
-      'Hospital delivery',
-      'Baby handover to parents',
-      'Recovery period',
-      'Post-delivery support',
-    ],
-    details: 'You\'ll deliver at your chosen hospital with your medical team and our support staff present. The baby will go to the intended parents immediately after delivery, and you\'ll focus on your recovery. Our team ensures everything goes smoothly and provides support during this emotional and physical transition.',
-  },
-  {
-    id: 10,
-    title: 'Postpartum & Next Steps',
-    duration: '2-4 weeks',
-    description: 'Attend a follow-up visit and complete simple paperwork. We help with reimbursements and final wrap-up. Try our surrogacy due date calculator earlier in the journey to map your timeline.',
-    activities: [
-      'Postpartum follow-up',
-      'Final paperwork',
-      'Reimbursement processing',
-      'Journey completion',
-    ],
-    details: 'After delivery, you\'ll attend follow-up appointments to ensure you\'re recovering well. We\'ll help process any remaining reimbursements and complete final paperwork. Our team remains available for any questions as you transition back to your normal routine, forever changed by this incredible journey.',
+    title: 'Emotional readiness & support',
+    body: 'Emotions shape the journey. A counselor teaches tools for boundaries, stress, and family talk. A case manager sends weekly updates. Everyone knows the next surrogacy step and the owner. That is how does surrogacy work in real life: clear roles, short checklists, kind support.',
   },
 ])
 
-// 當前選中的步驟
+const softCtas = reactive([
+  {
+    label: 'Intended parents',
+    description: 'Book a consult and map the surrogacy process step by step for your timeline.',
+    link: '/be-parents',
+  },
+  {
+    label: 'Surrogate mothers (U.S. citizens, California preferred)',
+    description: 'Check eligibility and see what is the process for surrogacy from your side.',
+    link: '/be-surrogate',
+  },
+])
+
+const timelinePhases = reactive([
+  {
+    id: 1,
+    label: 'Week 1–3',
+    title: 'Intro & Pre-Screen',
+    summary: 'Share goals, OB records, and clinic options. Pick a path for the surrogacy process for intended parents.',
+  },
+  {
+    id: 2,
+    label: 'Month 1–3',
+    title: 'Full Screening & Matching',
+    summary: 'Labs, ultrasound, and psych consult for the surrogate mother. Values and birth plan align.',
+  },
+  {
+    id: 3,
+    label: 'Month 2–4',
+    title: 'Legal & Escrow',
+    summary: 'Independent counsel drafts and signs. SeedTrust funds the account. Attorneys prep parentage orders.',
+  },
+  {
+    id: 4,
+    label: 'Month 3–5',
+    title: 'IVF Build & Transfer',
+    summary: 'The lab runs the ivf surrogacy process. Doctors schedule lining checks and the ivf surrogacy procedure for transfer.',
+  },
+  {
+    id: 5,
+    label: 'Month 5–14',
+    title: 'Pregnancy Care',
+    summary: 'OB visits and ultrasound milestones. Case manager sends weekly notes. Insurance team supports claims.',
+  },
+  {
+    id: 6,
+    label: 'Birth + 2–6 Weeks',
+    title: 'Post-Birth Legal',
+    summary: 'Hospital follows the plan. Lawyers complete orders and the birth certificate. Family travels home.',
+  },
+])
+
+const activeTimelinePhase = ref(timelinePhases[0].id)
+const currentTimelinePhase = computed(() => timelinePhases.find(phase => phase.id === activeTimelinePhase.value))
+
+function selectTimelinePhase(id: number) {
+  activeTimelinePhase.value = id
+}
+
+const flowchartStages = reactive([
+  {
+    id: 1,
+    title: 'Inquiry → Pre-screen',
+    parents: 'Parents share goals and clinic choices.',
+    surrogates: 'The surrogate mother shares OB records and lifestyle notes.',
+    summary: 'Team sets the surrogacy steps and timing.',
+  },
+  {
+    id: 2,
+    title: 'Screening → Matching',
+    parents: 'Labs, ultrasound, and psych consults.',
+    surrogates: 'Values and birth plan align.',
+    summary: 'This starts the gestational carrier process.',
+  },
+  {
+    id: 3,
+    title: 'Legal → Escrow',
+    parents: 'Independent attorneys draft and sign.',
+    surrogates: 'SeedTrust opens escrow with milestone releases.',
+    summary: 'This locks the surrogacy legal process in place.',
+  },
+  {
+    id: 4,
+    title: 'IVF build → Transfer',
+    parents: 'The lab runs surrogacy in vitro fertilization.',
+    surrogates: 'Doctors schedule the ivf surrogacy procedure.',
+    summary: 'This is how is surrogacy performed in real clinics.',
+  },
+  {
+    id: 5,
+    title: 'Pregnancy care → Updates',
+    parents: 'OB visits and ultrasound milestones.',
+    surrogates: 'Case manager sends weekly notes.',
+    summary: 'Steady surrogate pregnancy process, steady smiles.',
+  },
+  {
+    id: 6,
+    title: 'Delivery → Parentage → Home',
+    parents: 'Hospital follows the plan.',
+    surrogates: 'Attorneys finish orders and the birth certificate.',
+    summary: 'Family goes home. The surrogate mother rests with support.',
+  },
+])
+
+const checklistItems = reactive([
+  'Send records; confirm clinic; map the surrogacy process step by step',
+  'Complete labs, ultrasound, psych consult',
+  'Match meeting; confirm values and birth plan',
+  'Sign contracts; fund escrow; file parentage plan',
+  'Meds delivered; monitoring set for surrogate IVF',
+  'Transfer day; beta test; first heartbeat scan',
+  'OB calendar saved; insurance claims ready',
+  'Hospital tour; delivery preferences on file',
+  'Birth; order complete; documents stored',
+])
+
+const faqItems = reactive([
+  {
+    question: 'How does surrogacy work (simple view)?',
+    answer: 'We follow the surrogacy process step by step. Screen. Match. Contract. IVF. Transfer. Pregnancy. Delivery. Parentage. That is how does surrogacy work in a safe, modern plan.',
+  },
+  {
+    question: 'What is the process for surrogacy if I am an intended parent?',
+    answer: 'We map the surrogacy process for intended parents on one page. You pick a clinic. You review embryos and donors. You meet your carrier. Attorneys secure parentage. The team guides each step.',
+  },
+  {
+    question: 'What is the surrogate process from her side?',
+    answer: 'A woman joins a surrogate mother program after pre-screen. She finishes full screening. She signs with independent counsel. She follows the ivf surrogacy process. She carries with steady support. That answers what is the surrogate process in six short steps.',
+  },
+  {
+    question: 'How does a surrogate mother get pregnant?',
+    answer: 'Doctors perform embryo transfer. That is the ivf surrogacy procedure. Nurses confirm meds and timing. A beta test confirms the result. That is how do surrogates get pregnant in IVF.',
+  },
+  {
+    question: 'Whose eggs are used in surrogacy?',
+    answer: 'Use the intended mother’s eggs when possible. Use surrogacy with donor egg when needed. The carrier has no genetic link. Attorneys record the genetic father. If you ask in surrogacy who is the biological father, the answer is the genetic father in the file.',
+  },
+  {
+    question: 'How is surrogacy done vs. how is surrogacy performed?',
+    answer: 'Both questions mean the same thing. Clinics follow the same medical arc: screening, surrogacy in vitro fertilization, and transfer. Attorneys guide the surrogacy legal process.',
+  },
+  {
+    question: 'What about surrogacy laws United States?',
+    answer: 'Laws change by state. California supports gestational surrogacy well. Many families use a pre-birth order. Ask counsel for a fit plan under surrogacy laws United States.',
+  },
+  {
+    question: 'What does a surrogate mother do day to day?',
+    answer: 'She follows meds. She attends scans. She keeps a healthy routine. She shares updates. She rests after delivery. This simple rhythm keeps the surrogate pregnancy process stable.',
+  },
+])
+
+const expandedFaq = ref<number | null>(0)
+
+function toggleFaq(index: number) {
+  expandedFaq.value = expandedFaq.value === index ? null : index
+}
+
+const resourceCategories = reactive([
+  {
+    title: 'Medical & Legal Guides',
+    items: [
+      'Medical guidance on IVF and pregnancy care.',
+      'Legal primers on parentage orders and documents.',
+      'Plain-language answers to what is the process of surrogacy and the gestational carrier process.',
+    ],
+  },
+  {
+    title: 'Language & Access',
+    items: [
+      'Download short guides: how is surrogacy performed, the surrogacy process step by step, and the surrogacy legal process. See who does what at each step.',
+      'Quick definitions for what is gestational carrier, whose eggs are used in surrogacy, and in surrogacy who is the biological father. Each term links to the right step.',
+    ],
+  },
+])
+
+const yundaHighlights = reactive([
+  {
+    title: 'A Trusted U.S. Surrogacy Partner Based in California',
+    body: 'We know the courts and clinics. We guide families and surrogate mothers through the surrogacy steps with calm, clear updates.',
+  },
+  {
+    title: 'Medical & Legal Excellence Under One Roof',
+    body: 'We work with respected fertility centers and seasoned attorneys. We stand beside you during screening, the ivf surrogacy process, and delivery. We show how is surrogacy performed in real life, not just on paper.',
+  },
+  {
+    title: 'Transparent Process & Escrow Security',
+    body: 'SeedTrust manages escrow. ART Risk supports insurance. Milestones stay on time. Payments stay clear. The surrogacy process stays fair.',
+  },
+  {
+    title: 'Dedicated Project Managers & Weekly Updates',
+    body: 'One case manager owns your file. We send weekly notes. We keep the surrogacy process step by step on track for intended parents and for the surrogate mother.',
+  },
+])
+
+const journeyInvites = reactive([
+  'Intended Parents: Get your plan for the surrogacy process for intended parents.',
+  'Surrogates (U.S. citizens, California preferred): Join a respectful surrogate program. Learn what does a surrogate do to get pregnant in IVF. See real support, not hype.',
+])
+
+const surrogacySteps = reactive([
+  {
+    id: 1,
+    title: 'Initial Consultation & Eligibility Review',
+    duration: 'Week 1–3',
+    description: 'A coordinator opens the file and sets goals. The team listens first. We review timelines, clinics, and legal paths in the surrogacy in the United States context. For the surrogate mother, we outline the process to become a surrogate mother in plain steps. We welcome U.S. citizens and prefer California residents for fast access to care.',
+    activities: [
+      'Align goals and timelines for parents and surrogate mother.',
+      'Outline clinics, legal paths, and program expectations in calm language.',
+      'Review pre-screen records and ensure both tracks feel supported.',
+    ],
+    details: 'Focus of this step: align values, set expectations, and answer what is the process for surrogacy without stress.',
+    sections: [
+      {
+        heading: 'Surrogate eligibility (US citizens, California preferred)',
+        items: [
+          'Prior healthy birth, steady home, and supportive partner or family.',
+          'Clean medical history and healthy BMI.',
+          'Clear consent to the surrogate program terms and calendar.',
+        ],
+      },
+      {
+        heading: 'Intended parent profile & expectations',
+        items: [
+          'Fertility history, embryo status, donor needs, and clinic choice.',
+          'Budget windows and escrow plan.',
+          'Early view of the surrogacy process for intended parents.',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Start the surrogate mother program pre-screen.',
+      'Parents: Book a consult to see the surrogacy process step by step.',
+    ],
+  },
+  {
+    id: 2,
+    title: 'Legal Consultation & Contract Formation',
+    duration: 'Month 2–4',
+    description: 'Independent attorneys guide every talk. They protect privacy, consent, and hospital plans. They also map parentage for California and other states. Clear contracts keep the surrogacy steps safe and fair.',
+    activities: [
+      'Host legal briefings with independent counsel for all parties.',
+      'Document consent, hospital plans, and confidentiality expectations.',
+      'Launch parentage strategy tailored to state requirements.',
+    ],
+    details: 'Legal agreements outline rights, confidentiality, and obligations.',
+    sections: [
+      {
+        heading: 'Legal agreements outline rights, confidentiality, and obligations',
+        items: [
+          'Decision authority for pregnancy care and delivery.',
+          'Travel, bed rest, multiples, and C-section plans.',
+          'Clear support for wellness and time off.',
+        ],
+      },
+      {
+        heading: 'Parentage order preparation (U.S. state-specific overview)',
+        items: [
+          'Attorneys draft filings early.',
+          'Many California cases use a pre-birth order.',
+          'Orders help families becoming a parent through surrogacy without delays.',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Meet an attorney for a friendly walk-through of the surrogacy legal process.',
+      'Parents: Ask about surrogacy laws United States that fit your case.',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Medical Screening & IVF Preparation',
+    duration: 'Month 1–3',
+    description: 'Clinics run full screening before any cycle. Doctors check labs and uterine health. A psychologist meets the surrogate mother to confirm readiness and support. Counselors explain what does a surrogate mother do in day-to-day life during treatment.',
+    activities: [
+      'Complete health, lab, and psychological evaluations for the surrogate mother.',
+      'Coordinate insurance review for surrogate mother health insurance options.',
+      'Finalize IVF medication calendar and embryo creation plan.',
+    ],
+    details: 'Health, lab, and psychological evaluations.',
+    sections: [
+      {
+        heading: 'Health, lab, and psychological evaluations',
+        items: [
+          'OB records review, infectious-disease panel, ultrasound.',
+          'Mental health consult and lifestyle check.',
+          'Insurance advisors review surrogate mother health insurance options.',
+        ],
+      },
+      {
+        heading: 'IVF and embryo creation (donor egg/sperm if needed)',
+        items: [
+          'Teams plan the ivf and surrogacy calendar with clear meds and monitoring.',
+          'The lab builds embryos: parental gametes first; surrogacy with donor egg when needed.',
+          'Doctors answer whose eggs are used in surrogacy, then align on consent and next steps.',
+          'This forms the core gestational surrogacy procedure and surrogacy in vitro fertilization plan.',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Confirm coverage and travel timing with a coordinator.',
+      'Parents: Lock your clinic and embryo plan for a clean handoff.',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Embryo Transfer & Confirmation of Pregnancy',
+    duration: 'Month 3–5',
+    description: 'Doctors schedule the lining check and the transfer day. Nurses keep meds simple. The lab prepares embryos. The physician completes surrogate IVF with a calm, focused routine.',
+    activities: [
+      'Coordinate lining reviews, embryo prep, and transfer details.',
+      'Guide medication adherence and post-transfer recovery.',
+      'Document beta-hCG results and first scan updates for both tracks.',
+    ],
+    details: 'Uterine lining prep, transfer, and pregnancy test.',
+    sections: [
+      {
+        heading: 'Uterine lining prep, transfer, and pregnancy test',
+        items: [
+          'Lining review, embryo thaw or selection, and transfer.',
+          'Beta-hCG confirms the result 9–12 days later.',
+          'This is how does a surrogate mother get pregnant in modern care.',
+          'Clinics teach what does a surrogate do to get pregnant: follow meds, rest, and scan on time.',
+        ],
+      },
+      {
+        heading: 'Ongoing medical communication between clinic and agency',
+        items: [
+          'The case manager sends weekly notes after the first scan.',
+          'Everyone sees the same dates and the same surrogacy steps.',
+          'The ivf surrogacy process stays calm and organized.',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Save your scan schedule and wellness tips.',
+      'Parents: Prepare a hospital pre-registration and a birth-day plan.',
+    ],
+  },
+  {
+    id: 5,
+    title: 'Pregnancy Monitoring & Emotional Support',
+    duration: 'Month 5–14',
+    description: 'Prenatal care follows standard OB rules. Ultrasounds mark growth and health. A counselor supports boundaries, family talk, and stress control. The surrogate pregnancy process stays caring and steady.',
+    activities: [
+      'Track OB appointments, ultrasound milestones, and lab requirements.',
+      'Offer emotional health check-ins and support resources.',
+      'Coordinate insurance claims and intended parent updates.',
+    ],
+    details: 'Regular medical checkups, ultrasound schedule.',
+    sections: [
+      {
+        heading: 'Regular medical checkups, ultrasound schedule',
+        items: [
+          'Heartbeat scan, NT scan, anatomy scan, growth scans as needed.',
+          'Clear reminders for glucose tests, vaccines, and travel windows.',
+          'A calm gestational carrier pregnancy helps everyone.',
+        ],
+      },
+      {
+        heading: 'Surrogate wellness support and insurance coverage',
+        items: [
+          'Mental health check-ins and lactation support if desired.',
+          'Advisors manage claims under surrogate mother health insurance.',
+          'Parents plan first-hours bonding for babies born through surrogacy.',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Join the wellness chat and keep your sleep and nutrition strong.',
+      'Parents: Book the hospital tour and set a newborn plan.',
+    ],
+  },
+  {
+    id: 6,
+    title: 'Delivery & Post-Birth Legal Steps',
+    duration: 'Birth + 2–6 Weeks',
+    description: 'The team finalizes the birth plan early. The hospital knows the legal names and the parentage path. Attorneys finish filings and guide the birth certificate request. This closes the gestational surrogacy process with clarity.',
+    activities: [
+      'Coordinate hospital logistics, travel, and bonding preferences.',
+      'Ensure legal parentage documents and filings are completed.',
+      'Offer gentle close-out support for surrogate mother and intended parents.',
+    ],
+    details: 'Hospital coordination & intended parents’ presence.',
+    sections: [
+      {
+        heading: 'Hospital coordination & intended parents’ presence',
+        items: [
+          'Packing lists, room plans, and bonding steps.',
+          'Nurses support skin-to-skin time and photos.',
+          'The surrogacy steps cover privacy and respectful good-byes.',
+        ],
+      },
+      {
+        heading: 'Legal parentage establishment and return home',
+        items: [
+          'Attorneys complete orders and vital records.',
+          'Counselors offer a gentle close for the surrogate mother.',
+          'Parents travel home as a family. Lawyers answer common questions, like in surrogacy who is the biological father (the genetic father on record).',
+        ],
+      },
+    ],
+    softCtas: [
+      'Surrogates: Share feedback to improve the surrogate program for the next journey.',
+      'Parents: Store all legal papers and pediatric notes in one folder for travel.',
+    ],
+  },
+])
+
 const activeStep = ref(1)
 
-// 設置活動步驟
 function setActiveStep(stepId: number) {
   activeStep.value = stepId
 }
@@ -181,41 +468,21 @@ function setActiveStep(stepId: number) {
   <div class="min-h-screen bg-[var(--head-bg)]">
     <AppHeader />
 
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-white py-20">
+    <!-- Hero / Overview -->
+    <section class="relative overflow-hidden bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="grid gap-16 items-center lg:grid-cols-[1.2fr_1fr]">
+        <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div>
+            <p class="mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--primary-brown)] uppercase tracking-wide">
+              Surrogacy process guide
+            </p>
             <h1 class="mb-8 text-4xl text-[var(--dark-brown)] font-bold md:text-6xl" style="font-family: var(--font-primary)">
-              The Surrogacy Process &amp; Surrogacy Steps
+              Why Understanding the Surrogacy Steps Matters
             </h1>
             <div class="space-y-5 text-lg text-[var(--primary-brown)] leading-relaxed md:text-xl">
               <p>
-                The surrogacy process is a beautiful journey built on trust, compassion, and teamwork. It connects intended parents who dream of having a baby with caring surrogate mothers who want to help create life. Understanding each step of the journey makes the experience smoother and more meaningful for everyone involved.
+                The surrogacy process works best with a clear map. It shows how does surrogacy work from the first call to birth. It sets calm rules for each handoff. It also keeps the surrogacy process for intended parents and the path for a surrogate mother on the same page. A shared plan reduces stress. A shared plan builds trust.
               </p>
-              <p>
-                Every surrogacy step has its own purpose. From medical screening and legal contracts to embryo transfer and delivery, each part follows a clear path designed to protect both the intended parents and the surrogate. When everyone understands the process, communication feels easier, expectations stay realistic, and emotions remain balanced.
-              </p>
-              <p>
-                In the United States, especially in states like California, the surrogacy process follows strict medical and legal guidelines. These rules make sure the surrogate mother’s health, the baby’s safety, and the parents’ legal rights are all protected from the very beginning.
-              </p>
-              <p>
-                At its heart, surrogacy is more than a medical journey — it’s a partnership built on trust and shared hope. Every stage brings the dream of parenthood one step closer to reality.
-              </p>
-            </div>
-            <div class="mt-10 flex flex-wrap gap-4">
-              <NuxtLink
-                to="/be-surrogate"
-                class="rounded-xl bg-[var(--grayish-green)] px-8 py-4 text-base text-white font-semibold shadow-lg transition-opacity hover:opacity-90"
-              >
-                Start Your Surrogacy Conversation
-              </NuxtLink>
-              <NuxtLink
-                to="/journey"
-                class="rounded-xl border-2 border-[var(--grayish-green)] px-8 py-4 text-base text-[var(--grayish-green)] font-semibold transition-colors hover:bg-[var(--grayish-green)] hover:text-white"
-              >
-                Explore Our Programs
-              </NuxtLink>
             </div>
           </div>
           <div class="relative">
@@ -226,80 +493,145 @@ function setActiveStep(stepId: number) {
                 class="h-full w-full rounded-2xl object-cover"
               >
             </div>
-            <div class="absolute -bottom-8 -right-6 hidden w-[220px] rounded-2xl border border-white/70 bg-white/90 p-6 backdrop-blur md:block">
-              <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
-                Compassion, planning, and shared hope guide every milestone—from the first call to the baby’s arrival.
-              </p>
+            <div class="absolute -bottom-8 -right-6 hidden w-[240px] rounded-2xl border border-white/70 bg-white/90 p-6 text-sm text-[var(--primary-brown)] leading-relaxed shadow-lg backdrop-blur md:block">
+              A shared plan reduces stress. A shared plan builds trust.
             </div>
           </div>
         </div>
       </div>
-      <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--head-bg)] to-transparent pointer-events-none" />
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--head-bg)] to-transparent" />
     </section>
 
-    <!-- Gestational Surrogacy Section -->
+    <!-- Readiness Pillars -->
     <section class="bg-[var(--head-bg)] py-24">
-      <div class="container mx-auto max-w-7xl px-4">
-        <div class="mb-12 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            What Is Gestational Surrogacy?
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="mx-auto mb-14 max-w-3xl text-center">
+          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+            Legal, Medical &amp; Emotional Readiness
           </h2>
-          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            Gestational surrogacy offers a loving, structured path for families and the surrogate mother alike. Here’s how it differs from traditional surrogacy and the people who make each journey possible.
-          </p>
         </div>
-
-        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div class="space-y-6 rounded-3xl bg-white p-10 shadow-lg">
-            <h3 class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Gestational vs. Traditional Surrogacy
+        <div class="grid gap-6 md:grid-cols-2">
+          <div
+            v-for="pillar in readinessPillars"
+            :key="pillar.title"
+            class="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg transition-shadow hover:shadow-2xl"
+          >
+            <div class="absolute inset-y-0 left-0 w-1 rounded-full bg-[var(--grayish-green)] opacity-60" />
+            <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              {{ pillar.title }}
             </h3>
             <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              In a gestational surrogacy process, the surrogate mother carries a baby who is not genetically related to her. The embryo is created through IVF using the intended parents’ or donors’ eggs and sperm. The surrogate helps nurture the pregnancy and deliver the baby, but she has no biological connection to the child.
+              {{ pillar.body }}
             </p>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Traditional surrogacy is different. In that case, the surrogate’s own egg is used, making her the biological mother. Today, almost all surrogacy programs in the United States follow the gestational surrogacy steps, because this method is legally clearer and emotionally safer for everyone.
-            </p>
-          </div>
-
-          <div class="space-y-8">
-            <div class="rounded-3xl bg-white p-10 shadow-lg">
-              <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-                Key Participants: Intended Parents, Surrogate Mothers, and Donors
-              </h3>
-              <p class="mb-4 text-lg text-[var(--primary-brown)] leading-relaxed">
-                The surrogacy process always involves several key people.
-              </p>
-              <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
-                <li>- Intended parents are those who wish to have a baby through surrogacy.</li>
-                <li>- Surrogate mothers carry the baby with care, following medical and legal steps to ensure safety and success.</li>
-                <li>- Donors (if needed) provide eggs or sperm when medical reasons require it.</li>
-              </ul>
-              <p class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed">
-                A professional agency coordinates communication between all parties, ensuring that every surrogacy step—from screening to delivery—runs smoothly. Experienced doctors, lawyers, and counselors guide the process with compassion and precision.
-              </p>
-            </div>
-            <div class="rounded-3xl bg-white p-10 shadow-lg">
-              <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-                Gestational surrogacy allows love, science, and trust to work together. It gives hope to families who need medical help and gives the surrogate mother a chance to make a lasting difference in someone’s life.
-              </p>
-            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Soft CTA Section -->
+    <section class="bg-white py-20">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+            Soft CTAs
+          </h2>
+          <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
+            Choose the next gentle step that fits your track. Each card keeps the tone warm and respectful.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <NuxtLink
+            v-for="cta in softCtas"
+            :key="cta.label"
+            :to="cta.link"
+            class="group relative overflow-hidden rounded-3xl border border-[var(--grayish-green)] bg-[var(--head-bg)] p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/30 to-white/60 opacity-0 transition-opacity group-hover:opacity-100" />
+            <span class="mb-3 inline-block text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+              {{ cta.label }}
+            </span>
+            <p class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              {{ cta.description }}
+            </p>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="bg-[var(--head-bg)] py-24">
+      <div class="container mx-auto max-w-7xl px-4">
+        <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+              Typical Timeline (12–18 Months)
+            </h2>
+            <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
+              A simple clock keeps the gestational surrogacy process steady. Times vary, but this plan fits many California cases:
+            </p>
+            <div class="space-y-4">
+              <button
+                v-for="phase in timelinePhases"
+                :key="phase.id"
+                class="w-full rounded-2xl border-2 px-6 py-5 text-left transition-all"
+                :class="[
+                  activeTimelinePhase === phase.id
+                    ? 'border-[var(--grayish-green)] bg-white shadow-lg'
+                    : 'border-transparent bg-white/60 hover:border-[var(--grayish-green)]',
+                ]"
+                @click="selectTimelinePhase(phase.id)"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-sm text-[var(--grayish-green)] uppercase tracking-wide">{{ phase.label }}</span>
+                    <h3 class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                      {{ phase.title }}
+                    </h3>
+                  </div>
+                  <span
+                    class="ml-4 flex h-9 w-9 items-center justify-center rounded-full border text-sm font-semibold"
+                    :class="[
+                      activeTimelinePhase === phase.id
+                        ? 'border-[var(--grayish-green)] text-[var(--grayish-green)]'
+                        : 'border-[var(--light-cream)] text-[var(--primary-brown)]',
+                    ]"
+                  >
+                    {{ phase.id }}
+                  </span>
+                </div>
+                <p class="mt-3 text-base text-[var(--primary-brown)] leading-relaxed">
+                  {{ phase.summary }}
+                </p>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-3xl bg-white p-10 shadow-xl">
+            <h3 class="mb-2 text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+              Spotlight step
+            </h3>
+            <p class="mb-2 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              {{ currentTimelinePhase?.label }} · {{ currentTimelinePhase?.title }}
+            </p>
+            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
+              {{ currentTimelinePhase?.summary }}
+            </p>
+          </div>
+        </div>
+        <p class="mt-12 max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
+          This timeline shows the surrogacy process step by step in clear blocks. It also keeps both paths equal. The surrogate mother sees care, rest, and support. The parents see documents, scans, and dates. Short steps. Clear owners. That is how does surrogacy work when a team moves as one.
+        </p>
       </div>
     </section>
 
     <!-- Step-by-Step Section -->
-    <section id="surrogacy-steps" class="bg-white py-24">
+    <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="mx-auto mb-12 max-w-5xl text-center">
+        <div class="mb-12 text-center">
           <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
             Step-by-Step Breakdown of the Surrogacy Process
           </h2>
-        </div>
-        <div class="mx-auto mb-16 max-w-5xl space-y-4 rounded-3xl bg-[var(--head-bg)] p-10 text-lg text-[var(--primary-brown)] leading-relaxed shadow-lg md:text-xl">
-          <p>
-            The surrogacy process follows clear, humane surrogacy steps. Each step protects the surrogate mother, the baby, and the intended parents. The flow below reflects common practice in California and across the United States.
+          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
+            The surrogacy process works best with simple, clear surrogacy steps. This map shows how does surrogacy work for intended parents and for a surrogate mother in California and across the United States.
           </p>
         </div>
         <SurrogateStepsComponent
@@ -310,93 +642,72 @@ function setActiveStep(stepId: number) {
       </div>
     </section>
 
-    <!-- Surrogacy Process Flowchart Section -->
+    <!-- Flowchart & Checklist Section -->
     <section class="bg-[var(--head-bg)] py-24">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="mb-12 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            Surrogacy Process Flowchart &amp; Checklist
-          </h2>
-          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            A simple map makes the surrogacy process clear. The flowchart shows each action, owner, and handoff. It keeps the surrogacy steps calm and predictable for the surrogate mother and the intended parents.
-          </p>
-        </div>
-        <div class="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
-          <div class="rounded-3xl bg-white p-10 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Flowchart: From First Call to Post-Birth
-            </h3>
-            <ol class="space-y-6 text-lg text-[var(--primary-brown)] leading-relaxed">
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">1. Initial consult → Pre-screen</span>
-                <span>Coordinator opens a file and sets goals.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">2. Full screening → Match</span>
-                <span>Clinic runs labs and imaging. Psychologist meets the surrogate mother. Team confirms the match.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">3. Legal consult → Contract → Escrow</span>
-                <span>Independent counsel explains terms. Everyone signs. SeedTrust sets the milestone schedule.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">4. IVF prep → Embryo creation → Transfer</span>
-                <span>Clinic plans meds and monitoring. Lab creates embryos. Doctor completes the transfer.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">5. Pregnancy monitoring → Case updates</span>
-                <span>OB visits follow a set calendar. Case manager sends weekly updates. ART Risk supports insurance questions.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">6. Delivery plan → Birth → Parentage order</span>
-                <span>Hospital plan is ready. Baby arrives. Attorneys complete the parentage steps.</span>
-              </li>
-              <li>
-                <span class="block text-[var(--dark-brown)] font-semibold">7. Discharge → Documents → Home</span>
-                <span>Birth certificate and travel papers follow. Family goes home with peace of mind.</span>
-              </li>
-            </ol>
+        <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+              Surrogacy Process Flowchart &amp; Checklist
+            </h2>
+            <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
+              A simple map keeps the surrogacy process calm. It shows each handoff. It shows who owns each task. It answers how does surrogacy work and how does the surrogate mother process work without noise.
+            </p>
+            <div class="space-y-6">
+              <div
+                v-for="stage in flowchartStages"
+                :key="stage.id"
+                class="rounded-3xl bg-white p-8 shadow-lg"
+              >
+                <div class="mb-4 flex items-center justify-between">
+                  <h3 class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                    {{ stage.id }}. {{ stage.title }}
+                  </h3>
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--grayish-green)] text-white font-semibold">
+                    {{ stage.id }}
+                  </span>
+                </div>
+                <div class="space-y-2 text-lg text-[var(--primary-brown)] leading-relaxed">
+                  <p><strong class="text-[var(--dark-brown)]">Parents:</strong> {{ stage.parents }}</p>
+                  <p><strong class="text-[var(--dark-brown)]">Surrogates:</strong> {{ stage.surrogates }}</p>
+                  <p>{{ stage.summary }}</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="space-y-8">
-            <div class="rounded-3xl bg-white p-10 shadow-lg">
+            <div class="rounded-3xl bg-white p-8 shadow-lg">
               <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-                Milestones &amp; Owners
+                Dual-Track Flowchart (Parents &amp; Surrogates)
               </h3>
-              <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
-                <li>Medical: clinic, OB, and lab manage testing, meds, transfer, and prenatal care.</li>
-                <li>Legal: attorneys guide contracts and parentage orders, state by state.</li>
-                <li>Financial: SeedTrust holds funds and releases payments by milestone.</li>
-                <li>Insurance: advisors design coverage; ART Risk supports claims.</li>
-                <li>Coordination: a case manager tracks every surrogacy step and keeps everyone aligned.</li>
-              </ul>
+              <ol class="space-y-4 text-lg text-[var(--primary-brown)] leading-relaxed">
+                <li>1. Inquiry → Pre-screen</li>
+                <li>2. Screening → Matching</li>
+                <li>3. Legal → Escrow</li>
+                <li>4. IVF build → Transfer</li>
+                <li>5. Pregnancy care → Updates</li>
+                <li>6. Delivery → Parentage → Home</li>
+              </ol>
             </div>
-            <div class="rounded-3xl bg-white p-10 shadow-lg">
+            <div class="rounded-3xl bg-white p-8 shadow-lg">
               <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
                 Printable Checklist (Highlights)
               </h3>
-              <p class="mb-4 text-lg text-[var(--primary-brown)] leading-relaxed">
-                Use this list to track the surrogacy process with ease. Mark each surrogacy step as you go.
-              </p>
-              <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-2">
-                <li>□ Health history sent; OB records complete</li>
-                <li>□ Lab panel, ultrasound, and psych eval complete</li>
-                <li>□ Match meeting done; values and birth plan aligned</li>
-                <li>□ Legal consult booked; contract terms clear</li>
-                <li>□ Escrow funded; payment calendar confirmed</li>
-                <li>□ IVF meds delivered; monitoring calendar set</li>
-                <li>□ Transfer day confirmed; travel and support arranged</li>
-                <li>□ Positive beta; prenatal care schedule active</li>
-                <li>□ Hospital tour; delivery preferences on file</li>
-                <li>□ Parentage order filed; birth certificate request ready</li>
-                <li>□ Newborn documents prepared; travel plan confirmed</li>
+              <ul class="space-y-3 text-lg text-[var(--primary-brown)] leading-relaxed">
+                <li
+                  v-for="item in checklistItems"
+                  :key="item"
+                >
+                  □ {{ item }}
+                </li>
               </ul>
             </div>
-            <div class="rounded-3xl bg-white p-10 shadow-lg">
+            <div class="rounded-3xl bg-white p-8 shadow-lg">
               <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-                California Notes
+                Recruit + Process Balance Note
               </h3>
               <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-                California law supports gestational surrogacy with clear parentage paths. Many programs center care around Los Angeles and San Diego clinics such as California Fertility Partners, Gen 5 Fertility, and Incinta. This network keeps the surrogacy steps tight and predictable for the surrogate mother and the intended parents.
+                This section keeps process education and recruit conversion in balance. We explain how is surrogacy performed with medical and legal detail. We also invite qualified women to a respectful program surrogacy path and give intended parents a clean, guided plan.
               </p>
             </div>
           </div>
@@ -407,124 +718,115 @@ function setActiveStep(stepId: number) {
     <!-- FAQ Section -->
     <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="mb-12 text-center">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
           <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            Frequently Asked Questions About the Surrogacy Process
+            FAQ About the Surrogacy Process
           </h2>
-          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            The surrogacy process raises real questions. Clear answers keep the surrogacy steps simple and calm.
+          <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
+            how does surrogacy work · how is surrogacy performed · what is the process for surrogacy
           </p>
         </div>
-        <div class="grid gap-8 md:grid-cols-2">
-          <div class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              How long does the surrogacy process take?
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Most families follow a 12–18 month path. Screening and matching take 1–3 months. Legal review takes 3–6 weeks. IVF prep and transfer take 4–8 weeks. Pregnancy and birth add about 9 months. A second transfer or donor timing can extend the surrogacy process.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Whose eggs and sperm does gestational surrogacy use?
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Doctors use the intended mother’s eggs when possible. Some families use donor eggs. Doctors use the intended father’s sperm or donor sperm. The surrogate mother carries the pregnancy. She holds no genetic link to the baby. These surrogacy steps keep roles clear.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              What medical tests does a surrogate mother complete?
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Clinics run labs, ultrasound, and infectious-disease panels. A psychologist checks readiness and support. OB history matters a lot. Doctors then design meds and a safe plan for the embryo transfer. These surrogacy steps protect the surrogate mother and the baby.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              How do attorneys protect everyone?
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Each party hires independent counsel. Attorneys set clear rights and duties in the contract. They plan parentage orders by state. In many California cases, lawyers secure a pre-birth order. That keeps the surrogacy process clean at delivery.
-            </p>
-          </div>
-          <div class="md:col-span-2 rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              How does embryo transfer work in the surrogacy process?
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              The clinic monitors lining and hormones. The lab creates embryos with parental or donor gametes. Doctors schedule transfer day and guide recovery. A beta-hCG test confirms next surrogacy steps. Nurses and a case manager share updates often.
-            </p>
+        <div class="space-y-4">
+          <div
+            v-for="(faq, index) in faqItems"
+            :key="faq.question"
+            class="rounded-3xl border border-[var(--light-cream)] bg-[var(--head-bg)] px-6 py-5 shadow-sm transition-colors hover:border-[var(--grayish-green)]"
+          >
+            <button
+              class="flex w-full items-center justify-between text-left"
+              @click="toggleFaq(index)"
+            >
+              <h3 class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                {{ faq.question }}
+              </h3>
+              <span class="ml-4 text-2xl text-[var(--grayish-green)]">
+                {{ expandedFaq === index ? '−' : '+' }}
+              </span>
+            </button>
+            <transition name="fade">
+              <p
+                v-if="expandedFaq === index"
+                class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed"
+              >
+                {{ faq.answer }}
+              </p>
+            </transition>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Choose Yunda Section -->
+    <!-- Resources Section -->
     <section class="bg-[var(--head-bg)] py-24">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+            Resources &amp; Educational Materials
+          </h2>
+          <p class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed">
+            what is the process of surrogacy · gestational carrier process
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div
+            v-for="resource in resourceCategories"
+            :key="resource.title"
+            class="rounded-3xl bg-white p-8 shadow-lg"
+          >
+            <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              {{ resource.title }}
+            </h3>
+            <ul class="space-y-3 text-lg text-[var(--primary-brown)] leading-relaxed">
+              <li
+                v-for="item in resource.items"
+                :key="item"
+              >
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Yunda -->
+    <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="mb-12 text-center space-y-4">
+        <div class="mx-auto mb-12 max-w-4xl text-center space-y-4">
           <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
             Why Choose Yunda Surrogacy Agency 🩵
           </h2>
-          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            Education sits first here. A warm, reliable team makes the surrogacy process easier. Yunda supports every surrogacy step with steady care and clear updates.
+          <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
+            A Trusted U.S. Surrogacy Partner Based in California
           </p>
         </div>
         <div class="grid gap-8 md:grid-cols-2">
-          <div class="rounded-3xl bg-white p-8 shadow-lg">
+          <div
+            v-for="highlight in yundaHighlights"
+            :key="highlight.title"
+            class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg"
+          >
             <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              A U.S. Partner With a California Focus
+              {{ highlight.title }}
             </h3>
             <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Yunda works across the United States with a strong focus on California programs. Many surrogate mothers hold U.S. citizenship and live in California. Clinics and courts in these regions support a clear, family-centered surrogacy process.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-white p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Medical &amp; Legal Excellence Under One Roof
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Yunda partners with respected fertility centers such as California Fertility Partners, Gen 5 Fertility, and Incinta. Experienced attorneys active in ASRM/AAAA guide legal steps and parentage orders. This network keeps the surrogacy steps precise and safe.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-white p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Transparent Escrow and Insurance Support
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              SeedTrust manages escrow and releases funds by milestone. ART Risk supports insurance design and claims. This structure protects the surrogate mother and the intended parents through the full surrogacy process.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-white p-8 shadow-lg">
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-              Dedicated Case Managers &amp; Weekly Updates
-            </h3>
-            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              A case manager follows each file from day one. The team sends weekly updates and sets clear next actions. Everyone sees the same timeline and the same goals. Small details stay on track. Big moments feel calm.
+              {{ highlight.body }}
             </p>
           </div>
         </div>
-        <div class="mt-8 rounded-3xl bg-white p-8 shadow-lg">
-          <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
-            Start Your Plan With Confidence
+        <div class="mt-12 rounded-3xl bg-[var(--grayish-green)] px-8 py-10 text-white shadow-xl">
+          <h3 class="mb-4 text-2xl font-semibold" style="font-family: var(--font-primary)">
+            Start Your Journey with Yunda
           </h3>
-          <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-            Yunda listens first. The team maps a clean surrogacy process for each family. The plan covers screening, matching, legal review, IVF, pregnancy, and birth. The tone stays respectful and kind from start to finish.
-          </p>
+          <ul class="space-y-3 text-lg leading-relaxed">
+            <li
+              v-for="invite in journeyInvites"
+              :key="invite"
+            >
+              - {{ invite }}
+            </li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- Summary Section -->
-    <section class="bg-white py-24">
-      <div class="container mx-auto max-w-5xl px-4 text-center space-y-6">
-        <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-          Summary: A Clear Path Through the Surrogacy Steps
-        </h2>
-        <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-          A kind plan and clear surrogacy steps change everything. The surrogate mother receives steady medical and emotional support. The intended parents move through each milestone with trust. Clinics, attorneys, and advisors work in sync. A simple, human surrogacy process helps love, science, and law work together—one careful step at a time.
-        </p>
       </div>
     </section>
 
@@ -533,49 +835,41 @@ function setActiveStep(stepId: number) {
       <div class="container mx-auto max-w-6xl px-4 text-center">
         <div class="rounded-3xl bg-[var(--grayish-green)] px-8 py-12 shadow-xl sm:px-16">
           <h3 class="mb-4 text-3xl text-white font-bold md:text-4xl" style="font-family: var(--font-primary)">
-            Ready to walk the surrogacy steps together?
+            Start Your Journey with Yunda
           </h3>
           <p class="mx-auto mb-8 max-w-3xl text-lg text-white leading-relaxed">
-            Connect with the Yunda team to map your journey from first consult through delivery. We’ll listen first, then guide every milestone with clarity and care.
+            We know the courts and clinics. We guide families and surrogate mothers through the surrogacy steps with calm, clear updates.
           </p>
-          <NuxtLink
-            to="/be-surrogate"
-            class="inline-flex items-center justify-center rounded-xl bg-white px-10 py-4 text-lg text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
-          >
-            Begin Your Application
-          </NuxtLink>
+          <div class="flex flex-wrap justify-center gap-4">
+            <NuxtLink
+              to="/be-parents"
+              class="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
+            >
+              Book a Consult
+            </NuxtLink>
+            <NuxtLink
+              to="/be-surrogate"
+              class="inline-flex items-center justify-center rounded-xl border border-white px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--grayish-green)]"
+            >
+              Check Eligibility
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </section>
-
-
-
 
     <AppFooter />
   </div>
 </template>
 
 <style scoped>
-/* 平滑滾動效果 */
-html {
-  scroll-behavior: smooth;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
 }
 
-/* 自定義滾動條 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--light-cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--grayish-green);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-brown);
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 
+interface StepSection {
+  heading: string
+  items: string[]
+}
+
 interface SurrogacyStep {
   id: number
   title: string
@@ -8,6 +13,8 @@ interface SurrogacyStep {
   description: string
   activities: string[]
   details: string
+  sections?: StepSection[]
+  softCtas?: string[]
 }
 
 interface Props {
@@ -20,7 +27,6 @@ const emit = defineEmits<{
   stepChange: [stepId: number]
 }>()
 
-const stepsContainer = ref<HTMLElement>()
 const detailsContainer = ref<HTMLElement>()
 const isScrolling = ref(false)
 
@@ -54,8 +60,6 @@ function handleScroll() {
     return
 
   const detailsElements = document.querySelectorAll('[id^="step-details-"]')
-  const scrollTop = detailsContainer.value?.scrollTop || 0
-
   let currentStep = 1
 
   detailsElements.forEach((element, index) => {
@@ -107,11 +111,8 @@ watch(() => props.activeStep, () => {
       <div class="w-1/3 overflow-y-auto rounded-xl bg-white p-8 shadow-lg">
         <div class="sticky top-0 mb-6 border-b border-gray-200 bg-white pb-4">
           <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-            10 Steps in the Surrogate Process
+            6 Steps in the Surrogate Process
           </h3>
-          <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
-            The surrogacy process can feel overwhelming. Understanding the journey through seven clear steps helps you know what to expect, what's required of you as a surrogate, and the general timeline. Each surrogacy journey is unique, and timing may not be exact.
-          </p>
         </div>
 
         <div class="space-y-2">
@@ -208,13 +209,54 @@ watch(() => props.activeStep, () => {
           </div>
 
           <!-- 額外信息 -->
-          <div class="rounded-lg bg-[var(--light-cream)] p-6">
-            <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
-              Additional Information:
-            </h4>
-            <p class="text-[var(--primary-brown)] leading-relaxed">
-              {{ step.details }}
-            </p>
+          <div class="space-y-6">
+            <div class="rounded-lg bg-[var(--light-cream)] p-6">
+              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+                Additional Information:
+              </h4>
+              <p class="text-[var(--primary-brown)] leading-relaxed">
+                {{ step.details }}
+              </p>
+            </div>
+
+            <div
+              v-for="section in step.sections || []"
+              :key="section.heading"
+              class="rounded-lg border border-[var(--light-cream)] bg-white p-6"
+            >
+              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+                {{ section.heading }}
+              </h4>
+              <ul class="space-y-2 text-[var(--primary-brown)] leading-relaxed">
+                <li
+                  v-for="item in section.items"
+                  :key="item"
+                  class="flex items-start"
+                >
+                  <span class="mr-2 mt-1 text-[var(--grayish-green)]">•</span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              v-if="step.softCtas?.length"
+              class="rounded-lg border border-[var(--grayish-green)] bg-white p-6"
+            >
+              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+                Soft CTAs
+              </h4>
+              <ul class="space-y-2 text-[var(--primary-brown)] leading-relaxed">
+                <li
+                  v-for="cta in step.softCtas"
+                  :key="cta"
+                  class="flex items-start"
+                >
+                  <span class="mr-2 mt-1 text-[var(--grayish-green)]">–</span>
+                  <span>{{ cta }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -225,10 +267,10 @@ watch(() => props.activeStep, () => {
       <!-- 步驟選擇器 -->
       <div class="mb-6 rounded-xl bg-white p-6 shadow-lg">
         <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-          7 Steps in the Surrogate Process
+          6 Steps in the Surrogate Process
         </h3>
         <p class="mb-6 text-sm text-[var(--primary-brown)] leading-relaxed">
-          The surrogacy process can feel overwhelming. Understanding the journey through seven clear steps helps you know what to expect.
+          The surrogacy process works best with simple, clear surrogacy steps. Tap a step to see the focus for parents and surrogate mothers.
         </p>
 
         <div class="grid grid-cols-2 gap-3">
@@ -309,13 +351,54 @@ watch(() => props.activeStep, () => {
         </div>
 
         <!-- 額外信息 -->
-        <div class="rounded-lg bg-[var(--light-cream)] p-4">
-          <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
-            Additional Information:
-          </h4>
-          <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
-            {{ steps[activeStep - 1]?.details }}
-          </p>
+        <div class="space-y-4">
+          <div class="rounded-lg bg-[var(--light-cream)] p-4">
+            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+              Additional Information:
+            </h4>
+            <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
+              {{ steps[activeStep - 1]?.details }}
+            </p>
+          </div>
+
+          <div
+            v-for="section in steps[activeStep - 1]?.sections || []"
+            :key="section.heading"
+            class="rounded-lg border border-[var(--light-cream)] bg-white p-4"
+          >
+            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+              {{ section.heading }}
+            </h4>
+            <ul class="space-y-1 text-sm text-[var(--primary-brown)] leading-relaxed">
+              <li
+                v-for="item in section.items"
+                :key="item"
+                class="flex items-start"
+              >
+                <span class="mr-2 mt-1 text-[var(--grayish-green)]">•</span>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            v-if="steps[activeStep - 1]?.softCtas?.length"
+            class="rounded-lg border border-[var(--grayish-green)] bg-white p-4"
+          >
+            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+              Soft CTAs
+            </h4>
+            <ul class="space-y-1 text-sm text-[var(--primary-brown)] leading-relaxed">
+              <li
+                v-for="cta in steps[activeStep - 1]?.softCtas"
+                :key="cta"
+                class="flex items-start"
+              >
+                <span class="mr-2 mt-1 text-[var(--grayish-green)]">–</span>
+                <span>{{ cta }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
