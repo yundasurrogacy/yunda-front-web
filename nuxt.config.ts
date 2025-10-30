@@ -19,6 +19,14 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
+  routeRules: {
+    '/surrogate-journey': {
+      redirect: {
+        to: '/surrogate-process',
+        statusCode: 301,
+      },
+    },
+  },
   nitro: {
     preset: 'static',
     prerender: {
@@ -35,7 +43,6 @@ export default defineNuxtConfig({
         '/be-parents',
         '/be-surrogate',
         '/surrogate-qualification',
-        '/surrogate-journey',
         '/surrogate-compensation',
         '/surrogate-requirements',
         '/become-a-surrogate-mother',
