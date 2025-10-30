@@ -5,19 +5,19 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateStepsComponent.vue'
 
 useHead({
-  title: '6 Clear Surrogacy Steps: The Ultimate Surrogacy Process Guide',
+  title: '6 Clear surrogate process: The Ultimate Surrogacy Process Guide',
   meta: [
     {
       name: 'description',
-      content: 'Surrogacy process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
+      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
     },
     {
       property: 'og:title',
-      content: '6 Clear Surrogacy Steps: The Ultimate Surrogacy Process Guide',
+      content: '6 Clear surrogate process: The Ultimate Surrogacy Process Guide',
     },
     {
       property: 'og:description',
-      content: 'Surrogacy process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
+      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
     },
     {
       property: 'og:type',
