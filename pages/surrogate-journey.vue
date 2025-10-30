@@ -5,7 +5,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateStepsComponent.vue'
 
 useHead({
-  title: '6 Clear surrogate process: The Ultimate Surrogacy Process Guide',
+  title: '6 Clear surrogate process: The Ultimate Surrogate Process Guide',
   meta: [
     {
       name: 'description',
