@@ -9,15 +9,15 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
+      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF Surrogate process.',
     },
     {
       property: 'og:title',
-      content: '6 Clear surrogate process: The Ultimate Surrogacy Process Guide',
+      content: '6 Clear surrogate process: The Ultimate Surrogate process Guide',
     },
     {
       property: 'og:description',
-      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF surrogacy process.',
+      content: 'Surrogate process step by step. Surrogacy steps for intended parents. Learn how does surrogacy work plus the gestational and IVF Surrogate process.',
     },
     {
       property: 'og:type',
@@ -25,7 +25,7 @@ useHead({
     },
     {
       name: 'keywords',
-      content: 'surrogate mother, gestational surrogacy, surrogacy process, IVF, embryo transfer, surrogacy requirements, become a surrogate',
+      content: 'surrogate mother, gestational surrogacy, Surrogate process, IVF, embryo transfer, surrogacy requirements, become a surrogate',
     },
   ],
 })
@@ -41,7 +41,7 @@ const readinessPillars = reactive([
   },
   {
     title: 'Medical & lab planning',
-    body: 'Now the clinic plan. Doctors and nurses show how is surrogacy performed in modern care. They design meds and timing. Labs build embryos. The ivf surrogacy process covers stimulation (if needed), retrieval, fertilization, and culture. The ivf surrogacy procedure sets transfer day. That is how does a surrogate mother get pregnant in a clinical sense—through embryo transfer, not intercourse.',
+    body: 'Now the clinic plan. Doctors and nurses show how is surrogacy performed in modern care. They design meds and timing. Labs build embryos. The ivf Surrogate process covers stimulation (if needed), retrieval, fertilization, and culture. The ivf surrogacy procedure sets transfer day. That is how does a surrogate mother get pregnant in a clinical sense—through embryo transfer, not intercourse.',
   },
   {
     title: 'Emotional readiness & support',
@@ -52,7 +52,7 @@ const readinessPillars = reactive([
 const softCtas = reactive([
   {
     label: 'Intended parents',
-    description: 'Book a consult and map the surrogacy process step by step for your timeline.',
+    description: 'Book a consult and map the Surrogate process step by step for your timeline.',
     link: '/be-parents',
   },
   {
@@ -67,7 +67,7 @@ const timelinePhases = reactive([
     id: 1,
     label: 'Week 1–3',
     title: 'Intro & Pre-Screen',
-    summary: 'Share goals, OB records, and clinic options. Pick a path for the surrogacy process for intended parents.',
+    summary: 'Share goals, OB records, and clinic options. Pick a path for the Surrogate process for intended parents.',
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ const timelinePhases = reactive([
     id: 4,
     label: 'Month 3–5',
     title: 'IVF Build & Transfer',
-    summary: 'The lab runs the ivf surrogacy process. Doctors schedule lining checks and the ivf surrogacy procedure for transfer.',
+    summary: 'The lab runs the ivf Surrogate process. Doctors schedule lining checks and the ivf surrogacy procedure for transfer.',
   },
   {
     id: 5,
@@ -154,7 +154,7 @@ const flowchartStages = reactive([
 ])
 
 const checklistItems = reactive([
-  'Send records; confirm clinic; map the surrogacy process step by step',
+  'Send records; confirm clinic; map the Surrogate process step by step',
   'Complete labs, ultrasound, psych consult',
   'Match meeting; confirm values and birth plan',
   'Sign contracts; fund escrow; file parentage plan',
@@ -168,15 +168,15 @@ const checklistItems = reactive([
 const faqItems = reactive([
   {
     question: 'How does surrogacy work (simple view)?',
-    answer: 'We follow the surrogacy process step by step. Screen. Match. Contract. IVF. Transfer. Pregnancy. Delivery. Parentage. That is how does surrogacy work in a safe, modern plan.',
+    answer: 'We follow the Surrogate process step by step. Screen. Match. Contract. IVF. Transfer. Pregnancy. Delivery. Parentage. That is how does surrogacy work in a safe, modern plan.',
   },
   {
     question: 'What is the process for surrogacy if I am an intended parent?',
-    answer: 'We map the surrogacy process for intended parents on one page. You pick a clinic. You review embryos and donors. You meet your carrier. Attorneys secure parentage. The team guides each step.',
+    answer: 'We map the Surrogate process for intended parents on one page. You pick a clinic. You review embryos and donors. You meet your carrier. Attorneys secure parentage. The team guides each step.',
   },
   {
     question: 'What is the surrogate process from her side?',
-    answer: 'A woman joins a surrogate mother program after pre-screen. She finishes full screening. She signs with independent counsel. She follows the ivf surrogacy process. She carries with steady support. That answers what is the surrogate process in six short steps.',
+    answer: 'A woman joins a surrogate mother program after pre-screen. She finishes full screening. She signs with independent counsel. She follows the ivf Surrogate process. She carries with steady support. That answers what is the surrogate process in six short steps.',
   },
   {
     question: 'How does a surrogate mother get pregnant?',
@@ -218,7 +218,7 @@ const resourceCategories = reactive([
   {
     title: 'Language & Access',
     items: [
-      'Download short guides: how is surrogacy performed, the surrogacy process step by step, and the surrogacy legal process. See who does what at each step.',
+      'Download short guides: how is surrogacy performed, the Surrogate process step by step, and the surrogacy legal process. See who does what at each step.',
       'Quick definitions for what is gestational carrier, whose eggs are used in surrogacy, and in surrogacy who is the biological father. Each term links to the right step.',
     ],
   },
@@ -231,20 +231,20 @@ const yundaHighlights = reactive([
   },
   {
     title: 'Medical & Legal Excellence Under One Roof',
-    body: 'We work with respected fertility centers and seasoned attorneys. We stand beside you during screening, the ivf surrogacy process, and delivery. We show how is surrogacy performed in real life, not just on paper.',
+    body: 'We work with respected fertility centers and seasoned attorneys. We stand beside you during screening, the ivf Surrogate process, and delivery. We show how is surrogacy performed in real life, not just on paper.',
   },
   {
     title: 'Transparent Process & Escrow Security',
-    body: 'SeedTrust manages escrow. ART Risk supports insurance. Milestones stay on time. Payments stay clear. The surrogacy process stays fair.',
+    body: 'SeedTrust manages escrow. ART Risk supports insurance. Milestones stay on time. Payments stay clear. The Surrogate process stays fair.',
   },
   {
     title: 'Dedicated Project Managers & Weekly Updates',
-    body: 'One case manager owns your file. We send weekly notes. We keep the surrogacy process step by step on track for intended parents and for the surrogate mother.',
+    body: 'One case manager owns your file. We send weekly notes. We keep the Surrogate process step by step on track for intended parents and for the surrogate mother.',
   },
 ])
 
 const journeyInvites = reactive([
-  'Intended Parents: Get your plan for the surrogacy process for intended parents.',
+  'Intended Parents: Get your plan for the Surrogate process for intended parents.',
   'Surrogates (U.S. citizens, California preferred): Join a respectful surrogate program. Learn what does a surrogate do to get pregnant in IVF. See real support, not hype.',
 ])
 
@@ -274,13 +274,13 @@ const surrogacySteps = reactive([
         items: [
           'Fertility history, embryo status, donor needs, and clinic choice.',
           'Budget windows and escrow plan.',
-          'Early view of the surrogacy process for intended parents.',
+          'Early view of the Surrogate process for intended parents.',
         ],
       },
     ],
     softCtas: [
       'Surrogates: Start the surrogate mother program pre-screen.',
-      'Parents: Book a consult to see the surrogacy process step by step.',
+      'Parents: Book a consult to see the Surrogate process step by step.',
     ],
   },
   {
@@ -378,7 +378,7 @@ const surrogacySteps = reactive([
         items: [
           'The case manager sends weekly notes after the first scan.',
           'Everyone sees the same dates and the same surrogacy steps.',
-          'The ivf surrogacy process stays calm and organized.',
+          'The ivf Surrogate process stays calm and organized.',
         ],
       },
     ],
@@ -425,7 +425,7 @@ const surrogacySteps = reactive([
     id: 6,
     title: 'Delivery & Post-Birth Legal Steps',
     duration: 'Birth + 2–6 Weeks',
-    description: 'The team finalizes the birth plan early. The hospital knows the legal names and the parentage path. Attorneys finish filings and guide the birth certificate request. This closes the gestational surrogacy process with clarity.',
+    description: 'The team finalizes the birth plan early. The hospital knows the legal names and the parentage path. Attorneys finish filings and guide the birth certificate request. This closes the gestational Surrogate process with clarity.',
     activities: [
       'Coordinate hospital logistics, travel, and bonding preferences.',
       'Ensure legal parentage documents and filings are completed.',
@@ -474,14 +474,14 @@ function setActiveStep(stepId: number) {
         <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <p class="mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--primary-brown)] uppercase tracking-wide">
-              Surrogacy process guide
+              Surrogate process guide
             </p>
             <h1 class="mb-8 text-4xl text-[var(--dark-brown)] font-bold md:text-6xl" style="font-family: var(--font-primary)">
               Why Understanding the Surrogacy Steps Matters
             </h1>
             <div class="space-y-5 text-lg text-[var(--primary-brown)] leading-relaxed md:text-xl">
               <p>
-                The surrogacy process works best with a clear map. It shows how does surrogacy work from the first call to birth. It sets calm rules for each handoff. It also keeps the surrogacy process for intended parents and the path for a surrogate mother on the same page. A shared plan reduces stress. A shared plan builds trust.
+                The Surrogate process works best with a clear map. It shows how does surrogacy work from the first call to birth. It sets calm rules for each handoff. It also keeps the Surrogate process for intended parents and the path for a surrogate mother on the same page. A shared plan reduces stress. A shared plan builds trust.
               </p>
             </div>
           </div>
@@ -567,7 +567,7 @@ function setActiveStep(stepId: number) {
               Typical Timeline (12–18 Months)
             </h2>
             <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
-              A simple clock keeps the gestational surrogacy process steady. Times vary, but this plan fits many California cases:
+              A simple clock keeps the gestational Surrogate process steady. Times vary, but this plan fits many California cases:
             </p>
             <div class="space-y-4">
               <button
@@ -618,7 +618,7 @@ function setActiveStep(stepId: number) {
           </div>
         </div>
         <p class="mt-12 max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-          This timeline shows the surrogacy process step by step in clear blocks. It also keeps both paths equal. The surrogate mother sees care, rest, and support. The parents see documents, scans, and dates. Short steps. Clear owners. That is how does surrogacy work when a team moves as one.
+          This timeline shows the Surrogate process step by step in clear blocks. It also keeps both paths equal. The surrogate mother sees care, rest, and support. The parents see documents, scans, and dates. Short steps. Clear owners. That is how does surrogacy work when a team moves as one.
         </p>
       </div>
     </section>
@@ -628,10 +628,10 @@ function setActiveStep(stepId: number) {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-12 text-center">
           <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            Step-by-Step Breakdown of the Surrogacy Process
+            Step-by-Step Breakdown of the Surrogate process
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            The surrogacy process works best with simple, clear surrogacy steps. This map shows how does surrogacy work for intended parents and for a surrogate mother in California and across the United States.
+            The Surrogate process works best with simple, clear surrogacy steps. This map shows how does surrogacy work for intended parents and for a surrogate mother in California and across the United States.
           </p>
         </div>
         <SurrogateStepsComponent
@@ -648,10 +648,10 @@ function setActiveStep(stepId: number) {
         <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-              Surrogacy Process Flowchart &amp; Checklist
+              Surrogate process Flowchart &amp; Checklist
             </h2>
             <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
-              A simple map keeps the surrogacy process calm. It shows each handoff. It shows who owns each task. It answers how does surrogacy work and how does the surrogate mother process work without noise.
+              A simple map keeps the Surrogate process calm. It shows each handoff. It shows who owns each task. It answers how does surrogacy work and how does the surrogate mother process work without noise.
             </p>
             <div class="space-y-6">
               <div
@@ -720,7 +720,7 @@ function setActiveStep(stepId: number) {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mx-auto mb-12 max-w-3xl text-center">
           <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            FAQ About the Surrogacy Process
+            FAQ About the Surrogate process
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
             how does surrogacy work · how is surrogacy performed · what is the process for surrogacy
