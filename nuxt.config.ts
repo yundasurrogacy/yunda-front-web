@@ -26,6 +26,11 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/become-surrogate': {
+      redirect: {
+        to: '/https://www.yundasurrogacy.com/become-a-surrogate-mother',
+        statusCode: 301,
+      },
   },
   nitro: {
     preset: 'static',
