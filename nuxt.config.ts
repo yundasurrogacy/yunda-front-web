@@ -32,6 +32,7 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
   },
+  },
   nitro: {
     preset: 'static',
     prerender: {
