@@ -3,7 +3,7 @@ const links = [
   { to: '/become-a-surrogate-mother', label: 'Become a Surrogate Mother' },
   { to: '/surrogate-compensation', label: 'Surrogate Compensation Overview' },
   { to: '/surrogate-requirements', label: 'Surrogate Requirements Checklist' },
-  { to: '/surrogate-journey', label: 'Surrogate Journey Program' },
+  { to: '/surrogate-process', label: 'Surrogate process step by step' },
   { to: '/become-surrogate-california', label: 'Become a Surrogate in California' },
 ]
 </script>
