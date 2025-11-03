@@ -38,10 +38,10 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       // 排除 blog 相关页面，让它们动态渲染
-      ignore: [
-        '/blog',
-        '/blog/*',
-      ],
+      // ignore: [
+      //   '/blog', 
+      //   '/blog/*',
+      // ],
       // 明确指定要预渲染的页面（除了 blog）
       routes: [
         '/',
