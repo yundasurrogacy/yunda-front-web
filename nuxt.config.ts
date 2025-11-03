@@ -20,18 +20,12 @@ export default defineNuxtConfig({
 
   ssr: true,
   routeRules: {
-    '/surrogate-journey': {
-      redirect: {
-        to: '/surrogate-process',
-        statusCode: 301,
-      },
-    },
     '/become-surrogate': {
       redirect: {
         to: '/become-a-surrogate-mother',
         statusCode: 301,
       },
-  },
+    },
   },
   nitro: {
     preset: 'static',
@@ -56,6 +50,7 @@ export default defineNuxtConfig({
         '/become-surrogate-california',
         '/benefit',
         '/eligibility',
+        '/surrogate-journey',
         '/journey',
         '/referral',
         '/screening',
@@ -197,6 +192,7 @@ fbq('track', 'SubmitApplication');
         // 代孕者相关页面
         { loc: '/benefit', priority: 0.7 },
         { loc: '/eligibility', priority: 0.7 },
+        { loc: '/surrogate-journey', priority: 0.7 },
         { loc: '/journey', priority: 0.7 },
         { loc: '/referral', priority: 0.7 },
         { loc: '/screening', priority: 0.7 },
