@@ -95,6 +95,7 @@ const searchQuery = ref('')
 const selectedCategory = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 9
+const router = useRouter()
 // 使用服务端渲染获取博客数据
 const { data: blogsData, pending: loading, error } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
   key: 'blogs',
@@ -177,9 +178,15 @@ const categoryCounts = computed(() => {
 
 const jumpToPage = ref(1)
 
-// 获取博客详情链接，优先使用 route_id
-function getBlogLink(blog: Blog): string {
-  return blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
+// 跳转到博客详情页
+function viewBlogDetail(blog: Blog) {
+  // 只有当route_id存在时才使用route_id跳转，否则使用id
+  if (blog.route_id) {
+    router.push(`/blog/${blog.route_id}`)
+  }
+  else {
+    router.push(`/blog/${blog.id}`)
+  }
 }
 
 // 清除筛选
@@ -429,11 +436,11 @@ onMounted(() => {
               v-else-if="blogs.length"
               class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
             >
-              <NuxtLink
+              <article
                 v-for="blog in blogs"
                 :key="blog.id"
-                :to="getBlogLink(blog)"
-                class="group block overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A9A67D]"
+                class="group cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                @click="viewBlogDetail(blog)"
               >
                 <!-- 博客封面图片 - 正方形 -->
                 <div class="aspect-square overflow-hidden">
@@ -482,7 +489,7 @@ onMounted(() => {
                     <span>{{ blog.reference_author || $t('blog.author.default') }}</span>
                   </div>
                 </div>
-              </NuxtLink>
+              </article>
             </div>
 
             <!-- 空状态 -->
