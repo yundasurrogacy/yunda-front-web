@@ -31,7 +31,7 @@ export default defineNuxtConfig({
         to: '/become-a-surrogate-mother',
         statusCode: 301,
       },
-  },
+    },
   },
   nitro: {
     preset: 'static',
