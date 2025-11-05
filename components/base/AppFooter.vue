@@ -1,10 +1,8 @@
 <script setup>
-import HiddenSeoLinks from '@/components/base/HiddenSeoLinks.vue'
 </script>
 
 <template>
   <footer class="bg-[var(--foot-bg)] px-4 py-10 md:px-20 md:py-12 xl:px-60">
-    <HiddenSeoLinks />
     <div class="mx-auto max-w-300 md:max-w-full">
       <!-- Logo -->
       <div class="flex justify-start">

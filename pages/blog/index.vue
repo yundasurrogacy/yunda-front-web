@@ -96,6 +96,7 @@ const selectedCategory = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 9
 const router = useRouter()
+
 // 使用服务端渲染获取博客数据
 const { data: blogsData, pending: loading, error } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
   key: 'blogs',
