@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "yundasurrogacy.com"
+        }
+      ],
+      "destination": "https://www.yundasurrogacy.com/:path*",
+      "permanent": true
+    }
+  ]
+}
