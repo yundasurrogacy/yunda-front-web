@@ -1,13 +1,16 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 // Video feature toggle - set to true when official video is ready
 const videoEnabled = ref(true)
 
 const showVideo = ref(videoEnabled.value)
+const shouldRenderVideo = ref(false)
 const videoFadeClass = ref('video-fade-in')
 const contentFadeClass = ref(videoEnabled.value ? 'content-fade-in' : 'content-visible')
 const introVideo = ref(null)
+const heroSectionEl = ref(null)
+const isMuted = ref(true)
 
 // Responsive video source
 const isMobile = ref(false)
@@ -22,27 +25,87 @@ const videoPaddingBottom = computed(() => {
   return isMobile.value ? '177.78%' : '56.25%'
 })
 
-onMounted(() => {
-  // Check screen size
-  const checkScreenSize = () => {
-    isMobile.value = window.innerWidth < 768
-  }
+function checkScreenSize() {
+  isMobile.value = window.innerWidth < 768
+}
 
+let intersectionObserver = null
+
+onMounted(() => {
   checkScreenSize()
   window.addEventListener('resize', checkScreenSize)
 
-  if (videoEnabled.value) {
-    // Start fade-in animation for video
-    setTimeout(() => {
+  function activateVideo() {
+    if (shouldRenderVideo.value || !videoEnabled.value) {
+      return
+    }
+    shouldRenderVideo.value = true
+    requestAnimationFrame(() => {
       videoFadeClass.value = 'video-visible'
-    }, 100)
+    })
   }
 
-  // Cleanup
-  return () => {
-    window.removeEventListener('resize', checkScreenSize)
+  if (!videoEnabled.value) {
+    contentFadeClass.value = 'content-visible'
+    return
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    activateVideo()
+    return
+  }
+
+  intersectionObserver = new IntersectionObserver((entries) => {
+    const entry = entries[0]
+    if (entry && entry.isIntersecting) {
+      activateVideo()
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+      }
+    }
+  }, {
+    root: null,
+    rootMargin: '200px 0px',
+    threshold: 0.01,
+  })
+
+  if (heroSectionEl.value) {
+    intersectionObserver.observe(heroSectionEl.value)
   }
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreenSize)
+  if (intersectionObserver) {
+    intersectionObserver.disconnect()
+    intersectionObserver = null
+  }
+})
+
+watch(shouldRenderVideo, async (active) => {
+  if (!active) {
+    return
+  }
+  await nextTick()
+  if (introVideo.value) {
+    introVideo.value.muted = isMuted.value
+  }
+})
+
+watch(isMuted, (value) => {
+  if (introVideo.value) {
+    introVideo.value.muted = value
+    if (!value) {
+      introVideo.value.play().catch(() => {
+        isMuted.value = true
+      })
+    }
+  }
+})
+
+function toggleMute() {
+  isMuted.value = !isMuted.value
+}
 
 // No longer needed since video loops
 // const handleVideoEnd = () => {
@@ -61,7 +124,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="relative w-full overflow-hidden" :class="showVideo ? '' : 'h-200 md:h-200'">
+  <section ref="heroSectionEl" class="relative w-full overflow-hidden" :class="showVideo ? '' : 'h-200 md:h-200'">
     <!-- Video Intro -->
     <div
       v-if="showVideo"
@@ -69,16 +132,32 @@ onMounted(() => {
       :class="videoFadeClass"
     >
       <div class="relative w-full" :style="{ paddingBottom: videoPaddingBottom }">
+        <div v-if="!shouldRenderVideo" class="absolute inset-0">
+          <img src="~/public/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover">
+        </div>
         <video
+          v-else
           ref="introVideo"
           class="absolute inset-0 h-full w-full object-cover"
           autoplay
-          muted
+          :muted="isMuted"
           loop
           playsinline
+          preload="metadata"
+          poster="/images/home/index-bg.png"
         >
           <source :src="videoSource" type="video/mp4">
         </video>
+        <button
+          v-if="shouldRenderVideo"
+          type="button"
+          class="mute-toggle"
+          :aria-label="isMuted ? 'Enable sound' : 'Mute sound'"
+          @click="toggleMute"
+        >
+          <span v-if="isMuted">🔇</span>
+          <span v-else>🔊</span>
+        </button>
       </div>
     </div>
 
@@ -128,5 +207,27 @@ onMounted(() => {
 .content-visible {
   opacity: 1;
   transition: opacity 0.8s ease-in;
+}
+
+.mute-toggle {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.mute-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 </style>
