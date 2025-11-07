@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
   // devServer: {
   //   port: 3000, // 你想要的端口号
   // },
@@ -15,6 +15,12 @@ export default defineNuxtConfig({
           rewrite: path => path.replace(/^\/api/, '/api'),
         },
       },
+    },
+    build: {
+      // 启用 CSS 代码分割
+      cssCodeSplit: true,
+      // 优化 chunk 大小警告阈值
+      chunkSizeWarningLimit: 1000,
     },
   },
 
@@ -79,23 +85,10 @@ export default defineNuxtConfig({
       title: 'Yunda Surrogacy - Professional Cross-Border Surrogacy Agency',
       titleTemplate: '%s',
       link: [
+        // 只 preload 首屏关键字体
         {
           rel: 'preload',
           href: '/fonts/Cormorant-Regular.ttf',
-          as: 'font',
-          type: 'font/ttf',
-          crossorigin: 'anonymous',
-        },
-        {
-          rel: 'preload',
-          href: '/fonts/Cormorant-SemiBold.ttf',
-          as: 'font',
-          type: 'font/ttf',
-          crossorigin: 'anonymous',
-        },
-        {
-          rel: 'preload',
-          href: '/fonts/SourceSerif4[opsz,wght].ttf',
           as: 'font',
           type: 'font/ttf',
           crossorigin: 'anonymous',
@@ -112,33 +105,39 @@ export default defineNuxtConfig({
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
+        // 延迟加载第三方脚本，避免阻塞渲染
         {
-          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');`,
+          innerHTML: `window.addEventListener('load', function() {
+            // Google Tag Manager
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
+            
+            // Google Analytics
+            var gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP';
+            document.head.appendChild(gtagScript);
+            gtagScript.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-H03SG1NBFP');
+            };
+            
+            // Facebook Meta Pixel
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '795952583356142');
+            fbq('track', 'PageView');
+            fbq('track', 'SubmitApplication');
+          });`,
+          defer: true,
         },
-        { src: 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP', async: true },
-        {
-          innerHTML: `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-H03SG1NBFP');
-                        `,
-        },
-        // Facebook Meta Pixel Code
-        {
-          innerHTML: `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '795952583356142');
-fbq('track', 'PageView');
-fbq('track', 'SubmitApplication');
-`,
-        },
-
       ],
       noscript: [
         // Facebook Meta Pixel noscript

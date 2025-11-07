@@ -347,7 +347,7 @@ function toggleFaq(question: string) {
             <div class="grid animate-fade-in-left gap-6 lg:grid-cols-2" style="animation-delay: 400ms;">
               <div
                 v-for="(card, index) in [
-                  { label: 'Clothing Allowance', value: '$1,000', icon: 'radix-icons:shirt' },
+                  { label: 'Clothing Allowance', value: '$1,000', icon: 'lucide:shirt' },
                   { label: 'Monthly Allowance', value: '$300 (Total $5,500)', icon: 'radix-icons:calendar' },
                   { label: 'Childcare Support', value: '$250 / month (Total $4,500)', icon: 'radix-icons:heart-filled' },
                   { label: 'Early Pregnancy / Transfer Bundle', value: '$2,500', icon: 'radix-icons:star-filled' },
@@ -595,7 +595,7 @@ function toggleFaq(question: string) {
               <div class="animate-fade-in-up border border-[var(--primary-brown)]/40 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg" style="animation-delay: 800ms;">
                 <div class="mb-4 flex items-center gap-3">
                   <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--dark-brown)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
-                    <Icon name="radix-icons:shield-check" class="h-5 w-5" />
+                    <Icon name="lucide:shield-check" class="h-5 w-5" />
                   </div>
                   <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
                     Why this structure builds trust
@@ -647,7 +647,7 @@ function toggleFaq(question: string) {
           >
             <div class="mb-6 flex items-center gap-4">
               <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
-                <Icon name="radix-icons:shield-check" class="h-6 w-6" />
+                <Icon name="lucide:shield-check" class="h-6 w-6" />
               </div>
               <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
                 {{ section.title }}

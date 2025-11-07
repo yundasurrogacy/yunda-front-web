@@ -52,43 +52,49 @@ function toggleMenu() {
                   {{ $t('menu.forIntendedParents') }}
                 </h3>
                 <div class="space-y-3">
-                  <a
-                    href="/surrogacy-process"
+                  <NuxtLink
+                    to="/surrogacy-process"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.surrogacyProcess') }}
-                  </a>
-                  <a
-                    href="/surrogacy-price"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/surrogacy-price"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.surrogacyCosts') }}
-                  </a>
-                  <a
-                    href="/egg-donation"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/egg-donation"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.findYourEggDonor') }}
-                  </a>
-                  <a
-                    href="/single-parents-lgbtq"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/single-parents-lgbtq"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.lgbtqSingleParents') }}
-                  </a>
-                  <a
-                    href="/partner-ivf-clinics"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/partner-ivf-clinics"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.partnerIvfClinics') }}
-                  </a>
+                  </NuxtLink>
                 </div>
-                <a
-                  href="/be-parents"
+                <NuxtLink
+                  to="/be-parents"
                   class="mt-4 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
+                  @click="toggleMenu"
                 >
                   {{ $t('menu.becomeAParent') }}
-                </a>
+                </NuxtLink>
               </div>
 
               <!-- FOR SURROGATES 分组 -->
@@ -97,43 +103,49 @@ function toggleMenu() {
                   {{ $t('menu.forSurrogates') }}
                 </h3>
                 <div class="space-y-3">
-                  <a
-                    href="/journey"
+                  <NuxtLink
+                    to="/journey"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.surrogacyJourneyOverview') }}
-                  </a>
-                  <a
-                    href="/eligibility"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/eligibility"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.eligibilityToBecomeASurrogate') }}
-                  </a>
-                  <a
-                    href="/screening"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/screening"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.ourScreeningProcess') }}
-                  </a>
-                  <a
-                    href="/benefit"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/benefit"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.compensationBenefits') }}
-                  </a>
-                  <a
-                    href="/referral"
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/referral"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                    @click="toggleMenu"
                   >
                     {{ $t('menu.surrogateReferralProgram') }}
-                  </a>
+                  </NuxtLink>
                 </div>
-                <a
-                  href="/surrogate-qualification"
+                <NuxtLink
+                  to="/surrogate-qualification"
                   class="mt-4 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
+                  @click="toggleMenu"
                 >
                   {{ $t('menu.becomeASurrogates') }}
-                </a>
+                </NuxtLink>
               </div>
 
               <!-- 其他菜单项 -->
@@ -141,18 +153,18 @@ function toggleMenu() {
                 <!-- <a href="#" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
                   {{ $t('menu.logIn') }}
                 </a> -->
-                <a href="/about" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
+                <NuxtLink to="/about" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75" @click="toggleMenu">
                   {{ $t('menu.aboutUs') }}
-                </a>
+                </NuxtLink>
                 <a href="mailto:kayla@yundasurrogacy.com" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
                   {{ $t('menu.contactUs') }}
                 </a>
                 <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
                   {{ $t('menu.careers') }}
                 </a>
-                <a href="/blog" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
+                <NuxtLink to="/blog" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75" @click="toggleMenu">
                   {{ $t('menu.blog') }}
-                </a>
+                </NuxtLink>
               </div>
 
               <!-- 联系信息 -->
@@ -186,42 +198,48 @@ function toggleMenu() {
                     </div>
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
-                      <a
-                        href="/surrogacy-process"
+                      <NuxtLink
+                        to="/surrogacy-process"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.surrogacyProcess') }}
-                      </a>
-                      <a
-                        href="/surrogacy-price"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/surrogacy-price"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.surrogacyCosts') }}
-                      </a>
-                      <a
-                        href="/egg-donation"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/egg-donation"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.findYourEggDonor') }}
-                      </a>
-                      <a
-                        href="/single-parents-lgbtq"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/single-parents-lgbtq"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.lgbtqSingleParents') }}
-                      </a>
-                      <a
-                        href="/partner-ivf-clinics"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/partner-ivf-clinics"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.partnerIvfClinics') }}
-                      </a>
-                      <a
-                        href="/be-parents"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/be-parents"
                         class="mt-3 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.becomeAParent') }}
-                      </a>
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
@@ -239,42 +257,48 @@ function toggleMenu() {
                     </div>
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
-                      <a
-                        href="/journey"
+                      <NuxtLink
+                        to="/journey"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.surrogacyJourneyOverview') }}
-                      </a>
-                      <a
-                        href="/eligibility"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/eligibility"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.eligibilityToBecomeASurrogate') }}
-                      </a>
-                      <a
-                        href="/screening"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/screening"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.ourScreeningProcess') }}
-                      </a>
-                      <a
-                        href="/benefit"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/benefit"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.compensationBenefits') }}
-                      </a>
-                      <a
-                        href="/referral"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/referral"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.surrogateReferralProgram') }}
-                      </a>
-                      <a
-                        href="/surrogate-qualification"
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/surrogate-qualification"
                         class="mt-3 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
+                        @click="toggleMenu"
                       >
                         {{ $t('menu.becomeASurrogates') }}
-                      </a>
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
@@ -285,18 +309,18 @@ function toggleMenu() {
                 <!-- <a href="#" class="block text-[#271F18] text-sm font-normal hover:opacity-75 transition-opacity">
                   {{ $t('menu.logIn') }}
                 </a> -->
-                <a href="/about" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
+                <NuxtLink to="/about" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75" @click="toggleMenu">
                   {{ $t('menu.aboutUs') }}
-                </a>
+                </NuxtLink>
                 <a href="mailto:kayla@yundasurrogacy.com" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
                   {{ $t('menu.contactUs') }}
                 </a>
                 <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
                   {{ $t('menu.careers') }}
                 </a>
-                <a href="/blog" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75">
+                <NuxtLink to="/blog" class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75" @click="toggleMenu">
                   {{ $t('menu.blog') }}
-                </a>
+                </NuxtLink>
               </div>
 
               <!-- 联系信息 -->
