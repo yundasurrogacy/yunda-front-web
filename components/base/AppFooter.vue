@@ -12,10 +12,10 @@
       <!-- Footer Content -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between">
         <!-- Services Section (Mobile: Top, LG: Right side) -->
-        <div class="order-1 mt-2 md:order-2 md:ml-auto md:mt-0">
-          <div class="flex flex-row flex-wrap justify-between gap-6 md:gap-10 xl:gap-24">
+        <div class="order-1 mt-2 md:order-2 md:ml-auto md:mt-0 md:pl-12">
+          <div class="footer-links">
             <!-- Become a Parent -->
-            <div class="md:w-max-60 w-60 text-left">
+            <div class="min-w-[220px] text-left space-y-2">
               <h3 class="mb-6 text-3.5 text-[var(--dark-brown)] font-normal uppercase lg:text-4.5">
                 {{ $t('footer.sections.becomeAParent') }}
               </h3>
@@ -33,7 +33,7 @@
             </div>
 
             <!-- Become a Surrogate -->
-            <div class="md:w-max-60 w-60 text-left">
+            <div class="min-w-[220px] text-left space-y-2">
               <h3 class="mb-6 text-3.5 text-[var(--dark-brown)] font-normal uppercase lg:text-4.5">
                 {{ $t('footer.sections.becomeASurrogate') }}
               </h3>
@@ -51,7 +51,7 @@
             </div>
 
             <!-- Surrogate Resources -->
-            <div class="md:w-max-60 w-60 text-left">
+            <div class="min-w-[220px] text-left space-y-2">
               <h3 class="mb-6 text-3.5 text-[var(--dark-brown)] font-normal uppercase lg:text-4.5">
                 {{ $t('footer.sections.surrogateResources') }}
               </h3>
@@ -155,4 +155,31 @@
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+    row-gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer-links {
+    column-gap: 5rem;
+  }
+}
+</style>
