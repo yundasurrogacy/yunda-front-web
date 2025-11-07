@@ -14,6 +14,12 @@
     "compensationBenefits": "薪酬与福利",
     "surrogateReferralProgram": "代孕母推荐计划",
     "becomeASurrogates": "成为代孕妈妈",
+    "surrogateResources": "代孕资源",
+    "resourceCalifornia": "加州代孕服务",
+    "resourceBecomeMother": "成为代孕妈妈",
+    "resourceJourney": "代孕流程",
+    "resourceCompensation": "代孕补偿",
+    "resourceRequirements": "代孕要求",
     "logIn": "登录",
     "aboutUs": "关于我们",
     "contactUs": "联系我们",
@@ -863,7 +869,13 @@
       "surrogateReferral": "代孕母推荐计划",
       "partnerClinics": "合作的IVF医院",
       "screening": "我们的筛查流程",
-      "benefits": "薪酬与福利"
+      "benefits": "薪酬与福利",
+      "surrogateResources": "代孕资源",
+      "surrogateCalifornia": "加州代孕服务",
+      "surrogateMother": "成为代孕妈妈",
+      "surrogateProcess": "代孕流程",
+      "surrogateCompensation": "代孕补偿",
+      "surrogateRequirements": "代孕要求"
     },
     "socialLinks": {
       "instagram": "INSTAGRAM",

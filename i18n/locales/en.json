@@ -14,6 +14,12 @@
     "compensationBenefits": "COMPENSATION & BENEFITS",
     "surrogateReferralProgram": "SURROGATE REFERRAL PROGRAM",
     "becomeASurrogates": "BECOME A SURROGATES",
+    "surrogateResources": "SURROGATE RESOURCES",
+    "resourceCalifornia": "BECOME A SURROGATE IN CALIFORNIA",
+    "resourceBecomeMother": "BECOME A SURROGATE MOTHER",
+    "resourceJourney": "SURROGATE JOURNEY / PROCESS",
+    "resourceCompensation": "SURROGATE COMPENSATION",
+    "resourceRequirements": "SURROGATE REQUIREMENTS",
     "logIn": "LOG IN",
     "aboutUs": "ABOUT US",
     "contactUs": "CONTACT US",
@@ -863,7 +869,13 @@
       "surrogateReferral": "SURROGATE REFERRAL",
       "partnerClinics": "Partner IVF Clinics",
       "screening": "Our Screening Process",
-      "benefits": "Compensation & Benefits"
+      "benefits": "Compensation & Benefits",
+      "surrogateResources": "Surrogate Resources",
+      "surrogateCalifornia": "Become a Surrogate in California",
+      "surrogateMother": "Become a Surrogate Mother",
+      "surrogateProcess": "Surrogate Process",
+      "surrogateCompensation": "Surrogate Compensation",
+      "surrogateRequirements": "Surrogate Requirements"
     },
     "socialLinks": {
       "instagram": "INSTAGRAM",

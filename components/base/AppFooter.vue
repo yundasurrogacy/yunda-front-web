@@ -13,7 +13,7 @@
       <div class="flex flex-col md:flex-row md:items-start md:justify-between">
         <!-- Services Section (Mobile: Top, LG: Right side) -->
         <div class="order-1 mt-2 md:order-2 md:ml-auto md:mt-0">
-          <div class="flex flex-row justify-between gap-4 md:gap-6 xl:gap-30">
+          <div class="flex flex-row flex-wrap justify-between gap-6 md:gap-10 xl:gap-24">
             <!-- Become a Parent -->
             <div class="md:w-max-60 w-60 text-left">
               <h3 class="mb-6 text-3.5 text-[var(--dark-brown)] font-normal uppercase lg:text-4.5">
@@ -47,6 +47,31 @@
                 <a href="/screening" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">{{ $t('footer.sections.screening') }}</a>
                 <a href="/benefit" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">{{ $t('footer.sections.benefits') }}</a>
                 <a href="/referral" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">{{ $t('footer.sections.surrogateReferral') }}</a>
+              </div>
+            </div>
+
+            <!-- Surrogate Resources -->
+            <div class="md:w-max-60 w-60 text-left">
+              <h3 class="mb-6 text-3.5 text-[var(--dark-brown)] font-normal uppercase lg:text-4.5">
+                {{ $t('footer.sections.surrogateResources') }}
+              </h3>
+              <div class="space-y-1">
+                <hr class="my-2 border-[var(--dark-brown)]">
+                <NuxtLink to="/become-surrogate-california" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">
+                  {{ $t('footer.sections.surrogateCalifornia') }}
+                </NuxtLink>
+                <NuxtLink to="/become-a-surrogate-mother" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">
+                  {{ $t('footer.sections.surrogateMother') }}
+                </NuxtLink>
+                <NuxtLink to="/surrogate-process" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">
+                  {{ $t('footer.sections.surrogateProcess') }}
+                </NuxtLink>
+                <NuxtLink to="/surrogate-compensation" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">
+                  {{ $t('footer.sections.surrogateCompensation') }}
+                </NuxtLink>
+                <NuxtLink to="/surrogate-requirements" class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75">
+                  {{ $t('footer.sections.surrogateRequirements') }}
+                </NuxtLink>
               </div>
             </div>
           </div>
