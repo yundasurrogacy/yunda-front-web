@@ -135,7 +135,7 @@ function toggleMute() {
         <div v-if="!shouldRenderVideo" class="absolute inset-0">
           <picture>
             <source srcset="/images/home/index-bg.webp" type="image/webp">
-            <img src="/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover">
+            <img src="/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
           </picture>
         </div>
         <video
@@ -170,7 +170,7 @@ function toggleMute() {
       <div class="absolute inset-0">
         <picture>
           <source srcset="/images/home/index-bg.webp" type="image/webp">
-          <img src="/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover">
+          <img src="/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
         </picture>
       </div>
 

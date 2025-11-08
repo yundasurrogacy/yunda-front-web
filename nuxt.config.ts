@@ -96,6 +96,13 @@ export default defineNuxtConfig({
           type: 'font/ttf',
           crossorigin: 'anonymous',
         },
+        {
+          rel: 'preload',
+          href: '/images/home/index-bg.webp',
+          as: 'image',
+          type: 'image/webp',
+          fetchpriority: 'high',
+        },
       ],
       meta: [
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
@@ -248,6 +255,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
+    lazy: true,
     defaultLocale: 'en',
     strategy: 'no_prefix',
     locales: [

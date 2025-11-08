@@ -27,10 +27,15 @@ onMounted(() => {
         </div>
 
         <div class="slide-left w-full flex flex-shrink-0 justify-center lg:w-[215px]">
-          <img
-            src="~/public/images/base/kayla-luo.png" alt="Kayla Luo"
-            class="h-60 w-40 object-cover lg:h-72 lg:w-48"
-          >
+          <picture class="block h-60 w-40 overflow-hidden rounded-lg lg:h-72 lg:w-48">
+            <source srcset="/images/base/kayla-luo.webp" type="image/webp">
+            <img
+              src="/images/base/kayla-luo.png" alt="Kayla Luo"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </div>
 
         <div class="slide-right flex-1 text-center lg:text-left">
@@ -71,10 +76,15 @@ onMounted(() => {
         </div>
 
         <div class="slide-right w-full flex flex-shrink-0 justify-center lg:w-[215px]">
-          <img
-            src="~/public/images/base/zoe-fang-boyd.png" alt="Zoe Fang Boyd"
-            class="h-60 w-40 object-cover lg:h-72 lg:w-48"
-          >
+          <picture class="block h-60 w-40 overflow-hidden rounded-lg lg:h-72 lg:w-48">
+            <source srcset="/images/base/zoe-fang-boyd.webp" type="image/webp">
+            <img
+              src="/images/base/zoe-fang-boyd.png" alt="Zoe Fang Boyd"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </div>
 
         <div class="slide-left flex-1 text-center lg:text-left">

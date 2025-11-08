@@ -238,11 +238,10 @@ function toggleMenu() {
                   YundaUS1
                 </div>
                 <div class="mt-2 flex items-center">
-                  <img
-                    src="~/public/images/home/wx.jpg"
-                    alt="微信二维码"
-                    class="h-28 w-28 border border-gray-300 rounded shadow"
-                  >
+                  <picture class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
+                    <source srcset="/images/home/wx.webp" type="image/webp">
+                    <img src="/images/home/wx.jpg" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                  </picture>
                 </div>
               </div>
             </div>
@@ -437,11 +436,10 @@ function toggleMenu() {
                 <div>
                   <span class="font-semibold">{{ $t("menu.wechat") }}</span> YundaUS1
                   <div class="mt-2 flex items-center">
-                    <img
-                      src="~/public/images/home/wx.jpg"
-                      alt="微信二维码"
-                      class="h-28 w-28 border border-gray-300 rounded shadow"
-                    >
+                    <picture class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
+                      <source srcset="/images/home/wx.webp" type="image/webp">
+                      <img src="/images/home/wx.jpg" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                    </picture>
                   </div>
                 </div>
               </div>

@@ -34,7 +34,8 @@ const stepData = computed(() => {
         : []),
     ],
     description: t(`parentsProcess.surrogacyProcess.step${props.stepNumber}.description`),
-    image: `/images/process/i-${props.stepNumber}.png`,
+    imageWebp: `/images/process/i-${props.stepNumber}.webp`,
+    imagePng: `/images/process/i-${props.stepNumber}.png`,
   }
 })
 </script>
@@ -44,7 +45,10 @@ const stepData = computed(() => {
     <div class="container mx-auto max-w-300">
       <div class="flex flex-col items-center gap-8 lg:flex-row" :class="{ 'lg:flex-row-reverse': isEven }">
         <div class="lg:w-1/2" :class="isEven ? 'slide-right' : 'slide-left'">
-          <img :src="stepData.image" :alt="stepData.title" class="h-auto w-full rounded-lg object-cover">
+          <picture class="block h-auto w-full overflow-hidden rounded-lg">
+            <source :srcset="stepData.imageWebp" type="image/webp">
+            <img :src="stepData.imagePng" :alt="stepData.title" class="h-full w-full object-cover" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="lg:w-1/2" :class="isEven ? 'slide-left' : 'slide-right'">
           <h3 class="text-3xl font-semibold" style="font-family: var(--font-primary)">

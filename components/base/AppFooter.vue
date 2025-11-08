@@ -6,7 +6,10 @@
     <div class="mx-auto max-w-300 md:max-w-full">
       <!-- Logo -->
       <div class="flex justify-start">
-        <img src="~/public/images/base/logo.png" alt="Yunda Logo" class="w-80px">
+        <picture>
+          <source srcset="/images/base/logo.webp" type="image/webp">
+          <img src="/images/base/logo.png" alt="Yunda Logo" class="w-80px" loading="lazy" decoding="async">
+        </picture>
       </div>
 
       <!-- Footer Content -->

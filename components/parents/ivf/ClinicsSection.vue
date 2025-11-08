@@ -72,10 +72,15 @@ const clinicNames = [
       <div class="mx-6 mb-8 flex flex-col gap-8 md:flex-row md:gap-0">
         <div v-for="clinic in clinics" :key="clinic.id" class="flex-1 text-center">
           <!-- Clinic Image -->
-          <img
-            :src="`/images/process/i-${clinic.id + 7}.png`" :alt="`Clinic ${clinic.id}`"
-            class="aspect-[4/5] w-full object-cover"
-          >
+          <picture class="block aspect-[4/5] w-full overflow-hidden">
+            <source :srcset="`/images/process/i-${clinic.id + 7}.webp`" type="image/webp">
+            <img
+              :src="`/images/process/i-${clinic.id + 7}.png`" :alt="`Clinic ${clinic.id}`"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </div>
       </div>
     </div>

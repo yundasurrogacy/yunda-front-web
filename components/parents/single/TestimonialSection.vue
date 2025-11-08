@@ -14,11 +14,16 @@ onMounted(() => {
     <div class="h-auto lg:h-112 md:flex md:items-center">
       <!-- Image Section -->
       <div class="slide-left mb-8 md:mb-0 md:w-1/2">
-        <img
-          src="~/public/images/process/i-7.png"
-          alt="Happy two-dad family"
-          class="w-full object-cover"
-        >
+        <picture class="block w-full overflow-hidden">
+          <source srcset="/images/process/i-7.webp" type="image/webp">
+          <img
+            src="/images/process/i-7.png"
+            alt="Happy two-dad family"
+            class="w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
       </div>
 
       <!-- Content Section -->

@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
-import RightMenu from './RightMenu.vue'
-import SideMenu from './SideMenu.vue'
+
+const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
+const RightMenu = defineAsyncComponent(() => import('./RightMenu.vue'))
 
 const isMenuOpen = ref(false)
 const isRightMenuOpen = ref(false)
@@ -21,7 +22,10 @@ const isRightMenuOpen = ref(false)
     <!-- Logo -->
     <div class="flex flex-1 justify-center md:flex-none md:justify-start">
       <NuxtLink to="/" class="inline-block">
-        <img src="~/public/images/base/logo.png" alt="Yunda Logo" class="w-20">
+        <picture>
+          <source srcset="/images/base/logo.webp" type="image/webp">
+          <img src="/images/base/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+        </picture>
       </NuxtLink>
     </div>
 
