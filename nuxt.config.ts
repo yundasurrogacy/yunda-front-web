@@ -25,6 +25,9 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
+  router: {
+    prefetchLinks: false,
+  },
   routeRules: {
     '/surrogate-journey': {
       redirect: {
