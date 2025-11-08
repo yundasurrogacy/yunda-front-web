@@ -46,7 +46,10 @@ useScrollAnimation()
 
           <!-- Image -->
           <div class="lg:flex-shrink-0">
-            <img src="~/public/images/home/p-5.png" alt="Consultation" class="h-auto w-full rounded-lg lg:w-129.75">
+            <picture class="block h-auto w-full overflow-hidden rounded-lg lg:w-129.75">
+              <source srcset="/images/home/p-5.webp" type="image/webp">
+              <img src="/images/home/p-5.png" alt="Consultation" class="h-full w-full object-cover">
+            </picture>
           </div>
         </div>
 
@@ -74,7 +77,10 @@ useScrollAnimation()
 
           <!-- Image -->
           <div class="md:flex-shrink-0">
-            <img src="~/public/images/home/p-6.png" alt="Matching" class="h-auto w-full rounded-lg lg:w-129.75">
+            <picture class="block h-auto w-full overflow-hidden rounded-lg lg:w-129.75">
+              <source srcset="/images/home/p-6.webp" type="image/webp">
+              <img src="/images/home/p-6.png" alt="Matching" class="h-full w-full object-cover">
+            </picture>
           </div>
         </div>
 
@@ -102,7 +108,10 @@ useScrollAnimation()
 
           <!-- Image -->
           <div class="md:flex-shrink-0">
-            <img src="~/public/images/home/p-7.png" alt="Legal Process" class="h-auto w-full rounded-lg lg:w-129.75">
+            <picture class="block h-auto w-full overflow-hidden rounded-lg lg:w-129.75">
+              <source srcset="/images/home/p-7.webp" type="image/webp">
+              <img src="/images/home/p-7.png" alt="Legal Process" class="h-full w-full object-cover">
+            </picture>
           </div>
         </div>
 
@@ -130,7 +139,10 @@ useScrollAnimation()
 
           <!-- Image -->
           <div class="md:flex-shrink-0">
-            <img src="~/public/images/home/p-8.png" alt="Baby Arrival" class="h-auto w-full rounded-lg lg:w-129.75">
+            <picture class="block h-auto w-full overflow-hidden rounded-lg lg:w-129.75">
+              <source srcset="/images/home/p-8.webp" type="image/webp">
+              <img src="/images/home/p-8.png" alt="Baby Arrival" class="h-full w-full object-cover">
+            </picture>
           </div>
         </div>
       </div>

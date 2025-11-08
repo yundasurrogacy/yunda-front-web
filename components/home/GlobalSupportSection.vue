@@ -11,7 +11,10 @@ useScrollAnimation()
     >
       <!-- Background Image - 在所有屏幕尺寸下都显示 -->
       <div class="absolute left-0 top-0 h-full w-full">
-        <img src="~/public/images/home/index-content.png" alt="Support Background" class="h-full w-full object-cover">
+        <picture class="block h-full w-full">
+          <source srcset="/images/home/index-content.webp" type="image/webp">
+          <img src="/images/home/index-content.png" alt="Support Background" class="h-full w-full object-cover">
+        </picture>
       </div>
 
       <div class="relative z-10 mx-auto max-w-300 pt-10 text-center md:pt-10">

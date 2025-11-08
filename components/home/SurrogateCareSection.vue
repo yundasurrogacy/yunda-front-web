@@ -14,7 +14,10 @@ useScrollAnimation()
       <div class="grid grid-cols-1 gap-12 text-6 lg:grid-cols-3 lg:gap-16 md:text-8">
         <!-- Care Item 1 -->
         <div class="scroll-animate scroll-animate-delay-100 flex flex-col items-center text-center">
-          <img src="~/public/images/home/p-2.png" alt="Case Coordinator" class="mb-5 h-59 w-59 rounded-full">
+          <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
+            <source srcset="/images/home/p-2.webp" type="image/webp">
+            <img src="/images/home/p-2.png" alt="Case Coordinator" class="h-full w-full object-cover">
+          </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item1') }}
           </h3>
@@ -22,7 +25,10 @@ useScrollAnimation()
 
         <!-- Care Item 2 -->
         <div class="scroll-animate scroll-animate-delay-200 flex flex-col items-center text-center">
-          <img src="~/public/images/home/p-3.png" alt="Nutrition & Counseling" class="mb-5 h-59 w-59 rounded-full">
+          <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
+            <source srcset="/images/home/p-3.webp" type="image/webp">
+            <img src="/images/home/p-3.png" alt="Nutrition & Counseling" class="h-full w-full object-cover">
+          </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item2') }}
           </h3>
@@ -30,7 +36,10 @@ useScrollAnimation()
 
         <!-- Care Item 3 -->
         <div class="scroll-animate scroll-animate-delay-300 flex flex-col items-center text-center">
-          <img src="~/public/images/home/p-4.png" alt="Daily Check-in" class="mb-5 h-59 w-59 rounded-full">
+          <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
+            <source srcset="/images/home/p-4.webp" type="image/webp">
+            <img src="/images/home/p-4.png" alt="Daily Check-in" class="h-full w-full object-cover">
+          </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item3') }}
           </h3>

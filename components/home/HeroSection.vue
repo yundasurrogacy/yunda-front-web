@@ -133,7 +133,10 @@ function toggleMute() {
     >
       <div class="relative w-full" :style="{ paddingBottom: videoPaddingBottom }">
         <div v-if="!shouldRenderVideo" class="absolute inset-0">
-          <img src="~/public/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover">
+          <picture>
+            <source srcset="/images/home/index-bg.webp" type="image/webp">
+            <img src="/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover">
+          </picture>
         </div>
         <video
           v-else
@@ -144,7 +147,7 @@ function toggleMute() {
           loop
           playsinline
           preload="metadata"
-          poster="/images/home/index-bg.png"
+          poster="/images/home/index-bg.webp"
         >
           <source :src="videoSource" type="video/mp4">
         </video>
@@ -165,7 +168,10 @@ function toggleMute() {
     <div v-if="!showVideo" class="absolute inset-0" :class="contentFadeClass">
       <!-- Background Images -->
       <div class="absolute inset-0">
-        <img src="~/public/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover">
+        <picture>
+          <source srcset="/images/home/index-bg.webp" type="image/webp">
+          <img src="/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover">
+        </picture>
       </div>
 
       <!-- Overlay Content -->
