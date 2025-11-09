@@ -92,7 +92,7 @@ interface Blog {
 }
 
 const searchQuery = ref('')
-const selectedCategory = ref('')
+const selectedCategory = ref('all')
 const currentPage = ref(1)
 const itemsPerPage = 9
 const router = useRouter()
@@ -175,6 +175,18 @@ const categoryCounts = computed(() => {
   })
 
   return mappedCounts
+})
+
+const totalCount = computed(() => {
+  const counts = categoryCounts.value
+  if (counts && Object.keys(counts).length > 0) {
+    const sum = Object.values(counts)
+      .filter((count): count is number => typeof count === 'number' && !Number.isNaN(count))
+      .reduce((acc, cur) => acc + cur, 0)
+    if (sum > 0)
+      return sum
+  }
+  return pagination.value?.totalCount ?? blogs.value?.length ?? 0
 })
 
 const jumpToPage = ref(1)
@@ -286,15 +298,8 @@ function scrollToTop() {
   // 滚动到博客内容区域的开始位置，留出一些空间给sticky导航
   const blogContent = document.querySelector('.blog-content-area') as HTMLElement
   if (blogContent) {
-    // const elementPosition = blogContent.offsetTop
-    // const offsetPosition = elementPosition - 100 // 留出100px的空间
-
-    // window.scrollTo({
-    //   top: offsetPosition,
-    //   behavior: 'smooth',
-    // })
     window.scrollTo({
-      top: 0,
+      top: Math.max(blogContent.offsetTop - 100, 0),
       behavior: 'smooth',
     })
   }
@@ -308,8 +313,7 @@ function scrollToTop() {
 }
 
 onMounted(() => {
-  // 初始化默认分类
-  selectedCategory.value = 'all' // 使用 key 而不是翻译文本
+  // 可按需在此添加其它初始化逻辑
 })
 </script>
 
@@ -389,11 +393,8 @@ onMounted(() => {
                   @click="selectedCategory = category"
                 >
                   {{ $t(`blog.categories.${category}`) }}
-                  <span
-                    v-if="categoryCounts[category]"
-                    class="ml-2 opacity-75"
-                  >
-                    ({{ categoryCounts[category] }})
+                  <span class="ml-2 opacity-75">
+                    ({{ category === 'all' ? totalCount : (categoryCounts[category] || 0) }})
                   </span>
                 </button>
               </div>

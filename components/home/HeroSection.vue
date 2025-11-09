@@ -134,8 +134,8 @@ function toggleMute() {
       <div class="relative w-full" :style="{ paddingBottom: videoPaddingBottom }">
         <div v-if="!shouldRenderVideo" class="absolute inset-0">
           <picture>
-            <source srcset="/images/home/index-bg.webp" type="image/webp">
-            <img src="/images/home/index-bg.png" alt="Hero Placeholder" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
+            <source srcset="/videos/video-default-poster.webp" type="image/webp">
+            <img src="/videos/video-default-poster.png" alt="Hero Placeholder" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
           </picture>
         </div>
         <video
@@ -147,7 +147,7 @@ function toggleMute() {
           loop
           playsinline
           preload="metadata"
-          poster="/images/home/index-bg.webp"
+          poster="/videos/video-default-poster.webp"
         >
           <source :src="videoSource" type="video/mp4">
         </video>
@@ -169,8 +169,8 @@ function toggleMute() {
       <!-- Background Images -->
       <div class="absolute inset-0">
         <picture>
-          <source srcset="/images/home/index-bg.webp" type="image/webp">
-          <img src="/images/home/index-bg.png" alt="Hero Background" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
+          <source srcset="/videos/video-default-poster.webp" type="image/webp">
+          <img src="/videos/video-default-poster.png" alt="Hero Background" class="h-full w-full object-cover" fetchpriority="high" decoding="async" loading="eager">
         </picture>
       </div>
 
