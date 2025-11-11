@@ -206,7 +206,7 @@
                 {{ $t('footer.wechatId') }}
               </p>
               <div class="mt-2 flex items-center">
-                <img src="~/public/images/home/wx.jpg" alt="微信二维码" class="h-28 w-28 border border-gray-300 rounded shadow">
+                <img src="~/public/images/home/wx.webp" alt="微信二维码" class="h-28 w-28 border border-gray-300 rounded shadow">
               </div>
             </div>
           </div>
