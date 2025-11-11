@@ -16,7 +16,7 @@ const isRightMenuOpen = ref(false)
   <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--head-bg)] px-4.5 md:h-25 md:px-20">
     <!-- Left Menu Button (always visible) -->
     <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
-      <img src="~/public/images/base/left_icon.svg" alt="Menu" class="h-10 w-10">
+      <img src="/images/base/left_icon.svg" alt="Menu" class="h-10 w-10">
     </button>
 
     <!-- Logo -->
@@ -37,7 +37,7 @@ const isRightMenuOpen = ref(false)
 
     <!-- Right Menu Button (mobile only) -->
     <button class="h-10 w-10 flex items-center justify-center md:hidden" @click="isRightMenuOpen = !isRightMenuOpen">
-      <img src="~/public/images/base/right_icon.svg" alt="Menu" class="h-10 w-10">
+      <img src="/images/base/right_icon.svg" alt="Menu" class="h-10 w-10">
     </button>
   </header>
 

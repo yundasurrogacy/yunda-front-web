@@ -27,7 +27,7 @@ onMounted(() => {
         <div class="testimonial-item flex flex-col lg:flex-row lg:gap-8">
           <div class="slide-left lg:w-1/2">
             <img
-              class="mb-6 h-auto w-full object-cover lg:mb-0" src="~/public/images/surrogacy/i-s-1.png"
+              class="mb-6 h-auto w-full object-cover lg:mb-0" src="/images/surrogacy/i-s-1.png"
               :alt="$t('surrogacyJourney.testimonials.testimonial1.name')"
             >
           </div>
@@ -48,7 +48,7 @@ onMounted(() => {
         <div class="testimonial-item flex flex-col lg:flex-row lg:gap-8">
           <div class="slide-left slide-delay-200 lg:w-1/2">
             <img
-              class="mb-6 h-auto w-full object-cover lg:mb-0" src="~/public/images/surrogacy/i-s-2.png"
+              class="mb-6 h-auto w-full object-cover lg:mb-0" src="/images/surrogacy/i-s-2.png"
               :alt="$t('surrogacyJourney.testimonials.testimonial2.name')"
             >
           </div>
@@ -69,7 +69,7 @@ onMounted(() => {
         <div class="testimonial-item flex flex-col lg:flex-row lg:gap-8">
           <div class="slide-left slide-delay-400 lg:w-1/2">
             <img
-              class="mb-6 h-auto w-full object-cover lg:mb-0" src="~/public/images/surrogacy/i-s-3.png"
+              class="mb-6 h-auto w-full object-cover lg:mb-0" src="/images/surrogacy/i-s-3.png"
               :alt="$t('surrogacyJourney.testimonials.testimonial3.name')"
             >
           </div>
@@ -90,7 +90,7 @@ onMounted(() => {
         <div class="testimonial-item flex flex-col lg:flex-row lg:gap-8">
           <div class="slide-left slide-delay-500 lg:w-1/2">
             <img
-              class="mb-6 h-auto w-full object-cover lg:mb-0" src="~/public/images/surrogacy/i-s-4.png"
+              class="mb-6 h-auto w-full object-cover lg:mb-0" src="/images/surrogacy/i-s-4.png"
               :alt="$t('surrogacyJourney.testimonials.testimonial4.name')"
             >
           </div>
