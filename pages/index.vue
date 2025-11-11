@@ -5,6 +5,7 @@ import CommitmentSection from '../components/home/CommitmentSection.vue'
 import CostSection from '../components/home/CostSection.vue'
 import GlobalSupportSection from '../components/home/GlobalSupportSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
+import IntroVideoSection from '../components/home/IntroVideoSection.vue'
 import JourneySection from '../components/home/JourneySection.vue'
 import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
@@ -46,6 +47,7 @@ useHead({
     <HeroSection />
     <StatsSection />
     <GlobalSupportSection />
+    <IntroVideoSection />
     <LegalExpertiseSection />
     <SurrogateCareSection />
     <CommitmentSection />
