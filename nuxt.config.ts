@@ -98,7 +98,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'preload',
-          href: '/images/home/index-bg.webp',
+          href: '/images/base/logo.webp',
           as: 'image',
           type: 'image/webp',
           fetchpriority: 'high',
