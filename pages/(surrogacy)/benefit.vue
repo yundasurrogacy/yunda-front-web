@@ -7,6 +7,7 @@ import BenefitCompensationSection from '@/components/surrogacy/benefit/Compensat
 import BenefitFamilySupportSection from '@/components/surrogacy/benefit/FamilySupportSection.vue'
 import BenefitPaymentScheduleSection from '@/components/surrogacy/benefit/PaymentScheduleSection.vue'
 import BenefitProtectionSection from '@/components/surrogacy/benefit/ProtectionSection.vue'
+import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import BenefitProtectionSection from '@/components/surrogacy/benefit/ProtectionS
       :description="$t('surrogacyBenefit.heroSection.description')"
       :button-text="$t('surrogacyBenefit.heroSection.button')"
     />
+    <IntroVideoSection />
     <BenefitFamilySupportSection />
     <BenefitCompensationSection />
     <BenefitPaymentScheduleSection />

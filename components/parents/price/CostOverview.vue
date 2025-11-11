@@ -511,6 +511,48 @@ const steps = [
 
 /* Responsive */
 @media (max-width: 767px) {
+  .timeline-grid {
+    gap: 32px;
+  }
+
+  .timeline-row {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+  }
+
+  .timeline-left,
+  .timeline-right {
+    flex: none;
+    width: 100%;
+    justify-content: flex-start;
+    border: none;
+    margin: 0;
+  }
+
+  .timeline-center {
+    display: none;
+  }
+
+  .row-2 .step-content,
+  .row-3 .step-content,
+  .row-4 .step-content,
+  .row-5 .step-content,
+  .row-6 .step-content,
+  .row-7 .step-content {
+    margin: 0;
+  }
+
+  .start-dot,
+  .end-dot {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .start-dot {
+    margin-top: 16px;
+  }
+
   .step-duration {
     display: none;
   }
@@ -521,20 +563,6 @@ const steps = [
 
   .step-content {
     background-color: transparent;
-  }
-
-  /* Row 2, 4, 6 (Left side) - extend right */
-  .row-2 .step-content,
-  .row-4 .step-content,
-  .row-6 .step-content {
-    margin-right: -55vw;
-  }
-
-  /* Row 3, 5, 7 (Right side) - extend left */
-  .row-3 .step-content,
-  .row-5 .step-content,
-  .row-7 .step-content {
-    margin-left: -55vw;
   }
 
   /* Smaller fonts for mobile */

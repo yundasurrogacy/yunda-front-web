@@ -275,6 +275,7 @@ export default defineNuxtConfig({
     '@/assets/css/fonts.css',
     '@/assets/css/colors.css',
     '@/assets/css/animations.css',
+    '@/assets/css/layout.css',
   ],
 
   colorMode: {

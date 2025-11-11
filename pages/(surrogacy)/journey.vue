@@ -3,6 +3,7 @@ import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
 import HeroSection from '@/components/base/SUHeroSection.vue'
+import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
 import JourneyStepsTimeline from '@/components/surrogacy/journey/StepsTimeline.vue'
 import JourneyTestimonialsSection from '@/components/surrogacy/journey/TestimonialsSection.vue'
 </script>
@@ -15,6 +16,7 @@ import JourneyTestimonialsSection from '@/components/surrogacy/journey/Testimoni
       :description="$t('surrogacyJourney.heroSection.description')"
       :button-text="$t('surrogacyJourney.heroSection.button')"
     />
+    <IntroVideoSection />
     <!-- <VideoPlayer
       :video-src="'/videos/video1.mp4'"
       :background-color="'#FAF7F2'"

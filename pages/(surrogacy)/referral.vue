@@ -6,6 +6,7 @@ import ReferralCompensationSection from '@/components/surrogacy/referral/Compens
 import ReferralEarningsSection from '@/components/surrogacy/referral/EarningsSection.vue'
 import ReferralEligibilitySection from '@/components/surrogacy/referral/EligibilitySection.vue'
 import ReferralWhyMattersSection from '@/components/surrogacy/referral/WhyMattersSection.vue'
+import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
 import HeroSection from '~/components/base/MailHeroSection.vue'
 </script>
 
@@ -17,6 +18,7 @@ import HeroSection from '~/components/base/MailHeroSection.vue'
       :description="$t('surrogacyReferral.heroSection.description')"
       :button-text="$t('surrogacyReferral.heroSection.button')"
     />
+    <IntroVideoSection />
     <ReferralWhyMattersSection />
     <ReferralEarningsSection />
     <ReferralEligibilitySection />

@@ -4,6 +4,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
 import HeroSection from '@/components/base/SUHeroSection.vue'
 import EligibilityQualificationsSection from '@/components/surrogacy/eligibility/QualificationsSection.vue'
+import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import EligibilityQualificationsSection from '@/components/surrogacy/eligibility
       :description="$t('surrogacyEligibility.heroSection.description')"
       :button-text="$t('surrogacyEligibility.heroSection.button')"
     />
+    <IntroVideoSection />
     <EligibilityQualificationsSection />
     <ConfidenceSection
       :title="$t('surrogacyEligibility.confidenceSection.title')"

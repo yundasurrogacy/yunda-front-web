@@ -13,7 +13,7 @@ const videoSource = computed(() => {
 
 <template>
   <section class="bg-[#FAF1E0] px-4 py-16 md:px-20 md:py-24">
-    <div class="mx-auto max-w-300">
+    <div class="mx-auto max-w-360">
       <component
         :is="VideoPlayer"
         :key="videoSource"

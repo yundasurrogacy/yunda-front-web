@@ -4,6 +4,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
 import HeroSection from '@/components/base/SUHeroSection.vue'
 import ScreeningProcessSection from '@/components/surrogacy/screening/ProcessSection.vue'
+import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import ScreeningProcessSection from '@/components/surrogacy/screening/ProcessSec
       :description="$t('surrogacyScreening.heroSection.description')"
       :button-text="$t('surrogacyScreening.heroSection.button')"
     />
+    <IntroVideoSection />
     <ScreeningProcessSection />
     <ConfidenceSection
       :title="$t('surrogacyScreening.confidenceSection.title')"
