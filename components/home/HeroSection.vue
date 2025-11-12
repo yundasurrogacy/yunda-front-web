@@ -80,8 +80,39 @@ function toggleMute() {
         :aria-label="isMuted ? '开启声音' : '关闭声音'"
         @click="toggleMute"
       >
-        <span v-if="isMuted">🔇</span>
-        <span v-else>🔊</span>
+        <svg
+          v-if="isMuted"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mute-icon"
+        >
+          <path d="M11 5L6 9H2v6h4l5 4V5z" />
+          <line x1="23" y1="9" x2="17" y2="15" />
+          <line x1="17" y1="9" x2="23" y2="15" />
+        </svg>
+        <svg
+          v-else
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mute-icon"
+        >
+          <path d="M11 5L6 9H2v6h4l5 4V5z" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+        </svg>
       </button>
     </div>
   </section>
@@ -137,18 +168,32 @@ function toggleMute() {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.45);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(169, 166, 125, 0.85);
+  backdrop-filter: blur(8px);
   color: #fff;
-  font-size: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .mute-toggle:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(169, 166, 125, 0.95);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.mute-toggle:active {
+  transform: scale(0.95);
+}
+
+.mute-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
 }
 </style>
