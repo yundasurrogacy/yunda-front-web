@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, reactive, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 
-const { t } = useI18n()
-
 // SEO 配置
 useHead({
-  title: 'Become a Surrogate in California | Safe, Legal & Rewarding Surrogacy with Yunda',
+  title: 'Become a Surrogate in California | Requirements & Surrogate Pay',
   meta: [
     {
       name: 'description',
@@ -16,11 +13,11 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'Become a Surrogate in California | Safe, Legal & Rewarding Surrogacy with Yunda',
+      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
     },
     {
       property: 'og:description',
-      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support, and transparent compensation.',
+      content: 'Learn California surrogate mother requirements, surrogate pay ranges and application steps. Yunda Surrogacy supports Southern California surrogates with full legal and medical guidance..',
     },
     {
       property: 'og:type',
@@ -46,6 +43,10 @@ const faqs = reactive([
   {
     question: 'How much do surrogates get paid in California?',
     answer: 'Compensation for surrogate mothers in California depends on experience, location, and personal circumstances. Most surrogates receive total compensation in the range of $60,000 to $80,000, with additional allowances for maternity needs, travel, and childcare. Yunda Surrogacy ensures that every surrogate\'s pay is transparent, fair, and protected by legal contracts and secure trust accounts. The financial side is handled carefully, so you can focus on your health and the joy of the journey.',
+  },
+  {
+    question: 'How do I apply to be a surrogate in California?',
+    answer: 'To apply to become a surrogate in California with Yunda Surrogacy, start by filling out our online application form. After submitting your application, our team will review it and reach out to schedule an initial phone consultation. If you meet the basic requirements, we will guide you through the next steps, including medical and psychological screenings, legal consultations, and matching with intended parents. Throughout the process, we provide full support and clear communication to ensure you feel confident and cared for every step of the way.',
   },
 ])
 
@@ -83,7 +84,43 @@ const targetNumbers = {
   years: 15,
   families: 1000,
 }
+const applicationSteps = [
+  {
+    title: 'Complete a short surrogate application',
+    description: 'Fill out our secure online surrogate application with basic health and pregnancy history. It takes just a few minutes.',
+  },
+  {
+    title: 'Quick eligibility review',
+    description: 'Our team reviews your answers against California surrogate mother requirements and schedules a short call if you qualify.',
+  },
+  {
+    title: 'Medical and psychological screening',
+    description: 'We coordinate OB/GYN records, fertility tests and a counseling session to make sure you feel ready and supported.',
+  },
+  {
+    title: 'Match with intended parents and sign your contract',
+    description: 'You’ll meet a family who fits your preferences and work with your own lawyer to review and sign the surrogacy agreement.',
+  },
+  {
+    title: 'Begin your IVF cycle and pregnancy',
+    description: 'Once everything is approved, you start medications, embryo transfer and prenatal care with full support from the Yunda team.',
+  },
+]
 
+const coverageCities = [
+  { name: 'Los Angeles', area: 'Southern California — Los Angeles County', cx: 85, cy: 145 },
+  { name: 'Orange County', area: 'Southern California — Beach Cities & OC', cx: 100, cy: 150 },
+  { name: 'Inland Empire', area: 'Southern California — Riverside & San Bernardino', cx: 115, cy: 130 },
+  { name: 'San Diego', area: 'Southern California — Coastal & North County', cx: 105, cy: 180 },
+  { name: 'Sacramento', area: 'Northern California — Capital Region', cx: 85, cy: 80 },
+  { name: 'San Jose & Bay Area', area: 'Northern California — Silicon Valley & Bay Area', cx: 65, cy: 95 },
+]
+
+const activeCity = ref(coverageCities[0])
+
+function setActiveCity(city: typeof coverageCities[number]) {
+  activeCity.value = city
+}
 // 滾動動畫觀察器
 const observerOptions = {
   threshold: 0.5,
@@ -182,10 +219,13 @@ onUnmounted(() => {
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div class="text-center lg:text-left">
             <h1 class="mb-6 text-5xl text-[var(--dark-brown)] font-bold leading-tight md:text-7xl" style="font-family: var(--font-primary)">
-              Become a Surrogate in California: Safe, Rewarding, and Life-Changing
+              Become a Surrogate in California: Requirements, Pay and Support
             </h1>
             <p class="mb-8 text-xl text-[var(--primary-brown)] leading-relaxed md:text-2xl">
               Becoming a surrogate in California is more than a journey — it's a gift of love and compassion. Many women choose this path because they want to help others build families while reaching new goals for themselves.
+            </p>
+            <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed md:text-xl">
+              Most surrogates are women 21–39 who have had at least one healthy full-term birth and live a stable, healthy lifestyle. In California, total surrogate pay is typically in the mid–five figures with additional benefits for maternity needs, travel and childcare. With Yunda, you get clear requirements, transparent compensation and full legal and medical support from day one.
             </p>
             <div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
               <NuxtLink
@@ -253,7 +293,7 @@ onUnmounted(() => {
               Understanding Gestational Surrogacy in California
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              Surrogacy means carrying a baby for someone who cannot do it on their own. In gestational surrogacy, the surrogate mother carries a baby created from the intended parents' or donors' embryo. She is not genetically related to the baby — her role is to nurture life and make parenthood possible.
+              Surrogacy means carrying a baby for someone who cannot do it on their own. In gestational surrogacy, which is the model used in California, the surrogate carries a baby created from the intended parents’ or donors’ embryos and is not genetically related to the child.
             </p>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
               California is known for leading the way in gestational surrogacy. The process is well-supported by experienced fertility specialists, legal experts, and caring surrogacy agencies. This makes the entire journey smoother and safer for every surrogate mother.
@@ -269,7 +309,7 @@ onUnmounted(() => {
               Why California Is the Best State for Surrogacy
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              There's a reason California is often called the heart of surrogacy in the United States. The state offers some of the most surrogate-friendly laws in the world, ensuring that both surrogates and intended parents are fully protected. Legal agreements are clear, compensation is transparent, and every surrogate's rights are respected.
+              Surrogacy in California is fully legal and highly protected by state law, which is why many women choose to become surrogates here.There's a reason California is often called the heart of surrogacy in the United States. The state offers some of the most surrogate-friendly laws in the world, ensuring that both surrogates and intended parents are fully protected. Legal agreements are clear, compensation is transparent, and every surrogate's rights are respected.
             </p>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
               Beyond the laws, California also provides outstanding fertility care. With advanced medical centers, supportive surrogacy professionals, and a diverse community of experienced surrogates, the environment here is ideal for this life-changing journey.
@@ -312,10 +352,10 @@ onUnmounted(() => {
               </svg>
             </div>
             <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
-              Emotional and Financial Rewards
+              Emotional Rewards and Fair Surrogate Pay
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              Surrogacy changes lives — not just for the families you help but also for you as a surrogate mother. Many women say it's one of the most fulfilling things they've ever done.
+              Alongside emotional fulfillment, surrogate pay in California reflects the time, risk and commitment you invest.Surrogacy changes lives — not just for the families you help but also for you as a surrogate mother. Many women say it's one of the most fulfilling things they've ever done.
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
               Alongside emotional fulfillment, surrogacy offers strong financial benefits. In California, surrogate mothers receive compensation that reflects their commitment, time, and dedication.
@@ -455,7 +495,7 @@ onUnmounted(() => {
             Surrogate Compensation and Benefits in California
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            Choosing to become a surrogate in California means stepping into one of the most supportive and respected surrogacy systems in the world. California has long been known as the gold standard for surrogacy — not only for its clear laws but also for the way it values and protects every surrogate mother.
+            California has long been the gold standard for surrogate compensation. Clear surrogacy laws and secured trust accounts mean your surrogate pay is guaranteed, paid on time and fully outlined in your contract from the start.
             <br>At Yunda Surrogacy, we make sure every woman understands what her dedication and care are truly worth. California’s legal and medical environment allows us to offer compensation packages that recognize your time, effort, and heart. You can feel confident knowing your work is honored with fairness and respect from the very start.
           </p>
         </div>
@@ -464,7 +504,7 @@ onUnmounted(() => {
           <!-- How Compensation Works -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
             <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-              How Surrogate Compensation Works in California
+              How Surrogate Compensation and Pay Work in California
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
               In California, surrogate compensation is designed to reflect both your commitment and your comfort. Every surrogate receives a base pay plus additional allowances for health care, maternity needs, travel, and more.
@@ -480,7 +520,7 @@ onUnmounted(() => {
           <!-- Benefits Beyond Financial -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
             <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-              Benefits Beyond Financial Rewards
+              Benefits Beyond Surrogate Pay
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
               Being a surrogate mother in California comes with much more than just pay. You gain access to top-tier medical care from some of the country's most experienced fertility specialists.
@@ -539,6 +579,9 @@ onUnmounted(() => {
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
             Becoming a surrogate mother in California is a special calling — one that takes love, strength, and a deep sense of purpose. California welcomes women who want to help others grow their families while building something meaningful for themselves.
+          </p>
+          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
+            We welcome surrogates from across Southern California and Northern California, including Los Angeles, Orange County, surrounding areas. If you’re unsure whether your city is covered, our team can confirm it in a short call.
           </p>
         </div>
 
@@ -748,6 +791,86 @@ onUnmounted(() => {
       </div>
     </section>
 
+    <!-- Coverage Section -->
+    <section class="bg-white py-20">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="mb-10 text-center">
+          <p class="mx-auto mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+            California coverage
+          </p>
+          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+            Where in California You Can Be a Surrogate
+          </h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
+          <div class="rounded-3xl bg-[var(--head-bg)] p-10 shadow-lg">
+            <p class="mb-6 text-lg text-[var(--primary-brown)] leading-relaxed">
+              Yunda works with surrogates across Southern California and Northern California. Many of our surrogates live in Los Angeles, Orange County, Inland Empire, San Diego, Sacramento, San Jose and nearby cities.
+            </p>
+            <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
+              You don’t need to live next to a fertility clinic. As long as you live in California and can travel for key appointments, our team will coordinate local monitoring, travel arrangements and reimbursements.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-[var(--light-cream)] bg-white p-10 shadow-lg">
+            <div class="mb-6 flex items-center gap-3 text-[var(--grayish-green)]">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--grayish-green)] font-semibold">
+                CA
+              </span>
+              <span class="text-lg uppercase tracking-wide">Interactive coverage map</span>
+            </div>
+            <div class="mb-6 flex flex-wrap gap-3">
+              <button
+                v-for="city in coverageCities"
+                :key="city.name"
+                type="button"
+                class="coverage-chip"
+                :class="{ 'coverage-chip--active': activeCity?.name === city.name }"
+                @mouseenter="setActiveCity(city)"
+                @focus="setActiveCity(city)"
+              >
+                {{ city.name }}
+              </button>
+            </div>
+            <div class="relative overflow-hidden rounded-2xl bg-[var(--head-bg)] p-8">
+              <svg
+                class="h-56 w-full text-[var(--grayish-green)] opacity-70"
+                viewBox="0 0 200 220"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M50 25l90 20-10 35 20 80-40 30-30-10-25 15-30-40 10-60-20-40z" stroke-width="3" />
+                <g v-for="city in coverageCities" :key="`dot-${city.name}`">
+                  <circle
+                    :cx="city.cx"
+                    :cy="city.cy"
+                    r="6"
+                    class="map-dot"
+                    :class="{ 'map-dot--active': activeCity?.name === city.name }"
+                    tabindex="0"
+                    @mouseenter="setActiveCity(city)"
+                    @focus="setActiveCity(city)"
+                  />
+                </g>
+              </svg>
+              <div class="map-tooltip">
+                <p class="text-xs uppercase tracking-[0.2em] text-[var(--grayish-green)]">
+                  Now highlighting
+                </p>
+                <p class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                  {{ activeCity?.name }}
+                </p>
+                <p class="text-sm text-[var(--primary-brown)]">
+                  {{ activeCity?.area }}
+                </p>
+              </div>
+            </div>
+            <p class="text-center text-sm text-[var(--primary-brown)] uppercase tracking-wide">
+              Hover or tap on a city to see coverage details
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- FAQ Section -->
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
@@ -802,52 +925,33 @@ onUnmounted(() => {
     <!-- Final CTA Section -->
     <section class="bg-[var(--head-bg)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
-        <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
-            Ready to Start Your Surrogacy Journey? Apply Today
+        <div class="mb-10 text-center">
+          <h2 class="text-3xl text-[var(--dark-brown)] font-bold md:text-4xl" style="font-family: var(--font-primary)">
+            How to Apply to Become a Surrogate in California
           </h2>
-          <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            Every amazing journey starts with one brave step. If you've been thinking about becoming a surrogate in California, now is the perfect time to explore this beautiful opportunity.
+          <p class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed">
+            Follow these five simple steps to move from application to embryo transfer with confidence and full support.
           </p>
         </div>
 
-        <div class="grid mb-16 gap-12 lg:grid-cols-2">
-          <!-- Check Eligibility -->
-          <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-              Check Your Eligibility Instantly
+        <div class="grid mb-16 gap-8 md:grid-cols-2">
+          <div
+            v-for="(step, index) in applicationSteps"
+            :key="`${index}-${step.title}`"
+            class="relative overflow-hidden rounded-2xl bg-white/90 p-8 shadow-lg"
+          >
+            <div class="absolute inset-y-0 left-0 w-1.5 bg-[var(--grayish-green)]" />
+            <div class="mb-3 flex items-center gap-2 text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+              <span class="rounded-full border border-[var(--grayish-green)] px-3 py-1 font-semibold">
+                Step {{ index + 1 }}
+              </span>
+            </div>
+            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              {{ step.title }}
             </h3>
-            <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              Not sure if you qualify? You can start by answering a few simple questions in our surrogacy application form. It only takes a few minutes and helps us learn whether you meet the basic surrogate requirements in California.
+            <p class="text-[var(--primary-brown)] leading-relaxed">
+              {{ step.description }}
             </p>
-            <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              💡 You don't need to be perfect — you just need to be caring, healthy, and ready to help a family grow.
-            </p>
-            <button
-              class="rounded-lg bg-[var(--grayish-green)] px-8 py-4 text-lg text-white font-semibold transition-opacity hover:opacity-90"
-              @click="scrollToSection('requirements')"
-            >
-              Check Requirements
-            </button>
-          </div>
-
-          <!-- Apply Now -->
-          <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
-              Apply to Become a Surrogate in California
-            </h3>
-            <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              Becoming a surrogate mother in California is both a meaningful and practical decision. You'll be supported every step of the way — legally, medically, and emotionally.
-            </p>
-            <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              👉 Start your surrogacy journey today. Fill out our short application, and a Yunda Surrogacy coordinator will reach out soon.
-            </p>
-            <NuxtLink
-              to="/be-surrogate"
-              class="rounded-lg bg-[var(--grayish-green)] px-8 py-4 text-lg text-white font-semibold transition-opacity hover:opacity-90"
-            >
-              Start Application
-            </NuxtLink>
           </div>
         </div>
 
@@ -928,6 +1032,47 @@ html {
 /* FAQ 動畫 */
 .transition-all {
   transition: all 0.3s ease;
+}
+
+.coverage-chip {
+  border: 1px solid rgba(169, 166, 125, 0.4);
+  color: var(--primary-brown);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.coverage-chip--active {
+  background: var(--grayish-green);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.map-dot {
+  fill: rgba(169, 166, 125, 0.4);
+  transition:
+    transform 0.2s ease,
+    fill 0.2s ease;
+}
+
+.map-dot--active {
+  fill: var(--grayish-green);
+  transform: scale(1.2);
+}
+
+.map-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 /* 背景圖案動畫 */

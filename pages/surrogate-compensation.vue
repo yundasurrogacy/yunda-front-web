@@ -7,11 +7,11 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 useHead({
-  title: 'Surrogate Compensation in the U.S. | Pay, Benefits & FAQs',
+  title: 'Surrogate Compensation in the U.S. | How Much Do Surrogates Get Paid?',
   meta: [
     {
       name: 'description',
-      content: 'Explore surrogate pay and benefits with a clear payment schedule. We outline surrogacy cost, agency fees, and expenses in the U.S., with real support.',
+      content: 'Learn how much surrogates get paid in the U.S., what benefits are included, and how the surrogate payment schedule works, plus key surrogacy costs for families.',
     },
   ],
 })
@@ -88,9 +88,9 @@ function togglePay(id: string) {
 const compensationFactors = [
   {
     number: '1',
-    title: 'Experience and track record',
+    title: 'First-Time vs Repeat Surrogate Compensation',
     content: [
-      'Repeat journeys often raise surrogate mother pay. A smooth prior pregnancy and a successful journey signal reliability. Agencies factor in medical history, delivery type, and communication style. Strong references and complete records help you get paid to be a surrogate at a higher level. This is how many “best paying surrogacy agencies” evaluate surrogate income in a fair, transparent way.',
+      'Repeat journeys often raise surrogate mother pay. A smooth prior pregnancy and a successful journey signal reliability.Agencies factor in medical history, delivery type, and communication style. Strong references and complete records help you get paid to be a surrogate at a higher level. This is how many “best paying surrogacy agencies” evaluate surrogate income in a fair, transparent way.',
     ],
   },
   {
@@ -117,6 +117,10 @@ const compensationFactors = [
 ]
 
 const scheduleHighlights = [
+  {
+    title: 'How agencies manage surrogate payment schedules',
+    body:'Agencies manage surrogate payment schedules through a funded third-party trust. The trust tracks each milestone, releases surrogate compensation on time, and records reimbursements, so surrogacy payments and reimbursements stay organized and easy to audit.',
+  },
   {
     title: 'Funding milestones',
     body: 'Families fund the trust in stages. They deposit after contract signing, again after medical clearance, and again after heartbeat confirmation. The account keeps a minimum balance for upcoming milestones. This schedule supports timely installments and avoids delays.',
@@ -223,15 +227,15 @@ const processSteps = [
 
 const faqQuestions = [
   {
-    question: 'Do surrogates get paid? How does the surrogate payment schedule work?',
+    question: 'How do agencies manage the surrogate payment schedule?',
     answer: 'Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.',
   },
   {
-    question: 'How much do surrogates make in the U.S.?',
+    question: 'How much do surrogates get paid in the U.S.?',
     answer: 'On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.',
   },
   {
-    question: 'What counts as surrogate compensation vs. reimbursable surrogacy expenses?',
+    question: 'what counts as surrogate compensation vs reimbursable expenses?',
     answer: 'Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.',
   },
   {
@@ -270,7 +274,7 @@ function toggleFaq(question: string) {
               Surrogate Compensation in the U.S. | Pay, Benefits & FAQs
             </h1>
             <p class="text-4.5 leading-relaxed">
-              Surrogate compensation should feel clear and fair. On this page, we explain surrogate pay, your benefits, and a simple surrogate payment schedule. We also outline surrogacy cost for families, including agency fees and common surrogacy expenses. You see how funds move, who pays what, and when you receive each installment.
+              Surrogate compensation should feel clear and fair. On this page, we answer how much surrogates get paid in the U.S., what benefits are included, and how a simple surrogate payment schedule works. We also outline surrogacy cost for families, including agency fees and common surrogacy expenses.
             </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
@@ -340,9 +344,8 @@ function toggleFaq(question: string) {
               Our surrogate pay and benefits are flexible and customized to you, as each woman is different and compensated according to her own needs and experiences.
             </p>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 300ms;">
-              When people ask how much do surrogates make, I look at total surrogate compensation: base surrogate pay + allowances + any medical bonuses. Your final surrogate income depends on your match and medical details.
+              When people ask how much do surrogates make or get paid, I look at total surrogate compensation: base surrogate pay + allowances + any medical bonuses. Your final surrogate income depends on your match and medical details.           
             </p>
-
             <!-- Compensation Cards -->
             <div class="grid animate-fade-in-left gap-6 lg:grid-cols-2" style="animation-delay: 400ms;">
               <div

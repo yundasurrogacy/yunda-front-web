@@ -5,11 +5,11 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
 useHead({
-  title: 'Become a Surrogate in Southern California | Yunda Surrogacy',
+  title: 'Become a Surrogate in Southern California | Process, Requirements & Pay',
   meta: [
     {
       name: 'description',
-      content: 'Start your paid surrogacy journey with expert care, transparent compensation, and a supportive team. Apply today and help a family grow.',
+      content: 'Become a surrogate in Southern California with Yunda Surrogacy. Learn the surrogate process, basic requirements and pay, supported by IVF clinics in Los Angeles and San Diego.',
     },
   ],
 })
@@ -100,7 +100,7 @@ const requirementDropdowns = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'You ask, who can be a surrogate mother. You qualify when you meet clear surrogacy requirements and surrogacy qualifications set by clinics and your legal team. You\'ve had at least one full-term birth. You feel healthy. You want to help a family. You understand gestational surrogacy and the role of a gestational surrogate mother.',
+        text: 'We welcome surrogates from across Southern California, including Los Angeles, Orange County, San Diego and the Inland Empire, as long as you meet the basic surrogate mother requirements below.You ask, who can be a surrogate mother. You qualify when you meet clear surrogacy requirements and surrogacy qualifications set by clinics and your legal team. You\'ve had at least one full-term birth. You feel healthy. You want to help a family. You understand gestational surrogacy and the role of a gestational surrogate mother.',
       },
       {
         type: 'paragraph',
@@ -142,7 +142,7 @@ const requirementDropdowns = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Where you live matters. Many programs match within surrogate friendly states so lawyers can secure parentage on time. You work with your own attorney. You review your contract line by line. You approve every clause before you move forward.',
+        text: 'Because our program is based in Southern California, most surrogates live within driving distance of Los Angeles or San Diego, which keeps clinic visits and support simple.Where you live matters. Many programs match within surrogate friendly states so lawyers can secure parentage on time. You work with your own attorney. You review your contract line by line. You approve every clause before you move forward.',
       },
       {
         type: 'paragraph',
@@ -180,7 +180,7 @@ function isRequirementExpanded(id: string) {
   return expandedRequirements.value[id] === true
 }
 
-const journeyIntro = 'Surrogate mother often asks what is the process to become a surrogate. Here\'s a clear map of the surrogacy steps. You move through seven stages with a steady team, simple checklists, and honest timelines. These surrogate steps keep the process calm and predictable.'
+const journeyIntro = 'Surrogate mothers often ask what the surrogate process looks like in Southern California. Here is a clear map of the steps, from application and screening to legal, IVF and delivery.Surrogate mother often asks what is the process to become a surrogate. Here\'s a clear map of the surrogacy steps. You move through seven stages with a steady team, simple checklists, and honest timelines. These surrogate steps keep the process calm and predictable.'
 
 const journeySteps = [
   {
@@ -352,8 +352,11 @@ const yundaPillars = [
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="animate-fade-in-up text-center space-y-6 lg:text-left">
             <h1 class="text-8 font-semibold leading-tight transition-all duration-700 hover:scale-105 lg:text-12" style="font-family: var(--font-primary)">
-              Become a Surrogate: A Supported, Transparent Path with Yunda
+              Become a Surrogate in Southern California: A Supported, Transparent Path with Yunda
             </h1>
+            <p class="mx-auto max-w-160 text-4.5 leading-relaxed lg:mx-0">
+            Thinking about becoming a surrogate in Southern California? This page walks through the surrogate process, basic requirements and what surrogate pay typically looks like, with support from top IVF clinics in Los Angeles and San Diego.
+            </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
@@ -558,8 +561,8 @@ const yundaPillars = [
         <h2 class="animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
           Compensation & Benefits
         </h2>
-        <p class="mt-4 animate-fade-in-up text-center text-4.5 leading-relaxed" style="animation-delay: 200ms;">
-          How We Support You Every Step of the Way
+        <p class="mt-6 animate-fade-in-up text-4.25 leading-relaxed" style="animation-delay: 400ms;">
+          Most first-time surrogates in Southern California receive total compensation in the mid–five figures, plus structured benefits. This section explains how surrogate pay works, what is covered and how your payments are protected.
         </p>
 
         <!-- Compensation Overview Cards -->
@@ -580,7 +583,7 @@ const yundaPillars = [
               </p>
             </div>
             <p class="text-center text-4 leading-relaxed opacity-90">
-              Milestone-based payments through secure escrow with clear schedules and categories.
+              Our Southern California surrogate compensation packages are milestone-based, funded through secure escrow and clearly mapped out before you begin.
             </p>
           </div>
 
@@ -781,9 +784,12 @@ const yundaPillars = [
     <!-- Why Yunda -->
     <section id="why-yunda" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" style="font-family: var(--font-primary)">
           Why Yunda
         </h2>
+        <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed transition-all duration-500" style="animation-delay: 200ms;">
+          Yunda is a focused Southern California surrogacy program rather than a nationwide call center. You work with a small, local team that knows the clinics, hospitals and legal framework in this region.
+        </p>
         <div class="mt-8 flex animate-fade-in-up justify-center" style="animation-delay: 200ms;">
           <div class="image-placeholder max-w-160 w-full transition-all duration-500 hover:scale-105 hover:shadow-xl">
             <img src="/images/landing-page1/Yunda-Local-Care.jpg" alt="Why Yunda">
