@@ -87,8 +87,8 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Yunda Surrogacy - Professional Cross-Border Surrogacy Agency',
-      titleTemplate: '%s',
+      title: 'Professional Surrogacy Agency in California',
+      titleTemplate: '%s | Yunda Surrogacy',
       link: [
         // 只 preload 首屏关键字体
         {
