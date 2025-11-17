@@ -119,36 +119,34 @@ const compensationFactors = [
 const scheduleHighlights = [
   {
     title: 'How agencies manage surrogate payment schedules',
-    body:'Agencies manage surrogate payment schedules through a funded third-party trust. The trust tracks each milestone, releases surrogate compensation on time, and records reimbursements, so surrogacy payments and reimbursements stay organized and easy to audit.',
+    body: 'Agencies manage surrogate payment schedules through a funded third-party trust. The trust tracks each milestone, releases surrogate compensation on time, and records reimbursements, so surrogacy payments and reimbursements stay organized and easy to audit.',
+    icon: 'lucide:calendar-check',
   },
   {
     title: 'Funding milestones',
     body: 'Families fund the trust in stages. They deposit after contract signing, again after medical clearance, and again after heartbeat confirmation. The account keeps a minimum balance for upcoming milestones. This schedule supports timely installments and avoids delays.',
+    icon: 'lucide:coins',
   },
   {
     title: 'Installments during pregnancy',
     body: 'The trust releases installments as you progress through the journey. Doctors confirm key points like transfer, pregnancy labs, and heartbeat. The trust pays each milestone according to the agreed plan, so you don’t chase payments or worry about timing.',
+    icon: 'lucide:receipt',
   },
   {
     title: 'Reimbursements and everyday expenses',
     body: 'Approved surrogacy expenses—like childcare during required visits, doctor-ordered bed rest support, or travel tied to monitoring—go through the trust with receipts. Clear rules, simple documentation, and tracked disbursements keep reimbursements smooth.',
+    icon: 'lucide:shield-check',
   },
   {
     title: 'Independent escrow partners',
     body: 'Specialized partners manage the trust and insurance coordination. SeedTrust provides escrow and online tracking; ART Risk supports insurance and risk design. This team keeps money movement compliant and transparent at every step.',
+    icon: 'lucide:clipboard-list',
   },
   {
     title: 'Final accounting',
     body: 'After delivery, the team closes the books. The trust reconciles all installments and reimbursements. Any unused funds return to the family per the agreement, and your file shows a full payment history.',
+    icon: 'lucide:file-check-2',
   },
-]
-
-const scheduleIcons = [
-  'lucide:calendar-check',
-  'lucide:coins',
-  'lucide:receipt',
-  'lucide:shield-check',
-  'lucide:clipboard-list',
 ]
 
 const packageCoverage = [
@@ -510,7 +508,7 @@ function toggleFaq(question: string) {
           >
             <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full from-[var(--light-cream)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
               <Icon
-                :name="scheduleIcons[index]"
+                :name="highlight.icon"
                 class="h-7 w-7"
               />
             </div>

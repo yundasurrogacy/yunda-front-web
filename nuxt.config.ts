@@ -2,9 +2,11 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
-  // devServer: {
-  //   port: 3000, // 你想要的端口号
-  // },
+  devServer: {
+    host: '127.0.0.1',
+    port: 3000,
+    url: 'http://127.0.0.1:3000/',
+  },
   vite: {
     server: {
       // port: 3000,
