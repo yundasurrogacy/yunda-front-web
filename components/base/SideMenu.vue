@@ -7,6 +7,8 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:isOpen'])
 
+const { locale } = useI18n()
+
 const internalIsOpen = computed({
   get: () => props.isOpen,
   set: value => emit('update:isOpen', value),
@@ -227,19 +229,29 @@ function toggleMenu() {
               <div class="text-sm text-[#271F18] font-normal space-y-2">
                 <div>
                   <span class="font-semibold">{{ $t("menu.phone") }}</span>
-                  <a href="tel:6265638656" class="text-[#271F18] underline hover:text-blue-600">626-563-8656</a>
+                  <a :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`" class="text-[#271F18] underline hover:text-blue-600">{{ $t('footer.phoneNumber') }}</a>
                 </div>
                 <div>
                   <span class="font-semibold">{{ $t("menu.email") }}</span>
                   <a href="mailto:kaylal@yundasurrogacy.com" class="text-[#271F18] underline hover:text-blue-600">kaylal@yundasurrogacy.com</a>
                 </div>
-                <div>
+                <!-- 英文显示 WhatsApp，中文显示微信 -->
+                <div v-if="locale === 'en'">
+                  <span class="font-semibold">{{ $t("menu.whatsapp") }}</span>
+                  <a :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`" target="_blank" rel="noopener noreferrer" class="text-[#271F18] underline hover:text-blue-600">{{ $t('footer.whatsappNumber') }}</a>
+                </div>
+                <div v-else>
                   <span class="font-semibold">{{ $t("menu.wechat") }}</span>
-                  YundaUS1
+                  {{ $t('footer.wechatId') }}
                 </div>
                 <div class="mt-2 flex items-center">
-                  <picture class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
-                    <img src="/images/home/wx.webp" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                  <picture v-if="locale === 'en'" class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
+                    <source srcset="/images/home/whatsapp.webp" type="image/webp">
+                    <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                  </picture>
+                  <picture v-else class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
+                    <source srcset="/images/home/wx.webp" type="image/webp">
+                    <img src="/images/home/wx.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
                   </picture>
                 </div>
               </div>
@@ -427,16 +439,29 @@ function toggleMenu() {
               <!-- 联系信息 -->
               <div class="text-sm text-[#271F18] font-normal space-y-1">
                 <div>
-                  <span class="font-semibold">{{ $t("menu.phone") }}</span> 626-563-8656
+                  <span class="font-semibold">{{ $t("menu.phone") }}</span>
+                  <a :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`" class="text-[#271F18] underline hover:text-blue-600">{{ $t('footer.phoneNumber') }}</a>
                 </div>
                 <div>
                   <span class="font-semibold">{{ $t("menu.email") }}</span> kaylal@yundasurrogacy.com
                 </div>
-                <div>
-                  <span class="font-semibold">{{ $t("menu.wechat") }}</span> YundaUS1
+                <!-- 英文显示 WhatsApp，中文显示微信 -->
+                <div v-if="locale === 'en'">
+                  <span class="font-semibold">{{ $t("menu.whatsapp") }}</span>
+                  <a :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`" target="_blank" rel="noopener noreferrer" class="text-[#271F18] underline hover:text-blue-600">{{ $t('footer.whatsappNumber') }}</a>
                   <div class="mt-2 flex items-center">
                     <picture class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
-                      <img src="/images/home/wx.webp" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                      <source srcset="/images/home/whatsapp.webp" type="image/webp">
+                      <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                    </picture>
+                  </div>
+                </div>
+                <div v-else>
+                  <span class="font-semibold">{{ $t("menu.wechat") }}</span> {{ $t('footer.wechatId') }}
+                  <div class="mt-2 flex items-center">
+                    <picture class="h-28 w-28 overflow-hidden border border-gray-300 rounded shadow">
+                      <source srcset="/images/home/wx.webp" type="image/webp">
+                      <img src="/images/home/wx.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
                     </picture>
                   </div>
                 </div>

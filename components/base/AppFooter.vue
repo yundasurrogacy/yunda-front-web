@@ -1,4 +1,5 @@
 <script setup>
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -179,7 +180,7 @@
                 {{ $t('menu.phone') }}
               </p>
               <a
-                :href="`tel:${$t('footer.phoneNumber')}`"
+                :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
                 class="text-[var(--dark-brown)] font-normal hover:underline"
               >
                 {{ $t('footer.phoneNumber') }}
@@ -198,7 +199,27 @@
               </a>
             </div>
 
-            <div>
+            <!-- 英文显示 WhatsApp，中文显示微信 -->
+            <div v-if="locale === 'en'">
+              <p class="text-[var(--dark-brown)] font-normal uppercase">
+                {{ $t('menu.whatsapp') }}
+              </p>
+              <a
+                :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[var(--dark-brown)] font-normal hover:underline"
+              >
+                {{ $t('footer.whatsappNumber') }}
+              </a>
+              <div class="mt-2 flex items-center">
+                <picture>
+                  <source srcset="/images/home/whatsapp.webp" type="image/webp">
+                  <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-gray-300 rounded shadow">
+                </picture>
+              </div>
+            </div>
+            <div v-else>
               <p class="text-[var(--dark-brown)] font-normal uppercase">
                 {{ $t('menu.wechat') }}
               </p>
@@ -206,7 +227,10 @@
                 {{ $t('footer.wechatId') }}
               </p>
               <div class="mt-2 flex items-center">
-                <img src="/images/home/wx.webp" alt="微信二维码" class="h-28 w-28 border border-gray-300 rounded shadow">
+                <picture>
+                  <source srcset="/images/home/wx.webp" type="image/webp">
+                  <img src="/images/home/wx.png" alt="微信二维码" class="h-28 w-28 border border-gray-300 rounded shadow">
+                </picture>
               </div>
             </div>
           </div>

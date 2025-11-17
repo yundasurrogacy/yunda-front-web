@@ -27,7 +27,8 @@
     "blog": "博客",
     "phone": "电话：",
     "email": "邮箱：",
-    "wechat": "微信："
+    "wechat": "微信：",
+    "whatsapp": "WhatsApp："
   },
   "home": {
     "siteTitle": "孕达代孕机构",
@@ -883,8 +884,9 @@
       "youtube": "YOUTUBE",
       "linkedin": "LINKEDIN"
     },
-    "phoneNumber": "626-563-8656",
+    "phoneNumber": "+1 (626) 563-8656",
     "wechatId": "YundaUS1",
+    "whatsappNumber": "+1 (626) 563-8656",
     "legalDisclaimer": "孕达代孕是一家独立的代孕机构，不从事医学或法律实践。我们通过促进联系和服务来支持客户，但所有医疗和法律决定仍由有许可的专业人员负责。"
   },
   "common": {

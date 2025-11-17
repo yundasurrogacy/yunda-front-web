@@ -27,7 +27,8 @@
     "blog": "BLOG",
     "phone": "PHONE:",
     "email": "EMAIL:",
-    "wechat": "WECHAT:"
+    "wechat": "WECHAT:",
+    "whatsapp": "WHATSAPP:"
   },
   "home": {
     "siteTitle": "YUNDA Surrogacy Agency",
@@ -883,8 +884,9 @@
       "youtube": "YOUTUBE",
       "linkedin": "LINKEDIN"
     },
-    "phoneNumber": "626-563-8656",
+    "phoneNumber": "+1 (626) 563-8656",
     "wechatId": "YundaUS1",
+    "whatsappNumber": "+1 (626) 563-8656",
     "legalDisclaimer": "Yunda Surrogacy is an independent surrogacy agency and does not practice medicine or law. We support clients by facilitating connections and services, but all medical and legal decisions remain the responsibility of licensed professionals."
   },
   "common": {
