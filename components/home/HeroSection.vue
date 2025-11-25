@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import type { ComponentPublicInstance } from 'vue'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 const introVideo = ref<HTMLVideoElement | null>(null)
+const heroSection = ref<HTMLElement | ComponentPublicInstance | null>(null)
 const isMuted = ref(true)
 const isMobile = ref(false)
 const videoReady = ref(false)
+const isPlaying = ref(false)
+let visibilityObserver: IntersectionObserver | null = null
 
 const DESKTOP_VIDEO_SRC = 'https://cdn-qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_pc.mp4'
 const MOBILE_VIDEO_SRC = 'https://cdn-qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_mobile.mp4'
@@ -23,6 +27,58 @@ function updateDeviceState() {
   isMobile.value = window.innerWidth < 768
 }
 
+function handlePlay() {
+  isPlaying.value = true
+}
+
+function handlePause() {
+  isPlaying.value = false
+}
+
+function resumeVideo() {
+  if (!introVideo.value)
+    return
+  introVideo.value.play().catch(() => {
+    isPlaying.value = false
+  })
+}
+
+function pauseVideo() {
+  if (!introVideo.value)
+    return
+  introVideo.value.pause()
+  isPlaying.value = false
+}
+
+function resolveHeroElement(): HTMLElement | null {
+  const target = heroSection.value
+  if (!target)
+    return null
+  if (target instanceof HTMLElement)
+    return target
+  return (target as ComponentPublicInstance<{ $el?: HTMLElement }>).$el ?? null
+}
+
+function setupVisibilityObserver() {
+  const element = resolveHeroElement()
+  if (typeof window === 'undefined' || !element)
+    return
+
+  visibilityObserver?.disconnect()
+  visibilityObserver = new IntersectionObserver((entries) => {
+    const entry = entries[0]
+    if (!entry || !videoReady.value)
+      return
+    if (entry.isIntersecting)
+      resumeVideo()
+    else
+      pauseVideo()
+  }, {
+    threshold: 0.5,
+  })
+  visibilityObserver.observe(element)
+}
+
 onMounted(() => {
   updateDeviceState()
   videoReady.value = true
@@ -30,11 +86,14 @@ onMounted(() => {
 
   if (introVideo.value) {
     introVideo.value.muted = isMuted.value
+    isPlaying.value = !introVideo.value.paused
   }
+  setupVisibilityObserver()
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateDeviceState)
+  visibilityObserver?.disconnect()
 })
 
 watch(isMuted, (value) => {
@@ -55,7 +114,7 @@ function toggleMute() {
 </script>
 
 <template>
-  <section class="hero-section">
+  <section ref="heroSection" class="hero-section">
     <div class="video-wrapper">
       <div v-if="!videoReady" class="poster-fallback">
         <img src="/videos/video-default-poster.webp" alt="Hero Poster">
@@ -71,9 +130,22 @@ function toggleMute() {
         playsinline
         preload="metadata"
         poster="/videos/video-default-poster.webp"
+        @play="handlePlay"
+        @pause="handlePause"
       >
         <source :src="videoSource" type="video/mp4">
       </video>
+      <button
+        v-if="videoReady && !isPlaying"
+        type="button"
+        class="play-toggle"
+        aria-label="播放视频"
+        @click="resumeVideo"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3" />
+        </svg>
+      </button>
       <button
         type="button"
         class="mute-toggle"
@@ -159,6 +231,30 @@ function toggleMute() {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.play-toggle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.play-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .mute-toggle {
