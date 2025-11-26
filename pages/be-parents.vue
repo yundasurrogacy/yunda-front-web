@@ -105,6 +105,7 @@ watch(() => form.country, (newCountry) => {
 
 const { submitParentApplication } = useApi()
 const { t } = useI18n()
+const { $fbPixel } = useNuxtApp()
 
 // Modal state
 const showModal = ref(false)
@@ -238,6 +239,30 @@ async function handleSubmit() {
     })
     console.log('Application submitted successfully:', response)
 
+    // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
+    // 使用独立的 try-catch 确保追踪失败不影响主流程
+    if (response && response.data?.id) {
+      if ($fbPixel?.trackCompleteRegistration) {
+        try {
+          await $fbPixel.trackCompleteRegistration({
+            content_name: 'Intended Parent Application',
+            content_category: 'Application Form',
+            content_ids: [String(response.data.id)],
+            value: 0,
+            currency: 'USD',
+            status: true,
+            // 自定义数据
+            applicationId: String(response.data.id),
+            applicationType: 'intended_parent',
+          })
+        }
+        catch (trackingError) {
+          // 静默处理追踪错误，不影响用户体验
+          console.warn('Facebook Pixel tracking failed:', trackingError)
+        }
+      }
+    }
+
     // Show success modal
     modalConfig.type = 'success'
     modalConfig.title = t('modal.success.parent.title')
@@ -325,7 +350,7 @@ async function handleSubmit() {
 
       <!-- Form Container -->
       <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
-        <form @submit.prevent="handleSubmit">
+        <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
           <!-- Basic Information Section -->
           <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
             {{ $t('parent.application.sections.basicInfo') }}

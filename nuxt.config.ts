@@ -133,18 +133,8 @@ export default defineNuxtConfig({
               gtag('config', 'G-H03SG1NBFP');
             };
             
-            // Facebook Meta Pixel
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '795952583356142');
-            fbq('track', 'PageView');
-            fbq('track', 'SubmitApplication');
+            // Facebook Meta Pixel - 已移至插件管理，此处不再初始化
+            // Pixel 初始化由 plugins/fb-pixel.client.ts 统一管理
           });`,
           defer: true,
         },

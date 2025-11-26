@@ -9,5 +9,18 @@ declare module 'nuxt/schema' {
   }
 }
 
+declare module '#app' {
+  interface FbPixelClient {
+    ensureInitialized: () => Promise<boolean>
+    trackEvent: (eventName: string, data?: Record<string, any>) => Promise<void>
+    trackPageView: (data?: Record<string, any>) => Promise<void>
+    trackCompleteRegistration: (data?: Record<string, any>) => Promise<void>
+  }
+
+  interface NuxtApp {
+    $fbPixel?: FbPixelClient
+  }
+}
+
 // It is always important to ensure you import/export something when augmenting a type
 export {}

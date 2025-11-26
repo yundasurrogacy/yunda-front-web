@@ -258,6 +258,7 @@ watch(() => form.country, (newCountry) => {
 })
 
 const { submitSurrogateApplication } = useApi()
+const { $fbPixel } = useNuxtApp()
 
 // Modal state
 const showModal = ref(false)
@@ -567,6 +568,31 @@ async function handleSubmit() {
     const response = await submitSurrogateApplication(payload)
     console.log('Application submitted successfully:', response)
     console.log('Application submitted successfully:', response.code)
+
+    // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
+    // 使用独立的 try-catch 确保追踪失败不影响主流程
+    if (response && response.data?.id) {
+      if ($fbPixel?.trackCompleteRegistration) {
+        try {
+          await $fbPixel.trackCompleteRegistration({
+            content_name: 'Surrogate Mother Application',
+            content_category: 'Application Form',
+            content_ids: [String(response.data.id)],
+            value: 0,
+            currency: 'USD',
+            status: true,
+            // 自定义数据
+            applicationId: String(response.data.id),
+            applicationType: 'surrogate_mother',
+          })
+        }
+        catch (trackingError) {
+          // 静默处理追踪错误，不影响用户体验
+          console.warn('Facebook Pixel tracking failed:', trackingError)
+        }
+      }
+    }
+
     // Show success modal
     modalConfig.type = 'success'
     modalConfig.titleKey = 'modal.success.surrogate.title'
@@ -641,7 +667,7 @@ async function handleSubmit() {
 
       <!-- Form Container -->
       <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
-        <form @submit.prevent="handleSubmit">
+        <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
           <!-- Contact Information Section -->
           <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
             {{ $t('surrogate.application.sections.contactInfo') }}
