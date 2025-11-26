@@ -21,12 +21,45 @@ interface Blog {
   updated_at: string
 }
 
-// 使用服务端渲染获取博客详情数据
+// 获取博客详情数据，支持缓存和预加载
 // 首先尝试通过route_id查询，如果失败则通过id查询
 const { data: blog, pending: loading, error } = await useFetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?route_id=${route.params.id}`, {
   key: `blog-${route.params.id}`,
-  server: true,
+  server: true, // 保持服务端渲染以支持 SEO
   default: () => null,
+  // 添加客户端缓存，10分钟内不重复请求
+  getCachedData: (key) => {
+    if (import.meta.client) {
+      const cached = sessionStorage.getItem(key)
+      if (cached) {
+        try {
+          const { data, timestamp } = JSON.parse(cached)
+          // 10分钟缓存
+          if (Date.now() - timestamp < 10 * 60 * 1000) {
+            return data
+          }
+        }
+        catch {
+          // 忽略缓存解析错误
+        }
+      }
+    }
+    return undefined
+  },
+  onResponse({ response }) {
+    // 缓存响应数据
+    if (import.meta.client && response._data) {
+      try {
+        sessionStorage.setItem(`blog-${route.params.id}`, JSON.stringify({
+          data: response._data,
+          timestamp: Date.now(),
+        }))
+      }
+      catch {
+        // 忽略存储错误
+      }
+    }
+  },
   transform: async (data: any) => {
     if (data && typeof data === 'object' && 'id' in data && 'title' in data) {
       return data as Blog

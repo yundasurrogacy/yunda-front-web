@@ -103,6 +103,12 @@ export default defineNuxtConfig({
           type: 'image/webp',
           fetchpriority: 'high',
         },
+        {
+          rel: 'prefetch',
+          href: '/images/blog-hero.webp',
+          as: 'image',
+          type: 'image/webp',
+        },
       ],
       meta: [
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },

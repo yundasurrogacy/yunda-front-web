@@ -165,6 +165,7 @@ const { locale } = useI18n()
               <hr class="my-2 border-[var(--dark-brown)]">
               <NuxtLink
                 to="/blog"
+                prefetch
                 class="block text-[var(--dark-brown)] font-normal uppercase transition-opacity hover:opacity-75"
               >
                 {{ $t('menu.blog') }}

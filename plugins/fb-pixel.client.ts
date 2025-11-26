@@ -2,7 +2,25 @@ import { defineNuxtPlugin, useRouter } from '#app'
 
 const FACEBOOK_PIXEL_ID = '795952583356142'
 let pixelLoadingPromise: Promise<void> | null = null
-let pixelInitialized = false
+
+// 使用全局标志防止重复初始化（即使在热重载时也能保持）
+function getGlobalInitFlag(): boolean {
+  if (import.meta.client) {
+    const w = window as any
+    return w.__FB_PIXEL_INITIALIZED__?.[FACEBOOK_PIXEL_ID] === true
+  }
+  return false
+}
+
+function setGlobalInitFlag(value: boolean) {
+  if (import.meta.client) {
+    const w = window as any
+    if (!w.__FB_PIXEL_INITIALIZED__) {
+      w.__FB_PIXEL_INITIALIZED__ = {}
+    }
+    w.__FB_PIXEL_INITIALIZED__[FACEBOOK_PIXEL_ID] = value
+  }
+}
 
 function loadPixelScript() {
   if (!import.meta.client)
@@ -48,24 +66,55 @@ async function ensurePixelInitialized(): Promise<boolean> {
   if (!import.meta.client)
     return false
 
-  if (pixelInitialized)
+  // 首先检查全局标志（最快）
+  if (getGlobalInitFlag()) {
     return true
+  }
 
   await loadPixelScript()
 
   if (typeof (window as any).fbq === 'function') {
     const fbq = (window as any).fbq
-    // 禁用自动事件追踪，避免误触发
-    // 必须在 init 之前设置
-    fbq('set', 'autoConfig', 'false', FACEBOOK_PIXEL_ID)
-    fbq('set', 'allowAutomaticEvents', false)
-    // 禁用自动表单提交检测
-    fbq('set', 'agent', 'pl', FACEBOOK_PIXEL_ID)
+    const w = window as any
+
+    // 再次检查全局标志（防止并发初始化）
+    if (getGlobalInitFlag()) {
+      return true
+    }
+
+    // 检查 Facebook Pixel 内部是否已经初始化
+    if (w.fbq?._initialized?.[FACEBOOK_PIXEL_ID]) {
+      setGlobalInitFlag(true)
+      return true
+    }
+
+    // 检查 fbq 的调用队列，看是否已经有 init 调用
+    if (w.fbq?.queue && Array.isArray(w.fbq.queue)) {
+      const hasInitCall = w.fbq.queue.some((call: any[]) => {
+        return Array.isArray(call) && call[0] === 'init' && call[1] === FACEBOOK_PIXEL_ID
+      })
+      if (hasInitCall) {
+        setGlobalInitFlag(true)
+        return true
+      }
+    }
+
+    // 检查是否已经通过其他方式初始化
+    if (w.fbq?._pixelIds && Array.isArray(w.fbq._pixelIds) && w.fbq._pixelIds.includes(FACEBOOK_PIXEL_ID)) {
+      setGlobalInitFlag(true)
+      return true
+    }
+
+    // 在初始化之前设置全局标志，防止并发初始化
+    setGlobalInitFlag(true)
+
+    // 初始化 Pixel
+    // 使用 autoConfig: false 禁用自动事件追踪
     fbq('init', FACEBOOK_PIXEL_ID, {
       autoConfig: false,
       debug: false,
     })
-    pixelInitialized = true
+
     return true
   }
   return false
@@ -91,6 +140,13 @@ async function trackEvent(eventName: string, data?: Record<string, any>) {
 export default defineNuxtPlugin((_nuxtApp) => {
   if (!import.meta.client)
     return
+
+  // 防止插件被多次执行（在开发模式下可能发生）
+  const w = window as any
+  if (w.__FB_PIXEL_PLUGIN_LOADED__) {
+    return
+  }
+  w.__FB_PIXEL_PLUGIN_LOADED__ = true
 
   const router = useRouter()
   const trackPageView = (data?: Record<string, any>) => trackEvent('PageView', data)

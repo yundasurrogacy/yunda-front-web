@@ -16,42 +16,33 @@ interface Photo {
 }
 
 // 照片数据 - 使用真实图片链接
+const baseUrl = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us'
+
 const photos = ref<Photo[]>([
-  {
-    id: '1',
-    url: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/ourteam-1.jpg',
-    thumbnail: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/ourteam-1.jpg',
-    category: ['all', 'our-team'],
-    alt: 'Our Team',
-  },
-  {
-    id: '2',
-    url: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-1.jpg',
-    thumbnail: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-1.jpg',
-    category: ['all', 'asrm'],
-    alt: 'ASRM Conference',
-  },
-  {
-    id: '3',
-    url: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-2.jpg',
-    thumbnail: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-2.jpg',
-    category: ['all', 'asrm'],
-    alt: 'ASRM Event',
-  },
-  {
-    id: '5',
-    url: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-3.jpg',
-    thumbnail: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-3.jpg',
-    category: ['all', 'asrm'],
-    alt: 'ASRM Conference',
-  },
-  {
-    id: '4',
-    url: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/seeds-1.jpg',
-    thumbnail: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/seeds-1.jpg',
-    category: ['all', 'seeds'],
-    alt: 'SEEDS Event',
-  },
+  // Our Team 照片 (1-4)
+  ...Array.from({ length: 4 }, (_, i) => ({
+    id: `ourteam-${i + 1}`,
+    url: `${baseUrl}/ourteam-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/ourteam-${i + 1}.jpg`,
+    category: ['all', 'our-team'] as PhotoCategory[],
+    alt: `Our Team ${i + 1}`,
+  })),
+  // ASRM 照片 (1-13)
+  ...Array.from({ length: 13 }, (_, i) => ({
+    id: `asrm-${i + 1}`,
+    url: `${baseUrl}/asrm-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/asrm-${i + 1}.jpg`,
+    category: ['all', 'asrm'] as PhotoCategory[],
+    alt: `ASRM Conference ${i + 1}`,
+  })),
+  // SEEDS 照片 (1-6)
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: `seeds-${i + 1}`,
+    url: `${baseUrl}/seeds-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/seeds-${i + 1}.jpg`,
+    category: ['all', 'seeds'] as PhotoCategory[],
+    alt: `SEEDS Event ${i + 1}`,
+  })),
 ])
 
 const activeCategory = ref<PhotoCategory>('all')
@@ -118,8 +109,8 @@ onBeforeUnmount(() => {
   <section class="relative overflow-hidden bg-[rgba(234,232,208,0.2)] px-4 py-20 md:px-20 md:py-25">
     <!-- 装饰性背景元素 -->
     <div class="pointer-events-none absolute inset-0 opacity-5">
-      <div class="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[var(--grayish-green)] blur-3xl" />
-      <div class="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-[var(--primary-brown)] blur-3xl" />
+      <div class="absolute h-96 w-96 rounded-full bg-[var(--grayish-green)] blur-3xl -left-20 -top-20" />
+      <div class="absolute h-96 w-96 rounded-full bg-[var(--primary-brown)] blur-3xl -bottom-20 -right-20" />
     </div>
 
     <div class="relative mx-auto max-w-320">
@@ -128,7 +119,7 @@ onBeforeUnmount(() => {
         <h2 class="mb-6 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
           {{ $t('about.photoGallery.title') }}
         </h2>
-        <p class="mx-auto max-w-235 text-3.5 leading-relaxed text-gray-700 md:text-4.5">
+        <p class="mx-auto max-w-235 text-3.5 text-gray-700 leading-relaxed md:text-4.5">
           {{ $t('about.photoGallery.description') }}
         </p>
       </div>
@@ -150,7 +141,7 @@ onBeforeUnmount(() => {
 
       <!-- 照片网格 - 只显示前4张 -->
       <div class="scroll-animate scroll-animate-delay-200 relative">
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4 md:grid-cols-3 md:gap-6">
           <div
             v-for="(photo, index) in filteredPhotos.slice(0, 4)"
             :key="photo.id"
@@ -164,7 +155,7 @@ onBeforeUnmount(() => {
               loading="lazy"
             >
             <!-- 悬停遮罩 -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div class="absolute inset-0 from-black/40 via-transparent to-transparent bg-gradient-to-t opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
 
@@ -172,10 +163,10 @@ onBeforeUnmount(() => {
         <button
           v-if="filteredPhotos.length > 4"
           :aria-label="$t('about.photoGallery.viewMore')"
-          class="absolute right-0 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl md:h-16 md:w-16 lg:right-4"
+          class="absolute right-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 lg:right-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl"
           @click="openCarousel(4)"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:w-8 md:h-8">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:h-8 md:w-8">
             <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
@@ -199,7 +190,7 @@ onBeforeUnmount(() => {
         >
           <!-- 关闭按钮 -->
           <button
-            class="absolute right-4 top-4 z-20 rounded-full bg-white/10 p-3 text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 md:right-8 md:top-8"
+            class="absolute right-4 top-4 z-20 rounded-full bg-white/10 p-3 text-white backdrop-blur-md transition-all duration-300 md:right-8 md:top-8 hover:scale-110 hover:bg-white/20"
             @click="closeCarousel"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +201,7 @@ onBeforeUnmount(() => {
           <!-- 上一张按钮 -->
           <button
             v-if="carouselPhotos.length > 1"
-            class="absolute left-4 z-20 rounded-full bg-white/10 p-4 text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 md:left-8"
+            class="absolute left-4 z-20 rounded-full bg-white/10 p-4 text-white backdrop-blur-md transition-all duration-300 md:left-8 hover:scale-110 hover:bg-white/20"
             @click="prevPhoto"
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -219,20 +210,18 @@ onBeforeUnmount(() => {
           </button>
 
           <!-- 照片容器 -->
-          <Transition name="slide" mode="out-in">
-            <div :key="currentIndex" class="relative max-h-[90vh] max-w-[90vw] px-16 md:px-20">
-              <img
-                :src="carouselPhotos[currentIndex]?.url"
-                :alt="carouselPhotos[currentIndex]?.alt"
-                class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl"
-              >
-            </div>
-          </Transition>
+          <div class="relative max-h-[90vh] max-w-[90vw] px-16 md:px-20">
+            <img
+              :src="carouselPhotos[currentIndex]?.url"
+              :alt="carouselPhotos[currentIndex]?.alt"
+              class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl"
+            >
+          </div>
 
           <!-- 下一张按钮 -->
           <button
             v-if="carouselPhotos.length > 1"
-            class="absolute right-4 z-20 rounded-full bg-white/10 p-4 text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 md:right-8"
+            class="absolute right-4 z-20 rounded-full bg-white/10 p-4 text-white backdrop-blur-md transition-all duration-300 md:right-8 hover:scale-110 hover:bg-white/20"
             @click="nextPhoto"
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,7 +230,7 @@ onBeforeUnmount(() => {
           </button>
 
           <!-- 照片计数器 -->
-          <div v-if="carouselPhotos.length > 1" class="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-6 py-2.5 text-white backdrop-blur-md">
+          <div v-if="carouselPhotos.length > 1" class="absolute bottom-6 left-1/2 rounded-full bg-black/60 px-6 py-2.5 text-white backdrop-blur-md -translate-x-1/2">
             <span class="text-4 font-medium md:text-5">{{ currentIndex + 1 }} / {{ carouselPhotos.length }}</span>
           </div>
         </div>
@@ -260,23 +249,5 @@ onBeforeUnmount(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.slide-enter-active {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.slide-leave-active {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.slide-enter-from {
-  opacity: 0;
-  transform: translateX(30px) scale(0.95);
-}
-
-.slide-leave-to {
-  opacity: 0;
-  transform: translateX(-30px) scale(0.95);
 }
 </style>

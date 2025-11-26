@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
+
+// 禁用服务端渲染，避免 hydration 错误
+definePageMeta({
+  ssr: false,
+})
 
 const { t, locale } = useI18n()
 
@@ -10,7 +15,11 @@ function getBlogTitle(blog: Blog | null): string {
   if (!blog)
     return ''
 
-  if (locale.value === 'zh') {
+  // 服务端统一使用英文优先，避免 hydration 错误
+  // 客户端根据语言选择
+  const currentLocale = import.meta.client ? locale.value : 'en'
+
+  if (currentLocale === 'zh') {
     // 中文时：优先中文，再是英文
     return blog.title || blog.en_title || ''
   }
@@ -25,7 +34,11 @@ function getBlogContent(blog: Blog | null): string {
   if (!blog)
     return ''
 
-  if (locale.value === 'zh') {
+  // 服务端统一使用英文优先，避免 hydration 错误
+  // 客户端根据语言选择
+  const currentLocale = import.meta.client ? locale.value : 'en'
+
+  if (currentLocale === 'zh') {
     // 中文时：优先中文，再是英文
     return blog.content || blog.en_content || ''
   }
@@ -95,14 +108,47 @@ const searchQuery = ref('')
 const selectedCategory = ref('all')
 const currentPage = ref(1)
 const itemsPerPage = 9
-const router = useRouter()
 
-// 使用服务端渲染获取博客数据
+// 使用客户端渲染获取博客数据，避免 SSR 阻塞
+// 添加缓存策略，减少重复请求
 const { data: blogsData, pending: loading, error } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
   key: 'blogs',
-  server: true,
+  server: false, // 改为客户端渲染，提升首次加载速度
   default: () => ({ blogs: [], pagination: { totalPages: 1 } }),
   transform: (data: any) => data,
+  // 添加缓存，5分钟内不重复请求
+  getCachedData: (key) => {
+    if (import.meta.client) {
+      const cached = sessionStorage.getItem(key)
+      if (cached) {
+        try {
+          const { data, timestamp } = JSON.parse(cached)
+          // 5分钟缓存
+          if (Date.now() - timestamp < 5 * 60 * 1000) {
+            return data
+          }
+        }
+        catch {
+          // 忽略缓存解析错误
+        }
+      }
+    }
+    return undefined
+  },
+  onResponse({ response }) {
+    // 缓存响应数据
+    if (import.meta.client && response._data) {
+      try {
+        sessionStorage.setItem('blogs', JSON.stringify({
+          data: response._data,
+          timestamp: Date.now(),
+        }))
+      }
+      catch {
+        // 忽略存储错误（可能因为存储空间不足）
+      }
+    }
+  },
 })
 
 const blogs = computed(() => blogsData.value?.blogs || [])
@@ -135,12 +181,45 @@ function getCategoryName(categoryValue: string): string {
   return categoryValue
 }
 
-// 使用服务端渲染获取分类数据
+// 使用客户端渲染获取分类数据，添加缓存
 const { data: categoriesData } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog/categories', {
   key: 'blog-categories',
-  server: true,
+  server: false, // 改为客户端渲染
   default: () => ({ categories: [], categoryCounts: {} }),
   transform: (data: any) => data,
+  // 添加缓存，10分钟内不重复请求（分类数据变化较少）
+  getCachedData: (key) => {
+    if (import.meta.client) {
+      const cached = sessionStorage.getItem(key)
+      if (cached) {
+        try {
+          const { data, timestamp } = JSON.parse(cached)
+          // 10分钟缓存
+          if (Date.now() - timestamp < 10 * 60 * 1000) {
+            return data
+          }
+        }
+        catch {
+          // 忽略缓存解析错误
+        }
+      }
+    }
+    return undefined
+  },
+  onResponse({ response }) {
+    // 缓存响应数据
+    if (import.meta.client && response._data) {
+      try {
+        sessionStorage.setItem('blog-categories', JSON.stringify({
+          data: response._data,
+          timestamp: Date.now(),
+        }))
+      }
+      catch {
+        // 忽略存储错误
+      }
+    }
+  },
 })
 
 // 分类列表
@@ -191,15 +270,10 @@ const totalCount = computed(() => {
 
 const jumpToPage = ref(1)
 
-// 跳转到博客详情页
-function viewBlogDetail(blog: Blog) {
+// 获取博客详情页路径
+function getBlogDetailPath(blog: Blog): string {
   // 只有当route_id存在时才使用route_id跳转，否则使用id
-  if (blog.route_id) {
-    router.push(`/blog/${blog.route_id}`)
-  }
-  else {
-    router.push(`/blog/${blog.id}`)
-  }
+  return blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
 }
 
 // 清除筛选
@@ -226,10 +300,14 @@ function jumpToPageHandler() {
 function formatDateShort(dateString: string) {
   if (!dateString)
     return ''
+
   const date = new Date(dateString)
 
-  // 根据当前语言选择日期格式
-  if (locale.value === 'en') {
+  // 服务端统一使用英文格式，客户端根据语言选择格式
+  // 这样可以避免 hydration 错误
+  const currentLocale = import.meta.client ? locale.value : 'en'
+
+  if (currentLocale === 'en') {
     return date.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -266,11 +344,45 @@ async function refreshBlogData() {
       }
     }
 
+    // 构建缓存 key
+    const cacheKey = `blogs-${params.toString()}`
+
+    // 检查缓存
+    if (import.meta.client) {
+      const cached = sessionStorage.getItem(cacheKey)
+      if (cached) {
+        try {
+          const { data, timestamp } = JSON.parse(cached)
+          // 2分钟缓存（筛选和分页数据缓存时间较短）
+          if (Date.now() - timestamp < 2 * 60 * 1000) {
+            blogsData.value = data
+            return
+          }
+        }
+        catch {
+          // 忽略缓存解析错误
+        }
+      }
+    }
+
     // 使用 $fetch 重新获取数据
     const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?${params.toString()}`)
 
     if (response && (response as any).blogs) {
       blogsData.value = response as any
+
+      // 缓存响应数据
+      if (import.meta.client) {
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify({
+            data: response,
+            timestamp: Date.now(),
+          }))
+        }
+        catch {
+          // 忽略存储错误
+        }
+      }
     }
   }
   catch (err) {
@@ -295,6 +407,10 @@ watch(currentPage, () => {
 
 // 滚动到博客内容区域顶部
 function scrollToTop() {
+  // 只在客户端执行滚动操作
+  if (!import.meta.client)
+    return
+
   // 滚动到博客内容区域的开始位置，留出一些空间给sticky导航
   const blogContent = document.querySelector('.blog-content-area') as HTMLElement
   if (blogContent) {
@@ -312,8 +428,93 @@ function scrollToTop() {
   }
 }
 
+const categorySidebar = ref<HTMLElement | null>(null)
+const blogContentArea = ref<HTMLElement | null>(null)
+let sidebarWidth = 0 // 保存侧边栏的初始宽度
+let sidebarLeft = 0 // 保存侧边栏的初始 left 位置
+
+// 处理滚动，使分类区域在滚动到内容区域时固定（仅桌面端）
+function handleScroll() {
+  if (!import.meta.client || !categorySidebar.value || !blogContentArea.value)
+    return
+
+  // 移动端（小于 1024px）不执行固定逻辑，使用默认的 sticky 行为
+  if (window.innerWidth < 1024) {
+    const sidebar = categorySidebar.value
+    sidebar.style.position = 'sticky'
+    sidebar.style.top = '0'
+    sidebar.style.width = 'auto'
+    sidebar.style.left = 'auto'
+    sidebar.style.maxHeight = 'none'
+    sidebar.style.overflowY = 'visible'
+    return
+  }
+
+  const sidebar = categorySidebar.value
+  const contentArea = blogContentArea.value
+  const headerHeight = 96 // top-24 = 96px
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  const contentTop = contentArea.offsetTop
+  const contentHeight = contentArea.offsetHeight
+  const sidebarHeight = sidebar.offsetHeight
+  const viewportHeight = window.innerHeight
+
+  // 保存初始宽度和位置（只在第一次或宽度变化时更新）
+  if (sidebarWidth === 0 || sidebar.offsetWidth !== sidebarWidth) {
+    sidebarWidth = sidebar.offsetWidth
+    const sidebarRect = sidebar.getBoundingClientRect()
+    sidebarLeft = sidebarRect.left
+  }
+
+  // 当滚动到内容区域时，固定侧边栏
+  if (scrollTop >= contentTop - headerHeight) {
+    const maxTop = contentTop + contentHeight - sidebarHeight - headerHeight
+    // 确保侧边栏不会超出内容区域底部
+    if (scrollTop + headerHeight + sidebarHeight <= contentTop + contentHeight) {
+      sidebar.style.position = 'fixed'
+      sidebar.style.top = `${headerHeight}px`
+      sidebar.style.width = `${sidebarWidth}px`
+      sidebar.style.left = `${sidebarLeft}px`
+    }
+    else {
+      sidebar.style.position = 'absolute'
+      sidebar.style.top = `${maxTop}px`
+      sidebar.style.width = `${sidebarWidth}px`
+      sidebar.style.left = 'auto'
+    }
+  }
+  else {
+    sidebar.style.position = 'sticky'
+    sidebar.style.top = `${headerHeight}px`
+    sidebar.style.width = 'auto'
+    sidebar.style.left = 'auto'
+  }
+
+  // 限制最大高度，避免超出视口
+  const maxHeight = viewportHeight - headerHeight - 20
+  sidebar.style.maxHeight = `${maxHeight}px`
+  sidebar.style.overflowY = 'auto'
+}
+
 onMounted(() => {
-  // 可按需在此添加其它初始化逻辑
+  if (!import.meta.client)
+    return
+
+  // 初始设置
+  handleScroll()
+
+  // 监听滚动事件
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', handleScroll, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  if (!import.meta.client)
+    return
+
+  // 清理事件监听器
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleScroll)
 })
 </script>
 
@@ -332,6 +533,8 @@ onMounted(() => {
             :alt="$t('blog.heroAlt')"
             class="m-0 h-full w-full rounded-none object-cover"
             style="display:block;"
+            loading="eager"
+            fetchpriority="high"
           >
         </div>
         <!-- 右侧内容区域：背景色#FAF1E0，搜索卡片白色，输入框#CAD3D0 -->
@@ -375,223 +578,181 @@ onMounted(() => {
       </div>
 
       <!-- 第二屏：分类列表 + 内容展示 -->
-      <div class="blog-content-area mx-auto max-w-7xl px-4 py-12">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
-          <!-- 左侧：分类列表 -->
-          <div class="lg:col-span-1">
-            <div class="sticky top-24 rounded-xl bg-white p-6 shadow-lg">
-              <div class="space-y-2">
-                <button
-                  v-for="category in categories"
-                  :key="category"
-                  class="w-full rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors"
-                  :class="[
-                    selectedCategory === category
-                      ? 'bg-[#A9A67D] text-white'
-                      : 'text-gray-700 hover:bg-gray-100',
-                  ]"
-                  @click="selectedCategory = category"
-                >
-                  {{ $t(`blog.categories.${category}`) }}
-                  <span class="ml-2 opacity-75">
-                    ({{ category === 'all' ? totalCount : (categoryCounts[category] || 0) }})
-                  </span>
-                </button>
-              </div>
-
-              <!-- 清除筛选按钮 -->
-              <button
-                v-if="searchQuery || selectedCategory !== 'all'"
-                class="mt-4 w-full rounded-lg px-4 py-2 text-sm text-red-600 font-medium transition-colors hover:bg-red-50 hover:text-red-700"
-                @click="clearFilters"
-              >
-                {{ $t('blog.clearFilters') }}
-              </button>
-            </div>
-          </div>
-
-          <!-- 右侧：博客内容展示 -->
-          <div class="lg:col-span-3">
-            <!-- 加载状态 -->
-            <div v-if="loading" class="py-12 text-center">
-              <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
-              <p class="mt-4 text-gray-600">
-                {{ $t('blog.loading') }}
-              </p>
-            </div>
-
-            <!-- 错误状态 -->
-            <div v-else-if="error" class="py-12 text-center">
-              <div class="text-lg text-red-500">
-                {{ error }}
-              </div>
-              <button
-                class="mt-4 rounded-lg bg-[#A9A67D] px-6 py-2 text-white transition-colors hover:bg-[#9A8F6D]"
-                @click="refreshBlogData"
-              >
-                {{ $t('blog.retry') }}
-              </button>
-            </div>
-
-            <!-- 博客列表 - 最多三列 -->
-            <div
-              v-else-if="blogs.length"
-              class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
-            >
-              <article
-                v-for="blog in blogs"
-                :key="blog.id"
-                class="group cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-                @click="viewBlogDetail(blog)"
-              >
-                <!-- 博客封面图片 - 正方形 -->
-                <div class="aspect-square overflow-hidden">
-                  <img
-                    v-if="blog.cover_img_url"
-                    :src="blog.cover_img_url"
-                    :alt="getBlogTitle(blog)"
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  >
-                  <div
-                    v-else
-                    class="h-full w-full flex items-center justify-center from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br"
-                  >
-                    <div class="text-6xl text-[#A9A67D]/30">
-                      🤱
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 博客内容 -->
-                <div class="p-5">
-                  <!-- 分类标签 -->
-                  <div class="mb-2">
-                    <span class="inline-block rounded-full bg-[#A9A67D]/10 px-3 py-1 text-xs text-[#A9A67D] font-medium">
-                      {{ getCategoryName(blog.category) }}
-                    </span>
-                  </div>
-
-                  <!-- 日期 -->
-                  <div class="mb-2 text-xs text-gray-500">
-                    {{ formatDateShort(blog.created_at) }}
-                  </div>
-
-                  <!-- 标题 -->
-                  <h2 class="line-clamp-2 mb-3 text-lg text-gray-900 font-bold transition-colors group-hover:text-[#A9A67D]">
-                    {{ getBlogTitle(blog) }}
-                  </h2>
-
-                  <!-- 内容摘要 -->
-                  <p class="line-clamp-3 mb-4 text-sm text-gray-600">
-                    {{ getBlogExcerpt(blog, 120) }}
-                  </p>
-
-                  <!-- 作者 -->
-                  <div class="flex items-center text-xs text-gray-500">
-                    <span>{{ blog.reference_author || $t('blog.author.default') }}</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <!-- 空状态 -->
-            <div v-else class="py-12 text-center">
-              <div class="mb-4 text-6xl">
-                📭
-              </div>
-              <h3 class="mb-2 text-2xl text-gray-900 font-bold">
-                {{ $t('blog.noResults.title') }}
-              </h3>
-              <p class="text-gray-600">
-                {{ $t('blog.noResults.description') }}
-              </p>
-            </div>
-
-            <!-- 分页 -->
-            <div
-              v-if="totalPages > 1"
-              class="mt-12 flex flex-col items-center space-y-4"
-            >
-              <!-- 分页信息 -->
-              <div class="text-sm text-gray-600">
-                {{ $t('blog.pagination.showing') }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ $t('blog.pagination.of') }} {{ pagination?.totalCount || 0 }} {{ $t('blog.pagination.results') }}
-              </div>
-
-              <!-- 分页导航 -->
-              <nav class="flex items-center space-x-1">
-                <!-- 首页按钮 -->
-                <button
-                  :disabled="currentPage === 1"
-                  class="border border-gray-300 rounded-l-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
-                  @click="currentPage = 1"
-                >
-                  {{ $t('blog.pagination.first') }}
-                </button>
-
-                <!-- 上一页按钮 -->
-                <button
-                  :disabled="currentPage === 1"
-                  class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
-                  @click="currentPage--"
-                >
-                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                </button>
-
-                <!-- 页码按钮 -->
-                <template v-if="totalPages <= 7">
-                  <!-- 总页数少于等于7时，显示所有页码 -->
+      <div ref="blogContentArea" class="blog-content-area mx-auto max-w-7xl px-4 py-12">
+        <ClientOnly>
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
+            <!-- 左侧：分类列表 -->
+            <div class="lg:col-span-1">
+              <div ref="categorySidebar" class="sticky top-0 z-10 mb-4 rounded-xl bg-white p-4 shadow-lg lg:top-24 lg:mb-0 lg:p-6">
+                <div class="space-y-2">
                   <button
-                    v-for="page in Array.from({ length: totalPages }, (_, i) => i + 1)"
-                    :key="page"
-                    class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
+                    v-for="category in categories"
+                    :key="category"
+                    class="w-full touch-manipulation rounded-lg px-3 py-2.5 text-left text-xs font-medium transition-colors lg:px-4 lg:py-3 lg:text-sm"
                     :class="[
-                      currentPage === page
-                        ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                        : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                      selectedCategory === category
+                        ? 'bg-[#A9A67D] text-white'
+                        : 'text-gray-700 active:bg-gray-100 lg:hover:bg-gray-100',
                     ]"
-                    @click="currentPage = page"
+                    @click="selectedCategory = category"
                   >
-                    {{ page }}
+                    {{ $t(`blog.categories.${category}`) }}
+                    <span class="ml-2 opacity-75">
+                      ({{ category === 'all' ? totalCount : (categoryCounts[category] || 0) }})
+                    </span>
                   </button>
-                </template>
-                <template v-else>
-                  <!-- 总页数大于7时，显示省略号 -->
-                  <template v-if="currentPage <= 4">
-                    <!-- 当前页在前4页时 -->
+                </div>
+
+                <!-- 清除筛选按钮 -->
+                <button
+                  v-if="searchQuery || selectedCategory !== 'all'"
+                  class="mt-3 w-full touch-manipulation rounded-lg px-3 py-2 text-xs text-red-600 font-medium transition-colors lg:mt-4 active:bg-red-50 lg:px-4 lg:text-sm lg:hover:bg-red-50 lg:hover:text-red-700"
+                  @click="clearFilters"
+                >
+                  {{ $t('blog.clearFilters') }}
+                </button>
+              </div>
+            </div>
+
+            <!-- 右侧：博客内容展示 -->
+            <div class="lg:col-span-3">
+              <!-- 加载状态 -->
+              <div v-if="loading" class="py-12 text-center">
+                <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
+                <p class="mt-4 text-gray-600">
+                  {{ $t('blog.loading') }}
+                </p>
+              </div>
+
+              <!-- 错误状态 -->
+              <div v-else-if="error" class="py-12 text-center">
+                <div class="text-lg text-red-500">
+                  {{ error }}
+                </div>
+                <button
+                  class="mt-4 rounded-lg bg-[#A9A67D] px-6 py-2 text-white transition-colors hover:bg-[#9A8F6D]"
+                  @click="refreshBlogData"
+                >
+                  {{ $t('blog.retry') }}
+                </button>
+              </div>
+
+              <!-- 博客列表 - 最多三列 -->
+              <div
+                v-else-if="blogs.length"
+                class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+              >
+                <article
+                  v-for="blog in blogs"
+                  :key="blog.id"
+                  class="group overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                >
+                  <NuxtLink
+                    :to="getBlogDetailPath(blog)"
+                    prefetch
+                    class="block cursor-pointer"
+                  >
+                    <!-- 博客封面图片 - 正方形 -->
+                    <div class="aspect-square overflow-hidden">
+                      <img
+                        v-if="blog.cover_img_url"
+                        :src="blog.cover_img_url"
+                        :alt="getBlogTitle(blog)"
+                        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      >
+                      <div
+                        v-else
+                        class="h-full w-full flex items-center justify-center from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br"
+                      >
+                        <div class="text-6xl text-[#A9A67D]/30">
+                          🤱
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 博客内容 -->
+                    <div class="p-5">
+                      <!-- 分类标签 -->
+                      <div class="mb-2">
+                        <span class="inline-block rounded-full bg-[#A9A67D]/10 px-3 py-1 text-xs text-[#A9A67D] font-medium">
+                          {{ getCategoryName(blog.category) }}
+                        </span>
+                      </div>
+
+                      <!-- 日期 -->
+                      <div class="mb-2 text-xs text-gray-500">
+                        {{ formatDateShort(blog.created_at) }}
+                      </div>
+
+                      <!-- 标题 -->
+                      <h2 class="line-clamp-2 mb-3 text-lg text-gray-900 font-bold transition-colors group-hover:text-[#A9A67D]">
+                        {{ getBlogTitle(blog) }}
+                      </h2>
+
+                      <!-- 内容摘要 -->
+                      <p class="line-clamp-3 mb-4 text-sm text-gray-600">
+                        {{ getBlogExcerpt(blog, 120) }}
+                      </p>
+
+                      <!-- 作者 -->
+                      <div class="flex items-center text-xs text-gray-500">
+                        <span>{{ blog.reference_author || $t('blog.author.default') }}</span>
+                      </div>
+                    </div>
+                  </NuxtLink>
+                </article>
+              </div>
+
+              <!-- 空状态 -->
+              <div v-else class="py-12 text-center">
+                <div class="mb-4 text-6xl">
+                  📭
+                </div>
+                <h3 class="mb-2 text-2xl text-gray-900 font-bold">
+                  {{ $t('blog.noResults.title') }}
+                </h3>
+                <p class="text-gray-600">
+                  {{ $t('blog.noResults.description') }}
+                </p>
+              </div>
+
+              <!-- 分页 -->
+              <div
+                v-if="totalPages > 1"
+                class="mt-12 flex flex-col items-center space-y-4"
+              >
+                <!-- 分页信息 -->
+                <div class="text-sm text-gray-600">
+                  {{ $t('blog.pagination.showing') }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ $t('blog.pagination.of') }} {{ pagination?.totalCount || 0 }} {{ $t('blog.pagination.results') }}
+                </div>
+
+                <!-- 分页导航 -->
+                <nav class="flex items-center space-x-1">
+                  <!-- 首页按钮 -->
+                  <button
+                    :disabled="currentPage === 1"
+                    class="border border-gray-300 rounded-l-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    @click="currentPage = 1"
+                  >
+                    {{ $t('blog.pagination.first') }}
+                  </button>
+
+                  <!-- 上一页按钮 -->
+                  <button
+                    :disabled="currentPage === 1"
+                    class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    @click="currentPage--"
+                  >
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+
+                  <!-- 页码按钮 -->
+                  <template v-if="totalPages <= 7">
+                    <!-- 总页数少于等于7时，显示所有页码 -->
                     <button
-                      v-for="page in [1, 2, 3, 4, 5]"
-                      :key="page"
-                      class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                      :class="[
-                        currentPage === page
-                          ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                          : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                      ]"
-                      @click="currentPage = page"
-                    >
-                      {{ page }}
-                    </button>
-                    <span class="px-3 py-2 text-sm text-gray-500">...</span>
-                    <button
-                      class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
-                      @click="currentPage = totalPages"
-                    >
-                      {{ totalPages }}
-                    </button>
-                  </template>
-                  <template v-else-if="currentPage >= totalPages - 3">
-                    <!-- 当前页在后4页时 -->
-                    <button
-                      class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
-                      @click="currentPage = 1"
-                    >
-                      1
-                    </button>
-                    <span class="px-3 py-2 text-sm text-gray-500">...</span>
-                    <button
-                      v-for="page in [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]"
+                      v-for="page in Array.from({ length: totalPages }, (_, i) => i + 1)"
                       :key="page"
                       class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                       :class="[
@@ -605,79 +766,149 @@ onMounted(() => {
                     </button>
                   </template>
                   <template v-else>
-                    <!-- 当前页在中间时 -->
-                    <button
-                      class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
-                      @click="currentPage = 1"
-                    >
-                      1
-                    </button>
-                    <span class="px-3 py-2 text-sm text-gray-500">...</span>
-                    <button
-                      v-for="page in [currentPage - 1, currentPage, currentPage + 1]"
-                      :key="page"
-                      class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                      :class="[
-                        currentPage === page
-                          ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                          : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
-                      ]"
-                      @click="currentPage = page"
-                    >
-                      {{ page }}
-                    </button>
-                    <span class="px-3 py-2 text-sm text-gray-500">...</span>
-                    <button
-                      class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
-                      @click="currentPage = totalPages"
-                    >
-                      {{ totalPages }}
-                    </button>
+                    <!-- 总页数大于7时，显示省略号 -->
+                    <template v-if="currentPage <= 4">
+                      <!-- 当前页在前4页时 -->
+                      <button
+                        v-for="page in [1, 2, 3, 4, 5]"
+                        :key="page"
+                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
+                        :class="[
+                          currentPage === page
+                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
+                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        ]"
+                        @click="currentPage = page"
+                      >
+                        {{ page }}
+                      </button>
+                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <button
+                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        @click="currentPage = totalPages"
+                      >
+                        {{ totalPages }}
+                      </button>
+                    </template>
+                    <template v-else-if="currentPage >= totalPages - 3">
+                      <!-- 当前页在后4页时 -->
+                      <button
+                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        @click="currentPage = 1"
+                      >
+                        1
+                      </button>
+                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <button
+                        v-for="page in [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]"
+                        :key="page"
+                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
+                        :class="[
+                          currentPage === page
+                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
+                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        ]"
+                        @click="currentPage = page"
+                      >
+                        {{ page }}
+                      </button>
+                    </template>
+                    <template v-else>
+                      <!-- 当前页在中间时 -->
+                      <button
+                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        @click="currentPage = 1"
+                      >
+                        1
+                      </button>
+                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <button
+                        v-for="page in [currentPage - 1, currentPage, currentPage + 1]"
+                        :key="page"
+                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
+                        :class="[
+                          currentPage === page
+                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
+                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                        ]"
+                        @click="currentPage = page"
+                      >
+                        {{ page }}
+                      </button>
+                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <button
+                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        @click="currentPage = totalPages"
+                      >
+                        {{ totalPages }}
+                      </button>
+                    </template>
                   </template>
-                </template>
 
-                <!-- 下一页按钮 -->
-                <button
-                  :disabled="currentPage === totalPages"
-                  class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
-                  @click="currentPage++"
-                >
-                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                  </svg>
-                </button>
+                  <!-- 下一页按钮 -->
+                  <button
+                    :disabled="currentPage === totalPages"
+                    class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    @click="currentPage++"
+                  >
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
 
-                <!-- 末页按钮 -->
-                <button
-                  :disabled="currentPage === totalPages"
-                  class="border border-gray-300 rounded-r-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
-                  @click="currentPage = totalPages"
-                >
-                  {{ $t('blog.pagination.last') }}
-                </button>
-              </nav>
+                  <!-- 末页按钮 -->
+                  <button
+                    :disabled="currentPage === totalPages"
+                    class="border border-gray-300 rounded-r-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    @click="currentPage = totalPages"
+                  >
+                    {{ $t('blog.pagination.last') }}
+                  </button>
+                </nav>
 
-              <!-- 快速跳转 -->
-              <div class="flex items-center text-sm space-x-2">
-                <span class="text-gray-600">{{ $t('blog.pagination.goTo') }}</span>
-                <input
-                  v-model.number="jumpToPage"
-                  type="number"
-                  :min="1"
-                  :max="totalPages"
-                  class="w-16 border border-gray-300 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#A9A67D]"
-                  @keyup.enter="jumpToPageHandler"
-                >
-                <button
-                  class="rounded bg-[#A9A67D] px-3 py-1 text-sm text-white transition-colors hover:bg-[#9A8F6D]"
-                  @click="jumpToPageHandler"
-                >
-                  {{ $t('blog.pagination.go') }}
-                </button>
+                <!-- 快速跳转 -->
+                <div class="flex items-center text-sm space-x-2">
+                  <span class="text-gray-600">{{ $t('blog.pagination.goTo') }}</span>
+                  <input
+                    v-model.number="jumpToPage"
+                    type="number"
+                    :min="1"
+                    :max="totalPages"
+                    class="w-16 border border-gray-300 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#A9A67D]"
+                    @keyup.enter="jumpToPageHandler"
+                  >
+                  <button
+                    class="rounded bg-[#A9A67D] px-3 py-1 text-sm text-white transition-colors hover:bg-[#9A8F6D]"
+                    @click="jumpToPageHandler"
+                  >
+                    {{ $t('blog.pagination.go') }}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <template #fallback>
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
+              <div class="lg:col-span-1">
+                <div class="sticky top-24 rounded-xl bg-white p-6 shadow-lg">
+                  <div class="space-y-2">
+                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
+                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
+                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
+                  </div>
+                </div>
+              </div>
+              <div class="lg:col-span-3">
+                <div class="py-12 text-center">
+                  <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
+                  <p class="mt-4 text-gray-600">
+                    {{ $t('blog.loading') }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </template>
+        </ClientOnly>
       </div>
     </div>
 

@@ -218,6 +218,7 @@ function toggleMenu() {
                 </a>
                 <NuxtLink
                   to="/blog"
+                  prefetch
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -429,6 +430,7 @@ function toggleMenu() {
                 </a>
                 <NuxtLink
                   to="/blog"
+                  prefetch
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
