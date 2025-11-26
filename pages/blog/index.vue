@@ -328,7 +328,7 @@ onMounted(() => {
         <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
         <div class="w-full flex items-center justify-center bg-white p-0 lg:w-1/2" style="aspect-ratio: 16/9;">
           <img
-            src="/images/blog-hero.jpg"
+            src="/images/blog-hero.webp"
             :alt="$t('blog.heroAlt')"
             class="m-0 h-full w-full rounded-none object-cover"
             style="display:block;"
