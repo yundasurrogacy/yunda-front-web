@@ -1,6 +1,7 @@
 <script setup>
 import AboutCareerSection from '../components/about/CareerSection.vue'
 import AboutHeroSection from '../components/about/HeroSection.vue'
+import PhotoGallerySection from '../components/about/PhotoGallerySection.vue'
 import AboutTeamSection from '../components/about/TeamSection.vue'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
@@ -23,6 +24,7 @@ useHead({
     <AppHeader />
     <AboutHeroSection />
     <AboutTeamSection />
+    <PhotoGallerySection />
     <AboutCareerSection />
     <AppFooter />
   </div>

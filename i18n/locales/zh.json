@@ -98,6 +98,9 @@
       "item2": "营养指导与心理支持",
       "item3": "每日健康跟进",
       "button": "开启成为代孕母的旅程"
+    },
+    "associationSection": {
+      "title": "信任与标准的交汇"
     }
   },
   "parentsPrice": {
@@ -1397,6 +1400,19 @@
       "title": "想参与助力家庭诞生、创造真实改变吗？",
       "description": "我们始终在寻找有爱心、有责任感的伙伴，加入 孕达 不断壮大的团队。欢迎浏览我们在 Indeed 上发布的职位信息——期待与你相遇！",
       "button": "查看职位"
+    },
+    "photoGallery": {
+      "title": "行业活动与团队风采",
+      "description": "近距离了解我们的团队在医疗会议、培训和现场工作中的精彩瞬间",
+      "categories": {
+        "all": "全部",
+        "our-team": "我们的团队",
+        "asrm": "ASRM",
+        "seeds": "SEEDS"
+      },
+      "viewMore": "查看更多",
+      "viewing": "正在查看",
+      "photos": "张照片"
     }
   }
 }

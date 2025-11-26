@@ -98,6 +98,9 @@
       "item2": "Nutrition & Counseling",
       "item3": "Daily Check-in",
       "button": "BECOME A SURROGATE"
+    },
+    "associationSection": {
+      "title": "Where Trust Meets Standards"
     }
   },
   "parentsPrice": {
@@ -1398,6 +1401,19 @@
       "title": "Want to help build families and make a real difference?",
       "description": "We're always looking for compassionate, driven individuals to join our growing team.\nYou're welcome to explore our open roles on Indeed\n— we'd love to meet you",
       "button": "View Positions"
+    },
+    "photoGallery": {
+      "title": "Industry Events & Team Highlights",
+      "description": "A closer look at our team during medical conferences, trainings, and on-site",
+      "categories": {
+        "all": "All",
+        "our-team": "Our Team",
+        "asrm": "ASRM",
+        "seeds": "SEEDS"
+      },
+      "viewMore": "View More",
+      "viewing": "Viewing",
+      "photos": "photos"
     }
   }
 }
