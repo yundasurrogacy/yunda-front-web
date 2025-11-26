@@ -242,9 +242,9 @@ async function handleSubmit() {
     // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
     // 使用独立的 try-catch 确保追踪失败不影响主流程
     if (response && response.data?.id) {
-      if ($fbPixel?.trackCompleteRegistration) {
+      if ($fbPixel?.trackSubmitApplication) {
         try {
-          await $fbPixel.trackCompleteRegistration({
+          await $fbPixel.trackSubmitApplication({
             content_name: 'Intended Parent Application',
             content_category: 'Application Form',
             content_ids: [String(response.data.id)],

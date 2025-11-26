@@ -14,7 +14,7 @@ declare module '#app' {
     ensureInitialized: () => Promise<boolean>
     trackEvent: (eventName: string, data?: Record<string, any>) => Promise<void>
     trackPageView: (data?: Record<string, any>) => Promise<void>
-    trackCompleteRegistration: (data?: Record<string, any>) => Promise<void>
+    trackSubmitApplication: (data?: Record<string, any>) => Promise<void>
   }
 
   interface NuxtApp {

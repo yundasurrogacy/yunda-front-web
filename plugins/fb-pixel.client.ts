@@ -150,7 +150,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
 
   const router = useRouter()
   const trackPageView = (data?: Record<string, any>) => trackEvent('PageView', data)
-  const trackCompleteRegistration = (data?: Record<string, any>) => trackEvent('CompleteRegistration', data)
+  const trackSubmitApplication = (data?: Record<string, any>) => trackEvent('SubmitApplication', data)
 
   // 初始页面加载后追踪 PageView
   router.isReady().then(() => {
@@ -168,7 +168,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
         ensureInitialized: ensurePixelInitialized,
         trackEvent,
         trackPageView,
-        trackCompleteRegistration,
+        trackSubmitApplication,
       },
     },
   }
