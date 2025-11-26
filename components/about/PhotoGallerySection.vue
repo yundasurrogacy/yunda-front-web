@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
@@ -60,6 +60,64 @@ const categories: Array<{ key: PhotoCategory, label: string }> = [
   { key: 'seeds', label: 'SEEDS' },
 ]
 
+// 滑块相关状态
+const visibleStartIndex = ref(0)
+const photosPerView = ref(4) // 默认显示4张
+const photoGridRef = ref<HTMLElement | null>(null)
+
+// 计算当前可见的照片范围
+const visiblePhotos = computed(() => {
+  return filteredPhotos.value.slice(visibleStartIndex.value, visibleStartIndex.value + photosPerView.value)
+})
+
+// 是否可以向左滑动
+const canScrollLeft = computed(() => visibleStartIndex.value > 0)
+
+// 是否可以向右滑动
+const canScrollRight = computed(() => visibleStartIndex.value + photosPerView.value < filteredPhotos.value.length)
+
+// 向左滑动
+function scrollLeft() {
+  if (canScrollLeft.value) {
+    visibleStartIndex.value = Math.max(0, visibleStartIndex.value - photosPerView.value)
+  }
+}
+
+// 向右滑动
+function scrollRight() {
+  if (canScrollRight.value) {
+    visibleStartIndex.value = Math.min(
+      filteredPhotos.value.length - photosPerView.value,
+      visibleStartIndex.value + photosPerView.value,
+    )
+  }
+}
+
+// 监听窗口大小变化，调整每屏显示的照片数量
+function updatePhotosPerView() {
+  if (typeof window === 'undefined')
+    return
+
+  if (window.innerWidth >= 1280) {
+    // xl: 4列
+    photosPerView.value = 4
+  }
+  else if (window.innerWidth >= 768) {
+    // md: 3列
+    photosPerView.value = 3
+  }
+  else {
+    // 移动端: 2列
+    photosPerView.value = 2
+  }
+
+  // 确保起始索引不超出范围
+  if (visibleStartIndex.value + photosPerView.value > filteredPhotos.value.length) {
+    visibleStartIndex.value = Math.max(0, filteredPhotos.value.length - photosPerView.value)
+  }
+}
+
+// 轮播模态框相关（保留用于点击图片放大查看）
 const currentIndex = ref(0)
 const showCarousel = ref(false)
 const carouselPhotos = ref<Photo[]>([])
@@ -97,11 +155,19 @@ function handleKeydown(e: KeyboardEvent) {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('resize', updatePhotosPerView)
+  updatePhotosPerView()
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('resize', updatePhotosPerView)
   document.body.style.overflow = ''
+})
+
+// 监听分类变化，重置滑块位置
+watch(activeCategory, () => {
+  visibleStartIndex.value = 0
 })
 </script>
 
@@ -139,14 +205,27 @@ onBeforeUnmount(() => {
         </button>
       </div>
 
-      <!-- 照片网格 - 只显示前4张 -->
+      <!-- 照片网格 - 滑块交互 -->
       <div class="scroll-animate scroll-animate-delay-200 relative">
-        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4 md:grid-cols-3 md:gap-6">
+        <!-- 左滑按钮 -->
+        <button
+          v-if="canScrollLeft"
+          :aria-label="$t('about.photoGallery.viewMore')"
+          class="absolute left-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 lg:left-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl"
+          @click="scrollLeft"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:h-8 md:w-8">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <!-- 照片网格 -->
+        <div ref="photoGridRef" class="grid grid-cols-2 gap-4 lg:grid-cols-4 md:grid-cols-3 md:gap-6">
           <div
-            v-for="(photo, index) in filteredPhotos.slice(0, 4)"
+            v-for="(photo, index) in visiblePhotos"
             :key="photo.id"
             class="group relative cursor-pointer overflow-hidden rounded-xl bg-gray-200 pb-[100%] shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
-            @click="openCarousel(index)"
+            @click="openCarousel(visibleStartIndex + index)"
           >
             <img
               :src="photo.thumbnail || photo.url"
@@ -159,12 +238,12 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <!-- 如果照片超过4张，显示右滑按钮 - 垂直居中且不遮挡图片 -->
+        <!-- 右滑按钮 -->
         <button
-          v-if="filteredPhotos.length > 4"
+          v-if="canScrollRight"
           :aria-label="$t('about.photoGallery.viewMore')"
           class="absolute right-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 lg:right-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl"
-          @click="openCarousel(4)"
+          @click="scrollRight"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:h-8 md:w-8">
             <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -173,9 +252,9 @@ onBeforeUnmount(() => {
       </div>
 
       <!-- 照片数量提示 -->
-      <div v-if="filteredPhotos.length > 4" class="mt-8 text-center">
+      <div v-if="filteredPhotos.length > photosPerView" class="mt-8 text-center">
         <p class="text-3.5 text-gray-600 md:text-4">
-          {{ $t('about.photoGallery.viewing') }} {{ filteredPhotos.slice(0, 4).length }} / {{ filteredPhotos.length }} {{ $t('about.photoGallery.photos') }}
+          {{ $t('about.photoGallery.viewing') }} {{ visibleStartIndex + 1 }}-{{ Math.min(visibleStartIndex + photosPerView, filteredPhotos.length) }} / {{ filteredPhotos.length }} {{ $t('about.photoGallery.photos') }}
         </p>
       </div>
     </div>

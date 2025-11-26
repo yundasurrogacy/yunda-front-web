@@ -4,6 +4,26 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
+
+// 定义 block 接口
+interface ParagraphBlock {
+  type: 'paragraph'
+  text: string
+}
+
+interface ListBlock {
+  type: 'list'
+  icon: string
+  items: string[]
+  label?: string
+}
+
+type Block = ParagraphBlock | ListBlock
+
+// 类型守卫函数
+function isListBlock(block: Block): block is ListBlock {
+  return block.type === 'list'
+}
 useHead({
   title: 'Become a Surrogate in Southern California | Process, Requirements & Pay',
   meta: [
@@ -93,7 +113,13 @@ const whatThisMeans = [
   'You stay close to home for OB care when possible; you travel only for key clinic visits.',
 ]
 
-const requirementDropdowns = [
+interface RequirementDropdown {
+  id: string
+  title: string
+  blocks: Block[]
+}
+
+const requirementDropdowns: RequirementDropdown[] = [
   {
     id: 'who',
     title: 'Who Can Be a Surrogate Mother?',
@@ -355,7 +381,7 @@ const yundaPillars = [
               Become a Surrogate in Southern California: A Supported, Transparent Path with Yunda
             </h1>
             <p class="mx-auto max-w-160 text-4.5 leading-relaxed lg:mx-0">
-            Thinking about becoming a surrogate in Southern California? This page walks through the surrogate process, basic requirements and what surrogate pay typically looks like, with support from top IVF clinics in Los Angeles and San Diego.
+              Thinking about becoming a surrogate in Southern California? This page walks through the surrogate process, basic requirements and what surrogate pay typically looks like, with support from top IVF clinics in Los Angeles and San Diego.
             </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
@@ -475,7 +501,7 @@ const yundaPillars = [
                   <p v-if="block.type === 'paragraph'" class="animate-fade-in-up transition-all duration-300" :style="{ animationDelay: `${blockIndex * 100}ms` }">
                     {{ block.text }}
                   </p>
-                  <div v-else-if="block.type === 'list'" class="animate-fade-in-up transition-all duration-300 space-y-3" :style="{ animationDelay: `${blockIndex * 100}ms` }">
+                  <div v-else-if="isListBlock(block)" class="animate-fade-in-up transition-all duration-300 space-y-3" :style="{ animationDelay: `${blockIndex * 100}ms` }">
                     <p v-if="block.label" class="text-3.5 text-[var(--primary-brown)] font-semibold tracking-wide uppercase">
                       {{ block.label }}
                     </p>
