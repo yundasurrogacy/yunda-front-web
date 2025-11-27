@@ -112,16 +112,16 @@ const { locale } = useI18n()
               <div class="space-y-1">
                 <hr class="my-2 border-[var(--dark-brown)]">
                 <NuxtLink
-                  to="/become-surrogate-california"
-                  class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
-                >
-                  {{ $t('footer.sections.surrogateCalifornia') }}
-                </NuxtLink>
-                <NuxtLink
                   to="/become-a-surrogate"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateMother') }}
+                </NuxtLink>
+                <NuxtLink
+                  to="/become-surrogate-california"
+                  class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
+                >
+                  {{ $t('footer.sections.surrogateCalifornia') }}
                 </NuxtLink>
                 <NuxtLink
                   to="/surrogate-process"
