@@ -14,6 +14,7 @@ import FormSelect from '@/components/form/FormSelect.vue'
 import { useApi } from '~/composables/useApi'
 import { getAllCountries, getPhoneCodeByCountry, getStatesByCountry } from '~/data/countries-states'
 import { citizenshipStatus } from '~/data/us-states'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 // 先声明 form
 const form = reactive({
@@ -113,7 +114,80 @@ function removePregnancy(idx: number) {
   pregnancyHistoryCollapse.value.splice(idx, 1)
 }
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+const surrogateHowToSteps = computed(() => [
+  {
+    title: t('surrogate.application.sections.contactInfo'),
+    text: t('surrogate.application.congratulations.message1'),
+  },
+  {
+    title: t('surrogate.application.sections.pregnancyHealth'),
+    text: t('surrogate.application.congratulations.message2'),
+  },
+  {
+    title: t('surrogate.application.sections.pregnancyHistory'),
+    text: t('surrogate.application.congratulations.thanks'),
+  },
+  {
+    title: t('surrogate.application.sections.consent'),
+    text: t('surrogate.application.form.finalConsent.text'),
+  },
+])
+
+const surrogateFaqItems = computed(() => [
+  {
+    question: `${t('surrogate.application.congratulations.title')}?`,
+    answer: `${t('surrogate.application.congratulations.message1')} ${t('surrogate.application.congratulations.message2')}`,
+  },
+  {
+    question: `${t('surrogate.application.sections.gestationalInterview')}?`,
+    answer: t('surrogate.application.congratulations.message2'),
+  },
+  {
+    question: `${t('surrogate.application.sections.consent')}?`,
+    answer: t('surrogate.application.form.finalConsent.disclaimer'),
+  },
+])
+
+const surrogateHowToSchema = computed(() => buildHowToSchema({
+  name: t('surrogate.application.pageTitle'),
+  description: t('surrogate.application.congratulations.message1'),
+  steps: surrogateHowToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/be-surrogate',
+  locale: locale.value,
+}))
+
+const surrogateFaqSchema = computed(() => buildFAQPageSchema({
+  name: `${t('surrogate.application.pageTitle')} FAQ`,
+  description: t('surrogate.application.congratulations.message2'),
+  faqs: surrogateFaqItems.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/be-surrogate',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (surrogateHowToSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(surrogateHowToSchema.value),
+    })
+  }
+  if (surrogateFaqSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(surrogateFaqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 
 // 计算BMI
 const calculatedBMI = computed(() => {
@@ -564,10 +638,7 @@ async function handleSubmit() {
       application_type: 'surrogate_mother',
       application_data: requestData,
     }
-    console.log('Submitting data:', payload)
     const response = await submitSurrogateApplication(payload)
-    console.log('Application submitted successfully:', response)
-    console.log('Application submitted successfully:', response.code)
 
     // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
     // 使用独立的 try-catch 确保追踪失败不影响主流程

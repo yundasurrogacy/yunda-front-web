@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { buildBlogListSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -9,6 +10,8 @@ definePageMeta({
 })
 
 const { t, locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // 根据当前语言获取博客标题
 function getBlogTitle(blog: Blog | null): string {
@@ -275,6 +278,40 @@ function getBlogDetailPath(blog: Blog): string {
   // 只有当route_id存在时才使用route_id跳转，否则使用id
   return blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
 }
+
+const blogListSchema = computed(() => {
+  const list = blogs.value
+  if (!Array.isArray(list) || list.length === 0)
+    return null
+
+  return buildBlogListSchema({
+    name: t('blog.meta.title'),
+    description: t('blog.meta.description'),
+    baseUrl: siteUrl.value || undefined,
+    locale: locale.value,
+    path: '/blog',
+    items: list.slice(0, 10).map((blogItem, index) => ({
+      name: getBlogTitle(blogItem),
+      url: getBlogDetailPath(blogItem),
+      position: index + 1,
+      description: getBlogExcerpt(blogItem, 160),
+      image: blogItem.cover_img_url,
+      datePublished: blogItem.created_at,
+    })),
+  })
+})
+
+useHead(() => (blogListSchema.value
+  ? {
+      script: [
+        {
+          key: 'schema-blog-list',
+          type: 'application/ld+json',
+          children: JSON.stringify(blogListSchema.value),
+        },
+      ],
+    }
+  : {}))
 
 // 清除筛选
 function clearFilters() {

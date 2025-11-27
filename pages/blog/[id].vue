@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { buildBlogPostingSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
 const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 interface Blog {
   id: number
@@ -178,6 +182,28 @@ function goBack() {
   router.push('/blog')
 }
 
+const blogPostingSchema = computed(() => {
+  if (!blog.value)
+    return null
+
+  const blogUrl = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
+
+  return buildBlogPostingSchema({
+    title: getBlogTitle(blog.value),
+    description: getBlogExcerpt(blog.value, 159),
+    articleBody: getBlogContent(blog.value),
+    image: blog.value.cover_img_url,
+    url: blogUrl,
+    baseUrl: siteUrl.value || undefined,
+    locale: locale.value,
+    author: blog.value.reference_author || t('blog.author.default'),
+    datePublished: blog.value.created_at,
+    dateModified: blog.value.updated_at,
+    keywords: blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : undefined,
+    category: getCategoryName(blog.value.category),
+  })
+})
+
 // SEO 配置
 useHead(() => ({
   title: blog.value ? getBlogTitle(blog.value) : t('blog.meta.title'),
@@ -204,6 +230,18 @@ useHead(() => ({
     },
   ],
 }))
+
+useHead(() => (blogPostingSchema.value
+  ? {
+      script: [
+        {
+          key: 'schema-blog-post',
+          type: 'application/ld+json',
+          children: JSON.stringify(blogPostingSchema.value),
+        },
+      ],
+    }
+  : {}))
 </script>
 
 <template>
@@ -288,10 +326,10 @@ useHead(() => ({
 
           <!-- 文章内容 -->
           <div class="p-6 md:p-8">
-            <div class="max-w-none prose prose-gray prose-lg overflow-x-auto">
+            <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
               <div
                 v-if="getBlogContent(blog)"
-                class="whitespace-pre-wrap text-gray-700 leading-relaxed min-w-0"
+                class="min-w-0 whitespace-pre-wrap text-gray-700 leading-relaxed"
                 v-html="getBlogContent(blog)"
               />
               <div v-else class="text-gray-500">

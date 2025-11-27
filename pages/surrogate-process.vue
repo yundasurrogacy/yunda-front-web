@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateStepsComponent.vue'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+
+const pageTitle = 'Surrogacy Process Step by Step | IVF, Legal & Timeline Guide'
+const pageDescription = 'Learn the surrogacy process step by step—from screening and legal contracts to IVF, pregnancy and birth. This guide explains how surrogacy works for intended parents and surrogate mothers in California and across the United States.'
 
 useHead({
-  title: 'Surrogacy Process Step by Step | IVF, Legal & Timeline Guide',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content:'Learn the surrogacy process step by step—from screening and legal contracts to IVF, pregnancy and birth. This guide explains how surrogacy works for intended parents and surrogate mothers in California and across the United States.'
+      content: pageDescription,
     },
     {
       property: 'og:title',
@@ -17,7 +22,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content:'Learn the surrogacy process step by step—from screening and legal contracts to IVF, pregnancy and birth. This guide explains how surrogacy works for intended parents and surrogate mothers in California and across the United States.'
+      content: 'Learn the surrogacy process step by step—from screening and legal contracts to IVF, pregnancy and birth. This guide explains how surrogacy works for intended parents and surrogate mothers in California and across the United States.',
     },
     {
       property: 'og:type',
@@ -29,6 +34,10 @@ useHead({
     },
   ],
 })
+
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const readinessPillars = reactive([
   {
@@ -101,13 +110,6 @@ const timelinePhases = reactive([
   },
 ])
 
-const activeTimelinePhase = ref(timelinePhases[0].id)
-const currentTimelinePhase = computed(() => timelinePhases.find(phase => phase.id === activeTimelinePhase.value))
-
-function selectTimelinePhase(id: number) {
-  activeTimelinePhase.value = id
-}
-
 const flowchartStages = reactive([
   {
     id: 1,
@@ -168,7 +170,7 @@ const checklistItems = reactive([
 const faqItems = reactive([
   {
     question: 'How does surrogacy work ?',
-    answer: 'In surrogacy, intended parents work with a fertility clinic and a surrogate mother. The surrogacy process includes screening, matching, legal contracts, IVF, pregnancy and birth. Everyone has clear roles and protections at each step.', 
+    answer: 'In surrogacy, intended parents work with a fertility clinic and a surrogate mother. The surrogacy process includes screening, matching, legal contracts, IVF, pregnancy and birth. Everyone has clear roles and protections at each step.',
   },
   {
     question: 'What is the surrogacy process, step by step?',
@@ -176,17 +178,17 @@ const faqItems = reactive([
   },
   {
     question: 'What does a surrogate mother do?',
-    answer: 'A surrogate mother carries a baby for intended parents who cannot carry a pregnancy. She follows medical advice, takes medications for IVF and surrogacy, and attends all key appointments. She does not use her own eggs in a gestational surrogacy program.'
-  },    
+    answer: 'A surrogate mother carries a baby for intended parents who cannot carry a pregnancy. She follows medical advice, takes medications for IVF and surrogacy, and attends all key appointments. She does not use her own eggs in a gestational surrogacy program.',
+  },
   {
     question: 'How does a surrogate mother get pregnant?',
-    answer:'In modern care, a surrogate mother gets pregnant through embryo transfer, not intercourse. Doctors place an embryo created in the lab into the surrogate’s uterus during the IVF surrogate process. Hormone medications help prepare her body for pregnancy.',
+    answer: 'In modern care, a surrogate mother gets pregnant through embryo transfer, not intercourse. Doctors place an embryo created in the lab into the surrogate’s uterus during the IVF surrogate process. Hormone medications help prepare her body for pregnancy.',
   },
   {
     question: 'How much does a gestational carrier cost?',
-    answer:'The cost of a gestational carrier and surrogate mother cost in USA varies by state, clinic, agency and insurance. Total costs include base compensation, medical fees, legal work and program support. We walk through typical ranges and budget tips in our separate surrogacy cost guide.',
+    answer: 'The cost of a gestational carrier and surrogate mother cost in USA varies by state, clinic, agency and insurance. Total costs include base compensation, medical fees, legal work and program support. We walk through typical ranges and budget tips in our separate surrogacy cost guide.',
   },
-  
+
 ])
 
 const expandedFaq = ref<number | null>(0)
@@ -212,6 +214,53 @@ const resourceCategories = reactive([
     ],
   },
 ])
+
+const howToSteps = computed(() => timelinePhases.map(phase => ({
+  title: `${phase.label} · ${phase.title}`,
+  text: phase.summary,
+})))
+
+const faqSchemaItems = computed(() => faqItems.map(item => ({
+  question: item.question,
+  answer: item.answer,
+})))
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: pageTitle,
+  description: pageDescription,
+  steps: howToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-process',
+  locale: locale.value,
+}))
+
+const faqSchema = computed(() => buildFAQPageSchema({
+  name: 'Surrogacy Process FAQ',
+  description: 'Common questions about the surrogacy process, IVF timeline, and legal steps.',
+  faqs: faqSchemaItems.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-process',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (howToSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-process-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    })
+  }
+  if (faqSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-process-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 
 const yundaHighlights = reactive([
   {
@@ -462,13 +511,13 @@ function setActiveStep(stepId: number) {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p class="mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--primary-brown)] uppercase tracking-wide">
+            <p class="mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--primary-brown)] tracking-wide uppercase">
               Surrogacy process guide
             </p>
             <h1 class="mb-8 text-4xl text-[var(--dark-brown)] font-bold md:text-6xl" style="font-family: var(--font-primary)">
               Surrogacy Process: Step-by-Step Guide for Parents and Surrogates
             </h1>
-            <div class="space-y-5 text-lg text-[var(--primary-brown)] leading-relaxed md:text-xl">
+            <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-5 md:text-xl">
               <p>
                 In a typical gestational surrogacy process, you move through six stages: screening, matching, legal contracts, IVF and embryo transfer, pregnancy and delivery, then post-birth legal steps. This guide walks through each step in plain language so intended parents and surrogate mothers know what to expect at every stage.
               </p>
@@ -482,13 +531,13 @@ function setActiveStep(stepId: number) {
                 class="h-full w-full rounded-2xl object-cover"
               >
             </div>
-            <div class="absolute -bottom-8 -right-6 hidden w-[240px] rounded-2xl border border-white/70 bg-white/90 p-6 text-sm text-[var(--primary-brown)] leading-relaxed shadow-lg backdrop-blur md:block">
+            <div class="absolute hidden w-[240px] border border-white/70 rounded-2xl bg-white/90 p-6 text-sm text-[var(--primary-brown)] leading-relaxed shadow-lg backdrop-blur -bottom-8 -right-6 md:block">
               A shared plan reduces stress. A shared plan builds trust.
             </div>
           </div>
         </div>
       </div>
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--head-bg)] to-transparent" />
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 from-[var(--head-bg)] to-transparent bg-gradient-to-t" />
     </section>
 
     <!-- Readiness Pillars -->
@@ -525,17 +574,18 @@ function setActiveStep(stepId: number) {
             Choose Your Surrogacy Track
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-            The surrogacy process looks slightly different depending on whether you’re an intended parent or a prospective surrogate mother. Choose the path that fits you:          </p>
+            The surrogacy process looks slightly different depending on whether you’re an intended parent or a prospective surrogate mother. Choose the path that fits you:
+          </p>
         </div>
         <div class="grid gap-6 md:grid-cols-2">
           <NuxtLink
             v-for="cta in softCtas"
             :key="cta.label"
             :to="cta.link"
-            class="group relative overflow-hidden rounded-3xl border border-[var(--grayish-green)] bg-[var(--head-bg)] p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
+            class="group relative overflow-hidden border border-[var(--grayish-green)] rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg transition-all hover:shadow-2xl hover:-translate-y-1"
           >
-            <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/30 to-white/60 opacity-0 transition-opacity group-hover:opacity-100" />
-            <span class="mb-3 inline-block text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+            <div class="absolute inset-0 from-white/0 via-white/30 to-white/60 bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100" />
+            <span class="mb-3 inline-block text-sm text-[var(--grayish-green)] tracking-wide uppercase">
               {{ cta.label }}
             </span>
             <p class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
@@ -545,7 +595,6 @@ function setActiveStep(stepId: number) {
         </div>
       </div>
     </section>
-
 
     <!-- Step-by-Step Section -->
     <section class="bg-white py-24">
@@ -587,11 +636,11 @@ function setActiveStep(stepId: number) {
                   <h3 class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
                     {{ stage.id }}. {{ stage.title }}
                   </h3>
-                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--grayish-green)] text-white font-semibold">
+                  <span class="h-10 w-10 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white font-semibold">
                     {{ stage.id }}
                   </span>
                 </div>
-                <div class="space-y-2 text-lg text-[var(--primary-brown)] leading-relaxed">
+                <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-2">
                   <p><strong class="text-[var(--dark-brown)]">Parents:</strong> {{ stage.parents }}</p>
                   <p><strong class="text-[var(--dark-brown)]">Surrogates:</strong> {{ stage.surrogates }}</p>
                   <p>{{ stage.summary }}</p>
@@ -604,7 +653,7 @@ function setActiveStep(stepId: number) {
               <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
                 Dual-Track Flowchart (Parents &amp; Surrogates)
               </h3>
-              <ol class="space-y-4 text-lg text-[var(--primary-brown)] leading-relaxed">
+              <ol class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-4">
                 <li>1. Inquiry → Pre-screen</li>
                 <li>2. Screening → Matching</li>
                 <li>3. Legal → Escrow</li>
@@ -617,7 +666,7 @@ function setActiveStep(stepId: number) {
               <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
                 Printable Checklist (Highlights)
               </h3>
-              <ul class="space-y-3 text-lg text-[var(--primary-brown)] leading-relaxed">
+              <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
                 <li
                   v-for="item in checklistItems"
                   :key="item"
@@ -631,7 +680,7 @@ function setActiveStep(stepId: number) {
                 Recruit + Process Balance Note
               </h3>
               <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-              Here we keep a balance between explaining how surrogacy is performed and inviting qualified women to a respectful surrogate program. Intended parents get a clear, guided plan instead of a sales pitch.”
+                Here we keep a balance between explaining how surrogacy is performed and inviting qualified women to a respectful surrogate program. Intended parents get a clear, guided plan instead of a sales pitch.”
               </p>
             </div>
           </div>
@@ -654,10 +703,10 @@ function setActiveStep(stepId: number) {
           <div
             v-for="(faq, index) in faqItems"
             :key="faq.question"
-            class="rounded-3xl border border-[var(--light-cream)] bg-[var(--head-bg)] px-6 py-5 shadow-sm transition-colors hover:border-[var(--grayish-green)]"
+            class="border border-[var(--light-cream)] rounded-3xl bg-[var(--head-bg)] px-6 py-5 shadow-sm transition-colors hover:border-[var(--grayish-green)]"
           >
             <button
-              class="flex w-full items-center justify-between text-left"
+              class="w-full flex items-center justify-between text-left"
               @click="toggleFaq(index)"
             >
               <h3 class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
@@ -700,7 +749,7 @@ function setActiveStep(stepId: number) {
             <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
               {{ resource.title }}
             </h3>
-            <ul class="space-y-3 text-lg text-[var(--primary-brown)] leading-relaxed">
+            <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
               <li
                 v-for="item in resource.items"
                 :key="item"
@@ -742,7 +791,7 @@ function setActiveStep(stepId: number) {
           <h3 class="mb-4 text-2xl font-semibold" style="font-family: var(--font-primary)">
             Start Your Journey with Yunda
           </h3>
-          <ul class="space-y-3 text-lg leading-relaxed">
+          <ul class="text-lg leading-relaxed space-y-3">
             <li
               v-for="invite in journeyInvites"
               :key="invite"
@@ -773,7 +822,7 @@ function setActiveStep(stepId: number) {
             </NuxtLink>
             <NuxtLink
               to="/be-surrogate"
-              class="inline-flex items-center justify-center rounded-xl border border-white px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--grayish-green)]"
+              class="inline-flex items-center justify-center border border-white rounded-xl px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--grayish-green)]"
             >
               Check Eligibility
             </NuxtLink>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { buildOrganizationSchema, buildWebsiteSchema } from '~/utils/schema'
+
 const { locale } = useI18n()
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
@@ -18,21 +21,48 @@ const canonicalUrl = computed(() => {
 // 创建一个响应式的 lang 值
 const htmlLang = computed(() => locale.value)
 const htmlClass = computed(() => `lang-${locale.value}`)
+const resolvedSiteUrl = computed(() => baseUrl.value || 'https://www.yundasurrogacy.com')
 
-useHead({
+const organizationSchema = computed(() =>
+  buildOrganizationSchema({
+    url: resolvedSiteUrl.value,
+  }),
+)
+
+const websiteSchema = computed(() =>
+  buildWebsiteSchema({
+    url: resolvedSiteUrl.value,
+    locale: locale.value,
+    searchPath: '/blog?keyword={search_term_string}',
+  }),
+)
+
+useHead(() => ({
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
-    { rel: 'canonical', href: canonicalUrl },
+    { rel: 'canonical', href: canonicalUrl.value },
   ],
   htmlAttrs: {
-    lang: htmlLang,
-    class: htmlClass,
+    lang: htmlLang.value,
+    class: htmlClass.value,
   },
-})
+  script: [
+    {
+      key: 'schema-org-website',
+      type: 'application/ld+json',
+      children: JSON.stringify(websiteSchema.value),
+    },
+    {
+      key: 'schema-org-organization',
+      type: 'application/ld+json',
+      children: JSON.stringify(organizationSchema.value),
+    },
+  ],
+}))
 </script>
 
 <template>

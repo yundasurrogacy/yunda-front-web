@@ -12,6 +12,7 @@ import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
 import { useApi } from '~/composables/useApi'
 import { getAllCountries, getPhoneCodeByCountry, getStatesByCountry } from '~/data/countries-states'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 const form = reactive({
   // 基本信息 - 保留用于fullLegalName合并
@@ -104,8 +105,81 @@ watch(() => form.country, (newCountry) => {
 })
 
 const { submitParentApplication } = useApi()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { $fbPixel } = useNuxtApp()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+const parentHowToSteps = computed(() => [
+  {
+    title: t('parent.application.sections.basicInfo'),
+    text: t('parent.application.welcome.message1'),
+  },
+  {
+    title: t('parent.application.sections.familyProfile'),
+    text: t('parent.application.welcome.message2'),
+  },
+  {
+    title: t('parent.application.sections.programInterests'),
+    text: t('parent.application.welcome.scrollPrompt'),
+  },
+  {
+    title: t('parent.application.sections.consent'),
+    text: t('parent.application.form.consentAgreement.label'),
+  },
+])
+
+const parentFaqItems = computed(() => [
+  {
+    question: `${t('parent.application.welcome.title')}?`,
+    answer: `${t('parent.application.welcome.message1')} ${t('parent.application.welcome.message2')}`,
+  },
+  {
+    question: `${t('parent.application.sections.programInterests')}?`,
+    answer: t('parent.application.welcome.message3'),
+  },
+  {
+    question: `${t('parent.application.sections.consent')}?`,
+    answer: t('parent.application.form.consentAgreement.disclaimer'),
+  },
+])
+
+const parentHowToSchema = computed(() => buildHowToSchema({
+  name: t('parent.application.pageTitle'),
+  description: t('parent.application.welcome.message1'),
+  steps: parentHowToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/be-parents',
+  locale: locale.value,
+}))
+
+const parentFaqSchema = computed(() => buildFAQPageSchema({
+  name: `${t('parent.application.pageTitle')} FAQ`,
+  description: t('parent.application.welcome.message2'),
+  faqs: parentFaqItems.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/be-parents',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (parentHowToSchema.value) {
+    scripts.push({
+      key: 'schema-parent-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(parentHowToSchema.value),
+    })
+  }
+  if (parentFaqSchema.value) {
+    scripts.push({
+      key: 'schema-parent-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(parentFaqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 
 // Modal state
 const showModal = ref(false)
@@ -231,13 +305,10 @@ async function handleSubmit() {
       },
     }
 
-    console.log('Submitting data:', applicationData)
-
     const response = await submitParentApplication({
       application_type: 'intended_parent',
       application_data: applicationData,
     })
-    console.log('Application submitted successfully:', response)
 
     // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
     // 使用独立的 try-catch 确保追踪失败不影响主流程
