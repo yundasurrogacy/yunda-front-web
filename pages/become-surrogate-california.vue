@@ -72,18 +72,20 @@ function scrollToSection(sectionId: string) {
   }
 }
 
-// 數字計數器動畫
-const animatedNumbers = ref({
-  compensation: 0,
-  years: 0,
-  families: 0,
-})
-
 const targetNumbers = {
   compensation: 70000,
   years: 15,
   families: 1000,
 }
+
+type AnimatedKey = keyof typeof targetNumbers
+
+// 數字計數器動畫
+const animatedNumbers = ref<Record<AnimatedKey, number>>({
+  compensation: 0,
+  years: 0,
+  families: 0,
+})
 const applicationSteps = [
   {
     title: 'Complete a short surrogate application',
@@ -132,19 +134,21 @@ function animateNumbers() {
   const steps = 60
   const stepDuration = duration / steps
 
-  Object.keys(targetNumbers).forEach((key) => {
-    const target = targetNumbers[key as keyof typeof targetNumbers]
+  const keys = Object.keys(targetNumbers) as AnimatedKey[]
+
+  keys.forEach((key) => {
+    const target = targetNumbers[key]
     const increment = target / steps
     let current = 0
 
     const timer = setInterval(() => {
       current += increment
       if (current >= target) {
-        animatedNumbers.value[key as keyof typeof animatedNumbers] = target
+        animatedNumbers.value[key] = target
         clearInterval(timer)
       }
       else {
-        animatedNumbers.value[key as keyof typeof animatedNumbers] = Math.floor(current)
+        animatedNumbers.value[key] = Math.floor(current)
       }
     }, stepDuration)
   })
@@ -795,7 +799,7 @@ onUnmounted(() => {
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
         <div class="mb-10 text-center">
-          <p class="mx-auto mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--grayish-green)] uppercase tracking-wide">
+          <p class="coverage-badge">
             California coverage
           </p>
           <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
@@ -811,12 +815,12 @@ onUnmounted(() => {
               You don’t need to live next to a fertility clinic. As long as you live in California and can travel for key appointments, our team will coordinate local monitoring, travel arrangements and reimbursements.
             </p>
           </div>
-          <div class="rounded-3xl border border-[var(--light-cream)] bg-white p-10 shadow-lg">
-            <div class="mb-6 flex items-center gap-3 text-[var(--grayish-green)]">
-              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--grayish-green)] font-semibold">
+          <div class="coverage-card">
+            <div class="coverage-header">
+              <span class="coverage-header__icon">
                 CA
               </span>
-              <span class="text-lg uppercase tracking-wide">Interactive coverage map</span>
+              <span class="text-lg tracking-wide uppercase">Interactive coverage map</span>
             </div>
             <div class="mb-6 flex flex-wrap gap-3">
               <button
@@ -853,7 +857,7 @@ onUnmounted(() => {
                 </g>
               </svg>
               <div class="map-tooltip">
-                <p class="text-xs uppercase tracking-[0.2em] text-[var(--grayish-green)]">
+                <p class="map-tooltip__label">
                   Now highlighting
                 </p>
                 <p class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
@@ -864,7 +868,7 @@ onUnmounted(() => {
                 </p>
               </div>
             </div>
-            <p class="text-center text-sm text-[var(--primary-brown)] uppercase tracking-wide">
+            <p class="coverage-note">
               Hover or tap on a city to see coverage details
             </p>
           </div>
@@ -938,11 +942,11 @@ onUnmounted(() => {
           <div
             v-for="(step, index) in applicationSteps"
             :key="`${index}-${step.title}`"
-            class="relative overflow-hidden rounded-2xl bg-white/90 p-8 shadow-lg"
+            class="steps-card"
           >
-            <div class="absolute inset-y-0 left-0 w-1.5 bg-[var(--grayish-green)]" />
-            <div class="mb-3 flex items-center gap-2 text-sm text-[var(--grayish-green)] uppercase tracking-wide">
-              <span class="rounded-full border border-[var(--grayish-green)] px-3 py-1 font-semibold">
+            <div class="steps-card__indicator" />
+            <div class="steps-card__meta">
+              <span class="steps-card__badge">
                 Step {{ index + 1 }}
               </span>
             </div>
@@ -1073,6 +1077,101 @@ html {
   padding: 0.75rem 1.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   text-align: center;
+}
+
+.coverage-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 auto 0.75rem;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  background-color: var(--light-cream);
+  color: var(--grayish-green);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.coverage-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--grayish-green);
+}
+
+.coverage-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--grayish-green);
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.map-tooltip__label {
+  color: var(--grayish-green);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.coverage-note {
+  color: var(--primary-brown);
+  text-align: center;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.coverage-card {
+  border: 1px solid var(--light-cream);
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.steps-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.steps-card__indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.375rem;
+  background: var(--grayish-green);
+}
+
+.steps-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--grayish-green);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.steps-card__badge {
+  border: 1px solid var(--grayish-green);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 600;
 }
 
 /* 背景圖案動畫 */

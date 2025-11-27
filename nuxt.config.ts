@@ -45,22 +45,21 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/screening', priority: 0.7 },
 ]
 
-export default defineNuxtConfig(async () => {
-  const blogRoutes = await fetchBlogRoutes()
-  const prerenderRoutes = Array.from(new Set([
-    ...staticPages.map(page => page.loc),
-    '/become-a-surrogate-mother', // legacy URL redirect
-    '/become-surrogate', // legacy URL redirect
-    ...blogRoutes,
-  ]))
+const blogRoutes = await fetchBlogRoutes()
+const prerenderRoutes = Array.from(new Set([
+  ...staticPages.map(page => page.loc),
+  '/become-a-surrogate-mother', // legacy URL redirect
+  '/become-surrogate', // legacy URL redirect
+  ...blogRoutes,
+]))
 
-  return {
+export default defineNuxtConfig({
   // devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
   // devServer: {
   //   host: '127.0.0.1',
   //   port: 3000,
   //   url: 'http://127.0.0.1:3000/',
-  // }, 
+  // },
   vite: {
     server: {
       // port: 3000,
@@ -68,7 +67,7 @@ export default defineNuxtConfig(async () => {
         '/api': {
           target: 'https://yunda-admin-system.yundasurrogacy.com/api',
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '/api'),
+          rewrite: (path: string) => path.replace(/^\/api/, '/api'),
         },
       },
     },
@@ -159,7 +158,7 @@ export default defineNuxtConfig(async () => {
           innerHTML: `window.addEventListener('load', function() {
             // Google Tag Manager
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
-            
+
             // Google Analytics
             var gtagScript = document.createElement('script');
             gtagScript.async = true;
@@ -171,7 +170,7 @@ export default defineNuxtConfig(async () => {
               gtag('js', new Date());
               gtag('config', 'G-H03SG1NBFP');
             };
-            
+
             // Facebook Meta Pixel - 已移至插件管理，此处不再初始化
             // Pixel 初始化由 plugins/fb-pixel.client.ts 统一管理
           });`,
@@ -304,5 +303,4 @@ export default defineNuxtConfig(async () => {
   },
 
   compatibilityDate: '2024-12-14',
-}
 })

@@ -342,7 +342,7 @@ function toggleFaq(question: string) {
               Our surrogate pay and benefits are flexible and customized to you, as each woman is different and compensated according to her own needs and experiences.
             </p>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 300ms;">
-              When people ask how much do surrogates make or get paid, I look at total surrogate compensation: base surrogate pay + allowances + any medical bonuses. Your final surrogate income depends on your match and medical details.           
+              When people ask how much do surrogates make or get paid, I look at total surrogate compensation: base surrogate pay + allowances + any medical bonuses. Your final surrogate income depends on your match and medical details.
             </p>
             <!-- Compensation Cards -->
             <div class="grid animate-fade-in-left gap-6 lg:grid-cols-2" style="animation-delay: 400ms;">

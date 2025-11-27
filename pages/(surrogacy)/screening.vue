@@ -3,8 +3,8 @@ import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import ConfidenceSection from '@/components/base/SUConfidenceSection.vue'
 import HeroSection from '@/components/base/SUHeroSection.vue'
-import ScreeningProcessSection from '@/components/surrogacy/screening/ProcessSection.vue'
 import IntroVideoSection from '@/components/surrogacy/IntroVideoSection.vue'
+import ScreeningProcessSection from '@/components/surrogacy/screening/ProcessSection.vue'
 </script>
 
 <template>
