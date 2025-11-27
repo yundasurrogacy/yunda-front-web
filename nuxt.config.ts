@@ -304,4 +304,5 @@ export default defineNuxtConfig(async () => {
   },
 
   compatibilityDate: '2024-12-14',
+}
 })
