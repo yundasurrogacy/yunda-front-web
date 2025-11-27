@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 // SEO 配置
+const pageTitle = 'Become a Surrogate in California | Requirements & Surrogate Pay'
+const pageDescription = 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.'
+
 useHead({
-  title: 'Become a Surrogate in California | Requirements & Surrogate Pay',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
+      content: pageDescription,
     },
     {
       property: 'og:title',
-      content: 'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
+      content: pageDescription,
     },
     {
       property: 'og:description',
@@ -29,6 +34,10 @@ useHead({
     },
   ],
 })
+
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // FAQ 數據
 const faqs = reactive([
@@ -167,6 +176,53 @@ function updateScrollProgress() {
   const scrollPercent = (scrollTop / docHeight) * 100
   scrollProgress.value = Math.min(scrollPercent, 100)
 }
+
+const howToSteps = computed(() => applicationSteps.map((step, index) => ({
+  title: `Step ${index + 1}: ${step.title}`,
+  text: step.description,
+})))
+
+const faqSchemaItems = computed(() => faqs.map(faq => ({
+  question: faq.question,
+  answer: faq.answer,
+})))
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: pageTitle,
+  description: pageDescription,
+  steps: howToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/become-surrogate-california',
+  locale: locale.value,
+}))
+
+const faqSchema = computed(() => buildFAQPageSchema({
+  name: 'California Surrogacy FAQ',
+  description: 'Answers to common questions about becoming a surrogate in California.',
+  faqs: faqSchemaItems.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/become-surrogate-california',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (howToSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-california-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    })
+  }
+  if (faqSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-california-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 
 onMounted(() => {
   // 創建滾動觀察器

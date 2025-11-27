@@ -1,12 +1,15 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildHowToSchema } from '~/utils/schema'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // State management
 const showQuestion = ref(true)
@@ -24,6 +27,30 @@ const questions = [
   'surrogacy.application.qualificationQuestions.citizenship',
   'surrogacy.application.qualificationQuestions.education',
 ]
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: t('surrogacy.application.title'),
+  description: t('surrogacy.application.welcomeMessage') || 'Quick surrogate qualification checklist',
+  steps: questions.map((key, index) => ({
+    title: `${t(key)}?`,
+    text: index === 4
+      ? 'Complete education requirement check and move to the next step'
+      : 'Answer Yes/No to confirm eligibility and continue to the next question',
+  })),
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-qualification',
+  locale: locale.value,
+}))
+
+useHead(() => ({
+  script: [
+    {
+      key: 'schema-surrogate-qualification-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    },
+  ],
+}))
 
 // Handle answer selection
 function handleAnswer(answer) {

@@ -1,20 +1,30 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 // Vue composables are auto-imported in Nuxt 3
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
+const pageTitle = 'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate'
+const pageDescription = 'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process.'
+
 useHead({
-  title: 'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content: 'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process.',
+      content: pageDescription,
     },
   ],
 })
+
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const sections = [
   { id: 'intro', label: 'Overview' },
@@ -225,6 +235,63 @@ const compensationHighlights = [
     ],
   },
 ]
+
+const requirementHowToSteps = computed(() => processSteps.map(step => ({
+  title: step.title,
+  text: step.text,
+})))
+
+const requirementFaqs = computed(() => [
+  ...quickEligibilityCards.map(card => ({
+    question: card.title,
+    answer: card.items.join(' '),
+  })),
+  ...medicalLifestyleSections.map(section => ({
+    question: section.heading,
+    answer: section.body.join(' '),
+  })),
+  ...disqualifySections.map(section => ({
+    question: section.title,
+    answer: section.paragraphs.join(' '),
+  })),
+])
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: pageTitle,
+  description: pageDescription,
+  steps: requirementHowToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-requirements',
+  locale: locale.value,
+}))
+
+const faqSchema = computed(() => buildFAQPageSchema({
+  name: 'Surrogate Requirements FAQ',
+  description: 'Common questions about eligibility, medical screening, and disqualifying factors for surrogacy.',
+  faqs: requirementFaqs.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-requirements',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (howToSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-requirements-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    })
+  }
+  if (faqSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-requirements-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 
 const faqItems = [
   {

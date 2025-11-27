@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
@@ -24,15 +27,22 @@ type Block = ParagraphBlock | ListBlock
 function isListBlock(block: Block): block is ListBlock {
   return block.type === 'list'
 }
+const pageTitle = 'Become a Surrogate in Southern California | Process, Requirements & Pay'
+const pageDescription = 'Become a surrogate in Southern California with Yunda Surrogacy. Learn the surrogate process, basic requirements and pay, supported by IVF clinics in Los Angeles and San Diego.'
+
 useHead({
-  title: 'Become a Surrogate in Southern California | Process, Requirements & Pay',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content: 'Become a surrogate in Southern California with Yunda Surrogacy. Learn the surrogate process, basic requirements and pay, supported by IVF clinics in Los Angeles and San Diego.',
+      content: pageDescription,
     },
   ],
 })
+
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const surrogacyTabs = [
   {
@@ -323,8 +333,6 @@ const supportExamples = [
 
 const benefitsClosingParagraph = 'These bedrest support benefits and travel perks free up time and energy. surrogate can focus on health and daily life.'
 
-const milestonesListIntro = 'Milestones keep payments fair and simple. We tie each amount to a clear update.'
-
 const milestonesList = [
   'Legal clearance signed',
   'Start of medications',
@@ -362,6 +370,59 @@ const yundaPillars = [
     body: 'Many candidates compare local surrogacy agencies with national networks and even browse best paying surrogacy agencies. We keep it simple: publish the categories, tie payments to milestones, and route funds through escrow so surrogate can focus on health. If you want to become a surrogate in Southern California, this structure keeps the process steady and the support close to home.',
   },
 ]
+
+function blockToText(block: Block) {
+  if (isListBlock(block))
+    return `${block.label ? `${block.label} ` : ''}${block.items.join(' ')}`
+  return block.text
+}
+
+const journeySchemaSteps = computed(() => journeySteps.map(step => ({
+  title: step.title,
+  text: step.details.join(' '),
+})))
+
+const requirementFaqs = computed(() => requirementDropdowns.map(section => ({
+  question: section.title,
+  answer: section.blocks.map(block => blockToText(block)).join(' '),
+})))
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: pageTitle,
+  description: journeyIntro,
+  steps: journeySchemaSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/become-a-surrogate',
+  locale: locale.value,
+}))
+
+const faqSchema = computed(() => buildFAQPageSchema({
+  name: 'Southern California Surrogate Requirements FAQ',
+  description: 'Answers about who can become a surrogate, clinic expectations, and legal protections in Southern California.',
+  faqs: requirementFaqs.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/become-a-surrogate',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (howToSchema.value) {
+    scripts.push({
+      key: 'schema-become-surrogate-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    })
+  }
+  if (faqSchema.value) {
+    scripts.push({
+      key: 'schema-become-surrogate-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 </script>
 
 <template>

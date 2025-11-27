@@ -1,20 +1,30 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 // Vue composables are auto-imported in Nuxt 3
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
+const pageTitle = 'Surrogate Compensation in the U.S. | How Much Do Surrogates Get Paid?'
+const pageDescription = 'Learn how much surrogates get paid in the U.S., what benefits are included, and how the surrogate payment schedule works, plus key surrogacy costs for families.'
+
 useHead({
-  title: 'Surrogate Compensation in the U.S. | How Much Do Surrogates Get Paid?',
+  title: pageTitle,
   meta: [
     {
       name: 'description',
-      content: 'Learn how much surrogates get paid in the U.S., what benefits are included, and how the surrogate payment schedule works, plus key surrogacy costs for families.',
+      content: pageDescription,
     },
   ],
 })
+
+const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const sections = [
   { id: 'overview', label: 'Overview' },
@@ -223,6 +233,11 @@ const processSteps = [
   },
 ]
 
+const howToSteps = computed(() => processSteps.map(step => ({
+  title: step.title,
+  text: step.description,
+})))
+
 const faqQuestions = [
   {
     question: 'How do agencies manage the surrogate payment schedule?',
@@ -254,6 +269,48 @@ function toggleFaq(question: string) {
     [question]: !expandedFaq.value[question],
   }
 }
+
+const faqSchemaItems = computed(() => faqQuestions.map(item => ({
+  question: item.question,
+  answer: item.answer,
+})))
+
+const howToSchema = computed(() => buildHowToSchema({
+  name: pageTitle,
+  description: pageDescription,
+  steps: howToSteps.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-compensation',
+  locale: locale.value,
+}))
+
+const faqSchema = computed(() => buildFAQPageSchema({
+  name: 'Surrogate Compensation FAQ',
+  description: 'Answers about surrogate pay, benefits, and milestone-based payment schedules.',
+  faqs: faqSchemaItems.value,
+  baseUrl: siteUrl.value || undefined,
+  url: '/surrogate-compensation',
+  locale: locale.value,
+}))
+
+useHead(() => {
+  const scripts = []
+  if (howToSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-compensation-howto',
+      type: 'application/ld+json',
+      children: JSON.stringify(howToSchema.value),
+    })
+  }
+  if (faqSchema.value) {
+    scripts.push({
+      key: 'schema-surrogate-compensation-faq',
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema.value),
+    })
+  }
+  return scripts.length ? { script: scripts } : {}
+})
 </script>
 
 <template>
