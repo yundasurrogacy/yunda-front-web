@@ -1,12 +1,66 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-export default defineNuxtConfig({
-  devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
-  devServer: {
-    host: '127.0.0.1',
-    port: 3000,
-    url: 'http://127.0.0.1:3000/',
-  },
+async function fetchBlogRoutes() {
+  try {
+    const response = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=2000')
+    const data = await response.json()
+
+    if (data?.blogs && Array.isArray(data.blogs)) {
+      return data.blogs
+        .map((blog: any) => blog?.route_id || blog?.id)
+        .filter(Boolean)
+        .map((id: string | number) => `/blog/${id}`)
+    }
+  }
+  catch (error) {
+    console.error('Error fetching blog routes for prerender:', error)
+  }
+
+  return []
+}
+
+const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
+  { loc: '/', priority: 1 },
+  { loc: '/about', priority: 0.9 },
+  { loc: '/be-parents', priority: 0.9 },
+  { loc: '/be-surrogate', priority: 0.9 },
+  { loc: '/surrogate-qualification', priority: 0.8 },
+  { loc: '/surrogate-requirements', priority: 0.8 },
+  { loc: '/surrogate-process', priority: 0.8 },
+  { loc: '/surrogate-compensation', priority: 0.8 },
+  { loc: '/become-a-surrogate', priority: 0.8 },
+  { loc: '/become-surrogate-california', priority: 0.8 },
+  { loc: '/blog', priority: 0.7 },
+  // 父母相关页面
+  { loc: '/egg-donation', priority: 0.7 },
+  { loc: '/partner-ivf-clinics', priority: 0.7 },
+  { loc: '/single-parents-lgbtq', priority: 0.7 },
+  { loc: '/surrogacy-price', priority: 0.8 },
+  { loc: '/surrogacy-process', priority: 0.8 },
+  // 代孕者相关页面
+  { loc: '/benefit', priority: 0.7 },
+  { loc: '/eligibility', priority: 0.7 },
+  { loc: '/journey', priority: 0.7 },
+  { loc: '/referral', priority: 0.7 },
+  { loc: '/screening', priority: 0.7 },
+]
+
+export default defineNuxtConfig(async () => {
+  const blogRoutes = await fetchBlogRoutes()
+  const prerenderRoutes = Array.from(new Set([
+    ...staticPages.map(page => page.loc),
+    '/become-a-surrogate-mother', // legacy URL redirect
+    '/become-surrogate', // legacy URL redirect
+    ...blogRoutes,
+  ]))
+
+  return {
+  // devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
+  // devServer: {
+  //   host: '127.0.0.1',
+  //   port: 3000,
+  //   url: 'http://127.0.0.1:3000/',
+  // }, 
   vite: {
     server: {
       // port: 3000,
@@ -37,7 +91,13 @@ export default defineNuxtConfig({
     },
     '/become-surrogate': {
       redirect: {
-        to: '/become-a-surrogate-mother',
+        to: '/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
+    '/become-a-surrogate-mother': {
+      redirect: {
+        to: '/become-a-surrogate',
         statusCode: 301,
       },
     },
@@ -46,34 +106,7 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       crawlLinks: true,
-      // 排除 blog 相关页面，让它们动态渲染
-      ignore: [
-        '/blog',
-        '/blog/*',
-      ],
-      // 明确指定要预渲染的页面（除了 blog）
-      routes: [
-        '/',
-        '/about',
-        '/be-parents',
-        '/be-surrogate',
-        '/surrogate-qualification',
-        '/surrogate-process',
-        '/surrogate-compensation',
-        '/surrogate-requirements',
-        '/become-a-surrogate-mother',
-        '/become-surrogate-california',
-        '/benefit',
-        '/eligibility',
-        '/journey',
-        '/referral',
-        '/screening',
-        '/egg-donation',
-        '/partner-ivf-clinics',
-        '/single-parents-lgbtq',
-        '/surrogacy-price',
-        '/surrogacy-process',
-      ],
+      routes: prerenderRoutes,
     },
   },
 
@@ -182,31 +215,7 @@ export default defineNuxtConfig({
     // URLs 配置 - 为每个页面添加多语言标签（hreflang）
     urls: async () => {
       // 主要页面列表（需要包含所有预渲染的页面）
-      const pages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
-        { loc: '/', priority: 1 },
-        { loc: '/about', priority: 0.9 },
-        { loc: '/be-parents', priority: 0.9 },
-        { loc: '/be-surrogate', priority: 0.9 },
-        { loc: '/surrogate-qualification', priority: 0.8 },
-        { loc: '/surrogate-requirements', priority: 0.8 },
-        { loc: '/surrogate-process', priority: 0.8 },
-        { loc: '/surrogate-compensation', priority: 0.8 },
-        { loc: '/become-a-surrogate-mother', priority: 0.8 },
-        { loc: '/become-surrogate-california', priority: 0.8 },
-        // 父母相关页面
-        { loc: '/egg-donation', priority: 0.7 },
-        { loc: '/partner-ivf-clinics', priority: 0.7 },
-        { loc: '/single-parents-lgbtq', priority: 0.7 },
-        { loc: '/surrogacy-price', priority: 0.8 },
-        { loc: '/surrogacy-process', priority: 0.8 },
-        // 代孕者相关页面
-        { loc: '/benefit', priority: 0.7 },
-        { loc: '/eligibility', priority: 0.7 },
-        { loc: '/journey', priority: 0.7 },
-        { loc: '/referral', priority: 0.7 },
-        { loc: '/screening', priority: 0.7 },
-        // 注意：blog 相关页面不在静态页面列表中，它们会在构建时动态获取并添加到 sitemap
-      ]
+      const pages = staticPages
       // 获取所有博客文章
       const blogUrls = []
       try {

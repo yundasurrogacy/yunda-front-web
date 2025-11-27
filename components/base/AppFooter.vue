@@ -118,7 +118,7 @@ const { locale } = useI18n()
                   {{ $t('footer.sections.surrogateCalifornia') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/become-a-surrogate-mother"
+                  to="/become-a-surrogate"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateMother') }}

@@ -122,11 +122,11 @@ interface RequirementDropdown {
 const requirementDropdowns: RequirementDropdown[] = [
   {
     id: 'who',
-    title: 'Who Can Be a Surrogate Mother?',
+    title: 'Who Can Be a surrogate?',
     blocks: [
       {
         type: 'paragraph',
-        text: 'We welcome surrogates from across Southern California, including Los Angeles, Orange County, San Diego and the Inland Empire, as long as you meet the basic surrogate mother requirements below.You ask, who can be a surrogate mother. You qualify when you meet clear surrogacy requirements and surrogacy qualifications set by clinics and your legal team. You\'ve had at least one full-term birth. You feel healthy. You want to help a family. You understand gestational surrogacy and the role of a gestational surrogate mother.',
+        text: 'We welcome surrogates from across Southern California, including Los Angeles, Orange County, San Diego and the Inland Empire, as long as you meet the basic surrogate requirements below.You ask, who can be a surrogate. You qualify when you meet clear surrogacy requirements and surrogacy qualifications set by clinics and your legal team. You\'ve had at least one full-term birth. You feel healthy. You want to help a family. You understand gestational surrogacy and the role of a gestational surrogate.',
       },
       {
         type: 'paragraph',
@@ -206,13 +206,13 @@ function isRequirementExpanded(id: string) {
   return expandedRequirements.value[id] === true
 }
 
-const journeyIntro = 'Surrogate mothers often ask what the surrogate process looks like in Southern California. Here is a clear map of the steps, from application and screening to legal, IVF and delivery.Surrogate mother often asks what is the process to become a surrogate. Here\'s a clear map of the surrogacy steps. You move through seven stages with a steady team, simple checklists, and honest timelines. These surrogate steps keep the process calm and predictable.'
+const journeyIntro = 'surrogates often ask what the surrogate process looks like in Southern California. Here is a clear map of the steps, from application and screening to legal, IVF and delivery.surrogate often asks what is the process to become a surrogate. Here\'s a clear map of the surrogacy steps. You move through seven stages with a steady team, simple checklists, and honest timelines. These surrogate steps keep the process calm and predictable.'
 
 const journeySteps = [
   {
     title: 'Step 1: Apply & Pre-Qualify',
     details: [
-      'Surrogate mother completes a short form and shares birth history.',
+      'surrogate completes a short form and shares birth history.',
       'A coordinator calls to learn goals and answer basics.',
       'You get a clean overview of the surrogacy timeline and what happens next.',
       'If the fit looks right, we open your file and schedule records review.',
@@ -221,7 +221,7 @@ const journeySteps = [
   {
     title: 'Step 2: Records & Screening',
     details: [
-      'Surrogate mother sends OB records and prior delivery notes.',
+      'surrogate sends OB records and prior delivery notes.',
       'You finish labs, a mental-health evaluation, and a background check.',
       'The clinic confirms readiness for a planned pregnancy.',
       'You get plain-English guidance on travel, scheduling, and insurance.',
@@ -252,7 +252,7 @@ const journeySteps = [
       'The clinic issues your calendar for meds and monitoring.',
       'This is IVF surrogacy, so the embryo comes from the intended parents or donors.',
       'The team prepares for embryo transfer surrogacy with a simple, step-by-step plan.',
-      'Many people call this embryo transfer to surrogate mother; your nurse walks you through each visit.',
+      'Many people call this embryo transfer to surrogate; your nurse walks you through each visit.',
       'We track your surrogate embryo transfer date and confirm next appointments.',
       'Clinics discuss surrogacy embryo transfer success rate in detail; numbers vary by embryo quality and medical history.',
     ],
@@ -286,7 +286,7 @@ const timelineParagraphs = [
 const communicationParagraph = 'We keep updates weekly during screening and matching, then follow your clinic cadence in pregnancy. Coordinators stay reachable by phone, text, and email. We provide bilingual support when needed. The goal stays the same: a smooth path, steady care, and a clear surrogacy timeline you can trust.'
 
 const compensationCoverParagraphs = [
-  'Surrogate mother gives time, health, and heart. Surrogate compensation reflects that work.',
+  'surrogate gives time, health, and heart. Surrogate compensation reflects that work.',
   'The package includes base surrogate pay, monthly living stipends, and event-based amounts. It also includes travel, meals, and lodging for clinic visits.',
   'Programs add childcare and wage-loss support when a doctor orders bedrest. This is paid surrogacy with clear categories, not guesswork.',
 ]
@@ -297,7 +297,7 @@ const typicalInclusions = [
   'Maternity clothing allowance',
   'Travel and childcare reimbursement for required appointments',
   'Bedrest support when medically necessary',
-  'Pumping/breast-milk stipend if Surrogate mother chooses to pump',
+  'Pumping/breast-milk stipend if surrogate chooses to pump',
   'Separate amounts for procedures like C-section',
 ]
 
@@ -306,11 +306,11 @@ const paymentsParagraphs = [
   'We align each payment to a real step on the calendar. Contracts define start points and dates.',
   'Many journeys trigger monthly payments after heartbeat confirmation. We publish the schedule, and we follow it.',
   'Do surrogates get paid? Yes—by contract, by milestone, and through secure escrow for surrogacy payments.',
-  'Client framework: first-time packages commonly range $50,000–$70,000+. Final numbers vary by state, clinic, insurance, and medical history. The contract sets the amount for each Surrogate mother.',
+  'Client framework: first-time packages commonly range $50,000–$70,000+. Final numbers vary by state, clinic, insurance, and medical history. The contract sets the amount for each surrogate.',
 ]
 
 const benefitsIntroParagraphs = [
-  'Surrogate mother deserves support beyond a single number. We coordinate real-life help so the journey stays calm.',
+  'surrogate deserves support beyond a single number. We coordinate real-life help so the journey stays calm.',
 ]
 
 const supportExamples = [
@@ -321,14 +321,14 @@ const supportExamples = [
   'Local OB care whenever possible, with clinic check-ins by plan',
 ]
 
-const benefitsClosingParagraph = 'These bedrest support benefits and travel perks free up time and energy. Surrogate mother can focus on health and daily life.'
+const benefitsClosingParagraph = 'These bedrest support benefits and travel perks free up time and energy. surrogate can focus on health and daily life.'
 
 const milestonesListIntro = 'Milestones keep payments fair and simple. We tie each amount to a clear update.'
 
 const milestonesList = [
   'Legal clearance signed',
   'Start of medications',
-  'Embryo transfer to surrogate mother completed',
+  'Embryo transfer to surrogate completed',
   'Surrogate embryo transfer follow-up',
   'Heartbeat confirmation and monthly cadence',
   'Trimester checkpoints',
@@ -337,21 +337,21 @@ const milestonesList = [
 
 const experiencedCarrierParagraph = 'Experienced carriers often qualify for higher packages. If you carried before, ask about fast-track matching for experienced surrogates and enhanced levels. This path can increase surrogate compensation when the profile and clinic approve.'
 
-const legalProtectionParagraph = 'Surrogate mother meets with an independent attorney. You read every clause. You approve before anything starts. Insurance partners like ART Risk help structure coverage for pregnancy care. We coordinate claims so bills route to the right plan. We document every reimbursement. We keep records clean and easy to audit.'
+const legalProtectionParagraph = 'surrogate meets with an independent attorney. You read every clause. You approve before anything starts. Insurance partners like ART Risk help structure coverage for pregnancy care. We coordinate claims so bills route to the right plan. We document every reimbursement. We keep records clean and easy to audit.'
 
 const clarityParagraphs = [
   'We do not inflate numbers. We do not hide fees. We publish categories, schedules, and examples in writing. We align with clinic policy and state law. If a detail changes, we update the contract and the calendar.',
-  'If Surrogate mother wants to get paid to be a surrogate with confidence, this structure makes it real and reliable—without surprises.',
+  'If surrogate wants to get paid to be a surrogate with confidence, this structure makes it real and reliable—without surprises.',
 ]
 
 const yundaPillars = [
   {
     title: 'Trusted Partners, Transparent Escrow',
-    body: 'Surrogate mother wants clear money flow. We work with sector leaders like ART Risk and SeedTrust so funds, insurance, and risk plans stay organized and trackable. Intended parents fund a dedicated trust account. The account covers surrogate compensation, insurance, legal, and reimbursable items. We align disbursements to milestones and keep the ledger tidy.',
+    body: 'surrogate wants clear money flow. We work with sector leaders like ART Risk and SeedTrust so funds, insurance, and risk plans stay organized and trackable. Intended parents fund a dedicated trust account. The account covers surrogate compensation, insurance, legal, and reimbursable items. We align disbursements to milestones and keep the ledger tidy.',
   },
   {
     title: 'Top Fertility Clinics in Southern California',
-    body: 'We coordinate with proven IVF centers in Los Angeles and San Diego. California Fertility Partners (CFP) brings decades of third-party reproduction experience and advanced lab outcomes. Gen 5 Fertility Center in San Diego focuses on complex cases and embryo science, led by internationally recognized physicians. Surrogate mother benefits from strong clinical teams and clear calendars.',
+    body: 'We coordinate with proven IVF centers in Los Angeles and San Diego. California Fertility Partners (CFP) brings decades of third-party reproduction experience and advanced lab outcomes. Gen 5 Fertility Center in San Diego focuses on complex cases and embryo science, led by internationally recognized physicians. surrogate benefits from strong clinical teams and clear calendars.',
   },
   {
     title: 'Clear Legal Path in California',
@@ -359,7 +359,7 @@ const yundaPillars = [
   },
   {
     title: 'Local Surrogacy Agencies vs. Big Networks',
-    body: 'Many candidates compare local surrogacy agencies with national networks and even browse best paying surrogacy agencies. We keep it simple: publish the categories, tie payments to milestones, and route funds through escrow so Surrogate mother can focus on health. If you want to become a surrogate in Southern California, this structure keeps the process steady and the support close to home.',
+    body: 'Many candidates compare local surrogacy agencies with national networks and even browse best paying surrogacy agencies. We keep it simple: publish the categories, tie payments to milestones, and route funds through escrow so surrogate can focus on health. If you want to become a surrogate in Southern California, this structure keeps the process steady and the support close to home.',
   },
 ]
 </script>
@@ -400,7 +400,7 @@ const yundaPillars = [
           </div>
           <div class="flex animate-fade-in-right justify-center">
             <div class="image-placeholder max-w-500 w-full transition-all duration-500 hover:scale-105">
-              <img src="public/images/landing-page1/become-a-surrogate-mother.jpg" alt="Become a Surrogate mother">
+              <img src="public/images/landing-page1/become-a-surrogate-mother.jpg" alt="Become a surrogate">
             </div>
           </div>
         </div>

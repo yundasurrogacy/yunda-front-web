@@ -16,7 +16,7 @@ const internalIsOpen = computed({
 
 const surrogateResourceLinks = [
   { to: '/become-surrogate-california', label: 'menu.resourceCalifornia' },
-  { to: '/become-a-surrogate-mother', label: 'menu.resourceBecomeMother' },
+  { to: '/become-a-surrogate', label: 'menu.resourceBecomeMother' },
   { to: '/surrogate-process', label: 'menu.resourceJourney' },
   { to: '/surrogate-compensation', label: 'menu.resourceCompensation' },
   { to: '/surrogate-requirements', label: 'menu.resourceRequirements' },
