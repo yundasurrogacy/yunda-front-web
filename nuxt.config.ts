@@ -46,11 +46,21 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
 ]
 
 const blogRoutes = await fetchBlogRoutes()
-const prerenderRoutes = Array.from(new Set([
+// 生成英文路由（默认语言，无前缀）
+const englishRoutes = [
   ...staticPages.map(page => page.loc),
   '/become-a-surrogate-mother', // legacy URL redirect
   '/become-surrogate', // legacy URL redirect
   ...blogRoutes,
+]
+// 生成中文路由（带 /zh 前缀）
+const chineseRoutes = [
+  ...staticPages.map(page => `/zh${page.loc}`),
+  ...blogRoutes.map((route: string) => `/zh${route}`),
+]
+const prerenderRoutes = Array.from(new Set([
+  ...englishRoutes,
+  ...chineseRoutes,
 ]))
 
 export default defineNuxtConfig({
@@ -234,26 +244,50 @@ export default defineNuxtConfig({
       }
 
       // 为每个页面添加 hreflang 标签（多语言支持）
-      const staticUrls = pages.map(page => ({
-        loc: page.loc,
-        priority: page.priority,
-        alternatives: [
-          { href: page.loc, hreflang: 'en' },
-          { href: page.loc, hreflang: 'zh' },
-          { href: page.loc, hreflang: 'x-default' }, // 默认语言
-        ],
-      }))
+      // 英文版本（无前缀）和中文版本（/zh 前缀）
+      const staticUrls = pages.flatMap(page => [
+        {
+          loc: page.loc, // 英文版本
+          priority: page.priority,
+          alternatives: [
+            { href: page.loc, hreflang: 'en' },
+            { href: `/zh${page.loc}`, hreflang: 'zh' },
+            { href: page.loc, hreflang: 'x-default' }, // 默认语言（英文）
+          ],
+        },
+        {
+          loc: `/zh${page.loc}`, // 中文版本
+          priority: page.priority,
+          alternatives: [
+            { href: page.loc, hreflang: 'en' },
+            { href: `/zh${page.loc}`, hreflang: 'zh' },
+            { href: page.loc, hreflang: 'x-default' }, // 默认语言（英文）
+          ],
+        },
+      ])
       // 为博客文章添加 hreflang 标签
-      const blogUrlsWithHreflang = blogUrls.map(blog => ({
-        loc: blog.loc,
-        priority: blog.priority,
-        lastmod: blog.lastmod,
-        alternatives: [
-          { href: blog.loc, hreflang: 'en' },
-          { href: blog.loc, hreflang: 'zh' },
-          { href: blog.loc, hreflang: 'x-default' },
-        ],
-      }))
+      const blogUrlsWithHreflang = blogUrls.flatMap(blog => [
+        {
+          loc: blog.loc, // 英文版本
+          priority: blog.priority,
+          lastmod: blog.lastmod,
+          alternatives: [
+            { href: blog.loc, hreflang: 'en' },
+            { href: `/zh${blog.loc}`, hreflang: 'zh' },
+            { href: blog.loc, hreflang: 'x-default' },
+          ],
+        },
+        {
+          loc: `/zh${blog.loc}`, // 中文版本
+          priority: blog.priority,
+          lastmod: blog.lastmod,
+          alternatives: [
+            { href: blog.loc, hreflang: 'en' },
+            { href: `/zh${blog.loc}`, hreflang: 'zh' },
+            { href: blog.loc, hreflang: 'x-default' },
+          ],
+        },
+      ])
 
       return [...staticUrls, ...blogUrlsWithHreflang]
     },
@@ -261,13 +295,19 @@ export default defineNuxtConfig({
   i18n: {
     lazy: true,
     defaultLocale: 'en',
-    strategy: 'no_prefix',
+    strategy: 'prefix_except_default', // 默认语言（en）无前缀，其他语言（zh）有前缀
     locales: [
       { code: 'zh', iso: 'zh-CN', name: '简体中文', file: 'zh.json' },
       { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
     ],
     langDir: 'locales/',
-    detectBrowserLanguage: false, // 完全禁用浏览器语言检测
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // 只在根路径时检测和重定向
+      alwaysRedirect: false,
+      fallbackLocale: 'en',
+    },
     // 禁用翻译指令优化，避免问题并在未来版本中被移除
     bundle: {
       optimizeTranslationDirective: false,

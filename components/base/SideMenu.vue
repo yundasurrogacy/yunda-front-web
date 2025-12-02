@@ -8,6 +8,7 @@ const props = defineProps<{
 const emit = defineEmits(['update:isOpen'])
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 
 const internalIsOpen = computed({
   get: () => props.isOpen,
@@ -75,35 +76,35 @@ function toggleMenu() {
                 </h3>
                 <div class="space-y-3">
                   <NuxtLink
-                    to="/surrogacy-process"
+                    :to="localePath('/surrogacy-process')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.surrogacyProcess") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/surrogacy-price"
+                    :to="localePath('/surrogacy-price')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.surrogacyCosts") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/egg-donation"
+                    :to="localePath('/egg-donation')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.findYourEggDonor") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/single-parents-lgbtq"
+                    :to="localePath('/single-parents-lgbtq')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.lgbtqSingleParents") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/partner-ivf-clinics"
+                    :to="localePath('/partner-ivf-clinics')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
@@ -111,7 +112,7 @@ function toggleMenu() {
                   </NuxtLink>
                 </div>
                 <NuxtLink
-                  to="/be-parents"
+                  :to="localePath('/be-parents')"
                   class="mt-4 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -128,35 +129,35 @@ function toggleMenu() {
                 </h3>
                 <div class="space-y-3">
                   <NuxtLink
-                    to="/journey"
+                    :to="localePath('/journey')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.surrogacyJourneyOverview") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/eligibility"
+                    :to="localePath('/eligibility')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.eligibilityToBecomeASurrogate") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/screening"
+                    :to="localePath('/screening')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.ourScreeningProcess") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/benefit"
+                    :to="localePath('/benefit')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
                     {{ $t("menu.compensationBenefits") }}
                   </NuxtLink>
                   <NuxtLink
-                    to="/referral"
+                    :to="localePath('/referral')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
@@ -164,7 +165,7 @@ function toggleMenu() {
                   </NuxtLink>
                 </div>
                 <NuxtLink
-                  to="/surrogate-qualification"
+                  :to="localePath('/surrogate-qualification')"
                   class="mt-4 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -189,7 +190,7 @@ function toggleMenu() {
                     <NuxtLink
                       v-for="link in surrogateResourceLinks"
                       :key="link.to"
-                      :to="link.to"
+                      :to="localePath(link.to)"
                       class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                       @click="toggleMenu"
                     >
@@ -198,7 +199,7 @@ function toggleMenu() {
                   </div>
                 </div>
                 <NuxtLink
-                  to="/about"
+                  :to="localePath('/about')"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -217,7 +218,7 @@ function toggleMenu() {
                   {{ $t("menu.careers") }}
                 </a>
                 <NuxtLink
-                  to="/blog"
+                  :to="localePath('/blog')"
                   prefetch
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"
@@ -273,42 +274,42 @@ function toggleMenu() {
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
                       <NuxtLink
-                        to="/surrogacy-process"
+                        :to="localePath('/surrogacy-process')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.surrogacyProcess") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/surrogacy-price"
+                        :to="localePath('/surrogacy-price')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.surrogacyCosts") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/egg-donation"
+                        :to="localePath('/egg-donation')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.findYourEggDonor") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/single-parents-lgbtq"
+                        :to="localePath('/single-parents-lgbtq')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.lgbtqSingleParents") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/partner-ivf-clinics"
+                        :to="localePath('/partner-ivf-clinics')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.partnerIvfClinics") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/be-parents"
+                        :to="localePath('/be-parents')"
                         class="mt-3 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
@@ -332,42 +333,42 @@ function toggleMenu() {
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
                       <NuxtLink
-                        to="/journey"
+                        :to="localePath('/journey')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.surrogacyJourneyOverview") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/eligibility"
+                        :to="localePath('/eligibility')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.eligibilityToBecomeASurrogate") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/screening"
+                        :to="localePath('/screening')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.ourScreeningProcess") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/benefit"
+                        :to="localePath('/benefit')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.compensationBenefits") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/referral"
+                        :to="localePath('/referral')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
                         {{ $t("menu.surrogateReferralProgram") }}
                       </NuxtLink>
                       <NuxtLink
-                        to="/surrogate-qualification"
+                        :to="localePath('/surrogate-qualification')"
                         class="mt-3 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
@@ -391,7 +392,7 @@ function toggleMenu() {
                       <NuxtLink
                         v-for="link in surrogateResourceLinks"
                         :key="link.to"
-                        :to="link.to"
+                        :to="localePath(link.to)"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >
@@ -410,7 +411,7 @@ function toggleMenu() {
                   {{ $t('menu.logIn') }}
                 </a> -->
                 <NuxtLink
-                  to="/about"
+                  :to="localePath('/about')"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -429,7 +430,7 @@ function toggleMenu() {
                   {{ $t("menu.careers") }}
                 </a>
                 <NuxtLink
-                  to="/blog"
+                  :to="localePath('/blog')"
                   prefetch
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                   @click="toggleMenu"

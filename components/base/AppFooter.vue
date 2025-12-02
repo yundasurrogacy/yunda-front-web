@@ -1,5 +1,6 @@
 <script setup>
 const { locale } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -29,31 +30,31 @@ const { locale } = useI18n()
                 </h4>
                 <hr class="my-2 border-[var(--dark-brown)]">
                 <NuxtLink
-                  to="/surrogacy-process"
+                  :to="localePath('/surrogacy-process')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.process') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/surrogacy-price"
+                  :to="localePath('/surrogacy-price')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogacyCost') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/egg-donation"
+                  :to="localePath('/egg-donation')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.eggDonors') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/single-parents-lgbtq"
+                  :to="localePath('/single-parents-lgbtq')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.singleParentsLgbtq') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/partner-ivf-clinics"
+                  :to="localePath('/partner-ivf-clinics')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.partnerClinics') }}
@@ -72,31 +73,31 @@ const { locale } = useI18n()
                 </h4>
                 <hr class="my-2 border-[var(--dark-brown)]">
                 <NuxtLink
-                  to="/journey"
+                  :to="localePath('/journey')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogacyJourney') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/eligibility"
+                  :to="localePath('/eligibility')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.eligibility') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/screening"
+                  :to="localePath('/screening')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.screening') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/benefit"
+                  :to="localePath('/benefit')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.benefits') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/referral"
+                  :to="localePath('/referral')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateReferral') }}
@@ -112,31 +113,31 @@ const { locale } = useI18n()
               <div class="space-y-1">
                 <hr class="my-2 border-[var(--dark-brown)]">
                 <NuxtLink
-                  to="/become-a-surrogate"
+                  :to="localePath('/become-a-surrogate')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateMother') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/become-surrogate-california"
+                  :to="localePath('/become-surrogate-california')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateCalifornia') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/surrogate-process"
+                  :to="localePath('/surrogate-process')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateProcess') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/surrogate-compensation"
+                  :to="localePath('/surrogate-compensation')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateCompensation') }}
                 </NuxtLink>
                 <NuxtLink
-                  to="/surrogate-requirements"
+                  :to="localePath('/surrogate-requirements')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogateRequirements') }}
@@ -153,7 +154,7 @@ const { locale } = useI18n()
             <div class="mt-2 space-y-1">
               <hr class="my-2 border-[var(--dark-brown)]">
               <NuxtLink
-                to="/about"
+                :to="localePath('/about')"
                 class="block text-[var(--dark-brown)] font-normal uppercase transition-opacity hover:opacity-75"
               >
                 {{ $t('menu.aboutUs') }}
@@ -164,7 +165,7 @@ const { locale } = useI18n()
               <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[var(--dark-brown)] font-normal uppercase transition-opacity hover:opacity-75">{{ $t('menu.careers') }}</a>
               <hr class="my-2 border-[var(--dark-brown)]">
               <NuxtLink
-                to="/blog"
+                :to="localePath('/blog')"
                 prefetch
                 class="block text-[var(--dark-brown)] font-normal uppercase transition-opacity hover:opacity-75"
               >
