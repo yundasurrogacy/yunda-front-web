@@ -10,7 +10,7 @@ import GlobalSupportSection from '../components/home/GlobalSupportSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
 import IntroVideoSection from '../components/home/IntroVideoSection.vue'
 import JourneySection from '../components/home/JourneySection.vue'
-import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
+// import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateCareSection from '../components/home/SurrogateCareSection.vue'
 
@@ -129,7 +129,7 @@ useHead(() => {
     <StatsSection />
     <GlobalSupportSection />
     <IntroVideoSection />
-    <LegalExpertiseSection />
+    <!-- <LegalExpertiseSection /> -->
     <SurrogateCareSection />
     <CommitmentSection />
     <!-- <VideoPlayer
