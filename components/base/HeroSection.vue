@@ -9,6 +9,7 @@ interface Props {
 }
 
 defineProps<Props>()
+const localePath = useLocalePath()
 
 // HeroSection 专用动画：刷新时立即播放
 onMounted(() => {
@@ -45,9 +46,9 @@ onMounted(() => {
         </p>
       </div>
       <!-- CTA Button -->
-      <a href="/be-parents" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+      <NuxtLink :to="localePath('/be-parents')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
         {{ buttonText }}
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>

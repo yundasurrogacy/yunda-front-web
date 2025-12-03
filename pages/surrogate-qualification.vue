@@ -8,6 +8,7 @@ import { buildHowToSchema } from '~/utils/schema'
 
 const { t, locale } = useI18n()
 const router = useRouter()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
@@ -102,11 +103,11 @@ function handleInfoClose() {
 
   if (!hasNoAnswer) {
     // 全部都是 'Yes' - 跳转到申请表单
-    router.push('/be-surrogate')
+    router.push(localePath('/be-surrogate'))
   }
   else {
     // 有 'No' 的答案 - 跳转到首页
-    router.push('/')
+    router.push(localePath('/'))
   }
 }
 

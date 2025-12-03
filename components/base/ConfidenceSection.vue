@@ -2,6 +2,7 @@
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 defineProps<Props>()
+const localePath = useLocalePath()
 useScrollAnimation()
 // 定义 props 接收外部传入的文字内容
 interface Props {
@@ -20,9 +21,9 @@ interface Props {
       <p class="mb-8">
         {{ description }}
       </p>
-      <a href="/be-parents" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+      <NuxtLink :to="localePath('/be-parents')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
         {{ buttonText }}
-      </a>
+      </NuxtLink>
     </div>
   </div>
 </template>

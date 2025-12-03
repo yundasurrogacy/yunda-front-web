@@ -1,6 +1,7 @@
 <script setup>
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
+const localePath = useLocalePath()
 useScrollAnimation()
 </script>
 
@@ -27,9 +28,9 @@ useScrollAnimation()
 
         <!-- CTA Button -->
         <div class="scroll-animate scroll-animate-delay-200 mt-8 md:mt-12">
-          <a href="/be-parents" class="rounded-2.5 bg-[var(--light-cream)] px-4 py-3 leading-relaxed shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90">
+          <NuxtLink :to="localePath('/be-parents')" class="rounded-2.5 bg-[var(--light-cream)] px-4 py-3 leading-relaxed shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90">
             {{ $t('home.globalSupportSection.button') }}
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </section>

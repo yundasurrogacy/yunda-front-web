@@ -8,6 +8,7 @@ import AppHeader from '../../components/base/AppHeader.vue'
 const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
@@ -180,7 +181,7 @@ function formatDate(dateString: string) {
 
 // 返回博客列表
 function goBack() {
-  router.push('/blog')
+  router.push(localePath('/blog'))
 }
 
 const blogPostingSchema = computed(() => {

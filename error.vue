@@ -9,6 +9,7 @@ useHead({
 })
 
 const router = useRouter()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -26,7 +27,7 @@ const router = useRouter()
         <Button variant="outline" @click="router.back()">
           Go Back
         </Button>
-        <Button @click="router.push('/')">
+        <Button @click="router.push(localePath('/'))">
           Back to Home
         </Button>
       </div>
