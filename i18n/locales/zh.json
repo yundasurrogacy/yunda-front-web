@@ -111,7 +111,9 @@
         "description1": "全周期中英文双语服务与流程协调",
         "description2": "招募合格代孕妈妈、筛查与资料整理",
         "description3": "配备专属项目经理，提供一对一服务",
-        "description4": "协调沟通诊所、律师、保险等相关方"
+        "description4": "协调沟通诊所、律师、保险等相关方",
+        "description5": "",
+        "description6": ""
       },
       "screeningAdmin": {
         "title": "代孕妈妈筛查及管理费用",
@@ -119,7 +121,9 @@
         "description1": "背景调查、医疗资料审核与心理评估",
         "description2": "与试管婴儿诊所对接及资料提交",
         "description3": "文件翻译及跨境材料准备",
-        "description4": "法律文件协助与合同流程管理"
+        "description4": "法律文件协助与合同流程管理",
+        "description5": "",
+        "description6": ""
       },
       "surrogateCompensation": {
         "title": "代孕妈妈补偿与报销费用",
@@ -128,7 +132,8 @@
         "description2": "孕期服装补贴",
         "description3": "差旅/育儿费用报销",
         "description4": "胚胎移植补贴",
-        "description5": "医疗检查出行补贴 （*注：有经验或双胎代孕妈妈费用可能更高）"
+        "description5": "医疗检查出行补贴 （*注：有经验或双胎代孕妈妈费用可能更高）",
+        "description6": ""
       },
       "legalFees": {
         "title": "法律费用",
@@ -136,14 +141,19 @@
         "description1": "起草并审核代孕合同",
         "description2": "文件公证（可远程）",
         "description3": "全程法律顾问服务",
-        "description4": "亲子权判决（PBO）：约 $6,500 (孕中后期启动）"
+        "description4": "亲子权判决（PBO）：约 $6,500 (孕中后期启动）",
+        "description5": "",
+        "description6": ""
       },
       "insuranceSupport": {
         "title": "医疗保险与相关安排",
         "amount": "费用待定",
         "description1": "协助安排孕期保险或自费方案",
         "description2": "代母人身及风险保险",
-        "description3": "新生儿医疗保险协助（如有需要）"
+        "description3": "新生儿医疗保险协助（如有需要）",
+        "description4": "",
+        "description5": "",
+        "description6": ""
       },
       "additionalCosts": {
         "title": "其他可能产生的附加费用",
@@ -555,7 +565,8 @@
         "subtitle1": "与孕达协调员进行初步电话沟通",
         "subtitle2": "提交已有的医疗报告",
         "subtitle3": "获取 5–6 份捐卵者档案（可选视频面试）",
-        "subtitle4": "签署合作协议并完成付款以确认匹配"
+        "subtitle4": "签署合作协议并完成付款以确认匹配",
+        "subtitle5": ""
       },
       "step2": {
         "title": "医疗与心理评估阶段",
@@ -563,7 +574,8 @@
         "subtitle2": "完成基因、传染病、超声等体检项目",
         "subtitle3": "安排心理评估",
         "subtitle4": "诊所发出《医疗适合证明》",
-        "subtitle5": "捐卵者在用药前完成 IVF 专属保险"
+        "subtitle5": "捐卵者在用药前完成 IVF 专属保险",
+        "subtitle6": ""
       },
       "step3": {
         "title": "促排周期与胚胎形成",
@@ -572,7 +584,8 @@
         "subtitle3": "在麻醉下完成取卵手术",
         "subtitle4": "体外受精 + 胚胎培养",
         "subtitle5": "胚胎发育至第 5/6 天进行 PGT-A 基因检测",
-        "subtitle6": "检测结果将在 2–3 周内出具并反馈"
+        "subtitle6": "检测结果将在 2–3 周内出具并反馈",
+        "subtitle7": ""
       }
     },
     "confidenceSection": {
@@ -901,6 +914,7 @@
   "surrogacy": {
     "application": {
       "title": "代孕母申请表",
+      "welcomeMessage": "快速代孕资格检查清单",
       "qualificationQuestions": {
         "age": "您的年龄在21到42岁之间吗？",
         "pregnancy": "您是否至少有过一次足月且无主要并发症的妊娠？",
@@ -1382,7 +1396,8 @@
           "paragraph1": "Kayla 毕业于康奈尔大学，并在哥伦比亚大学完成研究生学业。她精通中文、英文和德语，在辅助生殖领域拥有超过八年的从业经验。",
           "paragraph2": "在创立Yunda Surrogacy之前，Kayla曾从事国际生殖顾问工作，协助跨文化背景的客户顺利完成包括代孕和捐卵在内的生育旅程。",
           "paragraph3": "Kayla投身这个行业不仅因为专业，更源自于个人经历。作为一位通过代孕迎来两个孩子的母亲，她亲身经历了这段旅程中的喜悦与挑战。从遭遇不专业律师，到面对信息不透明的困境，这段经历促使她萌生了一个坚定的想法——亲自打造一个更专业、更温暖、更合规的代孕平台。",
-          "paragraph4": "在 Yunda，Kayla始终坚持法律合规、情感关怀与高度专业并重的理念，致力于为代孕妈妈和准父母们提供值得信赖的服务。工作之余，Kayla热爱旅行、阅读和陪伴两个孩子成长——他们每天都提醒她，这项事业的意义有多么深远。"
+          "paragraph4": "在 Yunda，Kayla始终坚持法律合规、情感关怀与高度专业并重的理念，致力于为代孕妈妈和准父母们提供值得信赖的服务。工作之余，Kayla热爱旅行、阅读和陪伴两个孩子成长——他们每天都提醒她，这项事业的意义有多么深远。",
+          "paragraph5": ""
         }
       },
       "zoeBoyd": {
@@ -1393,7 +1408,8 @@
           "paragraph2": "她于 2016 年投身于生殖医疗行业，坚定地将此作为她的长期事业，并始终怀抱热情，致力于帮助有生育需求的家庭通过试管婴儿技术实现梦想。",
           "paragraph3": "在 Yunda，她主要负责协助国际客户顺利完成试管婴儿相关流程，包括代孕与捐卵服务，并在整个旅程中提供专业、个性化的支持。她深信：每一个人都应获得真诚、透明的帮助与陪伴。",
           "paragraph4": "Zoe 热爱旅行与户外运动，闲暇时光喜欢与家人朋友共度，也热衷于探索植物性健康食谱。同时，她也积极参与生殖公益组织的志愿活动，在生活和工作中践行她对爱的承诺。",
-          "paragraph5": "如果您希望了解我们如何为客户提供支持，或探索合作机会，欢迎随时联系 Zoe！"
+          "paragraph5": "如果您希望了解我们如何为客户提供支持，或探索合作机会，欢迎随时联系 Zoe！",
+          "paragraph6": ""
         }
       }
     },

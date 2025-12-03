@@ -111,13 +111,8 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
-    // 确保 sitemap.xml 301 重定向到 sitemap_index.xml（SEO 友好）
-    '/sitemap.xml': {
-      redirect: {
-        to: '/sitemap_index.xml',
-        statusCode: 301,
-      },
-    },
+    // 注意：sitemap.xml 使用 HTML meta refresh 重定向到 sitemap_index.xml
+    // 这是 @nuxtjs/sitemap 模块的标准做法，搜索引擎可以正确处理
   },
   nitro: {
     preset: 'static',

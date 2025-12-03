@@ -111,7 +111,9 @@
         "description1": "End-to-end bilingual journey coordination",
         "description2": "Surrogate recruitment, screening, and profile preparation",
         "description3": "One-on-one case manager for personalized guidance",
-        "description4": "Communication with all third-party professionals"
+        "description4": "Communication with all third-party professionals",
+        "description5": "",
+        "description6": ""
       },
       "screeningAdmin": {
         "title": "Screening & Admin",
@@ -119,7 +121,9 @@
         "description1": "Background, medical, and psychological screening",
         "description2": "Coordination with IVF clinic and records submission",
         "description3": "Translation and cross-border document handling",
-        "description4": "Legal coordination (pre-match & post-match)"
+        "description4": "Legal coordination (pre-match & post-match)",
+        "description5": "",
+        "description6": ""
       },
       "surrogateCompensation": {
         "title": "Surrogate Compensation",
@@ -128,7 +132,8 @@
         "description2": "Maternity clothing",
         "description3": "Local travel and childcare",
         "description4": "Embryo transfer support",
-        "description5": "Medical appointment reimbursements"
+        "description5": "Medical appointment reimbursements",
+        "description6": ""
       },
       "legalFees": {
         "title": "Legal Fees",
@@ -136,14 +141,19 @@
         "description1": "Surrogacy agreement drafting and review",
         "description2": "Remote or in-person notarization",
         "description3": "Legal representation throughout the journey",
-        "description4": "Pre-Birth Order (parentage rights): ~$6,500"
+        "description4": "Pre-Birth Order (parentage rights): ~$6,500",
+        "description5": "",
+        "description6": ""
       },
       "insuranceSupport": {
         "title": "Insurance Support",
         "amount": "$TBD",
         "description1": "Pregnancy insurance planning or cash-pay options",
         "description2": "Life insurance and complications rider",
-        "description3": "Newborn medical insurance assistance"
+        "description3": "Newborn medical insurance assistance",
+        "description4": "",
+        "description5": "",
+        "description6": ""
       },
       "additionalCosts": {
         "title": "Additional Costs (If Applicable)",
@@ -555,7 +565,8 @@
         "subtitle1": "Intro call with a Yunda coordinator",
         "subtitle2": "Submit existing medical reports",
         "subtitle3": "Receive 5–6 donor profiles (video interviews available)",
-        "subtitle4": "Sign engagement letter and make payment to confirm"
+        "subtitle4": "Sign engagement letter and make payment to confirm",
+        "subtitle5": ""
       },
       "step2": {
         "title": "Medical & Psychological Screening",
@@ -563,7 +574,8 @@
         "subtitle2": "Complete genetic, infectious disease, and ultrasound screenings",
         "subtitle3": "Arrange psychological assessment",
         "subtitle4": "Clinic issues Medical Clearance",
-        "subtitle5": "IVF insurance arranged for donor before medication begins"
+        "subtitle5": "IVF insurance arranged for donor before medication begins",
+        "subtitle6": ""
       },
       "step3": {
         "title": "Stimulation Cycle & Embryo Creation",
@@ -572,7 +584,8 @@
         "subtitle3": "Egg retrieval performed under anesthesia",
         "subtitle4": "Fertilization and embryo culture in IVF lab",
         "subtitle5": "PGT-A testing conducted on Day 5/6 embryos",
-        "subtitle6": "Share genetic testing results within 2–3 weeks"
+        "subtitle6": "Share genetic testing results within 2–3 weeks",
+        "subtitle7": ""
       }
     },
     "confidenceSection": {
@@ -901,6 +914,7 @@
   "surrogacy": {
     "application": {
       "title": "Surrogates Application",
+      "welcomeMessage": "Quick surrogate qualification checklist",
       "qualificationQuestions": {
         "age": "Are you between 21 and 42 years old?",
         "pregnancy": "Have you had at least one full-term pregnancy with no major complications?",
@@ -1383,7 +1397,8 @@
           "paragraph1": "Kayla earned her degree from Cornell University and completed her graduate studies at Columbia University. She is fluent in Mandarin, English, and German, and brings over 8 years of experience in the field of assisted reproduction.",
           "paragraph2": "Before founding Yunda Surrogacy, she worked as an international fertility consultant, helping clients from diverse cultural backgrounds complete their journeys through surrogacy and egg donation.",
           "paragraph3": "Kayla's passion for this work stems from personal experience. As a mother of two children born through surrogacy, she has lived the joy and uncertainty of this process firsthand. Her encounters with unqualified legal advice and a lack of transparency fueled her commitment to creating a more ethical, warm, and professional surrogacy platform.",
-          "paragraph4": "At Yunda, Kayla is guided by the principles of legal integrity, emotional support, and clinical excellence. Outside of work, she enjoys traveling, reading, and spending time with her children—who remind her daily of the profound impact of this mission."
+          "paragraph4": "At Yunda, Kayla is guided by the principles of legal integrity, emotional support, and clinical excellence. Outside of work, she enjoys traveling, reading, and spending time with her children—who remind her daily of the profound impact of this mission.",
+          "paragraph5": ""
         }
       },
       "zoeBoyd": {
@@ -1394,7 +1409,8 @@
           "paragraph2": "Since 2016, Zoe has fully devoted herself to the fertility field, driven by a passion to help people achieve their dreams of parenthood through IVF, surrogacy, and egg donation.",
           "paragraph3": "At Yunda, she supports international clients with tailored guidance throughout their medical journey, ensuring clarity and care every step of the way. She believes everyone deserves honest, transparent, and compassionate support.",
           "paragraph4": "Zoe is an advocate for healthy living—she enjoys travel, outdoor adventures, and cooking plant-based meals for her family. She also volunteers with reproductive advocacy groups, bringing her care philosophy beyond the workplace.",
-          "paragraph5": "Interested in working with Yunda or exploring partnership opportunities? Let's connect."
+          "paragraph5": "Interested in working with Yunda or exploring partnership opportunities? Let's connect.",
+          "paragraph6": ""
         }
       }
     },
