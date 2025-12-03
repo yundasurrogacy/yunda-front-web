@@ -18,6 +18,27 @@ const canonicalUrl = computed(() => {
   return `${baseUrl.value}${path.replace(/\/$/, '')}`
 })
 
+// 生成 hreflang 标签，用于多语言 SEO
+const hreflangLinks = computed(() => {
+  if (!baseUrl.value)
+    return []
+
+  const path = route.path || '/'
+  // 移除语言前缀，获取基础路径
+  const basePath = path.replace(/^\/zh/, '') || '/'
+
+  // 生成英文和中文版本的 URL
+  const enUrl = `${baseUrl.value}${basePath}`
+  const zhPath = basePath === '/' ? '/zh' : `/zh${basePath}`
+  const zhUrl = `${baseUrl.value}${zhPath}`
+
+  return [
+    { rel: 'alternate', hreflang: 'en-US', href: enUrl },
+    { rel: 'alternate', hreflang: 'zh-CN', href: zhUrl },
+    { rel: 'alternate', hreflang: 'x-default', href: enUrl }, // 默认语言（英文）
+  ]
+})
+
 // 创建一个响应式的 lang 值
 const htmlLang = computed(() => locale.value)
 const htmlClass = computed(() => `lang-${locale.value}`)
@@ -45,6 +66,7 @@ useHead(() => ({
   link: [
     { rel: 'icon', href: '/favicon.ico' },
     { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value,
   ],
   htmlAttrs: {
     lang: htmlLang.value,

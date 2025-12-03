@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /*.pdf$
 Disallow: /*.docx$
-Sitemap: https://www.yundasurrogacy.com/sitemap.xml
+Sitemap: https://www.yundasurrogacy.com/sitemap_index.xml

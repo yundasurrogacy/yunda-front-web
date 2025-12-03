@@ -1,0 +1,5 @@
+# 忽略文档目录和 markdown 文件
+docs/
+**/*.md
+*.md
+

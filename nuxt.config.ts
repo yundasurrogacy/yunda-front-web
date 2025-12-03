@@ -54,8 +54,9 @@ const englishRoutes = [
   ...blogRoutes,
 ]
 // 生成中文路由（带 /zh 前缀）
+// 处理首页路径：/ 应该映射到 /zh 而不是 /zh/
 const chineseRoutes = [
-  ...staticPages.map(page => `/zh${page.loc}`),
+  ...staticPages.map(page => page.loc === '/' ? '/zh' : `/zh${page.loc}`),
   ...blogRoutes.map((route: string) => `/zh${route}`),
 ]
 const prerenderRoutes = Array.from(new Set([
@@ -107,6 +108,13 @@ export default defineNuxtConfig({
     '/become-a-surrogate-mother': {
       redirect: {
         to: '/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
+    // 确保 sitemap.xml 301 重定向到 sitemap_index.xml（SEO 友好）
+    '/sitemap.xml': {
+      redirect: {
+        to: '/sitemap_index.xml',
         statusCode: 301,
       },
     },
@@ -221,10 +229,14 @@ export default defineNuxtConfig({
       changefreq: 'weekly',
       priority: 0.8,
     },
-    // URLs 配置 - 为每个页面添加多语言标签（hreflang）
+    // URLs 配置 - 让模块自动处理多语言和 hreflang
     urls: async () => {
-      // 主要页面列表（需要包含所有预渲染的页面）
-      const pages = staticPages
+      // 静态页面（模块会自动为每种语言生成对应的 URL）
+      const staticUrls = staticPages.map(page => ({
+        loc: page.loc, // 基础路径，模块会自动为每种语言生成完整 URL
+        priority: page.priority,
+      }))
+
       // 获取所有博客文章
       const blogUrls = []
       try {
@@ -233,7 +245,7 @@ export default defineNuxtConfig({
 
         if (blogData && blogData.blogs && Array.isArray(blogData.blogs)) {
           blogUrls.push(...blogData.blogs.map((blog: any) => ({
-            loc: `/blog/${blog.route_id || blog.id}`,
+            loc: `/blog/${blog.route_id || blog.id}`, // 基础路径，模块会自动处理多语言
             priority: 0.6,
             lastmod: blog.updated_at || blog.created_at,
           })))
@@ -243,53 +255,7 @@ export default defineNuxtConfig({
         console.error('Error fetching blog URLs for sitemap:', error)
       }
 
-      // 为每个页面添加 hreflang 标签（多语言支持）
-      // 英文版本（无前缀）和中文版本（/zh 前缀）
-      const staticUrls = pages.flatMap(page => [
-        {
-          loc: page.loc, // 英文版本
-          priority: page.priority,
-          alternatives: [
-            { href: page.loc, hreflang: 'en' },
-            { href: `/zh${page.loc}`, hreflang: 'zh' },
-            { href: page.loc, hreflang: 'x-default' }, // 默认语言（英文）
-          ],
-        },
-        {
-          loc: `/zh${page.loc}`, // 中文版本
-          priority: page.priority,
-          alternatives: [
-            { href: page.loc, hreflang: 'en' },
-            { href: `/zh${page.loc}`, hreflang: 'zh' },
-            { href: page.loc, hreflang: 'x-default' }, // 默认语言（英文）
-          ],
-        },
-      ])
-      // 为博客文章添加 hreflang 标签
-      const blogUrlsWithHreflang = blogUrls.flatMap(blog => [
-        {
-          loc: blog.loc, // 英文版本
-          priority: blog.priority,
-          lastmod: blog.lastmod,
-          alternatives: [
-            { href: blog.loc, hreflang: 'en' },
-            { href: `/zh${blog.loc}`, hreflang: 'zh' },
-            { href: blog.loc, hreflang: 'x-default' },
-          ],
-        },
-        {
-          loc: `/zh${blog.loc}`, // 中文版本
-          priority: blog.priority,
-          lastmod: blog.lastmod,
-          alternatives: [
-            { href: blog.loc, hreflang: 'en' },
-            { href: `/zh${blog.loc}`, hreflang: 'zh' },
-            { href: blog.loc, hreflang: 'x-default' },
-          ],
-        },
-      ])
-
-      return [...staticUrls, ...blogUrlsWithHreflang]
+      return [...staticUrls, ...blogUrls]
     },
   },
   i18n: {

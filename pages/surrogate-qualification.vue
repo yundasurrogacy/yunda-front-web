@@ -19,6 +19,19 @@ const infoMessage = ref('')
 const selectedAnswer = ref(null)
 const answers = ref([]) // 记录所有答案
 
+// 计算是否合格
+const isQualified = computed(() => {
+  return !answers.value.includes(false)
+})
+
+// 按钮文本：合格时显示 "Next: Application"，否则显示 "OK"
+const buttonText = computed(() => {
+  if (showInfo.value && isQualified.value) {
+    return t('surrogacy.application.messages.nextApplication')
+  }
+  return t('common.ok')
+})
+
 // Questions array
 const questions = [
   'surrogacy.application.qualificationQuestions.age',
@@ -160,7 +173,7 @@ onMounted(() => {
                 class="rounded-full bg-[var(--grayish-green)] px-8 py-2 text-5 text-[#FFFCF6] transition-opacity lg:px-12 lg:py-2.5 lg:text-6 hover:opacity-90"
                 @click="handleInfoClose"
               >
-                {{ $t('common.ok') }}
+                {{ buttonText }}
               </button>
             </div>
           </div>

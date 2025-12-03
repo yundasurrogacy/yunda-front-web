@@ -911,7 +911,8 @@
       "messages": {
         "notQualified": "Thanks for applying – We hope to cross paths again soon.",
         "qualified": "Congratulations – You're officially qualified!",
-        "seeIfYouQualify": "See if you qualify"
+        "seeIfYouQualify": "See if you qualify",
+        "nextApplication": "Next: Application"
       }
     }
   },

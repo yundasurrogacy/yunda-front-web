@@ -911,7 +911,8 @@
       "messages": {
         "notQualified": "谢谢您的申请——希望不久后再次相遇。",
         "qualified": "恭喜——您正式符合资格！",
-        "seeIfYouQualify": "查看您是否符合资格"
+        "seeIfYouQualify": "查看您是否符合资格",
+        "nextApplication": "下一步：申请表"
       }
     }
   },

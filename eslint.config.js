@@ -22,11 +22,4 @@ export default withNuxt(antfu(
       'no-console': 'warn',
     },
   },
-  // Allow trailing space for markdown formatting
-  {
-    files: ['**/*.md'],
-    rules: {
-      'style/no-trailing-spaces': 'off',
-    },
-  },
 ))
