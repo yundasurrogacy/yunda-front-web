@@ -233,8 +233,10 @@ export default defineNuxtConfig(async () => {
       url: 'https://www.yundasurrogacy.com', // 替换为您的实际域名
     },
 
-    sitemap: {
-      defaults: sitemapDefaults,
+  sitemap: {
+    // 强制关闭模块自动分语种 sitemap/index，采用单一 sitemap.xml
+    autoI18n: false,
+    defaults: sitemapDefaults,
       // 单一 sitemap.xml，包含多语言 alternatives
       urls: async () => {
         const staticUrls = staticPages.flatMap(page => ([
