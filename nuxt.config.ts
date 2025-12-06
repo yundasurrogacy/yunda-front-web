@@ -283,9 +283,9 @@ export default defineNuxtConfig({
     ],
     langDir: 'locales/',
     detectBrowserLanguage: {
-      useCookie: true,
+      useCookie: false,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root', // 只在根路径时检测和重定向
+      redirectOn: 'no prefix', // 不在根路径自动重定向，避免因 cookie 导致首页跳转
       alwaysRedirect: false,
       fallbackLocale: 'en',
     },
