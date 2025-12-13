@@ -282,13 +282,9 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
     ],
     langDir: 'locales/',
-    detectBrowserLanguage: {
-      useCookie: false,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'no prefix', // 不在根路径自动重定向，避免因 cookie 导致首页跳转
-      alwaysRedirect: false,
-      fallbackLocale: 'en',
-    },
+    // 完全禁用自动语言检测和重定向，让用户自主选择语言
+    // detectBrowserLanguage 被注释掉以避免自动重定向
+    // detectBrowserLanguage: false,
     // 禁用翻译指令优化，避免问题并在未来版本中被移除
     bundle: {
       optimizeTranslationDirective: false,

@@ -1150,6 +1150,7 @@
         "contactInfo": "Contact Information",
         "familyProfile": "Family Profile",
         "programInterests": "Program Interests",
+        "embryoMedicalStatus": "Embryo & Medical Status",
         "referral": "Referral",
         "consent": "Consent"
       },
@@ -1199,6 +1200,15 @@
           "label": "I consent to receive text messages at this number",
           "disclaimer": "By checking this box, you agree to receive mobile messages related to your application and services. Standard messaging and data rates may apply. You may opt out anytime by replying via SMS or updating your preferences in your profile."
         },
+        "contactPreference": {
+          "label": "Contact Preference",
+          "preferredContactMethod": "Preferred contact method：",
+          "options": {
+            "phone": "Phone",
+            "email": "Email",
+            "others": "Others"
+          }
+        },
         "languages": {
           "label": "Primary Language(s) (Select all that apply)",
           "note": "Yunda's primary service language is English, but we have consultants who speak Mandarin and interpreters available to support you throughout your journey — including communication with your surrogate.",
@@ -1227,6 +1237,14 @@
             "heterosexual": "Heterosexual",
             "lgbtqia": "LGBTQIA+",
             "preferSelfDescribe": "Prefer to self-describe:"
+          }
+        },
+        "relationshipStatus": {
+          "label": "Relationship Status",
+          "options": {
+            "married": "Married",
+            "single": "Single",
+            "partnered": "Partnered"
           }
         },
         "city": "City",
@@ -1260,6 +1278,26 @@
             "twins": "Twins",
             "moreThanTwo": "More than two",
             "notSure": "Not sure yet"
+          }
+        },
+        "embryoMedicalStatus": {
+          "hasEmbryos": {
+            "question": "Do you currently have embryos created?",
+            "yes": "Yes",
+            "no": "No"
+          },
+          "embryoClinicName": "Clinic Name",
+          "embryoCount": "Number of embryos",
+          "pgtStatus": {
+            "label": "PGT status",
+            "yes": "Yes",
+            "no": "No"
+          },
+          "hasFertilityClinic": {
+            "question": "Do you already have a fertility clinic selected in the U.S.?",
+            "yes": "Yes",
+            "clinicName": "Clinic Name",
+            "no": "No, need recommendation"
           }
         },
         "referralSource": "How did you hear about Yunda Surrogacy?",

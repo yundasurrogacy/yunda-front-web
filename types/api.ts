@@ -102,12 +102,14 @@ export interface ContactInformation {
   email_address: string
   primary_languages: string[]
   primary_languages_selected_keys: PrimaryLanguage[]
+  preferred_contact_method?: string // Phone, Email, Others
 }
 
 // 家庭资料组合
 export interface FamilyProfile {
   sexual_orientation: string
   sexual_orientation_selected_key: SexualOrientation
+  relationship_status?: string // Married, Single, Partnered
   city: string
   country: string
   country_selected_key: string
@@ -131,6 +133,16 @@ export interface Referral {
   initial_questions: string
 }
 
+// 胚胎与医疗情况组合
+export interface EmbryoMedicalStatus {
+  has_embryos?: string // Yes, No
+  embryo_clinic_name?: string
+  embryo_count?: string
+  pgt_status?: string // Yes, No
+  has_fertility_clinic?: string // Yes, No
+  fertility_clinic_name?: string
+}
+
 // ========== 申请表 application_data 类型 ==========
 
 export interface IntendedParentApplicationData {
@@ -138,6 +150,7 @@ export interface IntendedParentApplicationData {
   contact_information?: ContactInformation
   family_profile?: FamilyProfile
   program_interests?: ProgramInterests
+  embryo_medical_status?: EmbryoMedicalStatus
   referral?: Referral
 }
 
@@ -151,6 +164,7 @@ export interface IntendedParent {
   contact_information?: ContactInformation
   family_profile?: FamilyProfile
   program_interests?: ProgramInterests
+  embryo_medical_status?: EmbryoMedicalStatus
   referral?: Referral
 }
 // SurrogateMotherApplicationData 类型请补充在本文件下方

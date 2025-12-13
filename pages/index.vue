@@ -13,6 +13,7 @@ import JourneySection from '../components/home/JourneySection.vue'
 // import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateCareSection from '../components/home/SurrogateCareSection.vue'
+import TestimonialsSection from '../components/home/TestimonialsSection.vue'
 
 const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
@@ -140,6 +141,7 @@ useHead(() => {
      /> -->
     <JourneySection />
     <AssociationSection />
+    <TestimonialsSection />
     <CostSection />
     <AppFooter />
   </div>

@@ -1149,6 +1149,7 @@
         "contactInfo": "联系信息",
         "familyProfile": "家庭资料",
         "programInterests": "项目意向",
+        "embryoMedicalStatus": "胚胎与医疗情况",
         "referral": "渠道及初步沟通",
         "consent": "同意"
       },
@@ -1198,6 +1199,15 @@
           "label": "我同意接收有关本申请和服务的短信通知",
           "disclaimer": "勾选此项即表示您同意接收与申请流程相关的短信通知。标准短信资费适用。您可随时通过短信退订或在账户中更新偏好。"
         },
+        "contactPreference": {
+          "label": "联系偏好",
+          "preferredContactMethod": "首选联系方式",
+          "options": {
+            "phone": "电话",
+            "email": "电子邮件",
+            "others": "其他"
+          }
+        },
         "languages": {
           "label": "主要语言（选择所有适用选项）",
           "note": "孕达的主要服务语言是英语，但我们有讲普通话的顾问和可用的翻译人员在您的整个旅程中支持您——包括与您的代母沟通。",
@@ -1226,6 +1236,14 @@
             "heterosexual": "异性恋",
             "lgbtqia": "LGBTQIA+",
             "preferSelfDescribe": "偏好自我描述："
+          }
+        },
+        "relationshipStatus": {
+          "label": "关系状态",
+          "options": {
+            "married": "已婚",
+            "single": "单身",
+            "partnered": "伴侣关系"
           }
         },
         "city": "城市",
@@ -1259,6 +1277,26 @@
             "twins": "双胞胎",
             "moreThanTwo": "两个以上",
             "notSure": "暂不确定"
+          }
+        },
+        "embryoMedicalStatus": {
+          "hasEmbryos": {
+            "question": "是否已经有胚胎？",
+            "yes": "有",
+            "no": "还没有"
+          },
+          "embryoClinicName": "胚胎所在诊所：",
+          "embryoCount": "胚胎数量：",
+          "pgtStatus": {
+            "label": "是否做过PGT：",
+            "yes": "是",
+            "no": "否"
+          },
+          "hasFertilityClinic": {
+            "question": "是否已有美国生殖诊所？",
+            "yes": "是",
+            "clinicName": "诊所名称：",
+            "no": "需要推荐"
           }
         },
         "referralSource": "您是如何了解到孕达代孕的？",

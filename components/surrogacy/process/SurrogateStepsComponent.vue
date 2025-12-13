@@ -222,12 +222,12 @@ watch(() => props.activeStep, () => {
             <div
               v-for="section in step.sections || []"
               :key="section.heading"
-              class="rounded-lg border border-[var(--light-cream)] bg-white p-6"
+              class="border border-[var(--light-cream)] rounded-lg bg-white p-6"
             >
               <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
                 {{ section.heading }}
               </h4>
-              <ul class="space-y-2 text-[var(--primary-brown)] leading-relaxed">
+              <ul class="text-[var(--primary-brown)] leading-relaxed space-y-2">
                 <li
                   v-for="item in section.items"
                   :key="item"
@@ -241,12 +241,12 @@ watch(() => props.activeStep, () => {
 
             <div
               v-if="step.softCtas?.length"
-              class="rounded-lg border border-[var(--grayish-green)] bg-white p-6"
+              class="border border-[var(--grayish-green)] rounded-lg bg-white p-6"
             >
               <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
                 Soft CTAs
               </h4>
-              <ul class="space-y-2 text-[var(--primary-brown)] leading-relaxed">
+              <ul class="text-[var(--primary-brown)] leading-relaxed space-y-2">
                 <li
                   v-for="cta in step.softCtas"
                   :key="cta"
@@ -364,12 +364,12 @@ watch(() => props.activeStep, () => {
           <div
             v-for="section in steps[activeStep - 1]?.sections || []"
             :key="section.heading"
-            class="rounded-lg border border-[var(--light-cream)] bg-white p-4"
+            class="border border-[var(--light-cream)] rounded-lg bg-white p-4"
           >
             <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
               {{ section.heading }}
             </h4>
-            <ul class="space-y-1 text-sm text-[var(--primary-brown)] leading-relaxed">
+            <ul class="text-sm text-[var(--primary-brown)] leading-relaxed space-y-1">
               <li
                 v-for="item in section.items"
                 :key="item"
@@ -383,12 +383,12 @@ watch(() => props.activeStep, () => {
 
           <div
             v-if="steps[activeStep - 1]?.softCtas?.length"
-            class="rounded-lg border border-[var(--grayish-green)] bg-white p-4"
+            class="border border-[var(--grayish-green)] rounded-lg bg-white p-4"
           >
             <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
               Soft CTAs
             </h4>
-            <ul class="space-y-1 text-sm text-[var(--primary-brown)] leading-relaxed">
+            <ul class="text-sm text-[var(--primary-brown)] leading-relaxed space-y-1">
               <li
                 v-for="cta in steps[activeStep - 1]?.softCtas"
                 :key="cta"

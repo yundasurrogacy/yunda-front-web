@@ -81,8 +81,22 @@ const form = reactive({
   programInterests: '',
   initialQuestions: '',
 
+  // 胚胎与医疗情况
+  hasEmbryos: '',
+  embryoClinicName: '',
+  embryoCount: '',
+  pgtStatus: '',
+  hasFertilityClinic: '',
+  fertilityClinicName: '',
+
   // 联系来源
   referralSource: '',
+
+  // 联系偏好
+  preferredContactMethod: [] as string[], // Phone, Email, Others
+
+  // 关系状态
+  relationshipStatus: '',
 
   // 同意条款
   consentAgreement: false,
@@ -281,10 +295,12 @@ async function handleSubmit() {
         email_address: form.email,
         primary_languages: languages,
         primary_languages_selected_keys: languages.map(l => PrimaryLanguage[l as keyof typeof PrimaryLanguage]),
+        preferred_contact_method: form.preferredContactMethod.join(','),
       },
       family_profile: {
         sexual_orientation: form.sexualOrientation,
         sexual_orientation_selected_key: SexualOrientation[form.sexualOrientation as keyof typeof SexualOrientation],
+        relationship_status: form.relationshipStatus,
         city: form.city,
         country: form.country,
         country_selected_key: form.country,
@@ -298,6 +314,14 @@ async function handleSubmit() {
         journey_start_timing_selected_key: JourneyStartTiming[form.journeyStartTiming as keyof typeof JourneyStartTiming],
         desired_children_count: form.desiredChildrenCount,
         desired_children_count_selected_key: DesiredChildrenCount[form.desiredChildrenCount as keyof typeof DesiredChildrenCount],
+      },
+      embryo_medical_status: {
+        has_embryos: form.hasEmbryos,
+        embryo_clinic_name: form.embryoClinicName,
+        embryo_count: form.embryoCount,
+        pgt_status: form.pgtStatus,
+        has_fertility_clinic: form.hasFertilityClinic,
+        fertility_clinic_name: form.fertilityClinicName,
       },
       referral: {
         referral_source: form.referralSource,
@@ -533,6 +557,59 @@ async function handleSubmit() {
               </p>
             </div>
 
+            <div>
+              <p class="mb-4">
+                {{ $t('parent.application.form.contactPreference.label') }}
+              </p>
+              <p class="mb-4 text-20px">
+                {{ $t('parent.application.form.contactPreference.preferredContactMethod') }}
+              </p>
+              <div class="space-y-2">
+                <FormCheckbox
+                  :label="$t('parent.application.form.contactPreference.options.phone')"
+                  :model-value="form.preferredContactMethod.includes('Phone')"
+                  @update:model-value="(val) => {
+                    if (val) {
+                      if (!form.preferredContactMethod.includes('Phone')) {
+                        form.preferredContactMethod.push('Phone')
+                      }
+                    }
+                    else {
+                      form.preferredContactMethod = form.preferredContactMethod.filter((m: string) => m !== 'Phone')
+                    }
+                  }"
+                />
+                <FormCheckbox
+                  :label="$t('parent.application.form.contactPreference.options.email')"
+                  :model-value="form.preferredContactMethod.includes('Email')"
+                  @update:model-value="(val) => {
+                    if (val) {
+                      if (!form.preferredContactMethod.includes('Email')) {
+                        form.preferredContactMethod.push('Email')
+                      }
+                    }
+                    else {
+                      form.preferredContactMethod = form.preferredContactMethod.filter((m: string) => m !== 'Email')
+                    }
+                  }"
+                />
+                <FormCheckbox
+                  :label="$t('parent.application.form.contactPreference.options.others')"
+                  :model-value="form.preferredContactMethod.includes('Others')"
+                  @update:model-value="(val) => {
+                    if (val) {
+                      if (!form.preferredContactMethod.includes('Others')) {
+                        form.preferredContactMethod.push('Others')
+                      }
+                    }
+                    else {
+                      form.preferredContactMethod = form.preferredContactMethod.filter((m: string) => m !== 'Others')
+                    }
+                  }"
+                />
+              </div>
+            </div>
+
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
               <div>
                 <p class="mb-4 text-20px">
@@ -594,6 +671,17 @@ async function handleSubmit() {
                     class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
                   >
                 </div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-4">
+                {{ $t('parent.application.form.relationshipStatus.label') }}
+              </p>
+              <div class="space-y-2">
+                <FormRadio v-model="form.relationshipStatus" name="relationshipStatus" value="Married" :label="$t('parent.application.form.relationshipStatus.options.married')" />
+                <FormRadio v-model="form.relationshipStatus" name="relationshipStatus" value="Single" :label="$t('parent.application.form.relationshipStatus.options.single')" />
+                <FormRadio v-model="form.relationshipStatus" name="relationshipStatus" value="Partnered" :label="$t('parent.application.form.relationshipStatus.options.partnered')" />
               </div>
             </div>
 
@@ -659,6 +747,59 @@ async function handleSubmit() {
                 <FormRadio v-model="form.desiredChildrenCount" name="desiredChildrenCount" value="TWINS" :label="$t('parent.application.form.childrenCount.options.twins')" />
                 <FormRadio v-model="form.desiredChildrenCount" name="desiredChildrenCount" value="MORE_THAN_TWO" :label="$t('parent.application.form.childrenCount.options.moreThanTwo')" />
                 <FormRadio v-model="form.desiredChildrenCount" name="desiredChildrenCount" value="NOT_SURE" :label="$t('parent.application.form.childrenCount.options.notSure')" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Embryo & Medical Status Section -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+            {{ $t('parent.application.sections.embryoMedicalStatus') }}
+          </h3>
+
+          <div class="mb-16 space-y-6">
+            <div>
+              <p class="mb-4">
+                {{ $t('parent.application.form.embryoMedicalStatus.hasEmbryos.question') }}
+              </p>
+              <div class="space-y-2">
+                <FormRadio v-model="form.hasEmbryos" name="hasEmbryos" value="Yes" :label="$t('parent.application.form.embryoMedicalStatus.hasEmbryos.yes')" />
+                <FormRadio v-model="form.hasEmbryos" name="hasEmbryos" value="No" :label="$t('parent.application.form.embryoMedicalStatus.hasEmbryos.no')" />
+              </div>
+            </div>
+
+            <div v-if="form.hasEmbryos === 'Yes'" class="space-y-6">
+              <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                <FormInput v-model="form.embryoClinicName" :label="$t('parent.application.form.embryoMedicalStatus.embryoClinicName')" />
+                <FormInput v-model="form.embryoCount" :label="$t('parent.application.form.embryoMedicalStatus.embryoCount')" type="number" />
+              </div>
+
+              <div>
+                <p class="mb-4">
+                  {{ $t('parent.application.form.embryoMedicalStatus.pgtStatus.label') }}
+                </p>
+                <div class="space-y-2">
+                  <FormRadio v-model="form.pgtStatus" name="pgtStatus" value="Yes" :label="$t('parent.application.form.embryoMedicalStatus.pgtStatus.yes')" />
+                  <FormRadio v-model="form.pgtStatus" name="pgtStatus" value="No" :label="$t('parent.application.form.embryoMedicalStatus.pgtStatus.no')" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-4">
+                {{ $t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.question') }}
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <FormRadio v-model="form.hasFertilityClinic" name="hasFertilityClinic" value="Yes" :label="$t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.yes')" />
+                  <input
+                    v-if="form.hasFertilityClinic === 'Yes'"
+                    v-model="form.fertilityClinicName"
+                    type="text"
+                    :placeholder="$t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.clinicName')"
+                    class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                  >
+                </div>
+                <FormRadio v-model="form.hasFertilityClinic" name="hasFertilityClinic" value="No" :label="$t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.no')" />
               </div>
             </div>
           </div>

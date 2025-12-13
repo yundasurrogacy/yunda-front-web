@@ -43,6 +43,7 @@
 访问：`https://www.yundasurrogacy.com/sitemap_index.xml`
 
 应该看到：
+
 ```xml
 <sitemapindex>
     <sitemap>
@@ -68,11 +69,13 @@
 ## 3. 验证 URL 结构
 
 ### 3.1 英文页面（默认语言，无前缀）
+
 - ✅ `https://www.yundasurrogacy.com/`
 - ✅ `https://www.yundasurrogacy.com/about`
 - ✅ `https://www.yundasurrogacy.com/become-a-surrogate`
 
 ### 3.2 中文页面（带 /zh 前缀）
+
 - ✅ `https://www.yundasurrogacy.com/zh`
 - ✅ `https://www.yundasurrogacy.com/zh/about`
 - ✅ `https://www.yundasurrogacy.com/zh/become-a-surrogate`
@@ -80,17 +83,20 @@
 ## 4. 使用在线工具验证
 
 ### 4.1 Google Search Console
+
 1. 登录 Google Search Console
 2. 提交 sitemap：`https://www.yundasurrogacy.com/sitemap_index.xml`
 3. 检查"索引覆盖率"报告
 4. 使用"URL 检查"工具验证单个页面
 
 ### 4.2 在线 hreflang 检查工具
+
 - **hreflang Tags Testing Tool**: https://technicalseo.com/tools/hreflang/
 - **Merkle Hreflang Tool**: https://technicalseo.com/tools/hreflang/
 - **XML Sitemap Validator**: https://www.xml-sitemaps.com/validate-xml-sitemap.html
 
 ### 4.3 浏览器扩展工具
+
 - **SEO META in 1 CLICK** (Chrome 扩展)
 - **hreflang Tags Viewer** (Chrome 扩展)
 
@@ -144,15 +150,19 @@ curl -s https://www.yundasurrogacy.com/zh/about | grep -i "canonical"
 ## 7. 常见问题排查
 
 ### 问题 1: hreflang 标签缺失
+
 **解决**: 检查 `app.vue` 中的 `hreflangLinks` computed 是否正确生成
 
 ### 问题 2: 错误的 URL 路径
+
 **解决**: 检查 `basePath` 计算逻辑，确保正确处理 `/zh` 前缀
 
 ### 问题 3: Sitemap 不包含所有页面
+
 **解决**: 检查 `nuxt.config.ts` 中的 `staticPages` 和 `urls` 配置
 
 ### 问题 4: Canonical URL 错误
+
 **解决**: 检查 `canonicalUrl` computed 是否正确生成完整 URL
 
 ## 8. 自动化验证脚本
