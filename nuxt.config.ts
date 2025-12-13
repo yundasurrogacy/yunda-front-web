@@ -283,8 +283,7 @@ export default defineNuxtConfig({
     ],
     langDir: 'locales/',
     // 完全禁用自动语言检测和重定向，让用户自主选择语言
-    // detectBrowserLanguage 被注释掉以避免自动重定向
-    // detectBrowserLanguage: false,
+    detectBrowserLanguage: false,
     // 禁用翻译指令优化，避免问题并在未来版本中被移除
     bundle: {
       optimizeTranslationDirective: false,
