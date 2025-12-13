@@ -33,15 +33,29 @@ const API_ENDPOINTS = {
 function handleApiError(error: any): never {
   console.error('API Error:', error)
 
-  // 如果是 FetchError 类型
+  // 构造错误对象以保持与 axios 类似的响应结构
+  const apiError: any = new Error('API request failed')
+
+  // 如果是 FetchError 类型（Nuxt $fetch 的错误格式）
   if (error.data) {
     const errorData = error.data as ApiErrorResponse
     const errorMessage = errorData.errors?.map(e => e.message).join(', ') || errorData.message || '请求失败'
-    throw new Error(errorMessage)
+    apiError.message = errorMessage
+    apiError.response = {
+      data: errorData,
+    }
+  }
+  // 如果是 Response 类型（fetch API 的响应）
+  else if (error.response) {
+    apiError.response = error.response
+    apiError.message = error.message || '网络请求失败，请稍后重试'
+  }
+  // 其他类型的错误
+  else {
+    apiError.message = error.message || '网络请求失败，请稍后重试'
   }
 
-  // 其他类型的错误
-  throw new Error(error.message || '网络请求失败，请稍后重试')
+  throw apiError
 }
 
 // 提交代孕母申请
