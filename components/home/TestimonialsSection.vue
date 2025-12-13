@@ -184,15 +184,18 @@ function getTagClass(type: 'SURROGATE' | 'PARENT') {
 }
 
 // 判断内容是否需要展开/收起功能（内容超过一定长度）
+// 中文和英文使用不同的阈值，因为中文字符通常占用更多视觉空间
 function needsExpand(content: string | undefined) {
   if (!content) {
     return false
   }
-  return content.length > 300
+  // 对于中文内容，降低阈值以更好适应中文字符
+  // 300字符对中文来说可能太长，改为200字符
+  return content.length > 200
 }
 
 // 获取截断的内容
-function getTruncatedContent(content: string | undefined, maxLength = 300) {
+function getTruncatedContent(content: string | undefined, maxLength = 200) {
   if (!content || typeof content !== 'string') {
     return ''
   }
@@ -240,17 +243,21 @@ function formatContent(content: string | undefined) {
         </button>
 
         <!-- 轮播内容 - Desktop -->
-        <div class="relative mx-auto hidden md:flex items-center justify-center gap-4 px-20">
+        <div class="relative mx-auto hidden md:flex items-center justify-center gap-4 px-20 overflow-hidden">
           <template v-for="(displayIndex, position) in visibleIndices" :key="`${displayIndex}-${currentIndex}`">
             <div
               class="testimonial-card flex-shrink-0 transition-all duration-500 ease-out"
-              :class="position === 1
-                ? 'w-[400px] opacity-100 scale-100 z-10'
-                : 'w-[320px] opacity-60 scale-90'"
+              :class="{
+                'w-[320px] opacity-70 scale-95': position === 0 || position === 2,
+                'w-[450px] opacity-100 scale-100 z-10': position === 1,
+              }"
             >
               <div
-                class="card-inner w-full rounded-lg bg-white border-2 p-6 shadow-md md:p-8 transition-all duration-300"
-                :class="position === 1 ? 'border-[var(--primary-brown)] hover:shadow-xl hover:-translate-y-1' : 'border-gray-300'"
+                class="card-inner w-full rounded-2xl bg-[#FAF8F3] border-2 transition-all duration-300"
+                :class="{
+                  'border-[var(--primary-brown)] p-7 md:p-9 shadow-lg hover:shadow-2xl hover:border-[var(--primary-brown)] hover:bg-[#F9F6EF]': position === 1,
+                  'border-gray-300/60 p-5 md:p-6 shadow-md hover:shadow-lg hover:border-gray-400/80 hover:bg-[#F9F6EF]': position === 0 || position === 2,
+                }"
               >
                 <!-- 标签 -->
                 <div v-if="testimonials[displayIndex]" class="mb-4 flex items-center">
@@ -288,40 +295,40 @@ function formatContent(content: string | undefined) {
                       </div>
                     </template>
                   </div>
+
+                  <!-- Expand/Minimize 按钮 - 放在评论内容后面 -->
+                  <div
+                    v-if="testimonials[displayIndex] && needsExpand(testimonials[displayIndex]?.content)"
+                    class="expand-button group mt-3 inline-flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
+                    style="font-family: var(--font-secondary)"
+                    @click="toggleExpand(displayIndex)"
+                  >
+                    <span class="font-medium transition-all duration-300 group-hover:font-semibold">
+                      {{ isExpanded(displayIndex) ? (locale === 'zh' ? '收起' : 'Minimize') : (locale === 'zh' ? '展开' : 'Expand') }}
+                    </span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      :class="{ 'rotate-180': isExpanded(displayIndex) }"
+                      class="transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    >
+                      <path
+                        d="M4 6L8 10L12 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
 
                 <!-- 作者信息 -->
-                <div v-if="testimonials[displayIndex]" class="mb-4 text-sm font-semibold text-[var(--dark-brown)] md:text-base" style="font-family: var(--font-secondary)">
+                <div v-if="testimonials[displayIndex]" class="mb-0 text-sm font-semibold text-[var(--dark-brown)] md:text-base" style="font-family: var(--font-secondary)">
                   {{ testimonials[displayIndex]?.author }} / {{ testimonials[displayIndex]?.location }}
-                </div>
-
-                <!-- Expand/Minimize 按钮 -->
-                <div
-                  v-if="testimonials[displayIndex] && needsExpand(testimonials[displayIndex]?.content)"
-                  class="expand-button group flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
-                  style="font-family: var(--font-secondary)"
-                  @click="toggleExpand(displayIndex)"
-                >
-                  <span class="font-medium transition-all duration-300 group-hover:font-semibold">
-                    {{ isExpanded(displayIndex) ? (locale === 'zh' ? '收起' : 'Minimize') : (locale === 'zh' ? '展开' : 'Expand') }}
-                  </span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    :class="{ 'rotate-180': isExpanded(displayIndex) }"
-                    class="transition-transform duration-500 ease-in-out group-hover:scale-110"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
                 </div>
               </div>
             </div>
@@ -330,7 +337,7 @@ function formatContent(content: string | undefined) {
 
         <!-- 轮播内容 - Mobile -->
         <div v-if="testimonials && testimonials.length > 0" class="relative mx-auto max-w-md px-4 md:hidden">
-          <div class="w-full rounded-lg bg-white border-2 border-[var(--primary-brown)] p-6 shadow-sm">
+          <div class="w-full rounded-2xl bg-[#FAF8F3] border-2 border-[var(--primary-brown)] p-6 shadow-md">
             <!-- 标签 -->
             <div v-if="testimonials[currentIndex]" class="mb-4 flex items-center">
               <span
@@ -367,40 +374,40 @@ function formatContent(content: string | undefined) {
                   </div>
                 </template>
               </div>
+
+              <!-- Expand/Minimize 按钮 - 放在评论内容后面 -->
+              <div
+                v-if="testimonials[currentIndex] && needsExpand(testimonials[currentIndex]?.content)"
+                class="expand-button group mt-3 inline-flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
+                style="font-family: var(--font-secondary)"
+                @click="toggleExpand(currentIndex)"
+              >
+                <span class="font-medium transition-all duration-300 group-hover:font-semibold">
+                  {{ isExpanded(currentIndex) ? (locale === 'zh' ? '收起' : 'Minimize') : (locale === 'zh' ? '展开' : 'Expand') }}
+                </span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  :class="{ 'rotate-180': isExpanded(currentIndex) }"
+                  class="transition-transform duration-500 ease-in-out group-hover:scale-110"
+                >
+                  <path
+                    d="M4 6L8 10L12 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
 
             <!-- 作者信息 -->
-            <div v-if="testimonials[currentIndex]" class="mb-4 text-sm font-semibold text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div v-if="testimonials[currentIndex]" class="mb-0 text-sm font-semibold text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
               {{ testimonials[currentIndex]?.author }} / {{ testimonials[currentIndex]?.location }}
-            </div>
-
-            <!-- Expand/Minimize 按钮 -->
-            <div
-              v-if="testimonials[currentIndex] && needsExpand(testimonials[currentIndex]?.content)"
-              class="expand-button group flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
-              style="font-family: var(--font-secondary)"
-              @click="toggleExpand(currentIndex)"
-            >
-              <span class="font-medium transition-all duration-300 group-hover:font-semibold">
-                {{ isExpanded(currentIndex) ? (locale === 'zh' ? '收起' : 'Minimize') : (locale === 'zh' ? '展开' : 'Expand') }}
-              </span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                :class="{ 'rotate-180': isExpanded(currentIndex) }"
-                class="transition-transform duration-500 ease-in-out group-hover:scale-110"
-              >
-                <path
-                  d="M4 6L8 10L12 6"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
             </div>
           </div>
         </div>
@@ -450,8 +457,8 @@ function formatContent(content: string | undefined) {
 .card-inner {
   transition:
     box-shadow 0.3s ease,
-    transform 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 /* 内容展开/收起动画 */
