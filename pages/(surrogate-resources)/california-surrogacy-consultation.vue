@@ -185,7 +185,6 @@ const expandedInsurance = ref(false)
 function toggleFaq(q: string) {
   expandedFaq[q] = !expandedFaq[q]
 }
-
 function goToQualification() {
   navigateTo(qualificationUrl.value)
 }
@@ -242,7 +241,7 @@ function goToQualification() {
           </div>
           <div class="rounded-6 bg-white/90 p-6 shadow-xl backdrop-blur">
             <div class="aspect-video w-full overflow-hidden rounded-4 bg-[var(--light-cream)]">
-              <img src="/images/landingpage3/Surrogacy-Requirements.jpg" alt="加州代孕咨询" class="h-full w-full object-cover">
+              <img src="/images/landingpage3/surrogacy-consultation.jpg" alt="加州代孕咨询" class="h-full w-full object-cover">
             </div>
           </div>
         </div>
@@ -405,12 +404,6 @@ function goToQualification() {
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
             作为洛杉矶起家的美国代孕机构，我们把每一步做成可交付的“项目管理”
           </h2>
-          <button
-            class="rounded-full border border-[var(--primary-brown)] px-5 py-2.5 text-3.5 font-semibold text-[var(--primary-brown)] transition hover:bg-[var(--light-cream)]"
-            @click="goToQualification"
-          >
-            免费中文咨询
-          </button>
         </div>
         <p class="mt-2 text-4 leading-relaxed">
           你不是在买一个“承诺”，而是在买一套流程管理 + 合规协同 + 透明交付的能力。
