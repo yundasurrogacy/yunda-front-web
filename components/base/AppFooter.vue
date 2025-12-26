@@ -113,6 +113,12 @@ const localePath = useLocalePath()
               <div class="space-y-1">
                 <hr class="my-2 border-[var(--dark-brown)]">
                 <NuxtLink
+                  :to="localePath('/california-surrogacy-consultation')"
+                  class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
+                >
+                  {{ $t('footer.sections.surrogateConsultation') }}
+                </NuxtLink>
+                <NuxtLink
                   :to="localePath('/become-a-surrogate')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
