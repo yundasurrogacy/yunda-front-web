@@ -7,18 +7,21 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 useHead({
-  title: '加州/洛杉矶代孕咨询｜Yunda Surrogacy 美国代孕机构｜费用明细透明',
+  title: '加州代孕咨询｜Yunda Surrogacy 美国代孕机构｜费用明细透明',
   meta: [
     {
       name: 'description',
-      content: '面向华人家庭的加州/洛杉矶代孕咨询：代母筛选匹配、费用明细与时间线透明；协同律师办理PBO亲权。提交表单获取报价清单。',
+      content: '面向华人家庭的加州代孕咨询：代母筛选匹配、费用明细与时间线透明；协同律师办理PBO亲权。提交表单获取报价清单。',
     },
   ],
 })
 
+const localePath = useLocalePath()
+const qualificationUrl = computed(() => localePath('/surrogate-qualification'))
+
 const heroPoints = [
   '费用透明：提供清晰的费用构成与预算规划，按里程碑节点管理资金（Escrow）。',
-  '加州/洛杉矶资源协同：对接生殖诊所、心理支持与保险等第三方团队，减少信息差。',
+  '加州资源协同：对接生殖诊所、心理支持与保险等第三方团队，减少信息差。',
   '中文沟通更省心：支持普通话沟通与翻译协助（含与代母沟通）。',
 ]
 
@@ -47,10 +50,6 @@ const processSteps = [
   '分娩与后续文件：按流程准备相关文件与出院后安排',
 ]
 
-const costOverview = {
-  total: '$157,850',
-  note: '分阶段打款 + 账单核对后多退少补（未发生的费用在周期结束核对后退回）',
-}
 
 const installmentSteps = [
   {
@@ -130,7 +129,7 @@ const timelineSteps = [
 
 const faqItems = [
   {
-    q: '美国代孕合法吗？加州/洛杉矶为什么被很多家庭选择？',
+    q: '美国代孕合法吗？加州为什么被很多家庭选择？',
     a: '美国各州规则不同。我们在美国45个辅助生殖合法州建立合作与招募网络，可根据你的家庭情况建议更合适的州与路径。',
   },
   {
@@ -142,8 +141,8 @@ const faqItems = [
     a: '我们对代母执行严格筛查，资料中明确：代母录取通过率低于1%，筛查包含背景、健康与心理评估等。',
   },
   {
-    q: '加州/洛杉矶代孕多少钱？费用一般怎么构成？',
-    a: '你们最关心的通常是代孕费用透明度。套餐示例总费用为 $157,850，并在费用表中拆分到服务费、信托管理费、法律费、保险与津贴等条目。',
+    q: '加州代孕多少钱？费用一般怎么构成？',
+    a: '你们最关心的通常是代孕费用透明度。套餐示例总费用为 $15000+，并在费用表中拆分到服务费、信托管理费、法律费、保险与津贴等条目。',
   },
   {
     q: '费用怎么支付？为什么要用信托账户（Escrow）？',
@@ -187,38 +186,10 @@ function toggleFaq(q: string) {
   expandedFaq[q] = !expandedFaq[q]
 }
 
-const formState = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  wechat: '',
-  message: '',
-  submitted: false,
-})
-
-const formErrors = reactive<Record<string, string>>({})
-
-function scrollToForm() {
-  const el = document.getElementById('lead-form')
-  if (el)
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+function goToQualification() {
+  navigateTo(qualificationUrl.value)
 }
 
-function validateForm() {
-  formErrors.name = formState.name.trim() ? '' : '请填写姓名'
-  formErrors.phone = formState.phone.trim() ? '' : '请填写手机号'
-  formErrors.message = formState.message.trim() ? '' : '请简单描述您的需求'
-  return !formErrors.name && !formErrors.phone && !formErrors.message
-}
-
-function submitForm() {
-  if (!validateForm())
-    return
-  formState.submitted = true
-}
-
-const ctaLabel = '免费获取：加州/洛杉矶代孕报价清单 + 流程时间线'
-const ctaButton = '提交表单领取（中文顾问对接）'
 </script>
 
 <template>
@@ -235,10 +206,10 @@ const ctaButton = '提交表单领取（中文顾问对接）'
         <div class="grid gap-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="space-y-6">
             <div class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-brown)]/10 px-3 py-1 text-3 text-[var(--primary-brown)] font-semibold">
-              加州/洛杉矶代孕咨询｜美国代孕机构（中文顾问）
+              加州代孕咨询｜美国代孕机构（中文顾问）
             </div>
             <h1 class="text-8 font-semibold leading-tight lg:text-11" style="font-family: var(--font-primary)">
-              加州/洛杉矶代孕咨询｜美国代孕机构（中文顾问）
+              加州代孕咨询｜美国代孕机构（中文顾问）
             </h1>
             <p class="text-4.5 leading-relaxed">
               面向华人家庭的美国代孕咨询服务：围绕代母筛选与匹配、代孕费用明细、代孕流程时间线，并在合作律师指导下推进加州 PBO 亲权流程，让每一步更清晰、更可控。
@@ -259,14 +230,8 @@ const ctaButton = '提交表单领取（中文顾问对接）'
             </div>
             <div class="flex flex-wrap gap-4">
               <button
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
-                @click="scrollToForm"
-              >
-                免费获取：加州/洛杉矶代孕报价清单 + 流程时间线
-              </button>
-              <button
                 class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition hover:bg-white"
-                @click="scrollToForm"
+                @click="goToQualification"
               >
                 留下需求，发送流程节点与材料清单
               </button>
@@ -277,90 +242,8 @@ const ctaButton = '提交表单领取（中文顾问对接）'
           </div>
           <div class="rounded-6 bg-white/90 p-6 shadow-xl backdrop-blur">
             <div class="aspect-video w-full overflow-hidden rounded-4 bg-[var(--light-cream)]">
-              <img src="/images/landingpage3/Surrogacy-Requirements.jpg" alt="加州/洛杉矶代孕咨询" class="h-full w-full object-cover">
+              <img src="/images/landingpage3/Surrogacy-Requirements.jpg" alt="加州代孕咨询" class="h-full w-full object-cover">
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Form -->
-    <section id="lead-form" class="relative -mt-14 pb-6">
-      <div class="mx-auto max-w-220 px-5 lg:px-10">
-        <div class="grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
-          <div class="rounded-6 border border-[var(--olive-green)]/40 bg-white/95 p-8 shadow-lg">
-            <h2 class="text-6 font-semibold" style="font-family: var(--font-primary)">
-              免费获取：加州/洛杉矶代孕报价清单 + 流程时间线 + 材料清单
-            </h2>
-            <p class="mt-2 text-4 leading-relaxed text-[var(--dark-brown)]/90">
-              把问题写在表单里，我们会按你的情况给出加州/洛杉矶代孕的预算范围 + 时间线建议。
-            </p>
-            <form class="mt-6 grid gap-4" @submit.prevent="submitForm">
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label class="block text-3.5 font-semibold text-[var(--primary-brown)]">姓名 *</label>
-                  <input v-model="formState.name" type="text" class="mt-2 w-full rounded-4 border border-[var(--primary-brown)]/30 bg-[var(--head-bg)] px-4 py-3 focus:border-[var(--primary-brown)] focus:outline-none">
-                  <p v-if="formErrors.name" class="mt-1 text-3 text-red-500">
-                    {{ formErrors.name }}
-                  </p>
-                </div>
-                <div>
-                  <label class="block text-3.5 font-semibold text-[var(--primary-brown)]">手机号 *</label>
-                  <input v-model="formState.phone" type="text" class="mt-2 w-full rounded-4 border border-[var(--primary-brown)]/30 bg-[var(--head-bg)] px-4 py-3 focus:border-[var(--primary-brown)] focus:outline-none">
-                  <p v-if="formErrors.phone" class="mt-1 text-3 text-red-500">
-                    {{ formErrors.phone }}
-                  </p>
-                </div>
-              </div>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label class="block text-3.5 font-semibold text-[var(--primary-brown)]">邮箱</label>
-                  <input v-model="formState.email" type="email" class="mt-2 w-full rounded-4 border border-[var(--primary-brown)]/30 bg-[var(--head-bg)] px-4 py-3 focus:border-[var(--primary-brown)] focus:outline-none">
-                </div>
-                <div>
-                  <label class="block text-3.5 font-semibold text-[var(--primary-brown)]">微信</label>
-                  <input v-model="formState.wechat" type="text" class="mt-2 w-full rounded-4 border border-[var(--primary-brown)]/30 bg-[var(--head-bg)] px-4 py-3 focus:border-[var(--primary-brown)] focus:outline-none">
-                </div>
-              </div>
-              <div>
-                <label class="block text-3.5 font-semibold text-[var(--primary-brown)]">问题/预算/时间计划 *</label>
-                <textarea v-model="formState.message" rows="4" class="mt-2 w-full rounded-4 border border-[var(--primary-brown)]/30 bg-[var(--head-bg)] px-4 py-3 focus:border-[var(--primary-brown)] focus:outline-none" placeholder="写下你的问题：费用、流程、匹配、法律等"></textarea>
-                <p v-if="formErrors.message" class="mt-1 text-3 text-red-500">
-                  {{ formErrors.message }}
-                </p>
-              </div>
-              <div class="flex flex-wrap items-center gap-3">
-                <button
-                  type="submit"
-                  class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
-                >
-                  提交表单领取（中文顾问对接）
-                </button>
-                <p class="text-3.5 text-[var(--primary-brown)]/80">
-                  留下信息后，我们会发送： 流程节点清单 + 需要准备的材料清单（适合首次了解美国代孕的家庭）。
-                </p>
-              </div>
-              <div
-                v-if="formState.submitted"
-                class="rounded-4 border border-[var(--olive-green)]/40 bg-[var(--light-cream)]/60 px-4 py-3 text-3.75 text-[var(--primary-brown)]"
-              >
-                已收到提交，我们会尽快与您联系，并发送加州/洛杉矶代孕报价清单与时间线 PDF。
-              </div>
-            </form>
-          </div>
-          <div class="rounded-6 bg-[var(--foot-bg)]/80 p-6 shadow-inner">
-            <h3 class="text-5 font-semibold" style="font-family: var(--font-primary)">
-              你最关心的，通常是这些：
-            </h3>
-            <ul class="mt-4 space-y-3 text-4 leading-relaxed">
-              <li v-for="p in painPoints" :key="p" class="flex items-start gap-2">
-                <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-[var(--primary-brown)]" />
-                <span>{{ p }}</span>
-              </li>
-            </ul>
-            <p class="mt-4 rounded-4 bg-white/80 p-4 text-3.75 leading-relaxed text-[var(--primary-brown)]">
-              把问题写在表单里，我们会按你的情况给出加州/洛杉矶代孕的预算范围 + 时间线建议。
-            </p>
           </div>
         </div>
       </div>
@@ -371,7 +254,7 @@ const ctaButton = '提交表单领取（中文顾问对接）'
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="text-center">
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
-            Yunda 在加州/洛杉矶代孕咨询中，重点帮你把“复杂”变成“可控”
+            Yunda 在加州代孕咨询中，重点帮你把“复杂”变成“可控”
           </h2>
         </div>
         <div class="mt-10 grid gap-6 md:grid-cols-2">
@@ -398,12 +281,6 @@ const ctaButton = '提交表单领取（中文顾问对接）'
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
             美国代孕流程
           </h2>
-          <button
-            class="rounded-full border border-[var(--primary-brown)] px-5 py-2.5 text-3.5 font-semibold text-[var(--primary-brown)] transition hover:bg-white"
-            @click="scrollToForm"
-          >
-            获取“加州/洛杉矶代孕流程时间线PDF”
-          </button>
         </div>
         <div class="mt-8 grid gap-6 md:grid-cols-2">
           <div
@@ -427,30 +304,13 @@ const ctaButton = '提交表单领取（中文顾问对接）'
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
-            加州/洛杉矶代孕多少钱？费用怎么拆、怎么付更安心
+            加州代孕多少钱？费用怎么拆、怎么付更安心
           </h2>
-          <button
-            class="rounded-full bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-white font-semibold transition hover:bg-[var(--dark-brown)]"
-            @click="scrollToForm"
-          >
-            提交表单领取《加州/洛杉矶代孕费用明细PDF + 付款节奏表》
-          </button>
         </div>
         <p class="mt-4 text-4 leading-relaxed">
           我们把美国代孕费用拆成“可读、可控”的结构，并通过信托账户（Escrow）分阶段管理资金，避免信息差与预算失控。
         </p>
         <div class="mt-6 rounded-6 border border-[var(--olive-green)]/40 bg-white p-6 shadow-lg">
-          <div class="flex flex-wrap items-center gap-6">
-            <div>
-              <p class="text-4.5 font-semibold text-[var(--primary-brown)]">预估总费用</p>
-              <p class="text-7 font-bold" style="font-family: var(--font-primary)">
-                {{ costOverview.total }}
-              </p>
-            </div>
-            <div class="flex-1 rounded-5 bg-[var(--light-cream)]/70 p-4 text-4 leading-relaxed text-[var(--primary-brown)]">
-              费用特点：{{ costOverview.note }}
-            </div>
-          </div>
           <p class="mt-3 text-3.5 text-[var(--primary-brown)]/80">
             不同代母匹配与个案情况会导致费用浮动，具体以实际账单为准。
           </p>
@@ -547,7 +407,7 @@ const ctaButton = '提交表单领取（中文顾问对接）'
           </h2>
           <button
             class="rounded-full border border-[var(--primary-brown)] px-5 py-2.5 text-3.5 font-semibold text-[var(--primary-brown)] transition hover:bg-[var(--light-cream)]"
-            @click="scrollToForm"
+            @click="goToQualification"
           >
             免费中文咨询
           </button>
@@ -570,15 +430,10 @@ const ctaButton = '提交表单领取（中文顾问对接）'
           </div>
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
-          <button
-            class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
-            @click="scrollToForm"
-          >
-            获取：加州/洛杉矶代孕费用明细 + 流程时间线 + 材料清单
-          </button>
+        
           <button
             class="rounded-full border border-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold text-[var(--primary-brown)] uppercase transition hover:bg-white"
-            @click="scrollToForm"
+            @click="goToQualification"
           >
             免费中文咨询
           </button>
@@ -591,17 +446,11 @@ const ctaButton = '提交表单领取（中文顾问对接）'
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
-            加州/洛杉矶代孕流程怎么走？关键节点一览（可领取时间线清单）
+            加州代孕流程怎么走？关键节点一览
           </h2>
-          <button
-            class="rounded-full bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-white font-semibold transition hover:bg-[var(--dark-brown)]"
-            @click="scrollToForm"
-          >
-            获取《加州/洛杉矶代孕流程时间线PDF + 材料清单》
-          </button>
         </div>
         <p class="mt-3 text-4 leading-relaxed">
-          很多华人家庭咨询洛杉矶代孕/加州代孕时，最想确认两件事：代孕流程是否清晰、每一步是否有人负责推进。我们把旅程拆成可执行的节点，并由项目经理按周/月更新进度，减少跨境沟通成本。
+          很多华人家庭咨询加州代孕时，最想确认两件事：代孕流程是否清晰、每一步是否有人负责推进。我们把旅程拆成可执行的节点，并由项目经理按周/月更新进度，减少跨境沟通成本。
         </p>
         <div class="mt-8 grid gap-4 md:grid-cols-2">
           <div
@@ -628,11 +477,11 @@ const ctaButton = '提交表单领取（中文顾问对接）'
       <div class="mx-auto max-w-240 px-5 lg:px-10">
         <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
           <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
-            美国代孕（加州/洛杉矶）常见问题
+            美国代孕（加州）常见问题
           </h2>
           <button
             class="rounded-full bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-white font-semibold transition hover:bg-[var(--dark-brown)]"
-            @click="scrollToForm"
+            @click="goToQualification"
           >
             提交表单领取（中文顾问对接）
           </button>
@@ -660,14 +509,8 @@ const ctaButton = '提交表单领取（中文顾问对接）'
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
           <button
-            class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
-            @click="scrollToForm"
-          >
-            免费获取：加州/洛杉矶代孕报价清单 + 流程时间线 + 材料准备清单
-          </button>
-          <button
             class="rounded-full border border-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold text-[var(--primary-brown)] uppercase transition hover:bg-[var(--light-cream)]"
-            @click="scrollToForm"
+            @click="goToQualification"
           >
             提交表单领取（中文顾问对接）
           </button>
