@@ -5,12 +5,68 @@ import { buildBlogPostingSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+const blogCopyEn = {
+  meta: {
+    title: 'Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing',
+    description: 'Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.',
+  },
+  categories: {
+    all: 'All',
+    categoryRelatedToSurrogate: 'Surrogate Related',
+    categoryRelatedToParents: 'Intended Parents Related',
+    categoryRelatedToBrand: 'Yunda Brand Related',
+    categoryRelatedToProcess: 'Surrogacy Process Related',
+    categoryRelatedToLaw: 'Legal & Regulatory Related',
+    categoryRelatedToIndustry: 'Industry News Related',
+    categoryRelatedToMedical: 'Medical & Health Related',
+    categoryRelatedToEducation: 'Educational & Informative',
+    categoryRelatedToSuccess: 'Success Stories Related',
+    categoryRelatedToPsychology: 'Psychology & Emotional Related',
+  },
+  authorDefault: 'Yunda Team',
+  tagsTitle: 'Related Tags',
+  loading: 'Loading...',
+  backToList: 'Back to Blog List',
+  detailNoContent: 'No content available',
+}
+
+const blogCopyZh = {
+  meta: {
+    title: '代孕知识博客 - 孕达代孕 | 专业代孕资讯与经验分享',
+    description: '孕达代孕知识博客，分享专业的代孕资讯、成功案例、医学知识、法律法规等，帮助准父母和代孕妈妈了解更多代孕相关信息。',
+  },
+  categories: {
+    all: '全部',
+    categoryRelatedToSurrogate: '代孕妈妈相关',
+    categoryRelatedToParents: '准父母相关',
+    categoryRelatedToBrand: '孕达品牌相关',
+    categoryRelatedToProcess: '代孕流程相关',
+    categoryRelatedToLaw: '法律法规相关',
+    categoryRelatedToIndustry: '行业动态相关',
+    categoryRelatedToMedical: '医学健康相关',
+    categoryRelatedToEducation: '教育科普相关',
+    categoryRelatedToSuccess: '成功案例相关',
+    categoryRelatedToPsychology: '心理情绪相关',
+  },
+  authorDefault: '孕达团队',
+  tagsTitle: '相关标签',
+  loading: '加载中...',
+  backToList: '返回博客列表',
+  detailNoContent: '暂无内容',
+}
+
+const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
+
+function getUiCategoryLabel(key: string) {
+  return blogCopy.value.categories[key] || key
+}
 
 interface Blog {
   id: number
@@ -150,7 +206,7 @@ function getCategoryName(categoryValue: string): string {
   const categoryOption = categoryOptions.find(option => option.value === categoryValue)
   if (categoryOption) {
     // 使用i18n翻译
-    return t(`blog.categories.${categoryOption.key}`)
+    return getUiCategoryLabel(categoryOption.key)
   }
   // 如果找不到对应的翻译，直接返回原值
   return categoryValue
@@ -198,7 +254,7 @@ const blogPostingSchema = computed(() => {
     url: blogUrl,
     baseUrl: siteUrl.value || undefined,
     locale: locale.value,
-    author: blog.value.reference_author || t('blog.author.default'),
+    author: blog.value.reference_author || blogCopy.value.authorDefault,
     datePublished: blog.value.created_at,
     dateModified: blog.value.updated_at,
     keywords: blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : undefined,
@@ -208,19 +264,19 @@ const blogPostingSchema = computed(() => {
 
 // SEO 配置
 useHead(() => ({
-  title: blog.value ? getBlogTitle(blog.value) : t('blog.meta.title'),
+  title: blog.value ? getBlogTitle(blog.value) : blogCopy.value.meta.title,
   meta: [
     {
       name: 'description',
-      content: blog.value ? getBlogExcerpt(blog.value, 159) : t('blog.meta.description'),
+      content: blog.value ? getBlogExcerpt(blog.value, 159) : blogCopy.value.meta.description,
     },
     {
       property: 'og:title',
-      content: blog.value ? getBlogTitle(blog.value) : t('blog.meta.title'),
+      content: blog.value ? getBlogTitle(blog.value) : blogCopy.value.meta.title,
     },
     {
       property: 'og:description',
-      content: blog.value ? getBlogExcerpt(blog.value, 159) : t('blog.meta.description'),
+      content: blog.value ? getBlogExcerpt(blog.value, 159) : blogCopy.value.meta.description,
     },
     {
       property: 'og:type',
@@ -256,7 +312,7 @@ useHead(() => (blogPostingSchema.value
       <div v-if="loading" class="flex items-center justify-center py-24">
         <div class="inline-block size-12 animate-spin border-4 border-[#A9A67D] border-b-transparent rounded-full" />
         <p class="ml-4 text-lg text-gray-600">
-          {{ $t('blog.loading') }}
+          {{ blogCopy.loading }}
         </p>
       </div>
 
@@ -269,7 +325,7 @@ useHead(() => (blogPostingSchema.value
           class="mt-6 rounded-lg bg-[#A9A67D] px-6 py-3 text-white transition-colors hover:bg-[#9A8F6D]"
           @click="goBack"
         >
-          {{ $t('blog.backToList') }}
+          {{ blogCopy.backToList }}
         </button>
       </div>
 
@@ -283,7 +339,7 @@ useHead(() => (blogPostingSchema.value
           <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          {{ $t('blog.backToList') }}
+          {{ blogCopy.backToList }}
         </button>
 
         <!-- 博客内容卡片 -->
@@ -315,7 +371,7 @@ useHead(() => (blogPostingSchema.value
                 <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
-                <span class="font-medium">{{ blog.reference_author || $t('blog.author.default') }}</span>
+                <span class="font-medium">{{ blog.reference_author || blogCopy.authorDefault }}</span>
               </div>
               <div class="flex items-center">
                 <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -335,7 +391,7 @@ useHead(() => (blogPostingSchema.value
                 v-html="getBlogContent(blog)"
               />
               <div v-else class="text-gray-500">
-                {{ $t('blog.detail.noContent') }}
+                {{ blogCopy.detailNoContent }}
               </div>
             </div>
 
@@ -349,7 +405,7 @@ useHead(() => (blogPostingSchema.value
                   <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
                 <h4 class="text-sm text-gray-700 font-medium">
-                  {{ $t('blog.tags.title') }}
+                  {{ blogCopy.tagsTitle }}
                 </h4>
               </div>
               <div class="flex flex-wrap gap-2">
@@ -372,7 +428,7 @@ useHead(() => (blogPostingSchema.value
                 <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                {{ $t('blog.backToList') }}
+                {{ blogCopy.backToList }}
               </button>
             </div>
           </div>

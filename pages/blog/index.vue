@@ -10,9 +10,110 @@ definePageMeta({
   ssr: false,
 })
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const blogCopyEn = {
+  meta: {
+    title: 'Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing',
+    description: 'Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.',
+  },
+  title: 'Blog',
+  heroAlt: 'Surrogacy Consultation',
+  search: {
+    title: 'Blog Search',
+    placeholder: 'Search blog articles...',
+  },
+  categories: {
+    all: 'All',
+    categoryRelatedToSurrogate: 'Surrogate Related',
+    categoryRelatedToParents: 'Intended Parents Related',
+    categoryRelatedToBrand: 'Yunda Brand Related',
+    categoryRelatedToProcess: 'Surrogacy Process Related',
+    categoryRelatedToLaw: 'Legal & Regulatory Related',
+    categoryRelatedToIndustry: 'Industry News Related',
+    categoryRelatedToMedical: 'Medical & Health Related',
+    categoryRelatedToEducation: 'Educational & Informative',
+    categoryRelatedToSuccess: 'Success Stories Related',
+    categoryRelatedToPsychology: 'Psychology & Emotional Related',
+  },
+  authorDefault: 'Yunda Team',
+  tagsTitle: 'Related Tags',
+  loading: 'Loading...',
+  retry: 'Retry',
+  clearFilters: 'Clear Filters',
+  pagination: {
+    previous: 'Previous',
+    next: 'Next',
+    first: 'First',
+    last: 'Last',
+    showing: 'Showing',
+    of: 'of',
+    results: 'results',
+    goTo: 'Go to',
+    go: 'Go',
+  },
+  noResults: {
+    title: 'No articles found',
+    description: 'Please try different search terms or clear the filters',
+  },
+  detailNoContent: 'No content available',
+  backToList: 'Back to Blog List',
+}
+
+const blogCopyZh = {
+  meta: {
+    title: '代孕知识博客 - 孕达代孕 | 专业代孕资讯与经验分享',
+    description: '孕达代孕知识博客，分享专业的代孕资讯、成功案例、医学知识、法律法规等，帮助准父母和代孕妈妈了解更多代孕相关信息。',
+  },
+  title: '博客',
+  heroAlt: '代孕咨询',
+  search: {
+    title: '博客搜索',
+    placeholder: '搜索博客文章...',
+  },
+  categories: {
+    all: '全部',
+    categoryRelatedToSurrogate: '代孕妈妈相关',
+    categoryRelatedToParents: '准父母相关',
+    categoryRelatedToBrand: '孕达品牌相关',
+    categoryRelatedToProcess: '代孕流程相关',
+    categoryRelatedToLaw: '法律法规相关',
+    categoryRelatedToIndustry: '行业动态相关',
+    categoryRelatedToMedical: '医学健康相关',
+    categoryRelatedToEducation: '教育科普相关',
+    categoryRelatedToSuccess: '成功案例相关',
+    categoryRelatedToPsychology: '心理情绪相关',
+  },
+  authorDefault: '孕达团队',
+  tagsTitle: '相关标签',
+  loading: '加载中...',
+  retry: '重试',
+  clearFilters: '清除筛选',
+  pagination: {
+    previous: '上一页',
+    next: '下一页',
+    first: '首页',
+    last: '末页',
+    showing: '显示',
+    of: '共',
+    results: '条结果',
+    goTo: '跳转到',
+    go: '跳转',
+  },
+  noResults: {
+    title: '未找到相关文章',
+    description: '请尝试其他搜索词或清除筛选条件',
+  },
+  detailNoContent: '暂无内容',
+  backToList: '返回博客列表',
+}
+
+const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
+
+function getUiCategoryLabel(key: string) {
+  return blogCopy.value.categories[key] || key
+}
 
 // 根据当前语言获取博客标题
 function getBlogTitle(blog: Blog | null): string {
@@ -71,27 +172,27 @@ function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
 }
 
 // SEO 配置
-useHead({
-  title: t('blog.meta.title'),
+useHead(() => ({
+  title: blogCopy.value.meta.title,
   meta: [
     {
       name: 'description',
-      content: t('blog.meta.description'),
+      content: blogCopy.value.meta.description,
     },
     {
       property: 'og:title',
-      content: t('blog.meta.title'),
+      content: blogCopy.value.meta.title,
     },
     {
       property: 'og:description',
-      content: t('blog.meta.description'),
+      content: blogCopy.value.meta.description,
     },
     {
       property: 'og:type',
       content: 'website',
     },
   ],
-})
+}))
 
 interface Blog {
   id: number
@@ -179,7 +280,7 @@ function getCategoryName(categoryValue: string): string {
   const categoryOption = categoryOptions.find(option => option.value === categoryValue)
   if (categoryOption) {
     // 使用i18n翻译
-    return t(`blog.categories.${categoryOption.key}`)
+    return getUiCategoryLabel(categoryOption.key)
   }
   // 如果找不到对应的翻译，直接返回原值
   return categoryValue
@@ -286,8 +387,8 @@ const blogListSchema = computed(() => {
     return null
 
   return buildBlogListSchema({
-    name: t('blog.meta.title'),
-    description: t('blog.meta.description'),
+    name: blogCopy.value.meta.title,
+    description: blogCopy.value.meta.description,
     baseUrl: siteUrl.value || undefined,
     locale: locale.value,
     path: '/blog',
@@ -568,7 +669,7 @@ onBeforeUnmount(() => {
         <div class="w-full flex items-center justify-center bg-white p-0 lg:w-1/2" style="aspect-ratio: 16/9;">
           <img
             src="/images/blog-hero.webp"
-            :alt="$t('blog.heroAlt')"
+            :alt="blogCopy.heroAlt"
             class="m-0 h-full w-full rounded-none object-cover"
             style="display:block;"
             loading="eager"
@@ -579,18 +680,18 @@ onBeforeUnmount(() => {
         <div class="w-full flex flex-col items-center justify-center bg-[#FAF1E0] px-8 py-16 lg:w-1/2">
           <div class="mx-auto max-w-md w-full flex flex-col items-center">
             <h1 class="mb-10 text-center text-5xl text-gray-900 font-bold font-[Cormorant,serif]">
-              {{ $t('blog.title') }}
+              {{ blogCopy.title }}
             </h1>
             <!-- 搜索卡片区域 -->
             <div class="w-full flex flex-col items-center rounded-xl bg-white px-8 py-6 shadow-lg">
               <div class="mb-3 w-full text-left text-base text-gray-700 font-medium">
-                {{ $t('blog.search.title') }}
+                {{ blogCopy.search.title }}
               </div>
               <div class="relative w-full">
                 <input
                   v-model="searchQuery"
                   type="text"
-                  :placeholder="$t('blog.search.placeholder')"
+                  :placeholder="blogCopy.search.placeholder"
                   class="w-full border border-gray-300 rounded-xl py-4 pl-12 pr-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#A9A67D]/30"
                   style="background-color: #CAD3D0;"
                 >
@@ -634,7 +735,7 @@ onBeforeUnmount(() => {
                     ]"
                     @click="selectedCategory = category"
                   >
-                    {{ $t(`blog.categories.${category}`) }}
+                    {{ getUiCategoryLabel(category) }}
                     <span class="ml-2 opacity-75">
                       ({{ category === 'all' ? totalCount : (categoryCounts[category] || 0) }})
                     </span>
@@ -647,7 +748,7 @@ onBeforeUnmount(() => {
                   class="mt-3 w-full touch-manipulation rounded-lg px-3 py-2 text-xs text-red-600 font-medium transition-colors lg:mt-4 active:bg-red-50 lg:px-4 lg:text-sm lg:hover:bg-red-50 lg:hover:text-red-700"
                   @click="clearFilters"
                 >
-                  {{ $t('blog.clearFilters') }}
+                  {{ blogCopy.clearFilters }}
                 </button>
               </div>
             </div>
@@ -658,7 +759,7 @@ onBeforeUnmount(() => {
               <div v-if="loading" class="py-12 text-center">
                 <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
                 <p class="mt-4 text-gray-600">
-                  {{ $t('blog.loading') }}
+                  {{ blogCopy.loading }}
                 </p>
               </div>
 
@@ -671,7 +772,7 @@ onBeforeUnmount(() => {
                   class="mt-4 rounded-lg bg-[#A9A67D] px-6 py-2 text-white transition-colors hover:bg-[#9A8F6D]"
                   @click="refreshBlogData"
                 >
-                  {{ $t('blog.retry') }}
+                  {{ blogCopy.retry }}
                 </button>
               </div>
 
@@ -734,7 +835,7 @@ onBeforeUnmount(() => {
 
                       <!-- 作者 -->
                       <div class="flex items-center text-xs text-gray-500">
-                        <span>{{ blog.reference_author || $t('blog.author.default') }}</span>
+                        <span>{{ blog.reference_author || blogCopy.authorDefault }}</span>
                       </div>
                     </div>
                   </NuxtLink>
@@ -747,10 +848,10 @@ onBeforeUnmount(() => {
                   📭
                 </div>
                 <h3 class="mb-2 text-2xl text-gray-900 font-bold">
-                  {{ $t('blog.noResults.title') }}
+                  {{ blogCopy.noResults.title }}
                 </h3>
                 <p class="text-gray-600">
-                  {{ $t('blog.noResults.description') }}
+                  {{ blogCopy.noResults.description }}
                 </p>
               </div>
 
@@ -761,7 +862,7 @@ onBeforeUnmount(() => {
               >
                 <!-- 分页信息 -->
                 <div class="text-sm text-gray-600">
-                  {{ $t('blog.pagination.showing') }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ $t('blog.pagination.of') }} {{ pagination?.totalCount || 0 }} {{ $t('blog.pagination.results') }}
+                  {{ blogCopy.pagination.showing }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ blogCopy.pagination.of }} {{ pagination?.totalCount || 0 }} {{ blogCopy.pagination.results }}
                 </div>
 
                 <!-- 分页导航 -->
@@ -772,7 +873,7 @@ onBeforeUnmount(() => {
                     class="border border-gray-300 rounded-l-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
                     @click="currentPage = 1"
                   >
-                    {{ $t('blog.pagination.first') }}
+                    {{ blogCopy.pagination.first }}
                   </button>
 
                   <!-- 上一页按钮 -->
@@ -900,13 +1001,13 @@ onBeforeUnmount(() => {
                     class="border border-gray-300 rounded-r-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
                     @click="currentPage = totalPages"
                   >
-                    {{ $t('blog.pagination.last') }}
+                    {{ blogCopy.pagination.last }}
                   </button>
                 </nav>
 
                 <!-- 快速跳转 -->
                 <div class="flex items-center text-sm space-x-2">
-                  <span class="text-gray-600">{{ $t('blog.pagination.goTo') }}</span>
+                  <span class="text-gray-600">{{ blogCopy.pagination.goTo }}</span>
                   <input
                     v-model.number="jumpToPage"
                     type="number"
@@ -919,7 +1020,7 @@ onBeforeUnmount(() => {
                     class="rounded bg-[#A9A67D] px-3 py-1 text-sm text-white transition-colors hover:bg-[#9A8F6D]"
                     @click="jumpToPageHandler"
                   >
-                    {{ $t('blog.pagination.go') }}
+                    {{ blogCopy.pagination.go }}
                   </button>
                 </div>
               </div>
@@ -940,7 +1041,7 @@ onBeforeUnmount(() => {
                 <div class="py-12 text-center">
                   <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
                   <p class="mt-4 text-gray-600">
-                    {{ $t('blog.loading') }}
+                    {{ blogCopy.loading }}
                   </p>
                 </div>
               </div>
