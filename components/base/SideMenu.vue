@@ -206,13 +206,12 @@ function toggleMenu() {
                 >
                   {{ $t("menu.aboutUs") }}
                 </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogate-qualification')"
+                <a
+                  href="mailto:kayla@yundasurrogacy.com"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
-                  @click="toggleMenu"
                 >
                   {{ $t("menu.contactUs") }}
-                </NuxtLink>
+                </a>
                 <a
                   href="https://www.indeed.com/cmp/Yunda-Surrogacy"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
@@ -419,13 +418,12 @@ function toggleMenu() {
                 >
                   {{ $t("menu.aboutUs") }}
                 </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogate-qualification')"
+                <a
+                  href="mailto:kayla@yundasurrogacy.com"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
-                  @click="toggleMenu"
                 >
                   {{ $t("menu.contactUs") }}
-                </NuxtLink>
+                </a>
                 <a
                   href="https://www.indeed.com/cmp/Yunda-Surrogacy"
                   class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
