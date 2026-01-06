@@ -100,6 +100,7 @@ const form = reactive({
 
   // 同意条款
   consentAgreement: false,
+  consentTermsAndPrivacy: false, // 新增：同意 Terms of Service 和 Privacy Policy
   consentSMS: false,
 })
 
@@ -123,6 +124,8 @@ const { t, locale } = useI18n()
 const { $fbPixel } = useNuxtApp()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const router = useRouter()
+const localePath = useLocalePath()
 
 const parentHowToSteps = computed(() => [
   {
@@ -211,11 +214,20 @@ async function handleSubmit() {
     return
   }
 
-  // Validate consent agreement
+  // Validate consent agreements
   if (!form.consentAgreement) {
     modalConfig.type = 'error'
     modalConfig.title = t('modal.error.consentRequired.title')
     modalConfig.message = t('modal.error.consentRequired.message')
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
+  }
+
+  if (!form.consentTermsAndPrivacy) {
+    modalConfig.type = 'error'
+    modalConfig.title = t('modal.error.consentRequired.title')
+    modalConfig.message = t('modal.error.termsAndPrivacyRequired.message')
     modalConfig.buttonText = t('modal.error.ok')
     showModal.value = true
     return
@@ -358,17 +370,21 @@ async function handleSubmit() {
       }
     }
 
-    // Show success modal
-    modalConfig.type = 'success'
-    modalConfig.title = t('modal.success.parent.title')
-    modalConfig.message = t('modal.success.parent.message')
-    modalConfig.buttonText = t('modal.error.ok')
-    showModal.value = true
+    // 跳转到 Thank-you 页面，传递用户信息用于预填预约表单
+    const fullName = `${form.firstName} ${form.lastName}`.trim()
+    const queryParams: Record<string, string> = {}
+    if (fullName) {
+      queryParams.name = fullName
+    }
+    if (form.email) {
+      queryParams.email = form.email
+    }
 
-    // Reset form after successful submission
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, 500)
+    // 跳转到 thank-you 页面
+    await router.push({
+      path: localePath('/be-parents/thanks'),
+      query: queryParams,
+    })
 
     isSubmitting.value = false
   }
@@ -819,6 +835,27 @@ async function handleSubmit() {
             <h4 class="mb-4 text-5">
               {{ $t('parent.application.sections.consent') }}
             </h4>
+
+            <!-- Terms of Service and Privacy Policy Consent (Required) -->
+            <div class="mb-6">
+              <FormCheckbox
+                v-model="form.consentTermsAndPrivacy"
+                :label="$t('parent.application.form.consentTermsAndPrivacy.label')"
+                required
+              />
+              <p class="ml-6 mt-2 text-13px text-gray-600">
+                <NuxtLink :to="localePath('/terms-of-service')" class="text-blue-600 hover:underline" target="_blank">
+                  {{ $t('parent.application.form.consentTermsAndPrivacy.termsLink') }}
+                </NuxtLink>
+                {{ $t('parent.application.form.consentTermsAndPrivacy.and') }}
+                <NuxtLink :to="localePath('/privacy-policy')" class="text-blue-600 hover:underline" target="_blank">
+                  {{ $t('parent.application.form.consentTermsAndPrivacy.privacyLink') }}
+                </NuxtLink>
+                {{ $t('parent.application.form.consentTermsAndPrivacy.suffix') }}
+              </p>
+            </div>
+
+            <!-- Privacy Policy Consent -->
             <FormCheckbox
               v-model="form.consentAgreement"
               :label="$t('parent.application.form.consentAgreement.label')"
@@ -832,9 +869,9 @@ async function handleSubmit() {
           <div class="flex justify-center">
             <button
               type="submit"
-              :disabled="!form.consentAgreement || isSubmitting"
+              :disabled="!form.consentAgreement || !form.consentTermsAndPrivacy || isSubmitting"
               class="rounded-2.5 bg-[var(--grayish-green)] px-12 py-4 text-20px text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
-              :class="form.consentAgreement && !isSubmitting ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
+              :class="form.consentAgreement && form.consentTermsAndPrivacy && !isSubmitting ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
             >
               {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('parent.application.form.submitButton') }}
             </button>

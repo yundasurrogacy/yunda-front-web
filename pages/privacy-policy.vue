@@ -91,8 +91,9 @@ const translations = {
       item2: '律师和法律服务提供商',
       item3: '托管、保险和金融服务提供商',
       item4: 'IT、CRM、托管、分析和通信供应商',
-      item5: '法律要求时的监管机构或执法部门',
-      item6: '严格用于代孕相关服务的业务合作伙伴，并承担保密义务',
+      item5: '预约调度服务提供商（如 Calendly、Google Calendar 或 Acuity Scheduling），用于管理咨询预约',
+      item6: '法律要求时的监管机构或执法部门',
+      item7: '严格用于代孕相关服务的业务合作伙伴，并承担保密义务',
       thirdParty: '所有第三方都必须仅将您的信息用于授权目的，并维护适当的安全措施。',
     },
     retention: {
@@ -215,8 +216,9 @@ const translations = {
       item2: 'Attorneys and legal service providers',
       item3: 'Escrow, insurance, and financial service providers',
       item4: 'IT, CRM, hosting, analytics, and communication vendors',
-      item5: 'Regulatory authorities or law enforcement when required by law',
-      item6: 'Business partners strictly for surrogacy-related services, with confidentiality obligations',
+      item5: 'Appointment scheduling service providers (such as Calendly, Google Calendar, or Acuity Scheduling) for managing consultation bookings',
+      item6: 'Regulatory authorities or law enforcement when required by law',
+      item7: 'Business partners strictly for surrogacy-related services, with confidentiality obligations',
       thirdParty: 'All third parties are required to use your information only for authorized purposes and to maintain appropriate security measures.',
     },
     retention: {
@@ -429,6 +431,7 @@ useHead({
                 <li>{{ t.sharing.item4 }}</li>
                 <li>{{ t.sharing.item5 }}</li>
                 <li>{{ t.sharing.item6 }}</li>
+                <li>{{ t.sharing.item7 }}</li>
               </ul>
               <p>{{ t.sharing.thirdParty }}</p>
             </div>

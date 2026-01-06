@@ -1310,6 +1310,13 @@
         },
         "referralSource": "How did you hear about Yunda Surrogacy?",
         "initialQuestions": "Do you have any initial questions for our team?",
+        "consentTermsAndPrivacy": {
+          "label": "I have read and agree to",
+          "termsLink": "Terms of Service",
+          "and": ", and acknowledge how",
+          "privacyLink": "Privacy Policy",
+          "suffix": "handles my information"
+        },
         "consentAgreement": {
           "label": "I agree to share my personal information and receive future updates from Yunda Surrogacy via email, text, phone, or post in accordance with the Privacy Policy. I understand I can opt out at any time.",
           "disclaimer": "Your information will be kept strictly confidential and will not be shared or sold to any third parties."
@@ -1337,6 +1344,9 @@
       "consentRequired": {
         "title": "Consent Required",
         "message": "Please check the consent box to submit your application."
+      },
+      "termsAndPrivacyRequired": {
+        "message": "Please check the box to agree to Terms of Service and Privacy Policy to submit your application."
       },
       "tryAgain": "Try Again",
       "unexpectedError": "An unexpected error occurred. Please try again later.",

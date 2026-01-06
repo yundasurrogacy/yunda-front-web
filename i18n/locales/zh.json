@@ -1309,6 +1309,13 @@
         },
         "referralSource": "您是如何了解到孕达代孕的？",
         "initialQuestions": "您有任何想进一步了解的问题或话题吗？",
+        "consentTermsAndPrivacy": {
+          "label": "我已阅读并同意",
+          "termsLink": "Terms of Service",
+          "and": "，并知晓",
+          "privacyLink": "Privacy Policy",
+          "suffix": "如何处理我的信息"
+        },
         "consentAgreement": {
           "label": "我同意分享我的个人信息，并根据隐私政策通过电子邮件、短信、电话或邮寄接收孕达代孕的未来更新。我理解我可以随时退出。",
           "disclaimer": "您的信息将被严格保密，不会分享或出售给任何第三方。"
@@ -1336,6 +1343,9 @@
       "consentRequired": {
         "title": "需要同意",
         "message": "请勾选同意框以提交您的申请。"
+      },
+      "termsAndPrivacyRequired": {
+        "message": "请勾选同意 Terms of Service 和 Privacy Policy 的复选框以提交您的申请。"
       },
       "tryAgain": "重试",
       "unexpectedError": "发生意外错误。请稍后重试。",
