@@ -223,7 +223,7 @@ onMounted(() => {
           <p class="mb-4 text-gray-700 lg:mb-5">
             {{ content.bookingDescription }}
           </p>
-          <p class="mb-6 italic text-sm text-gray-600">
+          <p class="mb-6 text-sm text-gray-600 italic">
             {{ content.note }}
           </p>
 
