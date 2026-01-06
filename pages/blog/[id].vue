@@ -64,8 +64,11 @@ const blogCopyZh = {
 
 const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
 
-function getUiCategoryLabel(key: string) {
-  return blogCopy.value.categories[key] || key
+function getUiCategoryLabel(key: keyof typeof blogCopyEn.categories | string) {
+  // Explicitly check if the key exists in the categories object to fix TS error
+  return Object.prototype.hasOwnProperty.call(blogCopy.value.categories, key)
+    ? blogCopy.value.categories[key as keyof typeof blogCopyEn.categories]
+    : key
 }
 
 interface Blog {

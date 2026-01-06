@@ -114,94 +114,94 @@ useHead({
     <AppHeader />
     <main class="min-h-screen bg-white">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
-        <article class="prose prose-lg max-w-none">
-          <h1 class="mb-4 text-4xl font-bold text-[var(--dark-brown)]">
+        <article class="max-w-none prose prose-lg">
+          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
             {{ t.title }}
           </h1>
 
           <!-- Short Summary -->
           <div class="mb-8 border-l-4 border-yellow-400 bg-yellow-50 p-6">
-            <p class="font-medium leading-relaxed text-gray-800">
+            <p class="text-gray-800 font-medium leading-relaxed">
               {{ t.summary }}
             </p>
           </div>
 
           <!-- Section 1: Informational Purposes Only -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               1. {{ t.section1.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section1.content }}</p>
             </div>
           </section>
 
           <!-- Section 2: No Medical Advice -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               2. {{ t.section2.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section2.content }}</p>
             </div>
           </section>
 
           <!-- Section 3: No Legal Advice -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               3. {{ t.section3.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section3.content }}</p>
             </div>
           </section>
 
           <!-- Section 4: No Professional Relationship -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               4. {{ t.section4.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section4.content }}</p>
             </div>
           </section>
 
           <!-- Section 5: No Guarantee of Outcomes -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               5. {{ t.section5.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section5.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Third-Party Service Providers -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               6. {{ t.section6.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section6.content }}</p>
             </div>
           </section>
 
           <!-- Section 7: International Considerations -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               7. {{ t.section7.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section7.content }}</p>
             </div>
           </section>
 
           <!-- Section 8: User Responsibility -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               8. {{ t.section8.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section8.content }}</p>
             </div>
           </section>

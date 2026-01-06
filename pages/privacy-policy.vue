@@ -280,8 +280,8 @@ useHead({
     <AppHeader />
     <main class="min-h-screen bg-white">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
-        <article class="prose prose-lg max-w-none">
-          <h1 class="mb-4 text-4xl font-bold text-[var(--dark-brown)]">
+        <article class="max-w-none prose prose-lg">
+          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
             {{ t.title }}
           </h1>
 
@@ -290,7 +290,7 @@ useHead({
             <p><strong>{{ t.lastUpdated }}:</strong> {{ t.lastUpdatedValue }}</p>
           </div>
 
-          <div class="mb-8 leading-relaxed text-gray-700">
+          <div class="mb-8 text-gray-700 leading-relaxed">
             <p class="mb-4">
               {{ t.intro1 }}
             </p>
@@ -318,12 +318,12 @@ useHead({
 
           <!-- Section 1: Scope -->
           <section id="scope" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               1. {{ t.scope.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.scope.content1 }}</p>
-              <ul class="list-disc list-inside space-y-2 ml-4">
+              <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.scope.item1 }}</li>
                 <li>{{ t.scope.item2 }}</li>
                 <li>{{ t.scope.item3 }}</li>
@@ -336,10 +336,10 @@ useHead({
 
           <!-- Section 2: Information We Collect -->
           <section id="information" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               2. {{ t.information.title }}
             </h2>
-            <div class="space-y-4 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-4">
               <p>{{ t.information.intro }}</p>
 
               <div>
@@ -361,13 +361,15 @@ useHead({
                   {{ t.information.sensitive.title }}
                 </h3>
                 <p>{{ t.information.sensitive.content1 }}</p>
-                <ul class="ml-4 mt-2 list-inside list-disc space-y-2">
+                <ul class="ml-4 mt-2 list-disc list-inside space-y-2">
                   <li>{{ t.information.sensitive.item1 }}</li>
                   <li>{{ t.information.sensitive.item2 }}</li>
                   <li>{{ t.information.sensitive.item3 }}</li>
                   <li>{{ t.information.sensitive.item4 }}</li>
                 </ul>
-                <p class="mt-2">{{ t.information.sensitive.content2 }}</p>
+                <p class="mt-2">
+                  {{ t.information.sensitive.content2 }}
+                </p>
               </div>
 
               <div>
@@ -384,18 +386,20 @@ useHead({
                 <p>{{ t.information.technical.content }}</p>
               </div>
 
-              <p class="italic">{{ t.information.note }}</p>
+              <p class="italic">
+                {{ t.information.note }}
+              </p>
             </div>
           </section>
 
           <!-- Section 3: How We Use Information -->
           <section id="use" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               3. {{ t.use.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.use.intro }}</p>
-              <ul class="list-disc list-inside space-y-2 ml-4">
+              <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.use.item1 }}</li>
                 <li>{{ t.use.item2 }}</li>
                 <li>{{ t.use.item3 }}</li>
@@ -410,15 +414,15 @@ useHead({
 
           <!-- Section 4: Sharing and Disclosure -->
           <section id="sharing" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               4. {{ t.sharing.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p class="font-semibold">
                 {{ t.sharing.noSell }}
               </p>
               <p>{{ t.sharing.intro }}</p>
-              <ul class="list-disc list-inside space-y-2 ml-4">
+              <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.sharing.item1 }}</li>
                 <li>{{ t.sharing.item2 }}</li>
                 <li>{{ t.sharing.item3 }}</li>
@@ -432,20 +436,20 @@ useHead({
 
           <!-- Section 5: Data Retention -->
           <section id="retention" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               5. {{ t.retention.title }}
             </h2>
-            <div class="leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed">
               <p>{{ t.retention.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Data Security -->
           <section id="security" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               6. {{ t.security.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.security.content1 }}</p>
               <p>{{ t.security.content2 }}</p>
             </div>
@@ -453,7 +457,7 @@ useHead({
 
           <!-- Section 7: Your Privacy Rights -->
           <section id="rights" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               7. {{ t.rights.title }}
             </h2>
 
@@ -462,11 +466,13 @@ useHead({
               <h3 class="mb-3 text-xl font-semibold">
                 7.1 {{ t.rights.california.title }}
               </h3>
-              <div class="space-y-3 leading-relaxed text-gray-700">
+              <div class="text-gray-700 leading-relaxed space-y-3">
                 <p>{{ t.rights.california.content1 }}</p>
                 <p>{{ t.rights.california.content2 }}</p>
                 <p>{{ t.rights.california.content3 }}</p>
-                <p v-if="t.rights.california.content4">{{ t.rights.california.content4 }}</p>
+                <p v-if="t.rights.california.content4">
+                  {{ t.rights.california.content4 }}
+                </p>
               </div>
             </div>
 
@@ -475,9 +481,9 @@ useHead({
               <h3 class="mb-3 text-xl font-semibold">
                 7.2 {{ t.rights.eu.title }}
               </h3>
-              <div class="space-y-3 leading-relaxed text-gray-700">
+              <div class="text-gray-700 leading-relaxed space-y-3">
                 <p>{{ t.rights.eu.content1 }}</p>
-                <ul class="list-disc list-inside space-y-2 ml-4">
+                <ul class="ml-4 list-disc list-inside space-y-2">
                   <li>{{ t.rights.eu.item1 }}</li>
                   <li>{{ t.rights.eu.item2 }}</li>
                   <li>{{ t.rights.eu.item3 }}</li>
@@ -492,10 +498,10 @@ useHead({
 
           <!-- Section 8: Contact Us -->
           <section id="contact" class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               8. {{ t.contact.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.contact.content }}</p>
               <div class="rounded bg-gray-50 p-4">
                 <p>

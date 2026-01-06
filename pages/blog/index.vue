@@ -111,8 +111,10 @@ const blogCopyZh = {
 
 const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
 
-function getUiCategoryLabel(key: string) {
-  return blogCopy.value.categories[key] || key
+function getUiCategoryLabel(key: keyof typeof blogCopyZh.categories | string) {
+  // typesafe category lookup, fallback to key if not found
+  const categories = blogCopy.value.categories as Record<string, string>
+  return categories[key] ?? key
 }
 
 // 根据当前语言获取博客标题

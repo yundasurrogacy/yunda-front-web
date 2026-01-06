@@ -181,8 +181,8 @@ useHead({
     <AppHeader />
     <main class="min-h-screen bg-white">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
-        <article class="prose prose-lg max-w-none">
-          <h1 class="mb-4 text-4xl font-bold text-[var(--dark-brown)]">
+        <article class="max-w-none prose prose-lg">
+          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
             {{ t.title }}
           </h1>
 
@@ -191,7 +191,7 @@ useHead({
             <p><strong>{{ t.lastUpdated }}:</strong> {{ t.lastUpdatedValue }}</p>
           </div>
 
-          <div class="mb-8 leading-relaxed text-gray-700">
+          <div class="mb-8 text-gray-700 leading-relaxed">
             <p class="mb-4">
               {{ t.intro }}
             </p>
@@ -199,74 +199,76 @@ useHead({
 
           <!-- Section 1: Acceptance of Terms -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               1. {{ t.section1.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section1.content }}</p>
             </div>
           </section>
 
           <!-- Section 2: Services Description -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               2. {{ t.section2.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section2.content }}</p>
             </div>
           </section>
 
           <!-- Section 3: Eligibility -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               3. {{ t.section3.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section3.content }}</p>
             </div>
           </section>
 
           <!-- Section 4: User Responsibilities -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               4. {{ t.section4.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section4.content }}</p>
             </div>
           </section>
 
           <!-- Section 5: Privacy and Data Protection -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               5. {{ t.section5.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section5.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Intellectual Property -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               6. {{ t.section6.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section6.content }}</p>
             </div>
           </section>
 
           <!-- Section 7: User Submissions -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               7. {{ t.section7.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section7.content1 }}</p>
               <p>{{ t.section7.content2 }}</p>
-              <p class="mt-4 font-semibold">{{ t.section7.prohibited }}</p>
-              <ul class="ml-4 list-inside list-disc space-y-2">
+              <p class="mt-4 font-semibold">
+                {{ t.section7.prohibited }}
+              </p>
+              <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.section7.prohibitedItem1 }}</li>
                 <li>{{ t.section7.prohibitedItem2 }}</li>
                 <li>{{ t.section7.prohibitedItem3 }}</li>
@@ -279,16 +281,18 @@ useHead({
                 <li>{{ t.section7.prohibitedItem10 }}</li>
                 <li>{{ t.section7.prohibitedItem11 }}</li>
               </ul>
-              <p class="mt-4">{{ t.section7.termination }}</p>
+              <p class="mt-4">
+                {{ t.section7.termination }}
+              </p>
             </div>
           </section>
 
           <!-- Section 8: Disclaimer of Warranties -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               8. {{ t.section8.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section8.content1 }}</p>
               <p>{{ t.section8.content2 }}</p>
             </div>
@@ -296,20 +300,20 @@ useHead({
 
           <!-- Section 9: Governing Law -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               9. {{ t.section9.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section9.content }}</p>
             </div>
           </section>
 
           <!-- Section 10: Privacy Policy -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               10. {{ t.section10.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section10.content }}</p>
               <p>
                 <NuxtLink :to="localePath('/privacy-policy')" class="text-blue-600 hover:underline">
@@ -321,10 +325,10 @@ useHead({
 
           <!-- Section 11: Contact Us -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl font-semibold text-[var(--dark-brown)]">
+            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
               11. {{ t.section11.title }}
             </h2>
-            <div class="space-y-3 leading-relaxed text-gray-700">
+            <div class="text-gray-700 leading-relaxed space-y-3">
               <p>{{ t.section11.content }}</p>
               <div class="rounded bg-gray-50 p-4">
                 <p>
