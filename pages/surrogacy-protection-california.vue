@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import VideoPlayer from '@/components/base/VideoPlayer.vue'
 import VideoPlayerWithCover from '@/components/base/VideoPlayerWithCover.vue'
 
 const { locale } = useI18n()
@@ -191,6 +192,26 @@ useHead({
             <button class="shadow-inner-white-soft rounded-[10px] bg-[var(--light-cream)] px-8 py-4 text-lg text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:underline hover:-translate-y-0.5" style="font-family: var(--font-secondary)">
               {{ t.hero.downloadChecklist }}
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Video Section -->
+    <section class="bg-[var(--light-cream)] py-16 lg:py-24">
+      <div class="mx-auto max-w-1200px px-4 lg:px-6">
+        <div class="mx-auto max-w-800px">
+          <div class="overflow-hidden rounded-2xl shadow-xl">
+            <VideoPlayer
+              video-src="https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_introduce_en.mp4"
+              :autoplay="false"
+              :loop="false"
+              :muted="false"
+              :controls="true"
+              poster="/videos/video-default-poster.webp"
+              video-type="video/mp4"
+              background-color="transparent"
+            />
           </div>
         </div>
       </div>

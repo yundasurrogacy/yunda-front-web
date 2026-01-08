@@ -75,11 +75,11 @@ const calendlyUrl = computed(() => {
   // 解决方案：在 Calendly 后台为中文和英文分别创建不同的事件类型
   // 然后根据当前语言使用不同的链接
   // 例如：
-  // - 中文：https://calendly.com/zhangkairuihahaha/yunda-surrogacy-consultation-zh
-  // - 英文：https://calendly.com/zhangkairuihahaha/yunda-surrogacy-consultation
+  // - 中文：https://calendly.com/kaylal-yundasurrogacy/30min-zh
+  // - 英文：https://calendly.com/kaylal-yundasurrogacy/30min
   const baseUrl = locale.value === 'zh'
-    ? 'https://calendly.com/zhangkairuihahaha/yunda-surrogacy-consultation'
-    : 'https://calendly.com/zhangkairuihahaha/yunda-surrogacy-consultation'
+    ? 'https://calendly.com/kaylal-yundasurrogacy/30min'
+    : 'https://calendly.com/kaylal-yundasurrogacy/30min'
   const params = new URLSearchParams()
 
   // 预填用户信息
