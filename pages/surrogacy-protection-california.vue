@@ -203,7 +203,7 @@ useHead({
         <div class="mx-auto max-w-800px">
           <div class="overflow-hidden rounded-2xl shadow-xl">
             <VideoPlayer
-              video-src="https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_introduce_en.mp4"
+              video-src="https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/Yunda-Feature12_8adjustments.mp4"
               :autoplay="false"
               :loop="false"
               :muted="false"
