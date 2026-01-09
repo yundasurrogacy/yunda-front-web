@@ -200,19 +200,17 @@ useHead({
     <!-- Promotional Video Section -->
     <section class="bg-[var(--light-cream)] py-16 lg:py-24">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
-        <div class="mx-auto max-w-800px">
-          <div class="overflow-hidden rounded-2xl shadow-xl">
-            <VideoPlayer
-              video-src="https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/Yunda-Feature12_8adjustments.mp4"
-              :autoplay="false"
-              :loop="false"
-              :muted="false"
-              :controls="true"
-              poster="/videos/video-default-poster.webp"
-              video-type="video/mp4"
-              background-color="transparent"
-            />
-          </div>
+        <div class="overflow-hidden rounded-2xl shadow-xl">
+          <VideoPlayer
+            video-src="https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/Yunda-Feature12_8adjustments.mp4"
+            :autoplay="false"
+            :loop="false"
+            :muted="false"
+            :controls="true"
+            poster="/videos/video-default-poster.webp"
+            video-type="video/mp4"
+            background-color="transparent"
+          />
         </div>
       </div>
     </section>
