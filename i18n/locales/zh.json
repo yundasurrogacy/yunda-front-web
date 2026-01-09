@@ -21,6 +21,7 @@
     "resourceJourney": "代孕流程",
     "resourceCompensation": "代孕补偿",
     "resourceRequirements": "代孕要求",
+    "resourceProtection": "代孕保护详解",
     "logIn": "登录",
     "aboutUs": "关于我们",
     "contactUs": "联系我们",
@@ -894,7 +895,8 @@
       "surrogateMother": "成为代孕妈妈",
       "surrogateProcess": "代孕流程",
       "surrogateCompensation": "代孕补偿",
-      "surrogateRequirements": "代孕要求"
+      "surrogateRequirements": "代孕要求",
+      "surrogateProtection": "代孕保护详解"
     },
     "socialLinks": {
       "instagram": "INSTAGRAM",

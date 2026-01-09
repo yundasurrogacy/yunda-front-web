@@ -21,6 +21,7 @@
     "resourceJourney": "SURROGATE PROCESS",
     "resourceCompensation": "SURROGATE COMPENSATION",
     "resourceRequirements": "SURROGATE REQUIREMENTS",
+    "resourceProtection": "SURROGACY PROTECTION CALIFORNIA",
     "logIn": "LOG IN",
     "aboutUs": "ABOUT US",
     "contactUs": "CONTACT US",
@@ -894,7 +895,8 @@
       "surrogateMother": "Become a Surrogate",
       "surrogateProcess": "Surrogate Process",
       "surrogateCompensation": "Surrogate Compensation",
-      "surrogateRequirements": "Surrogate Requirements"
+      "surrogateRequirements": "Surrogate Requirements",
+      "surrogateProtection": "Surrogacy Protection California"
     },
     "socialLinks": {
       "instagram": "INSTAGRAM",

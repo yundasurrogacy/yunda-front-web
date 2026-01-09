@@ -22,6 +22,7 @@ const surrogateResourceLinks = [
   { to: '/surrogate-process', label: 'menu.resourceJourney' },
   { to: '/surrogate-compensation', label: 'menu.resourceCompensation' },
   { to: '/surrogate-requirements', label: 'menu.resourceRequirements' },
+  { to: '/surrogacy-protection-california', label: 'menu.resourceProtection' },
 ]
 
 // 切换菜单显示状态

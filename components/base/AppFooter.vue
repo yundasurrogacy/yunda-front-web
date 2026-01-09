@@ -148,6 +148,12 @@ const localePath = useLocalePath()
                 >
                   {{ $t('footer.sections.surrogateRequirements') }}
                 </NuxtLink>
+                <NuxtLink
+                  :to="localePath('/surrogacy-protection-california')"
+                  class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
+                >
+                  {{ $t('footer.sections.surrogateProtection') }}
+                </NuxtLink>
               </div>
             </div>
           </div>
