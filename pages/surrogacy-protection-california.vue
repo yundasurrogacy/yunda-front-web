@@ -98,7 +98,7 @@ const translations = {
     },
     module1: {
       title: 'Legal Issue — How is the surrogacy process different between states?',
-      content: 'People often ask: "Is surrogacy legal in California?" "How does the surrogacy process differ by state?" The reality is that timelines and legal steps can change based on state law, court practices, and clinic workflows. For intended parents planning surrogacy in California—especially Los Angeles, Orange County, and San Diego—a clear legal roadmap helps prevent delays in parentage, pre-birth orders (PBO), and contract milestones. This video explains what usually changes between states, what stays consistent, and what to confirm early so your journey stays predictable and protected.',
+      content: 'People often ask: "Is surrogacy legal in California?" "How does the surrogacy process differ by state?" The reality is that timelines and legal steps can change based on state law, court practices, and clinic workflows. For intended parents planning surrogacy in California—a clear legal roadmap helps prevent delays in parentage, pre-birth orders (PBO), and contract milestones. This video explains what usually changes between states, what stays consistent, and what to confirm early so your journey stays predictable and protected.',
     },
     module2: {
       title: 'Legal Issue — The key components to a standard surrogacy agreement',
@@ -106,11 +106,11 @@ const translations = {
     },
     module3: {
       title: 'Escrow Issue — Surrogate Payment process',
-      content: 'A third-party escrow account protects both intended parents and surrogates by holding funds securely and releasing payments based on clearly defined milestones—rather than informal transfers. In California (Los Angeles, Orange County, San Diego), aligning contract terms + clinic steps + escrow release timing is key to avoiding payment disputes and stress during the journey. This video explains how surrogate compensation is typically managed through escrow and what to confirm before you start.',
+      content: 'A third-party escrow account protects both intended parents and surrogates by holding funds securely and releasing payments based on clearly defined milestones—rather than informal transfers. In California , aligning contract terms + clinic steps + escrow release timing is key to avoiding payment disputes and stress during the journey. This video explains how surrogate compensation is typically managed through escrow and what to confirm before you start.',
     },
     module4: {
       title: 'Insurance Issue — ART insurance protects surrogate journeys',
-      content: 'Surrogacy insurance planning can involve surrogate maternity coverage, exclusions, waiting periods, hospital billing, and newborn coverage timing. For journeys in California—Los Angeles, Orange County, San Diego, and the Bay Area—ART-related insurance guidance can help reduce unexpected costs and prevent last-minute surprises. This video explains how ART insurance can protect surrogate journeys and the key questions intended parents should ask before matching.',
+      content: 'Surrogacy insurance planning can involve surrogate maternity coverage, exclusions, waiting periods, hospital billing, and newborn coverage timing. For journeys in California, and the Bay Area—ART-related insurance guidance can help reduce unexpected costs and prevent last-minute surprises. This video explains how ART insurance can protect surrogate journeys and the key questions intended parents should ask before matching.',
     },
     cities: {
       losAngeles: 'Los Angeles',
