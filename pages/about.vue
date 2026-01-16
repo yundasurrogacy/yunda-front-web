@@ -49,8 +49,12 @@ const teamMembers = computed(() => [
     text: teamBio('kaylaLuo').join(' '),
   },
   {
-    title: t('about.team.zoeBoyd.name'),
-    text: teamBio('zoeBoyd').join(' '),
+    title: t('about.team.emilyChen.name'),
+    text: teamBio('emilyChen').join(' '),
+  },
+  {
+    title: t('about.team.danielWhitaker.name'),
+    text: teamBio('danielWhitaker').join(' '),
   },
 ])
 
@@ -78,8 +82,12 @@ const faqSchema = computed(() => buildFAQPageSchema({
       answer: teamMembers.value[0]?.text || '',
     },
     {
-      question: t('about.team.zoeBoyd.title'),
+      question: t('about.team.emilyChen.title'),
       answer: teamMembers.value[1]?.text || '',
+    },
+    {
+      question: t('about.team.danielWhitaker.title'),
+      answer: teamMembers.value[2]?.text || '',
     },
     {
       question: t('about.careers.title'),
