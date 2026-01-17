@@ -49,8 +49,8 @@ const teamMembers = computed(() => [
     text: teamBio('kaylaLuo').join(' '),
   },
   {
-    title: t('about.team.emilyChen.name'),
-    text: teamBio('emilyChen').join(' '),
+    title: t('about.team.claraChen.name'),
+    text: teamBio('claraChen').join(' '),
   },
   {
     title: t('about.team.danielWhitaker.name'),
@@ -82,7 +82,7 @@ const faqSchema = computed(() => buildFAQPageSchema({
       answer: teamMembers.value[0]?.text || '',
     },
     {
-      question: t('about.team.emilyChen.title'),
+      question: t('about.team.claraChen.title'),
       answer: teamMembers.value[1]?.text || '',
     },
     {
