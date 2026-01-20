@@ -184,6 +184,13 @@ const localePath = useLocalePath()
                 {{ $t('menu.blog') }}
               </NuxtLink>
               <hr class="my-2 border-[var(--dark-brown)]">
+              <a
+                href="/sitemap.html"
+                class="block text-[var(--dark-brown)] font-normal uppercase transition-opacity hover:opacity-75"
+              >
+                {{ $t('menu.sitemap') }}
+              </a>
+              <hr class="my-2 border-[var(--dark-brown)]">
             </div>
           </div>
 

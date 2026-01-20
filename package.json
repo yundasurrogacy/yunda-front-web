@@ -43,7 +43,8 @@
     "postinstall": "nuxt prepare",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
-    "format": "eslint --fix ."
+    "format": "eslint --fix .",
+    "sitemap:html": "node scripts/generate-html-sitemap.cjs"
   },
   "dependencies": {
     "@formatjs/intl-locale": "^4.2.11",
