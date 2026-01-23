@@ -36,7 +36,7 @@ const localePath = useLocalePath()
                   {{ $t('footer.sections.process') }}
                 </NuxtLink>
                 <NuxtLink
-                  :to="localePath('/surrogacy-price')"
+                  :to="localePath('/surrogacy-cost')"
                   class="block text-3 text-[var(--dark-brown)] font-normal uppercase transition-opacity lg:text-3.5 hover:opacity-75"
                 >
                   {{ $t('footer.sections.surrogacyCost') }}

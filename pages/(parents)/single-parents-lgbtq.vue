@@ -164,7 +164,7 @@ useHead({
                 {{ tt('Talk to a coordinator', '与顾问沟通') }}
               </NuxtLink>
               <NuxtLink
-                :to="localePath('/surrogacy-price')"
+                :to="localePath('/surrogacy-cost')"
                 class="inline-flex items-center justify-center border border-[var(--primary-brown)]/30 rounded-[12px] bg-white/80 px-6 py-3 text-sm text-[var(--dark-brown)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
                 style="font-family: var(--font-secondary)"
               >

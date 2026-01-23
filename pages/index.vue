@@ -58,7 +58,7 @@ const serviceSchema = computed(() => buildServiceSchema({
     {
       name: t('home.costSection.title2'),
       description: t('home.costSection.description1'),
-      url: '/surrogacy-price',
+      url: '/surrogacy-cost',
     },
     {
       name: t('home.surrogateCareSection.title'),

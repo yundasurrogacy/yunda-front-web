@@ -38,7 +38,7 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },
   { loc: '/single-parents-lgbtq', priority: 0.7 },
-  { loc: '/surrogacy-price', priority: 0.8 },
+  { loc: '/surrogacy-cost', priority: 0.8 },
   { loc: '/surrogacy-process', priority: 0.8 },
   // 代孕者相关页面
   { loc: '/benefit', priority: 0.7 },

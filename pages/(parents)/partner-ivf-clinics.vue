@@ -388,7 +388,7 @@ useHead(() => ({
               </div>
               <div class="flex flex-wrap gap-3 text-sm font-semibold" style="font-family: var(--font-secondary)">
                 <NuxtLink
-                  :to="localePath('/surrogacy-price')"
+                  :to="localePath('/surrogacy-cost')"
                   class="inline-flex items-center border border-[var(--primary-brown)]/30 rounded-full bg-[var(--head-bg)] px-4 py-2 text-[var(--primary-brown)] hover:border-[var(--primary-brown)]/50"
                 >
                   {{ c.chipCost }}
@@ -464,7 +464,7 @@ useHead(() => ({
                   {{ c.chipProcess2 }}
                 </NuxtLink>
                 <NuxtLink
-                  :to="localePath('/surrogacy-price')"
+                  :to="localePath('/surrogacy-cost')"
                   class="inline-flex items-center border border-[var(--olive-green)]/30 rounded-full bg-[var(--light-cream)] px-4 py-2 text-[var(--olive-green)] hover:border-[var(--olive-green)]/50"
                 >
                   {{ c.chipCost2 }}
@@ -533,7 +533,7 @@ useHead(() => ({
                   </h2>
                   <p class="mt-4 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
                     {{ c.s4Intro }}
-                    <NuxtLink :to="localePath('/surrogacy-price')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                    <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
                       {{ c.linkCost }}
                     </NuxtLink>
                     <span class="mx-1">·</span>
@@ -656,7 +656,7 @@ useHead(() => ({
                     {{ c.learnBodyMid }}
                   </NuxtLink>
                   {{ c.learnBodySuffix }}
-                  <NuxtLink :to="localePath('/surrogacy-price')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                  <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
                     {{ c.learnBodyCost }}
                   </NuxtLink>.
                 </p>

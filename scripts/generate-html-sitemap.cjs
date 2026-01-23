@@ -22,7 +22,7 @@ const STATIC_SECTIONS_EN = [
     links: [
       { href: '/be-parents', label: 'Become a Parent' },
       { href: '/single-parents-lgbtq', label: 'Single Parents LGBTQ' },
-      { href: '/surrogacy-price', label: 'Surrogacy Price' },
+      { href: '/surrogacy-cost', label: 'Surrogacy Cost' },
       { href: '/partner-ivf-clinics', label: 'Partner IVF Clinics' },
       { href: '/surrogacy-process', label: 'Surrogacy Process' },
       { href: '/egg-donation', label: 'Egg Donation' },
@@ -82,7 +82,7 @@ const STATIC_SECTIONS_ZH = [
     links: [
       { href: '/be-parents', label: '成为父母' },
       { href: '/single-parents-lgbtq', label: '单亲与 LGBTQ 准父母' },
-      { href: '/surrogacy-price', label: '代孕价格' },
+      { href: '/surrogacy-cost', label: '代孕费用' },
       { href: '/partner-ivf-clinics', label: '合作 IVF 诊所' },
       { href: '/surrogacy-process', label: '代孕流程' },
       { href: '/egg-donation', label: '捐卵' },
