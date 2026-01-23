@@ -271,21 +271,21 @@ const localePath = useLocalePath()
         <div class="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-4">
           <NuxtLink
             :to="localePath('/privacy-policy')"
-            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity hover:opacity-75 lg:text-2.75"
+            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity lg:text-2.75 hover:opacity-75"
           >
             {{ $t('footer.policyLinks.privacyPolicy') }}
           </NuxtLink>
           <span class="hidden text-[var(--dark-brown)] md:inline">|</span>
           <NuxtLink
             :to="localePath('/terms-of-service')"
-            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity hover:opacity-75 lg:text-2.75"
+            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity lg:text-2.75 hover:opacity-75"
           >
             {{ $t('footer.policyLinks.termsOfService') }}
           </NuxtLink>
           <span class="hidden text-[var(--dark-brown)] md:inline">|</span>
           <NuxtLink
             :to="localePath('/disclaimer')"
-            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity hover:opacity-75 lg:text-2.75"
+            class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity lg:text-2.75 hover:opacity-75"
           >
             {{ $t('footer.policyLinks.disclaimer') }}
           </NuxtLink>
@@ -294,7 +294,7 @@ const localePath = useLocalePath()
 
       <!-- Legal Disclaimer / Company Info -->
       <div class="mt-4 border-t border-[var(--dark-brown)]/20 pt-4 lg:mt-6">
-        <p class="text-center text-2.5 text-[var(--dark-brown)] font-normal whitespace-pre-line lg:w-full lg:text-center lg:text-2.75">
+        <p class="whitespace-pre-line text-center text-2.5 text-[var(--dark-brown)] font-normal lg:w-full lg:text-center lg:text-2.75">
           {{ $t('footer.companyInfo') }}
         </p>
       </div>

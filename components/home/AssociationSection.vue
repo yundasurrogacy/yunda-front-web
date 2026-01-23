@@ -11,7 +11,7 @@ const partners = [
 </script>
 
 <template>
-  <section class="bg-[#FAF1E0] px-4 py-16 md:px-20 md:py-24">
+  <section class="border-b border-t border-[var(--primary-brown)]/20 from-[var(--head-bg)] via-[var(--head-bg)] to-white bg-gradient-to-b px-4 py-16 md:px-20 md:py-24">
     <div class="mx-auto max-w-320">
       <h2 class="scroll-animate mb-12 text-center text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
         {{ $t('home.associationSection.title') }}

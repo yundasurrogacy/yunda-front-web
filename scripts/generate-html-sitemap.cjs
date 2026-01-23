@@ -1,10 +1,11 @@
-const fs = require('fs');
-const https = require('https');
-const path = require('path');
+const fs = require('node:fs')
+const https = require('node:https')
+const path = require('node:path')
+const process = require('node:process')
 
-const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog';
-const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10);
-const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.html');
+const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
+const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
+const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.html')
 
 const STATIC_SECTIONS_EN = [
   {
@@ -64,7 +65,7 @@ const STATIC_SECTIONS_EN = [
       { href: '/be-parents/thanks', label: 'Thank You' },
     ],
   },
-];
+]
 
 const STATIC_SECTIONS_ZH = [
   {
@@ -124,75 +125,75 @@ const STATIC_SECTIONS_ZH = [
       { href: '/be-parents/thanks', label: '感谢页' },
     ],
   },
-];
+]
 
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/\"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }
 
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
     https
       .get(url, (res) => {
-        let data = '';
+        let data = ''
         res.on('data', (chunk) => {
-          data += chunk;
-        });
+          data += chunk
+        })
         res.on('end', () => {
           if (res.statusCode && res.statusCode >= 400) {
-            reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''}`.trim()));
-            return;
+            reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''}`.trim()))
+            return
           }
           try {
-            resolve(JSON.parse(data));
+            resolve(JSON.parse(data))
           }
           catch (error) {
-            reject(error);
+            reject(error)
           }
-        });
+        })
       })
-      .on('error', reject);
-  });
+      .on('error', reject)
+  })
 }
 
 async function fetchAllBlogs() {
-  const allBlogs = [];
-  let page = 1;
-  let totalPages = 1;
+  const allBlogs = []
+  let page = 1
+  let totalPages = 1
 
   do {
-    const url = `${BLOG_API_URL}?page=${page}&limit=${BLOG_API_LIMIT}`;
-    const response = await fetchJson(url);
-    const blogs = Array.isArray(response?.blogs) ? response.blogs : [];
-    allBlogs.push(...blogs);
+    const url = `${BLOG_API_URL}?page=${page}&limit=${BLOG_API_LIMIT}`
+    const response = await fetchJson(url)
+    const blogs = Array.isArray(response?.blogs) ? response.blogs : []
+    allBlogs.push(...blogs)
 
-    const pagination = response?.pagination || {};
-    totalPages = Number.parseInt(pagination.totalPages || totalPages, 10);
+    const pagination = response?.pagination || {}
+    totalPages = Number.parseInt(pagination.totalPages || totalPages, 10)
 
     if (pagination.hasNextPage === false) {
-      break;
+      break
     }
 
-    page += 1;
-  } while (page <= totalPages);
+    page += 1
+  } while (page <= totalPages)
 
-  return allBlogs;
+  return allBlogs
 }
 
 function renderSection(section) {
   const items = section.links
-    .map((link) => `            <li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`)
-    .join('\n');
+    .map(link => `            <li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`)
+    .join('\n')
 
   const note = section.note
     ? `          <p class="note">${escapeHtml(section.note)}</p>`
-    : '';
-  const className = section.className ? ` class="${escapeHtml(section.className)}"` : '';
+    : ''
+  const className = section.className ? ` class="${escapeHtml(section.className)}"` : ''
 
   return [
     `        <section${className}>`,
@@ -202,11 +203,11 @@ function renderSection(section) {
     '          </ul>',
     note,
     '        </section>',
-  ].filter(Boolean).join('\n');
+  ].filter(Boolean).join('\n')
 }
 
 function renderLanguageBlock(language) {
-  const sectionsHtml = language.sections.map(renderSection).join('\n');
+  const sectionsHtml = language.sections.map(renderSection).join('\n')
   return [
     '      <div class="language-block">',
     `        <h2 class="language-title">${escapeHtml(language.title)}</h2>`,
@@ -215,7 +216,7 @@ function renderLanguageBlock(language) {
     sectionsHtml,
     '        </div>',
     '      </div>',
-  ].join('\n');
+  ].join('\n')
 }
 
 function buildHtml(languageBlocks) {
@@ -348,36 +349,36 @@ ${languageBlocks.join('\n')}
     <footer>Yunda Surrogacy HTML sitemap</footer>
   </body>
 </html>
-`;
+`
 }
 
 async function run() {
-  const blogs = await fetchAllBlogs();
+  const blogs = await fetchAllBlogs()
   const blogLinksEn = blogs.map((blog) => {
-    const slugValue = blog.route_id || blog.id;
-    const slug = String(slugValue).trim();
-    const label = String(blog.en_title || blog.title || `Blog ${slug}`).trim();
-    return { href: `/blog/${slug}`, label };
-  });
+    const slugValue = blog.route_id || blog.id
+    const slug = String(slugValue).trim()
+    const label = String(blog.en_title || blog.title || `Blog ${slug}`).trim()
+    return { href: `/blog/${slug}`, label }
+  })
   const blogLinksZh = blogs.map((blog) => {
-    const slugValue = blog.route_id || blog.id;
-    const slug = String(slugValue).trim();
-    const label = String(blog.title || blog.en_title || `博客 ${slug}`).trim();
-    return { href: `/blog/${slug}`, label };
-  });
+    const slugValue = blog.route_id || blog.id
+    const slug = String(slugValue).trim()
+    const label = String(blog.title || blog.en_title || `博客 ${slug}`).trim()
+    return { href: `/blog/${slug}`, label }
+  })
 
   const blogSectionEn = {
     title: 'Blog',
     links: [{ href: '/blog', label: 'Blog Index' }, ...blogLinksEn],
     note: `Posts fetched from API: ${blogLinksEn.length} items.`,
     className: 'section-blog',
-  };
+  }
   const blogSectionZh = {
     title: '博客',
     links: [{ href: '/blog', label: '博客列表' }, ...blogLinksZh],
     note: `从接口获取文章：${blogLinksZh.length}篇。`,
     className: 'section-blog',
-  };
+  }
 
   const sectionsEn = [
     STATIC_SECTIONS_EN[0],
@@ -387,7 +388,7 @@ async function run() {
     blogSectionEn,
     STATIC_SECTIONS_EN[4],
     STATIC_SECTIONS_EN[5],
-  ];
+  ]
   const sectionsZh = [
     STATIC_SECTIONS_ZH[0],
     STATIC_SECTIONS_ZH[1],
@@ -396,7 +397,7 @@ async function run() {
     blogSectionZh,
     STATIC_SECTIONS_ZH[4],
     STATIC_SECTIONS_ZH[5],
-  ];
+  ]
 
   const languageBlocks = [
     renderLanguageBlock({
@@ -409,14 +410,14 @@ async function run() {
       subtitle: '按页面类型分类',
       sections: sectionsZh,
     }),
-  ];
+  ]
 
-  const html = buildHtml(languageBlocks);
-  fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
-  console.log(`HTML sitemap updated: ${OUTPUT_PATH}`);
+  const html = buildHtml(languageBlocks)
+  fs.writeFileSync(OUTPUT_PATH, html, 'utf8')
+  console.warn(`HTML sitemap updated: ${OUTPUT_PATH}`)
 }
 
 run().catch((error) => {
-  console.error('Failed to generate HTML sitemap:', error);
-  process.exit(1);
-});
+  console.error('Failed to generate HTML sitemap:', error)
+  process.exit(1)
+})

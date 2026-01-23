@@ -320,7 +320,7 @@ onUnmounted(() => {
     <!-- Introduction Section -->
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
-        <div class="max-w-none text-center prose prose-lg">
+        <div class="prose-lg max-w-none text-center prose">
           <p class="mb-8 text-xl text-[var(--primary-brown)] leading-relaxed">
             As a surrogate mother, you open the door to someone's dream of parenthood. You bring hope, joy, and life into a story that might not exist without you.
           </p>

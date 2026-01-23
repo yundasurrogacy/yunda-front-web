@@ -282,7 +282,7 @@ useHead({
     <AppHeader />
     <main class="min-h-screen bg-white">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
-        <article class="max-w-none prose prose-lg">
+        <article class="prose-lg max-w-none prose">
           <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
             {{ t.title }}
           </h1>

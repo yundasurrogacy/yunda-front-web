@@ -50,7 +50,6 @@ const processSteps = [
   '分娩与后续文件：按流程准备相关文件与出院后安排',
 ]
 
-
 const installmentSteps = [
   {
     title: '第一笔：签署协议后 → 汇入 $56,850 到信托账户',
@@ -188,7 +187,6 @@ function toggleFaq(q: string) {
 function goToQualification() {
   navigateTo(qualificationUrl.value)
 }
-
 </script>
 
 <template>
@@ -256,11 +254,11 @@ function goToQualification() {
             Yunda 在加州代孕咨询中，重点帮你把“复杂”变成“可控”
           </h2>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="grid mt-10 gap-6 md:grid-cols-2">
           <div
             v-for="item in offering"
             :key="item"
-            class="flex items-start gap-3 rounded-6 border border-[var(--olive-green)]/40 bg-white/90 p-5 shadow-sm"
+            class="flex items-start gap-3 border border-[var(--olive-green)]/40 rounded-6 bg-white/90 p-5 shadow-sm"
           >
             <div class="mt-1 h-8 w-8 flex items-center justify-center rounded-full bg-[var(--primary-brown)]/10 text-[var(--primary-brown)] font-semibold">
               ✓
@@ -281,7 +279,7 @@ function goToQualification() {
             美国代孕流程
           </h2>
         </div>
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="grid mt-8 gap-6 md:grid-cols-2">
           <div
             v-for="(step, idx) in processSteps"
             :key="step"
@@ -309,7 +307,7 @@ function goToQualification() {
         <p class="mt-4 text-4 leading-relaxed">
           我们把美国代孕费用拆成“可读、可控”的结构，并通过信托账户（Escrow）分阶段管理资金，避免信息差与预算失控。
         </p>
-        <div class="mt-6 rounded-6 border border-[var(--olive-green)]/40 bg-white p-6 shadow-lg">
+        <div class="mt-6 border border-[var(--olive-green)]/40 rounded-6 bg-white p-6 shadow-lg">
           <p class="mt-3 text-3.5 text-[var(--primary-brown)]/80">
             不同代母匹配与个案情况会导致费用浮动，具体以实际账单为准。
           </p>
@@ -320,12 +318,12 @@ function goToQualification() {
             <div
               v-for="section in installmentSteps"
               :key="section.title"
-              class="rounded-5 border border-[var(--olive-green)]/40 bg-[var(--head-bg)] p-5"
+              class="border border-[var(--olive-green)]/40 rounded-5 bg-[var(--head-bg)] p-5"
             >
-              <p class="text-4.5 font-semibold text-[var(--primary-brown)]">
+              <p class="text-4.5 text-[var(--primary-brown)] font-semibold">
                 {{ section.title }}
               </p>
-              <ul class="mt-3 space-y-2 text-4 leading-relaxed">
+              <ul class="mt-3 text-4 leading-relaxed space-y-2">
                 <li
                   v-for="item in section.items"
                   :key="item"
@@ -338,7 +336,9 @@ function goToQualification() {
             </div>
           </div>
           <div class="mt-5 rounded-5 bg-[var(--foot-bg)]/80 p-4 text-4 leading-relaxed">
-            <p class="font-semibold text-[var(--primary-brown)]">哪些费用不包含？</p>
+            <p class="text-[var(--primary-brown)] font-semibold">
+              哪些费用不包含？
+            </p>
             <p class="mt-2">
               不包含试管婴儿诊所费用；不包含宝宝出生后在医院产生的医疗费用。
             </p>
@@ -364,7 +364,7 @@ function goToQualification() {
               不同代母与个案会触发额外费用，常见包括（示例清单）：
             </p>
             <Transition name="fade">
-              <ul v-if="expandedCosts" class="mt-4 space-y-2 text-4 leading-relaxed">
+              <ul v-if="expandedCosts" class="mt-4 text-4 leading-relaxed space-y-2">
                 <li v-for="item in extraCosts" :key="item" class="flex items-start gap-2">
                   <span class="mt-1 h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
                   <span>{{ item }}</span>
@@ -382,7 +382,7 @@ function goToQualification() {
               </button>
             </div>
             <Transition name="fade">
-              <ul v-if="expandedInsurance" class="mt-4 space-y-2 text-4 leading-relaxed">
+              <ul v-if="expandedInsurance" class="mt-4 text-4 leading-relaxed space-y-2">
                 <li v-for="item in insurancePoints" :key="item" class="flex items-start gap-2">
                   <span class="mt-1 h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
                   <span>{{ item }}</span>
@@ -408,13 +408,13 @@ function goToQualification() {
         <p class="mt-2 text-4 leading-relaxed">
           你不是在买一个“承诺”，而是在买一套流程管理 + 合规协同 + 透明交付的能力。
         </p>
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="grid mt-8 gap-6 md:grid-cols-2">
           <div
             v-for="item in whyYunda"
             :key="item.title"
-            class="rounded-6 border border-[var(--olive-green)]/40 bg-white/95 p-6 shadow"
+            class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-6 shadow"
           >
-            <h3 class="text-5 font-semibold text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="text-5 text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-primary)">
               {{ item.title }}
             </h3>
             <p class="mt-2 text-4 leading-relaxed">
@@ -423,9 +423,8 @@ function goToQualification() {
           </div>
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
-        
           <button
-            class="rounded-full border border-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold text-[var(--primary-brown)] uppercase transition hover:bg-white"
+            class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold uppercase transition hover:bg-white"
             @click="goToQualification"
           >
             免费中文咨询
@@ -445,7 +444,7 @@ function goToQualification() {
         <p class="mt-3 text-4 leading-relaxed">
           很多华人家庭咨询加州代孕时，最想确认两件事：代孕流程是否清晰、每一步是否有人负责推进。我们把旅程拆成可执行的节点，并由项目经理按周/月更新进度，减少跨境沟通成本。
         </p>
-        <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <div class="grid mt-8 gap-4 md:grid-cols-2">
           <div
             v-for="(item, idx) in timelineSteps"
             :key="item"
@@ -483,14 +482,14 @@ function goToQualification() {
           <article
             v-for="item in faqItems"
             :key="item.q"
-            class="rounded-6 border border-[var(--olive-green)]/40 bg-white/95 shadow-sm"
+            class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 shadow-sm"
           >
             <button
               type="button"
-              class="flex w-full items-center justify-between px-5 py-4 text-left"
+              class="w-full flex items-center justify-between px-5 py-4 text-left"
               @click="toggleFaq(item.q)"
             >
-              <span class="text-4.5 font-semibold text-[var(--primary-brown)]">{{ item.q }}</span>
+              <span class="text-4.5 text-[var(--primary-brown)] font-semibold">{{ item.q }}</span>
               <span class="text-5 text-[var(--primary-brown)]">{{ expandedFaq[item.q] ? '−' : '+' }}</span>
             </button>
             <Transition name="fade">
@@ -502,7 +501,7 @@ function goToQualification() {
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
           <button
-            class="rounded-full border border-[var(--primary-brown)] px-6 py-3 text-3.5 font-semibold text-[var(--primary-brown)] uppercase transition hover:bg-[var(--light-cream)]"
+            class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
             @click="goToQualification"
           >
             提交表单领取（中文顾问对接）

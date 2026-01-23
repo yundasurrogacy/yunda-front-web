@@ -398,7 +398,7 @@ const blogListSchema = computed(() => {
       name: getBlogTitle(blogItem),
       url: getBlogDetailPath(blogItem),
       position: index + 1,
-      description: getBlogExcerpt(blogItem, 160),
+      description: getBlogExcerpt(blogItem, 155),
       image: blogItem.cover_img_url,
       datePublished: blogItem.created_at,
     })),
