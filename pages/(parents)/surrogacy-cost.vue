@@ -985,9 +985,9 @@ onUnmounted(() => {
                     </li>
                   </ol>
                 </nav>
-                <p class="h1-text" style="font-family: var(--font-primary)">
+                <h1 class="h1-text" style="font-family: var(--font-primary)">
                   {{ t.hero.title }}
-                </p>
+                </h1>
                 <div class="body-text space-y-3">
                   <p>{{ t.hero.lead1 }}</p>
                   <p>{{ t.hero.lead2 }}</p>
