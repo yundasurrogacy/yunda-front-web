@@ -9,34 +9,46 @@ import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
-const pageTitle = 'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate'
-const pageDescription = 'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process.'
+const { locale } = useI18n()
+const isZh = computed(() => (locale.value || '').startsWith('zh'))
+const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 
-useHead({
-  title: pageTitle,
+const pageTitle = computed(() =>
+  tt(
+    'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate',
+    '代孕要求与资格：成为代孕妈妈',
+  ),
+)
+const pageDescription = computed(() =>
+  tt(
+    'Learn surrogacy requirements and surrogate qualifications in the U.S.—medical and lifestyle criteria, IVF surrogacy process.',
+    '了解美国代孕要求与资格——医疗与生活方式标准、IVF 代孕流程。',
+  ),
+)
+
+useHead(() => ({
+  title: pageTitle.value,
   meta: [
     {
       name: 'description',
-      content: pageDescription,
+      content: pageDescription.value,
     },
   ],
-})
-
-const { locale } = useI18n()
+}))
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
-const sections = [
-  { id: 'intro', label: 'Overview' },
-  { id: 'quick-eligibility', label: 'Quick Eligibility' },
-  { id: 'medical-lifestyle', label: 'Medical & Lifestyle' },
-  { id: 'disqualify', label: 'Disqualifications' },
-  { id: 'process', label: 'Screening Steps' },
-  { id: 'compensation', label: 'Compensation & Support' },
-  { id: 'faq', label: 'FAQ' },
-]
+const sections = computed(() => [
+  { id: 'intro', label: tt('Overview', '概览') },
+  { id: 'quick-eligibility', label: tt('Quick Eligibility', '快速资格') },
+  { id: 'medical-lifestyle', label: tt('Medical & Lifestyle', '医疗与生活方式') },
+  { id: 'disqualify', label: tt('Disqualifications', '不符合情况') },
+  { id: 'process', label: tt('Screening Steps', '筛查步骤') },
+  { id: 'compensation', label: tt('Compensation & Support', '补偿与支持') },
+  { id: 'faq', label: tt('FAQ', '常见问题') },
+])
 
-const activeSection = ref(sections[0].id)
+const activeSection = ref(sections.value[0].id)
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
@@ -45,7 +57,7 @@ function scrollToSection(id: string) {
 }
 
 function handleScroll() {
-  const offsets = sections.map((section) => {
+  const offsets = sections.value.map((section) => {
     const element = document.getElementById(section.id)
     if (!element)
       return { id: section.id, distance: Number.POSITIVE_INFINITY }
@@ -64,201 +76,201 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const quickEligibilityCards = [
+const quickEligibilityCards = computed(() => [
   {
-    title: 'Core Surrogacy Requirements',
+    title: tt('Core Surrogacy Requirements', '核心代孕要求'),
     items: [
-      'Age 21–39 (clinic-guided surrogate age limit).',
-      'At least one full-term birth with healthy records.',
-      'BMI within clinic range.',
-      'No smoking, vaping, or drug use.',
-      'Reliable transportation and a stable schedule.',
-      'These are the baseline surrogate requirements and surrogate qualifications for gestational surrogacy.',
+      tt('Age 21–39 (clinic-guided surrogate age limit).', '年龄 21–39 岁（诊所要求范围）。'),
+      tt('At least one full-term birth with healthy records.', '至少一次健康足月分娩记录。'),
+      tt('BMI within clinic range.', 'BMI 在诊所要求范围内。'),
+      tt('No smoking, vaping, or drug use.', '不吸烟、不电子烟、不使用毒品。'),
+      tt('Reliable transportation and a stable schedule.', '交通便利且日程稳定。'),
+      tt('These are the baseline surrogate requirements and surrogate qualifications for gestational surrogacy.', '以上为妊娠代孕的基础要求与资格。'),
     ],
   },
   {
-    title: 'Citizenship & Where You Live',
+    title: tt('Citizenship & Where You Live', '国籍与居住地'),
     items: [
-      'U.S. citizens only.',
-      'You live in a state that works with our clinics and attorneys.',
-      'You can travel for screening and embryo transfer when needed.',
-      'Meet these points and you can confidently become a surrogate.',
+      tt('U.S. citizens only.', '仅限美国公民。'),
+      tt('You live in a state that works with our clinics and attorneys.', '居住在我们诊所与律师可合作的州。'),
+      tt('You can travel for screening and embryo transfer when needed.', '可在需要时出行完成筛查与移植。'),
+      tt('Meet these points and you can confidently become a surrogate.', '满足这些条件即可安心成为代孕妈妈。'),
     ],
   },
   {
-    title: 'Health & Lifestyle Fit',
+    title: tt('Health & Lifestyle Fit', '健康与生活方式匹配'),
     items: [
-      'You manage health conditions under a doctor’s care.',
-      'You wait until you finish breastfeeding before meds and transfer.',
-      'You keep a healthy routine: sleep, nutrition, and movement.',
-      'This profile supports safe gestational surrogacy and strong surrogate qualifications.',
+      tt('You manage health conditions under a doctor’s care.', '如有健康状况需在医生管理下稳定。'),
+      tt('You wait until you finish breastfeeding before meds and transfer.', '停止哺乳后再开始用药与移植。'),
+      tt('You keep a healthy routine: sleep, nutrition, and movement.', '保持健康作息：睡眠、营养与运动。'),
+      tt('This profile supports safe gestational surrogacy and strong surrogate qualifications.', '该标准有助于安全妊娠代孕与良好资格。'),
     ],
   },
   {
-    title: 'Support & Readiness',
+    title: tt('Support & Readiness', '支持与准备度'),
     items: [
-      'Your home offers steady support. Partner or family can help with rides and childcare.',
-      'You feel ready for appointments, communication, and matching with intended parents.',
-      'You understand the commitment and want to be a surrogate for the right reasons.',
-      'With this foundation, a surrogate mother can move through screening and matching smoothly.',
+      tt('Your home offers steady support. Partner or family can help with rides and childcare.', '家庭支持稳定，伴侣或家人可协助出行与托育。'),
+      tt('You feel ready for appointments, communication, and matching with intended parents.', '准备好就诊、沟通与匹配流程。'),
+      tt('You understand the commitment and want to be a surrogate for the right reasons.', '理解承诺并以正确动机成为代孕妈妈。'),
+      tt('With this foundation, a surrogate mother can move through screening and matching smoothly.', '有了这些基础，筛查与匹配会更顺利。'),
     ],
   },
-]
+])
 
-const medicalLifestyleSections = [
+const medicalLifestyleSections = computed(() => [
   {
-    heading: 'Reproductive History & Overall Health',
+    heading: tt('Reproductive History & Overall Health', '生育史与整体健康'),
     body: [
-      'You meet the surrogacy requirements best when you have at least one full-term birth and stable prenatal records. Clinics review C-section history, cycle regularity, and current health to confirm surrogate qualifications for gestational surrogacy.',
-      'Keep a healthy routine—sleep, nutrition, and movement—and follow your doctor’s advice on BMI and medications. This helps you become a surrogate with confidence.',
+      tt('You meet the surrogacy requirements best when you have at least one full-term birth and stable prenatal records. Clinics review C-section history, cycle regularity, and current health to confirm surrogate qualifications for gestational surrogacy.', '至少一次足月分娩与稳定产检记录最符合代孕要求。诊所会评估剖宫产史、月经规律与健康状况，以确认妊娠代孕资格。'),
+      tt('Keep a healthy routine—sleep, nutrition, and movement—and follow your doctor’s advice on BMI and medications. This helps you become a surrogate with confidence.', '保持健康作息、营养与运动，并遵循医生关于 BMI 与用药建议，这会让你更有信心成为代孕妈妈。'),
     ],
   },
   {
-    heading: 'Medical Screening (Clinic-Guided)',
+    heading: tt('Medical Screening (Clinic-Guided)', '医学筛查（诊所主导）'),
     body: [
-      'Your screening follows a clear medical process. The clinic reviews OB records first. Then the hospital arranges full medical exams for you (and your partner if applicable) to confirm you meet transfer criteria and to issue medical clearance.',
+      tt('Your screening follows a clear medical process. The clinic reviews OB records first. Then the hospital arranges full medical exams for you (and your partner if applicable) to confirm you meet transfer criteria and to issue medical clearance.', '筛查遵循清晰的医疗流程：诊所先审核产科记录，然后安排全面体检（必要时含伴侣），确认移植资格并出具医疗清关。'),
     ],
   },
   {
-    heading: 'Mental Health & Support',
+    heading: tt('Mental Health & Support', '心理健康与支持'),
     body: [
-      'Your profile includes health history and psychological screening details. Our team shares this with intended parents during matching to ensure fit and safety. Strong home support makes the journey smoother and aligns with core surrogate requirements.',
+      tt('Your profile includes health history and psychological screening details. Our team shares this with intended parents during matching to ensure fit and safety. Strong home support makes the journey smoother and aligns with core surrogate requirements.', '档案包含健康史与心理评估细节。匹配时我们会与意向父母分享以确保安全契合。良好的家庭支持能让旅程更顺利，并符合核心要求。'),
     ],
   },
   {
-    heading: 'IVF Readiness & Embryo Transfer',
+    heading: tt('IVF Readiness & Embryo Transfer', 'IVF 准备与胚胎移植'),
     body: [
-      'When the clinic clears you, the doctor starts the pre-transfer regimen. You follow meds and injections for about 4–6 weeks, then complete the embryo transfer and begin pregnancy monitoring.',
+      tt('When the clinic clears you, the doctor starts the pre-transfer regimen. You follow meds and injections for about 4–6 weeks, then complete the embryo transfer and begin pregnancy monitoring.', '诊所清关后，医生启动移植前方案，约 4–6 周用药与注射，随后完成胚胎移植并进入妊娠监测。'),
     ],
   },
   {
-    heading: 'Care Standards & Partner Clinics',
+    heading: tt('Care Standards & Partner Clinics', '护理标准与合作诊所'),
     body: [
-      'You receive care through partner programs with advanced labs and strict quality controls. Partner centers maintain CLIA/CAP-standard embryology labs and use leading culture, testing, and cryo methods to support safe IVF surrogacy care.',
-      'Examples include California Fertility Partners and Gen 5 Fertility Center, along with Harvest and Incinta for comprehensive IVF and PGT support.',
+      tt('You receive care through partner programs with advanced labs and strict quality controls. Partner centers maintain CLIA/CAP-standard embryology labs and use leading culture, testing, and cryo methods to support safe IVF surrogacy care.', '你将通过先进实验室与严格质量控制的合作项目接受照护。合作中心维持 CLIA/CAP 标准胚胎实验室，并采用先进培养、检测与冷冻方法，支持安全的 IVF 代孕。'),
+      tt('Examples include California Fertility Partners and Gen 5 Fertility Center, along with Harvest and Incinta for comprehensive IVF and PGT support.', '合作示例包括 California Fertility Partners、Gen 5 Fertility Center，以及 Harvest、Incinta 等提供 IVF 与 PGT 支持的机构。'),
     ],
   },
   {
-    heading: 'Coordination & Follow-Up',
+    heading: tt('Coordination & Follow-Up', '协调与跟进'),
     body: [
-      'You won’t navigate this alone. A dedicated project manager coordinates appointments and key milestones and provides bilingual updates, including weekly and monthly reports, so you always know what comes next in the surrogacy requirements process.',
+      tt('You won’t navigate this alone. A dedicated project manager coordinates appointments and key milestones and provides bilingual updates, including weekly and monthly reports, so you always know what comes next in the surrogacy requirements process.', '你不会独自面对流程。专属项目经理协调就诊与关键里程碑，并提供双语更新（含周报与月报），让你随时清楚下一步。'),
     ],
   },
-]
+])
 
-const disqualifySections = [
+const disqualifySections = computed(() => [
   {
-    title: 'Medical Factors',
+    title: tt('Medical Factors', '医疗因素'),
     paragraphs: [
-      'Clinics check your health against clear surrogacy requirements. Uncontrolled diabetes or hypertension can stop approval. Severe past OB issues may also block gestational surrogacy. Final eligibility depends on your physician’s review and formal medical clearance from the clinic.',
+      tt('Clinics check your health against clear surrogacy requirements. Uncontrolled diabetes or hypertension can stop approval. Severe past OB issues may also block gestational surrogacy. Final eligibility depends on your physician’s review and formal medical clearance from the clinic.', '诊所会根据明确的代孕要求评估健康状况。未控制的糖尿病或高血压可能导致无法通过审核。严重的产科问题也可能阻止妊娠代孕。最终资格取决于医生评估与诊所正式清关。'),
     ],
   },
   {
-    title: 'Obstetric & Reproductive History',
+    title: tt('Obstetric & Reproductive History', '产科与生育史'),
     paragraphs: [
-      'Doctors look closely at delivery records and uterine health. Certain C-section histories or complications can lead to a “not cleared” result. If the clinic decides you don’t meet transfer criteria, you cannot become a surrogate for that cycle.',
+      tt('Doctors look closely at delivery records and uterine health. Certain C-section histories or complications can lead to a “not cleared” result. If the clinic decides you don’t meet transfer criteria, you cannot become a surrogate for that cycle.', '医生会重点查看分娩记录与子宫健康。某些剖宫产史或并发症可能导致“不通过”。若诊所判定未达移植标准，则该周期无法成为代孕妈妈。'),
     ],
   },
   {
-    title: 'Lifestyle & Safety Considerations',
+    title: tt('Lifestyle & Safety Considerations', '生活方式与安全因素'),
     paragraphs: [
-      'Current nicotine use, substance use, or heavy alcohol use can fail screening. Lack of reliable transportation or an unsafe home setting can also pause the process. These issues conflict with core surrogate requirements and clinic guidance during screening.',
+      tt('Current nicotine use, substance use, or heavy alcohol use can fail screening. Lack of reliable transportation or an unsafe home setting can also pause the process. These issues conflict with core surrogate requirements and clinic guidance during screening.', '当前使用尼古丁、药物或大量饮酒可能无法通过筛查。交通不便或不安全的居住环境也会导致流程暂停。这些情况与核心要求及诊所筛查标准冲突。'),
     ],
   },
   {
-    title: 'Legal & Logistics Constraints',
+    title: tt('Legal & Logistics Constraints', '法律与执行限制'),
     paragraphs: [
-      'You need legal clearance after medical clearance. If attorneys cannot finalize the contract or state guidance conflicts with your case, the cycle cannot move forward. You also need flexibility for travel and scheduled embryo transfer.',
+      tt('You need legal clearance after medical clearance. If attorneys cannot finalize the contract or state guidance conflicts with your case, the cycle cannot move forward. You also need flexibility for travel and scheduled embryo transfer.', '医疗清关后还需法律清关。若律师无法完成合同或州法律与个案冲突，则流程无法继续。你还需具备出行与移植排期的灵活性。'),
     ],
   },
   {
-    title: 'Temporary Deferrals (Not Permanent “No”)',
+    title: tt('Temporary Deferrals (Not Permanent “No”)', '临时延后（非永久拒绝）'),
     paragraphs: [
-      'Breastfeeding, very recent tattoos/piercings, recent childbirth, or out-of-range BMI may require a short wait. The clinic sets timing, then starts meds and transfer when you are ready. Typical pre-transfer prep lasts about 4–6 weeks before IVF embryo transfer.',
+      tt('Breastfeeding, very recent tattoos/piercings, recent childbirth, or out-of-range BMI may require a short wait. The clinic sets timing, then starts meds and transfer when you are ready. Typical pre-transfer prep lasts about 4–6 weeks before IVF embryo transfer.', '哺乳期、近期纹身/穿孔、刚分娩或 BMI 超范围可能需要短暂等待。诊所会安排时间，准备就绪后再开始用药与移植。移植前准备通常为 4–6 周。'),
     ],
   },
-]
+])
 
-const processSteps = [
+const processSteps = computed(() => [
   {
-    title: 'Step 1 — Records Review & Medical Screening',
-    text: 'We start with your OB records. The clinic checks your history and current health to confirm surrogate qualifications. The hospital then books full medical exams for you）. Doctors decide if you meet transfer criteria and issue medical clearance. These are essential surrogacy steps before matching.',
+    title: tt('Step 1 — Records Review & Medical Screening', '步骤 1 — 病历审核与医学筛查'),
+    text: tt('We start with your OB records. The clinic checks your history and current health to confirm surrogate qualifications. The hospital then books full medical exams for you）. Doctors decide if you meet transfer criteria and issue medical clearance. These are essential surrogacy steps before matching.', '从产科记录开始，诊所评估病史与当前健康，确认代孕资格。随后安排全面体检，医生判断是否符合移植标准并出具清关。这是匹配前的关键步骤。'),
   },
   {
-    title: 'Step 2 — Psychological Evaluation',
-    text: 'You meet with a licensed therapist. We review support, expectations, and stress management. Your profile includes key health  so matching stays safe and transparent. This keeps gestational surrogacy grounded in real readiness.',
+    title: tt('Step 2 — Psychological Evaluation', '步骤 2 — 心理评估'),
+    text: tt('You meet with a licensed therapist. We review support, expectations, and stress management. Your profile includes key health  so matching stays safe and transparent. This keeps gestational surrogacy grounded in real readiness.', '与持证心理咨询师会面，评估支持系统、期望与压力管理。档案包含关键健康信息以确保匹配安全透明，使妊娠代孕建立在真实准备之上。'),
   },
   {
-    title: 'Step 3 — Legal Clearance',
-    text: 'After medical clearance, attorneys draft and review your contract and insurance documents. Both sides sign the agreement. Courts later rely on this contract for the pre-birth order. Legal clearance protects you and the intended parents.',
+    title: tt('Step 3 — Legal Clearance', '步骤 3 — 法律清关'),
+    text: tt('After medical clearance, attorneys draft and review your contract and insurance documents. Both sides sign the agreement. Courts later rely on this contract for the pre-birth order. Legal clearance protects you and the intended parents.', '医疗清关后，律师起草并审核合同与保险文件，双方签署。法院将依据合同办理产前裁定。法律清关保护代孕妈妈与意向父母。'),
   },
   {
-    title: 'Step 4 — Cycle Prep & Embryo Transfer',
-    text: 'Your doctor starts pre-transfer meds and injections. This phase usually runs about 4–6 weeks. Then you complete the embryo transfer and begin pregnancy monitoring. These surrogate steps follow standard IVF surrogacy process protocols.',
+    title: tt('Step 4 — Cycle Prep & Embryo Transfer', '步骤 4 — 周期准备与胚胎移植'),
+    text: tt('Your doctor starts pre-transfer meds and injections. This phase usually runs about 4–6 weeks. Then you complete the embryo transfer and begin pregnancy monitoring. These surrogate steps follow standard IVF surrogacy process protocols.', '医生启动移植前用药与注射，通常持续 4–6 周。随后完成胚胎移植并进入孕期监测，流程符合标准 IVF 代孕方案。'),
   },
   {
-    title: 'Step 5 — Pregnancy Monitoring & Checkpoints',
-    text: 'You take an HCG test about 10–14 days after transfer and confirm fetal heartbeat at ~4–5 weeks. From 11 weeks, an OB manages routine care. Our project managers check in multiple times each week and provide a weekly report, so you always know the plan. These checkpoints keep the surrogacy requirements clear from transfer to delivery.',
+    title: tt('Step 5 — Pregnancy Monitoring & Checkpoints', '步骤 5 — 妊娠监测与检查节点'),
+    text: tt('You take an HCG test about 10–14 days after transfer and confirm fetal heartbeat at ~4–5 weeks. From 11 weeks, an OB manages routine care. Our project managers check in multiple times each week and provide a weekly report, so you always know the plan. These checkpoints keep the surrogacy requirements clear from transfer to delivery.', '移植后约 10–14 天做 HCG 检测，4–5 周确认心跳。11 周起由产科医生负责常规孕检。项目经理每周多次跟进并提供周报，确保从移植到分娩计划清晰。'),
   },
   {
-    title: 'Step 6 — Ongoing Coordination & Updates',
-    text: 'A dedicated  handles schedules, milestone reminders, and coordination. You receive weekly and monthly cycle reports and 24/7 bilingual support. This structure keeps every step organized and builds trust throughout gestational surrogacy.',
+    title: tt('Step 6 — Ongoing Coordination & Updates', '步骤 6 — 持续协调与更新'),
+    text: tt('A dedicated  handles schedules, milestone reminders, and coordination. You receive weekly and monthly cycle reports and 24/7 bilingual support. This structure keeps every step organized and builds trust throughout gestational surrogacy.', '专属团队负责排期、里程碑提醒与协调。你将获得周报、月报与 24/7 双语支持，使流程有序并建立信任。'),
   },
-]
+])
 
-const compensationHighlights = [
+const compensationHighlights = computed(() => [
   {
-    title: 'How Payments Work (Milestones + Escrow)',
+    title: tt('How Payments Work (Milestones + Escrow)', '付款方式（里程碑 + 托管）'),
     paragraphs: [
-      'We use an independent trust account for surrogate compensation and reimbursements. The escrow pays items by milestones and contract terms. After the clinic confirms key checkpoints (like HCG and fetal heartbeat), the program triggers the next surrogacy payment and keeps the escrow at the required minimum per policy.',
-      'The trust account covers approved items only. You see clear statements and a clean paper trail.',
+      tt('We use an independent trust account for surrogate compensation and reimbursements. The escrow pays items by milestones and contract terms. After the clinic confirms key checkpoints (like HCG and fetal heartbeat), the program triggers the next surrogacy payment and keeps the escrow at the required minimum per policy.', '我们使用独立托管账户发放补偿与报销。托管按里程碑与合同条款支付。诊所确认关键节点（如 HCG 与心跳）后，触发下一笔补偿，并按要求保持最低余额。'),
+      tt('The trust account covers approved items only. You see clear statements and a clean paper trail.', '托管仅支付获批项目，账单清晰、记录完整。'),
     ],
   },
   {
-    title: 'What the Escrow May Cover',
+    title: tt('What the Escrow May Cover', '托管可覆盖的项目'),
     paragraphs: [
-      'The trust pays contract items: your surrogate pay installments, insurance costs, attorney fees, and other approved, itemized expenses. We manage these through the third-party escrow to keep funds compliant and on time.',
+      tt('The trust pays contract items: your surrogate pay installments, insurance costs, attorney fees, and other approved, itemized expenses. We manage these through the third-party escrow to keep funds compliant and on time.', '托管支付合同项目：补偿分期、保险费用、律师费及其他获批的明细支出。通过第三方托管管理，确保合规与准时。'),
     ],
   },
   {
-    title: 'Legal Protection & Insurance',
+    title: tt('Legal Protection & Insurance', '法律保障与保险'),
     paragraphs: [
-      'You work with your own attorney. We coordinate contract drafting and review after medical clearance. The legal team prepares documents that support the pre-birth order process in your state.',
-      'For insurance planning, we partner with industry leaders. ART Risk focuses on surrogacy insurance, trust oversight support, and contract review across the U.S. SeedTrust provides specialized reproductive escrow services with strong compliance and a modern online platform.',
+      tt('You work with your own attorney. We coordinate contract drafting and review after medical clearance. The legal team prepares documents that support the pre-birth order process in your state.', '你将与自己的律师合作。医疗清关后我们协调合同起草与审核，法律团队准备支持本州产前裁定的文件。'),
+      tt('For insurance planning, we partner with industry leaders. ART Risk focuses on surrogacy insurance, trust oversight support, and contract review across the U.S. SeedTrust provides specialized reproductive escrow services with strong compliance and a modern online platform.', '保险规划方面，我们与行业领先机构合作。ART Risk 专注代孕保险、托管监督与合同审查；SeedTrust 提供合规的生殖托管服务与现代化平台。'),
     ],
   },
   {
-    title: 'Dedicated Team & 24/7 Support',
+    title: tt('Dedicated Team & 24/7 Support', '专属团队与 24/7 支持'),
     paragraphs: [
-      'You don’t navigate this alone. A project manager handles schedules, milestone reminders, and day-to-day coordination. We send weekly and monthly cycle reports and offer 24/7 bilingual support, so you always know what comes next.',
-      'During pregnancy, our team checks in several times each week and helps arrange key appointments. The weekly report system keeps everyone aligned.',
+      tt('You don’t navigate this alone. A project manager handles schedules, milestone reminders, and day-to-day coordination. We send weekly and monthly cycle reports and offer 24/7 bilingual support, so you always know what comes next.', '你不会独自面对流程。项目经理负责排期、里程碑提醒与日常协调，并提供周报、月报与 24/7 双语支持，让你清楚下一步。'),
+      tt('During pregnancy, our team checks in several times each week and helps arrange key appointments. The weekly report system keeps everyone aligned.', '孕期我们每周多次跟进并协助安排关键就诊，周报系统让各方保持一致。'),
     ],
   },
-]
+])
 
-const requirementHowToSteps = computed(() => processSteps.map(step => ({
+const requirementHowToSteps = computed(() => processSteps.value.map(step => ({
   title: step.title,
   text: step.text,
 })))
 
 const requirementFaqs = computed(() => [
-  ...quickEligibilityCards.map(card => ({
+  ...quickEligibilityCards.value.map(card => ({
     question: card.title,
     answer: card.items.join(' '),
   })),
-  ...medicalLifestyleSections.map(section => ({
+  ...medicalLifestyleSections.value.map(section => ({
     question: section.heading,
     answer: section.body.join(' '),
   })),
-  ...disqualifySections.map(section => ({
+  ...disqualifySections.value.map(section => ({
     question: section.title,
     answer: section.paragraphs.join(' '),
   })),
 ])
 
 const howToSchema = computed(() => buildHowToSchema({
-  name: pageTitle,
-  description: pageDescription,
+  name: pageTitle.value,
+  description: pageDescription.value,
   steps: requirementHowToSteps.value,
   baseUrl: siteUrl.value || undefined,
   url: '/surrogate-requirements',
@@ -266,8 +278,8 @@ const howToSchema = computed(() => buildHowToSchema({
 }))
 
 const faqSchema = computed(() => buildFAQPageSchema({
-  name: 'Surrogate Requirements FAQ',
-  description: 'Common questions about eligibility, medical screening, and disqualifying factors for surrogacy.',
+  name: tt('Surrogate Requirements FAQ', '代孕要求常见问题'),
+  description: tt('Common questions about eligibility, medical screening, and disqualifying factors for surrogacy.', '关于资格、医学筛查与不符合因素的常见问题。'),
   faqs: requirementFaqs.value,
   baseUrl: siteUrl.value || undefined,
   url: '/surrogate-requirements',
@@ -293,24 +305,24 @@ useHead(() => {
   return scripts.length ? { script: scripts } : {}
 })
 
-const faqItems = [
+const faqItems = computed(() => [
   {
-    question: 'Do surrogates get paid? How does the surrogate payment schedule work?',
-    answer: 'Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.',
+    question: tt('Do surrogates get paid? How does the surrogate payment schedule work?', '代孕妈妈会获得补偿吗？付款时间表如何运作？'),
+    answer: tt('Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.', '会的，代孕妈妈通常通过补偿方案获得支付，包含基础补偿与补贴及费用报销。付款一般在妊娠确认后开始，孕期按月分期发放，并在剖宫产、卧床或多胎等情况下增加补偿。支付由第三方托管管理，确保透明与及时。'),
   },
   {
-    question: 'How much do surrogates make in the U.S.?',
-    answer: 'On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.',
+    question: tt('How much do surrogates make in the U.S.?', '美国代孕妈妈一般能获得多少补偿？'),
+    answer: tt('On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.', '全国范围内首次代孕的基础补偿通常为 $45,000–$55,000，再次代孕可提升至 $60,000–$70,000（示例数据）。家庭总成本通常更高，计入额外费用后约为 $150,000。'),
   },
   {
-    question: 'What counts as surrogate compensation vs. reimbursable surrogacy expenses?',
-    answer: 'Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.',
+    question: tt('What counts as surrogate compensation vs. reimbursable surrogacy expenses?', '代孕补偿与可报销费用有什么区别？'),
+    answer: tt('Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.', '代孕补偿是对时间与付出的基础支付；可报销费用用于覆盖流程中的实际支出，避免代孕妈妈自费承担。补偿通常在妊娠确认后按月分期发放。可报销项目包括误工、医疗自付、出行、孕期服装与托育等，按发生时间报销。'),
   },
   {
-    question: 'What affects surrogate pay—experience, location, or medical factors?',
-    answer: 'Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.',
+    question: tt('What affects surrogate pay—experience, location, or medical factors?', '哪些因素会影响代孕补偿？'),
+    answer: tt('Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.', '补偿受经验、地区与医疗因素影响。既往经验与妊娠复杂度（如多胎）是重要因素；居住州的成本与需求也会影响补偿。医疗情况（如侵入性操作、卧床或并发症）可能触发额外支付。'),
   },
-]
+])
 
 const expandedFaq = ref<Record<string, boolean>>({})
 
@@ -321,25 +333,25 @@ function toggleFaq(question: string) {
   }
 }
 
-const requirementTabs = [
-  { id: 'core', label: 'Core Requirements' },
-  { id: 'citizenship', label: 'Citizenship & Location' },
-  { id: 'health', label: 'Health & Lifestyle' },
-  { id: 'support', label: 'Support & Readiness' },
-]
+const requirementTabs = computed(() => [
+  { id: 'core', label: tt('Core Requirements', '核心要求') },
+  { id: 'citizenship', label: tt('Citizenship & Location', '国籍与居住地') },
+  { id: 'health', label: tt('Health & Lifestyle', '健康与生活方式') },
+  { id: 'support', label: tt('Support & Readiness', '支持与准备度') },
+])
 
-const activeRequirementTab = ref(requirementTabs[0].id)
+const activeRequirementTab = ref(requirementTabs.value[0].id)
 
 const tabContent = computed(() => {
   switch (activeRequirementTab.value) {
     case 'core':
-      return quickEligibilityCards[0]
+      return quickEligibilityCards.value[0]
     case 'citizenship':
-      return quickEligibilityCards[1]
+      return quickEligibilityCards.value[1]
     case 'health':
-      return quickEligibilityCards[2]
+      return quickEligibilityCards.value[2]
     default:
-      return quickEligibilityCards[3]
+      return quickEligibilityCards.value[3]
   }
 })
 
@@ -373,30 +385,30 @@ const processIcons = [
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="text-center space-y-6 lg:text-left">
             <h1 class="text-8 font-semibold leading-tight lg:text-12" style="font-family: var(--font-primary)">
-              Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate
+              {{ tt('Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate', '代孕要求与资格：成为代孕妈妈') }}
             </h1>
             <p class="text-4.5 leading-relaxed">
-              Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.
+              {{ tt('Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.', '想了解妊娠代孕并准备成为代孕妈妈？本页用清晰语言解释核心要求。你将看到医生与协调员审核的资格，以及申请成为代孕妈妈的步骤。若满足条件，就能自信开启旅程。') }}
             </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
                 class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
               >
-                Check Your Eligibility
+                {{ tt('Check Your Eligibility', '查看资格') }}
               </NuxtLink>
               <a
                 href="#quick-eligibility"
                 class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition hover:bg-white"
                 @click.prevent="scrollToSection('quick-eligibility')"
               >
-                View Requirements
+                {{ tt('View Requirements', '查看要求') }}
               </a>
             </div>
           </div>
           <div class="flex justify-center">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landingpage3/Surrogate-Requirements.jpg" alt="Surrogate Requirements">
+              <img src="/images/landingpage3/Surrogate-Requirements.jpg" :alt="tt('Surrogate Requirements', '代孕要求')">
             </div>
           </div>
         </div>
@@ -428,7 +440,7 @@ const processIcons = [
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-10 shadow-black/10 shadow-lg">
           <p class="text-5 leading-relaxed">
-            Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.
+            {{ tt('Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.', '想了解妊娠代孕并准备成为代孕妈妈？本页用清晰语言解释核心要求。你将看到医生与协调员审核的资格，以及申请成为代孕妈妈的步骤。若满足条件，就能自信开启旅程。') }}
           </p>
         </div>
       </div>
@@ -437,14 +449,14 @@ const processIcons = [
     <section id="quick-eligibility" class="bg-[var(--foot-bg)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <h2 class="mb-12 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-          Who We're Looking For: Surrogacy Requirements (Quick Eligibility)
+          {{ tt('Who We\'re Looking For: Surrogacy Requirements (Quick Eligibility)', '我们寻找的代孕妈妈：快速资格要求') }}
         </h2>
 
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-start">
           <!-- Left Content -->
           <div class="space-y-8">
             <p class="animate-fade-in-up text-center text-4.5 leading-relaxed lg:text-left" style="animation-delay: 200ms;">
-              Tap through each category to confirm you meet the baseline surrogate qualifications. These panels summarize what clinics and coordinators review before you become a surrogate.
+              {{ tt('Tap through each category to confirm you meet the baseline surrogate qualifications. These panels summarize what clinics and coordinators review before you become a surrogate.', '点击各类别确认你符合基础资格。这些面板总结了诊所与协调员在你成为代孕妈妈前会审核的内容。') }}
             </p>
 
             <!-- Tab Navigation -->
@@ -495,7 +507,7 @@ const processIcons = [
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
                   src="/images/landingpage3/Surrogacy-Requirements.jpg"
-                  alt="Surrogacy Requirements"
+                  :alt="tt('Surrogacy Requirements', '代孕要求')"
                   class="h-auto w-full object-cover"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
@@ -510,7 +522,7 @@ const processIcons = [
       <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-            Medical & Lifestyle Requirements for Gestational Surrogacy
+            {{ tt('Medical & Lifestyle Requirements for Gestational Surrogacy', '妊娠代孕的医疗与生活方式要求') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
@@ -547,7 +559,7 @@ const processIcons = [
       <div class="absolute inset-0 z-0">
         <img
           src="/images/landingpage3/IVF-Surrogacy-Process.jpg"
-          alt="IVF Surrogacy Process"
+          :alt="tt('IVF Surrogacy Process', 'IVF 代孕流程')"
           class="h-full w-full object-cover"
         >
         <div class="absolute inset-0 bg-[var(--dark-brown)]/80" />
@@ -558,7 +570,7 @@ const processIcons = [
         <!-- Title with Background -->
         <div class="text-center">
           <h2 class="animate-fade-in-up text-7 text-white font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-            What Can Disqualify You From Becoming a Surrogate
+            {{ tt('What Can Disqualify You From Becoming a Surrogate', '哪些情况会导致无法成为代孕妈妈') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
@@ -596,7 +608,7 @@ const processIcons = [
       <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-            Screening & Clearance Steps: IVF Surrogacy Process
+            {{ tt('Screening & Clearance Steps: IVF Surrogacy Process', '筛查与清关步骤：IVF 代孕流程') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
@@ -644,10 +656,10 @@ const processIcons = [
           <!-- Left Content -->
           <div class="space-y-8">
             <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-              Compensation & Support: Surrogate Pay, Escrow, and Benefits
+              {{ tt('Compensation & Support: Surrogate Pay, Escrow, and Benefits', '补偿与支持：代孕补偿、托管与福利') }}
             </h2>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
-              We ensure your journey is supported with clear compensation, secure escrow, and comprehensive benefits throughout the entire process.
+              {{ tt('We ensure your journey is supported with clear compensation, secure escrow, and comprehensive benefits throughout the entire process.', '我们通过清晰补偿、安全托管与全面福利支持你的整个旅程。') }}
             </p>
 
             <!-- Compensation Cards -->
@@ -685,7 +697,7 @@ const processIcons = [
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
                   src="/images/landingpage3/Compensation-Support.jpg"
-                  alt="Compensation & Support"
+                  :alt="tt('Compensation & Support', '补偿与支持')"
                   class="h-auto w-full object-cover"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
@@ -700,7 +712,7 @@ const processIcons = [
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
-            Frequently Asked Questions
+            {{ tt('Frequently Asked Questions', '常见问题') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
@@ -754,23 +766,23 @@ const processIcons = [
       </div>
       <div class="relative mx-auto max-w-240 px-5 text-center">
         <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" style="font-family: var(--font-primary)">
-          Ready to Become a Surrogate?
+          {{ tt('Ready to Become a Surrogate?', '准备成为代孕妈妈了吗？') }}
         </h2>
         <p class="mt-4 text-4.5 leading-relaxed">
-          With clear requirements, steady support, and milestone-based planning, you can take the next step with confidence. Let’s confirm your eligibility and design your journey together.
+          {{ tt('With clear requirements, steady support, and milestone-based planning, you can take the next step with confidence. Let’s confirm your eligibility and design your journey together.', '有了清晰要求、稳定支持与里程碑规划，你可以自信迈出下一步。让我们一起确认资格并设计你的旅程。') }}
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <NuxtLink
             to="/be-surrogate"
             class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
           >
-            Start Application
+            {{ tt('Start Application', '开始申请') }}
           </NuxtLink>
           <NuxtLink
             to="/journey"
             class="border border-white rounded-full px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-white/10"
           >
-            Explore the Journey
+            {{ tt('Explore the Journey', '了解流程') }}
           </NuxtLink>
         </div>
       </div>

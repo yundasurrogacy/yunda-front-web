@@ -187,7 +187,7 @@ function getBlogContent(blogData: Blog | null): string {
   }
 }
 // 提取纯文本摘要（去除HTML标签）
-function getBlogExcerpt(blogData: Blog | null, maxLength: number = 159): string {
+function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
   const content = getBlogContent(blogData)
   if (!content)
     return ''
@@ -199,7 +199,7 @@ function getBlogExcerpt(blogData: Blog | null, maxLength: number = 159): string 
 
   // 截取指定长度
   if (cleaned.length > maxLength) {
-    return `${cleaned.substring(0, maxLength)}...`
+    return cleaned.substring(0, maxLength)
   }
   return cleaned
 }
@@ -251,7 +251,7 @@ const blogPostingSchema = computed(() => {
 
   return buildBlogPostingSchema({
     title: getBlogTitle(blog.value),
-    description: getBlogExcerpt(blog.value, 159),
+    description: getBlogExcerpt(blog.value, 155),
     articleBody: getBlogContent(blog.value),
     image: blog.value.cover_img_url,
     url: blogUrl,
@@ -271,7 +271,7 @@ useHead(() => ({
   meta: [
     {
       name: 'description',
-      content: blog.value ? getBlogExcerpt(blog.value, 159) : blogCopy.value.meta.description,
+      content: blog.value ? getBlogExcerpt(blog.value, 155) : truncateMetaDescription(blogCopy.value.meta.description),
     },
     {
       property: 'og:title',
@@ -279,7 +279,7 @@ useHead(() => ({
     },
     {
       property: 'og:description',
-      content: blog.value ? getBlogExcerpt(blog.value, 159) : blogCopy.value.meta.description,
+      content: blog.value ? getBlogExcerpt(blog.value, 155) : truncateMetaDescription(blogCopy.value.meta.description),
     },
     {
       property: 'og:type',
@@ -291,6 +291,13 @@ useHead(() => ({
     },
   ],
 }))
+
+function truncateMetaDescription(text: string, maxLength: number = 155) {
+  if (!text)
+    return ''
+  const cleaned = text.replace(/\s+/g, ' ').trim()
+  return cleaned.length > maxLength ? cleaned.slice(0, maxLength) : cleaned
+}
 
 useHead(() => (blogPostingSchema.value
   ? {

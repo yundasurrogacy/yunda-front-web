@@ -179,7 +179,7 @@ useHead(() => ({
   meta: [
     {
       name: 'description',
-      content: blogCopy.value.meta.description,
+      content: truncateMetaDescription(blogCopy.value.meta.description),
     },
     {
       property: 'og:title',
@@ -187,7 +187,7 @@ useHead(() => ({
     },
     {
       property: 'og:description',
-      content: blogCopy.value.meta.description,
+      content: truncateMetaDescription(blogCopy.value.meta.description),
     },
     {
       property: 'og:type',
@@ -195,6 +195,13 @@ useHead(() => ({
     },
   ],
 }))
+
+function truncateMetaDescription(text: string, maxLength: number = 155) {
+  if (!text)
+    return ''
+  const cleaned = text.replace(/\s+/g, ' ').trim()
+  return cleaned.length > maxLength ? cleaned.slice(0, maxLength) : cleaned
+}
 
 interface Blog {
   id: number
