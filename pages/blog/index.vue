@@ -11,6 +11,7 @@ definePageMeta({
 })
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const blogCopyEn = {
@@ -386,8 +387,10 @@ const jumpToPage = ref(1)
 
 // 获取博客详情页路径
 function getBlogDetailPath(blog: Blog): string {
+  // 使用 localePath 确保路径包含正确的语言前缀
   // 只有当route_id存在时才使用route_id跳转，否则使用id
-  return blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
+  const path = blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
+  return localePath(path)
 }
 
 const blogListSchema = computed(() => {
