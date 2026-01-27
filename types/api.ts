@@ -338,6 +338,151 @@ export interface UploadPhoto {
   url: string
 }
 
+// ========== GC Intake (Gestational Carrier Intake Screening Form) ==========
+
+export interface GCIntakeGeneralInfo {
+  full_name?: string
+  email?: string
+  phone?: string
+  country_code?: string
+  dob?: string
+  age?: number
+  state_of_residence?: string
+  place_of_birth?: string
+  home_address?: string
+  height_feet?: string
+  height_inches?: string
+  weight?: string
+  bmi?: string
+  occupation_type?: 'employed' | 'stay_at_home' | 'unemployed'
+  occupation_specify?: string
+  marital_status?: 'married' | 'single' | 'cohabitating' | 'divorced'
+  single_partner_info?: string
+  us_citizen_or_resident?: boolean
+}
+
+export interface GCIntakePregnancyBirthHistory {
+  total_children?: number
+  total_vaginal?: number
+  total_c_sections?: number
+  miscarriages?: boolean
+  miscarriages_detail?: string
+  abortions?: boolean
+  abortions_detail?: string
+}
+
+export interface GCIntakeDeliveryEntry {
+  delivery_date?: string
+  gender?: string
+  birth_weight?: string
+  delivery_type?: string
+  hospital?: string
+}
+
+export interface GCIntakePregnancyMedical {
+  anemia?: boolean
+  severe_vomiting_3mo?: boolean
+  bp_during_pregnancy?: string
+  preeclampsia?: boolean
+  gestational_diabetes?: boolean
+  hypertension_pregnancy?: boolean
+  blood_transfusion?: boolean
+  seizures?: boolean
+}
+
+export interface GCIntakeMedicalHealth {
+  regular_menstrual_cycles?: boolean
+  birth_control?: boolean
+  birth_control_type?: string
+  taking_medications?: boolean
+  medications_list?: string
+  last_pap_smear?: string
+  covid_vaccinated?: boolean
+  hep_b_vaccinated?: boolean
+  varicella_vaccinated?: boolean
+  ongoing_medical_treatment?: boolean
+  surgeries_past_2y?: boolean
+  surgeries_specify?: string
+}
+
+export interface GCIntakeMentalHealth {
+  anxiety_depression?: boolean
+  bipolar_schizo_personality?: boolean
+  adhd?: boolean
+  meds_anxiety_depression?: boolean
+  meds_specify?: string
+}
+
+export interface GCIntakeSubstanceUse {
+  drug_use_pregnancy?: boolean
+  drug_marijuana?: boolean
+  drug_fentanyl?: boolean
+  drug_methamphetamine?: boolean
+  drug_mdma?: boolean
+  drug_other?: string
+  marijuana_current?: boolean
+  marijuana_last_use?: string
+  smoked_vaped_pregnancy?: boolean
+  alcohol?: boolean
+  alcohol_frequency?: string
+}
+
+export interface GCIntakeInfectiousDisease {
+  syphilis?: boolean
+  hepatitis_b_c?: boolean
+  genital_herpes?: boolean
+  hiv?: boolean
+}
+
+export interface GCIntakeOtherMedical {
+  asthma?: boolean
+  asthma_inhaler_per_week?: string
+  heart_conditions?: boolean
+  cancer_history?: boolean
+  scoliosis?: boolean
+  endometrial_ablation?: boolean
+}
+
+export interface GCIntakePreferences {
+  availability?: string
+  health_insurance?: string
+  open_twins?: boolean
+  open_fetal_reduction?: boolean
+  open_termination?: boolean
+  open_amniocentesis_cvs?: boolean
+  open_same_sex_single_ip?: boolean
+  willing_pump_breast_milk?: boolean
+  open_ip_hiv?: boolean
+  open_ip_hepatitis_b?: boolean
+}
+
+export interface GCIntakeLegalAdmin {
+  pending_legal?: boolean
+  criminal_record?: boolean
+  emergency_contact?: string
+  government_assistance?: boolean
+}
+
+export interface GCIntakeNotes {
+  referred_by?: string
+  medical_records_source?: 'patient_portal' | 'clinic' | 'other'
+}
+
+export interface GCIntake {
+  general_info?: GCIntakeGeneralInfo
+  pregnancy_birth_history?: GCIntakePregnancyBirthHistory
+  delivery_history?: GCIntakeDeliveryEntry[]
+  pregnancy_medical?: GCIntakePregnancyMedical
+  medical_health?: GCIntakeMedicalHealth
+  mental_health?: GCIntakeMentalHealth
+  substance_use?: GCIntakeSubstanceUse
+  infectious_disease?: GCIntakeInfectiousDisease
+  other_medical?: GCIntakeOtherMedical
+  preferences?: GCIntakePreferences
+  legal_admin?: GCIntakeLegalAdmin
+  notes?: GCIntakeNotes
+}
+
 // ========== 申请表 application_data 类型 ==========
 
 export interface SurrogateMotherApplicationData {
@@ -345,6 +490,8 @@ export interface SurrogateMotherApplicationData {
   about_you?: AboutYou
   pregnancy_and_health?: PregnancyAndHealth
   gestational_surrogacy_interview?: GestationalSurrogacyInterview
+  /** New form: Gestational Carrier Intake Screening. When present, admin renders GC Intake layout. */
+  gc_intake?: GCIntake
   upload_photos?: UploadPhoto[]
 }
 

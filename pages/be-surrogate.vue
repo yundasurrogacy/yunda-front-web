@@ -12,106 +12,138 @@ import FormPhoneInput from '@/components/form/FormPhoneInput.vue'
 import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
 import { useApi } from '~/composables/useApi'
-import { getAllCountries, getPhoneCodeByCountry, getStatesByCountry } from '~/data/countries-states'
-import { citizenshipStatus } from '~/data/us-states'
+import { getStatesByCountry } from '~/data/countries-states'
+import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
 import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
-// 先声明 form
+const emptyDelivery = () => ({ delivery_date: '', gender: '', birth_weight: '', delivery_type: '', hospital: '' })
+
 const form = reactive({
-  birthDate: '',
-  citizenshipStatus: '',
-  contactSource: '',
-  contactSourceOther: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  mobilePhone: '',
-  countryCode: '+1',
-  occupation: '',
-  state: '',
-  zipCode: '',
-  heightFeet: '',
-  heightInches: '',
-  weight: '',
-  city: '',
-  country: 'US',
-  hasHighSchoolDiploma: '',
-  maritalStatus: '',
-  partnerSupport: '',
-  householdIncome: '',
-  smsConsent: false,
-  finalConsent: false,
+  general_info: {
+    full_name: '',
+    email: '',
+    phone: '',
+    country_code: '+1',
+    dob: '',
+    state_of_residence: '',
+    place_of_birth: '',
+    home_address: '',
+    height_feet: '',
+    height_inches: '',
+    weight: '',
+    occupation_type: '' as '' | 'employed' | 'stay_at_home' | 'unemployed',
+    occupation_specify: '',
+    marital_status: '' as '' | 'married' | 'single' | 'cohabitating' | 'divorced',
+    single_partner_info: '',
+    us_citizen_or_resident: '' as '' | 'yes' | 'no',
+  },
+  pregnancy_birth_history: {
+    total_children: '' as number | '',
+    total_vaginal: '' as number | '',
+    total_c_sections: '' as number | '',
+    miscarriages: '' as '' | 'yes' | 'no',
+    miscarriages_detail: '',
+    abortions: '' as '' | 'yes' | 'no',
+    abortions_detail: '',
+  },
+  delivery_history: [] as Array<{ delivery_date: string, gender: string, birth_weight: string, delivery_type: string, hospital: string }>,
+  pregnancy_medical: {
+    anemia: '' as '' | 'yes' | 'no',
+    severe_vomiting_3mo: '' as '' | 'yes' | 'no',
+    bp_during_pregnancy: '',
+    preeclampsia: '' as '' | 'yes' | 'no',
+    gestational_diabetes: '' as '' | 'yes' | 'no',
+    hypertension_pregnancy: '' as '' | 'yes' | 'no',
+    blood_transfusion: '' as '' | 'yes' | 'no',
+    seizures: '' as '' | 'yes' | 'no',
+  },
+  medical_health: {
+    regular_menstrual_cycles: '' as '' | 'yes' | 'no',
+    birth_control: '' as '' | 'yes' | 'no',
+    birth_control_type: '',
+    taking_medications: '' as '' | 'yes' | 'no',
+    medications_list: '',
+    last_pap_smear: '',
+    covid_vaccinated: '' as '' | 'yes' | 'no',
+    hep_b_vaccinated: '' as '' | 'yes' | 'no',
+    varicella_vaccinated: '' as '' | 'yes' | 'no',
+    ongoing_medical_treatment: '' as '' | 'yes' | 'no',
+    surgeries_past_2y: '' as '' | 'yes' | 'no',
+    surgeries_specify: '',
+  },
+  mental_health: {
+    anxiety_depression: '' as '' | 'yes' | 'no',
+    bipolar_schizo_personality: '' as '' | 'yes' | 'no',
+    adhd: '' as '' | 'yes' | 'no',
+    meds_anxiety_depression: '' as '' | 'yes' | 'no',
+    meds_specify: '',
+  },
+  substance_use: {
+    drug_use_pregnancy: '' as '' | 'yes' | 'no',
+    drug_marijuana: false,
+    drug_fentanyl: false,
+    drug_methamphetamine: false,
+    drug_mdma: false,
+    drug_other: '',
+    marijuana_current: '' as '' | 'yes' | 'no',
+    marijuana_last_use: '',
+    smoked_vaped_pregnancy: '' as '' | 'yes' | 'no',
+    alcohol: '' as '' | 'yes' | 'no',
+    alcohol_frequency: '',
+  },
+  infectious_disease: {
+    syphilis: '' as '' | 'yes' | 'no',
+    hepatitis_b_c: '' as '' | 'yes' | 'no',
+    genital_herpes: '' as '' | 'yes' | 'no',
+    hiv: '' as '' | 'yes' | 'no',
+  },
+  other_medical: {
+    asthma: '' as '' | 'yes' | 'no',
+    asthma_inhaler_per_week: '',
+    heart_conditions: '' as '' | 'yes' | 'no',
+    cancer_history: '' as '' | 'yes' | 'no',
+    scoliosis: '' as '' | 'yes' | 'no',
+    endometrial_ablation: '' as '' | 'yes' | 'no',
+  },
+  preferences: {
+    availability: '',
+    health_insurance: '',
+    open_twins: '' as '' | 'yes' | 'no',
+    open_fetal_reduction: '' as '' | 'yes' | 'no',
+    open_termination: '' as '' | 'yes' | 'no',
+    open_amniocentesis_cvs: '' as '' | 'yes' | 'no',
+    open_same_sex_single_ip: '' as '' | 'yes' | 'no',
+    willing_pump_breast_milk: '' as '' | 'yes' | 'no',
+    open_ip_hiv: '' as '' | 'yes' | 'no',
+    open_ip_hepatitis_b: '' as '' | 'yes' | 'no',
+  },
+  legal_admin: {
+    pending_legal: '' as '' | 'yes' | 'no',
+    criminal_record: '' as '' | 'yes' | 'no',
+    emergency_contact: '',
+    government_assistance: '' as '' | 'yes' | 'no',
+  },
+  notes: {
+    referred_by: '',
+    medical_records_source: '' as '' | 'patient_portal' | 'clinic' | 'other' | '',
+  },
   uploadPhotos: [] as string[],
-  bmi: '',
-  ethnicity: '',
-  surrogacyExperienceCount: '',
-  educationLevel: '',
-  legalHealthQuestions: {
-    domesticViolence: '',
-    substanceAbuse: '',
-    felonyCharges: '',
-    outstandingWarrant: '',
-    formalProbation: '',
-    arrests: '',
-    childAbuseNeglect: '',
-    childProtectionInvestigation: '',
-    backgroundCheckStatus: '',
-  },
-  healthHistory: {
-    isTakingMeds: '',
-    medicalConditions: {
-      diabetes: false,
-      hypertension: false,
-      bipolarDisorder: false,
-      multipleMiscarriages: false,
-      seizureDisorder: false,
-      none: false,
-    },
-    medicationsList: '',
-  },
-  pregnancyHistory: {
-    birthDetails: '',
-    hasGivenBirth: '',
-    hasStillbirth: '',
-    isBreastfeeding: '',
-    isPregnant: '',
-    seriousComplications: '',
-    birthControl: '',
-    closestHospital: '',
-    closestNICU: '',
-  },
-  gestationalInterview: {
-    supportPerson: '',
-    languages: '',
-    motivation: '',
-    aboutYou: '',
-    contactPreference: '',
-    hipaaConsent: '',
-    twinsAttitude: '',
-    tripletsReduction: '',
-    terminationConsent: '',
-  },
-  pregnancyHistoryList: [] as Array<{ date: string, weight: string, weeks: string, babies: string, delivery: string }>,
+  finalConsent: false,
 })
 
-// 控制每个怀孕历史项的折叠状态，默认全部展开
-const pregnancyHistoryCollapse = ref<boolean[]>([])
-
-// 初始化折叠状态（与列表长度同步）
-watch(() => form.pregnancyHistoryList.length, (len) => {
-  pregnancyHistoryCollapse.value = Array.from({ length: len }, () => true)
+const deliveryCollapse = ref<boolean[]>([])
+watch(() => form.delivery_history.length, (len) => {
+  deliveryCollapse.value = Array.from({ length: len }, () => true)
 })
 
-// 添加怀孕历史项时，折叠状态同步新增
-function addPregnancy() {
-  form.pregnancyHistoryList.push({ date: '', weight: '', weeks: '', babies: '', delivery: '' })
-  pregnancyHistoryCollapse.value.push(true)
+function addDelivery() {
+  form.delivery_history.push(emptyDelivery())
+  deliveryCollapse.value.push(true)
 }
 
-// 移除怀孕历史项时，折叠状态同步移除
-function removePregnancy(idx: number) {
-  form.pregnancyHistoryList.splice(idx, 1)
-  pregnancyHistoryCollapse.value.splice(idx, 1)
+function removeDelivery(idx: number) {
+  form.delivery_history.splice(idx, 1)
+  deliveryCollapse.value.splice(idx, 1)
 }
 
 const { t, locale } = useI18n()
@@ -119,37 +151,16 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const surrogateHowToSteps = computed(() => [
-  {
-    title: t('surrogate.application.sections.contactInfo'),
-    text: t('surrogate.application.congratulations.message1'),
-  },
-  {
-    title: t('surrogate.application.sections.pregnancyHealth'),
-    text: t('surrogate.application.congratulations.message2'),
-  },
-  {
-    title: t('surrogate.application.sections.pregnancyHistory'),
-    text: t('surrogate.application.congratulations.thanks'),
-  },
-  {
-    title: t('surrogate.application.sections.consent'),
-    text: t('surrogate.application.form.finalConsent.text'),
-  },
+  { title: t('surrogate.application.gcIntake.sections.generalInfo'), text: t('surrogate.application.congratulations.message1') },
+  { title: t('surrogate.application.gcIntake.sections.pregnancyBirthHistory'), text: t('surrogate.application.congratulations.message2') },
+  { title: t('surrogate.application.gcIntake.sections.preferences'), text: t('surrogate.application.congratulations.thanks') },
+  { title: t('surrogate.application.sections.consent'), text: t('surrogate.application.form.finalConsent.text') },
 ])
 
 const surrogateFaqItems = computed(() => [
-  {
-    question: `${t('surrogate.application.congratulations.title')}?`,
-    answer: `${t('surrogate.application.congratulations.message1')} ${t('surrogate.application.congratulations.message2')}`,
-  },
-  {
-    question: `${t('surrogate.application.sections.gestationalInterview')}?`,
-    answer: t('surrogate.application.congratulations.message2'),
-  },
-  {
-    question: `${t('surrogate.application.sections.consent')}?`,
-    answer: t('surrogate.application.form.finalConsent.disclaimer'),
-  },
+  { question: `${t('surrogate.application.congratulations.title')}?`, answer: `${t('surrogate.application.congratulations.message1')} ${t('surrogate.application.congratulations.message2')}` },
+  { question: `${t('surrogate.application.gcIntake.sections.preferences')}?`, answer: t('surrogate.application.congratulations.message2') },
+  { question: `${t('surrogate.application.sections.consent')}?`, answer: t('surrogate.application.form.finalConsent.disclaimer') },
 ])
 
 const surrogateHowToSchema = computed(() => buildHowToSchema({
@@ -189,147 +200,20 @@ useHead(() => {
   return scripts.length ? { script: scripts } : {}
 })
 
-// 计算BMI
 const calculatedBMI = computed(() => {
-  const feet = Number.parseFloat(form.heightFeet) || 0
-  const inches = Number.parseFloat(form.heightInches) || 0
-  const weight = Number.parseFloat(form.weight) || 0
-
+  const feet = Number.parseFloat(form.general_info.height_feet) || 0
+  const inches = Number.parseFloat(form.general_info.height_inches) || 0
+  const weight = Number.parseFloat(form.general_info.weight) || 0
   if (feet === 0 || weight === 0)
     return 0
-
-  // 将英尺和英寸转换为总英寸
   const totalInches = feet * 12 + inches
-  // BMI = (weight in lbs / (height in inches)^2) * 703
-  const bmi = (weight / (totalInches * totalInches)) * 703
-  return Math.round(bmi * 10) / 10 // 保留一位小数
+  return Math.round((weight / (totalInches * totalInches)) * 703 * 10) / 10
 })
+
+const states = computed(() => getStatesByCountry('US'))
 
 const fileInputRef = ref<HTMLInputElement | null>(null)
 const uploadingPhotos = ref(false)
-
-// const form = reactive({
-//   // 基本信息
-//   birthDate: '',
-//   citizenshipStatus: '',
-//   contactSource: '',
-//   contactSourceOther: '',
-//   email: '',
-//   firstName: '',
-//   lastName: '',
-//   mobilePhone: '',
-//   countryCode: '+1',
-//   occupation: '',
-//   state: '',
-//   zipCode: '',
-//   height: '',
-//   weight: '',
-//   city: '',
-//   country: 'US',
-//   hasHighSchoolDiploma: '',
-//   maritalStatus: '',
-//   partnerSupport: '',
-//   // isFormerSurrogate: '',
-//   // surrogateExperience: '',
-//   householdIncome: '',
-//   smsConsent: false,
-//   finalConsent: false,
-//   uploadPhotos: [] as string[],
-
-//   bmi: '',
-//   ethnicity: '',
-//   surrogacyExperienceCount: '',
-//   educationLevel: '',
-//   // 财务和法律信息
-//   // financialLegal: {
-//   //   criminalDescription: '',
-//   //   hasCPSHistory: '',
-//   //   hasCriminalRecord: '',
-//   //   hasLegalProceedings: '',
-//   //   proceedingDetails: ''
-//   // },
-//   // governmentAssistance: {
-//   //   foodStamps: false,
-//   //   medicaid: false,
-//   //   cashAssistance: false,
-//   //   financialAid: false,
-//   //   wic: false,
-//   //   ssi: false,
-//   //   publicHousing: false,
-//   //   childcare: false,
-//   //   studentLoans: false,
-//   //   other: false,
-//   //   otherText: '',
-//   //   none: false
-//   // },
-//   legalHealthQuestions: {
-//     domesticViolence: '',
-//     substanceAbuse: '',
-//     felonyCharges: '',
-//     outstandingWarrant: '',
-//     formalProbation: '',
-//     arrests: '',
-//     childAbuseNeglect: '',
-//     childProtectionInvestigation: '',
-//     backgroundCheckStatus: ''
-//   },
-//   healthHistory: {
-//     isTakingMeds: '',
-//     medicalConditions: {
-//       diabetes: false,
-//       hypertension: false,
-//       bipolarDisorder: false,
-//       multipleMiscarriages: false,
-//       seizureDisorder: false,
-//       none: false
-//     },
-//     medicationsList: ''
-//   },
-//   pregnancyHistory: {
-//     birthDetails: '',
-//     hasGivenBirth: '',
-//     hasStillbirth: '',
-//     // height: '',
-//     isBreastfeeding: '',
-//     isPregnant: '',
-//     // weightPounds: '',
-//     seriousComplications: '',
-//     birthControl: '',
-//     closestHospital: '',
-//     closestNICU: ''
-//   },
-// gestationalInterview: {
-//   supportPerson: '',
-//   languages: '',
-//   motivation: '',
-//   aboutYou: '',
-//   contactPreference: '',
-//   hipaaConsent: '',
-//   twinsAttitude: '',
-//   tripletsReduction: '',
-//   terminationConsent: ''
-// },
-//   // pregnancyHistoryList: [
-//   //   { date: '', weight: '', weeks: '', babies: '', delivery: '' }
-//   // ]
-//   // pregnancyHistoryList: []
-//   pregnancyHistoryList: [] as Array<{ date: string; weight: string; weeks: string; babies: string; delivery: string }>
-// })
-
-const countries = computed(() => getAllCountries())
-
-const states = computed(() => {
-  return getStatesByCountry(form.country)
-})
-
-watch(() => form.country, (newCountry) => {
-  form.state = ''
-
-  const phoneCode = getPhoneCodeByCountry(newCountry)
-  if (phoneCode) {
-    form.countryCode = phoneCode
-  }
-})
 
 const { submitSurrogateApplication } = useApi()
 const { $fbPixel } = useNuxtApp()
@@ -348,30 +232,11 @@ const modalConfig = reactive({
   fieldLabel: '', // 用于 required 校验字段名参数
 })
 
-// 新图片上传逻辑：异步上传图片，获取 URL
+// 新图片上传逻辑：使用七牛云直传，异步上传图片，获取 URL
 async function uploadImages(files: File[]): Promise<string[]> {
-  const formData = new FormData()
-  files.forEach((file) => {
-    formData.append('file', file)
-  })
   try {
-    const res = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/upload/form', {
-      method: 'POST',
-      body: formData,
-    })
-    const result = await res.json()
-    // 支持单文件和多文件返回
-    if (result.success && result.data) {
-      if (Array.isArray(result.data)) {
-        // 多文件
-        return result.data.map((item: any) => item.url).filter(Boolean)
-      }
-      else if (result.data.url) {
-        // 单文件
-        return [result.data.url]
-      }
-    }
-    throw new Error(result.message || '图片上传失败')
+    const results = await uploadFilesToQiniu(files)
+    return results.map(result => result.url).filter(Boolean)
   }
   catch (err: any) {
     throw new Error(err.message || '图片上传失败')
@@ -430,14 +295,12 @@ async function handleDrop(e: DragEvent) {
 function removePhoto(idx: number) {
   form.uploadPhotos.splice(idx, 1)
 }
-async function handleSubmit() {
-  // Prevent duplicate submissions
-  if (isSubmitting.value) {
-    return
-  }
+function yn(v: '' | 'yes' | 'no') { return v === 'yes' }
 
-  // 校验上传照片数量（必须是 URL）
-  if (!form.uploadPhotos || form.uploadPhotos.length < 2) {
+async function handleSubmit() {
+  if (isSubmitting.value)
+    return
+  if (!form.uploadPhotos?.length || form.uploadPhotos.length < 2) {
     modalConfig.type = 'error'
     modalConfig.titleKey = 'modal.error.uploadPhotosMin.title'
     modalConfig.messageKey = 'modal.error.uploadPhotosMin.message'
@@ -445,7 +308,6 @@ async function handleSubmit() {
     showModal.value = true
     return
   }
-  // 校验是否有未完成的图片上传
   if (uploadingPhotos.value) {
     modalConfig.type = 'error'
     modalConfig.titleKey = 'modal.error.uploadPhotosUploading.title'
@@ -454,70 +316,40 @@ async function handleSubmit() {
     showModal.value = true
     return
   }
-  // “如何得知”选择其它时，必须填写其它内容
-  if (form.contactSource === 'OTHER' && !form.contactSourceOther?.trim()) {
-    modalConfig.type = 'error'
-    modalConfig.titleKey = 'modal.error.contactSourceOther.title'
-    modalConfig.messageKey = 'modal.error.contactSourceOther.message'
-    modalConfig.buttonText = t('modal.error.ok')
-    showModal.value = true
-    return
-  }
-  // 校验身高和体重
-  if (!form.heightFeet || !form.heightInches || !form.weight) {
-    modalConfig.type = 'error'
-    modalConfig.titleKey = 'modal.error.required.title'
-    modalConfig.messageKey = 'modal.error.required.message'
-    modalConfig.buttonText = t('modal.error.ok')
-    modalConfig.fieldLabel = 'surrogate.application.form.heightWeight'
-    showModal.value = true
-    return
-  }
-
-  // 所有选择题必选校验（国际化）
-  const requiredChoices = [
-    { value: form.contactSource, label: 'surrogate.application.form.howDidYouHear' },
-    { value: form.maritalStatus, label: 'surrogate.application.form.maritalStatus.question' },
-    { value: form.partnerSupport, label: 'surrogate.application.form.partnerSupport.question' },
-    { value: form.hasHighSchoolDiploma, label: 'surrogate.application.form.education.highSchool' },
-    { value: form.householdIncome, label: 'surrogate.application.form.income.question' },
-    { value: form.pregnancyHistory.hasGivenBirth, label: 'surrogate.application.form.pregnancy.givenBirth.question' },
-    { value: form.pregnancyHistory.isPregnant, label: 'surrogate.application.form.pregnancy.currentlyPregnant' },
-    { value: form.pregnancyHistory.isBreastfeeding, label: 'surrogate.application.form.pregnancy.breastfeeding' },
-    { value: form.pregnancyHistory.hasStillbirth, label: 'surrogate.application.form.pregnancy.stillbirth' },
-    { value: form.healthHistory.isTakingMeds, label: 'surrogate.application.form.health.medications.question' },
-    { value: form.pregnancyHistory.seriousComplications, label: 'surrogate.application.form.pregnancyHistory.seriousComplications' },
-    { value: form.legalHealthQuestions.domesticViolence, label: 'surrogate.application.form.legalHealthQuestions.domesticViolence' },
-    { value: form.legalHealthQuestions.substanceAbuse, label: 'surrogate.application.form.legalHealthQuestions.substanceAbuse' },
-    { value: form.legalHealthQuestions.felonyCharges, label: 'surrogate.application.form.legalHealthQuestions.felonyCharges' },
-    { value: form.legalHealthQuestions.outstandingWarrant, label: 'surrogate.application.form.legalHealthQuestions.outstandingWarrant' },
-    { value: form.legalHealthQuestions.formalProbation, label: 'surrogate.application.form.legalHealthQuestions.formalProbation' },
-    { value: form.legalHealthQuestions.arrests, label: 'surrogate.application.form.legalHealthQuestions.arrests' },
-    { value: form.legalHealthQuestions.childAbuseNeglect, label: 'surrogate.application.form.legalHealthQuestions.childAbuseNeglect' },
-    { value: form.legalHealthQuestions.childProtectionInvestigation, label: 'surrogate.application.form.legalHealthQuestions.childProtectionInvestigation' },
-    { value: form.legalHealthQuestions.backgroundCheckStatus, label: 'surrogate.application.form.legalHealthQuestions.backgroundCheckStatus' },
+  const g = form.general_info
+  const required: { value: string | number | undefined, label: string }[] = [
+    { value: g.full_name?.trim(), label: 'surrogate.application.gcIntake.fullName' },
+    { value: g.email?.trim(), label: 'surrogate.application.gcIntake.email' },
+    { value: g.phone?.trim(), label: 'surrogate.application.gcIntake.phone' },
+    { value: g.dob, label: 'surrogate.application.gcIntake.dob' },
+    { value: g.state_of_residence, label: 'surrogate.application.gcIntake.stateOfResidence' },
+    { value: g.marital_status, label: 'surrogate.application.gcIntake.maritalStatus' },
+    { value: g.us_citizen_or_resident, label: 'surrogate.application.gcIntake.usCitizenOrResident' },
+    { value: g.occupation_type, label: 'surrogate.application.gcIntake.occupationSource' },
+    { value: g.height_feet || g.height_inches || g.weight, label: 'surrogate.application.gcIntake.heightWeight' },
   ]
-  for (const item of requiredChoices) {
-    if (!item.value) {
+  for (const r of required) {
+    if (r.value === undefined || r.value === '') {
       modalConfig.type = 'error'
       modalConfig.titleKey = 'modal.error.required.title'
       modalConfig.messageKey = 'modal.error.required.message'
       modalConfig.buttonText = t('modal.error.ok')
-      modalConfig.fieldLabel = item.label // 传递字段名用于 $t 参数
+      modalConfig.fieldLabel = r.label
       showModal.value = true
       return
     }
   }
-  // 校验短信同意
-  if (!form.smsConsent) {
-    modalConfig.type = 'error'
-    modalConfig.titleKey = 'modal.error.smsConsent.title'
-    modalConfig.messageKey = 'modal.error.smsConsent.message'
-    modalConfig.buttonText = t('modal.error.ok')
-    showModal.value = true
-    return
+  if (g.occupation_type === 'employed' || g.occupation_type === 'unemployed') {
+    if (!form.general_info.occupation_specify?.trim()) {
+      modalConfig.type = 'error'
+      modalConfig.titleKey = 'modal.error.required.title'
+      modalConfig.messageKey = 'modal.error.required.message'
+      modalConfig.buttonText = t('modal.error.ok')
+      modalConfig.fieldLabel = 'surrogate.application.gcIntake.occupationSource'
+      showModal.value = true
+      return
+    }
   }
-  // 校验最终同意
   if (!form.finalConsent) {
     modalConfig.type = 'error'
     modalConfig.titleKey = 'modal.error.consentRequired.title'
@@ -528,178 +360,162 @@ async function handleSubmit() {
   }
 
   isSubmitting.value = true
-
   try {
-    // 转换布尔值
-    const booleanFields = {
-      'hasHighSchoolDiploma': form.hasHighSchoolDiploma === 'yes',
-      'pregnancyHistory.hasGivenBirth': form.pregnancyHistory.hasGivenBirth === 'yes',
-      'pregnancyHistory.hasStillbirth': form.pregnancyHistory.hasStillbirth === 'yes',
-      'pregnancyHistory.isBreastfeeding': form.pregnancyHistory.isBreastfeeding === 'yes',
-      'pregnancyHistory.isPregnant': form.pregnancyHistory.isPregnant === 'yes',
-      'healthHistory.isTakingMeds': form.healthHistory.isTakingMeds === 'yes',
-    }
-
-    // 转换医疗状况数据
-    const medicalConditions: string[] = []
-    const conditionsMap: Record<string, string> = {
-      diabetes: 'DIABETES',
-      hypertension: 'HYPERTENSION',
-      bipolarDisorder: 'BIPOLAR_DISORDER',
-      multipleMiscarriages: 'MULTIPLE_MISCARRIAGES',
-      seizureDisorder: 'SEIZURE_DISORDER',
-    }
-
-    Object.entries(form.healthHistory.medicalConditions).forEach(([key, value]) => {
-      if (value && key !== 'none' && conditionsMap[key]) {
-        medicalConditions.push(conditionsMap[key])
-      }
-    })
-
-    // 构建API请求数据（修正为 SurrogateMotherApplicationData 类型）
     const requestData: SurrogateMotherApplicationData = {
-      contact_information: {
-        first_name: form.firstName,
-        last_name: form.lastName,
-        date_of_birth: form.birthDate,
-        cell_phone_country_code: form.countryCode,
-        cell_phone: form.mobilePhone,
-        is_agree_cell_phone_receive_messages: form.smsConsent,
-        email_address: form.email,
-        city: form.city,
-        country: form.country,
-        country_selected_key: form.country, // 如有多语言映射请替换
-        state_or_province: form.state,
-        state_or_province_selected_key: form.state, // 如有多语言映射请替换
-        zip_code: form.zipCode,
-        height: ((Number.parseFloat(form.heightFeet) || 0) + (Number.parseFloat(form.heightInches) || 0) / 12).toString(), // 转换为总英尺
-        weight: Number.parseFloat(form.weight).toString(),
-        bmi: calculatedBMI.value,
-        ethnicity: form.ethnicity,
-        ethnicity_selected_key: form.ethnicity as any, // 如有枚举请替换
-        surrogacy_experience_count: Number.parseInt(form.surrogacyExperienceCount) || 0,
-        us_citizen_or_visa_status: form.citizenshipStatus,
-        us_citizen_or_visa_status_selected_key: form.citizenshipStatus as any, // 如有枚举请替换
-      },
-      about_you: {
-        contact_source: form.contactSource,
-        contact_source_selected_key: form.contactSource as any,
-        occupation: form.occupation,
-        education_level: form.educationLevel,
-        education_level_selected_key: form.educationLevel as any,
-        is_former_surrogate: false, // 如有字段请补充
-        surrogate_experience: '', // 如有字段请补充
-        marital_status: form.maritalStatus,
-        marital_status_selected_key: form.maritalStatus as any,
-        partner_support: form.partnerSupport,
-        partner_support_selected_key: form.partnerSupport as any,
-        has_high_school_diploma: booleanFields.hasHighSchoolDiploma,
-        household_income: form.householdIncome,
-        household_income_selected_key: form.householdIncome as any,
-      },
-      pregnancy_and_health: {
-        has_given_birth: booleanFields['pregnancyHistory.hasGivenBirth'],
-        birth_details: form.pregnancyHistory.birthDetails || '',
-        is_currently_pregnant: booleanFields['pregnancyHistory.isPregnant'],
-        is_breastfeeding: booleanFields['pregnancyHistory.isBreastfeeding'],
-        has_stillbirth: booleanFields['pregnancyHistory.hasStillbirth'],
-        medical_conditions: medicalConditions,
-        medical_conditions_selected_keys: medicalConditions as any,
-        is_taking_medications: booleanFields['healthHistory.isTakingMeds'],
-        medications_list: form.healthHistory.medicationsList || '',
-        domestic_violence: form.legalHealthQuestions.domesticViolence === 'yes',
-        substance_abuse: form.legalHealthQuestions.substanceAbuse === 'yes',
-        felony_charges: form.legalHealthQuestions.felonyCharges === 'yes',
-        outstanding_warrant: form.legalHealthQuestions.outstandingWarrant === 'yes',
-        formal_probation: form.legalHealthQuestions.formalProbation === 'yes',
-        arrests: form.legalHealthQuestions.arrests === 'yes',
-        child_abuse_neglect: form.legalHealthQuestions.childAbuseNeglect === 'yes',
-        child_protection_investigation: form.legalHealthQuestions.childProtectionInvestigation === 'yes',
-        background_check_status: form.legalHealthQuestions.backgroundCheckStatus,
-        background_check_status_selected_key: form.legalHealthQuestions.backgroundCheckStatus as any,
-        pregnancy_histories: form.pregnancyHistoryList.map((preg: any) => ({
-          delivery_date: preg.date,
-          birth_weight: preg.weight,
-          gestational_weeks: preg.weeks,
-          number_of_babies: preg.babies,
-          delivery_method: preg.delivery,
+      gc_intake: {
+        general_info: {
+          full_name: g.full_name?.trim(),
+          email: g.email?.trim(),
+          phone: g.phone?.trim(),
+          country_code: g.country_code,
+          dob: g.dob,
+          age: g.dob ? (new Date().getFullYear() - new Date(g.dob).getFullYear()) : undefined,
+          state_of_residence: g.state_of_residence,
+          place_of_birth: g.place_of_birth?.trim() || undefined,
+          home_address: g.home_address?.trim() || undefined,
+          height_feet: g.height_feet,
+          height_inches: g.height_inches,
+          weight: g.weight,
+          bmi: String(calculatedBMI.value),
+          occupation_type: g.occupation_type || undefined,
+          occupation_specify: g.occupation_specify?.trim() || undefined,
+          marital_status: g.marital_status || undefined,
+          single_partner_info: g.single_partner_info?.trim() || undefined,
+          us_citizen_or_resident: g.us_citizen_or_resident === 'yes',
+        },
+        pregnancy_birth_history: {
+          total_children: typeof form.pregnancy_birth_history.total_children === 'number' ? form.pregnancy_birth_history.total_children : (Number(form.pregnancy_birth_history.total_children) || undefined),
+          total_vaginal: typeof form.pregnancy_birth_history.total_vaginal === 'number' ? form.pregnancy_birth_history.total_vaginal : (Number(form.pregnancy_birth_history.total_vaginal) || undefined),
+          total_c_sections: typeof form.pregnancy_birth_history.total_c_sections === 'number' ? form.pregnancy_birth_history.total_c_sections : (Number(form.pregnancy_birth_history.total_c_sections) || undefined),
+          miscarriages: form.pregnancy_birth_history.miscarriages === 'yes',
+          miscarriages_detail: form.pregnancy_birth_history.miscarriages_detail?.trim() || undefined,
+          abortions: form.pregnancy_birth_history.abortions === 'yes',
+          abortions_detail: form.pregnancy_birth_history.abortions_detail?.trim() || undefined,
+        },
+        delivery_history: form.delivery_history.map(d => ({
+          delivery_date: d.delivery_date,
+          gender: d.gender,
+          birth_weight: d.birth_weight,
+          delivery_type: d.delivery_type,
+          hospital: d.hospital,
         })),
-        serious_pregnancy_complications: form.pregnancyHistory.seriousComplications === 'yes',
-        current_birth_control: form.pregnancyHistory.birthControl,
-        closest_hospital: form.pregnancyHistory.closestHospital,
-        closest_nicu_iii: form.pregnancyHistory.closestNICU,
-      },
-      gestational_surrogacy_interview: {
-        emotional_support: form.gestationalInterview.supportPerson,
-        languages_spoken: form.gestationalInterview.languages,
-        motivation: form.gestationalInterview.motivation,
-        self_introduction: form.gestationalInterview.aboutYou,
-        contact_preference: form.gestationalInterview.contactPreference,
-        hipaa_release_willing: form.gestationalInterview.hipaaConsent === 'yes',
-        twins_feeling: form.gestationalInterview.twinsAttitude,
-        multiple_reduction_willing: form.gestationalInterview.tripletsReduction === 'yes',
-        termination_willing: form.gestationalInterview.terminationConsent === 'yes',
+        pregnancy_medical: {
+          anemia: yn(form.pregnancy_medical.anemia),
+          severe_vomiting_3mo: yn(form.pregnancy_medical.severe_vomiting_3mo),
+          bp_during_pregnancy: form.pregnancy_medical.bp_during_pregnancy?.trim() || undefined,
+          preeclampsia: yn(form.pregnancy_medical.preeclampsia),
+          gestational_diabetes: yn(form.pregnancy_medical.gestational_diabetes),
+          hypertension_pregnancy: yn(form.pregnancy_medical.hypertension_pregnancy),
+          blood_transfusion: yn(form.pregnancy_medical.blood_transfusion),
+          seizures: yn(form.pregnancy_medical.seizures),
+        },
+        medical_health: {
+          regular_menstrual_cycles: yn(form.medical_health.regular_menstrual_cycles),
+          birth_control: yn(form.medical_health.birth_control),
+          birth_control_type: form.medical_health.birth_control_type?.trim() || undefined,
+          taking_medications: yn(form.medical_health.taking_medications),
+          medications_list: form.medical_health.medications_list?.trim() || undefined,
+          last_pap_smear: form.medical_health.last_pap_smear?.trim() || undefined,
+          covid_vaccinated: yn(form.medical_health.covid_vaccinated),
+          hep_b_vaccinated: yn(form.medical_health.hep_b_vaccinated),
+          varicella_vaccinated: yn(form.medical_health.varicella_vaccinated),
+          ongoing_medical_treatment: yn(form.medical_health.ongoing_medical_treatment),
+          surgeries_past_2y: yn(form.medical_health.surgeries_past_2y),
+          surgeries_specify: form.medical_health.surgeries_specify?.trim() || undefined,
+        },
+        mental_health: {
+          anxiety_depression: yn(form.mental_health.anxiety_depression),
+          bipolar_schizo_personality: yn(form.mental_health.bipolar_schizo_personality),
+          adhd: yn(form.mental_health.adhd),
+          meds_anxiety_depression: yn(form.mental_health.meds_anxiety_depression),
+          meds_specify: form.mental_health.meds_specify?.trim() || undefined,
+        },
+        substance_use: {
+          drug_use_pregnancy: yn(form.substance_use.drug_use_pregnancy),
+          drug_marijuana: form.substance_use.drug_marijuana,
+          drug_fentanyl: form.substance_use.drug_fentanyl,
+          drug_methamphetamine: form.substance_use.drug_methamphetamine,
+          drug_mdma: form.substance_use.drug_mdma,
+          drug_other: form.substance_use.drug_other?.trim() || undefined,
+          marijuana_current: yn(form.substance_use.marijuana_current),
+          marijuana_last_use: form.substance_use.marijuana_last_use?.trim() || undefined,
+          smoked_vaped_pregnancy: yn(form.substance_use.smoked_vaped_pregnancy),
+          alcohol: yn(form.substance_use.alcohol),
+          alcohol_frequency: form.substance_use.alcohol_frequency?.trim() || undefined,
+        },
+        infectious_disease: {
+          syphilis: yn(form.infectious_disease.syphilis),
+          hepatitis_b_c: yn(form.infectious_disease.hepatitis_b_c),
+          genital_herpes: yn(form.infectious_disease.genital_herpes),
+          hiv: yn(form.infectious_disease.hiv),
+        },
+        other_medical: {
+          asthma: yn(form.other_medical.asthma),
+          asthma_inhaler_per_week: form.other_medical.asthma_inhaler_per_week?.trim() || undefined,
+          heart_conditions: yn(form.other_medical.heart_conditions),
+          cancer_history: yn(form.other_medical.cancer_history),
+          scoliosis: yn(form.other_medical.scoliosis),
+          endometrial_ablation: yn(form.other_medical.endometrial_ablation),
+        },
+        preferences: {
+          availability: form.preferences.availability?.trim() || undefined,
+          health_insurance: form.preferences.health_insurance?.trim() || undefined,
+          open_twins: yn(form.preferences.open_twins),
+          open_fetal_reduction: yn(form.preferences.open_fetal_reduction),
+          open_termination: yn(form.preferences.open_termination),
+          open_amniocentesis_cvs: yn(form.preferences.open_amniocentesis_cvs),
+          open_same_sex_single_ip: yn(form.preferences.open_same_sex_single_ip),
+          willing_pump_breast_milk: yn(form.preferences.willing_pump_breast_milk),
+          open_ip_hiv: yn(form.preferences.open_ip_hiv),
+          open_ip_hepatitis_b: yn(form.preferences.open_ip_hepatitis_b),
+        },
+        legal_admin: {
+          pending_legal: yn(form.legal_admin.pending_legal),
+          criminal_record: yn(form.legal_admin.criminal_record),
+          emergency_contact: form.legal_admin.emergency_contact?.trim() || undefined,
+          government_assistance: yn(form.legal_admin.government_assistance),
+        },
+        notes: {
+          referred_by: form.notes.referred_by?.trim() || undefined,
+          medical_records_source: form.notes.medical_records_source || undefined,
+        },
       },
       upload_photos: form.uploadPhotos.map(url => ({ name: '', url })),
     }
-
-    // 按后端要求封装请求体
-    const payload = {
-      application_type: 'surrogate_mother',
-      application_data: requestData,
-    }
+    const payload = { application_type: 'surrogate_mother', application_data: requestData }
     const response = await submitSurrogateApplication(payload)
 
-    // 只有在 API 真正成功时才追踪 Facebook Pixel CompleteRegistration 事件
-    // 使用独立的 try-catch 确保追踪失败不影响主流程
-    if (response && response.data?.id) {
-      if ($fbPixel?.trackSubmitApplication) {
-        try {
-          await $fbPixel.trackSubmitApplication({
-            content_name: 'Surrogate Mother Application',
-            content_category: 'Application Form',
-            content_ids: [String(response.data.id)],
-            value: 0,
-            currency: 'USD',
-            status: true,
-            // 自定义数据
-            applicationId: String(response.data.id),
-            applicationType: 'surrogate_mother',
-          })
-        }
-        catch (trackingError) {
-          // 静默处理追踪错误，不影响用户体验
-          console.warn('Facebook Pixel tracking failed:', trackingError)
-        }
+    if (response?.data?.id && $fbPixel?.trackSubmitApplication) {
+      try {
+        await $fbPixel.trackSubmitApplication({
+          content_name: 'Surrogate Mother Application',
+          content_category: 'Application Form',
+          content_ids: [String(response.data.id)],
+          value: 0,
+          currency: 'USD',
+          status: true,
+          applicationId: String(response.data.id),
+          applicationType: 'surrogate_mother',
+        })
       }
+      catch (e) { console.warn('Facebook Pixel tracking failed:', e) }
     }
 
-    // Show success modal
     modalConfig.type = 'success'
     modalConfig.titleKey = 'modal.success.surrogate.title'
     modalConfig.messageKey = 'modal.success.surrogate.message'
     modalConfig.buttonText = t('modal.error.ok')
     showModal.value = true
-
-    // Reset form after successful submission
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }, 500)
-
+    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, 500)
     isSubmitting.value = false
   }
   catch (error: any) {
     console.error('Submission error:', error)
-
-    // Handle error response
     modalConfig.type = 'error'
     modalConfig.titleKey = 'modal.error.title'
-    // 错误信息如果是数组或字符串，仍然直接赋值 message（兼容后端返回）
     if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
-      const errorMessages = error.response.data.errors.map((err: any) =>
-        err.field ? `${err.field}: ${err.message}` : err.message,
-      )
-      modalConfig.message = errorMessages
+      modalConfig.message = error.response.data.errors.map((err: any) =>
+        err.field ? `${err.field}: ${err.message}` : err.message)
       modalConfig.messageKey = ''
     }
     else if (error.response?.data?.message) {
@@ -716,7 +532,6 @@ async function handleSubmit() {
     }
     modalConfig.buttonText = t('modal.error.tryAgain')
     showModal.value = true
-
     isSubmitting.value = false
   }
 }
@@ -753,547 +568,235 @@ async function handleSubmit() {
       <!-- Form Container -->
       <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
         <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
-          <!-- Contact Information Section -->
+          <!-- I. General Information -->
           <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ $t('surrogate.application.sections.contactInfo') }}
+            {{ $t('surrogate.application.gcIntake.sections.generalInfo') }}
           </h3>
-
-          <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <FormInput v-model="form.lastName" :label="$t('surrogate.application.form.lastName')" required />
-            <FormInput v-model="form.firstName" :label="$t('surrogate.application.form.firstName')" required />
-            <FormDatePicker v-model="form.birthDate" :label="$t('surrogate.application.form.dateOfBirth')" required />
-            <FormInput v-model="form.email" :label="$t('surrogate.application.form.email')" type="email" required />
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <FormInput v-model="form.general_info.full_name" :label="$t('surrogate.application.gcIntake.fullName')" required />
+            <FormInput v-model="form.general_info.email" :label="$t('surrogate.application.gcIntake.email')" type="email" required />
             <FormPhoneInput
-              v-model="form.mobilePhone"
-              v-model:country-code="form.countryCode"
-              :label="$t('surrogate.application.form.cellPhone')"
+              v-model="form.general_info.phone"
+              v-model:country-code="form.general_info.country_code"
+              :label="$t('surrogate.application.gcIntake.phone')"
               required
-              :default-country="form.country || 'US'"
+              default-country="US"
             />
-            <FormCheckbox v-model="form.smsConsent" :label="$t('surrogate.application.form.smsConsent')" required :true-value="true" :false-value="false" />
-            <FormInput v-model="form.city" :label="$t('surrogate.application.form.city')" required />
+            <FormDatePicker v-model="form.general_info.dob" :label="$t('surrogate.application.gcIntake.dob')" required />
             <FormSelect
-              v-model="form.country"
-              :label="$t('surrogate.application.form.country')"
-              :options="countries"
-              required
-            />
-            <FormSelect
-              v-model="form.state"
-              :label="$t('surrogate.application.form.stateProvince')"
+              v-model="form.general_info.state_of_residence"
+              :label="$t('surrogate.application.gcIntake.stateOfResidence')"
               :options="states"
-              :disabled="!form.country || states.length === 0"
-              :placeholder="states.length === 0 ? $t('surrogate.application.form.noStatesAvailable') : $t('surrogate.application.form.selectStateProvince')"
+              :placeholder="states.length ? $t('surrogate.application.form.selectStateProvince') : $t('surrogate.application.form.noStatesAvailable')"
               required
             />
-            <FormInput v-model="form.zipCode" :label="$t('surrogate.application.form.zipCode')" required />
+            <FormInput v-model="form.general_info.place_of_birth" :label="$t('surrogate.application.gcIntake.placeOfBirth')" />
+            <FormInput v-model="form.general_info.home_address" :label="$t('surrogate.application.gcIntake.homeAddress')" class="lg:col-span-2" />
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
               <div>
-                <label class="mb-4 block leading-6">
-                  {{ $t('surrogate.application.form.height') }} <span class="text-red-500">*</span>
-                </label>
+                <label class="mb-4 block leading-6">{{ $t('surrogate.application.gcIntake.heightWeight') }} <span class="text-red-500">*</span></label>
                 <div class="flex gap-2">
-                  <input
-                    v-model="form.heightFeet"
-                    type="number"
-                    min="4"
-                    max="7"
-                    placeholder="5"
-                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
-                    required
-                  >
+                  <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]" />
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.feet') }}</span>
-                  <input
-                    v-model="form.heightInches"
-                    type="number"
-                    min="0"
-                    max="11"
-                    placeholder="6"
-                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
-                    required
-                  >
+                  <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]" />
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.inches') }}</span>
                 </div>
               </div>
               <div>
-                <label class="mb-4 block leading-6">
-                  {{ $t('surrogate.application.form.weight') }} <span class="text-red-500">*</span>
-                </label>
+                <label class="mb-4 block leading-6">{{ $t('surrogate.application.form.weight') }} <span class="text-red-500">*</span></label>
                 <div class="flex gap-2">
-                  <input
-                    v-model="form.weight"
-                    type="number"
-                    min="80"
-                    max="300"
-                    placeholder="140"
-                    class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
-                    required
-                  >
+                  <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]" />
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.pounds') }}</span>
                 </div>
               </div>
             </div>
             <div>
-              <label class="mb-4 block leading-6">
-                {{ $t('surrogate.application.form.bmi') }} <span class="text-red-500">*</span>
-              </label>
+              <label class="mb-4 block leading-6">{{ $t('surrogate.application.gcIntake.bmi') }}</label>
               <div class="flex gap-2">
-                <input
-                  :value="calculatedBMI"
-                  type="number"
-                  readonly
-                  class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.15)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
-                >
-                <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.bmi') }}</span>
+                <input :value="calculatedBMI" type="text" readonly class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.15)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5" />
               </div>
-              <p class="mb-2 text-xs text-gray-500">
-                {{ $t('surrogate.application.form.bmiAutoCalculated') }}
-              </p>
+              <p class="mt-2 text-xs text-gray-500">{{ $t('surrogate.application.form.bmiAutoCalculated') }}</p>
             </div>
-            <FormInput v-model="form.ethnicity" :label="$t('surrogate.application.form.ethnicity')" required />
-            <FormInput v-model="form.surrogacyExperienceCount" :label="$t('surrogate.application.form.surrogacyExperienceCount')" type="number" required />
-            <FormSelect
-              v-model="form.citizenshipStatus"
-              :label="$t('surrogate.application.form.citizenship')"
-              :options="citizenshipStatus"
-              required
-            />
-          </div>
-
-          <!-- About You Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ $t('surrogate.application.sections.aboutYou') }}
-          </h3>
-
-          <div class="mb-16 space-y-6">
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div class="grid grid-cols-1">
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.howDidYouHear') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="space-y-2">
-                  <FormRadio v-model="form.contactSource" name="contactSource" value="FRIEND_REFERRAL" :label="$t('surrogate.application.form.friendReferral')" />
-                  <FormRadio v-model="form.contactSource" name="contactSource" value="SOCIAL_MEDIA" :label="$t('surrogate.application.form.socialMedia')" />
-                  <FormRadio v-model="form.contactSource" name="contactSource" value="GOOGLE_SEARCH" :label="$t('surrogate.application.form.googleSearch')" />
-                  <div class="flex items-center gap-2">
-                    <FormRadio v-model="form.contactSource" name="contactSource" value="OTHER" :label="$t('surrogate.application.form.other')" />
-                  </div>
-                  <input
-                    v-if="form.contactSource === 'OTHER'"
-                    v-model="form.contactSourceOther"
-                    type="text"
-                    placeholder=""
-                    class="placeholder: ml-2 h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
-                  >
-                </div>
-              </div>
-              <div class="h-full flex flex-col justify-between gap-6">
-                <FormInput v-model="form.occupation" :label="$t('surrogate.application.form.occupation')" required />
-                <FormInput v-model="form.educationLevel" :label="$t('surrogate.application.form.educationLevel')" required />
-              </div>
-            </div>
-
-            <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-28">
-              <div>
-                <p class="mb-4">{{ $t('surrogate.application.form.previousSurrogate.question') }} <span class="text-red-500">*</span></p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.isFormerSurrogate" name="isFormerSurrogate" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.isFormerSurrogate" name="isFormerSurrogate" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div v-if="form.isFormerSurrogate === 'yes'">
-                <p class="mb-4">{{ $t('surrogate.application.form.previousSurrogate.description') }}</p>
-                <FormInput v-model="form.surrogateExperience" />
-              </div>
-            </div> -->
-
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.maritalStatus.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="space-y-2">
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="MARRIED" :label="$t('surrogate.application.form.maritalStatus.options.married')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="ENGAGED" :label="$t('surrogate.application.form.maritalStatus.options.engaged')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="CO_HABITATING" :label="$t('surrogate.application.form.maritalStatus.options.cohabitating')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="LIVING_SEPARATELY" :label="$t('surrogate.application.form.maritalStatus.options.livingSeparately')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="SINGLE" :label="$t('surrogate.application.form.maritalStatus.options.single')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="DIVORCED_FINALIZED" :label="$t('surrogate.application.form.maritalStatus.options.divorcedFinalized')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="DIVORCED_IN_PROGRESS" :label="$t('surrogate.application.form.maritalStatus.options.divorcedInProcess')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="LEGALLY_SEPARATED" :label="$t('surrogate.application.form.maritalStatus.options.legallySeparated')" />
-                  <FormRadio v-model="form.maritalStatus" name="maritalStatus" value="SEPARATED_INFORMALLY" :label="$t('surrogate.application.form.maritalStatus.options.separatedInformally')" />
-                </div>
-              </div>
-
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.partnerSupport.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="space-y-2">
-                  <FormRadio v-model="form.partnerSupport" name="partnerSupport" value="YES" :label="$t('surrogate.application.form.partnerSupport.options.yes')" />
-                  <FormRadio v-model="form.partnerSupport" name="partnerSupport" value="NO" :label="$t('surrogate.application.form.partnerSupport.options.no')" />
-                  <FormRadio v-model="form.partnerSupport" name="partnerSupport" value="NOT_APPLICABLE" :label="$t('surrogate.application.form.partnerSupport.options.notApplicable')" />
-                </div>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.education.highSchool') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.hasHighSchoolDiploma" name="hasHighSchoolDiploma" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.hasHighSchoolDiploma" name="hasHighSchoolDiploma" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.income.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="space-y-2">
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="UNDER_30K" :label="$t('surrogate.application.form.income.options.under30k')" />
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="BETWEEN_30K_50K" :label="$t('surrogate.application.form.income.options.between30k50k')" />
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="BETWEEN_50K_75K" :label="$t('surrogate.application.form.income.options.between50k75k')" />
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="BETWEEN_75K_100K" :label="$t('surrogate.application.form.income.options.between75k100k')" />
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="OVER_100K" :label="$t('surrogate.application.form.income.options.over100k')" />
-                  <FormRadio v-model="form.householdIncome" name="householdIncome" value="DECLINE_TO_STATE" :label="$t('surrogate.application.form.income.options.preferNotToSay')" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pregnancy & Health History Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ $t('surrogate.application.sections.pregnancyHealth') }}
-          </h3>
-
-          <div class="mb-16 space-y-6">
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.pregnancy.givenBirth.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.pregnancyHistory.hasGivenBirth" name="hasGivenBirth" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.pregnancyHistory.hasGivenBirth" name="hasGivenBirth" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div v-if="form.pregnancyHistory.hasGivenBirth === 'yes'">
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.pregnancy.givenBirth.description') }}
-                </p>
-                <FormInput v-model="form.pregnancyHistory.birthDetails" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.pregnancy.currentlyPregnant') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.pregnancyHistory.isPregnant" name="isPregnant" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.pregnancyHistory.isPregnant" name="isPregnant" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.pregnancy.breastfeeding') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.pregnancyHistory.isBreastfeeding" name="isBreastfeeding" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.pregnancyHistory.isBreastfeeding" name="isBreastfeeding" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-            </div>
-
             <div>
-              <p class="mb-4">
-                {{ $t('surrogate.application.form.pregnancy.stillbirth') }} <span class="text-red-500">*</span>
-              </p>
+              <p class="mb-4">{{ $t('surrogate.application.gcIntake.occupationSource') }} <span class="text-red-500">*</span></p>
+              <div class="space-y-2">
+                <FormRadio v-model="form.general_info.occupation_type" name="occupation_type" value="employed" :label="$t('surrogate.application.gcIntake.occupationEmployed')" />
+                <FormRadio v-model="form.general_info.occupation_type" name="occupation_type" value="stay_at_home" :label="$t('surrogate.application.gcIntake.occupationStayAtHome')" />
+                <FormRadio v-model="form.general_info.occupation_type" name="occupation_type" value="unemployed" :label="$t('surrogate.application.gcIntake.occupationUnemployed')" />
+              </div>
+              <FormInput v-if="form.general_info.occupation_type === 'employed' || form.general_info.occupation_type === 'unemployed'" v-model="form.general_info.occupation_specify" class="mt-4" />
+            </div>
+            <div>
+              <p class="mb-4">{{ $t('surrogate.application.gcIntake.maritalStatus') }} <span class="text-red-500">*</span></p>
+              <div class="flex flex-wrap gap-4">
+                <FormRadio v-model="form.general_info.marital_status" name="marital_status" value="married" :label="$t('surrogate.application.gcIntake.maritalMarried')" />
+                <FormRadio v-model="form.general_info.marital_status" name="marital_status" value="single" :label="$t('surrogate.application.gcIntake.maritalSingle')" />
+                <FormRadio v-model="form.general_info.marital_status" name="marital_status" value="cohabitating" :label="$t('surrogate.application.gcIntake.maritalCohabitating')" />
+                <FormRadio v-model="form.general_info.marital_status" name="marital_status" value="divorced" :label="$t('surrogate.application.gcIntake.maritalDivorced')" />
+              </div>
+              <FormInput v-if="form.general_info.marital_status === 'single'" v-model="form.general_info.single_partner_info" :label="$t('surrogate.application.gcIntake.singlePartnerInfo')" class="mt-4" />
+            </div>
+            <div>
+              <p class="mb-4">{{ $t('surrogate.application.gcIntake.usCitizenOrResident') }} <span class="text-red-500">*</span></p>
               <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancyHistory.hasStillbirth" name="hasStillbirth" value="yes" :label="$t('surrogate.application.form.yes')" />
-                <FormRadio v-model="form.pregnancyHistory.hasStillbirth" name="hasStillbirth" value="no" :label="$t('surrogate.application.form.no')" />
-              </div>
-            </div>
-
-            <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-28">
-              <FormInput v-model="form.pregnancyHistory.height" :label="$t('surrogate.application.form.pregnancy.height')" type="number" required />
-              <FormInput v-model="form.pregnancyHistory.weightPounds" :label="$t('surrogate.application.form.pregnancy.weight')" type="number" required />
-            </div> -->
-
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.health.medicalHistory.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="space-y-2">
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.diabetes" :label="$t('surrogate.application.form.health.medicalHistory.conditions.diabetes')" />
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.hypertension" :label="$t('surrogate.application.form.health.medicalHistory.conditions.hypertension')" />
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.bipolarDisorder" :label="$t('surrogate.application.form.health.medicalHistory.conditions.bipolarDisorder')" />
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.multipleMiscarriages" :label="$t('surrogate.application.form.health.medicalHistory.conditions.multipleMiscarriages')" />
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.seizureDisorder" :label="$t('surrogate.application.form.health.medicalHistory.conditions.seizureDisorder')" />
-                  <FormCheckbox v-model="form.healthHistory.medicalConditions.none" :label="$t('surrogate.application.form.health.medicalHistory.conditions.none')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.health.medications.question') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="mb-4 flex gap-8">
-                  <FormRadio v-model="form.healthHistory.isTakingMeds" name="isTakingMeds" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.healthHistory.isTakingMeds" name="isTakingMeds" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-                <FormInput v-if="form.healthHistory.isTakingMeds === 'yes'" v-model="form.healthHistory.medicationsList" placeholder="" />
+                <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_citizen" value="yes" :label="$t('surrogate.application.form.yes')" />
+                <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_citizen" value="no" :label="$t('surrogate.application.form.no')" />
               </div>
             </div>
           </div>
 
-          <!-- Financial & Legal Background Section -->
-          <!-- <h3 class="text-6 font-semibold mb-8" style="font-family: var(--font-primary)">{{ $t('surrogate.application.sections.financialLegal') }}</h3>
-
-          <div class="space-y-6 mb-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-              <div>
-                <p class="mb-4">{{ $t('surrogate.application.form.assistance.question') }}</p>
-                <div class="grid grid-cols-1 gap-2">
-                  <FormCheckbox v-model="form.governmentAssistance.foodStamps" :label="$t('surrogate.application.form.assistance.programs.foodStamps')" />
-                  <FormCheckbox v-model="form.governmentAssistance.medicaid" :label="$t('surrogate.application.form.assistance.programs.medicaid')" />
-                  <FormCheckbox v-model="form.governmentAssistance.cashAssistance" :label="$t('surrogate.application.form.assistance.programs.cashAssistance')" />
-                  <FormCheckbox v-model="form.governmentAssistance.financialAid" :label="$t('surrogate.application.form.assistance.programs.financialAid')" />
-                  <FormCheckbox v-model="form.governmentAssistance.wic" :label="$t('surrogate.application.form.assistance.programs.wic')" />
-                  <FormCheckbox v-model="form.governmentAssistance.ssi" :label="$t('surrogate.application.form.assistance.programs.ssi')" />
-                  <FormCheckbox v-model="form.governmentAssistance.publicHousing" :label="$t('surrogate.application.form.assistance.programs.publicHousing')" />
-                  <FormCheckbox v-model="form.governmentAssistance.childcare" :label="$t('surrogate.application.form.assistance.programs.childcare')" />
-                  <FormCheckbox v-model="form.governmentAssistance.studentLoans" :label="$t('surrogate.application.form.assistance.programs.studentLoans')" />
-                  <div class="flex items-center gap-2">
-                    <FormCheckbox v-model="form.governmentAssistance.other" :label="$t('surrogate.application.form.assistance.programs.other')" /></div>
-                    <input
-                      v-if="form.governmentAssistance.other"
-                      v-model="form.financialLegal.otherAssistanceDetail"
-                      type="text"
-                      placeholder=""
-                      class="ml-2 h-10 px-3 bg-[rgba(234.35,232.57,208.37,0.20)] shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] bg-blend-overlay rounded-2.5 backdrop-blur-5 border-none outline-none focus:ring-2 focus:ring-[var(--grayish-green)] transition-all placeholder:text-black/60 placeholder: flex-1"
-                    />
-                  <FormCheckbox v-model="form.governmentAssistance.none" :label="$t('surrogate.application.form.assistance.programs.none')" />
-                </div>
-              </div>
-
-              <div>
-                <p class="mb-4">{{ $t('surrogate.application.form.legal.criminalRecord.question') }}</p>
-                <div class="flex gap-8 mb-4">
-                  <FormRadio v-model="form.financialLegal.hasCriminalRecord" name="hasCriminalRecord" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.financialLegal.hasCriminalRecord" name="hasCriminalRecord" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-                <FormInput v-if="form.financialLegal.hasCriminalRecord === 'yes'" v-model="form.financialLegal.criminalDescription" :placeholder="$t('surrogate.application.form.legal.criminalRecord.explain')" />
-              </div>
-            </div>
+          <!-- II. Pregnancy & Birth History -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+            {{ $t('surrogate.application.gcIntake.sections.pregnancyBirthHistory') }}
+          </h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <FormInput v-model="form.pregnancy_birth_history.total_children" :label="$t('surrogate.application.gcIntake.totalChildren')" type="number" />
+            <FormInput v-model="form.pregnancy_birth_history.total_vaginal" :label="$t('surrogate.application.gcIntake.totalVaginal')" type="number" />
+            <FormInput v-model="form.pregnancy_birth_history.total_c_sections" :label="$t('surrogate.application.gcIntake.totalCSections')" type="number" />
             <div>
-              <p class="mb-4">{{ $t('surrogate.application.form.legal.legalMatters.question') }}</p>
-              <div class="flex gap-8 mb-4">
-                <FormRadio v-model="form.financialLegal.hasLegalProceedings" name="hasLegalProceedings" value="yes" :label="$t('surrogate.application.form.yes')" />
-                <FormRadio v-model="form.financialLegal.hasLegalProceedings" name="hasLegalProceedings" value="no" :label="$t('surrogate.application.form.no')" />
-              </div>
-              <FormInput v-if="form.financialLegal.hasLegalProceedings === 'yes'" v-model="form.financialLegal.proceedingDetails" :placeholder="$t('surrogate.application.form.legal.legalMatters.explain')" />
-            </div>
-
-            <div>
-              <p class="mb-4">{{ $t('surrogate.application.form.legal.cpsHistory') }}</p>
+              <p class="mb-4">{{ $t('surrogate.application.gcIntake.miscarriages') }}</p>
               <div class="flex gap-8">
-                <FormRadio v-model="form.financialLegal.hasCPSHistory" name="hasCPSHistory" value="yes" :label="$t('surrogate.application.form.yes')" />
-                <FormRadio v-model="form.financialLegal.hasCPSHistory" name="hasCPSHistory" value="no" :label="$t('surrogate.application.form.no')" />
+                <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="miscarriages" value="no" :label="$t('surrogate.application.form.no')" />
+                <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="miscarriages" value="yes" :label="$t('surrogate.application.form.yes')" />
               </div>
-            </div>
-          </div> -->
-
-          <!-- <h3 class="text-6 font-semibold mb-8">{{ $t('surrogate.application.sections.legalHealthQuestions') }}</h3> -->
-          <div class="mb-16 space-y-6">
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.domesticViolence') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.domesticViolence" name="domesticViolence" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.domesticViolence" name="domesticViolence" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.substanceAbuse') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.substanceAbuse" name="substanceAbuse" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.substanceAbuse" name="substanceAbuse" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-            </div>
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.felonyCharges') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.felonyCharges" name="felonyCharges" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.felonyCharges" name="felonyCharges" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.outstandingWarrant') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.outstandingWarrant" name="outstandingWarrant" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.outstandingWarrant" name="outstandingWarrant" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-            </div>
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.formalProbation') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.formalProbation" name="formalProbation" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.formalProbation" name="formalProbation" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.arrests') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.arrests" name="arrests" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.arrests" name="arrests" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-            </div>
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.childAbuseNeglect') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.childAbuseNeglect" name="childAbuseNeglect" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.childAbuseNeglect" name="childAbuseNeglect" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.childProtectionInvestigation') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio v-model="form.legalHealthQuestions.childProtectionInvestigation" name="childProtectionInvestigation" value="yes" :label="$t('surrogate.application.form.yes')" />
-                  <FormRadio v-model="form.legalHealthQuestions.childProtectionInvestigation" name="childProtectionInvestigation" value="no" :label="$t('surrogate.application.form.no')" />
-                </div>
-              </div>
+              <FormInput v-if="form.pregnancy_birth_history.miscarriages === 'yes'" v-model="form.pregnancy_birth_history.miscarriages_detail" :label="$t('surrogate.application.gcIntake.miscarriagesDetail')" class="mt-4" />
             </div>
             <div>
-              <div>
-                <p class="mb-4">
-                  {{ $t('surrogate.application.form.legalHealthQuestions.backgroundCheckStatus') }} <span class="text-red-500">*</span>
-                </p>
-                <div class="flex gap-8">
-                  <FormRadio
-                    v-model="form.legalHealthQuestions.backgroundCheckStatus"
-                    name="backgroundCheckStatus"
-                    value="APPROVED"
-                    :label="$t('surrogate.application.form.legalHealthQuestions.approved')"
-                  />
-                  <FormRadio
-                    v-model="form.legalHealthQuestions.backgroundCheckStatus"
-                    name="backgroundCheckStatus"
-                    value="NOT_APPROVED"
-                    :label="$t('surrogate.application.form.legalHealthQuestions.notApproved')"
-                  />
-                </div>
+              <p class="mb-4">{{ $t('surrogate.application.gcIntake.abortions') }}</p>
+              <div class="flex gap-8">
+                <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abortions" value="no" :label="$t('surrogate.application.form.no')" />
+                <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abortions" value="yes" :label="$t('surrogate.application.form.yes')" />
               </div>
+              <FormInput v-if="form.pregnancy_birth_history.abortions === 'yes'" v-model="form.pregnancy_birth_history.abortions_detail" :label="$t('surrogate.application.gcIntake.abortionsDetail')" class="mt-4" />
             </div>
           </div>
 
-          <!-- 怀孕历史 Pregnancy History（可动态添加） -->
-          <div class="mb-16 bg-[rgba(234,232,208,0.15)] px-8 py-10">
-            <div class="mb-8 flex items-center">
-              <!-- <svg width="32" height="32" fill="none" viewBox="0 0 32 32" class="mr-4 text-[var(--grayish-green)]"><circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/><path d="M10 18c0-3 2-6 6-6s6 3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> -->
-              <h3 class="text-8 font-extrabold tracking-wide" style="font-family: var(--font-primary)">
-                {{ $t('surrogate.application.sections.pregnancyHistory') }}
-              </h3>
-            </div>
-            <div class="space-y-6">
-              <div v-if="form.pregnancyHistoryList.length > 0">
-                <div v-for="(preg, idx) in form.pregnancyHistoryList" :key="idx" class="mb-8 rounded-3 bg-[rgba(234,232,208,0.15)] shadow-lg">
-                  <div class="mb-2 rounded-3 bg-[rgba(234,232,208,0.15)] shadow-lg">
-                    <div class="flex cursor-pointer select-none items-center justify-between border-b border-gray-200 px-6 py-4" @click="pregnancyHistoryCollapse[idx] = !pregnancyHistoryCollapse[idx]">
-                      <div class="flex items-center gap-2">
-                        <!-- <svg width="24" height="24" fill="none" viewBox="0 0 24 24" class="text-[var(--grayish-green)]"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 14c0-2 1.5-4 4-4s4 2 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> -->
-                        <h4 class="text-6 text-black font-extrabold tracking-wide" style="font-family: var(--font-primary)">
-                          {{ $t('surrogate.application.form.pregnancyHistory.pregnancy') }} {{ idx + 1 }}
-                        </h4>
-                      </div>
-                      <span class="ml-2 flex items-center gap-2">
-                        <span class="text-4 text-gray-500">
-                          <svg v-if="pregnancyHistoryCollapse[idx]" width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                          <svg v-else width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 12l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        </span>
-                        <button type="button" class="mr-2 flex items-center rounded-3 bg-[var(--grayish-green)] px-6 py-2 text-center text-base text-gray-100 transition hover:bg-[var(--grayish-green)] hover:opacity-90" style="font-weight:normal;min-width:unset;box-shadow:none;" @click.stop.prevent="removePregnancy(idx)">
-                          <span class="text-base">{{ $t('surrogate.application.form.pregnancyHistory.remove') }}</span>
-                        </button>
-                      </span>
-                    </div>
-                    <div v-show="pregnancyHistoryCollapse[idx]" class="grid grid-cols-1 gap-6 px-6 py-4 lg:grid-cols-2 lg:gap-x-28">
-                      <FormDatePicker v-model="preg.date" :label="$t('surrogate.application.form.pregnancyHistory.date')" required />
-                      <FormInput v-model="preg.weight" :label="$t('surrogate.application.form.pregnancyHistory.weight')" type="number" required />
-                      <FormInput v-model="preg.weeks" :label="$t('surrogate.application.form.pregnancyHistory.weeks')" type="number" required />
-                      <FormInput v-model="preg.babies" :label="$t('surrogate.application.form.pregnancyHistory.babies')" type="number" required />
-                      <FormInput v-model="preg.delivery" :label="$t('surrogate.application.form.pregnancyHistory.delivery')" required />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition hover:opacity-90" @click="addPregnancy">
-                <svg width="18" height="18" fill="none" viewBox="0 0 18 18" class="mr-2 inline align-middle"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-                <span class="text-base font-bold">{{ $t('surrogate.application.form.pregnancyHistory.add') }}</span>
-              </button>
-              <!-- 移除按钮已移至标题区，内容区不再显示 -->
-
-              <div class="grid grid-cols-1 mt-8 gap-6 lg:grid-cols-2 lg:gap-x-28">
-                <div>
-                  <p class="mb-4">
-                    {{ $t('surrogate.application.form.pregnancyHistory.seriousComplications') }} <span class="text-red-500">*</span>
-                  </p>
-                  <div class="flex gap-8">
-                    <FormRadio v-model="form.pregnancyHistory.seriousComplications" name="seriousComplications" value="yes" :label="$t('surrogate.application.form.yes')" />
-                    <FormRadio v-model="form.pregnancyHistory.seriousComplications" name="seriousComplications" value="no" :label="$t('surrogate.application.form.no')" />
-                  </div>
-                </div>
-                <div>
-                  <FormInput v-model="form.pregnancyHistory.birthControl" :label="$t('surrogate.application.form.pregnancyHistory.birthControl')" required />
-                </div>
-                <div>
-                  <FormInput v-model="form.pregnancyHistory.closestHospital" :label="$t('surrogate.application.form.pregnancyHistory.closestHospital')" required />
-                </div>
-                <div>
-                  <FormInput v-model="form.pregnancyHistory.closestNICU" :label="$t('surrogate.application.form.pregnancyHistory.closestNICU')" required />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 妊娠代孕访谈 Gestational Surrogacy Interview（填空） -->
-          <h3 class="mb-8 text-6 font-semibold">
-            {{ $t('surrogate.application.sections.gestationalInterview') }}
+          <!-- III. Delivery History -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+            {{ $t('surrogate.application.gcIntake.sections.deliveryHistory') }}
           </h3>
           <div class="mb-16 space-y-6">
-            <FormInput v-model="form.gestationalInterview.supportPerson" :label="$t('surrogate.application.form.gestationalInterview.supportPerson')" required />
-            <FormInput v-model="form.gestationalInterview.languages" :label="$t('surrogate.application.form.gestationalInterview.languages')" required />
-            <FormInput v-model="form.gestationalInterview.motivation" :label="$t('surrogate.application.form.gestationalInterview.motivation')" required />
-            <FormInput v-model="form.gestationalInterview.aboutYou" :label="$t('surrogate.application.form.gestationalInterview.aboutYou')" required />
-            <FormInput v-model="form.gestationalInterview.contactPreference" :label="$t('surrogate.application.form.gestationalInterview.contactPreference')" required />
-            <FormInput v-model="form.gestationalInterview.hipaaConsent" :label="$t('surrogate.application.form.gestationalInterview.hipaaConsent')" required />
-            <FormInput v-model="form.gestationalInterview.twinsAttitude" :label="$t('surrogate.application.form.gestationalInterview.twinsAttitude')" required />
-            <FormInput v-model="form.gestationalInterview.tripletsReduction" :label="$t('surrogate.application.form.gestationalInterview.tripletsReduction')" required />
-            <FormInput v-model="form.gestationalInterview.terminationConsent" :label="$t('surrogate.application.form.gestationalInterview.terminationConsent')" required />
+            <div v-for="(d, idx) in form.delivery_history" :key="idx" class="rounded-3 bg-[rgba(234,232,208,0.15)] p-6 shadow">
+              <div class="mb-4 flex items-center justify-between">
+                <h4 class="text-5 font-semibold">{{ $t('surrogate.application.gcIntake.babyNum', { n: idx + 1 }) }}</h4>
+                <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-4 py-2 text-white text-4 transition hover:opacity-90" @click="removeDelivery(idx)">
+                  {{ $t('surrogate.application.gcIntake.removeDelivery') }}
+                </button>
+              </div>
+              <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                <FormDatePicker v-model="d.delivery_date" :label="$t('surrogate.application.gcIntake.deliveryDate')" />
+                <FormInput v-model="d.gender" :label="$t('surrogate.application.gcIntake.gender')" />
+                <FormInput v-model="d.birth_weight" :label="$t('surrogate.application.gcIntake.birthWeight')" />
+                <FormInput v-model="d.delivery_type" :label="$t('surrogate.application.gcIntake.deliveryType')" />
+                <FormInput v-model="d.hospital" :label="$t('surrogate.application.gcIntake.deliveryHospital')" class="lg:col-span-2" />
+              </div>
+            </div>
+            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition hover:opacity-90" @click="addDelivery">
+              <svg width="18" height="18" fill="none" viewBox="0 0 18 18" class="mr-2 inline align-middle"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+              {{ $t('surrogate.application.gcIntake.addDelivery') }}
+            </button>
+          </div>
+
+          <!-- IV. Pregnancy-Related Medical History -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+            {{ $t('surrogate.application.gcIntake.sections.pregnancyMedical') }}
+          </h3>
+          <p class="mb-4 text-sage-700">{{ $t('surrogate.application.gcIntake.pregMedicalIntro') }}</p>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.anemia') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.anemia" name="anemia" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.anemia" name="anemia" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.severeVomiting3mo') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="severeVomiting" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="severeVomiting" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <FormInput v-model="form.pregnancy_medical.bp_during_pregnancy" :label="$t('surrogate.application.gcIntake.bpDuringPregnancy')" />
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.preeclampsia') }} <span class="text-xs text-gray-500">{{ $t('surrogate.application.gcIntake.preeclampsiaNote') }}</span></p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.preeclampsia" name="preeclampsia" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.preeclampsia" name="preeclampsia" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.gestationalDiabetes') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gestDiabetes" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gestDiabetes" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.hypertensionPregnancy') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hypPreg" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hypPreg" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.bloodTransfusion') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bloodTrans" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bloodTrans" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.seizures') }}</p><div class="flex gap-8"><FormRadio v-model="form.pregnancy_medical.seizures" name="seizures" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.pregnancy_medical.seizures" name="seizures" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+          </div>
+
+          <!-- V. Medical & Health -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.medicalHealth') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.regularMenstrualCycles') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="regularCycles" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="regularCycles" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.birthControl') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.birth_control" name="birthControl" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.medical_health.birth_control" name="birthControl" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.medical_health.birth_control === 'yes'" v-model="form.medical_health.birth_control_type" :label="$t('surrogate.application.gcIntake.birthControlType')" class="mt-4" /></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.takingMedications') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.taking_medications" name="takingMeds" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.medical_health.taking_medications" name="takingMeds" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.medical_health.taking_medications === 'yes'" v-model="form.medical_health.medications_list" :label="$t('surrogate.application.gcIntake.medicationsList')" class="mt-4" /></div>
+            <FormInput v-model="form.medical_health.last_pap_smear" :label="$t('surrogate.application.gcIntake.lastPapSmear')" />
+            <p class="text-xs text-gray-500 lg:col-span-2">{{ $t('surrogate.application.gcIntake.papSmearNote') }}</p>
+            <p class="text-sm text-sage-700 lg:col-span-2">{{ $t('surrogate.application.gcIntake.vaccinationIntro') }}</p>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.covidVaccinated') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.covid_vaccinated" name="covid" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.medical_health.covid_vaccinated" name="covid" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.hepBVaccinated') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hepb" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hepb" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.varicellaVaccinated') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.varicella_vaccinated" name="varicella" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.medical_health.varicella_vaccinated" name="varicella" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.ongoingMedicalTreatment') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="ongoingTx" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="ongoingTx" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.surgeriesPast2y') }}</p><div class="flex gap-8"><FormRadio v-model="form.medical_health.surgeries_past_2y" name="surgeries2y" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.medical_health.surgeries_past_2y" name="surgeries2y" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.medical_health.surgeries_past_2y === 'yes'" v-model="form.medical_health.surgeries_specify" :label="$t('surrogate.application.gcIntake.surgeriesSpecify')" class="mt-4" /></div>
+          </div>
+
+          <!-- VI. Mental Health -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.mentalHealth') }}</h3>
+          <p class="mb-4 text-sage-700">{{ $t('surrogate.application.gcIntake.mentalHealthIntro') }}</p>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.anxietyDepression') }}</p><div class="flex gap-8"><FormRadio v-model="form.mental_health.anxiety_depression" name="anxDep" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.mental_health.anxiety_depression" name="anxDep" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.bipolarSchizoPersonality') }}</p><div class="flex gap-8"><FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bipolar" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bipolar" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.adhd') }}</p><div class="flex gap-8"><FormRadio v-model="form.mental_health.adhd" name="adhd" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.mental_health.adhd" name="adhd" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.medsAnxietyDepression') }}</p><div class="flex gap-8"><FormRadio v-model="form.mental_health.meds_anxiety_depression" name="medsAnx" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.mental_health.meds_anxiety_depression" name="medsAnx" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.mental_health.meds_anxiety_depression === 'yes'" v-model="form.mental_health.meds_specify" :label="$t('surrogate.application.gcIntake.medsSpecify')" class="mt-4" /></div>
+          </div>
+
+          <!-- VII. Substance Use -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.substanceUse') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.drugUsePregnancy') }}</p><div class="flex gap-8"><FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="yes" :label="$t('surrogate.application.form.yes')" /></div><div v-if="form.substance_use.drug_use_pregnancy === 'yes'" class="mt-4 space-y-2"><p class="text-sm text-sage-700">{{ $t('surrogate.application.gcIntake.drugTypes') }}</p><div class="flex flex-wrap gap-4"><FormCheckbox v-model="form.substance_use.drug_marijuana" :label="$t('surrogate.application.gcIntake.drugMarijuana')" /><FormCheckbox v-model="form.substance_use.drug_fentanyl" :label="$t('surrogate.application.gcIntake.drugFentanyl')" /><FormCheckbox v-model="form.substance_use.drug_methamphetamine" :label="$t('surrogate.application.gcIntake.drugMethamphetamine')" /><FormCheckbox v-model="form.substance_use.drug_mdma" :label="$t('surrogate.application.gcIntake.drugMDMA')" /><FormInput v-model="form.substance_use.drug_other" :label="$t('surrogate.application.gcIntake.drugOther')" /></div></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.marijuanaCurrent') }}</p><div class="flex gap-8"><FormRadio v-model="form.substance_use.marijuana_current" name="marijuanaNow" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.marijuana_current" name="marijuanaNow" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.substance_use.marijuana_current === 'yes'" v-model="form.substance_use.marijuana_last_use" :label="$t('surrogate.application.gcIntake.marijuanaLastUse')" class="mt-4" /></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.smokedVapedPregnancy') }}</p><div class="flex gap-8"><FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smokedPreg" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smokedPreg" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.alcohol') }}</p><div class="flex gap-8"><FormRadio v-model="form.substance_use.alcohol" name="alcohol" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.alcohol" name="alcohol" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.substance_use.alcohol === 'yes'" v-model="form.substance_use.alcohol_frequency" :label="$t('surrogate.application.gcIntake.alcoholFrequency')" class="mt-4" /></div>
+          </div>
+
+          <!-- VIII. Infectious Disease -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.infectiousDisease') }}</h3>
+          <p class="mb-4 text-sage-700">{{ $t('surrogate.application.gcIntake.infectiousIntro') }}</p>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.syphilis') }}</p><div class="flex gap-8"><FormRadio v-model="form.infectious_disease.syphilis" name="syphilis" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.infectious_disease.syphilis" name="syphilis" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.hepatitisBC') }}</p><div class="flex gap-8"><FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbac" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbac" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.genitalHerpes') }}</p><div class="flex gap-8"><FormRadio v-model="form.infectious_disease.genital_herpes" name="herpes" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.infectious_disease.genital_herpes" name="herpes" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.hiv') }}</p><div class="flex gap-8"><FormRadio v-model="form.infectious_disease.hiv" name="hiv" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.infectious_disease.hiv" name="hiv" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+          </div>
+
+          <!-- IX. Other Medical -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.otherMedical') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.asthma') }}</p><div class="flex gap-8"><FormRadio v-model="form.other_medical.asthma" name="asthma" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.asthma" name="asthma" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.other_medical.asthma === 'yes'" v-model="form.other_medical.asthma_inhaler_per_week" :label="$t('surrogate.application.gcIntake.asthmaInhaler')" class="mt-4" /></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.heartConditions') }}</p><div class="flex gap-8"><FormRadio v-model="form.other_medical.heart_conditions" name="heart" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.heart_conditions" name="heart" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.cancerHistory') }}</p><div class="flex gap-8"><FormRadio v-model="form.other_medical.cancer_history" name="cancer" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.cancer_history" name="cancer" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.scoliosis') }}</p><div class="flex gap-8"><FormRadio v-model="form.other_medical.scoliosis" name="scoliosis" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.scoliosis" name="scoliosis" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.endometrialAblation') }}</p><div class="flex gap-8"><FormRadio v-model="form.other_medical.endometrial_ablation" name="endoAbl" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.endometrial_ablation" name="endoAbl" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+          </div>
+
+          <!-- X. Preferences -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.preferences') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <FormInput v-model="form.preferences.availability" :label="$t('surrogate.application.gcIntake.availability')" />
+            <FormInput v-model="form.preferences.health_insurance" :label="$t('surrogate.application.gcIntake.healthInsurance')" />
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openTwins') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_twins" name="openTwins" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_twins" name="openTwins" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openFetalReduction') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_fetal_reduction" name="openRed" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_fetal_reduction" name="openRed" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openTermination') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_termination" name="openTerm" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_termination" name="openTerm" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openAmniocentesisCVS') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="openCVS" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="openCVS" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openSameSexSingleIP') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_same_sex_single_ip" name="openSS" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_same_sex_single_ip" name="openSS" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.willingPumpBreastMilk') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openIPHIV') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_ip_hiv" name="ipHiv" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_ip_hiv" name="ipHiv" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.openIPHepatitisB') }}</p><div class="flex gap-8"><FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="ipHep" value="yes" :label="$t('surrogate.application.form.yes')" /><FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="ipHep" value="no" :label="$t('surrogate.application.form.no')" /></div></div>
+          </div>
+
+          <!-- XI. Legal & Administrative -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.legalAdmin') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.pendingLegal') }}</p><div class="flex gap-8"><FormRadio v-model="form.legal_admin.pending_legal" name="pendingLegal" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.legal_admin.pending_legal" name="pendingLegal" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.criminalRecord') }}</p><div class="flex gap-8"><FormRadio v-model="form.legal_admin.criminal_record" name="criminalRec" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.legal_admin.criminal_record" name="criminalRec" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+            <FormInput v-model="form.legal_admin.emergency_contact" :label="$t('surrogate.application.gcIntake.emergencyContact')" class="lg:col-span-2" />
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.governmentAssistance') }}</p><div class="flex gap-8"><FormRadio v-model="form.legal_admin.government_assistance" name="govAssist" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.legal_admin.government_assistance" name="govAssist" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
+          </div>
+
+          <!-- XII. Notes -->
+          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.notes') }}</h3>
+          <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+            <FormInput v-model="form.notes.referred_by" :label="$t('surrogate.application.gcIntake.referredBy')" />
+            <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.medicalRecordsSource') }}</p><div class="flex flex-wrap gap-4"><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="patient_portal" :label="$t('surrogate.application.gcIntake.medicalRecordsPatientPortal')" /><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="clinic" :label="$t('surrogate.application.gcIntake.medicalRecordsClinic')" /><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="other" :label="$t('surrogate.application.gcIntake.medicalRecordsOther')" /></div></div>
           </div>
 
           <!-- 上传照片 Upload Photos (minimum 2) -->
