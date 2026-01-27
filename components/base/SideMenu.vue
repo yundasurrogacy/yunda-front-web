@@ -85,7 +85,7 @@ function toggleMenu() {
                     {{ $t("menu.surrogacyProcess") }}
                   </NuxtLink>
                   <NuxtLink
-                    :to="localePath('/surrogacy-price')"
+                    :to="localePath('/surrogacy-cost')"
                     class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                     @click="toggleMenu"
                   >
@@ -283,7 +283,7 @@ function toggleMenu() {
                         {{ $t("menu.surrogacyProcess") }}
                       </NuxtLink>
                       <NuxtLink
-                        :to="localePath('/surrogacy-price')"
+                        :to="localePath('/surrogacy-cost')"
                         class="block text-sm text-[#271F18] font-normal transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >

@@ -215,7 +215,7 @@ function formatContent(content: string | undefined) {
 </script>
 
 <template>
-  <section class="bg-[var(--light-cream)] px-4 py-20 md:px-20 md:py-25">
+  <section class="border-b border-t border-[var(--primary-brown)]/18 from-[var(--light-cream)] via-[var(--head-bg)] to-[var(--light-cream)] bg-gradient-to-b px-4 py-20 md:px-20 md:py-25">
     <div class="mx-auto max-w-[1400px]">
       <!-- 标题 -->
       <h2 class="scroll-animate mb-16 text-center text-7.5 font-semibold uppercase md:mb-20 md:text-10" style="font-family: var(--font-primary)">
@@ -226,7 +226,7 @@ function formatContent(content: string | undefined) {
       <div v-if="testimonials && testimonials.length > 0" class="scroll-animate scroll-animate-delay-100 relative">
         <!-- 左侧导航按钮 -->
         <button
-          class="group absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl hover:scale-110 active:scale-95 md:left-8 md:p-4"
+          class="group absolute left-4 top-1/2 z-20 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-300 md:left-8 -translate-y-1/2 active:scale-95 hover:scale-110 hover:bg-white md:p-4 hover:shadow-xl"
           :disabled="isTransitioning"
           @click="goToPrev"
         >
@@ -243,7 +243,7 @@ function formatContent(content: string | undefined) {
         </button>
 
         <!-- 轮播内容 - Desktop -->
-        <div class="relative mx-auto hidden md:flex items-center justify-center gap-4 px-20 overflow-hidden">
+        <div class="relative mx-auto hidden items-center justify-center gap-4 overflow-hidden px-20 md:flex">
           <template v-for="(displayIndex, position) in visibleIndices" :key="`${displayIndex}-${currentIndex}`">
             <div
               class="testimonial-card flex-shrink-0 transition-all duration-500 ease-out"
@@ -253,7 +253,7 @@ function formatContent(content: string | undefined) {
               }"
             >
               <div
-                class="card-inner w-full rounded-2xl bg-[#FAF8F3] border-2 transition-all duration-300"
+                class="card-inner w-full border-2 rounded-2xl bg-[#FAF8F3] transition-all duration-300"
                 :class="{
                   'border-[var(--primary-brown)] p-7 md:p-9 shadow-lg hover:shadow-2xl hover:border-[var(--primary-brown)] hover:bg-[#F9F6EF]': position === 1,
                   'border-gray-300/60 p-5 md:p-6 shadow-md hover:shadow-lg hover:border-gray-400/80 hover:bg-[#F9F6EF]': position === 0 || position === 2,
@@ -262,7 +262,7 @@ function formatContent(content: string | undefined) {
                 <!-- 标签 -->
                 <div v-if="testimonials[displayIndex]" class="mb-4 flex items-center">
                   <span
-                    class="rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide md:px-5 md:py-2 md:text-sm"
+                    class="rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase md:px-5 md:py-2 md:text-sm"
                     :class="getTagClass(testimonials[displayIndex]?.type || 'SURROGATE')"
                   >
                     {{ getTagText(testimonials[displayIndex]?.type || 'SURROGATE') }}
@@ -284,7 +284,7 @@ function formatContent(content: string | undefined) {
                       </p>
                     </template>
                     <template v-else>
-                      <div class="space-y-3 leading-relaxed">
+                      <div class="leading-relaxed space-y-3">
                         <p
                           v-for="(paragraph, idx) in formatContent(testimonials[displayIndex]?.content || '')"
                           :key="idx"
@@ -327,7 +327,7 @@ function formatContent(content: string | undefined) {
                 </div>
 
                 <!-- 作者信息 -->
-                <div v-if="testimonials[displayIndex]" class="mb-0 text-sm font-semibold text-[var(--dark-brown)] md:text-base" style="font-family: var(--font-secondary)">
+                <div v-if="testimonials[displayIndex]" class="mb-0 text-sm text-[var(--dark-brown)] font-semibold md:text-base" style="font-family: var(--font-secondary)">
                   {{ testimonials[displayIndex]?.author }} / {{ testimonials[displayIndex]?.location }}
                 </div>
               </div>
@@ -337,11 +337,11 @@ function formatContent(content: string | undefined) {
 
         <!-- 轮播内容 - Mobile -->
         <div v-if="testimonials && testimonials.length > 0" class="relative mx-auto max-w-md px-4 md:hidden">
-          <div class="w-full rounded-2xl bg-[#FAF8F3] border-2 border-[var(--primary-brown)] p-6 shadow-md">
+          <div class="w-full border-2 border-[var(--primary-brown)] rounded-2xl bg-[#FAF8F3] p-6 shadow-md">
             <!-- 标签 -->
             <div v-if="testimonials[currentIndex]" class="mb-4 flex items-center">
               <span
-                class="rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide"
+                class="rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase"
                 :class="getTagClass(testimonials[currentIndex]?.type || 'SURROGATE')"
               >
                 {{ getTagText(testimonials[currentIndex]?.type || 'SURROGATE') }}
@@ -363,7 +363,7 @@ function formatContent(content: string | undefined) {
                   </p>
                 </template>
                 <template v-else>
-                  <div class="space-y-3 leading-relaxed">
+                  <div class="leading-relaxed space-y-3">
                     <p
                       v-for="(paragraph, idx) in formatContent(testimonials[currentIndex]?.content || '')"
                       :key="idx"
@@ -406,7 +406,7 @@ function formatContent(content: string | undefined) {
             </div>
 
             <!-- 作者信息 -->
-            <div v-if="testimonials[currentIndex]" class="mb-0 text-sm font-semibold text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div v-if="testimonials[currentIndex]" class="mb-0 text-sm text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-secondary)">
               {{ testimonials[currentIndex]?.author }} / {{ testimonials[currentIndex]?.location }}
             </div>
           </div>
@@ -414,7 +414,7 @@ function formatContent(content: string | undefined) {
 
         <!-- 右侧导航按钮 -->
         <button
-          class="group absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl hover:scale-110 active:scale-95 md:right-8 md:p-4"
+          class="group absolute right-4 top-1/2 z-20 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-300 md:right-8 -translate-y-1/2 active:scale-95 hover:scale-110 hover:bg-white md:p-4 hover:shadow-xl"
           :disabled="isTransitioning"
           @click="goToNext"
         >

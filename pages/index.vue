@@ -13,6 +13,7 @@ import JourneySection from '../components/home/JourneySection.vue'
 // import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateCareSection from '../components/home/SurrogateCareSection.vue'
+import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
 import TestimonialsSection from '../components/home/TestimonialsSection.vue'
 
 const { t, locale } = useI18n()
@@ -57,7 +58,7 @@ const serviceSchema = computed(() => buildServiceSchema({
     {
       name: t('home.costSection.title2'),
       description: t('home.costSection.description1'),
-      url: '/surrogacy-price',
+      url: '/surrogacy-cost',
     },
     {
       name: t('home.surrogateCareSection.title'),
@@ -141,6 +142,7 @@ useHead(() => {
      /> -->
     <JourneySection />
     <AssociationSection />
+    <SurrogateGallerySection />
     <TestimonialsSection />
     <CostSection />
     <AppFooter />

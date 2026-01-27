@@ -18,10 +18,10 @@ const containerRef = ref<HTMLDivElement | null>(null)
 async function playVideo() {
   // 先设置 isPlaying 为 true，让视频元素渲染
   isPlaying.value = true
-  
+
   // 等待 DOM 更新后，再调用 play()
   await nextTick()
-  
+
   if (videoRef.value) {
     videoRef.value.play().catch((error) => {
       console.error('Video play error:', error)
@@ -59,12 +59,12 @@ function handleVideoClick() {
       <img
         :src="coverSrc"
         :loading="lazy ? 'lazy' : 'eager'"
-        :alt="'Video cover'"
+        alt="Video cover"
         class="h-full w-full object-cover"
       >
       <!-- 播放按钮 -->
       <div class="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity hover:bg-black/30">
-        <div class="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform hover:scale-110">
+        <div class="h-20 w-20 flex items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform hover:scale-110">
           <svg
             class="ml-1 h-8 w-8 text-[var(--dark-brown)]"
             fill="currentColor"
@@ -94,4 +94,3 @@ function handleVideoClick() {
 
 <style scoped>
 </style>
-
