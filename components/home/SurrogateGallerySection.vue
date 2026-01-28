@@ -7,11 +7,14 @@ useScrollAnimation()
 
 const slides = [
   { src: '/images/home/surrogate-1.jpeg', alt: 'Surrogate mother with newborn in hospital' },
-  { src: '/images/home/surrogate-2.jpeg', alt: 'Surrogate mother holding baby' },
   { src: '/images/home/surrogate-3.png', alt: 'Surrogate mother in delivery room' },
   { src: '/images/home/surrogate-4.png', alt: 'Expectant surrogate mother mirror selfie' },
   { src: '/images/home/surrogate-5.png', alt: 'Surrogate mother taking a mirror selfie' },
   { src: '/images/home/surrogate-6.png', alt: 'Surrogate mother outdoors' },
+  { src: '/images/home/surrogate-7.png', alt: 'Surrogate mother taking a mirror selfie' },
+  { src: '/images/home/surrogate-8.png', alt: 'Surrogate mother outdoors' },
+  { src: '/images/home/surrogate-9.png', alt: 'Surrogate mother taking a mirror selfie' },
+  { src: '/images/home/surrogate-10.jpeg', alt: 'Surrogate mother holding baby' },
 ]
 
 const duplicatedSlides = computed(() => [...slides, ...slides])
@@ -70,6 +73,21 @@ function goToNext() {
   currentIndex.value += slidesPerView.value
 }
 
+function goToPrev() {
+  if (slideWidthWithGap.value === 0)
+    return
+  if (currentIndex.value === 0) {
+    enableTransition.value = false
+    currentIndex.value = slides.length
+    requestAnimationFrame(() => {
+      enableTransition.value = true
+      currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
+    })
+    return
+  }
+  currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
+}
+
 function startAutoPlay() {
   stopAutoPlay()
   timer.value = window.setInterval(() => {
@@ -124,7 +142,23 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <div class="scroll-animate scroll-animate-delay-100 mt-12 overflow-hidden rounded-[26px] bg-white/80 px-3 py-4 shadow-[0_18px_40px_rgba(64,84,120,0.12)]">
+      <div class="scroll-animate scroll-animate-delay-100 relative mt-12 overflow-hidden rounded-[26px] bg-white/80 px-3 py-4 shadow-[0_18px_40px_rgba(64,84,120,0.12)]">
+        <button
+          type="button"
+          aria-label="Previous slide"
+          class="absolute left-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
+          @click="goToPrev"
+        >
+          <span class="text-xl">‹</span>
+        </button>
+        <button
+          type="button"
+          aria-label="Next slide"
+          class="absolute right-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
+          @click="goToNext"
+        >
+          <span class="text-xl">›</span>
+        </button>
         <div
           ref="trackRef"
           class="flex items-stretch"

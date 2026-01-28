@@ -5,7 +5,7 @@ const process = require('node:process')
 
 const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
-const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.html')
+const OUTPUT_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
 
 const STATIC_SECTIONS_EN = [
   {
@@ -57,12 +57,6 @@ const STATIC_SECTIONS_EN = [
       { href: '/privacy-policy', label: 'Privacy Policy' },
       { href: '/terms-of-service', label: 'Terms of Service' },
       { href: '/disclaimer', label: 'Disclaimer' },
-    ],
-  },
-  {
-    title: 'Utility',
-    links: [
-      { href: '/be-parents/thanks', label: 'Thank You' },
     ],
   },
 ]
@@ -117,12 +111,6 @@ const STATIC_SECTIONS_ZH = [
       { href: '/privacy-policy', label: '隐私政策' },
       { href: '/terms-of-service', label: '服务条款' },
       { href: '/disclaimer', label: '免责声明' },
-    ],
-  },
-  {
-    title: '工具',
-    links: [
-      { href: '/be-parents/thanks', label: '感谢页' },
     ],
   },
 ]
@@ -185,173 +173,6 @@ async function fetchAllBlogs() {
   return allBlogs
 }
 
-function renderSection(section) {
-  const items = section.links
-    .map(link => `            <li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`)
-    .join('\n')
-
-  const note = section.note
-    ? `          <p class="note">${escapeHtml(section.note)}</p>`
-    : ''
-  const className = section.className ? ` class="${escapeHtml(section.className)}"` : ''
-
-  return [
-    `        <section${className}>`,
-    `          <h2>${escapeHtml(section.title)}</h2>`,
-    '          <ul>',
-    items,
-    '          </ul>',
-    note,
-    '        </section>',
-  ].filter(Boolean).join('\n')
-}
-
-function renderLanguageBlock(language) {
-  const sectionsHtml = language.sections.map(renderSection).join('\n')
-  return [
-    '      <div class="language-block">',
-    `        <h2 class="language-title">${escapeHtml(language.title)}</h2>`,
-    `        <p class="language-subtitle">${escapeHtml(language.subtitle)}</p>`,
-    '        <div class="grid">',
-    sectionsHtml,
-    '        </div>',
-    '      </div>',
-  ].join('\n')
-}
-
-function buildHtml(languageBlocks) {
-  return `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HTML站点地图 | HTML Sitemap</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f7f5f0;
-        --card: #ffffff;
-        --text: #222222;
-        --muted: #666666;
-        --accent: #0f5a45;
-        --border: #e2ddd4;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-        color: var(--text);
-        background: radial-gradient(circle at top left, #ffffff, var(--bg));
-      }
-      header {
-        padding: 32px 20px 12px;
-        text-align: center;
-      }
-      h1 {
-        margin: 0 0 6px;
-        font-size: 28px;
-        letter-spacing: 0.5px;
-      }
-      header p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
-      main {
-        max-width: 1960px;
-        margin: 0 auto;
-        padding: 16px 20px 40px;
-      }
-      .language-block + .language-block {
-        margin-top: 28px;
-      }
-      .language-title {
-        margin: 0;
-        font-size: 22px;
-        color: var(--accent);
-      }
-      .language-subtitle {
-        margin: 6px 0 16px;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      .grid {
-        display: block;
-      }
-      @media (max-width: 900px) {
-        section ul {
-          columns: 1;
-        }
-      }
-      section {
-        margin-bottom: 28px;
-        padding: 0;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-      }
-      section:last-child {
-        margin-bottom: 0;
-      }
-      h2 {
-        margin: 0 0 10px;
-        font-size: 20px;
-        color: var(--accent);
-      }
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        columns: 2;
-        column-gap: 120px;
-      }
-      li + li {
-        margin-top: 12px;
-      }
-      li {
-        break-inside: avoid;
-        padding-right: 12px;
-        font-size: 18px;
-        line-height: 1.6;
-      }
-      a {
-        color: var(--text);
-        text-decoration: none;
-      }
-      a:hover {
-        color: var(--accent);
-        text-decoration: underline;
-      }
-      .note {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      footer {
-        text-align: center;
-        color: var(--muted);
-        font-size: 12px;
-        padding: 12px 0 32px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Generated by scripts/generate-html-sitemap.cjs -->
-    <header>
-      <h1>HTML站点地图</h1>
-      <p>HTML Sitemap (English + 中文) | Organized by page type / 按页面类型分类</p>
-    </header>
-    <main>
-${languageBlocks.join('\n')}
-    </main>
-    <footer>Yunda Surrogacy HTML sitemap</footer>
-  </body>
-</html>
-`
-}
-
 async function run() {
   const blogs = await fetchAllBlogs()
   const blogLinksEn = blogs.map((blog) => {
@@ -380,41 +201,52 @@ async function run() {
     className: 'section-blog',
   }
 
+  const withZhPrefix = section => ({
+    ...section,
+    links: section.links.map(link => {
+      if (!link.href || typeof link.href !== 'string') {
+        return link
+      }
+      if (link.href.startsWith('http')) {
+        return link
+      }
+      if (link.href === '/') {
+        return { ...link, href: '/zh' }
+      }
+      if (link.href.startsWith('/zh')) {
+        return link
+      }
+      return { ...link, href: `/zh${link.href}` }
+    }),
+  })
+
   const sectionsEn = [
     STATIC_SECTIONS_EN[0],
     STATIC_SECTIONS_EN[1],
     STATIC_SECTIONS_EN[2],
     STATIC_SECTIONS_EN[3],
-    blogSectionEn,
     STATIC_SECTIONS_EN[4],
-    STATIC_SECTIONS_EN[5],
+    blogSectionEn,
   ]
   const sectionsZh = [
     STATIC_SECTIONS_ZH[0],
     STATIC_SECTIONS_ZH[1],
     STATIC_SECTIONS_ZH[2],
     STATIC_SECTIONS_ZH[3],
-    blogSectionZh,
     STATIC_SECTIONS_ZH[4],
-    STATIC_SECTIONS_ZH[5],
-  ]
+    blogSectionZh,
+  ].map(withZhPrefix)
 
-  const languageBlocks = [
-    renderLanguageBlock({
-      title: 'English',
-      subtitle: 'Organized by page type',
-      sections: sectionsEn,
-    }),
-    renderLanguageBlock({
-      title: '中文',
-      subtitle: '按页面类型分类',
-      sections: sectionsZh,
-    }),
-  ]
+  const sitemapData = {
+    generatedAt: new Date().toISOString(),
+    sections: {
+      en: sectionsEn,
+      zh: sectionsZh,
+    },
+  }
 
-  const html = buildHtml(languageBlocks)
-  fs.writeFileSync(OUTPUT_PATH, html, 'utf8')
-  console.warn(`HTML sitemap updated: ${OUTPUT_PATH}`)
+  fs.writeFileSync(OUTPUT_DATA_PATH, JSON.stringify(sitemapData, null, 2), 'utf8')
+  console.warn(`Sitemap data updated: ${OUTPUT_DATA_PATH}`)
 }
 
 run().catch((error) => {

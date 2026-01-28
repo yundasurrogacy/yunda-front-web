@@ -27,7 +27,6 @@
     "contactUs": "CONTACT US",
     "careers": "CAREERS",
     "blog": "BLOG",
-    "sitemap": "HTML SITEMAP",
     "phone": "PHONE:",
     "email": "EMAIL:",
     "wechat": "WECHAT:",
@@ -916,7 +915,8 @@
     "policyLinks": {
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service",
-      "disclaimer": "Disclaimer"
+      "disclaimer": "Disclaimer",
+      "sitemap": "Sitemap"
     },
     "companyInfo": "© 2025 Yunda Surrogacy\nLos Angeles Metropolitan Area, CA (Office Address Available Upon Request)"
   },

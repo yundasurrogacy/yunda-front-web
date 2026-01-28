@@ -1,0 +1,617 @@
+{
+  "generatedAt": "2026-01-28T01:52:39.424Z",
+  "sections": {
+    "en": [
+      {
+        "title": "General",
+        "links": [
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/about",
+            "label": "About"
+          },
+          {
+            "href": "/surrogacy-cost",
+            "label": "Surrogacy Cost"
+          },
+          {
+            "href": "/surrogacy-protection-california",
+            "label": "Surrogacy Protection California"
+          }
+        ]
+      },
+      {
+        "title": "Intended Parents",
+        "links": [
+          {
+            "href": "/be-parents",
+            "label": "Become a Parent"
+          },
+          {
+            "href": "/single-parents-lgbtq",
+            "label": "Single Parents LGBTQ"
+          },
+          {
+            "href": "/surrogacy-cost",
+            "label": "Surrogacy Cost"
+          },
+          {
+            "href": "/partner-ivf-clinics",
+            "label": "Partner IVF Clinics"
+          },
+          {
+            "href": "/surrogacy-process",
+            "label": "Surrogacy Process"
+          },
+          {
+            "href": "/egg-donation",
+            "label": "Egg Donation"
+          }
+        ]
+      },
+      {
+        "title": "Surrogacy Program",
+        "links": [
+          {
+            "href": "/be-surrogate",
+            "label": "Be a Surrogate"
+          },
+          {
+            "href": "/surrogate-qualification",
+            "label": "Surrogate Qualification"
+          },
+          {
+            "href": "/benefit",
+            "label": "Benefit"
+          },
+          {
+            "href": "/screening",
+            "label": "Screening"
+          },
+          {
+            "href": "/eligibility",
+            "label": "Eligibility"
+          },
+          {
+            "href": "/referral",
+            "label": "Referral"
+          },
+          {
+            "href": "/journey",
+            "label": "Journey"
+          }
+        ]
+      },
+      {
+        "title": "Surrogate Resources",
+        "links": [
+          {
+            "href": "/surrogate-requirements",
+            "label": "Surrogate Requirements"
+          },
+          {
+            "href": "/surrogate-process",
+            "label": "Surrogate Process"
+          },
+          {
+            "href": "/become-a-surrogate",
+            "label": "Become a Surrogate"
+          },
+          {
+            "href": "/surrogate-compensation",
+            "label": "Surrogate Compensation"
+          },
+          {
+            "href": "/become-surrogate-california",
+            "label": "Become Surrogate California"
+          },
+          {
+            "href": "/california-surrogacy-consultation",
+            "label": "California Surrogacy Consultation"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "href": "/privacy-policy",
+            "label": "Privacy Policy"
+          },
+          {
+            "href": "/terms-of-service",
+            "label": "Terms of Service"
+          },
+          {
+            "href": "/disclaimer",
+            "label": "Disclaimer"
+          }
+        ]
+      },
+      {
+        "title": "Blog",
+        "links": [
+          {
+            "href": "/blog",
+            "label": "Blog Index"
+          },
+          {
+            "href": "/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
+            "label": "What Does the Bible Say About Surrogacy? Faith, Ethics, and Modern Questions"
+          },
+          {
+            "href": "/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+            "label": "Intended Parents and Surrogates: Finding the Right Surrogate Relationship"
+          },
+          {
+            "href": "/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+            "label": "5 Best Gay Surrogacy Agencies in 2026: A Shortlist for Two Dads"
+          },
+          {
+            "href": "/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+            "label": "Is Surrogacy Legal in All 50 States in 2026? What Families Often Get Wrong"
+          },
+          {
+            "href": "/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+            "label": "What States Is Surrogacy Illegal? A Clear Guide to U.S. Surrogacy Laws"
+          },
+          {
+            "href": "/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents",
+            "label": "How Surrogacy Agreements Protect Everyone Not Just the Parents"
+          },
+          {
+            "href": "/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026",
+            "label": "Top Surrogacy Agencies in California: Compare Fees, Matching Time & Support(2026)"
+          },
+          {
+            "href": "/blog/Best-Surrogacy-Agencies-in-California-2026",
+            "label": "Best Surrogacy Agencies in California (2026)"
+          },
+          {
+            "href": "/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
+            "label": "Are You Ready To Find a Surrogate? What To Know Before You Begin"
+          },
+          {
+            "href": "/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing",
+            "label": "IVF Surrogacy : In Vitro Fertilization Process, PGD Testing"
+          },
+          {
+            "href": "/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process",
+            "label": "Is Surrogacy Legal in the UK? Understanding UK Surrogacy Law and Process"
+          },
+          {
+            "href": "/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation",
+            "label": "Surrogate Pay in California: A Regional Breakdown of Salary & Compensation"
+          },
+          {
+            "href": "/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees",
+            "label": "Surrogacy cost in Los Angeles: full cost breakdown of Agency Fees"
+          },
+          {
+            "href": "/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area",
+            "label": "San Francisco and San Jose surrogate costs: surrogacy costs in the Bay Area"
+          },
+          {
+            "href": "/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate",
+            "label": "Southern California surrogacy programs and how to become a surrogate"
+          },
+          {
+            "href": "/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
+            "label": "Surrogate Payment Schedule and Surrogate Payment Structure in California"
+          },
+          {
+            "href": "/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
+            "label": "Los Angeles vs San Diego vs San Jose vs San Francisco surrogate costs"
+          },
+          {
+            "href": "/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
+            "label": "Orange County Surrogate Costs and Surrogate Mother Pay: 2025 Guide"
+          },
+          {
+            "href": "/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process",
+            "label": "What Is Surrogate Key? Understanding the Key Steps in the Surrogacy Process"
+          },
+          {
+            "href": "/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide",
+            "label": "How Surrogate Works: A Clear and Simple Guide"
+          },
+          {
+            "href": "/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
+            "label": "What Is Com Surrogate and How Does Surrogacy Work in 2025"
+          },
+          {
+            "href": "/blog/how-to-afford-surrogacy",
+            "label": "How to Afford Surrogacy"
+          },
+          {
+            "href": "/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+            "label": "The 7 Most Asked Questions About Becoming an Egg Donor"
+          },
+          {
+            "href": "/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+            "label": "Surrogacy and DNA — Does a Surrogate Share DNA with the Baby"
+          },
+          {
+            "href": "/blog/How-Much-Does-Surrogacy-Cost-And-Pricing",
+            "label": "How Much Does Surrogacy Cost And Pricing?"
+          },
+          {
+            "href": "/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide",
+            "label": "How to Become a Surrogate: Step-by-Step Guide"
+          },
+          {
+            "href": "/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family",
+            "label": "How much is surrogacy? Surrogate mother cost and surrogacy cost in the U.S."
+          },
+          {
+            "href": "/blog/U-S-Surrogacy-Laws-Is-It-Legal",
+            "label": "U.S. Surrogacy Laws: Is It Legal?"
+          },
+          {
+            "href": "/blog/Average-Compensation-Surrogacy-Cost-in-California",
+            "label": "Average Compensation & Surrogacy Cost in California"
+          },
+          {
+            "href": "/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+            "label": "Surrogacy & Insurance: A 2025 Coverage Guide"
+          },
+          {
+            "href": "/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
+            "label": "How Much Does Surrogacy Cost With Insurance in California"
+          },
+          {
+            "href": "/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby",
+            "label": "The Gay Surrogacy Journey: Plan, Match, Welcome Baby"
+          },
+          {
+            "href": "/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA",
+            "label": "Choosing a Trusted Surrogacy Agency in Los Angeles & Southern CA"
+          },
+          {
+            "href": "/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
+            "label": "California Surrogacy Laws 2025: Legal Rights & Process Explained"
+          },
+          {
+            "href": "/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
+            "label": "Real Surrogate Journeys 2025: Why They Chose Yunda Surrogacy"
+          },
+          {
+            "href": "/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
+            "label": "First-Time vs Experienced Surrogates 2025: Pay & Benefits Compared"
+          },
+          {
+            "href": "/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda",
+            "label": "Gestational Surrogacy Process 2025: Step-by-Step Guide with Yunda"
+          },
+          {
+            "href": "/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+            "label": "Surrogacy and Insurance 2025: Essential Coverage for Surrogate Mothers"
+          },
+          {
+            "href": "/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
+            "label": "Surrogacy Cost Breakdown 2025: transparent surrogacy costs for U.S. families"
+          },
+          {
+            "href": "/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+            "label": "Surrogate Mother Requirements 2025: Qualifications & Key Criteria"
+          },
+          {
+            "href": "/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
+            "label": "Surrogate Salary & Benefits 2025: Key Facts Every Surrogate Should Know"
+          }
+        ],
+        "note": "Posts fetched from API: 41 items.",
+        "className": "section-blog"
+      }
+    ],
+    "zh": [
+      {
+        "title": "常规",
+        "links": [
+          {
+            "href": "/zh",
+            "label": "首页"
+          },
+          {
+            "href": "/zh/about",
+            "label": "关于我们"
+          },
+          {
+            "href": "/zh/surrogacy-cost",
+            "label": "代孕费用"
+          },
+          {
+            "href": "/zh/surrogacy-protection-california",
+            "label": "加州代孕保障"
+          }
+        ]
+      },
+      {
+        "title": "准父母",
+        "links": [
+          {
+            "href": "/zh/be-parents",
+            "label": "成为父母"
+          },
+          {
+            "href": "/zh/single-parents-lgbtq",
+            "label": "单亲与 LGBTQ 准父母"
+          },
+          {
+            "href": "/zh/surrogacy-cost",
+            "label": "代孕费用"
+          },
+          {
+            "href": "/zh/partner-ivf-clinics",
+            "label": "合作 IVF 诊所"
+          },
+          {
+            "href": "/zh/surrogacy-process",
+            "label": "代孕流程"
+          },
+          {
+            "href": "/zh/egg-donation",
+            "label": "捐卵"
+          }
+        ]
+      },
+      {
+        "title": "代孕项目",
+        "links": [
+          {
+            "href": "/zh/be-surrogate",
+            "label": "成为代孕妈妈"
+          },
+          {
+            "href": "/zh/surrogate-qualification",
+            "label": "代孕妈妈资格"
+          },
+          {
+            "href": "/zh/benefit",
+            "label": "福利"
+          },
+          {
+            "href": "/zh/screening",
+            "label": "筛选"
+          },
+          {
+            "href": "/zh/eligibility",
+            "label": "资格条件"
+          },
+          {
+            "href": "/zh/referral",
+            "label": "推荐计划"
+          },
+          {
+            "href": "/zh/journey",
+            "label": "代孕旅程"
+          }
+        ]
+      },
+      {
+        "title": "代孕资源",
+        "links": [
+          {
+            "href": "/zh/surrogate-requirements",
+            "label": "代孕要求"
+          },
+          {
+            "href": "/zh/surrogate-process",
+            "label": "代孕流程（妈妈端）"
+          },
+          {
+            "href": "/zh/become-a-surrogate",
+            "label": "成为代孕妈妈"
+          },
+          {
+            "href": "/zh/surrogate-compensation",
+            "label": "代孕补偿"
+          },
+          {
+            "href": "/zh/become-surrogate-california",
+            "label": "加州成为代孕妈妈"
+          },
+          {
+            "href": "/zh/california-surrogacy-consultation",
+            "label": "加州代孕咨询"
+          }
+        ]
+      },
+      {
+        "title": "法律",
+        "links": [
+          {
+            "href": "/zh/privacy-policy",
+            "label": "隐私政策"
+          },
+          {
+            "href": "/zh/terms-of-service",
+            "label": "服务条款"
+          },
+          {
+            "href": "/zh/disclaimer",
+            "label": "免责声明"
+          }
+        ]
+      },
+      {
+        "title": "博客",
+        "links": [
+          {
+            "href": "/zh/blog",
+            "label": "博客列表"
+          },
+          {
+            "href": "/zh/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
+            "label": "圣经对代孕有何论述？信仰、伦理与现代问题"
+          },
+          {
+            "href": "/zh/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+            "label": "准父母与代孕母亲：找到合适的代孕关系"
+          },
+          {
+            "href": "/zh/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+            "label": "2026年5家最佳男同性恋代孕机构：两位爸爸的推荐名单"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+            "label": "2026年，代孕在美国所有50个州都合法吗？经常踩的坑有哪些？"
+          },
+          {
+            "href": "/zh/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+            "label": "哪些州代孕违法？美国代孕法律指南"
+          },
+          {
+            "href": "/zh/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents",
+            "label": "代孕协议如何保护所有人，而不仅仅是父母"
+          },
+          {
+            "href": "/zh/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026",
+            "label": "Top Surrogacy Agencies in California: Compare Fees, Matching Time & Support(2026)"
+          },
+          {
+            "href": "/zh/blog/Best-Surrogacy-Agencies-in-California-2026",
+            "label": "Best Surrogacy Agencies in California (2026)"
+          },
+          {
+            "href": "/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
+            "label": "Are You Ready To Find a Surrogate? What To Know Before You Begin"
+          },
+          {
+            "href": "/zh/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing",
+            "label": "IVF Surrogacy : In Vitro Fertilization Process, PGD Testing"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process",
+            "label": "Is Surrogacy Legal in the UK? Understanding UK Surrogacy Law and Process"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation",
+            "label": "Surrogate Pay in California: A Regional Breakdown of Salary & Compensation"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees",
+            "label": "Surrogacy cost in Los Angeles: full cost breakdown of Agency Fees"
+          },
+          {
+            "href": "/zh/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area",
+            "label": "San Francisco and San Jose surrogate costs: surrogacy costs in the Bay Area"
+          },
+          {
+            "href": "/zh/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate",
+            "label": "Southern California surrogacy programs and how to become a surrogate"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
+            "label": "Surrogate Payment Schedule and Surrogate Payment Structure in California"
+          },
+          {
+            "href": "/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
+            "label": "Los Angeles vs San Diego vs San Jose vs San Francisco surrogate costs"
+          },
+          {
+            "href": "/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
+            "label": "Orange County Surrogate Costs and Surrogate Mother Pay: 2025 Guide"
+          },
+          {
+            "href": "/zh/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process",
+            "label": "What Is Surrogate Key? Understanding the Key Steps in the Surrogacy Process"
+          },
+          {
+            "href": "/zh/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide",
+            "label": "How Surrogate Works: A Clear and Simple Guide"
+          },
+          {
+            "href": "/zh/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
+            "label": "What Is Com Surrogate and How Does Surrogacy Work in 2025"
+          },
+          {
+            "href": "/zh/blog/how-to-afford-surrogacy",
+            "label": "How to Afford Surrogacy"
+          },
+          {
+            "href": "/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+            "label": "The 7 Most Asked Questions About Becoming an Egg Donor"
+          },
+          {
+            "href": "/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+            "label": "Surrogacy and DNA — Does a Surrogate Share DNA with the Baby"
+          },
+          {
+            "href": "/zh/blog/How-Much-Does-Surrogacy-Cost-And-Pricing",
+            "label": "How Much Does Surrogacy Cost And Pricing?"
+          },
+          {
+            "href": "/zh/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide",
+            "label": "How to Become a Surrogate: Step-by-Step Guide"
+          },
+          {
+            "href": "/zh/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family",
+            "label": "How much is surrogacy? Surrogate mother cost and surrogacy cost in the U.S."
+          },
+          {
+            "href": "/zh/blog/U-S-Surrogacy-Laws-Is-It-Legal",
+            "label": "U.S. Surrogacy Laws: Is It Legal?"
+          },
+          {
+            "href": "/zh/blog/Average-Compensation-Surrogacy-Cost-in-California",
+            "label": "Average Compensation & Surrogacy Cost in California"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+            "label": "Surrogacy & Insurance: A 2025 Coverage Guide"
+          },
+          {
+            "href": "/zh/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
+            "label": "How Much Does Surrogacy Cost With Insurance in California"
+          },
+          {
+            "href": "/zh/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby",
+            "label": "The Gay Surrogacy Journey: Plan, Match, Welcome Baby"
+          },
+          {
+            "href": "/zh/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA",
+            "label": "Choosing a Trusted Surrogacy Agency in Los Angeles & Southern CA"
+          },
+          {
+            "href": "/zh/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
+            "label": "California Surrogacy Laws 2025: Legal Rights & Process Explained"
+          },
+          {
+            "href": "/zh/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
+            "label": "Real Surrogate Journeys 2025: Why They Chose Yunda Surrogacy"
+          },
+          {
+            "href": "/zh/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
+            "label": "First-Time vs Experienced Surrogates 2025: Pay & Benefits Compared"
+          },
+          {
+            "href": "/zh/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda",
+            "label": "Gestational Surrogacy Process 2025: Step-by-Step Guide with Yunda"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+            "label": "Surrogacy and Insurance 2025: Essential Coverage for Surrogate Mothers"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
+            "label": "Surrogacy Cost Breakdown 2025: transparent surrogacy costs for U.S. families"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+            "label": "Surrogate Mother Requirements 2025: Qualifications & Key Criteria"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
+            "label": "Surrogate Salary & Benefits 2025: Key Facts Every Surrogate Should Know"
+          }
+        ],
+        "note": "从接口获取文章：41篇。",
+        "className": "section-blog"
+      }
+    ]
+  }
+}
