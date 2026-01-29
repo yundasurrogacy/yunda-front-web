@@ -207,6 +207,29 @@ const modalConfig = reactive({
   buttonText: 'OK',
 })
 const isSubmitting = ref(false)
+const pendingSuccessRedirect = ref<null | { path: string, query: Record<string, string> }>(null)
+
+function openSuccessModal(queryParams: Record<string, string>) {
+  modalConfig.type = 'success'
+  modalConfig.title = t('modal.success.parent.title')
+  modalConfig.message = t('modal.success.parent.message')
+  modalConfig.buttonText = 'OK'
+  pendingSuccessRedirect.value = {
+    path: localePath('/be-parents/thanks'),
+    query: queryParams,
+  }
+  showModal.value = true
+}
+
+async function handleModalClose() {
+  if (modalConfig.type !== 'success' || !pendingSuccessRedirect.value) {
+    return
+  }
+
+  const next = pendingSuccessRedirect.value
+  pendingSuccessRedirect.value = null
+  await router.push(next)
+}
 
 async function handleSubmit() {
   // Prevent duplicate submissions
@@ -380,13 +403,8 @@ async function handleSubmit() {
       queryParams.email = form.email
     }
 
-    // 跳转到 thank-you 页面
-    await router.push({
-      path: localePath('/be-parents/thanks'),
-      query: queryParams,
-    })
-
     isSubmitting.value = false
+    openSuccessModal(queryParams)
   }
   catch (error: any) {
     console.error('Submission error:', error)
@@ -888,6 +906,7 @@ async function handleSubmit() {
       :title="modalConfig.title"
       :message="modalConfig.message"
       :button-text="modalConfig.buttonText"
+      @close="handleModalClose"
     />
   </div>
 </template>
