@@ -51,9 +51,9 @@ const translations = {
     hero: {
       title: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
       lead1:
-        'Surrogacy costs can vary widely, especially in California, depending on insurance, legal steps, medical factors, and surrogate compensation.',
+      'Surrogacy costs can vary widely—especially in California—depending on insurance, legal steps, medical factors, and surrogate compensation.',
       lead2:
-        'This page gives you a clear surrogacy cost breakdown and surrogacy fees explained, so you know what is included in surrogacy cost, what is not, and how to plan with confidence.',
+      'This page gives you a clear surrogacy cost breakdown and surrogacy fees explained, including an estimated total of $142,750, so you know what is included in surrogacy cost, what’s not, and how to plan with confidence.',
       primary: 'Get a Personalized Surrogacy Cost Estimate',
       secondary: 'Become a Parent',
       note1: 'Answer a few questions to estimate your costs in California or elsewhere in the U.S.',
@@ -78,7 +78,7 @@ const translations = {
         {
           id: 'legal',
           title: 'Legal & Court Process (California parentage / PBO)',
-          image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-1.jpg',
           content: [
             'California is generally a well-established state for surrogacy, and the legal path is often straightforward—but your surrogacy cost in California can still shift depending on your specific situation.',
             'That’s why when we explain surrogacy fees, we separate legal work from court parentage steps, so you can see the cost clearly.',
@@ -87,7 +87,7 @@ const translations = {
         {
           id: 'compensation',
           title: 'Surrogate Compensation & Local Cost Differences',
-          image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80&sat=-10',
+          image: '/images/ip/cost/surrogate-cost-2.png',
           content: [
             'A big part of surrogacy cost breakdown is surrogate compensation. In California (and some nearby markets), compensation expectations and cost-of-living can be higher than many other states—so the total cost of surrogacy may trend higher there.',
           ],
@@ -95,7 +95,7 @@ const translations = {
         {
           id: 'insurance',
           title: 'Insurance: The #1 Reason California vs. U.S. Costs Feel Different',
-          image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-3.png',
           content: [
             'When intended parents ask me how much does surrogacy cost in the U.S., insurance is usually the biggest wildcard. Even in California, coverage can vary a lot depending on the surrogate’s plan, exclusions, deductibles, and out-of-pocket maximums.',
           ],
@@ -103,7 +103,7 @@ const translations = {
         {
           id: 'medical',
           title: 'Medical Variables (Single vs. Twins, C-section, Complications)',
-          image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-4.png',
           content: [
             'No matter where you’re doing surrogacy, certain medical outcomes can change the cost. Twins, a C-section, or special medical needs can add to surrogacy expenses.',
           ],
@@ -130,99 +130,112 @@ const translations = {
       intro:
         'When you Google “surrogacy cost” or “how much does surrogacy cost in California”, the numbers look all over the place. Here is a clear breakdown showing what’s predictable vs. case-dependent.',
       scope:
-        'This estimate does not include IVF clinic fees and does not include newborn medical care after birth. Trust payments are used only for actual costs incurred, and unused funds are reconciled and returned after final accounting.',
+        'One of the biggest reasons people get confused comparing surrogacy price quotes is scope. This package estimate does not include IVF clinic fees and does not include newborn medical care after birth. And just to keep things fair and transparent: this is an estimate—you are responsible for actual costs incurred during the journey, and any unused funds are reconciled and returned after final accounting.',
+      scopeLabel: 'Scope note',
       fixedTitle: 'Fixed Costs',
       variableTitle: 'Variable (Case-Dependent) Costs',
-      includedTitle: 'What\'s Included vs. Not Included',
-      additionalTitle: 'Additional Costs (If Applicable)',
+      includedTitle: 'What’s Included vs. Not Included (quick clarity so you can compare prices correctly)',
+      includedLabel: 'Included',
+      notIncludedLabel: 'Not Included',
+      additionalTitle: 'Additional Costs (If Applicable) — why surrogacy can feel expensive',
       donutTitle: 'Where costs usually go',
       fixed: [
         {
-          title: '1) Surrogacy Agency Fees',
+          title: '1) Surrogacy Agency Service fee',
           amount: '$50,000',
           description:
             'This is the core surrogacy agency fee for recruitment, screening, matching, and full journey coordination/case management.',
+          subItems: [
+            'Within this program structure, required screening line-items are listed separately: psychological evaluation $2,500 and surrogate background investigation $900.',
+          ],
         },
-        { title: '2) Trust Account Management', amount: '$1,850', description: 'Trust/escrow account management fee.' },
+        {
+          title: '2) Trust Account Management',
+          amount: '$2,000',
+          description:
+            'This is the trust/escrow account management fee (how funds are administered and tracked).',
+          subItems: [
+            'Separate from this, the plan also notes a trust “reserve deposit” used for certain reimbursable costs; see the “Included vs. Not Included” section below.',
+          ],
+        },
         {
           title: '3) Administrative Support',
           amount: '$5,000',
           description:
-            'Covers early screening coordination, medical record organization/clearance support, translation/admin support, insurance coordination support, and related admin work.',
+            'Covers pregnancy-stage coordination/cycle management support after pregnancy is confirmed (ongoing coordination and communication through the pregnancy stage).',
         },
         {
           title: '4) Legal Fees (Surrogacy Agreement)',
-          amount: '$5,000',
-          description: 'Separated for clarity:',
-          subItems: ['Intended Parents\' attorney: $3,500', 'Surrogate\'s attorney: $1,500'],
+          amount: '$8,750',
+          description: 'To make legal costs easy to compare, I break them into two counsel lines:',
+          subItems: [
+            'Intended Parents’ attorney: $3,750',
+            'Surrogate’s attorney: $1,500',
+            'California Parentage / PBO — $3,500',
+          ],
         },
         {
-          title: '5) California Parentage / PBO',
-          amount: '$6,500',
+          title: '5) Surrogate Compensation',
+          amount: '$61,000+',
           description:
-            'This is the court parentage step (often called a Pre-Birth Order / parentage judgment), listed separately so you can see the true cost clearly.',
+            'This is one of the biggest drivers of surrogacy costs in California and across the U.S., and it can vary by match and circumstances.',
         },
       ],
       variable: [
         {
-          id: 'compensation',
-          title: '6) Surrogate Compensation',
-          amount: '$50,000 ',
-          description:
-            'One of the biggest drivers of surrogacy costs in California and across the U.S.; varies by match and circumstances.',
-          caseDependent: false,
-        },
-        {
-          id: 'insurance',
-          title: '7) Insurance Budgeting',
-          amount: '$26,000',
-          description:
-            'Insurance is often the #1 reason families feel surrogacy cost in the U.S. is hard to pin down. Here is how we typically budget it in escrow:',
-          bullets: ['Surrogate medical insurance allocation: $25,000', 'Surrogate life insurance: $1,000'],
-          note: 'If insurance timing doesn’t work out, we may coordinate cash-pay planning with OB ~$5,000 and hospital delivery ~$8,000 as references.',
-          caseDependent: true,
-        },
-        {
-          id: 'transfer',
-          title: '8) Embryo Transfer and Early Pregnancy Support',
-          amount: '$2,500 ',
-          description: 'Specific medical-milestone support budget.',
-          caseDependent: true,
-        },
-        {
-          id: 'allowances',
-          title: '9) Common Allowances',
+          id: 'screening-travel',
+          title: '6) Necessary Travel Expenses During the Medical Screening Stage',
           amount: '',
-          description: 'Typical allowances that are easier to plan when listed upfront:',
-          bullets: ['Clothing allowance: $1,000', 'Monthly living allowance: $5,500', 'Childcare support: $4,500'],
-          caseDependent: false,
+          description:
+            'This is reimbursable, pay-as-incurred. Only required travel is covered, paid from trust with valid receipts.',
+          caseDependent: true,
+        },
+        {
+          id: 'transfer-travel',
+          title: '7) Necessary Travel Expenses Related to the Embryo Transfer Cycle',
+          amount: '',
+          description:
+            'This is reimbursable, pay-as-incurred. Only necessary transfer-cycle travel is covered, reimbursed with documentation.',
+          caseDependent: true,
+        },
+        {
+          id: 'life-insurance',
+          title: '8) Surrogate Life Insurance',
+          amount: '',
+          description:
+            'This is reimbursable, pay-as-incurred. Premiums are paid from trust based on actual invoices; $0 if not incurred.',
+          caseDependent: true,
+        },
+        {
+          id: 'medical-premiums',
+          title: '9) Surrogate Medical Insurance Premiums',
+          amount: '',
+          description:
+            'This is reimbursable, pay-as-incurred. Premiums only (not medical bills), paid from trust per billing; reconciled to actuals.',
+          caseDependent: true,
         },
       ],
       additional: [
-        'Multiples (twins): $15,000',
-        'If intended parents are carriers of an infectious disease: $10,000',
+        'Multiples (twins): $10,000',
         'C-section compensation: $5,000',
-        'Bed rest: $250/week; childcare support $75/person/day (when medically required and documented)',
-        'Breast milk: $250/week',
-        'Organ loss: partial hysterectomy $2,500, full hysterectomy $5,000',
+        'Mock cycle: $500; Cycle cancellation: $500',
+        'Breast milk: $300/week',
+        'Miscarriage: before 12 weeks $1,000 (or $2,000 with D&C); after 12 weeks / stillbirth $2,000',
       ],
       included: [
-        'Agency fees, trust/escrow administration, screening/admin support',
-        'Surrogate compensation budgeting and standard allowances',
-        'Legal agreement support and California parentage (PBO)',
-        'Insurance budgeting allocations (medical and life)',
+        'This is an estimate—you are responsible for actual costs incurred during the journey.',
+        'Any unused funds are reconciled and returned after final accounting.',
       ],
       notIncluded: [
-        'IVF clinic fees (retrieval, embryo creation, transfer billed by the clinic)',
-        'Newborn medical care after birth (NICU, pediatric care, vaccinations)',
-        'Actual costs incurred may vary; unused funds are reconciled and returned after final accounting',
+        'IVF clinic fees are not included.',
+        'Newborn medical care after birth is not included.',
       ],
       donutLegend: [
-        'Fixed: 43%',
-        'Surrogate compensation: 32%',
-        'Insurance allocations: 16%',
-        'Allowances: 7%',
-        'Embryo transfer & support: 2%',
+        'Agency service fee: 39%',
+        'Surrogate compensation: 48%',
+        'Legal fees: 7%',
+        'Administrative support: 4%',
+        'Trust management: 2%',
       ],
     },
     payments: {
@@ -230,50 +243,69 @@ const translations = {
       intro:
         'If you are asking how much do you pay for surrogacy, the timing matters just as much as the total. Here’s the clear timeline.',
       trustButton: 'How the trust account works',
+      trustTitle: 'How Trust Payments Protect You (No “surprise invoices”)',
+      trustCopy:
+        'Funds stay in a trust account and are used only for actual costs incurred. Reimbursable items are paid as they happen, and any unused funds are reconciled and returned after final accounting.',
+      notesTitle: 'Important Notes (So you can budget accurately)',
+      notes: [
+        'These payments cover the surrogacy program and the items above; IVF clinic fees are not included.',
+        'Newborn-related costs are not included (documentation/insurance premiums/NICU or pediatric care).',
+        'Insurance depends on timing and plan availability; if coverage cannot be purchased in time, reserved amounts may be used toward pregnancy-related costs as incurred.',
+        'A separate $20,000 reserve deposit may be required for reimbursable items (often funded as $10,000 + $10,000), with unused funds reconciled.',
+      ],
+      labels: {
+        milestone: 'Milestone',
+        deposit: 'Deposit amount',
+        covers: 'What it covers',
+        notes: 'Notes',
+      },
       steps: [
         {
           id: 'payment-1',
-          label: 'Payment #1 ',
-          title: 'Payment #1 - $56,850 (After Agreement Signing)',
-          amount: '$56,850',
+          label: 'Payment #1',
+          title: 'Payment #1 — $42,400 (After Medical Records Pre-Review Approval)',
+          amount: '$42,400',
           items: [
-            { text: 'Surrogacy agency fees: $50,000' },
-            { text: 'Trust account management fee: $1,850' },
-            { text: 'Administrative support: $5,000' },
+            { text: 'Project management & service support (Part 1 of 2)' },
+            { text: 'Psychological evaluation' },
+            { text: 'Surrogate background investigation' },
+            { text: 'Trust account management service' },
+            { text: 'Medical insurance professional review & management' },
           ],
-          note: 'Foundation payment so matching and coordination can start smoothly.',
+          note: 'This is the “foundation” payment that gets the case moving in an organized way.',
         },
         {
           id: 'payment-2',
           label: 'Payment #2',
-          title: 'Payment #2 - $83,500 (After Surrogate Medical Clearance)',
-          amount: '$83,500',
+          title: 'Payment #2 — $66,850 (After Legal Documents Are Effective / Surrogacy Agreement Notarized)',
+          amount: '$66,850',
           items: [
-            { text: 'Base surrogate compensation: $50,000' },
+            { text: 'Project management & service support (Part 2 of 2)' },
             {
-              text: 'Legal fees (surrogacy agreement): $5,000 total',
-              subItems: ['Intended Parents\' attorney: $3,500', 'Surrogate\'s attorney: $1,500'],
+              text: 'Legal fees (surrogacy agreement)',
+              subItems: ['Intended Parents’ attorney', 'Surrogate’s attorney'],
             },
-            { text: 'Surrogate insurance allocation: $25,000 (pay-as-incurred / reimbursed as used)' },
-            { text: 'Surrogate life insurance: $1,000' },
-            { text: 'Embryo transfer and early pregnancy support: $2,500 (estimated)' },
+            { text: 'Base surrogate compensation (deposit, Part 1 of 2)' },
+            { text: 'Surrogate benefits/support plan (estimated)' },
+            { text: 'Surrogate life insurance premium (pay-as-incurred)' },
+            { text: 'Surrogate medical insurance premium allocation (pay-as-incurred)' },
           ],
           note:
-            'This is usually the point where families feel the real cost becoming concrete—because it funds compensation, legal setup, and insurance planning in a structured way.',
+            'This stage typically makes the budget feel more “real” because the legal and compensation structure is fully in place.',
         },
         {
           id: 'payment-3',
           label: 'Payment #3',
-          title: 'Payment #3 - $17,500 (After Heartbeat Confirmation)',
-          amount: '$17,500',
+          title: 'Payment #3 — $33,500 (After Heartbeat Confirmation)',
+          amount: '$33,500',
           items: [
-            { text: 'Clothing allowance: $1,000' },
-            { text: 'Monthly living allowance (package allocation): $5,500' },
-            { text: 'Childcare support (package allocation): $4,500' },
+            { text: 'Pregnancy-stage cycle management (coordination)' },
             { text: 'California parentage / PBO: $6,500' },
+            { text: 'Base surrogate compensation (deposit, Part 2 of 2)' },
+            { text: 'Surrogate medical insurance premium allocation (pay-as-incurred)' },
           ],
           note:
-            'We recommend maintaining a trust balance of at least $10,000 as a safety buffer for ongoing pregnancy-related reimbursements.',
+            'Base compensation is often paid out in equal monthly installments per the legal agreement (commonly across 10 months).',
         },
       ],
     },
@@ -364,7 +396,7 @@ const translations = {
         {
           id: 'legal',
           title: '法律与法院流程（加州亲子关系/PBO）',
-          image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-1.jpg',
           content: [
             '加州法律路径成熟，但费用仍会因县、市法院要求和法律团队策略而变化。',
             '我们把合同法律工作与法院亲子关系步骤拆开，让你清楚看到费用构成。',
@@ -373,7 +405,7 @@ const translations = {
         {
           id: 'compensation',
           title: '代孕补偿与当地成本差异',
-          image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80&sat=-10',
+          image: '/images/ip/cost/surrogate-cost-2.png',
           content: [
             '补偿是费用大头。加州及周边的补偿期望与生活成本更高，总成本可能更高。',
           ],
@@ -381,7 +413,7 @@ const translations = {
         {
           id: 'insurance',
           title: '保险：导致加州与美国费用不同的头号因素',
-          image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-3.png',
           content: [
             '保险是最大不确定性，覆盖/排除/免赔/自付上限差异大。',
           ],
@@ -389,7 +421,7 @@ const translations = {
         {
           id: 'medical',
           title: '医疗变量（单胎/双胎、剖宫产、并发症）',
-          image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&q=80',
+          image: '/images/ip/cost/surrogate-cost-4.png',
           content: [
             '双胎、剖宫产或特殊医疗需求都会增加费用。',
           ],
@@ -405,111 +437,164 @@ const translations = {
       title: '代孕费用拆分：费用说明（加州 & 美国）',
       intro: '这是可预测 vs 案例依赖的拆分，方便公平比较并理解范围。',
       scope:
-        '此估算不含 IVF 诊所费用和新生儿医疗。信托款仅用于实际发生的费用，未用部分结算后退回。',
-      fixedTitle: '固定费用',
+        '比较代孕报价时最容易混淆的是范围。本套餐估算不含 IVF 诊所费用与新生儿医疗。为保证透明：这只是估算，实际费用按发生承担，未使用资金在最终结算后退回。',
+      scopeLabel: '范围说明',
+      fixedTitle: '固定（更可预期）费用',
       variableTitle: '可变（案例依赖）费用',
-      includedTitle: '包含 vs 不包含',
-      additionalTitle: '额外费用（如适用）',
+      includedTitle: '包含 vs 不包含（便于正确比较价格）',
+      includedLabel: '包含',
+      notIncludedLabel: '不包含',
+      additionalTitle: '额外费用（如适用）— 代孕为何感觉昂贵',
       donutTitle: '费用通常的分布',
       fixed: [
-        { title: '1）代孕机构费用', amount: '$50,000', description: '招募、筛选、匹配、全程协调管理。' },
-        { title: '2）信托账户管理', amount: '$1,850', description: '信托/托管账户管理费。' },
-        { title: '3）行政支持', amount: '$5,000', description: '筛查协调、病历整理、翻译/行政、保险协调。' },
+        {
+          title: '1）代孕机构服务费',
+          amount: '$50,000',
+          description: '招募、筛选、匹配、全程协调管理。',
+          subItems: [
+            '在该项目结构中，必要的筛查项单独列示：心理评估 $2,500；代孕者背景调查 $900。',
+          ],
+        },
+        {
+          title: '2）信托账户管理',
+          amount: '$2,000',
+          description: '信托/托管账户管理费（资金如何管理与追踪）。',
+          subItems: [
+            '另有“信托预留存款”用于部分可报销费用，详见下方“包含/不包含”。',
+          ],
+        },
+        {
+          title: '3）行政支持',
+          amount: '$5,000',
+          description: '怀孕确认后的孕期协调/周期管理支持（孕期全程沟通与协调）。',
+        },
         {
           title: '4）法律费用（代孕协议）',
-          amount: '$5,000',
-          description: '拆分显示更清晰：准父母律师 $3,500；代孕者律师 $1,500。',
+          amount: '$8,750',
+          description: '为便于比较，拆分如下：',
+          subItems: [
+            '准父母律师：$3,750',
+            '代孕者律师：$1,500',
+            '加州亲子关系 / PBO — $3,500',
+          ],
         },
-        { title: '5）加州亲子关系 / PBO', amount: '$6,500', description: '法院亲子关系步骤（产前命令）。' },
+        {
+          title: '5）代孕补偿',
+          amount: '$61,000+',
+          description: '代孕费用的重要驱动之一，会随匹配情况而变化。',
+        },
       ],
       variable: [
-        { id: 'compensation', title: '6）代孕补偿', amount: '$50,000', description: '重要驱动之一，随匹配情况而变。', caseDependent: false },
         {
-          id: 'insurance',
-          title: '7）保险预算',
-          amount: '$26,000',
-          description: '保险是不确定性最大的一项。',
-          bullets: ['医疗保险预算：$25,000', '人寿保险：$1,000'],
-          note: '若需现金参考：产科约 $5,000；住院分娩约 $8,000。',
+          id: 'screening-travel',
+          title: '6）医疗筛查阶段必要差旅费用',
+          amount: '',
+          description: '可报销，按发生支付。仅覆盖必要差旅，凭有效票据由信托支付。',
           caseDependent: true,
         },
-        { id: 'transfer', title: '8）胚胎移植与早孕支持', amount: '$2,500', description: '特定医疗里程碑支持预算。', caseDependent: true },
         {
-          id: 'allowances',
-          title: '9）常见津贴',
+          id: 'transfer-travel',
+          title: '7）胚胎移植周期相关必要差旅费用',
           amount: '',
-          description: '典型津贴：服装 $1,000；月度 $5,500；看护 $4,500。',
-          bullets: ['服装津贴：$1,000', '月度生活津贴：$5,500', '儿童看护支持：$4,500'],
-          caseDependent: false,
+          description: '可报销，按发生支付。仅覆盖必要差旅，凭文件报销。',
+          caseDependent: true,
+        },
+        {
+          id: 'life-insurance',
+          title: '8）代孕人寿保险',
+          amount: '',
+          description: '可报销，按发生支付。保费按实际账单由信托支付；未发生则为 $0。',
+          caseDependent: true,
+        },
+        {
+          id: 'medical-premiums',
+          title: '9）代孕医疗保险保费',
+          amount: '',
+          description: '可报销，按发生支付。仅保费（非医疗账单），按账单支付并与实际结算。',
+          caseDependent: true,
         },
       ],
       additional: [
-        '多胎（双胎）：$15,000',
-        '传染病携带：$10,000',
+        '多胎（双胎）：$10,000',
         '剖宫产补偿：$5,000',
-        '卧床：$250/周；看护 $75/人/天',
-        '母乳：$250/周',
-        '器官丧失：部分子宫切除 $2,500；全切 $5,000',
+        '模拟周期：$500；周期取消：$500',
+        '母乳：$300/周',
+        '流产：12 周前 $1,000（含 D&C 则 $2,000）；12 周后/死胎 $2,000',
       ],
       included: [
-        '机构费、信托/托管、筛查/行政支持',
-        '补偿预算与标准津贴',
-        '法律支持与加州亲子关系（PBO）',
-        '医疗与人寿保险预算',
+        '这是估算，实际费用按发生承担。',
+        '未使用资金在最终结算后退回。',
       ],
       notIncluded: [
-        'IVF 诊所费用',
-        '新生儿出生后的医疗费用',
-        '实际费用按发生结算；未用信托款退回',
+        '不含 IVF 诊所费用。',
+        '不含新生儿出生后的医疗费用。',
       ],
-      donutLegend: ['固定：43%', '代孕补偿：32%', '保险：16%', '津贴：7%', '移植与支持：2%'],
+      donutLegend: ['机构服务费：39%', '代孕补偿：48%', '法律费用：7%', '行政支持：4%', '信托管理：2%'],
     },
     payments: {
       title: '代孕付款时间线：每笔费用何时支付（加州 & 美国）',
       intro: '时间与总额同样重要：何时付、付多少、包含什么。',
       trustButton: '信托如何运作',
+      trustTitle: '信托如何保护你（无“惊喜账单”）',
+      trustCopy: '资金留在信托账户中，仅用于实际发生的费用。可报销项目按发生支付，未用资金在最终结算后退回。',
+      notesTitle: '重要说明（便于准确预算）',
+      notes: [
+        '这些付款覆盖代孕项目及上述事项；不包含 IVF 诊所费用。',
+        '不包含新生儿相关费用（文件/保费/NICU 或儿科护理）。',
+        '保险取决于时间与可购性；如无法及时购买，预留金额可按发生用于孕期相关费用。',
+        '可能需要单独 $20,000 预留存款用于可报销项目（常见为 $10,000 + $10,000），未用部分结算退回。',
+      ],
+      labels: {
+        milestone: '里程碑',
+        deposit: '存款金额',
+        covers: '包含内容',
+        notes: '备注',
+      },
       steps: [
         {
           id: 'payment-1',
           label: '付款 #1',
-          title: '付款 #1 - $56,850（协议签署后）',
-          amount: '$56,850',
+          title: '付款 #1 — $42,400（医疗记录预审通过后）',
+          amount: '$42,400',
           items: [
-            { text: '代孕机构费用：$50,000' },
-            { text: '信托账户管理费：$1,850' },
-            { text: '行政支持：$5,000' },
+            { text: '项目管理与服务支持（第 1/2 阶段）' },
+            { text: '心理评估' },
+            { text: '代孕者背景调查' },
+            { text: '信托账户管理服务' },
+            { text: '医疗保险专业审核与管理' },
           ],
-          note: '基础付款，便于匹配和协调顺利开始。',
+          note: '这是“基础款”，让项目以有序方式启动并推进。',
         },
         {
           id: 'payment-2',
           label: '付款 #2',
-          title: '付款 #2 - $83,500（代孕者体检通过后）',
-          amount: '$83,500',
+          title: '付款 #2 — $66,850（法律文件生效/代孕协议公证后）',
+          amount: '$66,850',
           items: [
-            { text: '基础代孕补偿：$50,000' },
+            { text: '项目管理与服务支持（第 2/2 阶段）' },
             {
-              text: '法律费用（代孕协议）：$5,000 总计',
-              subItems: ['准父母律师：$3,500', '代孕者律师：$1,500'],
+              text: '法律费用（代孕协议）',
+              subItems: ['准父母律师', '代孕者律师'],
             },
-            { text: '代孕者医疗保险预算：$25,000' },
-            { text: '代孕者人寿保险：$1,000' },
-            { text: '胚胎移植与早孕支持：$2,500（估计）' },
+            { text: '基础代孕补偿（存款，第 1/2 部分）' },
+            { text: '代孕福利/支持计划（估算）' },
+            { text: '代孕人寿保险保费（按发生支付）' },
+            { text: '代孕医疗保险保费预留（按发生支付）' },
           ],
-          note: '此时成本变得具体：补偿、法律、保险结构化到位。',
+          note: '此阶段通常让预算更“真实”，因为法律与补偿结构已完整建立。',
         },
         {
           id: 'payment-3',
           label: '付款 #3',
-          title: '付款 #3 - $17,500（心跳确认后）',
-          amount: '$17,500',
+          title: '付款 #3 — $33,500（心跳确认后）',
+          amount: '$33,500',
           items: [
-            { text: '服装津贴：$1,000' },
-            { text: '月度生活津贴：$5,500' },
-            { text: '儿童看护支持：$4,500' },
+            { text: '孕期阶段周期管理（协调）' },
             { text: '加州亲子关系 / PBO：$6,500' },
+            { text: '基础代孕补偿（存款，第 2/2 部分）' },
+            { text: '代孕医疗保险保费预留（按发生支付）' },
           ],
-          note: '建议信托余额至少 $10,000 作为缓冲。',
+          note: '基础补偿通常按协议等额月付（常见为 10 个月）。',
         },
       ],
     },
@@ -666,99 +751,106 @@ const faqItems = computed(() =>
   locale.value === 'zh'
     ? [
         {
-          question: '加州代孕费用',
-          answer:
-            '取决于补偿预期、保险细节和亲子关系流程。先看透明拆分，再根据保险与医疗情景调整。',
-        },
-        {
           question: '加州代孕要花多少钱？',
           answer:
-            '取决于补偿预期、保险细节和亲子关系流程。先看透明拆分，再根据保险与医疗情景调整。',
-        },
-        {
-          question: '美国代孕费用',
-          answer: '核心类别一致，变化的是范围，尤其保险与法院时间。',
+            '加州代孕费用取决于代孕补偿预期、保险细节以及法律/法院亲子关系流程（PBO）。最好的估算方式是从透明的费用拆分开始，再根据保险与医疗情景调整范围。',
         },
         {
           question: '美国代孕要花多少钱？',
-          answer: '核心类别一致，变化的是范围，尤其保险与法院时间。',
-        },
-        {
-          question: '代孕费用拆分',
-          answer: '拆分可预测与案例依赖费用，多数家庭分三次存入信托：$56,850、$83,500、$17,500。',
-        },
-        {
-          question: '代孕费用怎么构成？',
-          answer: '机构费协调，补偿支持孕程，法律保障，保险预算避免意外自付。',
+          answer:
+            '美国代孕费用全国遵循相同的核心类别（机构费、补偿、法律、保险、津贴与“如适用”的医疗项）。不同州主要差在区间范围——尤其是保险与法院时间。',
         },
         {
           question: '代孕费用包含什么？',
           answer:
-            '机构费、信托/托管、筛查/行政、补偿与津贴预算、法律支持、亲子关系（PBO）、保险预算（视范围）。',
+            '通常包含代孕机构费用、信托/托管管理、筛查/行政支持、代孕补偿预算与津贴、法律协议支持、亲子关系（PBO）以及保险预算分配（视项目范围而定）。',
         },
         {
-          question: '为什么代孕贵？',
-          answer: '医疗协同、法律保护、保险规划、补偿，以及双胎/剖宫产等风险规划。',
+          question: '代孕费用不包含什么？',
+          answer:
+            '多数项目（含本页估算）不包含 IVF 诊所费用（取卵/胚胎创建/移植由诊所收取）以及新生儿出生后的医疗费用（NICU、儿科护理、疫苗等）。',
         },
         {
-          question: 'IVF+代孕要多少钱？',
-          answer: 'IVF 诊所费用分开。建议双层预算：代孕项目 + IVF（移植、药物、PGT、冻存）。',
+          question: '为什么代孕费用高？',
+          answer:
+            '因为代孕包含医疗协调、法律保护、保险规划与代孕补偿，还要为双胎、剖宫产或并发症等真实风险做规划。因此“便宜”通常不是正确目标——清晰与可预期更重要。',
         },
         {
-          question: '有保险的代孕费用多少？',
-          answer: '因资格、排除、免赔、自付上限差异。预算 $25,000 医疗 + $1,000 人寿，按发生使用。',
+          question: '能用通俗的话解释代孕费用吗？',
+          answer:
+            '可以：机构费用于协调和管理，补偿支持代孕者孕程，法律费用保障各方并确立亲子关系，保险预算帮助避免意外自付。这就是最简单的费用说明。',
+        },
+        {
+          question: '代孕付款怎么进行？什么时候付？',
+          answer:
+            '大多数家庭按里程碑分阶段支付。我们的结构是三次存入信托：$42,400（协议前期/预审通过后）、$66,850（法律文件生效后）、$33,500（心跳确认后）。',
+        },
+        {
+          question: 'IVF 是否包含？IVF + 代孕一共要多少钱？',
+          answer:
+            'IVF 诊所费用通常分开。最准确的方法是做双层预算：(1) 代孕项目费用 + (2) IVF 诊所方案（移植、用药、PGT、储存）。',
+        },
+        {
+          question: '含 IVF 的代孕费用要多少？',
+          answer:
+            '主要取决于诊所路径（移植次数、用药方案、是否使用捐卵）。因此建议将代孕费用拆分与诊所账单分开比较，确保对齐范围。',
+        },
+        {
+          question: '有保险的代孕费用是多少？',
+          answer:
+            '因保险资格、排除、免赔与自付上限不同而变化。我们在本估算中预算保险分配：$2,000（医疗保险专业审核与管理）+ $10,000（医疗）+ $600（人寿），按发生使用。',
         },
       ]
     : [
-        {
-          question: 'Surrogacy cost in California',
-          answer:
-            'Surrogacy cost in California varies based on surrogate compensation expectations, insurance details, and the legal/court parentage process (PBO). The best way to estimate is to start with a transparent surrogacy cost breakdown and then adjust ranges for insurance and medical scenarios.',
-        },
         {
           question: 'How much does surrogacy cost in California?',
           answer:
             'Surrogacy cost in California varies based on surrogate compensation expectations, insurance details, and the legal/court parentage process (PBO). The best way to estimate is to start with a transparent surrogacy cost breakdown and then adjust ranges for insurance and medical scenarios.',
         },
         {
-          question: 'Surrogacy cost in the US',
+          question: 'How much does surrogacy cost in the U.S.?',
           answer:
-            'The cost of surrogacy in the U.S. follows the same core categories nationwide (agency fees, compensation, legal, insurance, allowances, and "if applicable" medical items). What changes by state is mostly ranges, especially insurance and court timing.',
-        },
-        {
-          question: 'How much does surrogacy cost in the US?',
-          answer:
-            'The cost of surrogacy in the U.S. follows the same core categories nationwide (agency fees, compensation, legal, insurance, allowances, and "if applicable" medical items). What changes by state is mostly ranges, especially insurance and court timing.',
-        },
-        {
-          question: 'Surrogacy cost breakdown',
-          answer:
-            'When you compare surrogacy prices, a clear surrogacy cost breakdown separates predictable fees (agency, trust, legal) from case-dependent costs (insurance ranges, medical outcomes, and allowances). Most intended parents pay in stages aligned with milestones. In our structure, deposits are made into a trust account in three steps: $56,850 (after agreement), $83,500 (after medical clearance), and $17,500 (after heartbeat confirmation).',
-        },
-        {
-          question: 'Surrogacy fees explained',
-          answer:
-            'Yes: agency fees fund coordination and case management, compensation supports the surrogate pregnancy journey, legal fees protect everyone and secure parentage, and insurance budgeting helps avoid surprise out-of-pocket expenses. That is the simplest surrogacy fees explained framework.',
+            'The cost of surrogacy in the U.S. follows the same core categories nationwide (agency fees, compensation, legal, insurance, allowances, and “if applicable” medical items). What changes by state is mostly ranges—especially insurance and court timing.',
         },
         {
           question: 'What is included in surrogacy cost?',
           answer:
-            'Included program costs typically cover surrogacy agency fees, trust/escrow administration, screening/admin support, surrogate compensation budgeting and allowances, legal agreement support, court parentage (PBO), and insurance budgeting allocations, depending on your program scope. Most programs (including the package estimate on this page) do not include IVF clinic fees (retrieval/embryo creation/transfer billed by the clinic) or newborn medical care after birth (NICU, pediatric care, vaccinations).',
+            'Included program costs typically cover surrogacy agency fees, trust/escrow administration, screening/admin support, surrogate compensation budgeting and allowances, legal agreement support, court parentage (PBO), and insurance budgeting allocations—depending on your program scope.',
+        },
+        {
+          question: 'What is not included in surrogacy cost?',
+          answer:
+            'Most programs (including the package estimate on this page) do not include IVF clinic fees (retrieval/embryo creation/transfer billed by the clinic) or newborn medical care after birth (NICU, pediatric care, vaccinations).',
         },
         {
           question: 'Why is surrogacy expensive?',
           answer:
-            'Because surrogacy combines medical coordination, legal protection, insurance planning, and surrogate compensation, plus real-world risk planning for scenarios like twins, C-section, or complications. That is why cheap usually is not the right goal, clarity and predictability are.',
+            'Because surrogacy combines medical coordination, legal protection, insurance planning, and surrogate compensation—plus real-world risk planning for scenarios like twins, C-section, or complications. That’s why “cheap” usually isn’t the right goal—clarity and predictability are.',
         },
         {
-          question: 'How much does IVF and surrogacy cost?',
+          question: 'Can you explain surrogacy fees in plain English?',
           answer:
-            'IVF clinic fees are typically separate. So when you ask how much does IVF and surrogacy cost, the most accurate approach is building a two-layer budget: (1) surrogacy program costs and (2) IVF clinic plan (transfers, meds, PGT, storage). It depends mostly on your clinic pathway (number of transfers, medication protocol, and whether donor eggs are involved). That is why we recommend separating surrogacy cost breakdown from clinic billing so you can compare apples to apples.',
+            'Yes: agency fees fund coordination and case management, compensation supports the surrogate’s pregnancy journey, legal fees protect everyone and secure parentage, and insurance budgeting helps avoid surprise out-of-pocket expenses. That’s the simplest surrogacy fees explained framework.',
         },
         {
-          question: 'Surrogacy cost with insurance',
+          question: 'How do surrogacy payments work? When do I pay?',
           answer:
-            'Surrogacy cost with insurance varies because insurance plans differ in eligibility, exclusions, deductibles, and out-of-pocket maximums. In our package estimate, we budget an insurance allocation of $25,000 (medical) + $1,000 (life insurance), used as costs occur.',
+            'Most intended parents pay in stages aligned with milestones. In our structure, deposits are made into a trust account in three steps: $42,400 (after agreement), $66,850 (after medical clearance), and $33,500 (after heartbeat confirmation).',
+        },
+        {
+          question: 'Is IVF included? How much does IVF and surrogacy cost together?',
+          answer:
+            'IVF clinic fees are typically separate. So when you ask “how much does IVF and surrogacy cost?” the most accurate approach is building a two-layer budget: (1) surrogacy program costs + (2) IVF clinic plan (transfers, meds, PGT, storage).',
+        },
+        {
+          question: 'How much is surrogacy with IVF?',
+          answer:
+            'It depends mostly on your clinic pathway (number of transfers, medication protocol, and whether donor eggs are involved). That’s why we recommend separating surrogacy cost breakdown from clinic billing—so you can compare apples-to-apples.',
+        },
+        {
+          question: 'How much is surrogacy cost with insurance?',
+          answer:
+            'Surrogacy cost with insurance varies because insurance plans differ in eligibility, exclusions, deductibles, and out-of-pocket maximums. In our package estimate, we budget an insurance allocation of $2,000 (Medical Insurance Professional Review and Management) + $10,000 (medical) + $600 (life insurance), used as costs occur.',
         },
       ],
 )
@@ -1112,7 +1204,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="cost-breakdown" class="section-pad bg-[var(--head-bg)]">
+      <section id="cost-breakdown" class="section-pad bg-[var(--head-bg)] cost-breakdown-section">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
             <h2 class="h2-text" style="font-family: var(--font-primary)">
@@ -1125,7 +1217,7 @@ onUnmounted(() => {
 
           <div class="scroll-animate card subtle-card">
             <p class="small-text text-[var(--primary-brown)] font-semibold tracking-wide uppercase">
-              Scope note
+              {{ t.breakdown.scopeLabel }}
             </p>
             <p class="body-text mt-2">
               {{ t.breakdown.scope }}
@@ -1223,7 +1315,7 @@ onUnmounted(() => {
                   class="chart-slot cost-donut"
                   role="img"
                   aria-label="Cost share chart showing fixed, compensation, insurance, allowances, and embryo support allocations"
-                  style="--p1:43; --p2:32; --p3:16; --p4:7; --p5:2;"
+                  style="--p1:39; --p2:48; --p3:7; --p4:4; --p5:2;"
                 />
                 <ul class="donut-legend">
                   <li v-for="(item, idx) in t.breakdown.donutLegend" :key="item">
@@ -1246,7 +1338,7 @@ onUnmounted(() => {
                 :class="scopeTab === 'included' ? 'segmented-active' : ''"
                 @click="scopeTab = 'included'"
               >
-                Included
+                {{ t.breakdown.includedLabel }}
               </button>
               <button
                 type="button"
@@ -1254,7 +1346,7 @@ onUnmounted(() => {
                 :class="scopeTab === 'notIncluded' ? 'segmented-active' : ''"
                 @click="scopeTab = 'notIncluded'"
               >
-                Not Included
+                {{ t.breakdown.notIncludedLabel }}
               </button>
             </div>
             <div class="body-text mt-4">
@@ -1274,8 +1366,6 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
-
-      <div class="gradient-strip" aria-hidden="true" />
 
       <section id="payments" class="section-pad">
         <div class="content-container section-stack">
@@ -1328,7 +1418,7 @@ onUnmounted(() => {
               <div class="payment-grid">
                 <div class="payment-cell">
                   <p class="cell-title">
-                    Milestone
+                    {{ t.payments.labels?.milestone || 'Milestone' }}
                   </p>
                   <p class="cell-body font-semibold">
                     {{ payment.title }}
@@ -1336,7 +1426,7 @@ onUnmounted(() => {
                 </div>
                 <div class="payment-cell amount-cell">
                   <p class="cell-title">
-                    Deposit amount
+                    {{ t.payments.labels?.deposit || 'Deposit amount' }}
                   </p>
                   <p class="cell-amount">
                     {{ payment.amount }}
@@ -1344,17 +1434,20 @@ onUnmounted(() => {
                 </div>
                 <div class="payment-cell">
                   <p class="cell-title">
-                    What it covers
+                    {{ t.payments.labels?.covers || 'What it covers' }}
                   </p>
                   <ul class="cell-list">
                     <li v-for="item in payment.items" :key="item.text">
                       - {{ item.text }}
+                      <ul v-if="item.subItems" class="cell-sub">
+                        <li v-for="sub in item.subItems" :key="sub">· {{ sub }}</li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
                 <div class="payment-cell">
                   <p class="cell-title">
-                    Notes
+                    {{ t.payments.labels?.notes || 'Notes' }}
                   </p>
                   <p class="cell-body text-[var(--dark-brown)]/80">
                     {{ payment.note }}
@@ -1380,6 +1473,17 @@ onUnmounted(() => {
             <p class="body-text mt-3">
               {{ t.payments.trustCopy || 'Funds are held in a trust account and used only for actual costs incurred. If certain expenses never happen, they are reconciled and returned after final accounting.' }}
             </p>
+          </div>
+
+          <div class="card outline-card">
+            <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+              {{ t.payments.notesTitle || 'Important Notes (So you can budget accurately)' }}
+            </h3>
+            <ul class="body-text mt-3 space-y-2">
+              <li v-for="note in t.payments.notes" :key="note">
+                - {{ note }}
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -1901,17 +2005,17 @@ onUnmounted(() => {
 
 .cost-table-header {
   padding: 16px;
-  background: #1a4c8f;
+  background: var(--olive-green);
   color: var(--white);
   border-bottom: 1px solid rgba(39, 31, 24, 0.08);
 }
 
 .cost-table-column:first-child .cost-table-header {
-  background: #1a4c8f;
+  background: var(--olive-green);
 }
 
 .cost-table-column:last-child .cost-table-header {
-  background: #b3825b;
+  background: var(--primary-brown);
 }
 
 .cost-table-body {
@@ -1930,6 +2034,34 @@ onUnmounted(() => {
 .cost-breakdown-split {
   display: grid;
   gap: 24px;
+}
+
+.cost-breakdown-section .h3-text,
+.cost-breakdown-section .row-title,
+.cost-breakdown-section .row-desc,
+.cost-breakdown-section .row-sub,
+.cost-breakdown-section .cost-table-expand summary {
+  color: var(--dark-brown);
+}
+
+.cost-breakdown-section .amount-badge,
+.cost-breakdown-section .donut-legend,
+.cost-breakdown-section .segmented-button {
+  color: var(--olive-green);
+}
+
+.cost-breakdown-section .segmented-active {
+  background: var(--olive-green);
+  border-color: var(--olive-green);
+  color: #fff;
+}
+
+.cost-breakdown-section .subtle-card .small-text {
+  color: var(--olive-green);
+}
+
+.cost-breakdown-section .amount-badge {
+  background: color-mix(in srgb, var(--olive-green) 18%, transparent);
 }
 
 @media (min-width: 1200px) {
@@ -1962,12 +2094,12 @@ onUnmounted(() => {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: conic-gradient(
-    #1a4c8f 0deg calc(var(--p1) * 1deg * 3.6),
-    #b3825b calc(var(--p1) * 1deg * 3.6) calc((var(--p1) + var(--p2)) * 1deg * 3.6),
-    #6a8c71 calc((var(--p1) + var(--p2)) * 1deg * 3.6) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6),
-    #f3c86b calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6)
+    var(--olive-green) 0deg calc(var(--p1) * 1deg * 3.6),
+    var(--primary-brown) calc(var(--p1) * 1deg * 3.6) calc((var(--p1) + var(--p2)) * 1deg * 3.6),
+    rgba(169, 108, 66, 0.65) calc((var(--p1) + var(--p2)) * 1deg * 3.6) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6),
+    rgba(169, 108, 66, 0.35) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6)
       calc((var(--p1) + var(--p2) + var(--p3) + var(--p4)) * 1deg * 3.6),
-    #6a8c71 calc((var(--p1) + var(--p2) + var(--p3) + var(--p4)) * 1deg * 3.6) 360deg
+    rgba(117, 123, 88, 0.35) calc((var(--p1) + var(--p2) + var(--p3) + var(--p4)) * 1deg * 3.6) 360deg
   );
   mask: radial-gradient(circle at center, transparent 48%, black 49%);
   box-shadow: inset 0 0 0 1px rgba(39, 31, 24, 0.08);
@@ -1996,25 +2128,11 @@ onUnmounted(() => {
   display: inline-block;
 }
 
-.dot-fixed {
-  background: #1a4c8f;
-}
-
-.dot-comp {
-  background: #b3825b;
-}
-
-.dot-ins {
-  background: #6a8c71;
-}
-
-.dot-allow {
-  background: #f3c86b;
-}
-
-.dot-embryo {
-  background: #6a8c71;
-}
+.dot-fixed { background: var(--olive-green); }
+.dot-comp { background: var(--primary-brown); }
+.dot-ins { background: rgba(169, 108, 66, 0.65); }
+.dot-allow { background: rgba(169, 108, 66, 0.35); }
+.dot-embryo { background: rgba(117, 123, 88, 0.35); }
 .cost-line-compact {
   padding: 14px 16px;
   border-bottom: 1px solid rgba(39, 31, 24, 0.06);
@@ -2853,6 +2971,16 @@ onUnmounted(() => {
   display: grid;
   gap: 4px;
   color: var(--dark-brown);
+}
+
+.cell-sub {
+  margin: 4px 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  font-size: 0.9rem;
+  color: rgba(39, 31, 24, 0.7);
 }
 
 .reason-number {
