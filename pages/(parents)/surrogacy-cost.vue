@@ -130,7 +130,7 @@ const translations = {
       intro:
         'When you Google “surrogacy cost” or “how much does surrogacy cost in California”, the numbers look all over the place. Here is a clear breakdown showing what’s predictable vs. case-dependent.',
       scope:
-        'One of the biggest reasons people get confused comparing surrogacy price quotes is scope. This package estimate does not include IVF clinic fees and does not include newborn medical care after birth. And just to keep things fair and transparent: this is an estimate—you are responsible for actual costs incurred during the journey, and any unused funds are reconciled and returned after final accounting.',
+        'One of the biggest reasons people get confused comparing surrogacy price quotes is scope. This package estimate totals $142,750, but it does not include IVF clinic fees and does not include newborn medical care after birth. And just to keep things fair and transparent: this is an estimate—you are responsible for actual costs incurred during the journey, and any unused funds are reconciled and returned after final accounting.',
       scopeLabel: 'Scope note',
       fixedTitle: 'Fixed Costs',
       variableTitle: 'Variable (Case-Dependent) Costs',
@@ -159,10 +159,14 @@ const translations = {
           ],
         },
         {
-          title: '3) Administrative Support',
-          amount: '$5,000',
-          description:
-            'Covers pregnancy-stage coordination/cycle management support after pregnancy is confirmed (ongoing coordination and communication through the pregnancy stage).',
+          title: '3) Insurance Review & Coverage Setup',
+          amount: '$12,600',
+          description:'To keep insurance-related costs clear and easy to track, I break them into three lines:',
+            subItems: [
+               'Health insurance professional review & management: $2,000',
+               'Surrogate life insurance (reimbursable): $600',
+               'Surrogate health insurance premium (reimbursable): $10,000',
+          ],
         },
         {
           title: '4) Legal Fees (Surrogacy Agreement)',
