@@ -134,7 +134,6 @@ const translations = {
       scopeLabel: 'Scope note',
       fixedTitle: 'Fixed Costs',
       variableTitle: 'Variable (Case-Dependent) Costs',
-      includedTitle: 'What’s Included vs. Not Included (quick clarity so you can compare prices correctly)',
       includedLabel: 'Included',
       notIncludedLabel: 'Not Included',
       additionalTitle: 'Additional Costs (If Applicable) — why surrogacy can feel expensive',
@@ -170,12 +169,13 @@ const translations = {
         },
         {
           title: '4) Legal Fees (Surrogacy Agreement)',
-          amount: '$8,750',
+          amount: '$10,750',
           description: 'To make legal costs easy to compare, I break them into two counsel lines:',
           subItems: [
-            'Intended Parents’ attorney: $3,750',
-            'Surrogate’s attorney: $1,500',
-            'California Parentage / PBO — $3,500',
+            'Escrow (Trust) Account Management: $2,000',
+            'Surrogacy Agreement Drafting & Review: $3,750',
+            'Surrogate’s Attorney Contract Review: $1,500',
+            'California Parentage / PBO: $3,500',
           ],
         },
         {
@@ -236,8 +236,8 @@ const translations = {
       ],
       donutLegend: [
         'Agency service fee: 39%',
-        'Surrogate compensation: 48%',
-        'Legal fees: 7%',
+        'Surrogate compensation: 47%',
+        'Legal fees: 8%',
         'Administrative support: 4%',
         'Trust management: 2%',
       ],
@@ -304,7 +304,7 @@ const translations = {
           amount: '$33,500',
           items: [
             { text: 'Pregnancy-stage cycle management (coordination)' },
-            { text: 'California parentage / PBO: $6,500' },
+            { text: 'California parentage / PBO' },
             { text: 'Base surrogate compensation (deposit, Part 2 of 2)' },
             { text: 'Surrogate medical insurance premium allocation (pay-as-incurred)' },
           ],
@@ -316,45 +316,56 @@ const translations = {
     why: {
       title: 'Why Is Surrogacy Expensive?',
       intro:
-        'Surrogacy is a coordinated medical-legal journey with real protections, risks, and human effort. Here is the simplest, most honest explanation.',
+        'If you’ve found yourself asking “why is surrogacy expensive?”, you’re not being picky—you’re being responsible. Surrogacy is a coordinated medical-legal journey with real protections, real risks, and real human effort involved. Here’s the simplest, most honest explanation.',
       reasons: [
         {
           id: 'reason-1',
-          title: 'You are paying for a full, managed journey, not one transaction',
+          title: 'You’re paying for a full, managed journey—not one transaction',
           description:
-            'A big part of surrogacy costs comes from the work required to coordinate matching, screening, timelines, communication, and problem-solving across multiple parties.',
-          bullets: ['Typical surrogacy agency fees: $50,000', 'Administrative support often budgeted separately: $5,000'],
+            'A big part of surrogacy costs is the work required to coordinate screening, timelines, communication, and problem-solving across multiple parties—so the process stays clear and controlled.',
+          bullets: [
+            'Program management & service support: $50,000 (often structured as $35,000 + $15,000)',
+            'Pregnancy-stage coordination: $5,000',
+          ],
         },
         {
           id: 'reason-2',
           title: 'Surrogate compensation reflects the reality of pregnancy',
           description:
-            'Compensation is usually one of the biggest components because it reflects the surrogate time, commitment, and the physical demands of pregnancy.',
+            'Compensation is usually one of the biggest components because it reflects the surrogate’s time, commitment, and the physical demands of pregnancy.',
           bullets: [
-            'Base surrogate compensation budget (typical baseline): $50,000',
-            'Common allowances: clothing $1,000, monthly allowance $5,500, childcare $4,500',
+            'Base surrogate compensation: $50,000 (commonly deposited as $30,000 + $20,000)',
+            'Benefits/support plan (estimated total): $11,000 (e.g., signing bonus, monthly allowance, maternity clothing, health support, housekeeping support, and certain transfer-cycle stipends)',
           ],
         },
         {
           id: 'reason-3',
-          title: 'Legal protection is not optional, especially for parentage',
+          title: 'Legal protection isn’t optional—especially for parentage',
           description:
-            'Legal steps protect everyone involved and help secure parentage correctly (including California court parentage process).',
-          bullets: ['Legal agreement: $5,000 total', 'Court parentage / PBO: $6,500'],
+            'Legal steps protect everyone involved and help secure parentage correctly, including California’s parentage process.',
+          bullets: ['Legal agreement: $5,250 (IP attorney $3,750 + surrogate attorney $1,500)', 'Court parentage / PBO: $3,500'],
         },
         {
           id: 'reason-4',
           title: 'Insurance and risk planning are major cost drivers',
           description:
-            'Plans differ; exclusions happen; out-of-pocket caps vary. That is why programs budget insurance as an allocation and pay as incurred.',
-          bullets: ['Medical insurance allocation: $25,000', 'Life insurance: $1,000'],
+            'Insurance is often a key variable because timing and plan availability differ, and some items are paid as incurred—so escrow budgeting helps keep it predictable.',
+          bullets: [
+            'Medical insurance premium budgeting: $10,000 (often split $5,000 + $5,000)',
+            'Life insurance premium budgeting: $600',
+            'Insurance review & management: $2,000',
+          ],
         },
         {
           id: 'reason-5',
-          title: 'Real-life medical outcomes can add cost',
+          title: 'Real-life outcomes can add cost (and they shouldn’t be hidden)',
           description:
-            'Twins, C-section, or complications change costs. Listing these openly keeps the breakdown honest.',
-          bullets: ['Twins: $15,000', 'C-section: $5,000', 'Bed rest (medically required): $250/week'],
+            'Some journeys include medical outcomes that change costs. Listing these up front keeps your cost breakdown honest.',
+          bullets: [
+            'Twins: $10,000',
+            'C-section: $5,000',
+            'Medically-required support may include documented lost-wage reimbursement, childcare (e.g., $100/child/day), and approved spouse/companion support (e.g., $500/week).',
+          ],
         },
       ],
     },
@@ -445,7 +456,6 @@ const translations = {
       scopeLabel: '范围说明',
       fixedTitle: '固定（更可预期）费用',
       variableTitle: '可变（案例依赖）费用',
-      includedTitle: '包含 vs 不包含（便于正确比较价格）',
       includedLabel: '包含',
       notIncludedLabel: '不包含',
       additionalTitle: '额外费用（如适用）— 代孕为何感觉昂贵',
@@ -479,12 +489,13 @@ const translations = {
         },
         {
           title: '4）法律费用（代孕协议）',
-          amount: '$8,750',
+          amount: '$10,750',
           description: '为便于比较，拆分如下：',
           subItems: [
-            '准父母律师：$3,750',
-            '代孕者律师：$1,500',
-            '加州亲子关系 / PBO — $3,500',
+            '托管（信托）账户管理：2000美元',
+            '代孕协议起草与审核：3750美元',
+            '代孕律师合同审查：1500美元',
+            '加利福尼亚亲子关系/亲子关系令：3500美元'
           ],
         },
         {
@@ -538,7 +549,7 @@ const translations = {
         '不含 IVF 诊所费用。',
         '不含新生儿出生后的医疗费用。',
       ],
-      donutLegend: ['机构服务费：39%', '代孕补偿：48%', '法律费用：7%', '行政支持：4%', '信托管理：2%'],
+      donutLegend: ['机构服务费：39%', '代孕补偿：47%', '法律费用：8%', '行政支持：4%', '信托管理：2%'],
     },
     payments: {
       title: '代孕付款时间线：每笔费用何时支付（加州 & 美国）',
@@ -551,7 +562,6 @@ const translations = {
         '这些付款覆盖代孕项目及上述事项；不包含 IVF 诊所费用。',
         '不包含新生儿相关费用（文件/保费/NICU 或儿科护理）。',
         '保险取决于时间与可购性；如无法及时购买，预留金额可按发生用于孕期相关费用。',
-        '可能需要单独 $20,000 预留存款用于可报销项目（常见为 $10,000 + $10,000），未用部分结算退回。',
       ],
       labels: {
         milestone: '里程碑',
@@ -599,7 +609,7 @@ const translations = {
           amount: '$33,500',
           items: [
             { text: '孕期阶段周期管理（协调）' },
-            { text: '加州亲子关系 / PBO：$6,500' },
+            { text: '加州亲子关系 / PBO' },
             { text: '基础代孕补偿（存款，第 2/2 部分）' },
             { text: '代孕医疗保险保费预留（按发生支付）' },
           ],
@@ -609,42 +619,41 @@ const translations = {
     },
     why: {
       title: '为什么代孕费用高？',
-      intro: '代孕是医疗+法律的协同旅程，需要保护、风险规划和人力投入。',
+      intro:
+        '如果你也在问“为什么代孕这么贵？”，这不是挑剔，而是负责任。代孕是一个医疗与法律协同的完整旅程，涉及真实保障、真实风险和大量真实的人力投入。下面是最直接、最诚实的解释。',
       reasons: [
         {
           id: 'reason-1',
-          title: '你支付的是全程管理，而非单一交易',
-          description:
-            '匹配、筛查、时间线、沟通、协同解决问题都需要成本，把复杂过程变得可规划。',
-          bullets: ['典型机构费用：$50,000', '行政支持：$5,000'],
+          title: '你支付的是完整的全程管理，而不是一次性交易',
+          description: '代孕费用的一大部分来自多方协同管理：筛查、时间线、沟通与问题处理，确保流程清晰、可控。',
+          bullets: ['项目管理与服务支持：$50,000（常见结构为 $35,000 + $15,000）', '孕期阶段协调：$5,000'],
         },
         {
           id: 'reason-2',
-          title: '代孕补偿体现怀孕的现实付出',
-          description:
-            '补偿是主要组成，反映时间、承诺与身体付出。',
-          bullets: ['基础补偿：$50,000', '津贴示例：服装 $1,000；月度 $5,500；看护 $4,500'],
+          title: '代孕补偿反映怀孕的真实付出',
+          description: '补偿通常是总费用中的最大组成之一，因为它对应代孕者的时间投入、承诺和身体负担。',
+          bullets: [
+            '基础代孕补偿：$50,000（常见分两笔存入：$30,000 + $20,000）',
+            '福利/支持计划（预估总额）：$11,000（如签约奖励、月度津贴、孕装、健康支持、家务支持及部分移植周期补贴）',
+          ],
         },
         {
           id: 'reason-3',
-          title: '法律保护必不可少，尤其亲子关系',
-          description:
-            '法律步骤保护双方并确保亲子关系（含加州 PBO）。',
-          bullets: ['法律协议：$5,000', '法院亲子关系 / PBO：$6,500'],
+          title: '法律保护并非可选，尤其是亲子关系确立',
+          description: '法律流程用于保护各方权益，并确保亲子关系依法成立（包括加州亲子关系流程）。',
+          bullets: ['法律协议：$5,250（准父母律师 $3,750 + 代孕者律师 $1,500）', '法院亲子关系 / PBO：$3,500'],
         },
         {
           id: 'reason-4',
-          title: '保险与风险规划是主要驱动',
-          description:
-            '计划差异大；需把保险当作预算分配，并按发生支付。',
-          bullets: ['医疗保险预算：$25,000', '人寿保险：$1,000'],
+          title: '保险与风险规划是重要成本驱动',
+          description: '保险通常是关键变量，因为生效时间和可用计划不同，且许多项目按实际发生支付；托管预算可提升可预期性。',
+          bullets: ['医疗保险保费预算：$10,000（常见为 $5,000 + $5,000）', '人寿保险保费预算：$600', '保险审核与管理：$2,000'],
         },
         {
           id: 'reason-5',
-          title: '真实医疗结果会加费',
-          description:
-            '双胎、剖宫产会改变成本；公开列出保持透明。',
-          bullets: ['双胎：$15,000', '剖宫产：$5,000', '卧床：$250/周'],
+          title: '真实医疗结果会带来额外费用（且不应被隐藏）',
+          description: '有些旅程会出现会改变费用的医疗结果。提前列明这些项目，才能让费用拆分真正透明。',
+          bullets: ['双胎：$10,000', '剖宫产：$5,000', '医学必要支持可能包括有凭证的误工补偿、儿童照护（如 $100/child/day）以及经批准的配偶/陪护支持（如 $500/week）'],
         },
       ],
     },
@@ -1324,7 +1333,7 @@ onUnmounted(() => {
                   class="chart-slot cost-donut"
                   role="img"
                   aria-label="Cost share chart showing fixed, compensation, insurance, allowances, and embryo support allocations"
-                  style="--p1:39; --p2:48; --p3:7; --p4:4; --p5:2;"
+                  style="--p1:39; --p2:47; --p3:8; --p4:4; --p5:2;"
                 />
                 <ul class="donut-legend">
                   <li v-for="(item, idx) in t.breakdown.donutLegend" :key="item">
@@ -1336,43 +1345,7 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <div class="scroll-animate card outline-card">
-            <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
-              {{ t.breakdown.includedTitle || "What's Included vs. Not Included" }}
-            </h3>
-            <div class="mt-4 flex flex-wrap gap-3">
-              <button
-                type="button"
-                class="segmented-button"
-                :class="scopeTab === 'included' ? 'segmented-active' : ''"
-                @click="scopeTab = 'included'"
-              >
-                {{ t.breakdown.includedLabel }}
-              </button>
-              <button
-                type="button"
-                class="segmented-button"
-                :class="scopeTab === 'notIncluded' ? 'segmented-active' : ''"
-                @click="scopeTab = 'notIncluded'"
-              >
-                {{ t.breakdown.notIncludedLabel }}
-              </button>
-            </div>
-            <div class="body-text mt-4">
-              <Transition name="fade-fast" mode="out-in">
-                <ul v-if="scopeTab === 'included'" key="included" class="space-y-2">
-                  <li v-for="line in scopeIncluded" :key="line">
-                    {{ line }}
-                  </li>
-                </ul>
-                <ul v-else key="not-included" class="space-y-2">
-                  <li v-for="line in scopeNotIncluded" :key="line">
-                    {{ line }}
-                  </li>
-                </ul>
-              </Transition>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -1667,24 +1640,7 @@ onUnmounted(() => {
         v-if="stickyVisible"
         class="sticky-cta hidden md:flex"
       >
-        <div class="border border-[var(--olive-green)]/30 rounded-4 bg-white/95 p-4 shadow-lg">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <p class="text-4.5 font-semibold">
-                Get a personalized estimate
-              </p>
-              <p class="mt-1 text-3.5 text-[var(--dark-brown)]/70">
-                Compare California and U.S. costs with confidence.
-              </p>
-            </div>
-            <button type="button" aria-label="Dismiss sticky estimate" class="text-3.5 text-[var(--dark-brown)]/60 hover:text-[var(--dark-brown)]" @click="closeSticky">
-              x
-            </button>
-          </div>
-          <NuxtLink :to="localePath('/be-parents')" class="btn-primary mt-3 w-full text-center">
-            Get a Personalized Surrogacy Cost Estimate
-          </NuxtLink>
-        </div>
+
       </div>
     </Transition>
 
