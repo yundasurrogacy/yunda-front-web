@@ -227,7 +227,7 @@ const modalConfig = reactive({
   type: 'success' as 'success' | 'error',
   titleKey: '',
   messageKey: '',
-  buttonText: 'OK',
+  buttonText: t('surrogate.application.form.submitButton'),
   message: '' as string | string[], // 兼容后端返回
   fieldLabel: '', // 用于 required 校验字段名参数
 })
@@ -504,7 +504,7 @@ async function handleSubmit() {
     modalConfig.type = 'success'
     modalConfig.titleKey = 'modal.success.surrogate.title'
     modalConfig.messageKey = 'modal.success.surrogate.message'
-    modalConfig.buttonText = t('modal.error.ok')
+    modalConfig.buttonText = 'Finish'
     showModal.value = true
     setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, 500)
     isSubmitting.value = false

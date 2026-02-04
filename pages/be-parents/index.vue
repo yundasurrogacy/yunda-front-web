@@ -204,7 +204,7 @@ const modalConfig = reactive({
   type: 'success' as 'success' | 'error',
   title: '',
   message: '' as string | string[],
-  buttonText: 'OK',
+  buttonText: t('parent.application.form.submitButton'),
 })
 const isSubmitting = ref(false)
 const pendingSuccessRedirect = ref<null | { path: string, query: Record<string, string> }>(null)
@@ -213,7 +213,7 @@ function openSuccessModal(queryParams: Record<string, string>) {
   modalConfig.type = 'success'
   modalConfig.title = t('modal.success.parent.title')
   modalConfig.message = t('modal.success.parent.message')
-  modalConfig.buttonText = 'OK'
+  modalConfig.buttonText = 'Finish'
   pendingSuccessRedirect.value = {
     path: localePath('/be-parents/thanks'),
     query: queryParams,
