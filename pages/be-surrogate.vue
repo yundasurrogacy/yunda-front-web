@@ -316,6 +316,96 @@ function isEmptyValue(value: unknown) {
   return false
 }
 
+// 校验失败时跳转到的板块 ID 映射（labelKey -> section id）
+const SECTION_IDS_BY_LABEL: Record<string, string> = {
+  'surrogate.application.gcIntake.fullName': 'section-general',
+  'surrogate.application.gcIntake.email': 'section-general',
+  'surrogate.application.gcIntake.phone': 'section-general',
+  'surrogate.application.gcIntake.dob': 'section-general',
+  'surrogate.application.gcIntake.stateOfResidence': 'section-general',
+  'surrogate.application.gcIntake.maritalStatus': 'section-general',
+  'surrogate.application.gcIntake.usCitizenOrResident': 'section-general',
+  'surrogate.application.gcIntake.occupationSource': 'section-general',
+  'surrogate.application.gcIntake.singlePartnerInfo': 'section-general',
+  'surrogate.application.gcIntake.heightWeight': 'section-general',
+  'surrogate.application.gcIntake.ethnicity.label': 'section-general',
+  'surrogate.application.gcIntake.ethnicity.options.other': 'section-general',
+  'surrogate.application.gcIntake.totalChildren': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.totalVaginal': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.totalCSections': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.miscarriages': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.miscarriagesDetail': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.abortions': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.abortionsDetail': 'section-pregnancy-birth',
+  'surrogate.application.gcIntake.beenSurrogateBefore': 'section-delivery',
+  'surrogate.application.gcIntake.beenSurrogateWhen': 'section-delivery',
+  'surrogate.application.gcIntake.deliveryTable': 'section-delivery',
+  'surrogate.application.gcIntake.deliveryDate': 'section-delivery',
+  'surrogate.application.gcIntake.gender': 'section-delivery',
+  'surrogate.application.gcIntake.birthWeight': 'section-delivery',
+  'surrogate.application.gcIntake.numberOfWeeks': 'section-delivery',
+  'surrogate.application.gcIntake.deliveryType': 'section-delivery',
+  'surrogate.application.gcIntake.deliveryHospital': 'section-delivery',
+  'surrogate.application.gcIntake.anemia': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.severeVomiting3mo': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.bpDuringPregnancy': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.preeclampsia': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.gestationalDiabetes': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.hypertensionPregnancy': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.bloodTransfusion': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.seizures': 'section-pregnancy-medical',
+  'surrogate.application.gcIntake.regularMenstrualCycles': 'section-medical-health',
+  'surrogate.application.gcIntake.birthControl': 'section-medical-health',
+  'surrogate.application.gcIntake.takingMedications': 'section-medical-health',
+  'surrogate.application.gcIntake.lastPapSmear': 'section-medical-health',
+  'surrogate.application.gcIntake.covidVaccinated': 'section-medical-health',
+  'surrogate.application.gcIntake.hepBVaccinated': 'section-medical-health',
+  'surrogate.application.gcIntake.varicellaVaccinated': 'section-medical-health',
+  'surrogate.application.gcIntake.ongoingMedicalTreatment': 'section-medical-health',
+  'surrogate.application.gcIntake.surgeriesPast2y': 'section-medical-health',
+  'surrogate.application.gcIntake.birthControlType': 'section-medical-health',
+  'surrogate.application.gcIntake.medicationsList': 'section-medical-health',
+  'surrogate.application.gcIntake.surgeriesSpecify': 'section-medical-health',
+  'surrogate.application.gcIntake.anxietyDepression': 'section-mental-health',
+  'surrogate.application.gcIntake.bipolarSchizoPersonality': 'section-mental-health',
+  'surrogate.application.gcIntake.adhd': 'section-mental-health',
+  'surrogate.application.gcIntake.medsAnxietyDepression': 'section-mental-health',
+  'surrogate.application.gcIntake.medsSpecify': 'section-mental-health',
+  'surrogate.application.gcIntake.drugUsePregnancy': 'section-substance-use',
+  'surrogate.application.gcIntake.drugTypes': 'section-substance-use',
+  'surrogate.application.gcIntake.marijuanaCurrent': 'section-substance-use',
+  'surrogate.application.gcIntake.marijuanaLastUse': 'section-substance-use',
+  'surrogate.application.gcIntake.smokedVapedPregnancy': 'section-substance-use',
+  'surrogate.application.gcIntake.alcohol': 'section-substance-use',
+  'surrogate.application.gcIntake.alcoholFrequency': 'section-substance-use',
+  'surrogate.application.gcIntake.syphilis': 'section-infectious',
+  'surrogate.application.gcIntake.hepatitisBC': 'section-infectious',
+  'surrogate.application.gcIntake.genitalHerpes': 'section-infectious',
+  'surrogate.application.gcIntake.hiv': 'section-infectious',
+  'surrogate.application.gcIntake.asthma': 'section-other-medical',
+  'surrogate.application.gcIntake.asthmaInhaler': 'section-other-medical',
+  'surrogate.application.gcIntake.heartConditions': 'section-other-medical',
+  'surrogate.application.gcIntake.cancerHistory': 'section-other-medical',
+  'surrogate.application.gcIntake.scoliosis': 'section-other-medical',
+  'surrogate.application.gcIntake.endometrialAblation': 'section-other-medical',
+  'surrogate.application.gcIntake.availability': 'section-preferences',
+  'surrogate.application.gcIntake.healthInsurance': 'section-preferences',
+  'surrogate.application.gcIntake.openTwins': 'section-preferences',
+  'surrogate.application.gcIntake.openFetalReduction': 'section-preferences',
+  'surrogate.application.gcIntake.openTermination': 'section-preferences',
+  'surrogate.application.gcIntake.openAmniocentesisCVS': 'section-preferences',
+  'surrogate.application.gcIntake.openSameSexSingleIP': 'section-preferences',
+  'surrogate.application.gcIntake.willingPumpBreastMilk': 'section-preferences',
+  'surrogate.application.gcIntake.openIPHIV': 'section-preferences',
+  'surrogate.application.gcIntake.openIPHepatitisB': 'section-preferences',
+  'surrogate.application.gcIntake.pendingLegal': 'section-legal',
+  'surrogate.application.gcIntake.criminalRecord': 'section-legal',
+  'surrogate.application.gcIntake.emergencyContact': 'section-legal',
+  'surrogate.application.gcIntake.governmentAssistance': 'section-legal',
+  'surrogate.application.gcIntake.referredBy': 'section-notes',
+  'surrogate.application.gcIntake.medicalRecordsSource': 'section-notes',
+}
+
 function showMissingFieldError(labelKey: string) {
   modalConfig.type = 'error'
   modalConfig.titleKey = 'modal.error.required.title'
@@ -323,6 +413,13 @@ function showMissingFieldError(labelKey: string) {
   modalConfig.buttonText = t('modal.error.ok')
   modalConfig.fieldLabel = labelKey
   showModal.value = true
+  const sectionId = SECTION_IDS_BY_LABEL[labelKey]
+  if (sectionId) {
+    nextTick(() => {
+      const el = document.getElementById(sectionId)
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
 }
 
 function validateRequiredFields(fields: RequiredField[]) {
@@ -472,7 +569,9 @@ async function handleSubmit() {
   if (!validateRequiredFields(pregnancyRequired))
     return
 
-  if (!form.delivery_history.length) {
+  // 仅当有子女（total_children > 0）时才要求至少一条分娩记录；没选做过代孕/无子女时可不填
+  const hasChildren = Number(form.pregnancy_birth_history.total_children) > 0
+  if (hasChildren && !form.delivery_history.length) {
     showMissingFieldError('surrogate.application.gcIntake.deliveryTable')
     return
   }
@@ -834,7 +933,7 @@ async function handleSubmit() {
       <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
         <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
           <!-- I. General Information -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-general" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">
             {{ $t('surrogate.application.gcIntake.sections.generalInfo') }}
           </h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -939,7 +1038,7 @@ async function handleSubmit() {
           </div>
 
           <!-- II. Pregnancy & Birth History -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-pregnancy-birth" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">
             {{ $t('surrogate.application.gcIntake.sections.pregnancyBirthHistory') }}
           </h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -965,7 +1064,7 @@ async function handleSubmit() {
           </div>
 
           <!-- III. Delivery History -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-delivery" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">
             {{ $t('surrogate.application.gcIntake.sections.deliveryHistory') }}
           </h3>
           <div class="mb-16 space-y-6">
@@ -1000,7 +1099,7 @@ async function handleSubmit() {
           </div>
 
           <!-- IV. Pregnancy-Related Medical History -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-pregnancy-medical" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">
             {{ $t('surrogate.application.gcIntake.sections.pregnancyMedical') }}
           </h3>
           <p class="mb-4 text-sage-700">{{ $t('surrogate.application.gcIntake.pregMedicalIntro') }}</p>
@@ -1032,7 +1131,7 @@ async function handleSubmit() {
           </div>
 
           <!-- VI. Mental Health -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.mentalHealth') }}</h3>
+          <h3 id="section-mental-health" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.mentalHealth') }}</h3>
           <p class="mb-4 text-sage-700">{{ $t('surrogate.application.gcIntake.mentalHealthIntro') }}</p>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.anxietyDepression') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.mental_health.anxiety_depression" name="anxDep" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.mental_health.anxiety_depression" name="anxDep" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
@@ -1042,7 +1141,7 @@ async function handleSubmit() {
           </div>
 
           <!-- VII. Substance Use -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.substanceUse') }}</h3>
+          <h3 id="section-substance-use" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.substanceUse') }}</h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.drugUsePregnancy') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="yes" :label="$t('surrogate.application.form.yes')" /></div><div v-if="form.substance_use.drug_use_pregnancy === 'yes'" class="mt-4 space-y-2"><p class="text-sm text-sage-700">{{ $t('surrogate.application.gcIntake.drugTypes') }}</p><div class="flex flex-wrap gap-4"><FormCheckbox v-model="form.substance_use.drug_marijuana" :label="$t('surrogate.application.gcIntake.drugMarijuana')" /><FormCheckbox v-model="form.substance_use.drug_fentanyl" :label="$t('surrogate.application.gcIntake.drugFentanyl')" /><FormCheckbox v-model="form.substance_use.drug_methamphetamine" :label="$t('surrogate.application.gcIntake.drugMethamphetamine')" /><FormCheckbox v-model="form.substance_use.drug_mdma" :label="$t('surrogate.application.gcIntake.drugMDMA')" /><FormInput v-model="form.substance_use.drug_other" :label="$t('surrogate.application.gcIntake.drugOther')" /></div></div></div>
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.marijuanaCurrent') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.substance_use.marijuana_current" name="marijuanaNow" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.marijuana_current" name="marijuanaNow" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.substance_use.marijuana_current === 'yes'" v-model="form.substance_use.marijuana_last_use" :label="$t('surrogate.application.gcIntake.marijuanaLastUse')" class="mt-4" required /></div>
@@ -1061,7 +1160,7 @@ async function handleSubmit() {
           </div>
 
           <!-- IX. Other Medical -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.otherMedical') }}</h3>
+          <h3 id="section-other-medical" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.otherMedical') }}</h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.asthma') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.other_medical.asthma" name="asthma" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.asthma" name="asthma" value="yes" :label="$t('surrogate.application.form.yes')" /></div><FormInput v-if="form.other_medical.asthma === 'yes'" v-model="form.other_medical.asthma_inhaler_per_week" :label="$t('surrogate.application.gcIntake.asthmaInhaler')" class="mt-4" required /></div>
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.heartConditions') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.other_medical.heart_conditions" name="heart" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.other_medical.heart_conditions" name="heart" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
@@ -1071,7 +1170,7 @@ async function handleSubmit() {
           </div>
 
           <!-- X. Preferences -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.preferences') }}</h3>
+          <h3 id="section-preferences" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.preferences') }}</h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <FormInput v-model="form.preferences.availability" :label="$t('surrogate.application.gcIntake.availability')" required />
             <FormInput v-model="form.preferences.health_insurance" :label="$t('surrogate.application.gcIntake.healthInsurance')" required />
@@ -1086,7 +1185,7 @@ async function handleSubmit() {
           </div>
 
           <!-- XI. Legal & Administrative -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.legalAdmin') }}</h3>
+          <h3 id="section-legal" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.legalAdmin') }}</h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.pendingLegal') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.legal_admin.pending_legal" name="pendingLegal" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.legal_admin.pending_legal" name="pendingLegal" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.criminalRecord') }} <span class="text-red-500">*</span></p><div class="flex gap-8"><FormRadio v-model="form.legal_admin.criminal_record" name="criminalRec" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.legal_admin.criminal_record" name="criminalRec" value="yes" :label="$t('surrogate.application.form.yes')" /></div></div>
@@ -1095,14 +1194,14 @@ async function handleSubmit() {
           </div>
 
           <!-- XII. Notes -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.notes') }}</h3>
+          <h3 id="section-notes" class="mb-8 text-6 font-semibold scroll-mt-24" style="font-family: var(--font-primary)">{{ $t('surrogate.application.gcIntake.sections.notes') }}</h3>
           <div class="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
             <FormInput v-model="form.notes.referred_by" :label="$t('surrogate.application.gcIntake.referredBy')" required />
             <div><p class="mb-4">{{ $t('surrogate.application.gcIntake.medicalRecordsSource') }} <span class="text-red-500">*</span></p><div class="flex flex-wrap gap-4"><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="patient_portal" :label="$t('surrogate.application.gcIntake.medicalRecordsPatientPortal')" /><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="clinic" :label="$t('surrogate.application.gcIntake.medicalRecordsClinic')" /><FormRadio v-model="form.notes.medical_records_source" name="medRecSrc" value="other" :label="$t('surrogate.application.gcIntake.medicalRecordsOther')" /></div></div>
           </div>
 
           <!-- 上传照片 Upload Photos (minimum 2) -->
-          <h3 class="mb-8 text-6 font-semibold">
+          <h3 id="section-upload-photos" class="mb-8 text-6 font-semibold scroll-mt-24">
             {{ $t('surrogate.application.sections.uploadPhotos') }} <span class="text-red-500">*</span>
           </h3>
           <div class="mb-16 space-y-6">
