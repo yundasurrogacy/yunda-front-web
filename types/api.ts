@@ -359,6 +359,8 @@ export interface GCIntakeGeneralInfo {
   marital_status?: 'married' | 'single' | 'cohabitating' | 'divorced'
   single_partner_info?: string
   us_citizen_or_resident?: boolean
+  ethnicity?: string
+  ethnicity_selected_keys?: Ethnicity[]
 }
 
 export interface GCIntakePregnancyBirthHistory {
@@ -369,12 +371,15 @@ export interface GCIntakePregnancyBirthHistory {
   miscarriages_detail?: string
   abortions?: boolean
   abortions_detail?: string
+  been_surrogate_before?: boolean
+  been_surrogate_when?: string
 }
 
 export interface GCIntakeDeliveryEntry {
   delivery_date?: string
   gender?: string
   birth_weight?: string
+  number_of_weeks?: string
   delivery_type?: string
   hospital?: string
 }

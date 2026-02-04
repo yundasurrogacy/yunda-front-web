@@ -39,8 +39,8 @@ const hreflangLinks = computed(() => {
   ]
 })
 
-// 创建一个响应式的 lang 值
-const htmlLang = computed(() => locale.value)
+// 使用具体 locale 便于浏览器日期等控件显示对应格式（en-US / zh-CN）
+const htmlLang = computed(() => (locale.value === 'zh' ? 'zh-CN' : 'en-US'))
 const htmlClass = computed(() => `lang-${locale.value}`)
 const resolvedSiteUrl = computed(() => baseUrl.value || 'https://www.yundasurrogacy.com')
 

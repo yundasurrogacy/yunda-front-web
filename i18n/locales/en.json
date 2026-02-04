@@ -1184,6 +1184,23 @@
         "maritalDivorced": "Divorced",
         "singlePartnerInfo": "If Single, do you have a boyfriend or long term partner? If so, for how long? Do you have plan to get married?",
         "usCitizenOrResident": "Are you a U.S. Citizen or Legal U.S. Resident?",
+        "ethnicity": {
+          "label": "Ethnicity",
+          "selectAll": "(Select all that apply)",
+          "options": {
+            "asian": "Asian",
+            "white": "White / Caucasian",
+            "black": "Black / African American",
+            "hispanic": "Hispanic / Latino / Latina / Latinx",
+            "middleEastern": "Middle Eastern",
+            "nativeAmerican": "Native American / Alaska Native",
+            "pacificIslander": "Pacific Islander",
+            "mixedRace": "Mixed Race",
+            "preferNotToSay": "Prefer not to say",
+            "other": "Other"
+          }
+        },
+        "ethnicitySelfDescribe": "If selecting Other, please specify",
         "totalChildren": "Total number of children",
         "totalVaginal": "Total vaginal deliveries",
         "totalCSections": "Total C-sections",
@@ -1191,6 +1208,8 @@
         "miscarriagesDetail": "When and reason(s)",
         "abortions": "History of abortion(s)?",
         "abortionsDetail": "When and reason(s)",
+        "beenSurrogateBefore": "Have you been a surrogate before? If yes, when?",
+        "beenSurrogateWhen": "When (e.g. year or period)",
         "deliveryTable": "Delivery History",
         "babyNum": "Baby #{n}",
         "deliveryDate": "Delivery Date",
