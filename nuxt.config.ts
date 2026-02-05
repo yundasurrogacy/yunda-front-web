@@ -54,8 +54,8 @@ function toZhPath(loc: string) {
 
 function buildAlternatives(loc: string) {
   return [
-    { href: loc, hreflang: 'en' },
-    { href: toZhPath(loc), hreflang: 'zh' },
+    { href: loc, hreflang: 'en-US' },
+    { href: toZhPath(loc), hreflang: 'zh-CN' },
     { href: loc, hreflang: 'x-default' },
   ]
 }

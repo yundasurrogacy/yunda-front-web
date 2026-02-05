@@ -72,14 +72,14 @@ echo "="
 echo "3. 验证 Sitemap"
 echo "="
 
-# 检查 sitemap index
-check_item "Sitemap Index 可访问" "curl -s -o /dev/null -w '%{http_code}' $BASE_URL/sitemap_index.xml" "200"
+# 检查 sitemap.xml
+check_item "Sitemap 可访问" "curl -s -o /dev/null -w '%{http_code}' $BASE_URL/sitemap.xml" "200"
 
 # 检查 sitemap 内容
-if curl -s "$BASE_URL/sitemap_index.xml" | grep -q "sitemapindex"; then
-    echo -e "检查: Sitemap Index 格式... ${GREEN}✓${NC}"
+if curl -s "$BASE_URL/sitemap.xml" | grep -q "urlset"; then
+    echo -e "检查: Sitemap 格式... ${GREEN}✓${NC}"
 else
-    echo -e "检查: Sitemap Index 格式... ${RED}✗${NC}"
+    echo -e "检查: Sitemap 格式... ${RED}✗${NC}"
 fi
 
 echo ""

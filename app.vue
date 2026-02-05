@@ -24,8 +24,8 @@ const hreflangLinks = computed(() => {
     return []
 
   const path = route.path || '/'
-  // 移除语言前缀，获取基础路径
-  const basePath = path.replace(/^\/zh/, '') || '/'
+  // 仅移除严格的 /zh 语言前缀，避免误匹配 /zhejiang 等路径
+  const basePath = path.replace(/^\/zh(?=\/|$)/, '') || '/'
 
   // 生成英文和中文版本的 URL
   const enUrl = `${baseUrl.value}${basePath}`
