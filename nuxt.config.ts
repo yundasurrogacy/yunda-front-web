@@ -122,6 +122,18 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/sitemap.html': {
+      redirect: {
+        to: '/sitemap',
+        statusCode: 301,
+      },
+    },
+    '/zh/sitemap.html': {
+      redirect: {
+        to: '/zh/sitemap',
+        statusCode: 301,
+      },
+    },
     '/become-surrogate': {
       redirect: {
         to: '/become-a-surrogate',
@@ -233,6 +245,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
   ],
+
+  icon: {
+    // Avoid Nitro prerender module-resolution issues with bundled JSON chunks.
+    // Keep icon collections as JSON modules loaded directly from node_modules.
+    serverBundle: {
+      externalizeIconsJson: true,
+    },
+  },
 
   // Sitemap 配置
   site: {
