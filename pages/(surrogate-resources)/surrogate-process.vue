@@ -94,7 +94,7 @@ const softCtas = computed(() => [
   {
     label: tt('See the surrogacy process from the surrogate’s side (U.S. citizens, California preferred)', '从代孕妈妈角度了解流程（美国公民优先、加州优先）'),
     description: tt('Check eligibility and see what is the process for surrogacy from your side.', '查看资格并了解你这边的代孕流程。'),
-    link: '/be-surrogate',
+    link: '/surrogate-qualification',
   },
 ])
 
@@ -913,7 +913,7 @@ function setActiveStep(stepId: number) {
               {{ tt('Book a Consult', '预约咨询') }}
             </NuxtLink>
             <NuxtLink
-              to="/be-surrogate"
+              to="/surrogate-qualification"
               class="inline-flex items-center justify-center border border-white rounded-xl px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--grayish-green)]"
             >
               {{ tt('Check Eligibility', '查看资格') }}

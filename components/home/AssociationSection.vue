@@ -6,7 +6,6 @@ useScrollAnimation()
 // 合作伙伴/协会 logo 数据
 const partners = [
   { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
-  { name: 'SEEDS', logo: '/images/seeds-logo.jpg', url: null },
   { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
   { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null },
 ]

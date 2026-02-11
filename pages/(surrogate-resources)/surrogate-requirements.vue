@@ -392,7 +392,7 @@ const processIcons = [
             </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
-                to="/be-surrogate"
+                to="/surrogate-qualification"
                 class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
               >
                 {{ tt('Check Your Eligibility', '查看资格') }}
@@ -773,7 +773,7 @@ const processIcons = [
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <NuxtLink
-            to="/be-surrogate"
+            to="/surrogate-qualification"
             class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
           >
             {{ tt('Start Application', '开始申请') }}
