@@ -283,12 +283,12 @@ const localePath = useLocalePath()
             {{ $t('footer.policyLinks.disclaimer') }}
           </NuxtLink>
           <span class="hidden text-[var(--dark-brown)] md:inline">|</span>
-          <a
-            href="/sitemap.html"
+          <NuxtLink
+            :to="localePath('/sitemap')"
             class="text-2.5 text-[var(--dark-brown)] font-normal transition-opacity lg:text-2.75 hover:opacity-75"
           >
             {{ $t('footer.policyLinks.sitemap') }}
-          </a>
+          </NuxtLink>
         </div>
       </div>
 

@@ -751,6 +751,24 @@
       "button": "BECOME A SURROGATE"
     }
   },
+  "screeningOne": {
+    "banner": {
+      "title": "Surrogate Medical Screening Process: What to Expect From Medical, Insurance & Eligibility Checks",
+      "subtitle": "Understand the full surrogate medical screening process, including medical tests, insurance review, and eligibility checks.",
+      "primaryCta": "Get Started",
+      "secondaryCta": "See Step-by-Step Process",
+      "features": {
+        "item1": "Clinic-Led Screening",
+        "item2": "Insurance Review Support",
+        "item3": "Clear Eligibility Checklist"
+      }
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "body1": "A safe surrogacy journey starts with clarity. The surrogate medical screening process is how we protect the surrogate, the baby, and the intended parents—before anyone invests time, emotion, or money. From clinic exams and record review to insurance checks and eligibility guidance, each step is meant to prevent avoidable surprises and support a steady timeline.",
+      "body2": "We also know every person’s health history is different. Questions about HPV, HSV/herpes, PCOS, tubes tied, or menopause deserve respectful, case-by-case review—not assumptions. When you’re cleared, you’ll know exactly what comes next: matching, legal steps, and cycle planning. If you’re ready to move forward, we’re here to guide you with calm support and clear next steps."
+    }
+  },
   "surrogacyBenefit": {
     "heroSection": {
       "title": "Compensation & Benefits for Surrogates",

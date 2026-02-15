@@ -54,8 +54,8 @@ function toZhPath(loc: string) {
 
 function buildAlternatives(loc: string) {
   return [
-    { href: loc, hreflang: 'en' },
-    { href: toZhPath(loc), hreflang: 'zh' },
+    { href: loc, hreflang: 'en-US' },
+    { href: toZhPath(loc), hreflang: 'zh-CN' },
     { href: loc, hreflang: 'x-default' },
   ]
 }
@@ -119,6 +119,18 @@ export default defineNuxtConfig({
     '/surrogate-journey': {
       redirect: {
         to: '/surrogate-process',
+        statusCode: 301,
+      },
+    },
+    '/sitemap.html': {
+      redirect: {
+        to: '/sitemap',
+        statusCode: 301,
+      },
+    },
+    '/zh/sitemap.html': {
+      redirect: {
+        to: '/zh/sitemap',
         statusCode: 301,
       },
     },
@@ -233,6 +245,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
   ],
+
+  icon: {
+    // Avoid Nitro prerender module-resolution issues with bundled JSON chunks.
+    // Keep icon collections as JSON modules loaded directly from node_modules.
+    serverBundle: {
+      externalizeIconsJson: true,
+    },
+  },
 
   // Sitemap 配置
   site: {

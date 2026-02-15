@@ -534,7 +534,7 @@ useHead(() => {
             </p>
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
-                to="/be-surrogate"
+                to="/surrogate-qualification"
                 class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--dark-brown)] hover:shadow-lg"
               >
                 {{ tt('Start Application', '开始申请') }}
@@ -1003,7 +1003,7 @@ useHead(() => {
         </p>
         <div class="mt-8 flex flex-wrap animate-fade-in-up justify-center gap-4" style="animation-delay: 400ms;">
           <NuxtLink
-            to="/be-surrogate"
+            to="/surrogate-qualification"
             class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 hover:scale-110 hover:bg-[var(--light-cream)] hover:shadow-xl"
           >
             {{ tt('Start Application', '开始申请') }}
