@@ -232,11 +232,10 @@ async function handleModalClose() {
 }
 
 async function handleSubmit() {
-  // Prevent duplicate submissions
-  if (isSubmitting.value) {
+  if (isSubmitting.value)
     return
-  }
-
+  isSubmitting.value = true
+  try {
   // Validate consent agreements
   if (!form.consentAgreement) {
     modalConfig.type = 'error'
@@ -256,9 +255,6 @@ async function handleSubmit() {
     return
   }
 
-  isSubmitting.value = true
-
-  try {
     // 转换种族数据
     const ethnicities: string[] = []
     const ethnicityMap: Record<string, string> = {
@@ -403,7 +399,6 @@ async function handleSubmit() {
       queryParams.email = form.email
     }
 
-    isSubmitting.value = false
     openSuccessModal(queryParams)
   }
   catch (error: any) {
@@ -435,7 +430,8 @@ async function handleSubmit() {
 
     modalConfig.buttonText = t('modal.error.tryAgain')
     showModal.value = true
-
+  }
+  finally {
     isSubmitting.value = false
   }
 }

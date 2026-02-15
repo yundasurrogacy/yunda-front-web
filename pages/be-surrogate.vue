@@ -501,6 +501,8 @@ function yn(v: '' | 'yes' | 'no') { return v === 'yes' }
 async function handleSubmit() {
   if (isSubmitting.value)
     return
+  isSubmitting.value = true
+  try {
   if (!form.uploadPhotos?.length || form.uploadPhotos.length < 2) {
     modalConfig.type = 'error'
     modalConfig.titleKey = 'modal.error.uploadPhotosMin.title'
@@ -718,8 +720,6 @@ async function handleSubmit() {
     return
   }
 
-  isSubmitting.value = true
-  try {
     const requestData: SurrogateMotherApplicationData = {
       gc_intake: {
         general_info: {
@@ -871,7 +871,6 @@ async function handleSubmit() {
     modalConfig.buttonText = 'Finish'
     showModal.value = true
     setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, 500)
-    isSubmitting.value = false
   }
   catch (error: any) {
     console.error('Submission error:', error)
@@ -896,6 +895,8 @@ async function handleSubmit() {
     }
     modalConfig.buttonText = t('modal.error.tryAgain')
     showModal.value = true
+  }
+  finally {
     isSubmitting.value = false
   }
 }
