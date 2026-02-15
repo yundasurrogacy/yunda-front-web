@@ -394,7 +394,7 @@ useHead(() => (blogPostingSchema.value
 
           <!-- 文章内容 -->
           <div class="p-6 md:p-8">
-            <div class="prose-lg max-w-none overflow-x-auto prose prose-gray">
+            <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
               <div
                 v-if="getBlogContent(blog)"
                 class="min-w-0 whitespace-pre-wrap text-gray-700 leading-relaxed"

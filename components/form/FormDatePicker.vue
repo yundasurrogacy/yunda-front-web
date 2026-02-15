@@ -49,7 +49,7 @@ defineEmits(['update:modelValue'])
       >
     </div>
     <!-- 英文站：提示按 MM/DD/YYYY 填写（中文系统下占位可能是年/月/日，但点日历选择器即可） -->
-    <p v-if="locale === 'en'" class="mt-1.5 text-3.5 text-sage-500">
+    <p v-if="locale === 'en'" class="text-sage-500 mt-1.5 text-3.5">
       Format: MM/DD/YYYY
     </p>
   </div>

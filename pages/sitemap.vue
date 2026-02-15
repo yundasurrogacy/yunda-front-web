@@ -11,7 +11,7 @@ const sections = computed(() => {
 
 const pageTitle = computed(() => (locale.value === 'zh' ? '网站地图' : 'Sitemap'))
 const pageSubtitle = computed(() =>
-  locale.value === 'zh' ? '网站地图 | 按页面类型分类' : 'Sitemap | Organized by page type'
+  locale.value === 'zh' ? '网站地图 | 按页面类型分类' : 'Sitemap | Organized by page type',
 )
 
 useHead(() => ({
@@ -68,7 +68,7 @@ useHead(() => ({
   max-width: 980px;
   margin: 0 auto;
   padding: 0 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .sitemap-header {

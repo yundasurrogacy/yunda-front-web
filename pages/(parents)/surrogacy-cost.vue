@@ -160,11 +160,11 @@ const translations = {
         {
           title: '3) Insurance Review & Coverage Setup',
           amount: '$12,600',
-          description:'To keep insurance-related costs clear and easy to track, I break them into three lines:',
-            subItems: [
-               'Health insurance professional review & management: $2,000',
-               'Surrogate life insurance (reimbursable): $600',
-               'Surrogate health insurance premium (reimbursable): $10,000',
+          description: 'To keep insurance-related costs clear and easy to track, I break them into three lines:',
+          subItems: [
+            'Health insurance professional review & management: $2,000',
+            'Surrogate life insurance (reimbursable): $600',
+            'Surrogate health insurance premium (reimbursable): $10,000',
           ],
         },
         {
@@ -495,7 +495,7 @@ const translations = {
             '托管（信托）账户管理：2000美元',
             '代孕协议起草与审核：3750美元',
             '代孕律师合同审查：1500美元',
-            '加利福尼亚亲子关系/亲子关系令：3500美元'
+            '加利福尼亚亲子关系/亲子关系令：3500美元',
           ],
         },
         {
@@ -904,7 +904,7 @@ const hiddenVariableCount = computed(() => {
 
 function setReasonRef(el: HTMLElement | null) {
   if (el)
-    reasonRefs.value.push(el)
+    reasonRefs.value.push(el as any)
 }
 
 function scrollToSection(id: string) {
@@ -1044,7 +1044,7 @@ onMounted(async () => {
     },
     { threshold: 0.4 },
   )
-  reasonRefs.value.forEach(element => reasonObserver.value?.observe(element))
+  reasonRefs.value.forEach(element => reasonObserver.value?.observe(element as any))
 
   const hash = window.location.hash
   if (hash.startsWith('#faq-')) {
@@ -1222,7 +1222,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="cost-breakdown" class="section-pad bg-[var(--head-bg)] cost-breakdown-section">
+      <section id="cost-breakdown" class="section-pad cost-breakdown-section bg-[var(--head-bg)]">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
             <h2 class="h2-text" style="font-family: var(--font-primary)">
@@ -1344,8 +1344,6 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -1422,7 +1420,9 @@ onUnmounted(() => {
                     <li v-for="item in payment.items" :key="item.text">
                       - {{ item.text }}
                       <ul v-if="item.subItems" class="cell-sub">
-                        <li v-for="sub in item.subItems" :key="sub">· {{ sub }}</li>
+                        <li v-for="sub in item.subItems" :key="sub">
+                          · {{ sub }}
+                        </li>
                       </ul>
                     </li>
                   </ul>
@@ -1639,9 +1639,7 @@ onUnmounted(() => {
       <div
         v-if="stickyVisible"
         class="sticky-cta hidden md:flex"
-      >
-
-      </div>
+      />
     </Transition>
 
     <Transition name="slide-up">
@@ -2061,7 +2059,8 @@ onUnmounted(() => {
   background: conic-gradient(
     var(--olive-green) 0deg calc(var(--p1) * 1deg * 3.6),
     var(--primary-brown) calc(var(--p1) * 1deg * 3.6) calc((var(--p1) + var(--p2)) * 1deg * 3.6),
-    rgba(169, 108, 66, 0.65) calc((var(--p1) + var(--p2)) * 1deg * 3.6) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6),
+    rgba(169, 108, 66, 0.65) calc((var(--p1) + var(--p2)) * 1deg * 3.6)
+      calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6),
     rgba(169, 108, 66, 0.35) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6)
       calc((var(--p1) + var(--p2) + var(--p3) + var(--p4)) * 1deg * 3.6),
     rgba(117, 123, 88, 0.35) calc((var(--p1) + var(--p2) + var(--p3) + var(--p4)) * 1deg * 3.6) 360deg
@@ -2093,11 +2092,21 @@ onUnmounted(() => {
   display: inline-block;
 }
 
-.dot-fixed { background: var(--olive-green); }
-.dot-comp { background: var(--primary-brown); }
-.dot-ins { background: rgba(169, 108, 66, 0.65); }
-.dot-allow { background: rgba(169, 108, 66, 0.35); }
-.dot-embryo { background: rgba(117, 123, 88, 0.35); }
+.dot-fixed {
+  background: var(--olive-green);
+}
+.dot-comp {
+  background: var(--primary-brown);
+}
+.dot-ins {
+  background: rgba(169, 108, 66, 0.65);
+}
+.dot-allow {
+  background: rgba(169, 108, 66, 0.35);
+}
+.dot-embryo {
+  background: rgba(117, 123, 88, 0.35);
+}
 .cost-line-compact {
   padding: 14px 16px;
   border-bottom: 1px solid rgba(39, 31, 24, 0.06);

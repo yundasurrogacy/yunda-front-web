@@ -115,15 +115,6 @@ const STATIC_SECTIONS_ZH = [
   },
 ]
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-}
-
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
     https
@@ -203,7 +194,7 @@ async function run() {
 
   const withZhPrefix = section => ({
     ...section,
-    links: section.links.map(link => {
+    links: section.links.map((link) => {
       if (!link.href || typeof link.href !== 'string') {
         return link
       }

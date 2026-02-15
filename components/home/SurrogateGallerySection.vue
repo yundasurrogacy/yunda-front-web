@@ -115,7 +115,7 @@ watch(slideWidthWithGap, (val) => {
 onMounted(() => {
   nextTick(() => {
     updateSlideMetrics()
-    const resizeObserver = useResizeObserver(trackRef, () => {
+    const resizeObserver = useResizeObserver(trackRef as import('vue').Ref<HTMLElement | null>, () => {
       nextTick(() => updateSlideMetrics())
     })
     stopResize = resizeObserver.stop

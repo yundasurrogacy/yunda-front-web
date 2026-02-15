@@ -379,7 +379,7 @@ onUnmounted(() => {
     <!-- Introduction Section -->
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
-        <div class="prose-lg max-w-none text-center prose">
+        <div class="max-w-none text-center prose prose-lg">
           <p class="mb-8 text-xl text-[var(--primary-brown)] leading-relaxed">
             {{ tt('As a surrogate mother, you open the door to someone\'s dream of parenthood. You bring hope, joy, and life into a story that might not exist without you.', '作为代孕妈妈，你为他人打开成为父母的梦想之门。你带来希望、喜悦与生命，让原本可能不存在的故事得以发生。') }}
           </p>

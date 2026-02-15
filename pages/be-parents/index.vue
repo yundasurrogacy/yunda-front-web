@@ -237,23 +237,23 @@ async function handleSubmit() {
   isSubmitting.value = true
   try {
   // Validate consent agreements
-  if (!form.consentAgreement) {
-    modalConfig.type = 'error'
-    modalConfig.title = t('modal.error.consentRequired.title')
-    modalConfig.message = t('modal.error.consentRequired.message')
-    modalConfig.buttonText = t('modal.error.ok')
-    showModal.value = true
-    return
-  }
+    if (!form.consentAgreement) {
+      modalConfig.type = 'error'
+      modalConfig.title = t('modal.error.consentRequired.title')
+      modalConfig.message = t('modal.error.consentRequired.message')
+      modalConfig.buttonText = t('modal.error.ok')
+      showModal.value = true
+      return
+    }
 
-  if (!form.consentTermsAndPrivacy) {
-    modalConfig.type = 'error'
-    modalConfig.title = t('modal.error.consentRequired.title')
-    modalConfig.message = t('modal.error.termsAndPrivacyRequired.message')
-    modalConfig.buttonText = t('modal.error.ok')
-    showModal.value = true
-    return
-  }
+    if (!form.consentTermsAndPrivacy) {
+      modalConfig.type = 'error'
+      modalConfig.title = t('modal.error.consentRequired.title')
+      modalConfig.message = t('modal.error.termsAndPrivacyRequired.message')
+      modalConfig.buttonText = t('modal.error.ok')
+      showModal.value = true
+      return
+    }
 
     // 转换种族数据
     const ethnicities: string[] = []

@@ -86,7 +86,7 @@ function updateSticky() {
     return
 
   if (window.innerWidth < 1024) {
-    setStatic(panel, column)
+    setStatic(panel as HTMLElement, column as HTMLElement)
     return
   }
 
@@ -94,25 +94,25 @@ function updateSticky() {
   const sectionRect = section.getBoundingClientRect()
   const stepsRect = steps.getBoundingClientRect()
   const columnRect = column.getBoundingClientRect()
-  const panelHeight = panel.offsetHeight
+  const panelHeight = (panel as HTMLElement).offsetHeight
   const stepsHeight = stepsRect.height
 
-  column.style.minHeight = `${stepsHeight}px`
+  ;(column as HTMLElement).style.minHeight = `${stepsHeight}px`
 
   const start = sectionRect.top - offset
   const end = stepsRect.bottom - offset - panelHeight
 
   if (start > 0) {
-    setStatic(panel, column)
+    setStatic(panel as HTMLElement, column as HTMLElement)
     return
   }
 
   if (end <= 0) {
-    setAbsolute(panel, column, Math.max(stepsHeight - panelHeight, 0), columnRect.width)
+    setAbsolute(panel as HTMLElement, column as HTMLElement, Math.max(stepsHeight - panelHeight, 0), columnRect.width)
     return
   }
 
-  setFixed(panel, column, offset, columnRect.left, columnRect.width)
+  setFixed(panel as HTMLElement, column as HTMLElement, offset, columnRect.left, columnRect.width)
 }
 
 function handleScroll() {

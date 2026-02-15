@@ -1,6 +1,6 @@
 export function useScrollAnimation() {
   const observerRef = ref<IntersectionObserver | null>(null)
-  const animatedElements = ref<Set<Element>>(new Set())
+  const animatedElements = ref<Set<Element>>(new Set()) as Ref<Set<any>>
 
   const initScrollAnimation = () => {
     const options = {
@@ -11,10 +11,11 @@ export function useScrollAnimation() {
 
     observerRef.value = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !animatedElements.value.has(entry.target)) {
-          entry.target.classList.add('animate-in')
-          animatedElements.value.add(entry.target)
-          observerRef.value?.unobserve(entry.target)
+        const target = entry.target
+        if (entry.isIntersecting && !animatedElements.value.has(target)) {
+          ;(target as HTMLElement).classList.add('animate-in')
+          animatedElements.value.add(target)
+          observerRef.value?.unobserve(target as any)
         }
       })
     }, options)
