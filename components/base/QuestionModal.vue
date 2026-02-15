@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const props = defineProps({
+defineProps({
   modelValue: {
     type: Boolean,
     default: false,
@@ -12,7 +12,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue', 'answer'])
+defineEmits(['update:modelValue', 'answer'])
 
 const selectedAnswer = ref(null)
 

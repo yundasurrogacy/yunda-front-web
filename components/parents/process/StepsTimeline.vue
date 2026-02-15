@@ -1,42 +1,4 @@
 <script setup lang="ts">
-const steps = [
-  {
-    id: 1,
-    title: 'parentsProcess.stepsTimeline.step1.title',
-    subtitle: 'parentsProcess.stepsTimeline.step1.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step1.duration',
-  },
-  {
-    id: 2,
-    title: 'parentsProcess.stepsTimeline.step2.title',
-    subtitle: 'parentsProcess.stepsTimeline.step2.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step2.duration',
-  },
-  {
-    id: 3,
-    title: 'parentsProcess.stepsTimeline.step3.title',
-    subtitle: 'parentsProcess.stepsTimeline.step3.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step3.duration',
-  },
-  {
-    id: 4,
-    title: 'parentsProcess.stepsTimeline.step4.title',
-    subtitle: 'parentsProcess.stepsTimeline.step4.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step4.duration',
-  },
-  {
-    id: 5,
-    title: 'parentsProcess.stepsTimeline.step5.title',
-    subtitle: 'parentsProcess.stepsTimeline.step5.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step5.duration',
-  },
-  {
-    id: 6,
-    title: 'parentsProcess.stepsTimeline.step6.title',
-    subtitle: 'parentsProcess.stepsTimeline.step6.subtitle',
-    duration: 'parentsProcess.stepsTimeline.step6.duration',
-  },
-]
 </script>
 
 <template>

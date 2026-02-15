@@ -7,7 +7,7 @@ interface Props {
   lazy?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   lazy: true,
 })
 

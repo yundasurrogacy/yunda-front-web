@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '#imports'
-import { computed, nextTick, onBeforeUpdate, onMounted, onUnmounted, ref } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
@@ -682,85 +682,15 @@ useHead(() => ({
 const anchors = computed(() => t.value.anchors)
 const activeAnchor = ref(anchors.value[0]?.id || 'ca-vs-us')
 
-const miniSnapshotItems = computed(() =>
-  locale.value === 'zh'
-    ? [
-        '代孕机构费用（协调、匹配、全程管理）',
-        '筛查与行政支持',
-        '代孕补偿及孕期相关津贴',
-        '法律费用 & 加州亲子关系流程（PBO）',
-        '保险规划与常见保障要求',
-        '情景类医疗加项（如双胎、剖宫产）',
-      ]
-    : [
-        'Surrogacy agency fees (coordination, matching, and case management)',
-        'Screening & admin support',
-        'Surrogate compensation and pregnancy-related allowances',
-        'Legal fees & California parentage process (PBO)',
-        'Insurance planning and common protection requirements',
-        'Case-dependent medical add-ons (e.g., twins, C-section)',
-      ],
-)
-
-const trustHighlights = computed(() =>
-  locale.value === 'zh'
-    ? ['费用类别清晰说明', '按里程碑划款托管', '未用资金最终对账退回']
-    : ['Cost categories explained clearly', 'Milestone-based trust deposits', 'Unused funds reconciled after final accounting'],
-)
-
 const driverCards = computed(() => t.value.ca.drivers)
 
 const quickCards = computed(() => t.value.ca.quick)
-
-const tooltips = computed(() =>
-  locale.value === 'zh'
-    ? [
-        {
-          id: 'legal',
-          label: '法律',
-          content: '法院节奏和亲子关系步骤会改变法律工作量与预算区间。',
-        },
-        {
-          id: 'compensation',
-          label: '补偿',
-          content: '当地补偿期望和津贴会拉高或降低总成本。',
-        },
-        {
-          id: 'insurance',
-          label: '保险',
-          content: '排除条款、免赔额、自付上限让保险成为最大变量。',
-        },
-      ]
-    : [
-        {
-          id: 'legal',
-          label: 'legal',
-          content: 'Court timing and parentage steps can shift legal workloads and budget ranges.',
-        },
-        {
-          id: 'compensation',
-          label: 'compensation',
-          content: 'Local expectations and allowances can move the total cost up or down.',
-        },
-        {
-          id: 'insurance',
-          label: 'insurance',
-          content: 'Plan exclusions, deductibles, and out-of-pocket caps make insurance the biggest wildcard.',
-        },
-      ],
-)
-
-const expandedDrivers = ref<Record<string, boolean>>({})
-const openTooltip = ref<string | null>(null)
 
 const fixedCosts = computed<FixedCost[]>(() => t.value.breakdown.fixed)
 
 const variableCosts = computed<VariableCost[]>(() => t.value.breakdown.variable)
 
 const additionalCosts = computed(() => t.value.breakdown.additional)
-
-const scopeIncluded = computed(() => t.value.breakdown.included)
-const scopeNotIncluded = computed(() => t.value.breakdown.notIncluded)
 
 const paymentSteps = computed<PaymentStep[]>(() => t.value.payments.steps)
 const reasons = computed(() => t.value.why.reasons)
@@ -874,11 +804,7 @@ const faqItems = computed(() =>
 )
 
 const activeReason = ref(reasons.value[0].id)
-const reasonRefs = ref<HTMLElement[]>([])
-const reasonObserver = ref<IntersectionObserver | null>(null)
 const showCaseOnly = ref(false)
-const scopeTab = ref<'included' | 'notIncluded'>('included')
-const expandedPayments = ref<Record<string, boolean>>({})
 const highlightedPayment = ref<string | null>(null)
 const selectedPaymentId = ref(paymentSteps.value[0]?.id || 'payment-1')
 const showTrustDrawer = ref(false)
@@ -895,17 +821,6 @@ const filteredFaqs = computed(() => {
     item.question.toLowerCase().includes(query) || item.answer.toLowerCase().includes(query),
   )
 })
-
-const hiddenVariableCount = computed(() => {
-  if (!showCaseOnly.value)
-    return 0
-  return variableCosts.value.filter(cost => !cost.caseDependent).length
-})
-
-function setReasonRef(el: HTMLElement | null) {
-  if (el)
-    reasonRefs.value.push(el as any)
-}
 
 function scrollToSection(id: string) {
   if (id === 'top') {
@@ -945,24 +860,6 @@ function updateStickyVisibility() {
 function handleScroll() {
   updateActiveAnchor()
   updateStickyVisibility()
-}
-
-function toggleDriver(id: string) {
-  expandedDrivers.value = {
-    ...expandedDrivers.value,
-    [id]: !expandedDrivers.value[id],
-  }
-}
-
-function toggleTooltip(id: string) {
-  openTooltip.value = openTooltip.value === id ? null : id
-}
-
-function togglePayment(id: string) {
-  expandedPayments.value = {
-    ...expandedPayments.value,
-    [id]: !expandedPayments.value[id],
-  }
 }
 
 function highlightPayment(id: string) {
@@ -1011,19 +908,9 @@ function collapseAllFaqs() {
   faqOpen.value = {}
 }
 
-function closeSticky() {
-  stickyClosed.value = true
-  stickyVisible.value = false
-  sessionStorage.setItem('surrogacy-cost-sticky-cta', '1')
-}
-
 function restoreStickyState() {
   stickyClosed.value = sessionStorage.getItem('surrogacy-cost-sticky-cta') === '1'
 }
-
-onBeforeUpdate(() => {
-  reasonRefs.value = []
-})
 
 onMounted(async () => {
   restoreStickyState()
@@ -1031,20 +918,6 @@ onMounted(async () => {
   window.addEventListener('resize', handleScroll, { passive: true })
   await nextTick()
   handleScroll()
-
-  reasonObserver.value = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('data-reason-id')
-          if (id)
-            activeReason.value = id
-        }
-      })
-    },
-    { threshold: 0.4 },
-  )
-  reasonRefs.value.forEach(element => reasonObserver.value?.observe(element as any))
 
   const hash = window.location.hash
   if (hash.startsWith('#faq-')) {
@@ -1074,7 +947,6 @@ onMounted(async () => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('resize', handleScroll)
-  reasonObserver.value?.disconnect()
 })
 </script>
 

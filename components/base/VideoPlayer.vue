@@ -24,13 +24,11 @@ const props = withDefaults(defineProps<Props>(), {
 const videoError = ref(false)
 const errorMessage = ref('')
 
-function onVideoLoaded(event: Event) {
-  console.log('Video metadata loaded', props.videoSrc)
+function onVideoLoaded(_event: Event) {
   videoError.value = false
 }
 
-function onCanPlay(event: Event) {
-  console.log('Video can play', props.videoSrc)
+function onCanPlay(_event: Event) {
 }
 
 function onVideoError(event: Event) {

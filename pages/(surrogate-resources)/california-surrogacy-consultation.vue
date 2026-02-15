@@ -36,7 +36,7 @@ const heroPoints = computed(() => [
   tt('Chinese support: Mandarin communication and translation support (including with the surrogate).', '中文沟通更省心：支持普通话沟通与翻译协助（含与代母沟通）。'),
 ])
 
-const painPoints = computed(() => [
+const _painPoints = computed(() => [
   tt('How much does surrogacy cost? What’s included and excluded?', '代孕多少钱？代孕费用包含哪些/不包含哪些？'),
   tt('Is surrogacy legal in the U.S.? Is California law stable? Which states are legal?', '美国代孕合法吗？加州代孕法律是否稳定？合法的州怎么选？'),
   tt('How are surrogates screened? What if matching fails?', '代母/代孕妈妈怎么筛选？匹配失败怎么办？'),
