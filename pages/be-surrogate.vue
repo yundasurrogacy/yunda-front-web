@@ -170,7 +170,10 @@ watch(() => form.delivery_history.length, (len) => {
   deliveryCollapse.value = Array.from({ length: len }, () => true)
 })
 
+const MAX_DELIVERY_HISTORY = 10
 function addDelivery() {
+  if (form.delivery_history.length >= MAX_DELIVERY_HISTORY)
+    return
   form.delivery_history.push(emptyDelivery())
   deliveryCollapse.value.push(true)
 }
@@ -444,14 +447,33 @@ async function uploadImages(files: File[]): Promise<string[]> {
   }
 }
 
+const MAX_UPLOAD_PHOTOS = 10
 async function onPhotoChange(e: Event) {
   const files = (e.target as HTMLInputElement)?.files
   if (!files || files.length === 0)
     return
+  if (form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS) {
+    modalConfig.type = 'error'
+    modalConfig.titleKey = ''
+    modalConfig.messageKey = 'surrogate.application.form.uploadPhotosMaxTip'
+    modalConfig.message = ''
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
+  }
   uploadingPhotos.value = true
   try {
     const urls = await uploadImages(Array.from(files))
-    form.uploadPhotos.push(...urls)
+    const remain = MAX_UPLOAD_PHOTOS - form.uploadPhotos.length
+    form.uploadPhotos.push(...urls.slice(0, remain))
+    if (urls.length > remain) {
+      modalConfig.type = 'error'
+      modalConfig.titleKey = ''
+      modalConfig.messageKey = 'surrogate.application.form.uploadPhotosMaxTip'
+      modalConfig.message = ''
+      modalConfig.buttonText = t('modal.error.ok')
+      showModal.value = true
+    }
   }
   catch (err: any) {
     modalConfig.type = 'error'
@@ -476,10 +498,21 @@ async function handleDrop(e: DragEvent) {
   const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'))
   if (imageFiles.length === 0)
     return
+  if (form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS)
+    return
   uploadingPhotos.value = true
   try {
     const urls = await uploadImages(imageFiles)
-    form.uploadPhotos.push(...urls)
+    const remain = MAX_UPLOAD_PHOTOS - form.uploadPhotos.length
+    form.uploadPhotos.push(...urls.slice(0, remain))
+    if (urls.length > remain) {
+      modalConfig.type = 'error'
+      modalConfig.titleKey = ''
+      modalConfig.messageKey = 'surrogate.application.form.uploadPhotosMaxTip'
+      modalConfig.message = ''
+      modalConfig.buttonText = t('modal.error.ok')
+      showModal.value = true
+    }
   }
   catch (err: any) {
     modalConfig.type = 'error'
@@ -507,6 +540,15 @@ async function handleSubmit() {
       modalConfig.type = 'error'
       modalConfig.titleKey = 'modal.error.uploadPhotosMin.title'
       modalConfig.messageKey = 'modal.error.uploadPhotosMin.message'
+      modalConfig.buttonText = t('modal.error.ok')
+      showModal.value = true
+      return
+    }
+    if (form.uploadPhotos.length > MAX_UPLOAD_PHOTOS) {
+      modalConfig.type = 'error'
+      modalConfig.titleKey = ''
+      modalConfig.messageKey = 'surrogate.application.form.uploadPhotosMaxTip'
+      modalConfig.message = ''
       modalConfig.buttonText = t('modal.error.ok')
       showModal.value = true
       return
@@ -1109,10 +1151,13 @@ async function handleSubmit() {
                 <FormInput v-model="d.hospital" :label="$t('surrogate.application.gcIntake.deliveryHospital')" class="lg:col-span-2" required />
               </div>
             </div>
-            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition hover:opacity-90" @click="addDelivery">
+            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" :disabled="form.delivery_history.length >= MAX_DELIVERY_HISTORY" @click="addDelivery">
               <svg width="18" height="18" fill="none" viewBox="0 0 18 18" class="mr-2 inline align-middle"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
               {{ $t('surrogate.application.gcIntake.addDelivery') }}
             </button>
+            <p v-if="form.delivery_history.length >= MAX_DELIVERY_HISTORY" class="mt-2 text-4 text-gray-500">
+              {{ $t('surrogate.application.form.deliveryHistoryMaxTip') }}
+            </p>
           </div>
 
           <!-- IV. Pregnancy-Related Medical History -->
@@ -1532,15 +1577,19 @@ async function handleSubmit() {
                 {{ $t('surrogate.application.form.uploadPhotosMinTip') }}
               </p>
             </div>
-            <!-- 上传区域 -->
+            <!-- 上传区域：最多 10 张，达上限后不再可点击 -->
             <div
-              class="group relative flex flex-col cursor-pointer items-center justify-center border-2 border-[var(--grayish-green)] rounded-4 border-dashed py-12 shadow-sm transition hover:border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]"
+              class="group relative flex flex-col items-center justify-center border-2 border-dashed rounded-4 py-12 shadow-sm transition"
+              :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'cursor-pointer border-[var(--grayish-green)] hover:border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
               @dragover.prevent
               @drop.prevent="handleDrop"
-              @click="fileInputRef?.click()"
+              @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
             >
-              <span class="mb-4 block text-8 text-[var(--grayish-green)] opacity-60">+</span>
-              <span class="text-5 text-gray-600 transition group-hover:text-[var(--grayish-green)]">{{ $t('surrogate.application.form.uploadPhotosTip') }}</span>
+              <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-5 text-gray-500">{{ $t('surrogate.application.form.uploadPhotosMaxTip') }}</span>
+              <template v-else>
+                <span class="mb-4 block text-8 text-[var(--grayish-green)] opacity-60">+</span>
+                <span class="text-5 text-gray-600 transition group-hover:text-[var(--grayish-green)]">{{ $t('surrogate.application.form.uploadPhotosTip') }}</span>
+              </template>
               <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
             </div>
           </div>

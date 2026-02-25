@@ -1145,6 +1145,8 @@
         },
         "uploadPhotosMinTip": "At least 2 photos are required",
         "uploadPhotosTip": "Click or drag images here to upload (minimum 2)",
+        "uploadPhotosMaxTip": "Maximum 10 photos allowed.",
+        "deliveryHistoryMaxTip": "You can add up to 10 delivery records.",
         "legal": {
           "criminalRecord": {
             "question": "Have you ever been convicted of a crime?",

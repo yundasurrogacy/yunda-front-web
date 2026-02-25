@@ -1144,6 +1144,8 @@
         },
         "uploadPhotosMinTip": "请至少上传两张照片",
         "uploadPhotosTip": "点击或拖拽图片到此处上传（至少2张）",
+        "uploadPhotosMaxTip": "最多上传10张照片。",
+        "deliveryHistoryMaxTip": "最多可添加10条分娩记录。",
         "legal": {
           "criminalRecord": {
             "question": "您是否有犯罪记录?",
