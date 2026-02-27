@@ -218,9 +218,9 @@ export default defineNuxtConfig({
         {
           innerHTML: `window.addEventListener('load', function() {
               function loadAnalytics() {
-                // Google Tag Manager
+                // Google Tag Manager（若 GTM 内已配置 GA4 标签，可移除下方 gtag 以去重）
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
-                // Google Analytics
+                // Google Analytics 4（与 GTM 共用 dataLayer）
                 var gtagScript = document.createElement('script');
                 gtagScript.async = true;
                 gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP';
@@ -241,10 +241,8 @@ export default defineNuxtConfig({
           defer: true,
         },
       ],
-      noscript: [
-        // Facebook Meta Pixel noscript
-        { innerHTML: '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=795952583356142&ev=PageView&noscript=1" />' },
-      ],
+      // noscript 仅对禁用 JS 的用户生效，且同样会请求 facebook.com，在不可达时无实际作用，故移除
+      noscript: [],
 
     },
   },

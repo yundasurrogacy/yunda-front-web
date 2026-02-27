@@ -152,12 +152,24 @@ export default defineNuxtPlugin((_nuxtApp) => {
   const trackPageView = (data?: Record<string, any>) => trackEvent('PageView', data)
   const trackSubmitApplication = (data?: Record<string, any>) => trackEvent('CompleteRegistration', data)
 
-  // 初始页面加载后追踪 PageView
-  router.isReady().then(() => {
-    trackPageView({ path: router.currentRoute.value.fullPath })
-  })
+  // 延后到浏览器空闲时再加载 Pixel 并追踪，避免 facebook.com 请求超时/失败时影响页面加载体验
+  function schedulePixelInit() {
+    const run = () => {
+      router.isReady().then(() => {
+        trackPageView({ path: router.currentRoute.value.fullPath })
+      })
+    }
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(run, { timeout: 3000 })
+    }
+    else {
+      setTimeout(run, 500)
+    }
+  }
 
-  // 路由变化时追踪 PageView
+  schedulePixelInit()
+
+  // 路由变化时追踪 PageView（保持即时，因用户已与页面交互）
   router.afterEach((to) => {
     trackPageView({ path: to.fullPath })
   })
