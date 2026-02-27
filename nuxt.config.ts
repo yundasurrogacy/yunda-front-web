@@ -170,8 +170,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'https://www.yundasurrogacy.com',
-      // 本地调试留空则用相对路径 /api（走 vite 代理）；生产可设 NUXT_PUBLIC_API_BASE 为后台完整地址
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '',
+      // 本地调试留空则用相对路径 /api（走 vite 代理）；生产需指向后台，未配置时默认 yunda-admin-system
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || (process.env.NODE_ENV === 'production' ? 'https://yunda-admin-system.yundasurrogacy.com' : ''),
     },
   },
 
