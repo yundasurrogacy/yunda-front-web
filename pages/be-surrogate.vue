@@ -1151,7 +1151,7 @@ async function handleSubmit() {
                 <FormInput v-model="d.hospital" :label="$t('surrogate.application.gcIntake.deliveryHospital')" class="lg:col-span-2" required />
               </div>
             </div>
-            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" :disabled="form.delivery_history.length >= MAX_DELIVERY_HISTORY" @click="addDelivery">
+            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= MAX_DELIVERY_HISTORY" @click="addDelivery">
               <svg width="18" height="18" fill="none" viewBox="0 0 18 18" class="mr-2 inline align-middle"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
               {{ $t('surrogate.application.gcIntake.addDelivery') }}
             </button>
@@ -1579,7 +1579,7 @@ async function handleSubmit() {
             </div>
             <!-- 上传区域：最多 10 张，达上限后不再可点击 -->
             <div
-              class="group relative flex flex-col items-center justify-center border-2 border-dashed rounded-4 py-12 shadow-sm transition"
+              class="group relative flex flex-col items-center justify-center border-2 rounded-4 border-dashed py-12 shadow-sm transition"
               :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'cursor-pointer border-[var(--grayish-green)] hover:border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
               @dragover.prevent
               @drop.prevent="handleDrop"

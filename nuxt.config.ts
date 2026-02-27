@@ -87,19 +87,19 @@ const prerenderRoutes = Array.from(new Set([
   ...chineseRoutes,
 ]))
 
+// 本地调试：网站端 3000，后台 3002；设置 API_PROXY_TARGET=http://localhost:3002 时代理到本地后台
+/* eslint-disable node/prefer-global/process -- Nuxt 中 process.env 为标准用法 */
+const apiProxyTarget = process.env.API_PROXY_TARGET || process.env.NUXT_PUBLIC_API_BASE || 'https://yunda-admin-system.yundasurrogacy.com'
+
 export default defineNuxtConfig({
-  // devtools: { enabled: false }, // 生产环境关闭开发工具以提升性能
-  // devServer: {
-  //   host: '127.0.0.1',
-  //   port: 3000,
-  //   url: 'http://127.0.0.1:3000/',
-  // },
+  devServer: {
+    port: 3000,
+  },
   vite: {
     server: {
-      // port: 3000,
       proxy: {
         '/api': {
-          target: 'https://yunda-admin-system.yundasurrogacy.com/api',
+          target: apiProxyTarget,
           changeOrigin: true,
           rewrite: (path: string) => path.replace(/^\/api/, '/api'),
         },
@@ -161,6 +161,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'https://www.yundasurrogacy.com',
+      // 本地调试留空则用相对路径 /api（走 vite 代理）；生产可设 NUXT_PUBLIC_API_BASE 为后台完整地址
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '',
     },
   },
 

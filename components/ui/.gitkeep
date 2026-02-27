@@ -1,0 +1,1 @@
+# shadcn-nuxt 期望存在此目录，保留空目录以避免 ENOENT 警告

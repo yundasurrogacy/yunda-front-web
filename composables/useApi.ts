@@ -16,19 +16,30 @@ export interface ApiErrorResponse {
   }>
 }
 
-// API 基础配置
-// const API_BASE_URL = 'https://admin.yundasurrogacy.com/x-project/api'
-// const API_BASE_URL = 'https://hasura-yundasurrogacy-1.weweknow.com/v1/graphql'
-const API_BASE_URL = 'https://yunda-admin-system.yundasurrogacy.com/api'
-// API 端点
-// const API_ENDPOINTS = {
-//   SURROGATE: `${API_BASE_URL}/surrogates`,
-//   PARENT: `${API_BASE_URL}/parents`
-// } as const
-const API_ENDPOINTS = {
-  SURROGATE: `${API_BASE_URL}/applications`,
-  PARENT: `${API_BASE_URL}/applications`,
-} as const
+// API 基础配置：优先使用 runtimeConfig.public.apiBase（本地调试留空走相对路径 /api，由 vite 代理到后台）
+function getApiBase(): string {
+  try {
+    const config = useRuntimeConfig()
+    const base = (config.public?.apiBase as string) || ''
+    if (base) {
+      return base.replace(/\/$/, '')
+    }
+  }
+  catch {
+    // 非 Nuxt 上下文 fallback
+  }
+  return ''
+}
+
+function getEndpoints() {
+  const base = getApiBase()
+  // base 为空时用相对路径 /api（走 vite 代理到后台）；有 base 时为完整 origin + /api
+  const prefix = base ? `${base}/api` : '/api'
+  return {
+    SURROGATE: `${prefix}/applications`,
+    PARENT: `${prefix}/applications`,
+  } as const
+}
 // 通用的 API 错误处理
 function handleApiError(error: any): never {
   console.error('API Error:', error)
@@ -59,11 +70,16 @@ function handleApiError(error: any): never {
 }
 
 // 提交代孕母申请
-export async function submitSurrogateApplication(data: { application_type: string, application_data: SurrogateMotherApplicationData }): Promise<ApiSuccessResponse> {
+export async function submitSurrogateApplication(data: { application_type: string, application_data: SurrogateMotherApplicationData, status?: 'draft' | 'pending' }): Promise<ApiSuccessResponse> {
   try {
-    const response = await $fetch<ApiSuccessResponse>(API_ENDPOINTS.SURROGATE, {
+    const endpoints = getEndpoints()
+    const response = await $fetch<ApiSuccessResponse>(endpoints.SURROGATE, {
       method: 'POST',
-      body: data,
+      body: {
+        application_type: data.application_type,
+        application_data: data.application_data,
+        ...(data.status && { status: data.status }),
+      },
       headers: {
         'Content-Type': 'application/json',
       },
@@ -76,10 +92,47 @@ export async function submitSurrogateApplication(data: { application_type: strin
   }
 }
 
+// 获取单条申请（草稿恢复）
+export async function getApplicationById(id: number): Promise<ApiSuccessResponse<{ id: number, application_type: string, status: string, application_data: SurrogateMotherApplicationData, created_at: string, updated_at: string }>> {
+  try {
+    const endpoints = getEndpoints()
+    const base = endpoints.SURROGATE.replace(/\/applications$/, '')
+    const response = await $fetch<ApiSuccessResponse<{ id: number, application_type: string, status: string, application_data: SurrogateMotherApplicationData, created_at: string, updated_at: string }>>(`${base}/applications/${id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+    return response
+  }
+  catch (error) {
+    return handleApiError(error)
+  }
+}
+
+// 更新申请（分步保存草稿）
+export async function updateApplicationById(
+  id: number,
+  payload: { application_data?: SurrogateMotherApplicationData, status?: string },
+): Promise<ApiSuccessResponse<{ id: number, status: string, application_data: unknown, updated_at: string }>> {
+  try {
+    const endpoints = getEndpoints()
+    const base = endpoints.SURROGATE.replace(/\/applications$/, '')
+    const response = await $fetch<ApiSuccessResponse<{ id: number, status: string, application_data: unknown, updated_at: string }>>(`${base}/applications/${id}`, {
+      method: 'PATCH',
+      body: payload,
+      headers: { 'Content-Type': 'application/json' },
+    })
+    return response
+  }
+  catch (error) {
+    return handleApiError(error)
+  }
+}
+
 // 提交准父母申请
 export async function submitParentApplication(data: { application_type: string, application_data: IntendedParentApplicationData }): Promise<ApiSuccessResponse> {
   try {
-    const response = await $fetch<ApiSuccessResponse>(API_ENDPOINTS.PARENT, {
+    const endpoints = getEndpoints()
+    const response = await $fetch<ApiSuccessResponse>(endpoints.PARENT, {
       method: 'POST',
       body: data,
       headers: {
@@ -98,5 +151,7 @@ export function useApi() {
   return {
     submitSurrogateApplication,
     submitParentApplication,
+    getApplicationById,
+    updateApplicationById,
   }
 }

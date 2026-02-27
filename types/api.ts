@@ -526,8 +526,8 @@ export interface Application {
 // 申请类型枚举
 export type ApplicationType = 'intended_parent' | 'surrogate_mother'
 
-// 申请状态枚举
-export type ApplicationStatus = 'pending' | 'approved' | 'rejected'
+// 申请状态枚举（含草稿，用于分步表单）
+export type ApplicationStatus = 'draft' | 'pending' | 'approved' | 'rejected'
 
 // 申请数据联合类型
 export type ApplicationData = IntendedParentApplicationData | SurrogateMotherApplicationData
