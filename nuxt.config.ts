@@ -92,6 +92,11 @@ const prerenderRoutes = Array.from(new Set([
 const apiProxyTarget = process.env.API_PROXY_TARGET || process.env.NUXT_PUBLIC_API_BASE || 'https://yunda-admin-system.yundasurrogacy.com'
 
 export default defineNuxtConfig({
+  // 修复 prerender 时 vite-node-shared 中 baseURL 为 undefined 导致的 "Cannot read properties of undefined (reading 'startsWith')" 错误
+  // 参见 https://github.com/nuxt/nuxt/issues/30367
+  experimental: {
+    appManifest: false,
+  },
   devServer: {
     port: 3000,
   },
