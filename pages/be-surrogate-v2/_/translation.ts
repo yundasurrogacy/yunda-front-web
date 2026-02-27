@@ -411,7 +411,7 @@ export const translations = {
           other: '其他',
         },
       },
-      ethnicitySelfDescribe: '如选择“其他”，请说明',
+      ethnicitySelfDescribe: '如选择"其他"，请说明',
       totalChildren: '子女总数',
       totalVaginal: '阴道分娩次数',
       totalCSections: '剖宫产次数',

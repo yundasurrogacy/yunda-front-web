@@ -160,6 +160,10 @@ export default defineNuxtConfig({
         ...prerenderRoutes,
         '/sitemap.xml',
       ],
+      // 约定：页面下非页面文件（多语言、composable 等）统一放在 _ 目录，prerender 忽略所有 /_/ 路径
+      ignore: [
+        (path: string) => path.includes('/_/'),
+      ],
     },
   },
 

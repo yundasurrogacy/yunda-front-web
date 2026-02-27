@@ -24,8 +24,8 @@ import {
 } from '~/composables/useBeSurrogateForm'
 import { getStatesByCountry } from '~/data/countries-states'
 import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
-import { translations } from './translation'
-import { useBeSurrogateV2Storage } from './useBeSurrogateV2Storage'
+import { translations } from './_/translation'
+import { useBeSurrogateV2Storage } from './_/useBeSurrogateV2Storage'
 
 const { locale } = useI18n()
 
