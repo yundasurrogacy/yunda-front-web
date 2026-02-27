@@ -213,26 +213,30 @@ export default defineNuxtConfig({
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
-        // 延迟加载第三方脚本，避免阻塞渲染
+        // 延迟加载第三方脚本，避免阻塞渲染；使用 requestIdleCallback 延后到浏览器空闲时加载，
+        // 避免 GTM/GA 的 ccm/collect 等请求挂起时导致地址栏持续转圈
         {
           innerHTML: `window.addEventListener('load', function() {
-              // Google Tag Manager
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
-              
-              // Google Analytics
-              var gtagScript = document.createElement('script');
-              gtagScript.async = true;
-              gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP';
-              document.head.appendChild(gtagScript);
-              gtagScript.onload = function() {
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-H03SG1NBFP');
-              };
-              
-              // Facebook Meta Pixel - 已移至插件管理，此处不再初始化
-              // Pixel 初始化由 plugins/fb-pixel.client.ts 统一管理
+              function loadAnalytics() {
+                // Google Tag Manager
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
+                // Google Analytics
+                var gtagScript = document.createElement('script');
+                gtagScript.async = true;
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H03SG1NBFP';
+                document.head.appendChild(gtagScript);
+                gtagScript.onload = function() {
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-H03SG1NBFP');
+                };
+              }
+              if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadAnalytics, { timeout: 2000 });
+              } else {
+                setTimeout(loadAnalytics, 500);
+              }
             });`,
           defer: true,
         },
