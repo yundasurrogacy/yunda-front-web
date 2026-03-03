@@ -167,7 +167,7 @@ function toggleMenu() {
                   </NuxtLink>
                 </div>
                 <NuxtLink
-                  :to="localePath('/surrogate-qualification')"
+                  :to="localePath('/be-surrogate')"
                   class="mt-4 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                   @click="toggleMenu"
                 >
@@ -370,7 +370,7 @@ function toggleMenu() {
                         {{ $t("menu.surrogateReferralProgram") }}
                       </NuxtLink>
                       <NuxtLink
-                        :to="localePath('/surrogate-qualification')"
+                        :to="localePath('/be-surrogate')"
                         class="mt-3 block text-sm text-[#271F18] font-normal underline transition-opacity hover:opacity-75"
                         @click="toggleMenu"
                       >

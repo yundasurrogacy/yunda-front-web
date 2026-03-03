@@ -28,7 +28,7 @@ useHead(() => ({
 }))
 
 const localePath = useLocalePath()
-const qualificationUrl = computed(() => localePath('/surrogate-qualification'))
+const qualificationUrl = computed(() => localePath('/be-surrogate'))
 
 const heroPoints = computed(() => [
   tt('Transparent costs: clear cost structure and budgeting, managed by milestones via escrow.', '费用透明：提供清晰的费用构成与预算规划，按里程碑节点管理资金（Escrow）。'),

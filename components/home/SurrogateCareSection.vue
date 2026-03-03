@@ -48,7 +48,7 @@ useScrollAnimation()
       </div>
 
       <div class="scroll-animate scroll-animate-delay-300 mt-12 md:mt-16">
-        <NuxtLink :to="localePath('/surrogate-qualification')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+        <NuxtLink :to="localePath('/be-surrogate')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
           {{ $t('home.surrogateCareSection.button') }}
         </NuxtLink>
       </div>

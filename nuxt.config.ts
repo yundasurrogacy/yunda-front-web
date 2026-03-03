@@ -27,13 +27,13 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/about', priority: 0.9 },
   { loc: '/be-parents', priority: 0.9 },
   { loc: '/be-surrogate', priority: 0.9 },
-  { loc: '/surrogate-qualification', priority: 0.8 },
   { loc: '/surrogate-requirements', priority: 0.8 },
   { loc: '/surrogate-process', priority: 0.8 },
   { loc: '/surrogate-compensation', priority: 0.8 },
   { loc: '/become-a-surrogate', priority: 0.8 },
   { loc: '/become-surrogate-california', priority: 0.8 },
   { loc: '/blog', priority: 0.7 },
+  { loc: '/be-surrogate/success', priority: 0.7 },
   // 父母相关页面
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },
@@ -121,6 +121,18 @@ export default defineNuxtConfig({
   ssr: true,
   router: {},
   routeRules: {
+    '/success': {
+      redirect: { to: '/be-surrogate/success', statusCode: 301 },
+    },
+    '/zh/success': {
+      redirect: { to: '/zh/be-surrogate/success', statusCode: 301 },
+    },
+    '/surrogate-qualification': {
+      redirect: { to: '/be-surrogate', statusCode: 301 },
+    },
+    '/zh/surrogate-qualification': {
+      redirect: { to: '/zh/be-surrogate', statusCode: 301 },
+    },
     '/surrogate-journey': {
       redirect: {
         to: '/surrogate-process',

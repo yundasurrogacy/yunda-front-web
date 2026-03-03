@@ -21,7 +21,7 @@ interface Props {
       <p class="mb-8 whitespace-pre-line">
         {{ description }}
       </p>
-      <NuxtLink :to="localePath('/surrogate-qualification')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+      <NuxtLink :to="localePath('/be-surrogate')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
         {{ buttonText }}
       </NuxtLink>
     </div>

@@ -32,7 +32,7 @@ const STATIC_SECTIONS_EN = [
     title: 'Surrogacy Program',
     links: [
       { href: '/be-surrogate', label: 'Be a Surrogate' },
-      { href: '/surrogate-qualification', label: 'Surrogate Qualification' },
+      { href: '/be-surrogate', label: 'Become a Surrogate' },
       { href: '/benefit', label: 'Benefit' },
       { href: '/screening', label: 'Screening' },
       { href: '/eligibility', label: 'Eligibility' },
@@ -86,7 +86,7 @@ const STATIC_SECTIONS_ZH = [
     title: '代孕项目',
     links: [
       { href: '/be-surrogate', label: '成为代孕妈妈' },
-      { href: '/surrogate-qualification', label: '代孕妈妈资格' },
+      { href: '/be-surrogate', label: '成为代孕妈妈' },
       { href: '/benefit', label: '福利' },
       { href: '/screening', label: '筛选' },
       { href: '/eligibility', label: '资格条件' },

@@ -966,6 +966,12 @@
   "surrogate": {
     "application": {
       "pageTitle": "Surrogates Application",
+      "successPage": {
+        "title": "Application Submitted Successfully",
+        "description": "Thank you for submitting your surrogate application. Our team will review and contact you soon.",
+        "message": "Thank you for submitting your application! Our team will review your information and contact you shortly.",
+        "backHome": "Back to Home"
+      },
       "congratulations": {
         "title": "Congratulations – You Qualify!",
         "message1": "We're thrilled to let you know that based on your answers, you meet the basic requirements to become a surrogate with Yunda Surrogacy. That's a beautiful first step toward helping someone build their family — and we're so honored to walk this journey with you.",

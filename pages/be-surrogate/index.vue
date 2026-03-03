@@ -28,6 +28,7 @@ import { translations } from './_/translation'
 import { useBeSurrogateV2Storage } from './_/useBeSurrogateV2Storage'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 
 // 页面内联多语言（与 privacy-policy 相同方式，无需插件，SSR 友好）
 const t = computed(() => translations[locale.value === 'zh' ? 'zh' : 'en'])
@@ -42,7 +43,6 @@ const TOTAL_STEPS = 13
 const currentStep = ref(1)
 const applicationId = ref<number | null>(null)
 const isSubmitting = ref(false)
-const submitSuccess = ref(false)
 const uploadingPhotos = ref(false)
 const validationError = ref('')
 const MAX_UPLOAD_PHOTOS = 10
@@ -457,6 +457,9 @@ function validateStep13(): true | string {
   return true
 }
 
+// 最后一步：仅当照片和同意都满足时 Submit 才可点击
+const isStep13Valid = computed(() => form.uploadPhotos.length >= 2 && form.finalConsent)
+
 onMounted(async () => {
   const stored = loadFromStorage()
   if (stored?.form) {
@@ -573,7 +576,7 @@ async function submitFinal() {
       status: 'pending',
     })
     clearStorage()
-    submitSuccess.value = true
+    await router.push(localePath('/be-surrogate/success'))
   }
   finally {
     isSubmitting.value = false
@@ -591,13 +594,7 @@ async function submitFinal() {
     </div>
 
     <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
-      <div v-if="submitSuccess" class="mb-16 rounded-5 bg-[var(--foot-bg)] p-8 text-center">
-        <p class="text-6 font-semibold">
-          {{ t.submitSuccess }}
-        </p>
-      </div>
-
-      <div v-else class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 shadow-black/20 shadow-xl lg:p-12">
+      <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 shadow-black/20 shadow-xl lg:p-12">
         <p class="text-sage-700 mb-6 text-5 leading-relaxed">
           {{ t.introText }}
         </p>
@@ -1367,7 +1364,8 @@ async function submitFinal() {
             <button
               type="button"
               class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
-              :disabled="isSubmitting || uploadingPhotos"
+              :disabled="!isStep13Valid || isSubmitting || uploadingPhotos"
+              :class="{ 'opacity-50 cursor-not-allowed': !isStep13Valid }"
               @click="submitFinal"
             >
               {{ t.btnSubmit }}

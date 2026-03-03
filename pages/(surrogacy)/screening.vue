@@ -486,7 +486,7 @@ useHead(() => ({
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
                   <NuxtLink
-                    :to="localePath('/surrogate-qualification')"
+                    :to="localePath('/be-surrogate')"
                     class="inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-[#FFFCF6] font-semibold tracking-[0.02em] shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
                     {{ c.primaryCta }}
@@ -884,7 +884,7 @@ useHead(() => ({
                       </li>
                     </ol>
                     <NuxtLink
-                      :to="localePath('/surrogate-qualification')"
+                      :to="localePath('/be-surrogate')"
                       class="mt-6 inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-[#FFFCF6] font-semibold shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                     >
                       {{ c.nextStepsCta }}
@@ -946,7 +946,7 @@ useHead(() => ({
                     </p>
                     <div class="mt-6 h-px w-full bg-[var(--primary-brown)]/16" />
                     <NuxtLink
-                      :to="localePath('/surrogate-qualification')"
+                      :to="localePath('/be-surrogate')"
                       class="mt-5 inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-[#FFFCF6] font-semibold shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                     >
                       {{ c.nextStepsCta }}

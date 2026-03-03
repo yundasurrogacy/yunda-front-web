@@ -348,7 +348,7 @@ onUnmounted(() => {
             </p>
             <div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
               <NuxtLink
-                to="/surrogate-qualification"
+                to="/be-surrogate"
                 class="transform rounded-lg bg-[var(--grayish-green)] px-8 py-4 text-lg text-white font-semibold shadow-lg transition-opacity transition-transform hover:scale-105 hover:opacity-90"
               >
                 {{ tt('Apply to Become a Surrogate', '申请成为代孕妈妈') }}
@@ -527,7 +527,7 @@ onUnmounted(() => {
             {{ tt('Join Yunda Surrogacy and become a surrogate mother in California — where your kindness changes lives, and your courage inspires new beginnings.', '加入 Yunda，在加州成为代孕妈妈——你的善意改变生命，你的勇气开启新篇章。') }}
           </p>
           <NuxtLink
-            to="/surrogate-qualification"
+            to="/be-surrogate"
             class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
           >
             {{ tt('Start Your Journey', '开启旅程') }}
@@ -1090,7 +1090,7 @@ onUnmounted(() => {
             {{ tt('If your heart tells you this is your time, don\'t wait. 💬 Apply today, and let\'s start this journey together. Because every miracle starts with one brave woman — and that woman could be you.', '如果你的内心告诉你现在就是时候，就别再等待。💬 现在申请，让我们一起开始这段旅程。每一个奇迹都始于一位勇敢的女性——而那个人可能就是你。') }}
           </p>
           <NuxtLink
-            to="/surrogate-qualification"
+            to="/be-surrogate"
             class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
           >
             {{ tt('Apply Today', '立即申请') }}
