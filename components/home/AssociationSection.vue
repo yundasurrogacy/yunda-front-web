@@ -8,6 +8,7 @@ const partners = [
   { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
   { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
   { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null },
+  { name: 'MHB', logo: '/images/mhb-logo.png', url: null },
 ]
 </script>
 
