@@ -43,6 +43,13 @@ const photos = ref<Photo[]>([
     category: ['all', 'seeds'] as PhotoCategory[],
     alt: `SEEDS Event ${i + 1}`,
   })),
+  {
+    id: 'ourteam-surrogate-12',
+    url: '/images/home/surrogate-12.png',
+    thumbnail: '/images/home/surrogate-12.png',
+    category: ['all', 'our-team'],
+    alt: 'Team Highlight Surrogate 12',
+  },
 ])
 
 const activeCategory = ref<PhotoCategory>('all')

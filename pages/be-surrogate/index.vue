@@ -446,10 +446,6 @@ function validateStep12(): true | string {
 }
 
 function validateStep13(): true | string {
-  if (form.uploadPhotos.length < 2) {
-    scrollToStepAndFocus(stepRefs[12].value as Element | null, 'uploadPhotos')
-    return 'uploadPhotos'
-  }
   if (!form.finalConsent) {
     scrollToStepAndFocus(stepRefs[12].value as Element | null, 'finalConsent')
     return 'finalConsent'
@@ -457,8 +453,8 @@ function validateStep13(): true | string {
   return true
 }
 
-// 最后一步：仅当照片和同意都满足时 Submit 才可点击
-const isStep13Valid = computed(() => form.uploadPhotos.length >= 2 && form.finalConsent)
+// 最后一步：仅当同意勾选时 Submit 才可点击
+const isStep13Valid = computed(() => form.finalConsent)
 
 onMounted(async () => {
   const stored = loadFromStorage()

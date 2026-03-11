@@ -4,6 +4,7 @@ import { buildHowToSchema, buildServiceSchema } from '~/utils/schema'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
 import AssociationSection from '../components/home/AssociationSection.vue'
+import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
 import CostSection from '../components/home/CostSection.vue'
 import GlobalSupportSection from '../components/home/GlobalSupportSection.vue'
@@ -144,6 +145,7 @@ useHead(() => {
     <AssociationSection />
     <SurrogateGallerySection />
     <TestimonialsSection />
+    <BlogNewsSection />
     <CostSection />
     <AppFooter />
   </div>

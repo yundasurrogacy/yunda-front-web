@@ -15,6 +15,9 @@ const slides = [
   { src: '/images/home/surrogate-8.png', alt: 'Surrogate mother outdoors' },
   { src: '/images/home/surrogate-9.png', alt: 'Surrogate mother taking a mirror selfie' },
   { src: '/images/home/surrogate-10.jpeg', alt: 'Surrogate mother holding baby' },
+  { src: '/images/home/surrogate-11.png', alt: 'Surrogate mother portrait' },
+  { src: '/images/home/surrogate-12.png', alt: 'Surrogate mother smiling' },
+  { src: '/images/home/surrogate-13.png', alt: 'Surrogate mother with family' },
 ]
 
 const duplicatedSlides = computed(() => [...slides, ...slides])
@@ -25,7 +28,6 @@ const trackRef = ref<HTMLElement | null>(null)
 const slideWidthWithGap = ref(0)
 const currentIndex = ref(0)
 const enableTransition = ref(true)
-const timer = ref<number | null>(null)
 let stopResize: (() => void) | undefined
 
 const trackStyle = computed(() => ({
@@ -88,20 +90,6 @@ function goToPrev() {
   currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
 }
 
-function startAutoPlay() {
-  stopAutoPlay()
-  timer.value = window.setInterval(() => {
-    goToNext()
-  }, 3200)
-}
-
-function stopAutoPlay() {
-  if (timer.value) {
-    clearInterval(timer.value)
-    timer.value = null
-  }
-}
-
 watch(slideWidthWithGap, (val) => {
   if (!val)
     return
@@ -119,12 +107,10 @@ onMounted(() => {
       nextTick(() => updateSlideMetrics())
     })
     stopResize = resizeObserver.stop
-    startAutoPlay()
   })
 })
 
 onBeforeUnmount(() => {
-  stopAutoPlay()
   if (stopResize)
     stopResize()
 })
@@ -164,8 +150,6 @@ onBeforeUnmount(() => {
           class="flex items-stretch"
           :style="trackStyle"
           @transitionend="handleTransitionEnd"
-          @mouseenter="stopAutoPlay"
-          @mouseleave="startAutoPlay"
         >
           <article
             v-for="(slide, index) in duplicatedSlides"
