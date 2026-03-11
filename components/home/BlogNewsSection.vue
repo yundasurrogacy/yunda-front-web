@@ -99,6 +99,14 @@ const defaultCards: BlogItem[] = [
     category: '行业动态相关',
     cover_img_url: '/images/home/surrogate-12.png',
   },
+  {
+    title: '代孕法律流程中需要重点关注什么',
+    en_title: 'Key Legal Points to Watch in a Surrogacy Journey',
+    content: '从合同、亲权判令到关键时间节点，帮助你提前准备法律环节。',
+    en_content: 'From contracts to parentage orders, understand the legal checkpoints before you start.',
+    category: '法律法规相关',
+    cover_img_url: '/images/home/surrogate-13.png',
+  },
 ]
 
 const activeCategory = ref('all')
@@ -354,7 +362,7 @@ function getDetailPath(post: BlogItem): string {
         </button>
       </div>
 
-      <div class="grid grid-cols-1 mt-8 gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div class="grid grid-cols-1 mt-8 gap-5 lg:grid-cols-4 md:grid-cols-2">
         <article
           v-for="(post, idx) in displayPosts"
           :key="post.route_id || post.id || idx"
@@ -395,7 +403,7 @@ function getDetailPath(post: BlogItem): string {
 
         <article
           v-if="!displayPosts.length && !isLoading"
-          class="scroll-animate scroll-animate-delay-300 border border-[rgba(130,104,83,0.14)] rounded-5 bg-white/75 p-6 md:col-span-2 xl:col-span-4"
+          class="scroll-animate scroll-animate-delay-300 border border-[rgba(130,104,83,0.14)] rounded-5 bg-white/75 p-6 lg:col-span-4 md:col-span-2"
         >
           <h3 class="text-5 text-[var(--black)] font-semibold">
             {{ copy.emptyTitle }}
