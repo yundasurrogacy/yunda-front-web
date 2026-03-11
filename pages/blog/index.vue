@@ -788,10 +788,10 @@ onBeforeUnmount(() => {
                 </button>
               </div>
 
-              <!-- 博客列表 - 最多三列 -->
+              <!-- 博客列表 - 桌面端四列 -->
               <div
                 v-else-if="blogs.length"
-                class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+                class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4"
               >
                 <article
                   v-for="blog in blogs"
