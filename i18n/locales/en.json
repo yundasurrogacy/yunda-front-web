@@ -48,7 +48,7 @@
       "title2": "Surrogacy Costs for Intended Parents",
       "description1": "Every surrogacy journey is unique. Costs may vary based on factors like embryo status, clinic selection, and insurance needs. Typical expenses include agency fees, legal services, surrogate compensation, medical care, and insurance.",
       "description2": "At Yunda, most intended parents can expect to spend $150,000 to $200,000 USD, which includes:",
-      "item1": "$55,000–$70,000+ USD in surrogate compensation and pregnancy support",
+      "item1": "$61,000–$70,000+ USD in surrogate compensation and pregnancy support",
       "item2": "Legal, medical, and insurance-related third-party costs",
       "item3": "All payments are securely managed through a milestone-based escrow account",
       "description4": "We provide every client with a clear cost breakdown and personalized financial planning, so you can move forward with confidence and focus on welcoming your baby."
@@ -788,7 +788,7 @@
     "compensationSection": {
       "title": "Your Surrogate Compensation Package May Include:",
       "items": {
-        "item1": "Personalized Base Compensation: $50,000 to $70,000+ for first-time surrogates, paid monthly starting from confirmed heartbeat",
+        "item1": "Personalized Base Compensation: $61,000 to $70,000+ for first-time surrogates, paid monthly starting from confirmed heartbeat",
         "item2": "Monthly Allowance: Covers transportation, meals, childcare, and miscellaneous expenses",
         "item3": "IVF Medication Stipend: One-time payment at medication start",
         "item4": "Embryo Transfer Compensation: Per transfer procedure",
@@ -796,7 +796,7 @@
         "item6": "Special Procedure Compensation: $500–$5,000 depending on procedure",
         "item7": "Multiples Bonus: $10,000+ for twins or triplets, paid in installments",
         "item8": "C-section Compensation: $5,000 for first, $3,000 for repeat",
-        "item9": "Breast Milk Compensation: $250/week if agreed",
+        "item9": "Breast Milk Compensation: $300/week if agreed",
         "item10": "Lost Wages: Up to $10,000 for surrogate and partner if required",
         "item11": "Housekeeping Support: Up to $200/week, max $3,000",
         "item12": "Insurance Coverage or Reimbursement",
@@ -877,11 +877,11 @@
     "compensationSection": {
       "title": "What Will Your Friend Receive?",
       "benefits": {
-        "base": "$50,000–$70,000+ in base compensation",
+        "base": "$61,000–$70,000+ in base compensation",
         "allowances": "Monthly allowances (transportation, food, childcare)",
         "medication": "Medication and embryo transfer stipends",
         "surgery": "C-section/special surgery bonuses",
-        "breastmilk": "Breast milk compensation: $250/week (if applicable)",
+        "breastmilk": "Breast milk compensation: $300/week (if applicable)",
         "bedrest": "Wage protection for bed rest (up to $10,000)",
         "insurance": "Insurance coverage or review",
         "lifeInsurance": "Life insurance up to $250,000",

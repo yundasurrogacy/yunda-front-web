@@ -377,7 +377,7 @@ const paymentsParagraphs = computed(() => [
   tt('We align each payment to a real step on the calendar. Contracts define start points and dates.', '每笔付款对应真实里程碑，合同明确起点与日期。'),
   tt('Many journeys trigger monthly payments after heartbeat confirmation. We publish the schedule, and we follow it.', '多数项目在心跳确认后启动月度支付，时间表公开并严格执行。'),
   tt('Do surrogates get paid? Yes—by contract, by milestone, and through secure escrow for surrogacy payments.', '代孕妈妈会按合同、按里程碑、通过安全托管得到支付。'),
-  tt('Client framework: first-time packages commonly range $50,000–$70,000+. Final numbers vary by state, clinic, insurance, and medical history. The contract sets the amount for each surrogate.', '参考范围：首次代孕常见 $50,000–$70,000+。最终金额因州别、诊所、保险与病史而异，合同会明确每位代孕妈妈的金额。'),
+  tt('Client framework: first-time packages commonly range $61,000–$70,000+. Final numbers vary by state, clinic, insurance, and medical history. The contract sets the amount for each surrogate.', '参考范围：首次代孕常见 $61,000–$70,000+。最终金额因州别、诊所、保险与病史而异，合同会明确每位代孕妈妈的金额。'),
 ])
 
 const benefitsIntroParagraphs = computed(() => [
@@ -752,7 +752,7 @@ useHead(() => {
               {{ tt('Base Compensation', '基础补偿') }}
             </h3>
             <div class="mb-4 text-center">
-              <span class="text-6 font-bold">$50,000 - $70,000+</span>
+              <span class="text-6 font-bold">$61,000 - $70,000+</span>
               <p class="mt-2 text-3.5 opacity-90">
                 {{ tt('First-time packages', '首次代孕常见区间') }}
               </p>

@@ -84,14 +84,14 @@ const translations = {
     structureLink2: 'surrogacy cost structure',
     structureLinkSuffix: 'to see how funding is organized across the journey.',
     packageTitle: 'Surrogate Compensation Package: Base Pay, Monthly Allowance & Common Benefits',
-    packageCardTitle: 'Surrogate Compensation Package: $50,000-$70,000+',
+    packageCardTitle: 'Surrogate Compensation Package: $61,000-$70,000+',
     packageH3Core: 'Base pay + monthly allowance (your core surrogate mother pay)',
     packageCoreBody1:
-      'Your surrogate compensation starts with a clear base, then steady support month to month. For first-time surrogates, Yunda lists Personalized Base Compensation: $50,000 to $70,000+, paid monthly starting from a confirmed heartbeat.',
+      'Your surrogate compensation starts with a clear base, then steady support month to month. For first-time surrogates, Yunda lists Personalized Base Compensation: $61,000 to $70,000+, paid monthly starting from a confirmed heartbeat.',
     packageCoreBody2:
       'On top of that, there is a monthly allowance to help cover everyday needs during the journey, including transportation, meals, childcare, and miscellaneous expenses. This keeps your surrogate payment practical, not just on paper.',
     packageCoreBullets: [
-      'Personalized Base Pay: $50,000-$70,000+ per journey',
+      'Personalized Base Pay: $61,000-$70,000+ per journey',
       'Monthly Non-Reimbursable Allowance: $300+ per month',
     ],
     packageH3Benefits: 'Common benefits that build the full compensation package',
@@ -137,7 +137,7 @@ const translations = {
       },
     ],
     packageAmountRows: [
-      { label: 'Personalized Base Compensation', amount: '$50,000-$70,000+' },
+      { label: 'Personalized Base Compensation', amount: '$61,000-$70,000+' },
       { label: 'Monthly Non-Reimbursable Allowance', amount: '$300+/month' },
       { label: 'Estimated Benefits Total', amount: '$11,000' },
     ],
@@ -166,7 +166,7 @@ const translations = {
       },
       {
         stage: 'Heartbeat confirmed',
-        payment: 'Base compensation: $50,000 begins monthly over 10 months; Health support: $1,000 (one-time)',
+        payment: 'Base compensation: $61,000 begins monthly over 10 months; Health support: $1,000 (one-time)',
         note: 'This is typically the point where core monthly compensation starts.',
       },
       {
@@ -344,14 +344,14 @@ const translations = {
     structureLink2: '代孕费用结构',
     structureLinkSuffix: '，了解整个流程的资金安排方式。',
     packageTitle: '代孕补偿方案：基础补偿、月度津贴与常见福利',
-    packageCardTitle: '代孕补偿方案：$50,000-$70,000+',
+    packageCardTitle: '代孕补偿方案：$61,000-$70,000+',
     packageH3Core: '基础补偿 + 月度津贴（你的核心代孕补偿）',
     packageCoreBody1:
-      '代孕补偿通常从清晰的基础补偿开始，再叠加每月的稳定支持。针对首次代孕妈妈，Yunda 的个性化基础补偿通常为 $50,000-$70,000+，并在确认胎心后按月发放。',
+      '代孕补偿通常从清晰的基础补偿开始，再叠加每月的稳定支持。针对首次代孕妈妈，Yunda 的个性化基础补偿通常为 $61,000-$70,000+，并在确认胎心后按月发放。',
     packageCoreBody2:
       '在此基础上，还有月度津贴用于覆盖旅程中的日常支出，如交通、餐食、托育和杂项费用，让代孕补偿在现实生活中更可执行，而不只是“纸面数字”。',
     packageCoreBullets: [
-      '个性化基础补偿：每段旅程 $50,000-$70,000+',
+      '个性化基础补偿：每段旅程 $61,000-$70,000+',
       '月度非报销津贴：每月 $300+',
     ],
     packageH3Benefits: '构成完整补偿包的常见福利',
@@ -397,7 +397,7 @@ const translations = {
       },
     ],
     packageAmountRows: [
-      { label: '个性化基础补偿', amount: '$50,000-$70,000+' },
+      { label: '个性化基础补偿', amount: '$61,000-$70,000+' },
       { label: '月度非报销津贴', amount: '$300+/月' },
       { label: '福利预计总额', amount: '$11,000' },
     ],
@@ -426,7 +426,7 @@ const translations = {
       },
       {
         stage: '确认胎心',
-        payment: '基础补偿：$50,000 在 10 个月内按月发放；健康支持津贴：$1,000（一次性）',
+        payment: '基础补偿：$61,000 在 10 个月内按月发放；健康支持津贴：$1,000（一次性）',
         note: '这通常是核心“月度补偿”正式开始的节点。',
       },
       {

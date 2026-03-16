@@ -207,7 +207,79 @@ const modalConfig = reactive({
   buttonText: t('parent.application.form.submitButton'),
 })
 const isSubmitting = ref(false)
+const hasTriedSubmit = ref(false)
 const pendingSuccessRedirect = ref<null | { path: string, query: Record<string, string> }>(null)
+
+function hasValue(value: string) {
+  return value.trim().length > 0
+}
+
+function isValidEmail(value: string) {
+  const email = value.trim()
+  if (!email || email.includes(' ')) {
+    return false
+  }
+
+  const parts = email.split('@')
+  if (parts.length !== 2) {
+    return false
+  }
+
+  const [local, domain] = parts
+  if (!local || !domain || domain.startsWith('.') || domain.endsWith('.')) {
+    return false
+  }
+
+  return domain.includes('.')
+}
+
+const hasSelectedLanguage = computed(() =>
+  Object.entries(form.languages).some(([key, value]) => key !== 'otherText' && value === true),
+)
+
+const requiredFieldErrors = computed(() => {
+  const isStateRequired = states.value.length > 0
+  const errors: string[] = []
+
+  if (!hasValue(form.firstName))
+    errors.push(t('parent.application.form.firstName'))
+  if (!hasValue(form.lastName))
+    errors.push(t('parent.application.form.lastName'))
+  if (!hasValue(form.dateOfBirth))
+    errors.push(t('parent.application.form.dateOfBirth'))
+  if (!hasValue(form.phoneNumber))
+    errors.push(t('parent.application.form.cellPhone'))
+  if (!hasValue(form.email))
+    errors.push(t('parent.application.form.email'))
+  else if (!isValidEmail(form.email.trim()))
+    errors.push(locale.value === 'zh' ? '邮箱格式不正确' : 'Email format is invalid')
+  if (!hasValue(form.genderIdentity))
+    errors.push(t('parent.application.form.genderIdentity.label'))
+  if (!hasSelectedLanguage.value)
+    errors.push(t('parent.application.form.languages.label'))
+  if (!hasValue(form.sexualOrientation))
+    errors.push(t('parent.application.form.sexualOrientation.label'))
+  if (!hasValue(form.city))
+    errors.push(t('parent.application.form.city'))
+  if (!hasValue(form.country))
+    errors.push(t('parent.application.form.country'))
+  if (isStateRequired && !hasValue(form.stateProvince))
+    errors.push(t('parent.application.form.stateProvince'))
+  if (!hasValue(form.programInterests))
+    errors.push(t('parent.application.form.services.question'))
+  if (!hasValue(form.journeyStartTiming))
+    errors.push(t('parent.application.form.timing.question'))
+  if (!hasValue(form.desiredChildrenCount))
+    errors.push(t('parent.application.form.childrenCount.question'))
+  if (!form.consentTermsAndPrivacy)
+    errors.push(t('parent.application.form.consentTermsAndPrivacy.label'))
+  if (!form.consentAgreement)
+    errors.push(t('parent.application.form.consentAgreement.label'))
+
+  return errors
+})
+
+const isFormReadyToSubmit = computed(() => requiredFieldErrors.value.length === 0)
 
 function openSuccessModal(queryParams: Record<string, string>) {
   modalConfig.type = 'success'
@@ -234,6 +306,17 @@ async function handleModalClose() {
 async function handleSubmit() {
   if (isSubmitting.value)
     return
+  hasTriedSubmit.value = true
+  if (!isFormReadyToSubmit.value) {
+    modalConfig.type = 'error'
+    modalConfig.title = t('modal.error.title')
+    modalConfig.message = requiredFieldErrors.value.length > 0
+      ? requiredFieldErrors.value
+      : (locale.value === 'zh' ? '请先填写所有带 * 的必填项后再提交。' : 'Please complete all required fields (*) before submitting.')
+    modalConfig.buttonText = t('modal.error.ok')
+    showModal.value = true
+    return
+  }
   isSubmitting.value = true
   try {
   // Validate consent agreements
@@ -643,7 +726,7 @@ async function handleSubmit() {
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
               <div>
                 <p class="mb-4 text-20px">
-                  {{ $t('parent.application.form.languages.label') }} *
+                  {{ $t('parent.application.form.languages.label') }} <span class="text-red-500">*</span>
                 </p>
                 <FormCheckbox v-model="form.languages.english" :label="$t('parent.application.form.languages.options.english')" />
                 <FormCheckbox v-model="form.languages.mandarin" :label="$t('parent.application.form.languages.options.mandarin')" />
@@ -686,7 +769,7 @@ async function handleSubmit() {
           <div class="mb-16 space-y-6">
             <div>
               <p class="mb-4">
-                {{ $t('parent.application.form.sexualOrientation.label') }} *
+                {{ $t('parent.application.form.sexualOrientation.label') }} <span class="text-red-500">*</span>
               </p>
               <div class="space-y-2">
                 <FormRadio v-model="form.sexualOrientation" name="sexualOrientation" value="HETEROSEXUAL" :label="$t('parent.application.form.sexualOrientation.options.heterosexual')" />
@@ -743,7 +826,7 @@ async function handleSubmit() {
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
               <div>
                 <p class="mb-4">
-                  {{ $t('parent.application.form.services.question') }} *
+                  {{ $t('parent.application.form.services.question') }} <span class="text-red-500">*</span>
                 </p>
                 <div class="space-y-2">
                   <FormRadio v-model="form.programInterests" name="programInterests" value="SURROGACY_EGG_DONOR" :label="$t('parent.application.form.services.options.surrogacyEggDonor')" />
@@ -757,7 +840,7 @@ async function handleSubmit() {
               </div>
               <div>
                 <p class="mb-4">
-                  {{ $t('parent.application.form.timing.question') }} *
+                  {{ $t('parent.application.form.timing.question') }} <span class="text-red-500">*</span>
                 </p>
                 <div class="space-y-2">
                   <FormRadio v-model="form.journeyStartTiming" name="journeyStartTiming" value="ASAP" :label="$t('parent.application.form.timing.options.asap')" />
@@ -770,7 +853,7 @@ async function handleSubmit() {
 
             <div>
               <p class="mb-4">
-                {{ $t('parent.application.form.childrenCount.question') }} *
+                {{ $t('parent.application.form.childrenCount.question') }} <span class="text-red-500">*</span>
               </p>
               <div class="space-y-2">
                 <FormRadio v-model="form.desiredChildrenCount" name="desiredChildrenCount" value="ONE_CHILD" :label="$t('parent.application.form.childrenCount.options.oneChild')" />
@@ -873,6 +956,7 @@ async function handleSubmit() {
             <FormCheckbox
               v-model="form.consentAgreement"
               :label="$t('parent.application.form.consentAgreement.label')"
+              required
             />
             <p class="mt-4 text-13px italic">
               {{ $t('parent.application.form.consentAgreement.disclaimer') }}
@@ -883,12 +967,26 @@ async function handleSubmit() {
           <div class="flex justify-center">
             <button
               type="submit"
-              :disabled="!form.consentAgreement || !form.consentTermsAndPrivacy || isSubmitting"
+              :disabled="isSubmitting"
               class="rounded-2.5 bg-[var(--grayish-green)] px-12 py-4 text-20px text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
-              :class="form.consentAgreement && form.consentTermsAndPrivacy && !isSubmitting ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
+              :class="isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-90 cursor-pointer'"
             >
               {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('parent.application.form.submitButton') }}
             </button>
+          </div>
+          <div
+            v-if="hasTriedSubmit && requiredFieldErrors.length > 0 && !isSubmitting"
+            class="mx-auto mt-4 max-w-2xl border border-red-200 rounded-2.5 bg-red-50 p-4 text-red-700"
+          >
+            <p class="text-13px font-semibold">
+              {{ locale === 'zh' ? '请完善以下字段后再提交：' : 'Please fix the following fields before submitting:' }}
+            </p>
+            <ul class="mt-2 text-13px space-y-1">
+              <li v-for="field in requiredFieldErrors" :key="field" class="flex items-start">
+                <span class="mr-2">•</span>
+                <span>{{ field }}</span>
+              </li>
+            </ul>
           </div>
         </form>
       </div>

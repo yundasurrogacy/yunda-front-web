@@ -8,6 +8,10 @@ defineProps({
     type: String,
     required: true,
   },
+  required: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 defineEmits(['update:modelValue'])
@@ -29,6 +33,9 @@ defineEmits(['update:modelValue'])
         <path d="M2 6L5 9L10 3" stroke="#271F18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-    <span class="text-3.5 leading-6 lg:text-4">{{ label }}</span>
+    <span class="text-3.5 leading-6 lg:text-4">
+      {{ label }}
+      <span v-if="required" class="text-red-500">*</span>
+    </span>
   </label>
 </template>
