@@ -5,6 +5,8 @@ import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import AssociationSection from '@/components/home/AssociationSection.vue'
+import SurrogateGallerySection from '@/components/home/SurrogateGallerySection.vue'
 import FormCheckbox from '@/components/form/FormCheckbox.vue'
 import FormDatePicker from '@/components/form/FormDatePicker.vue'
 import FormInput from '@/components/form/FormInput.vue'
@@ -578,22 +580,57 @@ async function submitFinal() {
     isSubmitting.value = false
   }
 }
+
+function scrollToPageTop() {
+  if (typeof window === 'undefined')
+    return
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 <template>
   <div class="min-h-screen overflow-hidden bg-[var(--head-bg)]">
     <AppHeader />
-    <div class="relative h-30 w-full flex items-center justify-center bg-[#BFC9BF] lg:h-80">
-      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
-        {{ t.pageTitle }}
-      </h1>
-    </div>
+    <section
+      id="be-surrogate-hero"
+      class="relative border-b border-[var(--primary-brown)]/15 from-[var(--head-bg)] via-white/35 to-[var(--foot-bg)]/25 bg-gradient-to-b px-4 py-12 md:px-10 md:py-16 lg:py-20"
+    >
+      <div class="mx-auto flex max-w-320 flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
+        <div class="min-w-0 flex-1 text-center lg:text-left">
+          <h1 class="text-9 font-semibold italic md:text-13 lg:text-16" style="font-family: var(--font-primary)">
+            {{ t.landing.heroTitle }}
+          </h1>
+          <p
+            class="mt-5 text-4.5 leading-relaxed text-[var(--dark-brown)] md:mt-6 md:text-5"
+            style="font-family: var(--font-secondary)"
+          >
+            {{ t.landing.heroSubtitle }}
+          </p>
+          <p class="mt-5 text-5 font-semibold text-[var(--grayish-green)] md:text-6">
+            {{ t.landing.heroCompensation }}
+          </p>
+          <p
+            class="mt-6 text-4 text-[var(--primary-brown)] md:text-4.5"
+            style="font-family: var(--font-secondary)"
+          >
+            {{ t.landing.heroPillars }}
+          </p>
+        </div>
+        <div class="mx-auto w-full max-w-xl shrink-0 lg:max-w-md">
+          <img
+            src="/images/be-surrogate/hero.png"
+            alt=""
+            class="w-full rounded-6 object-cover shadow-[0_22px_48px_rgba(39,31,24,0.14)]"
+            width="960"
+            height="720"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </section>
 
     <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
-      <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 shadow-black/20 shadow-xl lg:p-12">
-        <p class="text-sage-700 mb-6 text-5 leading-relaxed">
-          {{ t.introText }}
-        </p>
+      <div id="gc-application" class="mb-20 scroll-mt-28 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 shadow-black/20 shadow-xl lg:p-12">
         <div class="mb-6 flex items-center justify-between gap-4">
           <span class="text-sage-700 text-5 font-medium">
             {{ t.stepIndicator(currentStep, TOTAL_STEPS) }}
@@ -1370,6 +1407,149 @@ async function submitFinal() {
         </div>
       </div>
     </div>
+
+    <AssociationSection />
+
+    <section class="border-b border-[var(--primary-brown)]/15 bg-white px-4 py-14 md:px-16 md:py-20">
+      <div class="mx-auto max-w-220 text-center">
+        <p
+          class="text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
+          style="font-family: var(--font-secondary)"
+        >
+          {{ t.landing.trustBlurb }}
+        </p>
+        <button
+          type="button"
+          class="shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 font-semibold text-white uppercase tracking-wide transition hover:opacity-90"
+          @click="scrollToPageTop"
+        >
+          {{ t.landing.ctaBecomeSurrogate }}
+        </button>
+      </div>
+    </section>
+
+    <section class="border-b border-[var(--primary-brown)]/15 from-[var(--foot-bg)]/40 to-white bg-gradient-to-b px-4 py-14 md:px-16 md:py-22">
+      <div class="mx-auto max-w-320">
+        <h2 class="text-center text-7 font-semibold md:text-9" style="font-family: var(--font-primary)">
+          {{ t.landing.shortsTitle }}
+        </h2>
+        <p
+          class="mx-auto mt-5 max-w-200 text-center text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
+          style="font-family: var(--font-secondary)"
+        >
+          {{ t.landing.shortsIntro }}
+        </p>
+        <div class="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-0">
+          <div class="flex flex-col items-center md:px-6">
+            <p class="mb-4 text-5 font-semibold text-black">
+              {{ t.landing.shortInsurance }}
+            </p>
+            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/mOwFngnTZvo"
+                title="Yunda Surrogacy — Insurance"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+          <div class="flex flex-col items-center border-black md:border-l md:px-6 md:pt-0 pt-4 md:border-t-0 border-t">
+            <p class="mb-4 text-5 font-semibold text-black">
+              {{ t.landing.shortLegal }}
+            </p>
+            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/TN4rMZfbhGg"
+                title="Yunda Surrogacy — Legal"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+          <div class="flex flex-col items-center border-black md:border-l md:px-6 md:pt-0 pt-4 md:border-t-0 border-t">
+            <p class="mb-4 text-5 font-semibold text-black">
+              {{ t.landing.shortEscrow }}
+            </p>
+            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/1oBL9IwOONg"
+                title="Yunda Surrogacy — Escrow"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-[var(--primary-brown)]/15 bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
+      <div class="mx-auto max-w-280">
+        <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-black">
+          <div class="md:pr-12">
+            <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+              {{ t.landing.requirementsTitle }}
+            </h3>
+            <p
+              class="mt-4 text-4.5 text-[var(--dark-brown)]"
+              style="font-family: var(--font-secondary)"
+            >
+              {{ t.landing.requirementsLead }}
+            </p>
+            <NuxtLink
+              :to="localePath('/surrogate-requirements')"
+              class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+            >
+              {{ t.landing.learnMore }}
+            </NuxtLink>
+          </div>
+          <div class="md:pl-12">
+            <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+              {{ t.landing.benefitsTitle }}
+            </h3>
+            <p
+              class="mt-4 text-4.5 text-[var(--dark-brown)]"
+              style="font-family: var(--font-secondary)"
+            >
+              {{ t.landing.benefitsLead }}
+            </p>
+            <NuxtLink
+              :to="localePath('/benefit')"
+              class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+            >
+              {{ t.landing.learnMore }}
+            </NuxtLink>
+          </div>
+        </div>
+
+        <h3 class="mt-16 text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+          {{ t.landing.processTitle }}
+        </h3>
+        <ol class="mt-8 list-decimal space-y-4 pl-6 text-4.5 leading-relaxed text-[var(--dark-brown)] marker:text-[var(--grayish-green)] marker:font-semibold md:pl-8 md:text-5" style="font-family: var(--font-secondary)">
+          <li v-for="(line, i) in t.landing.processSteps" :key="i" class="pl-2">
+            {{ line }}
+          </li>
+        </ol>
+        <div class="mt-10 flex justify-center">
+          <button
+            type="button"
+            class="shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 font-semibold text-white uppercase tracking-wide transition hover:opacity-90"
+            @click="scrollToPageTop"
+          >
+            {{ t.landing.processCta }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <SurrogateGallerySection
+      :title="t.landing.galleryTitle"
+      :subtitle="t.landing.gallerySubtitle"
+    />
+
     <AppFooter />
   </div>
 </template>

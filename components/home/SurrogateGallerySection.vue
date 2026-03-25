@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import { useResizeObserver } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+
+const props = withDefaults(
+  defineProps<{ title?: string, subtitle?: string }>(),
+  { title: undefined, subtitle: undefined },
+)
+
+const { t } = useI18n()
+const heading = computed(() => props.title ?? t('home.surrogateGallerySection.title'))
+const subheading = computed(() => props.subtitle ?? t('home.surrogateGallerySection.subtitle'))
 
 useScrollAnimation()
 
@@ -121,10 +131,10 @@ onBeforeUnmount(() => {
     <div class="mx-auto max-w-[1400px]">
       <div class="scroll-animate text-center">
         <h2 class="text-7 text-black font-semibold md:text-9" style="font-family: var(--font-primary)">
-          {{ $t('home.surrogateGallerySection.title') }}
+          {{ heading }}
         </h2>
         <p class="mt-4 text-4 text-[var(--dark-brown)] md:text-4.5" style="font-family: var(--font-secondary)">
-          {{ $t('home.surrogateGallerySection.subtitle') }}
+          {{ subheading }}
         </p>
       </div>
 
