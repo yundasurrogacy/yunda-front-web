@@ -6,6 +6,23 @@ useScrollAnimation()
 
 <template>
   <section class="bg-[var(--head-bg)] px-4 py-20 md:px-20 md:py-25">
+    <div class="mx-auto mb-16 max-w-280 text-center md:mb-20">
+      <h2 class="scroll-animate text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+        {{ $t('home.statsSection.chooseUsTitle') }}
+      </h2>
+      <p
+        class="scroll-animate scroll-animate-delay-100 mx-auto mt-6 max-w-260 text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
+        style="font-family: var(--font-secondary)"
+      >
+        {{ $t('home.statsSection.chooseUsDescription') }}
+      </p>
+      <h3
+        class="scroll-animate scroll-animate-delay-150 mt-12 text-6 font-semibold md:mt-16 md:text-8"
+        style="font-family: var(--font-primary)"
+      >
+        {{ $t('home.statsSection.advantagesTitle') }}
+      </h3>
+    </div>
     <div class="grid grid-cols-1 mx-auto max-w-320 gap-20 lg:grid-cols-4 md:grid-cols-2 md:max-w-full md:gap-27.5">
       <!-- Stat 1 -->
       <div class="scroll-animate flex flex-col items-center text-center">

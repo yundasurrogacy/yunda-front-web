@@ -4,9 +4,18 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
+export type SurrogateGallerySlide = { src: string, alt: string }
+
 const props = withDefaults(
-  defineProps<{ title?: string, subtitle?: string }>(),
-  { title: undefined, subtitle: undefined },
+  defineProps<{
+    title?: string
+    subtitle?: string
+    slides?: SurrogateGallerySlide[]
+    variant?: 'default' | 'plain'
+    /** 版块顶部横幅图（可选） */
+    bannerSrc?: string
+  }>(),
+  { title: undefined, subtitle: undefined, slides: undefined, variant: 'default', bannerSrc: undefined },
 )
 
 const { t } = useI18n()
@@ -15,7 +24,7 @@ const subheading = computed(() => props.subtitle ?? t('home.surrogateGallerySect
 
 useScrollAnimation()
 
-const slides = [
+const defaultSlides: SurrogateGallerySlide[] = [
   { src: '/images/home/surrogate-1.jpeg', alt: 'Surrogate mother with newborn in hospital' },
   { src: '/images/home/surrogate-3.png', alt: 'Surrogate mother in delivery room' },
   { src: '/images/home/surrogate-4.png', alt: 'Expectant surrogate mother mirror selfie' },
@@ -30,7 +39,14 @@ const slides = [
   { src: '/images/home/surrogate-13.png', alt: 'Surrogate mother with family' },
 ]
 
-const duplicatedSlides = computed(() => [...slides, ...slides])
+const slides = computed(() =>
+  props.slides?.length ? props.slides : defaultSlides,
+)
+
+const duplicatedSlides = computed(() => {
+  const list = slides.value
+  return [...list, ...list]
+})
 
 const slideGap = 18
 const slidesPerView = ref(4)
@@ -74,7 +90,7 @@ function resetToStart() {
 }
 
 function handleTransitionEnd() {
-  if (currentIndex.value >= slides.length) {
+  if (currentIndex.value >= slides.value.length) {
     resetToStart()
   }
 }
@@ -90,7 +106,7 @@ function goToPrev() {
     return
   if (currentIndex.value === 0) {
     enableTransition.value = false
-    currentIndex.value = slides.length
+    currentIndex.value = slides.value.length
     requestAnimationFrame(() => {
       enableTransition.value = true
       currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
@@ -106,6 +122,15 @@ watch(slideWidthWithGap, (val) => {
   enableTransition.value = false
   currentIndex.value = 0
   nextTick(() => {
+    enableTransition.value = true
+  })
+})
+
+watch(slides, () => {
+  enableTransition.value = false
+  currentIndex.value = 0
+  nextTick(() => {
+    updateSlideMetrics()
     enableTransition.value = true
   })
 })
@@ -127,8 +152,23 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="border-b border-t border-[var(--primary-brown)]/18 from-[var(--foot-bg)] via-white to-[var(--foot-bg)] bg-gradient-to-b px-4 py-16 md:px-20 md:py-24">
+  <section
+    class="px-4 py-16 md:px-20 md:py-24"
+    :class="
+      props.variant === 'plain'
+        ? 'bg-[var(--head-bg)]'
+        : 'border-b border-t border-[var(--primary-brown)]/18 from-[var(--foot-bg)] via-white to-[var(--foot-bg)] bg-gradient-to-b'
+    "
+  >
     <div class="mx-auto max-w-[1400px]">
+      <div v-if="props.bannerSrc" class="scroll-animate mb-12 overflow-hidden rounded-[26px] md:mb-16">
+        <img
+          :src="props.bannerSrc"
+          alt=""
+          class="h-auto max-h-[min(70vh,520px)] w-full object-cover object-[center_20%]"
+          loading="lazy"
+        >
+      </div>
       <div class="scroll-animate text-center">
         <h2 class="text-7 text-black font-semibold md:text-9" style="font-family: var(--font-primary)">
           {{ heading }}

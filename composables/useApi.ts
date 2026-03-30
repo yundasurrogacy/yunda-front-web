@@ -100,6 +100,8 @@ export async function getApplicationById(id: number): Promise<ApiSuccessResponse
     const response = await $fetch<ApiSuccessResponse<{ id: number, application_type: string, status: string, application_data: SurrogateMotherApplicationData, created_at: string, updated_at: string }>>(`${base}/applications/${id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
+      /** 避免后台不可达时页面长时间卡在「恢复草稿」请求上 */
+      timeout: 12_000,
     })
     return response
   }

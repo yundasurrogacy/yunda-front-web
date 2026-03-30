@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
+const props = withDefaults(
+  defineProps<{ variant?: 'default' | 'plain' }>(),
+  { variant: 'default' },
+)
+
 useScrollAnimation()
 
 // 合作伙伴/协会 logo 数据
@@ -13,7 +18,14 @@ const partners = [
 </script>
 
 <template>
-  <section class="border-b border-t border-[var(--primary-brown)]/20 from-[var(--head-bg)] via-[var(--head-bg)] to-white bg-gradient-to-b px-4 py-16 md:px-20 md:py-24">
+  <section
+    class="px-4 py-16 md:px-20 md:py-24"
+    :class="
+      props.variant === 'plain'
+        ? 'bg-[var(--head-bg)]'
+        : 'border-b border-t border-[var(--primary-brown)]/20 from-[var(--head-bg)] via-[var(--head-bg)] to-white bg-gradient-to-b'
+    "
+  >
     <div class="mx-auto max-w-320">
       <h2 class="scroll-animate mb-12 text-center text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
         {{ $t('home.associationSection.title') }}

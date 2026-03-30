@@ -46,7 +46,7 @@
     "costSection": {
       "title1": "From Budget Planning to Baby's Arrival",
       "title2": "Surrogacy Costs for Intended Parents",
-      "description1": "Every surrogacy journey is unique. Costs may vary based on factors like embryo status, clinic selection, and insurance needs. Typical expenses include agency fees, legal services, surrogate compensation, medical care, and insurance.",
+      "description1": "Surrogacy costs vary based on embryo status, clinic choice, and insurance needs.",
       "description2": "At Yunda, most intended parents can expect to spend $150,000 to $200,000 USD, which includes:",
       "item1": "$61,000–$70,000+ USD in surrogate compensation and pregnancy support",
       "item2": "Legal, medical, and insurance-related third-party costs",
@@ -57,6 +57,29 @@
       "title": "Global Support For Every Family",
       "description": "Yunda Surrogacy is a professional agency specializing in cross-border assisted reproduction, offering services across all legally supported surrogacy states in the U.S. We partner with world-class fertility clinics, mental health professionals, and insurance providers to deliver fully customized, end-to-end support for intended parents from all backgrounds- including older couples, LGBTQ+ individuals, and single parents.",
       "button": "BECOME A PARENT"
+    },
+    "ourServicesSection": {
+      "title": "Our Services",
+      "description": "Every surrogacy journey is unique. At Yunda, we will accompany you through every step of the journey with professional guidance and ongoing support."
+    },
+    "parentsSurrogatesSection": {
+      "parentsCta": "Start Your Parenthood Journey",
+      "surrogateTitle": "From First Application to Embryo Transfer",
+      "surrogateSubtitle": "Surrogacy Process for Surrogates",
+      "surrogateIntro": "Thinking about becoming a surrogate? You deserve a clear, respectful process. At Yunda, the journey continues with personalized support at every stage, including:",
+      "surrogateBullet1": "Matching with intended parents you choose",
+      "surrogateBullet2": "Legal coordination and embryo transfer support",
+      "surrogateBullet3": "Rewarding compensation starting at $61,000+",
+      "surrogateOutro": "You will also receive dedicated support throughout the journey, including a case coordinator, nutrition and counseling support, and daily check-ins—so you can move forward with confidence, clarity, and care.",
+      "surrogateCta": "Explore Surrogacy Options"
+    },
+    "googleReviewsSection": {
+      "title": "What Our Clients Have to Say About Us",
+      "readOnGoogle": "Read on Google",
+      "review1": "We felt genuinely supported at every step. The team was transparent, kind, and professional—we could not be more grateful for our experience with Yunda.",
+      "review2": "Clear communication, strong coordination with clinic and legal partners, and true care for both surrogates and parents. Highly recommend Yunda Surrogacy.",
+      "review1Author": "Intended Parent",
+      "review2Author": "Growing Family"
     },
     "heroSection": {
       "title": "Professionalism. Transparency. Warmth. Protection.",
@@ -89,6 +112,9 @@
       "advisor": "Judith Hoechst - Legal Advisor"
     },
     "statsSection": {
+      "chooseUsTitle": "Why Choose Us",
+      "chooseUsDescription": "Yunda Surrogacy is a professional cross-border surrogacy agency serving legally supported states across the U.S. We provide personalized, end-to-end support for intended parents and surrogates through trusted fertility, legal, and insurance partnerships.",
+      "advantagesTitle": "Our Advantages",
       "stat1": "Years of experience in third-party reproduction",
       "stat2": "Families served worldwide",
       "stat3": "Full IVF and surrogacy journeys completed",
@@ -105,7 +131,7 @@
       "title": "Where Trust Meets Standards"
     },
     "surrogateGallerySection": {
-      "title": "Meet Our Surrogate Mothers",
+      "title": "Meet Our Surrogates",
       "subtitle": "Dedicated women making dreams of parenthood come true"
     }
   },

@@ -69,6 +69,18 @@ const { submitSurrogateApplication, getApplicationById, updateApplicationById } 
 
 const computedBMI = computed(() => calculatedBMI(form))
 
+/** GC 申请页图集：素材包 8 张 */
+const beSurrogateGallerySlides = [
+  { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-4.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
+]
+
 /** 防抖保存到 localStorage，表单或步骤变化时自动保存 */
 let saveTimeout: ReturnType<typeof setTimeout> | null = null
 watch(
@@ -589,48 +601,53 @@ function scrollToPageTop() {
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--head-bg)]">
     <AppHeader />
-    <section
-      id="be-surrogate-hero"
-      class="relative border-b border-[var(--primary-brown)]/15 from-[var(--head-bg)] via-white/35 to-[var(--foot-bg)]/25 bg-gradient-to-b px-4 py-12 md:px-10 md:py-16 lg:py-20"
-    >
-      <div class="mx-auto flex max-w-320 flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
-        <div class="min-w-0 flex-1 text-center lg:text-left">
-          <h1 class="text-9 font-semibold italic md:text-13 lg:text-16" style="font-family: var(--font-primary)">
-            {{ t.landing.heroTitle }}
-          </h1>
-          <p
-            class="mt-5 text-4.5 leading-relaxed text-[var(--dark-brown)] md:mt-6 md:text-5"
-            style="font-family: var(--font-secondary)"
-          >
-            {{ t.landing.heroSubtitle }}
-          </p>
-          <p class="mt-5 text-5 font-semibold text-[var(--grayish-green)] md:text-6">
-            {{ t.landing.heroCompensation }}
-          </p>
-          <p
-            class="mt-6 text-4 text-[var(--primary-brown)] md:text-4.5"
-            style="font-family: var(--font-secondary)"
-          >
-            {{ t.landing.heroPillars }}
-          </p>
-        </div>
-        <div class="mx-auto w-full max-w-xl shrink-0 lg:max-w-md">
-          <img
-            src="/images/be-surrogate/hero.png"
-            alt=""
-            class="w-full rounded-6 object-cover shadow-[0_22px_48px_rgba(39,31,24,0.14)]"
-            width="960"
-            height="720"
-            loading="eager"
-          >
-        </div>
+    <div class="relative overflow-x-hidden">
+      <div
+        class="pointer-events-none absolute inset-x-0 top-0 h-[400px] sm:h-[460px] lg:h-[min(100vh,960px)] lg:min-h-[640px]"
+        aria-hidden="true"
+      >
+        <img
+          src="/images/be-surrogate/hero.jpg"
+          alt=""
+          class="h-full w-full object-cover object-[center_22%]"
+          width="1920"
+          height="1080"
+          decoding="async"
+          fetchpriority="high"
+        >
+        <div class="absolute inset-0 bg-black/50" />
       </div>
-    </section>
 
-    <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
-      <div id="gc-application" class="mb-20 scroll-mt-28 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 shadow-black/20 shadow-xl lg:p-12">
+      <div class="relative z-10 mx-auto max-w-320 px-4 pb-10 pt-6 md:px-6 lg:pb-20 lg:pt-12">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-6">
+          <div
+            class="order-1 space-y-5 text-center lg:col-span-5 lg:pt-4 lg:text-left"
+            style="text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45)"
+          >
+            <h1
+              id="be-surrogate-hero"
+              class="text-9 font-semibold italic text-white md:text-12 lg:text-15"
+              style="font-family: var(--font-primary)"
+            >
+              {{ t.landing.heroTitle }}
+            </h1>
+            <p
+              class="text-4.5 leading-relaxed text-white/95 md:text-5"
+              style="font-family: var(--font-secondary)"
+            >
+              {{ t.landing.heroSubtitle }}
+            </p>
+            <p class="text-5 font-semibold text-white md:text-6">
+              {{ t.landing.heroCompensation }}
+            </p>
+          </div>
+
+          <div
+            id="gc-application"
+            class="order-3 mb-6 scroll-mt-28 rounded-5 border border-white/20 bg-white/95 p-6 shadow-[0_28px_64px_rgba(0,0,0,0.2)] backdrop-blur-md sm:p-8 lg:order-2 lg:col-span-7 lg:mb-16 lg:p-10"
+          >
         <div class="mb-6 flex items-center justify-between gap-4">
           <span class="text-sage-700 text-5 font-medium">
             {{ t.stepIndicator(currentStep, TOTAL_STEPS) }}
@@ -1406,11 +1423,20 @@ function scrollToPageTop() {
           </template>
         </div>
       </div>
+
+          <p
+            class="order-2 px-2 text-center text-3.5 leading-snug text-white/95 lg:order-3 lg:col-span-12 lg:px-0 lg:text-4"
+            style="font-family: var(--font-secondary)"
+          >
+            {{ t.landing.heroPillars }}
+          </p>
+        </div>
+      </div>
     </div>
 
-    <AssociationSection />
+    <AssociationSection variant="plain" />
 
-    <section class="border-b border-[var(--primary-brown)]/15 bg-white px-4 py-14 md:px-16 md:py-20">
+    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
       <div class="mx-auto max-w-220 text-center">
         <p
           class="text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
@@ -1428,7 +1454,7 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="border-b border-[var(--primary-brown)]/15 from-[var(--foot-bg)]/40 to-white bg-gradient-to-b px-4 py-14 md:px-16 md:py-22">
+    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-22">
       <div class="mx-auto max-w-320">
         <h2 class="text-center text-7 font-semibold md:text-9" style="font-family: var(--font-primary)">
           {{ t.landing.shortsTitle }}
@@ -1439,8 +1465,8 @@ function scrollToPageTop() {
         >
           {{ t.landing.shortsIntro }}
         </p>
-        <div class="mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-0">
-          <div class="flex flex-col items-center md:px-6">
+        <div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
+          <div class="flex flex-col items-center md:px-4">
             <p class="mb-4 text-5 font-semibold text-black">
               {{ t.landing.shortInsurance }}
             </p>
@@ -1449,12 +1475,13 @@ function scrollToPageTop() {
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/mOwFngnTZvo"
                 title="Yunda Surrogacy — Insurance"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               />
             </div>
           </div>
-          <div class="flex flex-col items-center border-black md:border-l md:px-6 md:pt-0 pt-4 md:border-t-0 border-t">
+          <div class="flex flex-col items-center md:px-4">
             <p class="mb-4 text-5 font-semibold text-black">
               {{ t.landing.shortLegal }}
             </p>
@@ -1463,12 +1490,13 @@ function scrollToPageTop() {
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/TN4rMZfbhGg"
                 title="Yunda Surrogacy — Legal"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               />
             </div>
           </div>
-          <div class="flex flex-col items-center border-black md:border-l md:px-6 md:pt-0 pt-4 md:border-t-0 border-t">
+          <div class="flex flex-col items-center md:px-4">
             <p class="mb-4 text-5 font-semibold text-black">
               {{ t.landing.shortEscrow }}
             </p>
@@ -1477,6 +1505,7 @@ function scrollToPageTop() {
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/1oBL9IwOONg"
                 title="Yunda Surrogacy — Escrow"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               />
@@ -1486,38 +1515,42 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="border-b border-[var(--primary-brown)]/15 bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
+    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
       <div class="mx-auto max-w-280">
-        <div class="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-black">
-          <div class="md:pr-12">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+          <div>
             <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
-              {{ t.landing.requirementsTitle }}
+              {{ t.landing.ifYouAreHeading }}
             </h3>
-            <p
-              class="mt-4 text-4.5 text-[var(--dark-brown)]"
+            <ul
+              class="mt-5 list-disc space-y-3 pl-6 text-4.5 text-[var(--dark-brown)] md:text-5"
               style="font-family: var(--font-secondary)"
             >
-              {{ t.landing.requirementsLead }}
-            </p>
+              <li v-for="(item, i) in t.landing.ifYouAreItems" :key="`if-${i}`">
+                {{ item }}
+              </li>
+            </ul>
             <NuxtLink
-              :to="localePath('/surrogate-requirements')"
+              :to="localePath('/eligibility')"
               class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
           </div>
-          <div class="md:pl-12">
+          <div>
             <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
-              {{ t.landing.benefitsTitle }}
+              {{ t.landing.youWillReceiveHeading }}
             </h3>
-            <p
-              class="mt-4 text-4.5 text-[var(--dark-brown)]"
+            <ul
+              class="mt-5 list-disc space-y-3 pl-6 text-4.5 text-[var(--dark-brown)] md:text-5"
               style="font-family: var(--font-secondary)"
             >
-              {{ t.landing.benefitsLead }}
-            </p>
+              <li v-for="(item, i) in t.landing.youWillReceiveItems" :key="`recv-${i}`">
+                {{ item }}
+              </li>
+            </ul>
             <NuxtLink
-              :to="localePath('/benefit')"
+              :to="localePath('/eligibility')"
               class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
             >
               {{ t.landing.learnMore }}
@@ -1546,6 +1579,8 @@ function scrollToPageTop() {
     </section>
 
     <SurrogateGallerySection
+      variant="plain"
+      :slides="beSurrogateGallerySlides"
       :title="t.landing.galleryTitle"
       :subtitle="t.landing.gallerySubtitle"
     />

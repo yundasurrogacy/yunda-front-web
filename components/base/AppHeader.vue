@@ -3,11 +3,9 @@ import { defineAsyncComponent, ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
-const RightMenu = defineAsyncComponent(() => import('./RightMenu.vue'))
 
 const localePath = useLocalePath()
 const isMenuOpen = ref(false)
-const isRightMenuOpen = ref(false)
 </script>
 
 <template>
@@ -30,23 +28,14 @@ const isRightMenuOpen = ref(false)
       </NuxtLink>
     </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden items-center md:flex space-x-8">
-      <!-- <a href="#" class="text-[#271F18] text-lg font-normal uppercase hover:opacity-75 transition-opacity">Log in</a> -->
+    <!-- Language switcher: same EN / 中文 control on mobile and desktop -->
+    <nav class="flex shrink-0 items-center" aria-label="Language">
       <LanguageSwitcher />
     </nav>
-
-    <!-- Right Menu Button (mobile only) -->
-    <button class="h-10 w-10 flex items-center justify-center md:hidden" @click="isRightMenuOpen = !isRightMenuOpen">
-      <img src="/images/base/right_icon.svg" alt="Menu" class="h-10 w-10">
-    </button>
   </header>
 
   <!-- SideMenu Component -->
   <SideMenu v-model:is-open="isMenuOpen" />
-
-  <!-- RightMenu Component -->
-  <RightMenu v-model:is-open="isRightMenuOpen" />
 </template>
 
 <style scoped>

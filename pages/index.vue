@@ -6,16 +6,13 @@ import AppHeader from '../components/base/AppHeader.vue'
 import AssociationSection from '../components/home/AssociationSection.vue'
 import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
-import CostSection from '../components/home/CostSection.vue'
-import GlobalSupportSection from '../components/home/GlobalSupportSection.vue'
+import GoogleReviewsSection from '../components/home/GoogleReviewsSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
 import IntroVideoSection from '../components/home/IntroVideoSection.vue'
-import JourneySection from '../components/home/JourneySection.vue'
-// import LegalExpertiseSection from '../components/home/LegalExpertiseSection.vue'
+import OurServicesSection from '../components/home/OurServicesSection.vue'
+import ParentsSurrogatesPathsSection from '../components/home/ParentsSurrogatesPathsSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
-import SurrogateCareSection from '../components/home/SurrogateCareSection.vue'
 import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
-import TestimonialsSection from '../components/home/TestimonialsSection.vue'
 
 const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
@@ -52,18 +49,18 @@ const serviceSchema = computed(() => buildServiceSchema({
   locale: locale.value,
   offers: [
     {
-      name: t('home.globalSupportSection.title'),
-      description: t('home.globalSupportSection.description'),
+      name: t('home.ourServicesSection.title'),
+      description: t('home.ourServicesSection.description'),
       url: '/be-parents',
     },
     {
       name: t('home.costSection.title2'),
-      description: t('home.costSection.description1'),
+      description: t('home.costSection.description2'),
       url: '/surrogacy-cost',
     },
     {
-      name: t('home.surrogateCareSection.title'),
-      description: t('home.surrogateCareSection.item1'),
+      name: t('home.parentsSurrogatesSection.surrogateSubtitle'),
+      description: t('home.parentsSurrogatesSection.surrogateIntro'),
       url: '/be-surrogate',
     },
   ],
@@ -130,23 +127,14 @@ useHead(() => {
     <AppHeader />
     <HeroSection />
     <StatsSection />
-    <GlobalSupportSection />
-    <IntroVideoSection />
-    <!-- <LegalExpertiseSection /> -->
-    <SurrogateCareSection />
+    <OurServicesSection />
     <CommitmentSection />
-    <!-- <VideoPlayer
-      :video-src="'/videos/video1.mp4'"
-      :background-color="'#A9A67D'"
-      :controls="true"
-      :autoplay="false"
-     /> -->
-    <JourneySection />
+    <IntroVideoSection />
+    <ParentsSurrogatesPathsSection />
     <AssociationSection />
-    <SurrogateGallerySection />
-    <TestimonialsSection />
+    <SurrogateGallerySection banner-src="/images/home/home-redesign/meet-our-surrogates-banner.jpg" />
+    <GoogleReviewsSection />
     <BlogNewsSection />
-    <CostSection />
     <AppFooter />
   </div>
 </template>
