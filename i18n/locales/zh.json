@@ -76,10 +76,15 @@
     "googleReviewsSection": {
       "title": "客户心声",
       "readOnGoogle": "在 Google 上阅读",
+      "historyLabel": "来自孕达历史案例",
       "review1": "每一个环节都能感受到真诚支持：团队透明、专业又温暖，我们非常感谢在孕达的这段经历。",
       "review2": "沟通清晰，与诊所及法律等合作方衔接顺畅，对准父母与代孕母都非常用心。由衷推荐孕达代孕。",
+      "historyReview1": "从前期咨询到匹配与法律准备，每一步都解释得很清楚。我们始终知道下一步是什么，整个过程非常安心。",
+      "historyReview2": "项目协调员跟进非常及时，细节处理高效。流程始终有条不紊，从开始到分娩都让我们感到被支持。",
       "review1Author": "意向父母",
-      "review2Author": "备孕家庭"
+      "review2Author": "备孕家庭",
+      "historyReview1Author": "孕达客户案例",
+      "historyReview2Author": "孕达客户案例"
     },
     "heroSection": {
       "title": "专业 · 透明 · 温暖 · 守护",

@@ -12,18 +12,18 @@ useScrollAnimation()
 const partners = [
   { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
   { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
-  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null },
-  { name: 'MHB', logo: '/images/mhb-logo.png', url: null },
+  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null, logoClass: 'scale-120' },
+  { name: 'MHB', logo: '/images/mhb-logo-transparent.png', url: null },
 ]
 </script>
 
 <template>
   <section
-    class="px-4 py-16 md:px-20 md:py-24"
+    class="px-4 py-12 md:px-20 md:py-16"
     :class="
       props.variant === 'plain'
         ? 'bg-[var(--head-bg)]'
-        : 'border-b border-t border-[var(--primary-brown)]/20 from-[var(--head-bg)] via-[var(--head-bg)] to-white bg-gradient-to-b'
+        : 'bg-[var(--head-bg)]'
     "
   >
     <div class="mx-auto max-w-320">
@@ -43,6 +43,7 @@ const partners = [
               :src="partner.logo"
               :alt="partner.name"
               class="h-full w-auto object-contain"
+              :class="partner.logoClass"
               loading="lazy"
             >
           </a>
@@ -54,6 +55,7 @@ const partners = [
               :src="partner.logo"
               :alt="partner.name"
               class="h-full w-auto object-contain"
+              :class="partner.logoClass"
               loading="lazy"
             >
           </div>

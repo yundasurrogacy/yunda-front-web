@@ -6,8 +6,8 @@ useScrollAnimation()
 const partners = [
   { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
   { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
-  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null },
-  { name: 'MHB', logo: '/images/mhb-logo.png', url: null },
+  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null, logoClass: 'scale-120' },
+  { name: 'MHB', logo: '/images/mhb-logo-transparent.png', url: null },
 ]
 </script>
 
@@ -26,9 +26,9 @@ const partners = [
       <div class="absolute inset-0 bg-[rgba(255,252,248,0.78)] backdrop-blur-[2px]" />
     </div>
 
-    <div class="relative z-[1] mx-auto max-w-320 px-6 py-16 lg:px-16 lg:py-28 md:px-12 md:py-22">
+    <div class="relative z-[1] mx-auto max-w-320 px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:py-16">
       <div class="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-0">
-        <div class="scroll-animate flex-1 border-b border-black pb-10 lg:border-none lg:pr-12 xl:pr-16">
+        <div class="scroll-animate flex-1 pb-10 lg:pr-12 xl:pr-16">
           <h2
             class="text-6 text-black font-bold font-sans md:text-7.5"
           >
@@ -76,7 +76,7 @@ const partners = [
         </div>
       </div>
 
-      <div class="border-t border-black/15 pb-6 pt-12 lg:pb-10 lg:pt-16 md:pb-8 md:pt-14">
+      <div class="pb-6 pt-12 lg:pb-10 lg:pt-16 md:pb-8 md:pt-14">
         <h2
           class="scroll-animate scroll-animate-delay-200 mb-8 text-center text-6 text-black font-semibold md:mb-10 lg:text-9 md:text-7.5"
           style="font-family: var(--font-primary)"
@@ -96,6 +96,7 @@ const partners = [
                 :src="partner.logo"
                 :alt="partner.name"
                 class="h-full w-auto object-contain"
+                :class="partner.logoClass"
                 loading="lazy"
               >
             </a>
@@ -107,6 +108,7 @@ const partners = [
                 :src="partner.logo"
                 :alt="partner.name"
                 class="h-full w-auto object-contain"
+                :class="partner.logoClass"
                 loading="lazy"
               >
             </div>

@@ -72,6 +72,19 @@ const howToSchema = computed(() => buildHowToSchema({
   locale: locale.value,
 }))
 
+const homeSurrogateSlides = [
+  { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-4.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
+]
+
 // SEO 配置
 useHead({
   title: t('home.meta.title'),
@@ -126,7 +139,10 @@ useHead(() => {
     <StatsSection />
     <OurServicesSection />
     <CommitmentSection />
-    <SurrogateGallerySection banner-src="/images/home/home-redesign/meet-our-surrogates-banner.jpg" />
+    <SurrogateGallerySection
+      banner-src="/images/home/home-redesign/meet-our-surrogates-banner.jpg"
+      :slides="homeSurrogateSlides"
+    />
     <GoogleReviewsSection />
     <BlogNewsSection />
     <AppFooter />

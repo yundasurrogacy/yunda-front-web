@@ -76,10 +76,15 @@
     "googleReviewsSection": {
       "title": "What Our Clients Have to Say About Us",
       "readOnGoogle": "Read on Google",
+      "historyLabel": "From Yunda Archives",
       "review1": "We felt genuinely supported at every step. The team was transparent, kind, and professional—we could not be more grateful for our experience with Yunda.",
       "review2": "Clear communication, strong coordination with clinic and legal partners, and true care for both surrogates and parents. Highly recommend Yunda Surrogacy.",
+      "historyReview1": "From consultation through matching and legal preparation, every step was clearly explained. We always knew what came next and felt cared for as a family.",
+      "historyReview2": "Our coordinator followed up constantly and handled details quickly. The process stayed organized, and we felt supported from day one to delivery.",
       "review1Author": "Intended Parent",
-      "review2Author": "Growing Family"
+      "review2Author": "Growing Family",
+      "historyReview1Author": "Yunda Client Story",
+      "historyReview2Author": "Yunda Client Story"
     },
     "heroSection": {
       "title": "Professionalism. Transparency. Warmth. Protection.",

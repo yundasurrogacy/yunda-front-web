@@ -6,7 +6,7 @@ useScrollAnimation()
 </script>
 
 <template>
-  <section class="bg-[var(--head-bg)] px-4 py-16 lg:px-20 lg:py-28 md:px-12 md:py-22">
+  <section class="bg-[var(--head-bg)] px-4 py-12 md:px-12 md:py-16 lg:px-20 lg:py-16">
     <div class="mx-auto max-w-320">
       <div class="scroll-animate mx-auto mb-14 max-w-260 text-center md:mb-18 lg:max-w-280">
         <h2 class="text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
@@ -22,15 +22,12 @@ useScrollAnimation()
 
       <div class="flex flex-col gap-16 lg:gap-22 xl:gap-28">
         <!-- 准父母：大屏左文右图；小屏上文下图 -->
-        <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="space-y-6">
             <div style="font-family: var(--font-primary)">
               <h3 class="text-7.5 font-semibold md:text-10">
-                {{ $t('home.costSection.title1') }}
-              </h3>
-              <p class="mt-2 text-6 md:text-8">
                 {{ $t('home.costSection.title2') }}
-              </p>
+              </h3>
             </div>
             <p
               class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
@@ -38,7 +35,7 @@ useScrollAnimation()
             >
               {{ $t('home.costSection.description1') }}
             </p>
-            <p class="text-4.5 text-[var(--dark-brown)] font-medium tracking-wide uppercase md:text-5" style="font-family: var(--font-secondary)">
+            <p class="text-4.5 text-[var(--dark-brown)] font-medium md:text-5" style="font-family: var(--font-secondary)">
               {{ $t('home.costSection.description2') }}
             </p>
             <ul class="pl-1 space-y-4" style="font-family: var(--font-secondary)">
@@ -68,34 +65,31 @@ useScrollAnimation()
               {{ $t('home.parentsSurrogatesSection.parentsCta') }}
             </NuxtLink>
           </div>
-          <div class="aspect-[4/3] w-full overflow-hidden rounded-5 shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:aspect-[5/4]">
+          <div class="mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)]">
             <img
               src="/images/home/home-redesign/our-services-1.jpg"
               alt=""
-              class="h-full w-full object-cover"
+              class="h-full w-full object-contain"
               loading="lazy"
             >
           </div>
         </div>
 
         <!-- 代孕母：大屏左图右文；小屏上图下文 -->
-        <div class="scroll-animate scroll-animate-delay-200 grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div class="aspect-[4/3] w-full overflow-hidden rounded-5 shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:aspect-[5/4]">
+        <div class="scroll-animate scroll-animate-delay-200 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div class="mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)]">
             <img
               src="/images/home/home-redesign/our-services-2.jpeg"
               alt=""
-              class="h-full w-full object-cover"
+              class="h-full w-full object-contain"
               loading="lazy"
             >
           </div>
           <div class="space-y-6">
             <div style="font-family: var(--font-primary)">
               <h3 class="text-7.5 font-semibold md:text-10">
-                {{ $t('home.parentsSurrogatesSection.surrogateTitle') }}
-              </h3>
-              <p class="mt-2 text-6 md:text-8">
                 {{ $t('home.parentsSurrogatesSection.surrogateSubtitle') }}
-              </p>
+              </h3>
             </div>
             <p
               class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
@@ -116,7 +110,7 @@ useScrollAnimation()
             </p>
             <NuxtLink
               :to="localePath('/journey')"
-              class="inline-flex border-2 border-[var(--grayish-green)] rounded-2.5 bg-transparent px-6 py-3 text-4 text-[var(--grayish-green)] font-semibold tracking-wide uppercase transition hover:bg-[var(--grayish-green)] hover:text-white"
+              class="inline-flex rounded-2.5 bg-[var(--grayish-green)] px-6 py-3 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
             >
               {{ $t('home.parentsSurrogatesSection.surrogateCta') }}
             </NuxtLink>

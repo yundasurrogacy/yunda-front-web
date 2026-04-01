@@ -4,7 +4,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
-export type SurrogateGallerySlide = { src: string, alt: string }
+export interface SurrogateGallerySlide { src: string, alt: string }
 
 const props = withDefaults(
   defineProps<{
@@ -43,11 +43,6 @@ const slides = computed(() =>
   props.slides?.length ? props.slides : defaultSlides,
 )
 
-const duplicatedSlides = computed(() => {
-  const list = slides.value
-  return [...list, ...list]
-})
-
 const slideGap = 18
 const slidesPerView = ref(4)
 const trackRef = ref<HTMLElement | null>(null)
@@ -55,6 +50,10 @@ const slideWidthWithGap = ref(0)
 const currentIndex = ref(0)
 const enableTransition = ref(true)
 let stopResize: (() => void) | undefined
+
+const maxStartIndex = computed(() => Math.max(0, slides.value.length - slidesPerView.value))
+const canGoPrev = computed(() => currentIndex.value > 0)
+const canGoNext = computed(() => currentIndex.value < maxStartIndex.value)
 
 const trackStyle = computed(() => ({
   transform: `translateX(-${currentIndex.value * slideWidthWithGap.value}px)`,
@@ -81,38 +80,15 @@ function updateSlideMetrics() {
   })
 }
 
-function resetToStart() {
-  enableTransition.value = false
-  currentIndex.value = 0
-  requestAnimationFrame(() => {
-    enableTransition.value = true
-  })
-}
-
-function handleTransitionEnd() {
-  if (currentIndex.value >= slides.value.length) {
-    resetToStart()
-  }
-}
-
 function goToNext() {
-  if (slideWidthWithGap.value === 0)
+  if (slideWidthWithGap.value === 0 || !canGoNext.value)
     return
-  currentIndex.value += slidesPerView.value
+  currentIndex.value = Math.min(maxStartIndex.value, currentIndex.value + slidesPerView.value)
 }
 
 function goToPrev() {
-  if (slideWidthWithGap.value === 0)
+  if (slideWidthWithGap.value === 0 || !canGoPrev.value)
     return
-  if (currentIndex.value === 0) {
-    enableTransition.value = false
-    currentIndex.value = slides.value.length
-    requestAnimationFrame(() => {
-      enableTransition.value = true
-      currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
-    })
-    return
-  }
   currentIndex.value = Math.max(0, currentIndex.value - slidesPerView.value)
 }
 
@@ -153,11 +129,11 @@ onBeforeUnmount(() => {
 
 <template>
   <section
-    class="px-4 py-16 md:px-20 md:py-24"
+    class="px-4 py-12 md:px-20 md:py-16"
     :class="
       props.variant === 'plain'
         ? 'bg-[var(--head-bg)]'
-        : 'border-b border-t border-[var(--primary-brown)]/18 from-[var(--foot-bg)] via-white to-[var(--foot-bg)] bg-gradient-to-b'
+        : 'bg-[var(--head-bg)]'
     "
   >
     <div class="mx-auto max-w-[1400px]">
@@ -183,6 +159,8 @@ onBeforeUnmount(() => {
           type="button"
           aria-label="Previous slide"
           class="absolute left-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
+          :class="!canGoPrev ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
+          :disabled="!canGoPrev"
           @click="goToPrev"
         >
           <span class="text-xl">‹</span>
@@ -191,6 +169,8 @@ onBeforeUnmount(() => {
           type="button"
           aria-label="Next slide"
           class="absolute right-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
+          :class="!canGoNext ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
+          :disabled="!canGoNext"
           @click="goToNext"
         >
           <span class="text-xl">›</span>
@@ -199,10 +179,9 @@ onBeforeUnmount(() => {
           ref="trackRef"
           class="flex items-stretch"
           :style="trackStyle"
-          @transitionend="handleTransitionEnd"
         >
           <article
-            v-for="(slide, index) in duplicatedSlides"
+            v-for="(slide, index) in slides"
             :key="`${slide.src}-${index}`"
             class="surrogate-slide flex-shrink-0"
             :style="slideStyle"

@@ -69,7 +69,7 @@ const { submitSurrogateApplication, getApplicationById, updateApplicationById } 
 
 const computedBMI = computed(() => calculatedBMI(form))
 
-/** GC 申请页图集：素材包 8 张 */
+/** GC 申请页图集：素材包 10 张（含新增 2 张） */
 const beSurrogateGallerySlides = [
   { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
@@ -79,6 +79,8 @@ const beSurrogateGallerySlides = [
   { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
 ]
 
 /** 防抖保存到 localStorage，表单或步骤变化时自动保存 */
@@ -639,7 +641,7 @@ function scrollToPageTop() {
                 {{ t.landing.heroSubtitle }}
               </p>
               <p
-                class="max-w-full w-fit inline-flex self-center rounded-md bg-black/55 px-4 py-2.5 text-center text-4.5 text-white font-bold leading-snug shadow-md lg:text-5.5 sm:text-5"
+                class="max-w-full w-fit inline-flex self-center rounded-md bg-[#c17c45] px-4 py-2.5 text-center text-4.5 text-white font-bold leading-snug lg:text-5.5 sm:text-5"
                 style="font-family: var(--font-secondary)"
               >
                 {{ t.landing.heroCompensation }}
@@ -1401,7 +1403,7 @@ function scrollToPageTop() {
                 <button
                   v-if="currentStep > 1"
                   type="button"
-                  class="border border-[var(--grayish-green)] rounded-2 px-8 py-3 text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+                  class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white transition hover:opacity-90"
                   @click="goPrev"
                 >
                   {{ t.btnPrev }}
@@ -1441,9 +1443,9 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <AssociationSection variant="plain" />
+    <AssociationSection variant="plain" class="!pb-0" />
 
-    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
+    <section class="bg-[var(--head-bg)] px-4 pb-12 pt-0 md:px-16 md:pb-16 md:pt-0">
       <div class="mx-auto max-w-220 text-center">
         <p
           class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5"
@@ -1461,7 +1463,7 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-22">
+    <section class="bg-[var(--head-bg)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-320">
         <h2 class="text-center text-7 font-semibold md:text-9" style="font-family: var(--font-primary)">
           {{ t.landing.shortsTitle }}
@@ -1522,7 +1524,7 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
+    <section class="bg-[var(--head-bg)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-280 lg:max-w-320">
         <h2
           class="mx-auto mb-12 max-w-260 text-center text-6 font-semibold md:mb-14 md:max-w-2xl lg:text-9 md:text-8"
@@ -1545,7 +1547,7 @@ function scrollToPageTop() {
             </ul>
             <NuxtLink
               :to="localePath('/eligibility')"
-              class="mt-6 inline-flex border-2 border-[var(--grayish-green)] rounded-2 px-6 py-2.5 text-4 text-[var(--grayish-green)] font-semibold transition hover:bg-[var(--grayish-green)] hover:text-white"
+              class="mt-6 inline-flex rounded-2 bg-[var(--grayish-green)] px-6 py-2.5 text-4 text-white font-semibold transition hover:opacity-90"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
@@ -1564,7 +1566,7 @@ function scrollToPageTop() {
             </ul>
             <NuxtLink
               :to="localePath('/benefit')"
-              class="mt-6 inline-flex border-2 border-[var(--grayish-green)] rounded-2 px-6 py-2.5 text-4 text-[var(--grayish-green)] font-semibold transition hover:bg-[var(--grayish-green)] hover:text-white"
+              class="mt-6 inline-flex rounded-2 bg-[var(--grayish-green)] px-6 py-2.5 text-4 text-white font-semibold transition hover:opacity-90"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>

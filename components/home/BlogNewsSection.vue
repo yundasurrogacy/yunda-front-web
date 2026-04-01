@@ -323,7 +323,7 @@ function getDetailPath(post: BlogItem): string {
 </script>
 
 <template>
-  <section class="relative overflow-hidden border-t border-[var(--primary-brown)]/15 bg-[linear-gradient(160deg,#fffaf2_0%,#f6efe1_45%,#eef2eb_100%)] px-4 py-18 md:px-20 md:py-24">
+  <section class="relative overflow-hidden bg-[var(--head-bg)] px-4 py-12 md:px-20 md:py-16">
     <div class="pointer-events-none absolute h-60 w-60 rounded-full bg-[rgba(169,108,66,0.16)] blur-3xl -left-16 -top-20" />
     <div class="pointer-events-none absolute h-68 w-68 rounded-full bg-[rgba(132,133,112,0.22)] blur-3xl -bottom-16 -right-18" />
 
