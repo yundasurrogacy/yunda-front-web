@@ -24,6 +24,11 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  /** 更紧凑的 label 间距（如 GC 首屏 Step 1） */
+  compact: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 defineEmits(['update:modelValue'])
@@ -32,7 +37,7 @@ defineEmits(['update:modelValue'])
 <template>
   <div class="w-full flex flex-col justify-between">
     <div class="flex items-start">
-      <label v-if="label" class="mb-4 block leading-6">
+      <label v-if="label" class="block leading-6" :class="compact ? 'mb-2' : 'mb-4'">
         {{ label }}
         <span v-if="required" class="text-red-500">*</span>
       </label>

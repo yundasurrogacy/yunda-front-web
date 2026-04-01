@@ -2,101 +2,117 @@
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
+
+const partners = [
+  { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
+  { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
+  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null },
+  { name: 'MHB', logo: '/images/mhb-logo.png', url: null },
+]
 </script>
 
 <template>
-  <section class="bg-[var(--head-bg)] px-4 py-20 md:px-20 md:py-25">
-    <div class="mx-auto mb-16 max-w-280 text-center md:mb-20">
-      <h2 class="scroll-animate text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
-        {{ $t('home.statsSection.chooseUsTitle') }}
-      </h2>
-      <p
-        class="scroll-animate scroll-animate-delay-100 mx-auto mt-6 max-w-260 text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
-        style="font-family: var(--font-secondary)"
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <img
+        class="h-full w-full object-cover object-center"
+        src="/images/home/home-redesign/why-choose-advantages-bg.png"
+        alt=""
+        width="1920"
+        height="1080"
+        loading="lazy"
+        decoding="async"
       >
-        {{ $t('home.statsSection.chooseUsDescription') }}
-      </p>
-      <h3
-        class="scroll-animate scroll-animate-delay-150 mt-12 text-6 font-semibold md:mt-16 md:text-8"
-        style="font-family: var(--font-primary)"
-      >
-        {{ $t('home.statsSection.advantagesTitle') }}
-      </h3>
+      <div class="absolute inset-0 bg-[rgba(255,252,248,0.78)] backdrop-blur-[2px]" />
     </div>
-    <div class="grid grid-cols-1 mx-auto max-w-320 gap-20 lg:grid-cols-4 md:grid-cols-2 md:max-w-full md:gap-27.5">
-      <!-- Stat 1 -->
-      <div class="scroll-animate flex flex-col items-center text-center">
-        <div
-          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
-          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
-        >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">10+</span>
-          </div>
+
+    <div class="relative z-[1] mx-auto max-w-320 px-6 py-16 lg:px-16 lg:py-28 md:px-12 md:py-22">
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-0">
+        <div class="scroll-animate flex-1 border-b border-black pb-10 lg:border-none lg:pr-12 xl:pr-16">
+          <h2
+            class="text-6 text-black font-bold font-sans md:text-7.5"
+          >
+            {{ $t('home.statsSection.chooseUsTitle') }}
+          </h2>
+          <p
+            class="mt-6 text-4.5 text-black leading-relaxed font-sans md:text-5 md:leading-relaxed"
+          >
+            {{ $t('home.statsSection.chooseUsParagraph1') }}
+          </p>
+          <p
+            class="mt-4 text-4.5 text-black leading-relaxed font-sans md:mt-5 md:text-5 md:leading-relaxed"
+          >
+            {{ $t('home.statsSection.chooseUsParagraph2') }}
+          </p>
         </div>
-        <p class="text-center leading-relaxed">
-          {{ $t('home.statsSection.stat1') }}
-        </p>
+
+        <div
+          class="hidden w-px shrink-0 self-stretch bg-black lg:block"
+          aria-hidden="true"
+        />
+
+        <div class="scroll-animate scroll-animate-delay-100 flex-1 lg:pl-12 xl:pl-16">
+          <h3
+            class="text-6 text-black font-bold font-sans md:text-7.5"
+          >
+            {{ $t('home.statsSection.advantagesTitle') }}
+          </h3>
+          <ul
+            class="mt-6 text-4.5 text-black leading-relaxed font-sans md:mt-7 space-y-4 md:text-5 md:leading-relaxed md:space-y-5"
+          >
+            <li>
+              {{ $t('home.statsSection.advantage1a') }}<strong>{{ $t('home.statsSection.advantage1b') }}</strong>
+            </li>
+            <li>
+              {{ $t('home.statsSection.advantage2a') }}<strong>{{ $t('home.statsSection.advantage2b') }}</strong>
+            </li>
+            <li>
+              {{ $t('home.statsSection.advantage3a') }}<strong>{{ $t('home.statsSection.advantage3b') }}</strong>{{ $t('home.statsSection.advantage3c') }}
+            </li>
+            <li>
+              {{ $t('home.statsSection.advantage4a') }}<strong>{{ $t('home.statsSection.advantage4b') }}</strong>{{ $t('home.statsSection.advantage4c') }}
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Stat 2 -->
-      <div class="scroll-animate scroll-animate-delay-100 flex flex-col items-center text-center">
-        <div
-          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
-          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
+      <div class="border-t border-black/15 pb-6 pt-12 lg:pb-10 lg:pt-16 md:pb-8 md:pt-14">
+        <h2
+          class="scroll-animate scroll-animate-delay-200 mb-8 text-center text-6 text-black font-semibold md:mb-10 lg:text-9 md:text-7.5"
+          style="font-family: var(--font-primary)"
         >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">400+</span>
-          </div>
+          {{ $t('home.associationSection.title') }}
+        </h2>
+        <div class="scroll-animate scroll-animate-delay-300 flex flex-wrap items-center justify-center gap-8 lg:gap-16 md:gap-12">
+          <template v-for="(partner, index) in partners" :key="index">
+            <a
+              v-if="partner.url"
+              :href="partner.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="h-16 flex items-center justify-center transition-opacity lg:h-24 md:h-20 hover:opacity-80"
+            >
+              <img
+                :src="partner.logo"
+                :alt="partner.name"
+                class="h-full w-auto object-contain"
+                loading="lazy"
+              >
+            </a>
+            <div
+              v-else
+              class="h-16 flex items-center justify-center lg:h-24 md:h-20"
+            >
+              <img
+                :src="partner.logo"
+                :alt="partner.name"
+                class="h-full w-auto object-contain"
+                loading="lazy"
+              >
+            </div>
+          </template>
         </div>
-        <p class="text-center leading-relaxed">
-          {{ $t('home.statsSection.stat2') }}
-        </p>
-      </div>
-
-      <!-- Stat 3 -->
-      <div class="scroll-animate scroll-animate-delay-200 flex flex-col items-center text-center">
-        <div
-          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
-          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
-        >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">300+</span>
-          </div>
-        </div>
-        <p class="text-center leading-relaxed">
-          {{ $t('home.statsSection.stat3') }}
-        </p>
-      </div>
-
-      <!-- Stat 4 -->
-      <div class="scroll-animate scroll-animate-delay-300 flex flex-col items-center text-center">
-        <div
-          class="relative mb-5 h-59 w-59 overflow-hidden rounded-full"
-          style="background: radial-gradient(circle at center, #ffffff 0%, #F7F7F5 40%, #E5E8E3 80%, #DADDD9 100%);"
-        >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-16 font-semibold font-['Cormorant'] italic md:text-16">95%+</span>
-          </div>
-        </div>
-        <p class="text-center leading-relaxed">
-          {{ $t('home.statsSection.stat4') }}
-        </p>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.ball {
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.9) 0%,
-    /* 中心亮 */ var(--grayish-green) 60%,
-    /* 中段本色 */ rgba(100, 100, 100, 0.25) 100% /* 边缘暗 */
-  );
-  box-shadow:
-    inset 0 2px 8px rgba(255, 255, 255, 0.6),
-    /* 顶部高光 */ inset 0 -2px 12px rgba(0, 0, 0, 0.15); /* 底部阴影 */
-}
-</style>

@@ -113,12 +113,19 @@
     },
     "statsSection": {
       "chooseUsTitle": "为何选择孕达",
-      "chooseUsDescription": "孕达是覆盖全美合法代孕州的专业跨境代孕机构。依托可靠的生殖医疗、法律与保险合作伙伴网络，我们为准父母与代孕母提供个性化的全流程支持。",
+      "chooseUsParagraph1": "孕达是覆盖全美合法代孕州的专业跨境代孕机构。",
+      "chooseUsParagraph2": "依托可靠的生殖医疗、法律与保险合作伙伴网络，我们为准父母与代孕母提供个性化的全流程支持。",
       "advantagesTitle": "我们的优势",
-      "stat1": "年深耕辅助生殖行业",
-      "stat2": "组全球家庭选择孕达",
-      "stat3": "个完整试管婴儿与代孕项目落地",
-      "stat4": "的客户满意度"
+      "advantage1a": "— 服务家庭",
+      "advantage1b": "遍及全球",
+      "advantage2a": "— 完整 IVF 与代孕旅程",
+      "advantage2b": "圆满落地",
+      "advantage3a": "— 第三方辅助生殖领域",
+      "advantage3b": "多年实战经验",
+      "advantage3c": "",
+      "advantage4a": "— ",
+      "advantage4b": "客户满意度",
+      "advantage4c": "多年来保持稳定"
     },
     "surrogateCareSection": {
       "title": "代孕妈妈关怀",

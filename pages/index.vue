@@ -3,14 +3,11 @@ import { computed } from 'vue'
 import { buildHowToSchema, buildServiceSchema } from '~/utils/schema'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
-import AssociationSection from '../components/home/AssociationSection.vue'
 import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
 import GoogleReviewsSection from '../components/home/GoogleReviewsSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
-import IntroVideoSection from '../components/home/IntroVideoSection.vue'
 import OurServicesSection from '../components/home/OurServicesSection.vue'
-import ParentsSurrogatesPathsSection from '../components/home/ParentsSurrogatesPathsSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
 
@@ -129,9 +126,6 @@ useHead(() => {
     <StatsSection />
     <OurServicesSection />
     <CommitmentSection />
-    <IntroVideoSection />
-    <ParentsSurrogatesPathsSection />
-    <AssociationSection />
     <SurrogateGallerySection banner-src="/images/home/home-redesign/meet-our-surrogates-banner.jpg" />
     <GoogleReviewsSection />
     <BlogNewsSection />

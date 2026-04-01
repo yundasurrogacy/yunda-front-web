@@ -5,14 +5,14 @@ import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import AssociationSection from '@/components/home/AssociationSection.vue'
-import SurrogateGallerySection from '@/components/home/SurrogateGallerySection.vue'
 import FormCheckbox from '@/components/form/FormCheckbox.vue'
 import FormDatePicker from '@/components/form/FormDatePicker.vue'
 import FormInput from '@/components/form/FormInput.vue'
 import FormPhoneInput from '@/components/form/FormPhoneInput.vue'
 import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
+import AssociationSection from '@/components/home/AssociationSection.vue'
+import SurrogateGallerySection from '@/components/home/SurrogateGallerySection.vue'
 import { useApi } from '~/composables/useApi'
 import {
   applyFormFromStorage,
@@ -603,850 +603,857 @@ function scrollToPageTop() {
 <template>
   <div class="min-h-screen bg-[var(--head-bg)]">
     <AppHeader />
-    <div class="relative overflow-x-hidden">
-      <div
-        class="pointer-events-none absolute inset-x-0 top-0 h-[400px] sm:h-[460px] lg:h-[min(100vh,960px)] lg:min-h-[640px]"
-        aria-hidden="true"
-      >
+    <!-- 首屏：用 min-height + 背景图 object-cover 加高可视区域（换竖图/更高素材时仍适配）；叠层铺满该区域，便于表单整块落在首屏内。 -->
+    <section class="w-full overflow-x-hidden">
+      <div class="relative min-h-[min(82svh,780px)] w-full lg:min-h-[min(94svh,1080px)]">
         <img
+          class="pointer-events-none absolute inset-0 block h-full max-w-none w-full object-cover object-center"
           src="/images/be-surrogate/hero.jpg"
           alt=""
-          class="h-full w-full object-cover object-[center_22%]"
           width="1920"
           height="1080"
           decoding="async"
           fetchpriority="high"
         >
-        <div class="absolute inset-0 bg-black/50" />
-      </div>
-
-      <div class="relative z-10 mx-auto max-w-320 px-4 pb-10 pt-6 md:px-6 lg:pb-20 lg:pt-12">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-6">
+        <div
+          class="absolute inset-0 min-h-0 min-w-0 w-full flex flex-col from-black/50 via-black/45 to-black/55 bg-gradient-to-b"
+        >
           <div
-            class="order-1 space-y-5 text-center lg:col-span-5 lg:pt-4 lg:text-left"
-            style="text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45)"
+            class="mx-auto max-w-[min(100%,1600px)] min-h-0 w-full flex flex-1 flex-col gap-6 px-4 pb-4 pt-22 max-lg:flex-none lg:flex-row lg:items-start lg:justify-between lg:gap-0 lg:px-10 md:px-6 xl:px-14 lg:pb-6 lg:pt-18 md:pt-26 xl:pt-20"
           >
-            <h1
-              id="be-surrogate-hero"
-              class="text-9 font-semibold italic text-white md:text-12 lg:text-15"
-              style="font-family: var(--font-primary)"
-            >
-              {{ t.landing.heroTitle }}
-            </h1>
-            <p
-              class="text-4.5 leading-relaxed text-white/95 md:text-5"
-              style="font-family: var(--font-secondary)"
-            >
-              {{ t.landing.heroSubtitle }}
-            </p>
-            <p class="text-5 font-semibold text-white md:text-6">
-              {{ t.landing.heroCompensation }}
-            </p>
-          </div>
-
-          <div
-            id="gc-application"
-            class="order-3 mb-6 scroll-mt-28 rounded-5 border border-white/20 bg-white/95 p-6 shadow-[0_28px_64px_rgba(0,0,0,0.2)] backdrop-blur-md sm:p-8 lg:order-2 lg:col-span-7 lg:mb-16 lg:p-10"
-          >
-        <div class="mb-6 flex items-center justify-between gap-4">
-          <span class="text-sage-700 text-5 font-medium">
-            {{ t.stepIndicator(currentStep, TOTAL_STEPS) }}
-          </span>
-          <div class="max-w-80 flex flex-1 gap-2">
-            <span
-              v-for="s in TOTAL_STEPS"
-              :key="s"
-              class="h-2 flex-1 rounded-full"
-              :class="currentStep >= s ? 'bg-[var(--grayish-green)]' : 'bg-gray-200'"
-            />
-          </div>
-        </div>
-
-        <!-- Step 1: 一、基本信息 -->
-        <div v-show="currentStep === 1" ref="step1Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step1Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="full_name">
-              <FormInput v-model="form.general_info.full_name" :label="t.gcIntake.fullName" required />
-            </div>
-            <div data-field="email">
-              <FormInput v-model="form.general_info.email" :label="t.gcIntake.email" type="email" required />
-            </div>
-            <div data-field="phone">
-              <FormPhoneInput
-                v-model="form.general_info.phone"
-                v-model:country-code="form.general_info.country_code"
-                :label="t.gcIntake.phone"
-                required
-                default-country="US"
-              />
-            </div>
-            <div data-field="dob">
-              <FormDatePicker v-model="form.general_info.dob" :label="t.gcIntake.dob" :placeholder="t.datePlaceholder" :locale="locale" required />
-            </div>
-            <div data-field="state_of_residence">
-              <FormSelect
-                v-model="form.general_info.state_of_residence"
-                :label="t.gcIntake.stateOfResidence"
-                :options="states"
-                :placeholder="states.length ? t.form.selectStateProvince : t.form.noStatesAvailable"
-                required
-              />
-            </div>
-            <div data-field="place_of_birth">
-              <FormInput v-model="form.general_info.place_of_birth" :label="t.gcIntake.placeOfBirth" />
-            </div>
-            <div data-field="home_address" class="lg:col-span-2">
-              <FormInput v-model="form.general_info.home_address" :label="t.gcIntake.homeAddress" />
-            </div>
-            <div data-field="height_weight" class="lg:col-span-2">
-              <label class="text-sage-700 mb-4 block leading-6">{{ t.gcIntake.heightWeight }} <span class="text-red-500">*</span></label>
-              <div class="flex flex-wrap gap-4">
-                <div class="flex items-center gap-2">
-                  <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-15 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
-                  <span class="text-gray-600">{{ t.form.units.feet }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-15 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
-                  <span class="text-gray-600">{{ t.form.units.inches }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-15 w-24 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
-                  <span class="text-gray-600">{{ t.form.units.pounds }}</span>
-                </div>
-              </div>
-              <p class="mt-2 text-xs text-gray-500">
-                {{ t.form.bmiAutoCalculated }}: {{ computedBMI }}
-              </p>
-            </div>
-            <div data-field="occupation_type">
-              <p class="mb-4">
-                {{ t.gcIntake.occupationSource }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="employed" :label="t.gcIntake.occupationEmployed" />
-                <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="stay_at_home" :label="t.gcIntake.occupationStayAtHome" />
-                <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="unemployed" :label="t.gcIntake.occupationUnemployed" />
-              </div>
-              <FormInput v-if="form.general_info.occupation_type === 'employed' || form.general_info.occupation_type === 'unemployed'" v-model="form.general_info.occupation_specify" class="mt-4" required />
-            </div>
-            <div data-field="marital_status">
-              <p class="mb-4">
-                {{ t.gcIntake.maritalStatus }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="married" :label="t.gcIntake.maritalMarried" />
-                <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="single" :label="t.gcIntake.maritalSingle" />
-                <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="cohabitating" :label="t.gcIntake.maritalCohabitating" />
-                <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="divorced" :label="t.gcIntake.maritalDivorced" />
-              </div>
-              <FormInput v-if="form.general_info.marital_status === 'single'" v-model="form.general_info.single_partner_info" :label="t.gcIntake.singlePartnerInfo" class="mt-4" data-field="single_partner_info" />
-            </div>
-            <div data-field="us_citizen_or_resident">
-              <p class="mb-4">
-                {{ t.gcIntake.usCitizenOrResident }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="ethnicity" class="lg:col-span-2">
-              <p class="mb-4">
-                {{ t.gcIntake.ethnicity.label }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <FormCheckbox v-model="form.general_info.ethnicity.asian" :label="t.gcIntake.ethnicity.options.asian" />
-                <FormCheckbox v-model="form.general_info.ethnicity.white" :label="t.gcIntake.ethnicity.options.white" />
-                <FormCheckbox v-model="form.general_info.ethnicity.black" :label="t.gcIntake.ethnicity.options.black" />
-                <FormCheckbox v-model="form.general_info.ethnicity.hispanic" :label="t.gcIntake.ethnicity.options.hispanic" />
-                <FormCheckbox v-model="form.general_info.ethnicity.middleEastern" :label="t.gcIntake.ethnicity.options.middleEastern" />
-                <FormCheckbox v-model="form.general_info.ethnicity.nativeAmerican" :label="t.gcIntake.ethnicity.options.nativeAmerican" />
-                <FormCheckbox v-model="form.general_info.ethnicity.pacificIslander" :label="t.gcIntake.ethnicity.options.pacificIslander" />
-                <FormCheckbox v-model="form.general_info.ethnicity.mixedRace" :label="t.gcIntake.ethnicity.options.mixedRace" />
-                <FormCheckbox v-model="form.general_info.ethnicity.preferNotToSay" :label="t.gcIntake.ethnicity.options.preferNotToSay" />
-                <FormCheckbox v-model="form.general_info.ethnicity.other" :label="t.gcIntake.ethnicity.options.other" />
-              </div>
-              <FormInput v-if="form.general_info.ethnicity.other" v-model="form.general_info.ethnicity.otherText" :label="t.gcIntake.ethnicitySelfDescribe" class="mt-4" data-field="ethnicity_other" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: 二、怀孕与分娩史 -->
-        <div v-show="currentStep === 2" ref="step2Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step2Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <FormInput v-model="form.pregnancy_birth_history.total_children" :label="t.gcIntake.totalChildren" type="number" data-field="total_children" required />
-            <FormInput v-model="form.pregnancy_birth_history.total_vaginal" :label="t.gcIntake.totalVaginal" type="number" />
-            <FormInput v-model="form.pregnancy_birth_history.total_c_sections" :label="t.gcIntake.totalCSections" type="number" />
-            <div data-field="miscarriages">
-              <p class="mb-4">
-                {{ t.gcIntake.miscarriages }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="misc_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="misc_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.pregnancy_birth_history.miscarriages === 'yes'" v-model="form.pregnancy_birth_history.miscarriages_detail" :label="t.gcIntake.miscarriagesDetail" class="mt-4" />
-            </div>
-            <div data-field="abortions">
-              <p class="mb-4">
-                {{ t.gcIntake.abortions }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abor_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abor_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.pregnancy_birth_history.abortions === 'yes'" v-model="form.pregnancy_birth_history.abortions_detail" :label="t.gcIntake.abortionsDetail" class="mt-4" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: 三、分娩记录 -->
-        <div v-show="currentStep === 3" ref="step3Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step3Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="been_surrogate_before">
-              <p class="mb-4">
-                {{ t.gcIntake.beenSurrogateBefore }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_birth_history.been_surrogate_before" name="been_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_birth_history.been_surrogate_before" name="been_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.pregnancy_birth_history.been_surrogate_before === 'yes'" v-model="form.pregnancy_birth_history.been_surrogate_when" :label="t.gcIntake.beenSurrogateWhen" class="mt-4" />
-            </div>
-          </div>
-          <div class="mt-8 space-y-4" data-field="delivery_history">
-            <div v-for="(d, idx) in form.delivery_history" :key="idx" :data-field="`delivery_${idx}`" class="rounded-3 bg-[rgba(234,232,208,0.15)] p-6">
-              <div class="mb-4 flex justify-between">
-                <span class="font-semibold">{{ t.gcIntake.babyNum(idx + 1) }}</span>
-                <button type="button" class="text-4 text-[var(--grayish-green)] hover:underline" @click="removeDelivery(idx)">
-                  {{ t.gcIntake.removeDelivery }}
-                </button>
-              </div>
-              <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                <FormDatePicker v-model="d.delivery_date" :label="t.gcIntake.deliveryDate" :placeholder="t.datePlaceholder" :locale="locale" />
-                <FormInput v-model="d.gender" :label="t.gcIntake.gender" />
-                <FormInput v-model="d.birth_weight" :label="t.gcIntake.birthWeight" />
-                <FormInput v-model="d.number_of_weeks" :label="t.gcIntake.numberOfWeeks" />
-                <FormInput v-model="d.delivery_type" :label="t.gcIntake.deliveryType" />
-                <FormInput v-model="d.hospital" :label="t.gcIntake.deliveryHospital" />
-              </div>
-            </div>
-            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= 10" @click="addDelivery">
-              {{ t.gcIntake.addDelivery }}
-            </button>
-          </div>
-        </div>
-
-        <!-- Step 4: 四、孕期相关病史 -->
-        <div v-show="currentStep === 4" ref="step4Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step4Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="anemia">
-              <p class="mb-2">
-                {{ t.gcIntake.anemia }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.anemia" name="anemia_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.anemia" name="anemia_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="severe_vomiting_3mo">
-              <p class="mb-2">
-                {{ t.gcIntake.severeVomiting3mo }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="sev_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="sev_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <FormInput v-model="form.pregnancy_medical.bp_during_pregnancy" :label="t.gcIntake.bpDuringPregnancy" data-field="bp_during_pregnancy" required />
-            <div data-field="preeclampsia">
-              <p class="mb-2">
-                {{ t.gcIntake.preeclampsia }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.preeclampsia" name="pre_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.preeclampsia" name="pre_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="gestational_diabetes">
-              <p class="mb-2">
-                {{ t.gcIntake.gestationalDiabetes }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gd_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gd_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="hypertension_pregnancy">
-              <p class="mb-2">
-                {{ t.gcIntake.hypertensionPregnancy }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hyp_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hyp_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="blood_transfusion">
-              <p class="mb-2">
-                {{ t.gcIntake.bloodTransfusion }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bt_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bt_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="seizures">
-              <p class="mb-2">
-                {{ t.gcIntake.seizures }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.pregnancy_medical.seizures" name="seiz_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.pregnancy_medical.seizures" name="seiz_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 5: 五、医疗与健康史 -->
-        <div v-show="currentStep === 5" ref="step5Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step5Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="regular_menstrual_cycles">
-              <p class="mb-2">
-                {{ t.gcIntake.regularMenstrualCycles }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="men_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="men_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="birth_control">
-              <p class="mb-2">
-                {{ t.gcIntake.birthControl }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.birth_control" name="bc_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.medical_health.birth_control" name="bc_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.medical_health.birth_control === 'yes'" v-model="form.medical_health.birth_control_type" :label="t.gcIntake.birthControlType" class="mt-4" data-field="birth_control_type" />
-            </div>
-            <div data-field="taking_medications">
-              <p class="mb-2">
-                {{ t.gcIntake.takingMedications }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.taking_medications" name="tm_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.medical_health.taking_medications" name="tm_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.medical_health.taking_medications === 'yes'" v-model="form.medical_health.medications_list" :label="t.gcIntake.medicationsList" class="mt-4" data-field="medications_list" />
-            </div>
-            <FormInput v-model="form.medical_health.last_pap_smear" :label="t.gcIntake.lastPapSmear" data-field="last_pap_smear" required />
-            <div data-field="covid_vaccinated">
-              <p class="mb-2">
-                {{ t.gcIntake.covidVaccinated }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.covid_vaccinated" name="cov_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.medical_health.covid_vaccinated" name="cov_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="hep_b_vaccinated">
-              <p class="mb-2">
-                {{ t.gcIntake.hepBVaccinated }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hep_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hep_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="varicella_vaccinated">
-              <p class="mb-2">
-                {{ t.gcIntake.varicellaVaccinated }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.varicella_vaccinated" name="var_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.medical_health.varicella_vaccinated" name="var_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="ongoing_medical_treatment">
-              <p class="mb-2">
-                {{ t.gcIntake.ongoingMedicalTreatment }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="omt_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="omt_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="surgeries_past_2y">
-              <p class="mb-2">
-                {{ t.gcIntake.surgeriesPast2y }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.medical_health.surgeries_past_2y" name="sur_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.medical_health.surgeries_past_2y" name="sur_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.medical_health.surgeries_past_2y === 'yes'" v-model="form.medical_health.surgeries_specify" :label="t.gcIntake.surgeriesSpecify" class="mt-4" data-field="surgeries_specify" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 6: 六、心理健康史 -->
-        <div v-show="currentStep === 6" ref="step6Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step6Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="anxiety_depression">
-              <p class="mb-2">
-                {{ t.gcIntake.anxietyDepression }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.mental_health.anxiety_depression" name="anx_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.mental_health.anxiety_depression" name="anx_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="bipolar_schizo_personality">
-              <p class="mb-2">
-                {{ t.gcIntake.bipolarSchizoPersonality }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bip_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bip_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="adhd">
-              <p class="mb-2">
-                {{ t.gcIntake.adhd }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.mental_health.adhd" name="adhd_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.mental_health.adhd" name="adhd_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="meds_anxiety_depression">
-              <p class="mb-2">
-                {{ t.gcIntake.medsAnxietyDepression }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.mental_health.meds_anxiety_depression" name="meds_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.mental_health.meds_anxiety_depression" name="meds_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.mental_health.meds_anxiety_depression === 'yes'" v-model="form.mental_health.meds_specify" :label="t.gcIntake.medsSpecify" class="mt-4" data-field="meds_specify" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 7: 七、药物使用史 -->
-        <div v-show="currentStep === 7" ref="step7Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step7Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="drug_use_pregnancy">
-              <p class="mb-2">
-                {{ t.gcIntake.drugUsePregnancy }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drug_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drug_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <div v-if="form.substance_use.drug_use_pregnancy === 'yes'" class="mt-4 flex flex-wrap gap-4">
-                <FormCheckbox v-model="form.substance_use.drug_marijuana" :label="t.gcIntake.drugMarijuana" />
-                <FormCheckbox v-model="form.substance_use.drug_fentanyl" :label="t.gcIntake.drugFentanyl" />
-                <FormCheckbox v-model="form.substance_use.drug_methamphetamine" :label="t.gcIntake.drugMethamphetamine" />
-                <FormCheckbox v-model="form.substance_use.drug_mdma" :label="t.gcIntake.drugMDMA" />
-                <FormInput v-model="form.substance_use.drug_other" :label="t.gcIntake.drugOther" />
-              </div>
-            </div>
-            <div data-field="marijuana_current">
-              <p class="mb-2">
-                {{ t.gcIntake.marijuanaCurrent }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.substance_use.marijuana_current" name="marj_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.substance_use.marijuana_current" name="marj_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.substance_use.marijuana_current === 'yes'" v-model="form.substance_use.marijuana_last_use" :label="t.gcIntake.marijuanaLastUse" class="mt-4" data-field="marijuana_last_use" />
-            </div>
-            <div data-field="smoked_vaped_pregnancy">
-              <p class="mb-2">
-                {{ t.gcIntake.smokedVapedPregnancy }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smoke_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smoke_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="alcohol">
-              <p class="mb-2">
-                {{ t.gcIntake.alcohol }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.substance_use.alcohol" name="alc_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.substance_use.alcohol" name="alc_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.substance_use.alcohol === 'yes'" v-model="form.substance_use.alcohol_frequency" :label="t.gcIntake.alcoholFrequency" class="mt-4" data-field="alcohol_frequency" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 8: 八、传染病史 -->
-        <div v-show="currentStep === 8" ref="step8Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step8Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="syphilis">
-              <p class="mb-2">
-                {{ t.gcIntake.syphilis }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.infectious_disease.syphilis" name="syp_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.infectious_disease.syphilis" name="syp_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="hepatitis_b_c">
-              <p class="mb-2">
-                {{ t.gcIntake.hepatitisBC }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbc_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbc_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="genital_herpes">
-              <p class="mb-2">
-                {{ t.gcIntake.genitalHerpes }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.infectious_disease.genital_herpes" name="herp_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.infectious_disease.genital_herpes" name="herp_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="hiv">
-              <p class="mb-2">
-                {{ t.gcIntake.hiv }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.infectious_disease.hiv" name="hiv_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.infectious_disease.hiv" name="hiv_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 9: 九、其他医疗状况 -->
-        <div v-show="currentStep === 9" ref="step9Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step9Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="asthma">
-              <p class="mb-2">
-                {{ t.gcIntake.asthma }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.other_medical.asthma" name="ast_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.other_medical.asthma" name="ast_v2" value="yes" :label="t.form.yes" />
-              </div>
-              <FormInput v-if="form.other_medical.asthma === 'yes'" v-model="form.other_medical.asthma_inhaler_per_week" :label="t.gcIntake.asthmaInhaler" class="mt-4" data-field="asthma_inhaler_per_week" />
-            </div>
-            <div data-field="heart_conditions">
-              <p class="mb-2">
-                {{ t.gcIntake.heartConditions }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.other_medical.heart_conditions" name="heart_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.other_medical.heart_conditions" name="heart_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="cancer_history">
-              <p class="mb-2">
-                {{ t.gcIntake.cancerHistory }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.other_medical.cancer_history" name="can_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.other_medical.cancer_history" name="can_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="scoliosis">
-              <p class="mb-2">
-                {{ t.gcIntake.scoliosis }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.other_medical.scoliosis" name="sco_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.other_medical.scoliosis" name="sco_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="endometrial_ablation">
-              <p class="mb-2">
-                {{ t.gcIntake.endometrialAblation }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.other_medical.endometrial_ablation" name="endo_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.other_medical.endometrial_ablation" name="endo_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 10: 十、偏好与匹配考量 -->
-        <div v-show="currentStep === 10" ref="step10Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step10Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <FormInput v-model="form.preferences.availability" :label="t.gcIntake.availability" data-field="availability" required />
-            <FormInput v-model="form.preferences.health_insurance" :label="t.gcIntake.healthInsurance" data-field="health_insurance" required />
-            <div data-field="open_twins">
-              <p class="mb-2">
-                {{ t.gcIntake.openTwins }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_twins" name="twins_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_twins" name="twins_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_fetal_reduction">
-              <p class="mb-2">
-                {{ t.gcIntake.openFetalReduction }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_fetal_reduction" name="red_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_fetal_reduction" name="red_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_termination">
-              <p class="mb-2">
-                {{ t.gcIntake.openTermination }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_termination" name="term_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_termination" name="term_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_amniocentesis_cvs">
-              <p class="mb-2">
-                {{ t.gcIntake.openAmniocentesisCVS }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="cvs_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="cvs_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_same_sex_single_ip">
-              <p class="mb-2">
-                {{ t.gcIntake.openSameSexSingleIP }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_same_sex_single_ip" name="ss_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_same_sex_single_ip" name="ss_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="willing_pump_breast_milk">
-              <p class="mb-2">
-                {{ t.gcIntake.willingPumpBreastMilk }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_ip_hiv">
-              <p class="mb-2">
-                {{ t.gcIntake.openIPHIV }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_ip_hiv" name="iphiv_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_ip_hiv" name="iphiv_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-            <div data-field="open_ip_hepatitis_b">
-              <p class="mb-2">
-                {{ t.gcIntake.openIPHepatitisB }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="iphep_v2" value="yes" :label="t.form.yes" />
-                <FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="iphep_v2" value="no" :label="t.form.no" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 11: 十一、法律与行政 -->
-        <div v-show="currentStep === 11" ref="step11Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step11Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <div data-field="pending_legal">
-              <p class="mb-2">
-                {{ t.gcIntake.pendingLegal }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.legal_admin.pending_legal" name="legal_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.legal_admin.pending_legal" name="legal_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="criminal_record">
-              <p class="mb-2">
-                {{ t.gcIntake.criminalRecord }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.legal_admin.criminal_record" name="crim_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.legal_admin.criminal_record" name="crim_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <div data-field="government_assistance">
-              <p class="mb-2">
-                {{ t.gcIntake.governmentAssistance }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex gap-8">
-                <FormRadio v-model="form.legal_admin.government_assistance" name="gov_v2" value="no" :label="t.form.no" />
-                <FormRadio v-model="form.legal_admin.government_assistance" name="gov_v2" value="yes" :label="t.form.yes" />
-              </div>
-            </div>
-            <FormInput v-model="form.legal_admin.emergency_contact" :label="t.gcIntake.emergencyContact" class="lg:col-span-2" data-field="emergency_contact" required />
-          </div>
-        </div>
-
-        <!-- Step 12: 十二、备注 -->
-        <div v-show="currentStep === 12" ref="step12Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step12Title }}
-          </h2>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
-            <FormInput v-model="form.notes.referred_by" :label="t.gcIntake.referredBy" data-field="referred_by" required />
-            <div data-field="medical_records_source">
-              <p class="mb-2">
-                {{ t.gcIntake.medicalRecordsSource }} <span class="text-red-500">*</span>
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="patient_portal" :label="t.gcIntake.medicalRecordsPatientPortal" />
-                <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="clinic" :label="t.gcIntake.medicalRecordsClinic" />
-                <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="other" :label="t.gcIntake.medicalRecordsOther" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 13: 上传照片与同意 -->
-        <div v-show="currentStep === 13" ref="step13Ref" class="scroll-mt-24 space-y-6">
-          <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
-            {{ t.step13Title }}
-          </h2>
-          <div data-field="uploadPhotos" class="space-y-4">
-            <p class="font-medium">
-              {{ t.form.uploadPhotos }} <span class="text-red-500">*</span> ({{ t.form.uploadPhotosMinTip }})
-            </p>
-            <div v-if="form.uploadPhotos.length" class="flex flex-wrap gap-4">
-              <div v-for="(photo, idx) in form.uploadPhotos" :key="idx" class="group relative">
-                <img :src="photo" class="h-24 w-24 border rounded-2 object-cover">
-                <button type="button" class="absolute right-1 top-1 h-6 w-6 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-red-500" @click.stop="removePhoto(idx)">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-                </button>
-              </div>
-            </div>
             <div
-              class="flex flex-col cursor-pointer items-center justify-center border-2 rounded-4 border-dashed py-10 transition"
-              :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
-              @dragover.prevent
-              @drop.prevent="handleDrop"
-              @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
+              class="order-1 max-w-xl w-full flex flex-col items-center self-center justify-center text-center 2xl:max-w-[30rem] lg:max-w-[min(100%,26rem)] lg:w-auto xl:max-w-[28rem] lg:flex-none space-y-4 lg:space-y-3"
+              style="text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45)"
             >
-              <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-gray-500">{{ t.form.uploadPhotosMaxTip }}</span>
-              <template v-else>
-                <span class="mb-2 block text-6 text-[var(--grayish-green)]">+</span>
-                <span class="text-5 text-gray-600">{{ t.form.uploadPhotosTip }}</span>
-              </template>
-              <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
+              <h1
+                id="be-surrogate-hero"
+                class="text-8 text-white font-semibold italic lg:text-12 sm:text-10 xl:text-[3.2rem] xl:leading-tight"
+                style="font-family: var(--font-primary)"
+              >
+                {{ t.landing.heroTitle }}
+              </h1>
+              <p
+                class="text-4 text-white/95 leading-snug lg:text-[1.05rem] sm:text-4.5 lg:leading-relaxed"
+                style="font-family: var(--font-secondary)"
+              >
+                {{ t.landing.heroSubtitle }}
+              </p>
+              <p
+                class="max-w-full w-fit inline-flex self-center rounded-md bg-black/55 px-4 py-2.5 text-center text-4.5 text-white font-bold leading-snug shadow-md lg:text-5.5 sm:text-5"
+                style="font-family: var(--font-secondary)"
+              >
+                {{ t.landing.heroCompensation }}
+              </p>
+            </div>
+
+            <div
+              id="gc-application"
+              class="order-2 mb-2 min-h-0 scroll-mt-28 border border-white/30 rounded-5 bg-[rgba(253,251,245,0.96)] shadow-[0_28px_64px_rgba(0,0,0,0.22)] backdrop-blur-md lg:mb-0 sm:mb-4 lg:max-h-full lg:max-w-[min(100%,42rem)] lg:min-h-0 lg:w-auto max-lg:w-full xl:max-w-[46rem] lg:flex-none lg:self-start max-lg:self-center lg:overflow-y-auto lg:overscroll-y-contain"
+              :class="currentStep === 1 ? 'p-4 sm:p-5 md:p-5 lg:p-4 xl:p-5' : 'p-6 sm:p-8 lg:p-10'"
+            >
+              <div
+                class="flex items-center justify-between gap-4"
+                :class="currentStep === 1 ? 'mb-2 lg:mb-2' : 'mb-6'"
+              >
+                <span class="text-sage-700 text-5 font-medium">
+                  {{ t.stepIndicator(currentStep, TOTAL_STEPS) }}
+                </span>
+                <div class="max-w-80 flex flex-1 gap-2">
+                  <span
+                    v-for="s in TOTAL_STEPS"
+                    :key="s"
+                    class="h-2 flex-1 rounded-full"
+                    :class="currentStep >= s ? 'bg-[var(--grayish-green)]' : 'bg-gray-200'"
+                  />
+                </div>
+              </div>
+
+              <!-- Step 1: 一、基本信息（首屏紧凑排版，便于落在背景图区域内） -->
+              <div v-show="currentStep === 1" ref="step1Ref" class="scroll-mt-10 space-y-2 lg:space-y-2 sm:space-y-2">
+                <h2 class="text-sage-700 text-5 font-semibold lg:text-[1.35rem] sm:text-6 lg:leading-snug" style="font-family: var(--font-primary)">
+                  {{ t.step1Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 sm:gap-2 lg:gap-x-10 lg:gap-y-2">
+                  <div data-field="full_name">
+                    <FormInput v-model="form.general_info.full_name" compact :label="t.gcIntake.fullName" required />
+                  </div>
+                  <div data-field="email">
+                    <FormInput v-model="form.general_info.email" compact :label="t.gcIntake.email" type="email" required />
+                  </div>
+                  <div data-field="phone">
+                    <FormPhoneInput
+                      v-model="form.general_info.phone"
+                      v-model:country-code="form.general_info.country_code"
+                      :label="t.gcIntake.phone"
+                      required
+                      default-country="US"
+                    />
+                  </div>
+                  <div data-field="dob">
+                    <FormDatePicker v-model="form.general_info.dob" :label="t.gcIntake.dob" :placeholder="t.datePlaceholder" :locale="locale" :show-format-hint="false" required />
+                  </div>
+                  <div data-field="state_of_residence">
+                    <FormSelect
+                      v-model="form.general_info.state_of_residence"
+                      :label="t.gcIntake.stateOfResidence"
+                      :options="states"
+                      :placeholder="states.length ? t.form.selectStateProvince : t.form.noStatesAvailable"
+                      required
+                    />
+                  </div>
+                  <div data-field="place_of_birth">
+                    <FormInput v-model="form.general_info.place_of_birth" compact :label="t.gcIntake.placeOfBirth" />
+                  </div>
+                  <div data-field="home_address" class="lg:col-span-2">
+                    <FormInput v-model="form.general_info.home_address" compact :label="t.gcIntake.homeAddress" />
+                  </div>
+                  <div data-field="height_weight" class="lg:col-span-2">
+                    <label class="text-sage-700 mb-2 block text-3.5 leading-5 sm:mb-3 sm:text-4 sm:leading-6">{{ t.gcIntake.heightWeight }} <span class="text-red-500">*</span></label>
+                    <div class="flex flex-wrap gap-4">
+                      <div class="flex items-center gap-2">
+                        <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-15 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                        <span class="text-gray-600">{{ t.form.units.feet }}</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-15 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                        <span class="text-gray-600">{{ t.form.units.inches }}</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-15 w-24 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                        <span class="text-gray-600">{{ t.form.units.pounds }}</span>
+                      </div>
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500 lg:mt-0.5">
+                      {{ t.form.bmiAutoCalculated }}: {{ computedBMI }}
+                    </p>
+                  </div>
+                  <div data-field="occupation_type">
+                    <p class="mb-1.5 lg:mb-1.5 sm:mb-2">
+                      {{ t.gcIntake.occupationSource }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3 lg:gap-2">
+                      <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="employed" :label="t.gcIntake.occupationEmployed" />
+                      <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="stay_at_home" :label="t.gcIntake.occupationStayAtHome" />
+                      <FormRadio v-model="form.general_info.occupation_type" name="occ_v2" value="unemployed" :label="t.gcIntake.occupationUnemployed" />
+                    </div>
+                    <FormInput v-if="form.general_info.occupation_type === 'employed' || form.general_info.occupation_type === 'unemployed'" v-model="form.general_info.occupation_specify" compact class="mt-2" required />
+                  </div>
+                  <div data-field="marital_status">
+                    <p class="mb-1.5 lg:mb-1.5 sm:mb-2">
+                      {{ t.gcIntake.maritalStatus }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3 lg:gap-2">
+                      <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="married" :label="t.gcIntake.maritalMarried" />
+                      <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="single" :label="t.gcIntake.maritalSingle" />
+                      <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="cohabitating" :label="t.gcIntake.maritalCohabitating" />
+                      <FormRadio v-model="form.general_info.marital_status" name="mar_v2" value="divorced" :label="t.gcIntake.maritalDivorced" />
+                    </div>
+                    <FormInput v-if="form.general_info.marital_status === 'single'" v-model="form.general_info.single_partner_info" compact :label="t.gcIntake.singlePartnerInfo" class="mt-2" data-field="single_partner_info" />
+                  </div>
+                  <div data-field="us_citizen_or_resident">
+                    <p class="mb-2 lg:mb-1.5">
+                      {{ t.gcIntake.usCitizenOrResident }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-6 lg:gap-8">
+                      <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.general_info.us_citizen_or_resident" name="us_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="ethnicity" class="lg:col-span-2">
+                    <p class="mb-1.5 lg:mb-1 sm:mb-2">
+                      {{ t.gcIntake.ethnicity.label }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="grid grid-cols-1 gap-2 gap-x-4 lg:grid-cols-3 sm:grid-cols-2">
+                      <FormCheckbox v-model="form.general_info.ethnicity.asian" :label="t.gcIntake.ethnicity.options.asian" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.white" :label="t.gcIntake.ethnicity.options.white" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.black" :label="t.gcIntake.ethnicity.options.black" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.hispanic" :label="t.gcIntake.ethnicity.options.hispanic" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.middleEastern" :label="t.gcIntake.ethnicity.options.middleEastern" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.nativeAmerican" :label="t.gcIntake.ethnicity.options.nativeAmerican" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.pacificIslander" :label="t.gcIntake.ethnicity.options.pacificIslander" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.mixedRace" :label="t.gcIntake.ethnicity.options.mixedRace" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.preferNotToSay" :label="t.gcIntake.ethnicity.options.preferNotToSay" />
+                      <FormCheckbox v-model="form.general_info.ethnicity.other" :label="t.gcIntake.ethnicity.options.other" />
+                    </div>
+                    <FormInput v-if="form.general_info.ethnicity.other" v-model="form.general_info.ethnicity.otherText" compact :label="t.gcIntake.ethnicitySelfDescribe" class="mt-2" data-field="ethnicity_other" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: 二、怀孕与分娩史 -->
+              <div v-show="currentStep === 2" ref="step2Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step2Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <FormInput v-model="form.pregnancy_birth_history.total_children" :label="t.gcIntake.totalChildren" type="number" data-field="total_children" required />
+                  <FormInput v-model="form.pregnancy_birth_history.total_vaginal" :label="t.gcIntake.totalVaginal" type="number" />
+                  <FormInput v-model="form.pregnancy_birth_history.total_c_sections" :label="t.gcIntake.totalCSections" type="number" />
+                  <div data-field="miscarriages">
+                    <p class="mb-4">
+                      {{ t.gcIntake.miscarriages }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="misc_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_birth_history.miscarriages" name="misc_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.pregnancy_birth_history.miscarriages === 'yes'" v-model="form.pregnancy_birth_history.miscarriages_detail" :label="t.gcIntake.miscarriagesDetail" class="mt-4" />
+                  </div>
+                  <div data-field="abortions">
+                    <p class="mb-4">
+                      {{ t.gcIntake.abortions }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abor_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_birth_history.abortions" name="abor_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.pregnancy_birth_history.abortions === 'yes'" v-model="form.pregnancy_birth_history.abortions_detail" :label="t.gcIntake.abortionsDetail" class="mt-4" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: 三、分娩记录 -->
+              <div v-show="currentStep === 3" ref="step3Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step3Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="been_surrogate_before">
+                    <p class="mb-4">
+                      {{ t.gcIntake.beenSurrogateBefore }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_birth_history.been_surrogate_before" name="been_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_birth_history.been_surrogate_before" name="been_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.pregnancy_birth_history.been_surrogate_before === 'yes'" v-model="form.pregnancy_birth_history.been_surrogate_when" :label="t.gcIntake.beenSurrogateWhen" class="mt-4" />
+                  </div>
+                </div>
+                <div class="mt-8 space-y-4" data-field="delivery_history">
+                  <div v-for="(d, idx) in form.delivery_history" :key="idx" :data-field="`delivery_${idx}`" class="rounded-3 bg-[rgba(234,232,208,0.15)] p-6">
+                    <div class="mb-4 flex justify-between">
+                      <span class="font-semibold">{{ t.gcIntake.babyNum(idx + 1) }}</span>
+                      <button type="button" class="text-4 text-[var(--grayish-green)] hover:underline" @click="removeDelivery(idx)">
+                        {{ t.gcIntake.removeDelivery }}
+                      </button>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                      <FormDatePicker v-model="d.delivery_date" :label="t.gcIntake.deliveryDate" :placeholder="t.datePlaceholder" :locale="locale" />
+                      <FormInput v-model="d.gender" :label="t.gcIntake.gender" />
+                      <FormInput v-model="d.birth_weight" :label="t.gcIntake.birthWeight" />
+                      <FormInput v-model="d.number_of_weeks" :label="t.gcIntake.numberOfWeeks" />
+                      <FormInput v-model="d.delivery_type" :label="t.gcIntake.deliveryType" />
+                      <FormInput v-model="d.hospital" :label="t.gcIntake.deliveryHospital" />
+                    </div>
+                  </div>
+                  <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= 10" @click="addDelivery">
+                    {{ t.gcIntake.addDelivery }}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 4: 四、孕期相关病史 -->
+              <div v-show="currentStep === 4" ref="step4Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step4Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="anemia">
+                    <p class="mb-2">
+                      {{ t.gcIntake.anemia }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.anemia" name="anemia_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.anemia" name="anemia_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="severe_vomiting_3mo">
+                    <p class="mb-2">
+                      {{ t.gcIntake.severeVomiting3mo }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="sev_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.severe_vomiting_3mo" name="sev_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <FormInput v-model="form.pregnancy_medical.bp_during_pregnancy" :label="t.gcIntake.bpDuringPregnancy" data-field="bp_during_pregnancy" required />
+                  <div data-field="preeclampsia">
+                    <p class="mb-2">
+                      {{ t.gcIntake.preeclampsia }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.preeclampsia" name="pre_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.preeclampsia" name="pre_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="gestational_diabetes">
+                    <p class="mb-2">
+                      {{ t.gcIntake.gestationalDiabetes }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gd_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.gestational_diabetes" name="gd_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="hypertension_pregnancy">
+                    <p class="mb-2">
+                      {{ t.gcIntake.hypertensionPregnancy }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hyp_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.hypertension_pregnancy" name="hyp_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="blood_transfusion">
+                    <p class="mb-2">
+                      {{ t.gcIntake.bloodTransfusion }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bt_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.blood_transfusion" name="bt_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="seizures">
+                    <p class="mb-2">
+                      {{ t.gcIntake.seizures }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.pregnancy_medical.seizures" name="seiz_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.pregnancy_medical.seizures" name="seiz_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 5: 五、医疗与健康史 -->
+              <div v-show="currentStep === 5" ref="step5Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step5Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="regular_menstrual_cycles">
+                    <p class="mb-2">
+                      {{ t.gcIntake.regularMenstrualCycles }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="men_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.medical_health.regular_menstrual_cycles" name="men_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="birth_control">
+                    <p class="mb-2">
+                      {{ t.gcIntake.birthControl }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.birth_control" name="bc_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.medical_health.birth_control" name="bc_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.medical_health.birth_control === 'yes'" v-model="form.medical_health.birth_control_type" :label="t.gcIntake.birthControlType" class="mt-4" data-field="birth_control_type" />
+                  </div>
+                  <div data-field="taking_medications">
+                    <p class="mb-2">
+                      {{ t.gcIntake.takingMedications }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.taking_medications" name="tm_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.medical_health.taking_medications" name="tm_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.medical_health.taking_medications === 'yes'" v-model="form.medical_health.medications_list" :label="t.gcIntake.medicationsList" class="mt-4" data-field="medications_list" />
+                  </div>
+                  <FormInput v-model="form.medical_health.last_pap_smear" :label="t.gcIntake.lastPapSmear" data-field="last_pap_smear" required />
+                  <div data-field="covid_vaccinated">
+                    <p class="mb-2">
+                      {{ t.gcIntake.covidVaccinated }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.covid_vaccinated" name="cov_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.medical_health.covid_vaccinated" name="cov_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="hep_b_vaccinated">
+                    <p class="mb-2">
+                      {{ t.gcIntake.hepBVaccinated }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hep_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.medical_health.hep_b_vaccinated" name="hep_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="varicella_vaccinated">
+                    <p class="mb-2">
+                      {{ t.gcIntake.varicellaVaccinated }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.varicella_vaccinated" name="var_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.medical_health.varicella_vaccinated" name="var_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="ongoing_medical_treatment">
+                    <p class="mb-2">
+                      {{ t.gcIntake.ongoingMedicalTreatment }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="omt_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.medical_health.ongoing_medical_treatment" name="omt_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="surgeries_past_2y">
+                    <p class="mb-2">
+                      {{ t.gcIntake.surgeriesPast2y }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.medical_health.surgeries_past_2y" name="sur_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.medical_health.surgeries_past_2y" name="sur_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.medical_health.surgeries_past_2y === 'yes'" v-model="form.medical_health.surgeries_specify" :label="t.gcIntake.surgeriesSpecify" class="mt-4" data-field="surgeries_specify" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 6: 六、心理健康史 -->
+              <div v-show="currentStep === 6" ref="step6Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step6Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="anxiety_depression">
+                    <p class="mb-2">
+                      {{ t.gcIntake.anxietyDepression }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.mental_health.anxiety_depression" name="anx_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.mental_health.anxiety_depression" name="anx_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="bipolar_schizo_personality">
+                    <p class="mb-2">
+                      {{ t.gcIntake.bipolarSchizoPersonality }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bip_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.mental_health.bipolar_schizo_personality" name="bip_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="adhd">
+                    <p class="mb-2">
+                      {{ t.gcIntake.adhd }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.mental_health.adhd" name="adhd_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.mental_health.adhd" name="adhd_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="meds_anxiety_depression">
+                    <p class="mb-2">
+                      {{ t.gcIntake.medsAnxietyDepression }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.mental_health.meds_anxiety_depression" name="meds_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.mental_health.meds_anxiety_depression" name="meds_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.mental_health.meds_anxiety_depression === 'yes'" v-model="form.mental_health.meds_specify" :label="t.gcIntake.medsSpecify" class="mt-4" data-field="meds_specify" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 7: 七、药物使用史 -->
+              <div v-show="currentStep === 7" ref="step7Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step7Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="drug_use_pregnancy">
+                    <p class="mb-2">
+                      {{ t.gcIntake.drugUsePregnancy }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drug_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drug_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <div v-if="form.substance_use.drug_use_pregnancy === 'yes'" class="mt-4 flex flex-wrap gap-4">
+                      <FormCheckbox v-model="form.substance_use.drug_marijuana" :label="t.gcIntake.drugMarijuana" />
+                      <FormCheckbox v-model="form.substance_use.drug_fentanyl" :label="t.gcIntake.drugFentanyl" />
+                      <FormCheckbox v-model="form.substance_use.drug_methamphetamine" :label="t.gcIntake.drugMethamphetamine" />
+                      <FormCheckbox v-model="form.substance_use.drug_mdma" :label="t.gcIntake.drugMDMA" />
+                      <FormInput v-model="form.substance_use.drug_other" :label="t.gcIntake.drugOther" />
+                    </div>
+                  </div>
+                  <div data-field="marijuana_current">
+                    <p class="mb-2">
+                      {{ t.gcIntake.marijuanaCurrent }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.substance_use.marijuana_current" name="marj_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.substance_use.marijuana_current" name="marj_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.substance_use.marijuana_current === 'yes'" v-model="form.substance_use.marijuana_last_use" :label="t.gcIntake.marijuanaLastUse" class="mt-4" data-field="marijuana_last_use" />
+                  </div>
+                  <div data-field="smoked_vaped_pregnancy">
+                    <p class="mb-2">
+                      {{ t.gcIntake.smokedVapedPregnancy }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smoke_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.substance_use.smoked_vaped_pregnancy" name="smoke_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="alcohol">
+                    <p class="mb-2">
+                      {{ t.gcIntake.alcohol }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.substance_use.alcohol" name="alc_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.substance_use.alcohol" name="alc_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.substance_use.alcohol === 'yes'" v-model="form.substance_use.alcohol_frequency" :label="t.gcIntake.alcoholFrequency" class="mt-4" data-field="alcohol_frequency" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 8: 八、传染病史 -->
+              <div v-show="currentStep === 8" ref="step8Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step8Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="syphilis">
+                    <p class="mb-2">
+                      {{ t.gcIntake.syphilis }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.infectious_disease.syphilis" name="syp_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.infectious_disease.syphilis" name="syp_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="hepatitis_b_c">
+                    <p class="mb-2">
+                      {{ t.gcIntake.hepatitisBC }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbc_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.infectious_disease.hepatitis_b_c" name="hepbc_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="genital_herpes">
+                    <p class="mb-2">
+                      {{ t.gcIntake.genitalHerpes }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.infectious_disease.genital_herpes" name="herp_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.infectious_disease.genital_herpes" name="herp_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="hiv">
+                    <p class="mb-2">
+                      {{ t.gcIntake.hiv }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.infectious_disease.hiv" name="hiv_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.infectious_disease.hiv" name="hiv_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 9: 九、其他医疗状况 -->
+              <div v-show="currentStep === 9" ref="step9Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step9Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="asthma">
+                    <p class="mb-2">
+                      {{ t.gcIntake.asthma }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.other_medical.asthma" name="ast_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.other_medical.asthma" name="ast_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                    <FormInput v-if="form.other_medical.asthma === 'yes'" v-model="form.other_medical.asthma_inhaler_per_week" :label="t.gcIntake.asthmaInhaler" class="mt-4" data-field="asthma_inhaler_per_week" />
+                  </div>
+                  <div data-field="heart_conditions">
+                    <p class="mb-2">
+                      {{ t.gcIntake.heartConditions }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.other_medical.heart_conditions" name="heart_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.other_medical.heart_conditions" name="heart_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="cancer_history">
+                    <p class="mb-2">
+                      {{ t.gcIntake.cancerHistory }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.other_medical.cancer_history" name="can_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.other_medical.cancer_history" name="can_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="scoliosis">
+                    <p class="mb-2">
+                      {{ t.gcIntake.scoliosis }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.other_medical.scoliosis" name="sco_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.other_medical.scoliosis" name="sco_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="endometrial_ablation">
+                    <p class="mb-2">
+                      {{ t.gcIntake.endometrialAblation }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.other_medical.endometrial_ablation" name="endo_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.other_medical.endometrial_ablation" name="endo_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 10: 十、偏好与匹配考量 -->
+              <div v-show="currentStep === 10" ref="step10Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step10Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <FormInput v-model="form.preferences.availability" :label="t.gcIntake.availability" data-field="availability" required />
+                  <FormInput v-model="form.preferences.health_insurance" :label="t.gcIntake.healthInsurance" data-field="health_insurance" required />
+                  <div data-field="open_twins">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openTwins }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_twins" name="twins_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_twins" name="twins_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_fetal_reduction">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openFetalReduction }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_fetal_reduction" name="red_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_fetal_reduction" name="red_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_termination">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openTermination }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_termination" name="term_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_termination" name="term_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_amniocentesis_cvs">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openAmniocentesisCVS }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="cvs_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_amniocentesis_cvs" name="cvs_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_same_sex_single_ip">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openSameSexSingleIP }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_same_sex_single_ip" name="ss_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_same_sex_single_ip" name="ss_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="willing_pump_breast_milk">
+                    <p class="mb-2">
+                      {{ t.gcIntake.willingPumpBreastMilk }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.willing_pump_breast_milk" name="pump_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_ip_hiv">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openIPHIV }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_ip_hiv" name="iphiv_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_ip_hiv" name="iphiv_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                  <div data-field="open_ip_hepatitis_b">
+                    <p class="mb-2">
+                      {{ t.gcIntake.openIPHepatitisB }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="iphep_v2" value="yes" :label="t.form.yes" />
+                      <FormRadio v-model="form.preferences.open_ip_hepatitis_b" name="iphep_v2" value="no" :label="t.form.no" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 11: 十一、法律与行政 -->
+              <div v-show="currentStep === 11" ref="step11Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step11Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <div data-field="pending_legal">
+                    <p class="mb-2">
+                      {{ t.gcIntake.pendingLegal }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.legal_admin.pending_legal" name="legal_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.legal_admin.pending_legal" name="legal_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="criminal_record">
+                    <p class="mb-2">
+                      {{ t.gcIntake.criminalRecord }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.legal_admin.criminal_record" name="crim_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.legal_admin.criminal_record" name="crim_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <div data-field="government_assistance">
+                    <p class="mb-2">
+                      {{ t.gcIntake.governmentAssistance }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex gap-8">
+                      <FormRadio v-model="form.legal_admin.government_assistance" name="gov_v2" value="no" :label="t.form.no" />
+                      <FormRadio v-model="form.legal_admin.government_assistance" name="gov_v2" value="yes" :label="t.form.yes" />
+                    </div>
+                  </div>
+                  <FormInput v-model="form.legal_admin.emergency_contact" :label="t.gcIntake.emergencyContact" class="lg:col-span-2" data-field="emergency_contact" required />
+                </div>
+              </div>
+
+              <!-- Step 12: 十二、备注 -->
+              <div v-show="currentStep === 12" ref="step12Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step12Title }}
+                </h2>
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
+                  <FormInput v-model="form.notes.referred_by" :label="t.gcIntake.referredBy" data-field="referred_by" required />
+                  <div data-field="medical_records_source">
+                    <p class="mb-2">
+                      {{ t.gcIntake.medicalRecordsSource }} <span class="text-red-500">*</span>
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                      <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="patient_portal" :label="t.gcIntake.medicalRecordsPatientPortal" />
+                      <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="clinic" :label="t.gcIntake.medicalRecordsClinic" />
+                      <FormRadio v-model="form.notes.medical_records_source" name="mrs_v2" value="other" :label="t.gcIntake.medicalRecordsOther" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 13: 上传照片与同意 -->
+              <div v-show="currentStep === 13" ref="step13Ref" class="scroll-mt-24 space-y-6">
+                <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+                  {{ t.step13Title }}
+                </h2>
+                <div data-field="uploadPhotos" class="space-y-4">
+                  <p class="font-medium">
+                    {{ t.form.uploadPhotos }} <span class="text-red-500">*</span> ({{ t.form.uploadPhotosMinTip }})
+                  </p>
+                  <div v-if="form.uploadPhotos.length" class="flex flex-wrap gap-4">
+                    <div v-for="(photo, idx) in form.uploadPhotos" :key="idx" class="group relative">
+                      <img :src="photo" class="h-24 w-24 border rounded-2 object-cover">
+                      <button type="button" class="absolute right-1 top-1 h-6 w-6 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-red-500" @click.stop="removePhoto(idx)">
+                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-col cursor-pointer items-center justify-center border-2 rounded-4 border-dashed py-10 transition"
+                    :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
+                    @dragover.prevent
+                    @drop.prevent="handleDrop"
+                    @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
+                  >
+                    <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-gray-500">{{ t.form.uploadPhotosMaxTip }}</span>
+                    <template v-else>
+                      <span class="mb-2 block text-6 text-[var(--grayish-green)]">+</span>
+                      <span class="text-5 text-gray-600">{{ t.form.uploadPhotosTip }}</span>
+                    </template>
+                    <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
+                  </div>
+                </div>
+                <div data-field="finalConsent" class="rounded-3 bg-[rgba(234,232,208,0.2)] p-6">
+                  <FormCheckbox
+                    v-model="form.finalConsent"
+                    :label="t.form.finalConsent.text"
+                  />
+                  <p class="mt-2 text-13px italic">
+                    {{ t.form.finalConsent.disclaimer }}
+                  </p>
+                </div>
+              </div>
+
+              <div v-if="validationError" class="mt-4 rounded-3 bg-red-50 px-4 py-3 text-sm text-red-600 sm:mt-6 sm:text-base">
+                {{ validationError }}
+              </div>
+
+              <div class="flex flex-wrap gap-3 sm:gap-4" :class="currentStep === 1 ? 'mt-4 sm:mt-5 lg:mt-4' : 'mt-10 sm:mt-12'">
+                <button
+                  v-if="currentStep > 1"
+                  type="button"
+                  class="border border-[var(--grayish-green)] rounded-2 px-8 py-3 text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+                  @click="goPrev"
+                >
+                  {{ t.btnPrev }}
+                </button>
+                <template v-if="currentStep < TOTAL_STEPS">
+                  <button
+                    type="button"
+                    class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
+                    :disabled="isSubmitting"
+                    @click="goNext"
+                  >
+                    {{ t.btnNext }}
+                  </button>
+                </template>
+                <template v-else>
+                  <button
+                    type="button"
+                    class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
+                    :disabled="!isStep13Valid || isSubmitting || uploadingPhotos"
+                    :class="{ 'opacity-50 cursor-not-allowed': !isStep13Valid }"
+                    @click="submitFinal"
+                  >
+                    {{ t.btnSubmit }}
+                  </button>
+                </template>
+              </div>
             </div>
           </div>
-          <div data-field="finalConsent" class="rounded-3 bg-[rgba(234,232,208,0.2)] p-6">
-            <FormCheckbox
-              v-model="form.finalConsent"
-              :label="t.form.finalConsent.text"
-            />
-            <p class="mt-2 text-13px italic">
-              {{ t.form.finalConsent.disclaimer }}
-            </p>
-          </div>
-        </div>
-
-        <div v-if="validationError" class="mt-6 rounded-3 bg-red-50 px-4 py-3 text-red-600">
-          {{ validationError }}
-        </div>
-
-        <div class="mt-12 flex flex-wrap gap-4">
-          <button
-            v-if="currentStep > 1"
-            type="button"
-            class="border border-[var(--grayish-green)] rounded-2 px-8 py-3 text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
-            @click="goPrev"
-          >
-            {{ t.btnPrev }}
-          </button>
-          <template v-if="currentStep < TOTAL_STEPS">
-            <button
-              type="button"
-              class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
-              :disabled="isSubmitting"
-              @click="goNext"
-            >
-              {{ t.btnNext }}
-            </button>
-          </template>
-          <template v-else>
-            <button
-              type="button"
-              class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
-              :disabled="!isStep13Valid || isSubmitting || uploadingPhotos"
-              :class="{ 'opacity-50 cursor-not-allowed': !isStep13Valid }"
-              @click="submitFinal"
-            >
-              {{ t.btnSubmit }}
-            </button>
-          </template>
-        </div>
-      </div>
 
           <p
-            class="order-2 px-2 text-center text-3.5 leading-snug text-white/95 lg:order-3 lg:col-span-12 lg:px-0 lg:text-4"
-            style="font-family: var(--font-secondary)"
+            class="shrink-0 px-4 pb-5 pt-1 text-center text-3.5 text-white font-medium leading-snug tracking-wide sm:pb-6 md:text-4.5 sm:text-4"
+            style="font-family: var(--font-secondary); text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55)"
           >
             {{ t.landing.heroPillars }}
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <AssociationSection variant="plain" />
 
     <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
       <div class="mx-auto max-w-220 text-center">
         <p
-          class="text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
+          class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5"
           style="font-family: var(--font-secondary)"
         >
           {{ t.landing.trustBlurb }}
         </p>
         <button
           type="button"
-          class="shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 font-semibold text-white uppercase tracking-wide transition hover:opacity-90"
+          class="shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
           @click="scrollToPageTop"
         >
           {{ t.landing.ctaBecomeSurrogate }}
@@ -1460,17 +1467,17 @@ function scrollToPageTop() {
           {{ t.landing.shortsTitle }}
         </h2>
         <p
-          class="mx-auto mt-5 max-w-200 text-center text-4.5 leading-relaxed text-[var(--dark-brown)] md:text-5"
+          class="mx-auto mt-5 max-w-200 text-center text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5"
           style="font-family: var(--font-secondary)"
         >
           {{ t.landing.shortsIntro }}
         </p>
-        <div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
+        <div class="grid grid-cols-1 mt-12 gap-12 md:grid-cols-3 md:gap-8">
           <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 font-semibold text-black">
+            <p class="mb-4 text-5 text-black font-semibold">
               {{ t.landing.shortInsurance }}
             </p>
-            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/mOwFngnTZvo"
@@ -1482,10 +1489,10 @@ function scrollToPageTop() {
             </div>
           </div>
           <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 font-semibold text-black">
+            <p class="mb-4 text-5 text-black font-semibold">
               {{ t.landing.shortLegal }}
             </p>
-            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/TN4rMZfbhGg"
@@ -1497,10 +1504,10 @@ function scrollToPageTop() {
             </div>
           </div>
           <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 font-semibold text-black">
+            <p class="mb-4 text-5 text-black font-semibold">
               {{ t.landing.shortEscrow }}
             </p>
-            <div class="aspect-[9/16] w-full max-w-68 overflow-hidden rounded-4 bg-black shadow-lg">
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
                 class="h-full w-full"
                 src="https://www.youtube.com/embed/1oBL9IwOONg"
@@ -1516,14 +1523,20 @@ function scrollToPageTop() {
     </section>
 
     <section class="bg-[var(--head-bg)] px-4 py-14 md:px-16 md:py-20">
-      <div class="mx-auto max-w-280">
+      <div class="mx-auto max-w-280 lg:max-w-320">
+        <h2
+          class="mx-auto mb-12 max-w-260 text-center text-6 font-semibold md:mb-14 md:max-w-2xl lg:text-9 md:text-8"
+          style="font-family: var(--font-primary)"
+        >
+          {{ t.landing.eligibilitySectionTitle }}
+        </h2>
         <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
-          <div>
+          <div class="w-full md:max-w-lg md:justify-self-end">
             <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
               {{ t.landing.ifYouAreHeading }}
             </h3>
             <ul
-              class="mt-5 list-disc space-y-3 pl-6 text-4.5 text-[var(--dark-brown)] md:text-5"
+              class="mt-5 list-disc pl-6 text-4.5 text-[var(--dark-brown)] space-y-3 md:text-5"
               style="font-family: var(--font-secondary)"
             >
               <li v-for="(item, i) in t.landing.ifYouAreItems" :key="`if-${i}`">
@@ -1532,17 +1545,17 @@ function scrollToPageTop() {
             </ul>
             <NuxtLink
               :to="localePath('/eligibility')"
-              class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+              class="mt-6 inline-flex border-2 border-[var(--grayish-green)] rounded-2 px-6 py-2.5 text-4 text-[var(--grayish-green)] font-semibold transition hover:bg-[var(--grayish-green)] hover:text-white"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
           </div>
-          <div>
+          <div class="w-full md:max-w-lg md:justify-self-start">
             <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
               {{ t.landing.youWillReceiveHeading }}
             </h3>
             <ul
-              class="mt-5 list-disc space-y-3 pl-6 text-4.5 text-[var(--dark-brown)] md:text-5"
+              class="mt-5 list-disc pl-6 text-4.5 text-[var(--dark-brown)] space-y-3 md:text-5"
               style="font-family: var(--font-secondary)"
             >
               <li v-for="(item, i) in t.landing.youWillReceiveItems" :key="`recv-${i}`">
@@ -1550,26 +1563,37 @@ function scrollToPageTop() {
               </li>
             </ul>
             <NuxtLink
-              :to="localePath('/eligibility')"
-              class="mt-6 inline-flex rounded-2 border-2 border-[var(--grayish-green)] px-6 py-2.5 text-4 font-semibold text-[var(--grayish-green)] transition hover:bg-[var(--grayish-green)] hover:text-white"
+              :to="localePath('/benefit')"
+              class="mt-6 inline-flex border-2 border-[var(--grayish-green)] rounded-2 px-6 py-2.5 text-4 text-[var(--grayish-green)] font-semibold transition hover:bg-[var(--grayish-green)] hover:text-white"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
           </div>
         </div>
 
-        <h3 class="mt-16 text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+        <h3 class="mt-16 text-center text-6 font-semibold md:mt-20 md:text-7" style="font-family: var(--font-primary)">
           {{ t.landing.processTitle }}
         </h3>
-        <ol class="mt-8 list-decimal space-y-4 pl-6 text-4.5 leading-relaxed text-[var(--dark-brown)] marker:text-[var(--grayish-green)] marker:font-semibold md:pl-8 md:text-5" style="font-family: var(--font-secondary)">
-          <li v-for="(line, i) in t.landing.processSteps" :key="i" class="pl-2">
+        <div class="mt-8 flex justify-center">
+          <img
+            src="/images/be-surrogate/surrogacy-process-flowchart.jpg"
+            :alt="t.landing.processFlowchartAlt"
+            class="max-w-260 w-full object-contain lg:max-w-300 md:max-w-280"
+            width="1200"
+            height="700"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <ol class="sr-only" :aria-label="t.landing.processTitle">
+          <li v-for="(line, i) in t.landing.processSteps" :key="i">
             {{ line }}
           </li>
         </ol>
         <div class="mt-10 flex justify-center">
           <button
             type="button"
-            class="shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 font-semibold text-white uppercase tracking-wide transition hover:opacity-90"
+            class="shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
             @click="scrollToPageTop"
           >
             {{ t.landing.processCta }}

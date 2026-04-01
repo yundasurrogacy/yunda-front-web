@@ -25,6 +25,11 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  /** GC 首屏等紧凑布局可关闭下方格式说明以省一行高度 */
+  showFormatHint: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 defineEmits(['update:modelValue'])
@@ -49,7 +54,7 @@ defineEmits(['update:modelValue'])
       >
     </div>
     <!-- 英文站：提示按 MM/DD/YYYY 填写（中文系统下占位可能是年/月/日，但点日历选择器即可） -->
-    <p v-if="locale === 'en'" class="text-sage-500 mt-1.5 text-3.5">
+    <p v-if="locale === 'en' && showFormatHint" class="text-sage-500 mt-1.5 text-3.5">
       Format: MM/DD/YYYY
     </p>
   </div>

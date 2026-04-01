@@ -275,7 +275,10 @@ export const translations = {
         'Breast Milk Compensation: $300/week',
       ],
       learnMore: 'Learn more',
+      eligibilitySectionTitle: 'Surrogacy Requirements (Quick Eligibility)',
       processTitle: 'Surrogacy Process',
+      processFlowchartAlt:
+        'Surrogacy process flowchart in five steps: quick eligibility, pre-approval call, medical screening, match with parents you choose, legal coordination and embryo transfer.',
       processSteps: [
         'Quick eligibility (5 minute)',
         'Pre-approval call (within 24 hours)',
@@ -560,7 +563,10 @@ export const translations = {
         '母乳补偿：$300/周',
       ],
       learnMore: '了解更多',
+      eligibilitySectionTitle: '代孕资格要求（快速自测）',
       processTitle: '代孕流程',
+      processFlowchartAlt:
+        '代孕流程示意图，五步：快速资质自测、预审通话、医学筛查、与您选择的准父母匹配、法律协调与胚胎移植。',
       processSteps: [
         '快速资质自测（约 5 分钟）',
         '预审通话（24 小时内）',
