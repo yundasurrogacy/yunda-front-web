@@ -73,6 +73,8 @@ const howToSchema = computed(() => buildHowToSchema({
 }))
 
 const homeSurrogateSlides = [
+  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
@@ -81,8 +83,6 @@ const homeSurrogateSlides = [
   { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
 ]
 
 // SEO 配置
