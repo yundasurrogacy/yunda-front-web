@@ -5,7 +5,7 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 // 照片分类
-type PhotoCategory = 'all' | 'our-team' | 'asrm' | 'seeds'
+type PhotoCategory = 'all' | 'our-team' | 'asrm' | 'seeds' | 'mhb'
 
 interface Photo {
   id: string
@@ -43,6 +43,14 @@ const photos = ref<Photo[]>([
     category: ['all', 'seeds'] as PhotoCategory[],
     alt: `SEEDS Event ${i + 1}`,
   })),
+  // MHB 照片 (1-6)
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: `mhb-${i + 1}`,
+    url: `/images/about-us/mhb/mhb-${i + 1}.jpg`,
+    thumbnail: `/images/about-us/mhb/mhb-${i + 1}.jpg`,
+    category: ['all', 'mhb'] as PhotoCategory[],
+    alt: `MHB Event ${i + 1}`,
+  })),
   {
     id: 'ourteam-surrogate-12',
     url: '/images/home/surrogate-12.png',
@@ -65,6 +73,7 @@ const categories: Array<{ key: PhotoCategory, label: string }> = [
   { key: 'our-team', label: 'Our Team' },
   { key: 'asrm', label: 'ASRM' },
   { key: 'seeds', label: 'SEEDS' },
+  { key: 'mhb', label: 'MHB' },
 ]
 
 // 滑块相关状态

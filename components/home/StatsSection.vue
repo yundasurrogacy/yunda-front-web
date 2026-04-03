@@ -8,6 +8,7 @@ const partners = [
   { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
   { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null, logoClass: 'scale-120' },
   { name: 'MHB', logo: '/images/mhb-logo-transparent.png', url: null },
+  { name: 'RESOLVE', logo: '/images/resolve-logo.png', url: null, logoClass: 'scale-110' },
 ]
 </script>
 
@@ -83,14 +84,14 @@ const partners = [
         >
           {{ $t('home.associationSection.title') }}
         </h2>
-        <div class="scroll-animate scroll-animate-delay-300 flex flex-wrap items-center justify-center gap-8 lg:gap-16 md:gap-12">
+        <div class="scroll-animate scroll-animate-delay-300 flex flex-nowrap items-center justify-center gap-5 md:gap-8 lg:gap-10">
           <template v-for="(partner, index) in partners" :key="index">
             <a
               v-if="partner.url"
               :href="partner.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="h-16 flex items-center justify-center transition-opacity lg:h-24 md:h-20 hover:opacity-80"
+              class="h-16 min-w-0 flex items-center justify-center transition-opacity lg:h-24 md:h-20 hover:opacity-80"
             >
               <img
                 :src="partner.logo"
@@ -102,7 +103,7 @@ const partners = [
             </a>
             <div
               v-else
-              class="h-16 flex items-center justify-center lg:h-24 md:h-20"
+              class="h-16 min-w-0 flex items-center justify-center lg:h-24 md:h-20"
             >
               <img
                 :src="partner.logo"
