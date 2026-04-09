@@ -63,6 +63,10 @@ const blogCopyZh = {
 }
 
 const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
+const ctaCopy = computed(() => ({
+  parent: locale.value === 'zh' ? '开启您的育儿之旅' : 'Become a Intended Parent',
+  surrogate: locale.value === 'zh' ? '开启代孕之旅' : 'Become a Surrogate',
+}))
 
 function getUiCategoryLabel(key: keyof typeof blogCopyEn.categories | string) {
   // Explicitly check if the key exists in the categories object to fix TS error
@@ -317,7 +321,7 @@ useHead(() => (blogPostingSchema.value
     <AppHeader />
 
     <!-- 博客详情页面主体 -->
-    <div class="min-h-screen bg-[#F7F7F2]">
+    <div class="min-h-screen bg-[#F7F7F2] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
       <!-- 加载状态 -->
       <div v-if="loading" class="flex items-center justify-center py-24">
         <div class="inline-block size-12 animate-spin border-4 border-[#A9A67D] border-b-transparent rounded-full" />
@@ -444,9 +448,49 @@ useHead(() => (blogPostingSchema.value
           </div>
         </article>
       </div>
+
+      <!-- Desktop Bottom CTA -->
+      <section class="hidden px-4 pb-12 md:block">
+        <div class="mx-auto max-w-4xl">
+          <div class="grid grid-cols-2 gap-4">
+            <NuxtLink
+              :to="localePath('/be-parents')"
+              class="inline-flex items-center justify-center rounded-xl bg-[#114f86] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+            >
+              {{ ctaCopy.parent }}
+            </NuxtLink>
+            <NuxtLink
+              :to="localePath('/be-surrogate')"
+              class="inline-flex items-center justify-center rounded-xl bg-[var(--grayish-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+            >
+              {{ ctaCopy.surrogate }}
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <AppFooter />
+    <!-- Mobile Fixed Bottom CTA -->
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#153d53] bg-[#153d53] pb-[env(safe-area-inset-bottom)] md:hidden">
+      <div class="grid grid-cols-2">
+        <NuxtLink
+          :to="localePath('/be-parents')"
+          class="flex items-center justify-center bg-[#114f86] px-3 py-3 text-center text-white"
+        >
+          {{ ctaCopy.parent }}
+        </NuxtLink>
+        <NuxtLink
+          :to="localePath('/be-surrogate')"
+          class="flex items-center justify-center bg-[var(--grayish-green)] px-3 py-3 text-center text-white"
+        >
+          {{ ctaCopy.surrogate }}
+        </NuxtLink>
+      </div>
+    </div>
+
+    <div class="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+      <AppFooter />
+    </div>
   </div>
 </template>
 
@@ -462,17 +506,32 @@ useHead(() => (blogPostingSchema.value
   color: #374151;
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
+:deep(.prose h1),
+:deep(.prose h2),
+:deep(.prose h3),
+:deep(.prose h4),
+:deep(.prose h5),
+:deep(.prose h6) {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   line-height: 1.3;
+}
+
+:deep(.prose h1) {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+:deep(.prose h2) {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+:deep(.prose h3) {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .prose ul,
@@ -494,5 +553,16 @@ useHead(() => (blogPostingSchema.value
 .prose em {
   font-style: italic;
   color: #6b7280;
+}
+
+:deep(.prose a) {
+  color: #8b5a2b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
+
+:deep(.prose a:hover) {
+  color: #6f4420;
 }
 </style>

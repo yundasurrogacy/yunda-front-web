@@ -46,7 +46,7 @@ function toggleMenu() {
         <Transition name="menu-slide">
           <div
             v-if="internalIsOpen"
-            class="fixed inset-y-0 left-0 w-full overflow-y-auto bg-[rgba(191,201,191,0.7)] backdrop-blur-md lg:max-w-4xl md:max-w-2xl sm:max-w-2xl"
+            class="fixed inset-y-0 left-0 w-full overflow-y-auto bg-[rgba(191,201,191,0.7)] pb-[calc(8rem+env(safe-area-inset-bottom))] backdrop-blur-md lg:max-w-4xl md:max-w-2xl sm:max-w-2xl"
           >
             <!-- 关闭按钮 -->
             <button class="absolute left-6 top-6 z-10 p-0" @click="toggleMenu">

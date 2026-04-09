@@ -15,31 +15,31 @@ interface Photo {
   alt: string
 }
 
-// 照片数据 - 使用真实图片链接
-const baseUrl = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us'
+// 照片数据 - 使用本地处理后的图片
+const baseUrl = '/images/about-us'
 
 const photos = ref<Photo[]>([
   // Our Team 照片 (1-4)
   ...Array.from({ length: 4 }, (_, i) => ({
     id: `ourteam-${i + 1}`,
-    url: `${baseUrl}/ourteam-${i + 1}.jpg`,
-    thumbnail: `${baseUrl}/ourteam-${i + 1}.jpg`,
+    url: `${baseUrl}/our-team/ourteam-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/our-team/ourteam-${i + 1}.jpg`,
     category: ['all', 'our-team'] as PhotoCategory[],
     alt: `Our Team ${i + 1}`,
   })),
   // ASRM 照片 (1-13)
   ...Array.from({ length: 13 }, (_, i) => ({
     id: `asrm-${i + 1}`,
-    url: `${baseUrl}/asrm-${i + 1}.jpg`,
-    thumbnail: `${baseUrl}/asrm-${i + 1}.jpg`,
+    url: `${baseUrl}/asrm/asrm-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/asrm/asrm-${i + 1}.jpg`,
     category: ['all', 'asrm'] as PhotoCategory[],
     alt: `ASRM Conference ${i + 1}`,
   })),
   // SEEDS 照片 (1-6)
   ...Array.from({ length: 6 }, (_, i) => ({
     id: `seeds-${i + 1}`,
-    url: `${baseUrl}/seeds-${i + 1}.jpg`,
-    thumbnail: `${baseUrl}/seeds-${i + 1}.jpg`,
+    url: `${baseUrl}/seeds/seeds-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/seeds/seeds-${i + 1}.jpg`,
     category: ['all', 'seeds'] as PhotoCategory[],
     alt: `SEEDS Event ${i + 1}`,
   })),

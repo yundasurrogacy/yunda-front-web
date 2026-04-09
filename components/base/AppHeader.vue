@@ -19,7 +19,7 @@ const isMenuOpen = ref(false)
     </button>
 
     <!-- Logo -->
-    <div class="flex flex-1 justify-center md:flex-none md:justify-start">
+    <div class="absolute left-1/2 -translate-x-1/2 transform">
       <NuxtLink :to="localePath('/')" class="inline-block">
         <picture>
           <source srcset="/images/base/logo.webp" type="image/webp">

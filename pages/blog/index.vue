@@ -111,6 +111,10 @@ const blogCopyZh = {
 }
 
 const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
+const ctaCopy = computed(() => ({
+  parent: locale.value === 'zh' ? '开启您的育儿之旅' : 'Become a Intended Parent',
+  surrogate: locale.value === 'zh' ? '开启代孕之旅' : 'Become a Surrogate',
+}))
 
 function getUiCategoryLabel(key: keyof typeof blogCopyZh.categories | string) {
   // typesafe category lookup, fallback to key if not found
@@ -674,7 +678,7 @@ onBeforeUnmount(() => {
     <AppHeader />
 
     <!-- 博客页面主体 -->
-    <div class="min-h-screen bg-[#F7F7F2]">
+    <div class="min-h-screen bg-[#F7F7F2] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
       <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
       <div class="w-full flex flex-col lg:flex-row">
         <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
@@ -1061,9 +1065,49 @@ onBeforeUnmount(() => {
           </template>
         </ClientOnly>
       </div>
+
+      <!-- Desktop Bottom CTA -->
+      <section class="hidden px-4 pb-12 md:block">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid grid-cols-2 gap-4">
+            <NuxtLink
+              :to="localePath('/be-parents')"
+              class="inline-flex items-center justify-center rounded-xl bg-[#114f86] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+            >
+              {{ ctaCopy.parent }}
+            </NuxtLink>
+            <NuxtLink
+              :to="localePath('/be-surrogate')"
+              class="inline-flex items-center justify-center rounded-xl bg-[var(--grayish-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+            >
+              {{ ctaCopy.surrogate }}
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <AppFooter />
+    <!-- Mobile Fixed Bottom CTA -->
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#153d53] bg-[#153d53] pb-[env(safe-area-inset-bottom)] md:hidden">
+      <div class="grid grid-cols-2">
+        <NuxtLink
+          :to="localePath('/be-parents')"
+          class="flex items-center justify-center bg-[#114f86] px-3 py-3 text-center text-white"
+        >
+          {{ ctaCopy.parent }}
+        </NuxtLink>
+        <NuxtLink
+          :to="localePath('/be-surrogate')"
+          class="flex items-center justify-center bg-[var(--grayish-green)] px-3 py-3 text-center text-white"
+        >
+          {{ ctaCopy.surrogate }}
+        </NuxtLink>
+      </div>
+    </div>
+
+    <div class="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+      <AppFooter />
+    </div>
   </div>
 </template>
 
