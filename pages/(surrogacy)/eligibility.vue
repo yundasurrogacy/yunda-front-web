@@ -9,7 +9,7 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Requirements: Do You Qualify? | Yunda',
+    seoTitle: 'Surrogate Requirements: Do You Qualify? | Yunda Surrogacy',
     seoDescription:
       'See if you qualify to become a surrogate in California. Review key requirements, disqualifiers, and next steps with clear, private guidance.',
     heroTitle: 'Apply to Be a Surrogate: Surrogate Application, Requirements & the Process to Become a Surrogate Mother',
@@ -141,9 +141,9 @@ const translations = {
     ],
   },
   zh: {
-    seoTitle: '申请成为代母：申请条件、资格要求与成为代孕妈妈的流程 | Yunda Surrogacy',
+    seoTitle: '代孕妈妈资格要求：你符合条件吗？ | Yunda',
     seoDescription:
-      '了解如何申请成为代母、核心资格要求，以及成为代孕妈妈的完整流程。',
+      '看看你是否符合在加州成为代孕妈妈的资格。查看关键要求、不符合因素和下一步，获得清晰、私密的指导。',
     heroTitle: '申请成为代母：代母申请、资格要求与成为代孕妈妈的流程',
     heroSubtitle:
       '先从全局看清申请步骤、基础筛选标准与后续流程节奏，便于你更稳地做出决定。',

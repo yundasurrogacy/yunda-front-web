@@ -9,7 +9,7 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogacy Process: How It Works Step by Step | Yunda',
+    seoTitle: 'Surrogacy Process: How It Works Step by Step | Yunda Surrogacy',
     seoDescription:
       'Learn how the surrogacy process works step by step, from screening and matching to IVF, legal planning, birth, and postpartum support.',
     heroTitle: 'Surrogate Process: How Does Being a Surrogate Work (Step-by-Step Pregnancy Journey)',
@@ -224,9 +224,9 @@ const translations = {
     ],
   },
   zh: {
-    seoTitle: '代孕流程：代孕妈妈是如何进行的| Yunda Surrogacy',
+    seoTitle: '代孕流程：一步一步了解如何运作 | Yunda',
     seoDescription:
-      '分步讲清代孕流程：筛查、匹配、胚胎移植、孕期支持、分娩与产后支持；并说明妊娠代母与传统代孕的区别及常见问题。',
+      '了解代孕流程如何一步一步运作，从筛查和匹配到 IVF、法律规划、分娩和产后支持。',
     heroTitle: '代孕流程：代孕妈妈是如何进行的（分步妊娠旅程）',
     conclusionLabel: '结论',
     heroConclusion:

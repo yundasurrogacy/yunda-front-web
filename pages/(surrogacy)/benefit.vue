@@ -9,7 +9,7 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Compensation: Pay, Benefits & Support | Yunda',
+    seoTitle: 'Surrogate Compensation: Pay, Benefits & Support | Yunda Surrogacy',
     seoDescription: 'Understand surrogate compensation in California and the U.S., including base pay, milestones, and support. Get a clear, private pay overview.',
     heroTitle: 'How Much Do Surrogates Get Paid? Surrogate Compensation & Surrogate Pay in the U.S.',
     heroConclusion1:
@@ -269,8 +269,8 @@ const translations = {
     ],
   },
   zh: {
-    seoTitle: '代孕妈妈能拿多少补偿？美国代孕补偿与付款机制 | 孕达',
-    seoDescription: '了解美国和加州代孕补偿如何计算：平均补偿区间、月度付款节奏、福利项目，以及流产与资格相关常见问题。',
+    seoTitle: '代孕妈妈补偿：报酬、福利与支持 | Yunda',
+    seoDescription: '了解加州和美国的代孕妈妈补偿，包括基础报酬、里程碑付款和支持。获得清晰、私密的报酬概览。',
     heroTitle: '代孕妈妈能拿多少补偿？美国代孕补偿与付款机制',
     heroConclusion1:
       '代孕补偿不是传统薪资，而是一套清晰的补偿方案：基础补偿、月度支持和里程碑付款，通常通过第三方托管账户（Escrow）管理。',

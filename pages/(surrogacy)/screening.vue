@@ -9,7 +9,7 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Screening: Medical, Insurance & Eligibility | Yunda',
+    seoTitle: 'Surrogate Screening: Medical, Insurance & Eligibility | Yunda Surrogacy',
     seoDescription: 'Understand surrogate screening, including medical, insurance, and eligibility checks. Get clear, respectful guidance before you move forward.',
     heroTitle: 'Surrogate Medical Screening Process: What to Expect From Medical, Insurance & Eligibility Checks',
     conclusionBody1:
@@ -225,8 +225,8 @@ const translations = {
     ],
   },
   zh: {
-    seoTitle: 'Surrogate Medical Screening Process',
-    seoDescription: '了解完整代母医学筛查流程，包括医疗检查、保险审核与资格清单。',
+    seoTitle: '代孕妈妈筛查：医疗、保险与资格 | Yunda',
+    seoDescription: '了解代孕妈妈筛查，包括医疗、保险和资格检查。在你继续前获得清晰、尊重的指导。',
     heroTitle: '代母医学筛查流程：医疗、保险与资格审查需要了解什么',
     conclusionBody1:
       '安全的代孕旅程始于清晰的信息。代母医学筛查流程在任何人投入时间、情感或资金之前，就用来保护代母、宝宝与意向父母。从诊所检查与病历审核，到保险核查与资格指引，每一步都旨在减少可避免的意外，确保时间线稳定推进。',
