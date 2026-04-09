@@ -9,8 +9,8 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Compensation & Surrogate Pay in the U.S. | Yunda Surrogacy',
-    seoDescription: 'Learn how surrogate pay works in the U.S. and California: average compensation, monthly payment timeline, benefits, and FAQs on miscarriage and eligibility.',
+    seoTitle: 'Surrogate Compensation: Pay, Benefits & Support | Yunda',
+    seoDescription: 'Understand surrogate compensation in California and the U.S., including base pay, milestones, and support. Get a clear, private pay overview.',
     heroTitle: 'How Much Do Surrogates Get Paid? Surrogate Compensation & Surrogate Pay in the U.S.',
     heroConclusion1:
       'Surrogacy pay is not a traditional salary. It is a clear compensation package with base pay, monthly support, and milestone-based payments, typically managed through escrow.',

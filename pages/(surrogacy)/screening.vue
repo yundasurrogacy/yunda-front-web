@@ -9,8 +9,8 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Medical Screening Process -Yunda Surrogacy',
-    seoDescription: 'Understand the full surrogate medical screening process, including medical tests, insurance review, and eligibility checks.',
+    seoTitle: 'Surrogate Screening: Medical, Insurance & Eligibility | Yunda',
+    seoDescription: 'Understand surrogate screening, including medical, insurance, and eligibility checks. Get clear, respectful guidance before you move forward.',
     heroTitle: 'Surrogate Medical Screening Process: What to Expect From Medical, Insurance & Eligibility Checks',
     conclusionBody1:
       'A safe surrogacy journey starts with clarity. The surrogate medical screening process is how we protect the surrogate, the baby, and the intended parents—before anyone invests time, emotion, or money. From clinic exams and record review to insurance checks and eligibility guidance, each step is meant to prevent avoidable surprises and support a steady timeline.',

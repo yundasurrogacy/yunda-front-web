@@ -9,9 +9,9 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Apply to Be a Surrogate: Surrogate Application, Requirements & the Process',
+    seoTitle: 'Surrogate Requirements: Do You Qualify? | Yunda',
     seoDescription:
-      'Apply to be a surrogate with a simple surrogate application. Learn requirements, disqualifiers, age limits, and the step-by-step process to become a surrogate mother.',
+      'See if you qualify to become a surrogate in California. Review key requirements, disqualifiers, and next steps with clear, private guidance.',
     heroTitle: 'Apply to Be a Surrogate: Surrogate Application, Requirements & the Process to Become a Surrogate Mother',
     heroSubtitle:
       'Get a clear overview of application steps, core eligibility standards, and what to expect as you move through the surrogate journey.',

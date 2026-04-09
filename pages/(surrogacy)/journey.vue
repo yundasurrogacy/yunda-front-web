@@ -9,9 +9,9 @@ const localePath = useLocalePath()
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Process: How Does Being a Surrogate Work  | Yunda Surrogacy',
+    seoTitle: 'Surrogacy Process: How It Works Step by Step | Yunda',
     seoDescription:
-      'Surrogate process explained step-by-step: screening, matching, embryo transfer, pregnancy support, delivery and postpartum. Gestational carrier vs surrogate + FAQs.',
+      'Learn how the surrogacy process works step by step, from screening and matching to IVF, legal planning, birth, and postpartum support.',
     heroTitle: 'Surrogate Process: How Does Being a Surrogate Work (Step-by-Step Pregnancy Journey)',
     conclusionLabel: 'Conclusion',
     heroConclusion:

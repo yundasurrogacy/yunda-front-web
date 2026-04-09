@@ -4,6 +4,8 @@
  */
 export const translations = {
   en: {
+    seoTitle: 'Apply to Become a Surrogate in California | Yunda',
+    seoDescription: 'Apply to become a surrogate in California through a clear, private step-by-step form. Share your details securely and start with support.',
     pageTitle: 'Surrogates Application (Step by Step)',
     validationRequired: 'Please complete all required fields in this section.',
     validationRequiredWithField: (field: string) => `Please complete: ${field}`,
@@ -292,6 +294,8 @@ export const translations = {
     },
   },
   zh: {
+    seoTitle: '在加州申请成为代孕妈妈 | Yunda',
+    seoDescription: '通过清晰、私密的分步表单申请成为加州代孕妈妈，安全提交信息并在支持下开启流程。',
     pageTitle: '代孕母申请表（分步填写）',
     validationRequired: '请完成本部分所有必填项。',
     validationRequiredWithField: (field: string) => `请完成：${field}`,

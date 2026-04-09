@@ -34,6 +34,15 @@ const localePath = useLocalePath()
 
 // 页面内联多语言（与 privacy-policy 相同方式，无需插件，SSR 友好）
 const t = computed(() => translations[locale.value === 'zh' ? 'zh' : 'en'])
+useHead(() => ({
+  title: t.value.seoTitle,
+  meta: [
+    {
+      name: 'description',
+      content: t.value.seoDescription,
+    },
+  ],
+}))
 const route = useRoute()
 const router = useRouter()
 const states = computed(() => getStatesByCountry('US'))
