@@ -1,4 +1,6 @@
 <script setup>
+import MobileApplyCta from './MobileApplyCta.vue'
+
 const { locale } = useI18n()
 const localePath = useLocalePath()
 </script>
@@ -300,6 +302,7 @@ const localePath = useLocalePath()
       </div>
     </div>
   </footer>
+  <MobileApplyCta />
 </template>
 
 <style scoped>
