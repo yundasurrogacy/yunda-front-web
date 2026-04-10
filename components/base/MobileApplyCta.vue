@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
@@ -10,6 +10,15 @@ const parentsPath = computed(() => localePath('/be-parents'))
 const surrogatePath = computed(() => localePath('/be-surrogate'))
 const parentsLabel = computed(() => (locale.value.startsWith('zh') ? '成为准父母' : 'Become an Intended Parent'))
 const surrogateLabel = computed(() => (locale.value.startsWith('zh') ? '成为代孕妈妈' : 'Become a Surrogate'))
+const passedFirstScreen = ref(false)
+
+function updatePassedFirstScreen() {
+  if (typeof window === 'undefined')
+    return
+
+  const firstScreenHeight = window.innerHeight || 0
+  passedFirstScreen.value = window.scrollY > firstScreenHeight
+}
 
 function normalizePath(path: string) {
   return (path || '/').replace(/\/+$/, '') || '/'
@@ -31,7 +40,22 @@ const shouldShow = computed(() => {
     localePath('/surrogacy-cost'),
   ].map(normalizePath)
 
-  return !hiddenPaths.some(path => isPathMatch(currentPath, path))
+  return !hiddenPaths.some(path => isPathMatch(currentPath, path)) && passedFirstScreen.value
+})
+
+onMounted(() => {
+  updatePassedFirstScreen()
+  window.addEventListener('scroll', updatePassedFirstScreen, { passive: true })
+  window.addEventListener('resize', updatePassedFirstScreen, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', updatePassedFirstScreen)
+  window.removeEventListener('resize', updatePassedFirstScreen)
+})
+
+watch(() => route.fullPath, () => {
+  updatePassedFirstScreen()
 })
 </script>
 
@@ -64,11 +88,28 @@ const shouldShow = computed(() => {
       {{ surrogateLabel }}
     </NuxtLink>
   </div>
+
+  <div v-if="shouldShow" class="desktop-apply-cta hidden md:flex">
+    <NuxtLink
+      :to="parentsPath"
+      class="desktop-apply-cta-button parents"
+      aria-label="Become an intended parent"
+    >
+      {{ parentsLabel }}
+    </NuxtLink>
+    <NuxtLink
+      :to="surrogatePath"
+      class="desktop-apply-cta-button surrogate"
+      aria-label="Become a surrogate"
+    >
+      {{ surrogateLabel }}
+    </NuxtLink>
+  </div>
 </template>
 
 <style scoped>
 .mobile-apply-spacer {
-  height: calc(6rem + env(safe-area-inset-bottom));
+  height: calc(5rem + env(safe-area-inset-bottom));
 }
 
 .mobile-apply-cta {
@@ -77,34 +118,32 @@ const shouldShow = computed(() => {
   right: 0;
   bottom: 0;
   z-index: 60;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -8px 20px rgba(39, 31, 24, 0.16);
-  overflow: hidden;
+  box-shadow: 0 -8px 22px rgba(39, 31, 24, 0.14);
 }
 
 .mobile-apply-cta-button {
   display: flex;
-  min-height: 6rem;
+  min-height: 4.25rem;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.6rem 0.5rem;
+  gap: 0.25rem;
+  padding: 0.45rem 0.4rem calc(0.45rem + env(safe-area-inset-bottom));
   color: var(--dark-brown);
-  font-size: clamp(0.84rem, 3.4vw, 0.98rem);
+  font-size: clamp(0.79rem, 3.1vw, 0.92rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   text-align: center;
 }
 
 .mobile-apply-cta-button.parents {
   background: color-mix(in srgb, var(--primary-brown) 55%, white);
+  border-top-left-radius: 0.95rem;
 }
 
 .mobile-apply-cta-button.surrogate {
   background: color-mix(in srgb, var(--olive-green) 70%, white);
+  border-top-right-radius: 0.95rem;
 }
 
 .mobile-apply-cta-button:active {
@@ -112,13 +151,76 @@ const shouldShow = computed(() => {
 }
 
 .mobile-apply-icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.35rem;
+  height: 1.35rem;
   color: var(--dark-brown);
 }
 
 .mobile-apply-icon svg {
   width: 100%;
   height: 100%;
+}
+
+.desktop-apply-cta {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transform: translateY(-50%);
+}
+
+.desktop-apply-cta-button {
+  min-width: 12rem;
+  border-radius: 9999px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark-brown);
+  box-shadow: 0 8px 18px rgba(39, 31, 24, 0.16);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.desktop-apply-cta-button.parents {
+  background: color-mix(in srgb, var(--primary-brown) 55%, white);
+}
+
+.desktop-apply-cta-button.surrogate {
+  background: color-mix(in srgb, var(--olive-green) 70%, white);
+}
+
+.desktop-apply-cta-button:hover {
+  transform: translateX(-4px);
+  box-shadow: 0 12px 24px rgba(39, 31, 24, 0.2);
+}
+
+.desktop-apply-cta-button:active {
+  transform: translateX(-1px);
+  opacity: 0.95;
+}
+
+@media (max-width: 767px) {
+  .mobile-apply-cta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .desktop-apply-cta {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-apply-spacer,
+  .mobile-apply-cta {
+    display: none !important;
+  }
 }
 </style>
