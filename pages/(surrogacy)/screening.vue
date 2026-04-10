@@ -11,13 +11,24 @@ const translations = {
   en: {
     seoTitle: 'Surrogate Screening: Medical, Insurance & Eligibility | Yunda Surrogacy',
     seoDescription: 'Understand surrogate screening, including medical, insurance, and eligibility checks. Get clear, respectful guidance before you move forward.',
-    heroTitle: 'Surrogate Medical Screening Process: What to Expect From Medical, Insurance & Eligibility Checks',
+    heroTitle: 'Surrogate Medical Screening: What to Expect',
     conclusionBody1:
       'A safe surrogacy journey starts with clarity. The surrogate medical screening process is how we protect the surrogate, the baby, and the intended parents—before anyone invests time, emotion, or money. From clinic exams and record review to insurance checks and eligibility guidance, each step is meant to prevent avoidable surprises and support a steady timeline.',
-    heroSubtitle: 'Understand the full surrogate medical screening process, including medical tests, insurance review, and eligibility checks.',
-    primaryCta: 'Get Started',
-    secondaryCta: 'See Step-by-Step Process',
-    features: ['Clinic-Led Screening', 'Insurance Review Support', 'Clear Eligibility Checklist'],
+    heroSubtitle: 'Understand how screening works, including medical review, insurance checks, and eligibility confirmation, so you can move forward with clarity and peace of mind.',
+    primaryCta: 'See Step-by-Step Process',
+    secondaryCta: 'Surrogate Application',
+    features: [
+      'A structured screening process with clear next steps',
+      'Careful coordination across clinic, insurance, and eligibility review',
+      'Respectful support for sensitive health questions and records',
+    ],
+    onPageTitle: 'On this page, you’ll learn:',
+    onPageItems: [
+      'what surrogate screening usually includes',
+      'how medical and insurance review work together',
+      'what medical clearance means for your journey',
+      'what happens after you are cleared to move forward',
+    ],
     takeawaysTitle: 'Key Takeaways',
     takeawaysItems: [
       'Clinic checks for surrogate screening',
@@ -227,13 +238,24 @@ const translations = {
   zh: {
     seoTitle: '代孕妈妈筛查：医疗、保险与资格 | Yunda',
     seoDescription: '了解代孕妈妈筛查，包括医疗、保险和资格检查。在你继续前获得清晰、尊重的指导。',
-    heroTitle: '代母医学筛查流程：医疗、保险与资格审查需要了解什么',
+    heroTitle: '代母医学筛查：你可以预期什么',
     conclusionBody1:
       '安全的代孕旅程始于清晰的信息。代母医学筛查流程在任何人投入时间、情感或资金之前，就用来保护代母、宝宝与意向父母。从诊所检查与病历审核，到保险核查与资格指引，每一步都旨在减少可避免的意外，确保时间线稳定推进。',
-    heroSubtitle: '了解完整代母医学筛查流程，包括医疗检查、保险审核与资格清单。',
-    primaryCta: '开始咨询',
-    secondaryCta: '查看分步流程',
-    features: ['诊所主导筛查', '保险审核支持', '清晰资格清单'],
+    heroSubtitle: '了解筛查如何进行，包括医学审核、保险核查与资格确认，让你在清晰和安心中推进下一步。',
+    primaryCta: '查看分步流程',
+    secondaryCta: 'Surrogate Application',
+    features: [
+      '结构化筛查流程，下一步清晰可见',
+      '诊所、保险与资格评估的细致协同',
+      '对敏感健康问题与病历提供尊重式支持',
+    ],
+    onPageTitle: '本页你将了解：',
+    onPageItems: [
+      '代母筛查通常包含哪些内容',
+      '医学审核与保险审核如何协同',
+      '医学清关对旅程意味着什么',
+      '清关后下一步通常如何推进',
+    ],
     takeawaysTitle: '要点速览',
     takeawaysItems: [
       '诊所主导的代母筛查与核查',
@@ -470,37 +492,49 @@ useHead(() => ({
     <main>
       <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-10 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)] rounded-[18px] bg-[var(--head-bg)] shadow-[0_18px_36px_rgba(39,31,24,0.08)]">
+          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--head-bg)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
             <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
               <div class="max-w-[720px]">
                 <h1 class="text-7.5 text-[var(--dark-brown)] font-semibold leading-tight lg:text-10" style="font-family: var(--font-primary)">
                   {{ c.heroTitle }}
                 </h1>
-                <div class="mt-6">
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-80 lg:text-5" style="font-family: var(--font-secondary)">
-                    {{ c.conclusionBody1 }}
-                  </p>
-                </div>
                 <p class="mt-6 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-75 lg:text-5" style="font-family: var(--font-secondary)">
                   {{ c.heroSubtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
-                  <NuxtLink
-                    :to="localePath('/be-surrogate')"
-                    class="inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-[#FFFCF6] font-semibold tracking-[0.02em] shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                  <a
+                    href="#screening-process"
+                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-8 py-5 text-4 text-[#FFFCF6] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
                     {{ c.primaryCta }}
-                  </NuxtLink>
+                  </a>
                   <NuxtLink
-                    :to="localePath('/surrogacy-process')"
-                    class="inline-flex items-center justify-center border border-[var(--primary-brown)] rounded-[10px] bg-[var(--light-cream)] px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold tracking-[0.02em] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                    :to="localePath('/be-surrogate')"
+                    class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
-                    {{ c.secondaryCta }}
+                    <span>{{ c.secondaryCta }}</span>
+                    <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
+                </div>
+                <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
+                  <p class="text-3.8 text-[var(--dark-brown)] font-semibold lg:text-4.4" style="font-family: var(--font-primary)">
+                    {{ c.onPageTitle }}
+                  </p>
+                  <ul class="mt-2 grid gap-1.5">
+                    <li
+                      v-for="(item, index) in c.onPageItems"
+                      :key="`screening-onpage-${index}`"
+                      class="flex items-start gap-2.5 text-3.4 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4"
+                      style="font-family: var(--font-secondary)"
+                    >
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
+                      <span>{{ item }}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="flex items-center justify-center lg:justify-end">
-                <div class="max-w-[520px] w-full overflow-hidden border border-white/70 rounded-[28px] bg-white/85 shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
+                <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)]">
                   <img
                     src="/images/gc/screening/screening-banner.png"
                     :alt="c.heroTitle"
@@ -533,7 +567,7 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full bg-[var(--head-bg)] pb-16 pt-6">
+      <section id="screening-process" class="w-full bg-[var(--head-bg)] pb-16 pt-6">
         <div class="mx-auto max-w-[1960px] w-full px-6 lg:px-16">
           <div class="mx-auto max-w-[1400px]">
             <div class="border border-[var(--primary-brown)]/25 rounded-[12px] bg-[#fbf7ef] px-6 py-4 shadow-[0_10px_24px_rgba(39,31,24,0.06)]">

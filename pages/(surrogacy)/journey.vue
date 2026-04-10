@@ -12,19 +12,26 @@ const translations = {
     seoTitle: 'Surrogacy Process: How It Works Step by Step | Yunda Surrogacy',
     seoDescription:
       'Learn how the surrogacy process works step by step, from screening and matching to IVF, legal planning, birth, and postpartum support.',
-    heroTitle: 'Surrogate Process: How Does Being a Surrogate Work (Step-by-Step Pregnancy Journey)',
+    heroTitle: 'The Surrogate Process, Step by Step',
     conclusionLabel: 'Conclusion',
     heroConclusion:
-      'The surrogate process is a guided, step-by-step pregnancy journey, from application and screening to matching, embryo transfer, prenatal care, delivery, and postpartum support. Most modern surrogacy uses a gestational carrier, so the surrogate typically does not share DNA with the baby. Our role is to keep each step clear, support communication and logistics, and make sure you feel respected and supported through the entire journey.',
+      'The surrogate process is a guided journey from application and screening to matching, embryo transfer, pregnancy, delivery, and postpartum support.',
     heroSubtitle:
-      'Surrogate process explained step-by-step: screening, matching, embryo transfer, pregnancy support, delivery and postpartum. Gestational carrier vs surrogate + DNA FAQs.',
-    primaryCta: 'Start Your Application',
-    secondaryCta: 'View Process Steps',
+      'See how the surrogate journey works-from application and screening to matching, embryo transfer, pregnancy, delivery, and postpartum support.',
+    primaryCta: 'View Process Steps',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: 'Step-by-step surrogate process journey overview',
     features: [
-      'Application to Postpartum Support',
-      'Gestational Carrier + DNA Clarity',
-      'Coordinated Medical and Logistics Guidance',
+      'A clear step-by-step process from start to postpartum',
+      'Coordinated support for medical, legal, and practical milestones',
+      'Respectful guidance so you feel informed, prepared, and supported',
+    ],
+    onPageTitle: 'On this page, you’ll learn:',
+    onPageItems: [
+      'how the journey begins and what happens first',
+      'what to expect during screening and matching',
+      'how transfer, pregnancy, and delivery are supported',
+      'what postpartum care and follow-up can look like',
     ],
     processTitle: 'What Is the Surrogate Mother Process?',
     processBody1:
@@ -234,12 +241,19 @@ const translations = {
     heroSubtitle:
       '我们将按步骤说明代孕流程：筛查、匹配、胚胎移植、孕期支持、分娩和产后支持，并解答妊娠代母与 DNA 的常见疑问。',
     primaryCta: '开始申请',
-    secondaryCta: '查看流程步骤',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: '代孕流程分步妊娠旅程示意图',
     features: [
       '从申请到产后支持的完整路径',
       '妊娠代母与 DNA 关系清晰说明',
       '医疗与沟通协同支持',
+    ],
+    onPageTitle: '本页你将了解：',
+    onPageItems: [
+      '旅程如何开始，以及第一步是什么',
+      '筛查与匹配阶段通常会经历什么',
+      '移植、孕期与分娩如何被支持',
+      '产后支持与随访通常如何安排',
     ],
     processTitle: '什么是代孕妈妈流程？',
     processBody1:
@@ -459,41 +473,49 @@ useHead(() => ({
     <main>
       <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-14 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)] rounded-[18px] bg-[var(--head-bg)] shadow-[0_18px_36px_rgba(39,31,24,0.08)]">
+          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--head-bg)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
             <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
               <div class="max-w-[780px]">
                 <h1 class="text-7.5 text-[var(--dark-brown)] font-semibold leading-tight lg:text-10" style="font-family: var(--font-primary)">
                   {{ c.heroTitle }}
                 </h1>
-                <p
-                  class="mt-6 inline-flex items-center rounded-full bg-[var(--primary-brown)]/10 px-3 py-1.5 text-3 text-[var(--primary-brown)] font-semibold tracking-[0.02em] lg:text-3.5"
-                  style="font-family: var(--font-secondary)"
-                >
-                  {{ c.conclusionLabel }}
-                </p>
                 <p class="mt-3 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-85 lg:text-5" style="font-family: var(--font-secondary)">
-                  {{ c.heroConclusion }}
-                </p>
-                <p class="mt-5 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-75 lg:text-4.5" style="font-family: var(--font-secondary)">
                   {{ c.heroSubtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
-                  <NuxtLink
-                    :to="localePath('/be-surrogate')"
-                    class="inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-[#FFFCF6] font-semibold tracking-[0.02em] shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                  <a
+                    href="#journey-step-1"
+                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-8 py-5 text-4 text-[#FFFCF6] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
                     {{ c.primaryCta }}
-                  </NuxtLink>
+                  </a>
                   <NuxtLink
-                    :to="localePath('/surrogacy-process')"
-                    class="inline-flex items-center justify-center border border-[var(--primary-brown)] rounded-[10px] bg-[var(--light-cream)] px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold tracking-[0.02em] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                    :to="localePath('/be-surrogate')"
+                    class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
-                    {{ c.secondaryCta }}
+                    <span>{{ c.secondaryCta }}</span>
+                    <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
+                </div>
+                <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
+                  <p class="text-3.8 text-[var(--dark-brown)] font-semibold lg:text-4.4" style="font-family: var(--font-primary)">
+                    {{ c.onPageTitle }}
+                  </p>
+                  <ul class="mt-2 grid gap-1.5">
+                    <li
+                      v-for="(item, index) in c.onPageItems"
+                      :key="`journey-onpage-${index}`"
+                      class="flex items-start gap-2.5 text-3.4 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4"
+                      style="font-family: var(--font-secondary)"
+                    >
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
+                      <span>{{ item }}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="flex items-center justify-center lg:justify-end">
-                <div class="max-w-[520px] w-full overflow-hidden border border-white/70 rounded-[28px] bg-white/85 shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
+                <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)]">
                   <img
                     src="/images/gc/gc-pic/Surrogate-Mother-Process.png"
                     :alt="c.heroImageAlt"

@@ -11,19 +11,26 @@ const translations = {
   en: {
     seoTitle: 'Surrogate Compensation: Pay, Benefits & Support | Yunda Surrogacy',
     seoDescription: 'Understand surrogate compensation in California and the U.S., including base pay, milestones, and support. Get a clear, private pay overview.',
-    heroTitle: 'How Much Do Surrogates Get Paid? Surrogate Compensation & Surrogate Pay in the U.S.',
+    heroTitle: 'Surrogate Pay and Compensation, Clearly Explained',
     heroConclusion1:
       'Surrogacy pay is not a traditional salary. It is a clear compensation package with base pay, monthly support, and milestone-based payments, typically managed through escrow.',
     heroConclusion2:
       'Total pay can vary by state, insurance fit, and medical factors, so we outline the timeline and common questions (including miscarriage and eligibility) upfront. If you are ready, apply to get a realistic pay estimate based on your profile.',
-    heroSubtitle: 'Learn how surrogate pay works in the U.S. and California, including average compensation, payment timing, and benefit structure.',
-    primaryCta: 'Apply for a Pay Estimate',
-    secondaryCta: 'View Payment Timeline',
+    heroSubtitle: 'Understand how surrogate compensation works, including base pay, milestone payments, and ongoing support, with a clear overview you can use for real planning.',
+    primaryCta: 'View Compensation Details',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: 'Surrogate compensation consultation in the United States',
     features: [
-      'Base Pay + Monthly Support',
-      'Milestone Payments via Escrow',
-      'State, Insurance & Medical Factors',
+      'Clear guidance on pay structure, timing, and milestones',
+      'Thoughtful coordination around compensation, support, and benefits',
+      'Private, respectful conversations so you can plan with confidence',
+    ],
+    onPageTitle: 'On this page, you’ll learn:',
+    onPageItems: [
+      'how surrogate compensation is typically structured',
+      'when payments often begin and how milestones work',
+      'what support and common benefits may include',
+      'what factors can affect total compensation',
     ],
     overviewTitle: 'Surrogate Pay Overview: Average Surrogate Pay, Surrogate Mother Pay Rate & What Affects It',
     overviewIntro:
@@ -271,19 +278,26 @@ const translations = {
   zh: {
     seoTitle: '代孕妈妈补偿：报酬、福利与支持 | Yunda',
     seoDescription: '了解加州和美国的代孕妈妈补偿，包括基础报酬、里程碑付款和支持。获得清晰、私密的报酬概览。',
-    heroTitle: '代孕妈妈能拿多少补偿？美国代孕补偿与付款机制',
+    heroTitle: '代母补偿与报酬，清晰说明',
     heroConclusion1:
       '代孕补偿不是传统薪资，而是一套清晰的补偿方案：基础补偿、月度支持和里程碑付款，通常通过第三方托管账户（Escrow）管理。',
     heroConclusion2:
       '总代补偿会因所在州、保险适配度和医疗因素而变化，所以我们会提前说明付款时间线与常见问题（包括流产与资格评估）。如果你准备好了，可以提交申请，我们会基于你的个人情况给出更贴近实际的补偿预估。',
-    heroSubtitle: '了解美国（含加州）代孕补偿如何运作，包括平均补偿、付款节奏、福利结构与关键注意事项。',
-    primaryCta: '申请补偿评估',
-    secondaryCta: '查看付款时间线',
+    heroSubtitle: '了解代母补偿如何运作，包括基础补偿、里程碑付款与持续支持，帮助你做出可执行的规划。',
+    primaryCta: '查看补偿详情',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: '美国代孕补偿咨询场景',
     features: [
-      '基础补偿 + 月度支持',
-      '托管账户按里程碑发放',
-      '州政策、保险与医疗因素影响补偿',
+      '清晰说明补偿结构、支付节奏与关键节点',
+      '围绕补偿、支持与福利进行细致协同',
+      '以私密、尊重的沟通帮助你安心规划',
+    ],
+    onPageTitle: '本页你将了解：',
+    onPageItems: [
+      '代母补偿通常如何构成',
+      '付款通常何时开始、里程碑如何触发',
+      '常见支持与福利通常包含哪些内容',
+      '哪些因素会影响总补偿',
     ],
     overviewTitle: '代孕补偿总览：平均补偿、代孕妈妈报酬水平，以及影响因素',
     overviewIntro:
@@ -561,38 +575,49 @@ useHead(() => ({
     <main>
       <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-10 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)] rounded-[18px] bg-[var(--head-bg)] shadow-[0_18px_36px_rgba(39,31,24,0.08)]">
+          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--head-bg)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
             <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
               <div class="max-w-[760px]">
                 <h1 class="text-7.5 text-[var(--dark-brown)] font-semibold leading-tight lg:text-10" style="font-family: var(--font-primary)">
                   {{ c.heroTitle }}
                 </h1>
-                <p class="mt-6 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-85 lg:text-5" style="font-family: var(--font-secondary)">
-                  {{ c.heroConclusion1 }}
-                </p>
-                <p class="mt-3 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-85 lg:text-5" style="font-family: var(--font-secondary)">
-                  {{ c.heroConclusion2 }}
-                </p>
-                <p class="mt-5 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-75 lg:text-4.5" style="font-family: var(--font-secondary)">
+                <p class="mt-6 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-75 lg:text-4.8" style="font-family: var(--font-secondary)">
                   {{ c.heroSubtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
-                  <NuxtLink
-                    :to="localePath('/be-surrogate')"
-                    class="inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-[#FFFCF6] font-semibold tracking-[0.02em] shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                  <a
+                    href="#compensation-details"
+                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-8 py-5 text-4 text-[#FFFCF6] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
                     {{ c.primaryCta }}
-                  </NuxtLink>
+                  </a>
                   <NuxtLink
-                    :to="localePath('/surrogate-compensation')"
-                    class="inline-flex items-center justify-center border border-[var(--primary-brown)] rounded-[10px] bg-[var(--light-cream)] px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold tracking-[0.02em] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                    :to="localePath('/be-surrogate')"
+                    class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
-                    {{ c.secondaryCta }}
+                    <span>{{ c.secondaryCta }}</span>
+                    <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
+                </div>
+                <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
+                  <p class="text-3.8 text-[var(--dark-brown)] font-semibold lg:text-4.4" style="font-family: var(--font-primary)">
+                    {{ c.onPageTitle }}
+                  </p>
+                  <ul class="mt-2 grid gap-1.5">
+                    <li
+                      v-for="(item, index) in c.onPageItems"
+                      :key="`benefit-onpage-${index}`"
+                      class="flex items-start gap-2.5 text-3.4 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4"
+                      style="font-family: var(--font-secondary)"
+                    >
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
+                      <span>{{ item }}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="flex items-center justify-center lg:justify-end">
-                <div class="max-w-[520px] w-full overflow-hidden border border-white/70 rounded-[28px] bg-white/85 shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
+                <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)]">
                   <img
                     src="/images/gc/gc-pic/Surrogate-Pay-Overview.png"
                     :alt="c.heroImageAlt"
@@ -628,7 +653,7 @@ useHead(() => ({
       <section class="w-full bg-[var(--head-bg)] pb-16 lg:pb-20">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/20 rounded-[18px] bg-white/90 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+            <h2 id="compensation-details" class="scroll-mt-28 text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
               {{ c.overviewTitle }}
             </h2>
             <p class="mt-3 max-w-[1200px] text-3.5 text-[var(--dark-brown)]/80 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">

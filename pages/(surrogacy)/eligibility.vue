@@ -12,16 +12,23 @@ const translations = {
     seoTitle: 'Surrogate Requirements: Do You Qualify? | Yunda Surrogacy',
     seoDescription:
       'See if you qualify to become a surrogate in California. Review key requirements, disqualifiers, and next steps with clear, private guidance.',
-    heroTitle: 'Apply to Be a Surrogate: Surrogate Application, Requirements & the Process to Become a Surrogate Mother',
+    heroTitle: 'Surrogate Requirements: Do You Qualify?',
     heroSubtitle:
-      'Get a clear overview of application steps, core eligibility standards, and what to expect as you move through the surrogate journey.',
-    primaryCta: 'Start Your Application',
-    secondaryCta: 'View Requirements',
+      'Review the basic requirements to become a surrogate, including age, health, pregnancy history, and lifestyle factors, with guidance that is clear and respectful.',
+    primaryCta: 'View Requirements',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: 'Surrogate eligibility and application overview',
     features: [
-      'Application & Timeline Overview',
-      'Core Eligibility Requirements',
-      'Step-by-Step Process Clarity',
+      'A straightforward explanation of qualifications and disqualifiers',
+      'Careful review of health, support system, and pregnancy history',
+      'Compassionate guidance, whether you qualify now or are still exploring',
+    ],
+    onPageTitle: 'On this page, you’ll learn:',
+    onPageItems: [
+      'the core requirements to become a surrogate',
+      'common reasons applicants may not qualify right now',
+      'how age and pregnancy history are usually reviewed',
+      'when it makes sense to take the next step',
     ],
     conclusionLabel: 'Conclusion',
     conclusionBody1:
@@ -144,16 +151,23 @@ const translations = {
     seoTitle: '代孕妈妈资格要求：你符合条件吗？ | Yunda',
     seoDescription:
       '看看你是否符合在加州成为代孕妈妈的资格。查看关键要求、不符合因素和下一步，获得清晰、私密的指导。',
-    heroTitle: '申请成为代母：代母申请、资格要求与成为代孕妈妈的流程',
+    heroTitle: '代母资格要求：你符合条件吗？',
     heroSubtitle:
-      '先从全局看清申请步骤、基础筛选标准与后续流程节奏，便于你更稳地做出决定。',
-    primaryCta: '开始申请',
-    secondaryCta: '查看资格要求',
+      '查看成为代母的基础要求，包括年龄、健康、孕产史与生活方式因素，并获得清晰且尊重的指引。',
+    primaryCta: '查看资格要求',
+    secondaryCta: 'Surrogate Application',
     heroImageAlt: '代母资格与申请流程概览',
     features: [
-      '申请与时间线概览',
-      '核心资格要求说明',
-      '分步骤流程清晰可见',
+      '清晰解释符合与暂不符合的常见条件',
+      '细致评估健康状况、支持系统与孕产史',
+      '无论是否当前符合，都提供有温度的建议',
+    ],
+    onPageTitle: '本页你将了解：',
+    onPageItems: [
+      '成为代母的核心要求',
+      '常见暂不符合原因',
+      '年龄与孕产史通常如何评估',
+      '何时适合进入下一步',
     ],
     conclusionBody1:
       '如果你正在想：“我想成为代母”，你值得拥有一条清晰、被尊重的前进路径。流程从一份简洁的代母申请开始，随后是预评估、咨询与筛查——在匹配之前先把你的健康、保险与支持系统保护好。',
@@ -292,41 +306,50 @@ useHead(() => ({
     <main>
       <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-10 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)] rounded-[18px] bg-[var(--head-bg)] shadow-[0_18px_36px_rgba(39,31,24,0.08)]">
+          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--head-bg)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
             <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
               <div class="max-w-[780px]">
                 <h1 class="text-7.5 text-[var(--dark-brown)] font-semibold leading-tight lg:text-10" style="font-family: var(--font-primary)">
                   {{ c.heroTitle }}
                 </h1>
-                <div class="mt-6 border-t border-[var(--primary-brown)]/55 pt-6">
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/84 leading-relaxed lg:text-5" style="font-family: var(--font-secondary)">
-                    {{ c.conclusionBody1 }}
-                  </p>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/84 leading-relaxed lg:text-5" style="font-family: var(--font-secondary)">
-                    {{ c.conclusionBody2 }}
-                  </p>
-                </div>
                 <p class="mt-6 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-80 lg:text-5" style="font-family: var(--font-secondary)">
                   {{ c.heroSubtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
-                  <NuxtLink
-                    :to="localePath('/be-surrogate')"
-                    class="inline-flex items-center justify-center rounded-[10px] bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-[#FFFCF6] font-semibold tracking-[0.02em] shadow-[0_10px_18px_rgba(169,108,66,0.28)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                  <a
+                    href="#surrogate-requirements"
+                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-8 py-5 text-4 text-[#FFFCF6] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
                     {{ c.primaryCta }}
-                  </NuxtLink>
+                  </a>
                   <NuxtLink
-                    :to="localePath('/eligibility')"
-                    class="inline-flex items-center justify-center border border-[var(--primary-brown)] rounded-[10px] bg-[var(--light-cream)] px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold tracking-[0.02em] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                    :to="localePath('/be-surrogate')"
+                    class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
                   >
-                    {{ c.secondaryCta }}
+                    <span>{{ c.secondaryCta }}</span>
+                    <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
+                </div>
+                <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
+                  <p class="text-3.8 text-[var(--dark-brown)] font-semibold lg:text-4.4" style="font-family: var(--font-primary)">
+                    {{ c.onPageTitle }}
+                  </p>
+                  <ul class="mt-2 grid gap-1.5">
+                    <li
+                      v-for="(item, index) in c.onPageItems"
+                      :key="`eligibility-onpage-${index}`"
+                      class="flex items-start gap-2.5 text-3.4 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4"
+                      style="font-family: var(--font-secondary)"
+                    >
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
+                      <span>{{ item }}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
               <div class="flex items-center justify-center lg:justify-end">
-                <div class="max-w-[520px] w-full overflow-hidden border border-white/70 rounded-[28px] bg-white/85 shadow-[0_24px_60px_rgba(64,84,120,0.10)] lg:max-w-[640px]">
+                <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)] lg:max-w-[640px]">
                   <img
                     src="/images/gc/gc-pic/eligibility-banner.png"
                     :alt="c.heroImageAlt"
@@ -466,7 +489,7 @@ useHead(() => ({
       <section class="w-full bg-[var(--head-bg)] pb-18 lg:pb-22">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+            <h2 id="surrogate-requirements" class="scroll-mt-28 text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
               {{ c.h23Title }}
             </h2>
 
