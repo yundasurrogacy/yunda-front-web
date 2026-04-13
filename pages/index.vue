@@ -139,8 +139,35 @@ useHead(() => {
     <StatsSection />
     <OurServicesSection />
     <CommitmentSection />
+    <section class="bg-[var(--head-bg)] px-4 py-[60px] md:px-20">
+      <div class="mx-auto max-w-[1400px]">
+        <div class="grid gap-8 py-2 md:min-h-[500px] md:grid-cols-10 md:items-center md:gap-10">
+          <div class="text-[var(--dark-brown)] md:col-span-4">
+            <p class="text-[30px] font-bold leading-[1.35]" style="font-family: var(--font-primary)">
+              Yunda Surrogacy - Building families. Creating futures.
+            </p>
+            <p class="mt-8 text-4.5 leading-relaxed md:text-5" style="font-family: var(--font-secondary)">
+              At Yunda Surrogacy, we believe that every journey to parenthood deserves care, professionalism, and respect.
+            </p>
+            <p class="text-4.5 leading-relaxed md:text-5" style="font-family: var(--font-secondary)">
+              Yunda Surrogacy is more than a bridge between families - we are a partner built on integrity, compassion, and commitment to creating life with love.
+            </p>
+          </div>
+          <div class="relative overflow-hidden rounded-[20px] shadow-[0_12px_34px_rgba(39,31,24,0.16)] aspect-video md:col-span-6 md:h-[500px] md:aspect-auto">
+            <iframe
+              class="absolute left-1/2 top-1/2 h-full w-full max-w-none -translate-x-1/2 -translate-y-1/2 border-0 md:w-[108%]"
+              src="https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1"
+              title="Yunda Surrogacy Introduction"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      </div>
+    </section>
     <SurrogateGallerySection
-      banner-src="/images/home/home-redesign/meet-our-surrogates-banner.jpg"
       :slides="homeSurrogateSlides"
     />
     <GoogleReviewsSection />
