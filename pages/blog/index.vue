@@ -1072,13 +1072,13 @@ onBeforeUnmount(() => {
           <div class="grid grid-cols-2 gap-4">
             <NuxtLink
               :to="localePath('/be-parents')"
-              class="inline-flex items-center justify-center rounded-xl bg-[#114f86] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="inline-flex items-center justify-center rounded-xl bg-[var(--primary-brown)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
             >
               {{ ctaCopy.parent }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/be-surrogate')"
-              class="inline-flex items-center justify-center rounded-xl bg-[var(--grayish-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="inline-flex items-center justify-center rounded-xl bg-[var(--olive-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
             >
               {{ ctaCopy.surrogate }}
             </NuxtLink>

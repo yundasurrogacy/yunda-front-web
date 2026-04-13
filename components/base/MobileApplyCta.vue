@@ -88,23 +88,6 @@ watch(() => route.fullPath, () => {
       {{ surrogateLabel }}
     </NuxtLink>
   </div>
-
-  <div v-if="shouldShow" class="desktop-apply-cta hidden md:flex">
-    <NuxtLink
-      :to="parentsPath"
-      class="desktop-apply-cta-button parents"
-      aria-label="Become an intended parent"
-    >
-      {{ parentsLabel }}
-    </NuxtLink>
-    <NuxtLink
-      :to="surrogatePath"
-      class="desktop-apply-cta-button surrogate"
-      aria-label="Become a surrogate"
-    >
-      {{ surrogateLabel }}
-    </NuxtLink>
-  </div>
 </template>
 
 <style scoped>
@@ -161,59 +144,10 @@ watch(() => route.fullPath, () => {
   height: 100%;
 }
 
-.desktop-apply-cta {
-  position: fixed;
-  right: 1rem;
-  top: 50%;
-  z-index: 55;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  transform: translateY(-50%);
-}
-
-.desktop-apply-cta-button {
-  min-width: 12rem;
-  border-radius: 9999px;
-  padding: 0.8rem 1rem;
-  text-align: center;
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--dark-brown);
-  box-shadow: 0 8px 18px rgba(39, 31, 24, 0.16);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.desktop-apply-cta-button.parents {
-  background: color-mix(in srgb, var(--primary-brown) 55%, white);
-}
-
-.desktop-apply-cta-button.surrogate {
-  background: color-mix(in srgb, var(--olive-green) 70%, white);
-}
-
-.desktop-apply-cta-button:hover {
-  transform: translateX(-4px);
-  box-shadow: 0 12px 24px rgba(39, 31, 24, 0.2);
-}
-
-.desktop-apply-cta-button:active {
-  transform: translateX(-1px);
-  opacity: 0.95;
-}
-
 @media (max-width: 767px) {
   .mobile-apply-cta {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .desktop-apply-cta {
-    display: none !important;
   }
 }
 
