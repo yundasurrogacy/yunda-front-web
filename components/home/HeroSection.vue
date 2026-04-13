@@ -10,8 +10,8 @@ const videoReady = ref(false)
 const isPlaying = ref(false)
 let visibilityObserver: IntersectionObserver | null = null
 
-const DESKTOP_VIDEO_SRC = 'https://cdn-qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_pc.mp4'
-const MOBILE_VIDEO_SRC = 'https://cdn-qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_mobile.mp4'
+const DESKTOP_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_pc.mp4'
+const MOBILE_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_mobile.mp4'
 
 const videoSource = computed(() => {
   if (!videoReady.value) {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VideoPlayer from '@/components/base/VideoPlayer.vue'
 
-const VIDEO_SRC = 'https://cdn-qiniu-resources.weweknow.com/yundasurrogacy-1/static/surrogate_introduce_en.mp4'
+const VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/surrogate_introduce_en.mp4'
 </script>
 
 <template>
