@@ -71,14 +71,14 @@ const computedBMI = computed(() => calculatedBMI(form))
 
 /** GC 申请页图集：素材包 10 张（含新增 2 张） */
 const beSurrogateGallerySlides = [
-  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-4.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
 ]

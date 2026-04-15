@@ -304,7 +304,7 @@ export const translations = {
       ],
       processCta: 'Begin your surrogacy journey',
       galleryTitle: 'Our Wonderful Surrogates',
-      gallerySubtitle: 'Dedicated women making dreams of parenthood come true',
+      gallerySubtitle: 'Dedicated women making dreams of parenthood come true.',
     },
   },
   zh: {

@@ -6,26 +6,14 @@ useScrollAnimation()
 </script>
 
 <template>
-  <section class="bg-[var(--head-bg)] px-4 py-12 md:px-12 md:py-16 lg:px-20 lg:py-16">
+  <section class="bg-[var(--head-bg)] px-4 pb-12 pt-0 md:px-12 md:pb-16 md:pt-0 lg:px-20 lg:pt-0">
     <div class="mx-auto max-w-320">
-      <div class="scroll-animate mx-auto mb-14 max-w-260 text-center md:mb-18 lg:max-w-280">
-        <h2 class="text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
-          {{ $t('home.ourServicesSection.title') }}
-        </h2>
-        <p
-          class="mt-6 text-4.5 text-[var(--dark-brown)] leading-relaxed md:mt-7 md:text-5"
-          style="font-family: var(--font-secondary)"
-        >
-          {{ $t('home.ourServicesSection.description') }}
-        </p>
-      </div>
-
       <div class="flex flex-col gap-16 lg:gap-22 xl:gap-28">
         <!-- 准父母：大屏左文右图；小屏上文下图 -->
         <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="order-2 space-y-6 lg:order-1">
             <div style="font-family: var(--font-primary)">
-              <h3 class="text-7.5 font-semibold md:text-10">
+              <h3 class="text-[30px] font-semibold">
                 {{ $t('home.costSection.title2') }}
               </h3>
             </div>
@@ -87,7 +75,7 @@ useScrollAnimation()
           </div>
           <div class="space-y-6">
             <div style="font-family: var(--font-primary)">
-              <h3 class="text-7.5 font-semibold md:text-10">
+              <h3 class="text-[30px] font-semibold">
                 {{ $t('home.parentsSurrogatesSection.surrogateSubtitle') }}
               </h3>
             </div>

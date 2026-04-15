@@ -29,22 +29,24 @@ const partners = [
 
     <div class="relative z-[1] mx-auto max-w-320 px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:py-16">
       <div class="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-0">
-        <div class="scroll-animate flex-1 pb-10 lg:pr-12 xl:pr-16">
+        <div class="scroll-animate flex-1 lg:pr-12 xl:pr-16">
           <h2
             class="text-6 text-black font-bold font-sans md:text-7.5"
           >
             {{ $t('home.statsSection.chooseUsTitle') }}
           </h2>
-          <p
-            class="mt-6 text-4.5 text-black leading-relaxed font-sans md:text-5 md:leading-relaxed"
-          >
-            {{ $t('home.statsSection.chooseUsParagraph1') }}
-          </p>
-          <p
-            class="mt-4 text-4.5 text-black leading-relaxed font-sans md:mt-5 md:text-5 md:leading-relaxed"
-          >
-            {{ $t('home.statsSection.chooseUsParagraph2') }}
-          </p>
+          <div class="lg:mt-8 lg:flex lg:flex-1 lg:flex-col lg:justify-center">
+            <p
+              class="mt-6 text-4.5 text-black leading-relaxed font-sans md:text-5 md:leading-relaxed lg:mt-0"
+            >
+              {{ $t('home.statsSection.chooseUsParagraph1') }}
+            </p>
+            <p
+              class="mt-4 text-4.5 text-black leading-relaxed font-sans md:mt-5 md:text-5 md:leading-relaxed"
+            >
+              {{ $t('home.statsSection.chooseUsParagraph2') }}
+            </p>
+          </div>
         </div>
 
         <div
@@ -61,16 +63,16 @@ const partners = [
           <ul
             class="mt-6 text-4.5 text-black leading-relaxed font-sans md:mt-7 space-y-4 md:text-5 md:leading-relaxed md:space-y-5"
           >
-            <li>
+            <li class="pl-[1.4em] -indent-[1.4em]">
               {{ $t('home.statsSection.advantage1a') }}<strong>{{ $t('home.statsSection.advantage1b') }}</strong>
             </li>
-            <li>
+            <li class="pl-[1.4em] -indent-[1.4em]">
               {{ $t('home.statsSection.advantage2a') }}<strong>{{ $t('home.statsSection.advantage2b') }}</strong>
             </li>
-            <li>
+            <li class="pl-[1.4em] -indent-[1.4em]">
               {{ $t('home.statsSection.advantage3a') }}<strong>{{ $t('home.statsSection.advantage3b') }}</strong>{{ $t('home.statsSection.advantage3c') }}
             </li>
-            <li>
+            <li class="pl-[1.4em] -indent-[1.4em]">
               {{ $t('home.statsSection.advantage4a') }}<strong>{{ $t('home.statsSection.advantage4b') }}</strong>{{ $t('home.statsSection.advantage4c') }}
             </li>
           </ul>
@@ -79,7 +81,7 @@ const partners = [
 
       <div class="pb-6 pt-12 lg:pb-10 lg:pt-16 md:pb-8 md:pt-14">
         <h2
-          class="scroll-animate scroll-animate-delay-200 mb-8 text-center text-6 text-black font-semibold md:mb-10 lg:text-9 md:text-7.5"
+          class="scroll-animate scroll-animate-delay-200 mb-8 text-center text-[40px] text-black font-semibold md:mb-10"
           style="font-family: var(--font-primary)"
         >
           {{ $t('home.associationSection.title') }}

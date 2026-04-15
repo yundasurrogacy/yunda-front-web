@@ -10,6 +10,7 @@ import HeroSection from '../components/home/HeroSection.vue'
 import OurServicesSection from '../components/home/OurServicesSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
+import WhatSetsUsApartSection from '../components/home/WhatSetsUsApartSection.vue'
 
 const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
@@ -73,14 +74,14 @@ const howToSchema = computed(() => buildHowToSchema({
 }))
 
 const homeSurrogateSlides = [
-  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-1.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-2.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-4.jpg', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-6.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-9.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-10.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-3.jpg', alt: 'Yunda surrogate' },
+  { src: '/images/be-surrogate/gallery-5.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
 ]
@@ -137,6 +138,7 @@ useHead(() => {
     <AppHeader />
     <HeroSection />
     <StatsSection />
+    <WhatSetsUsApartSection />
     <OurServicesSection />
     <CommitmentSection />
     <section class="bg-[var(--head-bg)] px-4 py-[60px] md:px-20">
