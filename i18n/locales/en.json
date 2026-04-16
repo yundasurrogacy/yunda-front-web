@@ -145,6 +145,28 @@
     "surrogateGallerySection": {
       "title": "Meet Our Surrogates",
       "subtitle": "Dedicated women making dreams of parenthood come true."
+    },
+    "whatSetsUsApartSection": {
+      "title": "What Sets Us Apart",
+      "imageAlt": "Yunda team at ASRM",
+      "item1": {
+        "title": "Speed",
+        "description": "There is no waitlist. Yunda’s technology helps us screen candidates faster and match more efficiently, with most matches completed within 1–3 weeks and some as quickly as 1 week. Throughout the process, you’ll receive high-touch support from a dedicated case manager every step of the way."
+      },
+      "item2": {
+        "title": "Transparency",
+        "descriptionPrefix": "We give all parties total visibility into how we work and ",
+        "descriptionLinkText": "what our services cost",
+        "descriptionSuffix": ". There are no hidden fees and there’s no confusion."
+      },
+      "item3": {
+        "title": "Personalization",
+        "description": "Every fertility journey is different. We create personalized treatment plans based on your health profile, family situation, and reproductive goals, with a focus on both medical science and success."
+      },
+      "item4": {
+        "title": "Comprehensive Protection",
+        "description": "We combine top-tier fertility care, professional legal guidance, and secure fund trust management to safeguard every step of the process. Every cycle is designed to be compliant, secure, and fully supported."
+      }
     }
   },
   "parentsPrice": {

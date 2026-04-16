@@ -145,6 +145,28 @@
     "surrogateGallerySection": {
       "title": "认识我们的代孕妈妈",
       "subtitle": "她们用爱与专业，守护更多家庭的育儿梦想"
+    },
+    "whatSetsUsApartSection": {
+      "title": "我们的与众不同",
+      "imageAlt": "孕达团队参加 ASRM 会议",
+      "item1": {
+        "title": "匹配速度",
+        "description": "无需排队。孕达通过技术化筛选与匹配流程提升效率，大多数匹配可在 1–3 周完成，最快 1 周。全程由专属案管提供高触达支持，逐步陪伴推进。"
+      },
+      "item2": {
+        "title": "透明公开",
+        "descriptionPrefix": "我们向所有参与方完整公开工作流程与",
+        "descriptionLinkText": "服务费用",
+        "descriptionSuffix": "，无隐藏收费，也无信息不对称。"
+      },
+      "item3": {
+        "title": "个性化方案",
+        "description": "每段生育旅程都不同。我们会基于您的健康状况、家庭情况与生育目标制定个性化方案，并兼顾医学科学与成功率。"
+      },
+      "item4": {
+        "title": "全流程保障",
+        "description": "我们整合优质生殖医疗、专业法律支持与安全信托资金管理，守护每一步流程。每个周期都以合规、安全、可支持为标准执行。"
+      }
     }
   },
   "parentsPrice": {

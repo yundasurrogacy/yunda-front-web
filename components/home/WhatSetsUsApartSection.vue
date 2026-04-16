@@ -1,32 +1,34 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
+const { t } = useI18n()
 
 const openFeatureIndex = ref(-1)
 
-const featureItems = [
+const featureItems = computed(() => [
   {
-    title: 'Speed',
-    description: 'There is no waitlist. Yunda’s technology helps us screen candidates faster and match more efficiently, with most matches completed within 1–3 weeks and some as quickly as 1 week. Throughout the process, you’ll receive high-touch support from a dedicated case manager every step of the way.',
+    title: t('home.whatSetsUsApartSection.item1.title'),
+    description: t('home.whatSetsUsApartSection.item1.description'),
   },
   {
-    title: 'Transparency',
-    descriptionPrefix: 'We give all parties total visibility into how we work and ',
-    descriptionLinkText: 'what our services cost',
-    descriptionSuffix: '. There are no hidden fees and there’s no confusion.',
+    title: t('home.whatSetsUsApartSection.item2.title'),
+    descriptionPrefix: t('home.whatSetsUsApartSection.item2.descriptionPrefix'),
+    descriptionLinkText: t('home.whatSetsUsApartSection.item2.descriptionLinkText'),
+    descriptionSuffix: t('home.whatSetsUsApartSection.item2.descriptionSuffix'),
     link: '/surrogacy-cost',
   },
   {
-    title: 'Personalization',
-    description: 'Every fertility journey is different. We create personalized treatment plans based on your health profile, family situation, and reproductive goals, with a focus on both medical science and success.',
+    title: t('home.whatSetsUsApartSection.item3.title'),
+    description: t('home.whatSetsUsApartSection.item3.description'),
   },
   {
-    title: 'Comprehensive Protection',
-    description: 'We combine top-tier fertility care, professional legal guidance, and secure fund trust management to safeguard every step of the process. Every cycle is designed to be compliant, secure, and fully supported.',
+    title: t('home.whatSetsUsApartSection.item4.title'),
+    description: t('home.whatSetsUsApartSection.item4.description'),
   },
-]
+])
 
 function toggleFeature(index) {
   openFeatureIndex.value = openFeatureIndex.value === index ? -1 : index
@@ -42,7 +44,7 @@ function toggleFeature(index) {
             <div class="aspect-square w-full overflow-hidden rounded-[28px]">
               <img
                 src="/images/home/yunda-what-sets-us.jpeg"
-                alt="Yunda team at ASRM"
+                :alt="$t('home.whatSetsUsApartSection.imageAlt')"
                 class="h-full w-full object-cover"
                 loading="lazy"
               >
@@ -51,7 +53,7 @@ function toggleFeature(index) {
 
           <div class="min-h-0 flex flex-1 flex-col pt-2 md:min-h-[420px] md:pt-0 lg:min-h-[480px] xl:min-h-[520px]">
             <h2 class="mb-3 text-left text-[36px] text-[var(--dark-brown)] font-bold md:mb-4 md:mt-0 md:text-[36px]" style="font-family: var(--font-primary)">
-              What Sets Us Apart
+              {{ $t('home.whatSetsUsApartSection.title') }}
             </h2>
             <div class="min-h-0 flex flex-1 flex-col">
               <div
@@ -61,7 +63,7 @@ function toggleFeature(index) {
               >
                 <button
                   type="button"
-                  class="w-full flex items-center justify-between gap-4 text-left text-[30px] text-[var(--dark-brown)] leading-tight"
+                  class="w-full flex items-center justify-between gap-4 text-left text-[26px] text-[var(--dark-brown)] leading-tight md:text-[30px]"
                   @click="toggleFeature(index)"
                 >
                   <span class="font-medium" style="font-family: var(--font-primary)">
