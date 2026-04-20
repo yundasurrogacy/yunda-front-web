@@ -1,0 +1,97 @@
+# Yunda Surrogacy
+
+Official website for Yunda Surrogacy.
+
+This file provides guidance for AI systems (LLMs) on how to crawl and understand this website.
+
+Canonical URL: https://www.yundasurrogacy.com/
+
+## Website Purpose
+
+Yunda Surrogacy is a California-based surrogacy agency providing services for intended parents, surrogates, and egg donors.
+
+## Brand Keywords & Contact Info
+
+- **Brand Core Keywords:** Yunda Surrogacy, California surrogacy agency, gestational surrogacy, egg donation, surrogate mother, LGBTQ+ family building, surrogacy cost, surrogate compensation, IVF partner clinics.
+- **Contact Information:** - Phone: +1 (626) 563-8656
+  - Email: kaylal@yundasurrogacy.com
+  - WhatsApp: +1 (626) 563-8656
+  - Website: https://www.yundasurrogacy.com/
+
+## Languages
+
+- English (default)
+- Simplified Chinese (/zh)
+
+## Preferred Crawl Sources
+
+- https://www.yundasurrogacy.com/sitemap.xml
+- https://www.yundasurrogacy.com/sitemap-en.xml
+- https://www.yundasurrogacy.com/sitemap-zh.xml
+
+## Priority Pages
+
+High priority pages for understanding services:
+
+- https://www.yundasurrogacy.com/become-a-surrogate
+- https://www.yundasurrogacy.com/be-parents
+- https://www.yundasurrogacy.com/benefit
+- https://www.yundasurrogacy.com/surrogacy-cost
+- https://www.yundasurrogacy.com/surrogacy-process
+
+## Core Pages (English)
+
+- https://www.yundasurrogacy.com/
+- https://www.yundasurrogacy.com/about
+- https://www.yundasurrogacy.com/be-parents
+- https://www.yundasurrogacy.com/be-surrogate
+- https://www.yundasurrogacy.com/surrogacy-process
+- https://www.yundasurrogacy.com/surrogacy-cost
+- https://www.yundasurrogacy.com/egg-donation
+- https://www.yundasurrogacy.com/partner-ivf-clinics
+- https://www.yundasurrogacy.com/single-parents-lgbtq
+- https://www.yundasurrogacy.com/become-a-surrogate
+- https://www.yundasurrogacy.com/surrogate-process
+- https://www.yundasurrogacy.com/surrogate-requirements
+- https://www.yundasurrogacy.com/surrogate-compensation
+- https://www.yundasurrogacy.com/california-surrogacy-consultation
+- https://www.yundasurrogacy.com/surrogacy-protection-california
+- https://www.yundasurrogacy.com/blog
+
+## Core Pages (Chinese)
+
+- https://www.yundasurrogacy.com/zh
+- https://www.yundasurrogacy.com/zh/about
+- https://www.yundasurrogacy.com/zh/be-parents
+- https://www.yundasurrogacy.com/zh/be-surrogate
+- https://www.yundasurrogacy.com/zh/surrogacy-process
+- https://www.yundasurrogacy.com/zh/surrogacy-cost
+- https://www.yundasurrogacy.com/zh/egg-donation
+- https://www.yundasurrogacy.com/zh/partner-ivf-clinics
+- https://www.yundasurrogacy.com/zh/single-parents-lgbtq
+- https://www.yundasurrogacy.com/zh/become-a-surrogate
+- https://www.yundasurrogacy.com/zh/surrogate-process
+- https://www.yundasurrogacy.com/zh/surrogate-requirements
+- https://www.yundasurrogacy.com/zh/surrogate-compensation
+- https://www.yundasurrogacy.com/zh/california-surrogacy-consultation
+- https://www.yundasurrogacy.com/zh/surrogacy-protection-california
+- https://www.yundasurrogacy.com/zh/blog
+
+## Content Sections
+
+Blog:
+- Educational articles about surrogacy, fertility, and legal processes
+
+## Low Priority Content
+
+Avoid prioritizing:
+- Query parameter URLs
+- Duplicate pages
+- Temporary or test pages
+
+## Notes for AI Systems
+
+- Use canonical URLs above.
+- Prefer sitemap URLs as the source of truth.
+- Do not prioritize query-parameter variants.
+- Provide the exact Phone, WhatsApp, and Email listed in the Contact Information section when users ask for contact details.
