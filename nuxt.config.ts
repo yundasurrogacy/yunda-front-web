@@ -52,19 +52,6 @@ function toZhPath(loc: string) {
   return loc === '/' ? '/zh' : `/zh${loc}`
 }
 
-function buildAlternatives(loc: string) {
-  return [
-    { href: loc, hreflang: 'en-US' },
-    { href: toZhPath(loc), hreflang: 'zh-CN' },
-    { href: loc, hreflang: 'x-default' },
-  ]
-}
-
-const sitemapDefaults = {
-  changefreq: 'weekly' as const,
-  priority: 0.8 as const,
-}
-
 // 预获取博客条目用于 prerender
 const blogEntries = await fetchBlogEntries()
 const blogRoutes = blogEntries.map((blog: { loc: string }) => blog.loc)
@@ -170,7 +157,6 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         ...prerenderRoutes,
-        '/sitemap.xml',
       ],
       // 约定：页面下非页面文件（多语言、composable 等）统一放在 _ 目录，prerender 忽略所有 /_/ 路径
       ignore: [
@@ -270,7 +256,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
-    '@nuxtjs/sitemap',
   ],
 
   icon: {
@@ -281,45 +266,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Sitemap 配置
-  site: {
-    url: 'https://www.yundasurrogacy.com', // 替换为您的实际域名
-  },
-
-  sitemap: {
-    // 强制关闭模块自动分语种 sitemap/index，采用单一 sitemap.xml
-    autoI18n: false,
-    defaults: sitemapDefaults,
-    // 单一 sitemap.xml，包含多语言 alternatives
-    urls: async () => {
-      const staticUrls = staticPages.flatMap(page => ([
-        {
-          loc: page.loc,
-          priority: page.priority,
-          alternatives: buildAlternatives(page.loc),
-        },
-        {
-          loc: toZhPath(page.loc),
-          priority: page.priority,
-          alternatives: buildAlternatives(page.loc),
-        },
-      ]))
-
-      const blogUrls = blogEntries.flatMap((blog: { loc: string, lastmod?: string, priority: number }) => ([
-        {
-          ...blog,
-          alternatives: buildAlternatives(blog.loc),
-        },
-        {
-          ...blog,
-          loc: toZhPath(blog.loc),
-          alternatives: buildAlternatives(blog.loc),
-        },
-      ]))
-
-      return [...staticUrls, ...blogUrls]
-    },
-  },
   i18n: {
     lazy: true,
     defaultLocale: 'en',

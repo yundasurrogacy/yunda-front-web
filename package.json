@@ -31,10 +31,12 @@
     "types"
   ],
   "scripts": {
+    "prebuild": "npm run sitemap:xml",
     "build": "nuxt build",
     "build:dev": "cross-env NUXT_ENV=development nuxt build",
     "build:prod": "cross-env NUXT_ENV=production nuxt build",
     "dev": "nuxt dev",
+    "pregenerate": "npm run sitemap:xml",
     "generate": "nuxt generate",
     "generate:dev": "cross-env NUXT_ENV=development nuxt generate",
     "generate:prod": "cross-env NUXT_ENV=production nuxt generate",
@@ -44,6 +46,7 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
     "format": "eslint --fix .",
+    "sitemap:xml": "node scripts/generate-xml-sitemaps.cjs",
     "sitemap:html": "node scripts/generate-html-sitemap.cjs"
   },
   "dependencies": {

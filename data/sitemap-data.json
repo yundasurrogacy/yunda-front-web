@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T01:52:39.424Z",
+  "generatedAt": "2026-04-17T09:12:51.744Z",
   "sections": {
     "en": [
       {
@@ -61,7 +61,7 @@
           },
           {
             "href": "/be-surrogate",
-            "label": "Surrogate Qualification"
+            "label": "Become a Surrogate"
           },
           {
             "href": "/benefit",
@@ -137,6 +137,78 @@
           {
             "href": "/blog",
             "label": "Blog Index"
+          },
+          {
+            "href": "/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+            "label": "How to Choose a Surrogacy Lawyer in 2026: What Parents Should Ask"
+          },
+          {
+            "href": "/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+            "label": "Does Insurance Cover IVF or Surrogacy in 2026? Full Guide"
+          },
+          {
+            "href": "/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+            "label": "California IVF Coverage 2026: SB 729 and Surrogacy Explained"
+          },
+          {
+            "href": "/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+            "label": "Is Surrogacy Legal in the U.S.? 2026 Guide for Intended Parents"
+          },
+          {
+            "href": "/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
+            "label": "Alysa Liu and What Her Journey Says About Surrogacy"
+          },
+          {
+            "href": "/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy",
+            "label": "Reddit Surrogate Discussions: What People Really Say About Surrogacy"
+          },
+          {
+            "href": "/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+            "label": "Surrogate Baby Meaning: How Surrogacy Creates Families"
+          },
+          {
+            "href": "/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+            "label": "Nonviable Pregnancy Explained: Causes, Signs, and Next Steps"
+          },
+          {
+            "href": "/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+            "label": "Is IVF Covered by Insurance? What Intended Parents Should Know"
+          },
+          {
+            "href": "/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+            "label": "Surrogacy After Hysterectomy: Is It Still Possible?"
+          },
+          {
+            "href": "/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+            "label": "How to Become a Surrogate Mother for Celebrities: Requirements & Compensation"
+          },
+          {
+            "href": "/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+            "label": "Nevada Surrogacy Laws Explained: What You Need to Know"
+          },
+          {
+            "href": "/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy",
+            "label": "When Did Surrogacy Start? A Brief History of Surrogacy"
+          },
+          {
+            "href": "/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign",
+            "label": "How to Verify Surrogacy Agency Credentials Before You Sign"
+          },
+          {
+            "href": "/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+            "label": "What Is a Surrogacy Father? Understanding the Role and Meaning"
+          },
+          {
+            "href": "/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy",
+            "label": "Is Surrogacy Haram in Islam? Understanding Islamic Views on Surrogacy"
+          },
+          {
+            "href": "/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+            "label": "What Is Traditional Surrogacy? Understanding How It Works Today"
+          },
+          {
+            "href": "/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish",
+            "label": "How Long Does the Surrogacy Process Take From Start to Finish"
           },
           {
             "href": "/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
@@ -303,7 +375,7 @@
             "label": "Surrogate Salary & Benefits 2025: Key Facts Every Surrogate Should Know"
           }
         ],
-        "note": "Posts fetched from API: 41 items.",
+        "note": "Posts fetched from API: 59 items.",
         "className": "section-blog"
       }
     ],
@@ -367,7 +439,7 @@
           },
           {
             "href": "/zh/be-surrogate",
-            "label": "代孕妈妈资格"
+            "label": "成为代孕妈妈"
           },
           {
             "href": "/zh/benefit",
@@ -443,6 +515,78 @@
           {
             "href": "/zh/blog",
             "label": "博客列表"
+          },
+          {
+            "href": "/zh/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+            "label": "2026年如何选择代孕律师：准父母应该问哪些问题"
+          },
+          {
+            "href": "/zh/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+            "label": "2026年保险是否涵盖试管婴儿或代孕？完整指南"
+          },
+          {
+            "href": "/zh/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+            "label": "2026年加州试管婴儿保险覆盖范围：SB 729法案和代孕详解"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+            "label": "代孕在美国合法吗？2026年准父母指南"
+          },
+          {
+            "href": "/zh/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
+            "label": "Alysa Liu和她的经历对代孕的启示"
+          },
+          {
+            "href": "/zh/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy",
+            "label": "Reddit上的代孕讨论：人们对代孕的真实看法"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+            "label": "代孕婴儿的意义：代孕如何缔造家庭"
+          },
+          {
+            "href": "/zh/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+            "label": "非存活妊娠详解：原因、症状和后续步骤"
+          },
+          {
+            "href": "/zh/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+            "label": "试管婴儿治疗是否在医保范围内？准父母应该了解哪些信息"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+            "label": "子宫切除术后代孕：是否仍然可行？"
+          },
+          {
+            "href": "/zh/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+            "label": "如何成为名人代孕母亲：要求和报酬"
+          },
+          {
+            "href": "/zh/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+            "label": "内华达州代孕法详解：您需要了解的内容"
+          },
+          {
+            "href": "/zh/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy",
+            "label": "代孕始于何时？代孕简史"
+          },
+          {
+            "href": "/zh/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign",
+            "label": "签署协议前如何核实代孕机构的资质"
+          },
+          {
+            "href": "/zh/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+            "label": "什么是代孕父亲？了解其角色和意义"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy",
+            "label": "代孕在伊斯兰教中是禁忌吗？了解伊斯兰教对代孕的看法"
+          },
+          {
+            "href": "/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+            "label": "什么是传统代孕？了解它如今的运作方式"
+          },
+          {
+            "href": "/zh/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish",
+            "label": "代孕过程从开始到结束需要多长时间"
           },
           {
             "href": "/zh/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
@@ -594,22 +738,22 @@
           },
           {
             "href": "/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
-            "label": "Surrogacy and Insurance 2025: Essential Coverage for Surrogate Mothers"
+            "label": "2025年代孕与保险：代孕母亲的基本保障"
           },
           {
             "href": "/zh/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
-            "label": "Surrogacy Cost Breakdown 2025: transparent surrogacy costs for U.S. families"
+            "label": "2025年代孕费用明细：美国家庭代孕费用透明化"
           },
           {
             "href": "/zh/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
-            "label": "Surrogate Mother Requirements 2025: Qualifications & Key Criteria"
+            "label": "2025年代孕母亲要求：资格和关键标准"
           },
           {
             "href": "/zh/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
-            "label": "Surrogate Salary & Benefits 2025: Key Facts Every Surrogate Should Know"
+            "label": "2025年代孕妈妈的薪酬和福利：每位代孕妈妈都应该了解的关键信息"
           }
         ],
-        "note": "从接口获取文章：41篇。",
+        "note": "从接口获取文章：59篇。",
         "className": "section-blog"
       }
     ]
