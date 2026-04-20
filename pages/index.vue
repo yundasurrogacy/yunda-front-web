@@ -87,7 +87,7 @@ const homeSurrogateSlides = [
 ]
 
 // SEO 配置
-useHead({
+useHead(() => ({
   title: t('home.meta.title'),
   meta: [
     {
@@ -111,7 +111,7 @@ useHead({
       content: t('home.meta.keywords'),
     },
   ],
-})
+}))
 
 useHead(() => {
   const scripts = []

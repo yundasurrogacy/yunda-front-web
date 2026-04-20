@@ -175,7 +175,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Professional Surrogacy Agency in California',
+      title: 'Yunda Surrogacy ｜California Surrogacy Agency for Intended Parents',
       titleTemplate: '%s',
       link: [
         // 只 preload 首屏关键字体
