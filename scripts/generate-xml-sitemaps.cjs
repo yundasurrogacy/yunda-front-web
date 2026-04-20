@@ -29,6 +29,8 @@ const STATIC_PAGES = [
   { loc: '/single-parents-lgbtq', priority: 0.7 },
   { loc: '/surrogacy-cost', priority: 0.8 },
   { loc: '/surrogacy-process', priority: 0.8 },
+  { loc: '/california-surrogacy-consultation', priority: 0.7 },
+  { loc: '/surrogacy-protection-california', priority: 0.7 },
   { loc: '/benefit', priority: 0.7 },
   { loc: '/eligibility', priority: 0.7 },
   { loc: '/journey', priority: 0.7 },
