@@ -13,9 +13,9 @@ useScrollAnimation()
         <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="order-2 space-y-6 lg:order-1">
             <div style="font-family: var(--font-primary)">
-              <h3 class="text-[30px] font-semibold">
+              <h2 class="text-[30px] font-semibold">
                 {{ $t('home.costSection.title2') }}
-              </h3>
+              </h2>
             </div>
             <p
               class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
@@ -75,9 +75,9 @@ useScrollAnimation()
           </div>
           <div class="space-y-6">
             <div style="font-family: var(--font-primary)">
-              <h3 class="text-[30px] font-semibold">
+              <h2 class="text-[30px] font-semibold">
                 {{ $t('home.parentsSurrogatesSection.surrogateSubtitle') }}
-              </h3>
+              </h2>
             </div>
             <p
               class="text-4.5 text-[var(--dark-brown)] leading-relaxed"

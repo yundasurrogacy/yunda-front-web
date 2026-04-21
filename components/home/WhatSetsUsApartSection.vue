@@ -61,16 +61,18 @@ function toggleFeature(index) {
                 :key="item.title"
                 class="flex min-h-0 flex-col border-b border-[#3c2415] py-5 md:flex-1 md:py-4"
               >
-                <button
-                  type="button"
-                  class="w-full flex items-center justify-between gap-4 text-left text-[26px] text-[var(--dark-brown)] leading-tight md:text-[30px]"
-                  @click="toggleFeature(index)"
-                >
-                  <span class="font-medium" style="font-family: var(--font-primary)">
-                    {{ item.title }}
-                  </span>
-                  <span class="relative -top-1.5 text-9 leading-none md:-top-2">{{ openFeatureIndex === index ? '−' : '+' }}</span>
-                </button>
+                <h3 class="m-0">
+                  <button
+                    type="button"
+                    class="w-full flex items-center justify-between gap-4 text-left text-[26px] text-[var(--dark-brown)] leading-tight md:text-[30px]"
+                    @click="toggleFeature(index)"
+                  >
+                    <span class="font-medium" style="font-family: var(--font-primary)">
+                      {{ item.title }}
+                    </span>
+                    <span class="relative -top-1.5 text-9 leading-none md:-top-2">{{ openFeatureIndex === index ? '−' : '+' }}</span>
+                  </button>
+                </h3>
 
                 <div
                   v-if="openFeatureIndex === index"

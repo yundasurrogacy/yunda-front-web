@@ -1,11 +1,14 @@
 <script setup>
-import { defineAsyncComponent, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
 const localePath = useLocalePath()
+const route = useRoute()
 const isMenuOpen = ref(false)
+const homePath = computed(() => localePath('/'))
+const isHomePage = computed(() => route.path === homePath.value)
 </script>
 
 <template>
@@ -20,7 +23,16 @@ const isMenuOpen = ref(false)
 
     <!-- Logo -->
     <div class="absolute left-1/2 -translate-x-1/2 transform">
-      <NuxtLink :to="localePath('/')" class="inline-block">
+      <h1 v-if="isHomePage" class="m-0">
+        <NuxtLink :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
+          <span class="sr-only">Yunda Surrogacy</span>
+          <picture>
+            <source srcset="/images/base/logo.webp" type="image/webp">
+            <img src="/images/base/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+          </picture>
+        </NuxtLink>
+      </h1>
+      <NuxtLink v-else :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
         <picture>
           <source srcset="/images/base/logo.webp" type="image/webp">
           <img src="/images/base/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">

@@ -3,4 +3,3 @@ Allow: /
 Disallow: /*.pdf$
 Disallow: /*.docx$
 Sitemap: https://www.yundasurrogacy.com/sitemap.xml
-LLMs: https://www.yundasurrogacy.com/llms.txt

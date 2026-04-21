@@ -145,9 +145,9 @@ useHead(() => {
       <div class="mx-auto max-w-[1400px]">
         <div class="grid gap-8 py-2 md:min-h-[500px] md:grid-cols-10 md:items-center md:gap-10">
           <div class="text-[var(--dark-brown)] md:col-span-4">
-            <p class="text-[30px] font-bold leading-[1.35]" style="font-family: var(--font-primary)">
+            <h2 class="text-[30px] font-bold leading-[1.35]" style="font-family: var(--font-primary)">
               Yunda Surrogacy - Building families. Creating futures.
-            </p>
+            </h2>
             <p class="mt-8 text-4.5 leading-relaxed md:text-5" style="font-family: var(--font-secondary)">
               At Yunda Surrogacy, we believe that every journey to parenthood deserves care, professionalism, and respect.
             </p>
