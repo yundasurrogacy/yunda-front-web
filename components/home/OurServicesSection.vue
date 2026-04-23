@@ -55,7 +55,7 @@ useScrollAnimation()
           </div>
           <div class="order-1 mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:order-2">
             <img
-              src="/images/home/home-redesign/our-services-1.jpg"
+              src="/images/home/surrogacy-costs-for-intended-parents.jpg"
               alt=""
               class="h-full w-full object-contain"
               loading="lazy"
@@ -67,7 +67,7 @@ useScrollAnimation()
         <div class="scroll-animate scroll-animate-delay-200 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)]">
             <img
-              src="/images/home/home-redesign/our-services-2.jpeg"
+              src="/images/home/surrogacy-process-for-surrogates.jpg"
               alt=""
               class="h-full w-full object-contain"
               loading="lazy"

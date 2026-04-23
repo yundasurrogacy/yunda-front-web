@@ -48,14 +48,6 @@ const teamMembers = computed(() => [
     title: t('about.team.kaylaLuo.name'),
     text: teamBio('kaylaLuo').join(' '),
   },
-  {
-    title: t('about.team.claraChen.name'),
-    text: teamBio('claraChen').join(' '),
-  },
-  {
-    title: t('about.team.danielWhitaker.name'),
-    text: teamBio('danielWhitaker').join(' '),
-  },
 ])
 
 const howToSchema = computed(() => buildHowToSchema({
@@ -80,14 +72,6 @@ const faqSchema = computed(() => buildFAQPageSchema({
     {
       question: t('about.team.kaylaLuo.title'),
       answer: teamMembers.value[0]?.text || '',
-    },
-    {
-      question: t('about.team.claraChen.title'),
-      answer: teamMembers.value[1]?.text || '',
-    },
-    {
-      question: t('about.team.danielWhitaker.title'),
-      answer: teamMembers.value[2]?.text || '',
     },
     {
       question: t('about.careers.title'),
