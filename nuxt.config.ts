@@ -211,6 +211,11 @@ export default defineNuxtConfig({
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
+        {
+          src: 'https://analytics.ahrefs.com/analytics.js',
+          'data-key': '+XByroCnWa6wxoZnMUVpYg',
+          async: true,
+        },
         // 延迟加载第三方脚本，避免阻塞渲染；使用 requestIdleCallback 延后到浏览器空闲时加载，
         // 避免 GTM/GA 的 ccm/collect 等请求挂起时导致地址栏持续转圈
         {
