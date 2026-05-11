@@ -1567,7 +1567,7 @@ async function handleSubmit() {
             <div v-if="form.uploadPhotos && form.uploadPhotos.length">
               <div class="mb-6 flex flex-wrap gap-6">
                 <div v-for="(photo, idx) in form.uploadPhotos" :key="idx" class="group relative">
-                  <img :src="photo" class="h-32 w-32 border border-gray-200 rounded-3 object-cover shadow-md transition-transform duration-200 group-hover:scale-105">
+                  <img :src="photo" :alt="`${$t('surrogate.application.sections.uploadPhotos')} ${idx + 1}`" class="h-32 w-32 border border-gray-200 rounded-3 object-cover shadow-md transition-transform duration-200 group-hover:scale-105">
                   <button type="button" class="absolute right-2 top-2 h-7 w-7 flex items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-red-500" title="删除" style="box-shadow: 0 2px 8px rgba(0,0,0,0.12);" @click.stop="removePhoto(idx)">
                     <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
                   </button>

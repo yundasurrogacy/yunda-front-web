@@ -1,0 +1,53 @@
+{
+  "routes": [
+    {
+      "src": "/about\\)",
+      "status": 410
+    },
+    {
+      "src": "/about）",
+      "status": 410
+    },
+    {
+      "src": "/about%EF%BC%89",
+      "status": 410
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/become-a-surrogate-mother",
+      "destination": "/become-a-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/become-a-surrogay-mother",
+      "destination": "/become-a-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/surrogate-journey",
+      "destination": "/surrogate-process",
+      "permanent": true
+    },
+    {
+      "source": "/surrogate-qualification",
+      "destination": "/be-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/surrogacy-price",
+      "destination": "/surrogacy-cost",
+      "permanent": true
+    },
+    {
+      "source": "/zh/surrogate-qualification",
+      "destination": "/zh/be-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/zh/surrogacy-price",
+      "destination": "/zh/surrogacy-cost",
+      "permanent": true
+    }
+  ]
+}

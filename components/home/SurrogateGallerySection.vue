@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
       <div v-if="props.bannerSrc" class="scroll-animate mb-12 overflow-hidden rounded-[26px] md:mb-16">
         <img
           :src="props.bannerSrc"
-          alt=""
+          :alt="heading"
           class="h-auto max-h-[min(70vh,520px)] w-full object-cover object-[center_20%]"
           loading="lazy"
         >

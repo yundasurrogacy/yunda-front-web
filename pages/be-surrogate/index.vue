@@ -31,9 +31,15 @@ import { useBeSurrogateV2Storage } from './_/useBeSurrogateV2Storage'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
+const router = useRouter()
 
 // 页面内联多语言（与 privacy-policy 相同方式，无需插件，SSR 友好）
 const t = computed(() => translations[locale.value === 'zh' ? 'zh' : 'en'])
+const shouldNoindexStepUrl = computed(() => {
+  const step = Number(route.query.step)
+  return route.query.id != null || (!Number.isNaN(step) && step > 1)
+})
 useHead(() => ({
   title: t.value.seoTitle,
   meta: [
@@ -41,10 +47,14 @@ useHead(() => ({
       name: 'description',
       content: t.value.seoDescription,
     },
+    ...(shouldNoindexStepUrl.value
+      ? [{
+          name: 'robots',
+          content: 'noindex,follow',
+        }]
+      : []),
   ],
 }))
-const route = useRoute()
-const router = useRouter()
 const states = computed(() => getStatesByCountry('US'))
 
 const form = reactive(createEmptyForm()) as BeSurrogateForm
@@ -620,7 +630,7 @@ function scrollToPageTop() {
         <img
           class="pointer-events-none absolute inset-0 block h-full max-w-none w-full object-cover object-center"
           src="/images/be-surrogate/hero.jpg"
-          alt=""
+          :alt="t.landing.heroImageAlt"
           width="1920"
           height="1080"
           decoding="async"
@@ -1372,7 +1382,7 @@ function scrollToPageTop() {
                   </p>
                   <div v-if="form.uploadPhotos.length" class="flex flex-wrap gap-4">
                     <div v-for="(photo, idx) in form.uploadPhotos" :key="idx" class="group relative">
-                      <img :src="photo" class="h-24 w-24 border rounded-2 object-cover">
+                      <img :src="photo" :alt="`${t.form.uploadPhotos} ${idx + 1}`" class="h-24 w-24 border rounded-2 object-cover">
                       <button type="button" class="absolute right-1 top-1 h-6 w-6 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-red-500" @click.stop="removePhoto(idx)">
                         <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
                       </button>

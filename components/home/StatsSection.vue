@@ -18,7 +18,7 @@ const partners = [
       <img
         class="h-full w-full object-cover object-center"
         src="/images/home/home-redesign/why-choose-advantages-bg.png"
-        alt=""
+        :alt="$t('home.statsSection.chooseUsTitle')"
         width="1920"
         height="1080"
         loading="lazy"

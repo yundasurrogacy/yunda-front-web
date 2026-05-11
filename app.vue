@@ -17,6 +17,21 @@ const canonicalUrl = computed(() => {
 
   return `${baseUrl.value}${path.replace(/\/$/, '')}`
 })
+const defaultOgTitle = computed(() =>
+  locale.value === 'zh'
+    ? '云达代孕｜加州准父母代孕机构'
+    : 'Yunda Surrogacy ｜California Surrogacy Agency for Intended Parents',
+)
+const defaultOgDescription = computed(() =>
+  locale.value === 'zh'
+    ? 'Yunda Surrogacy 为准父母和代孕妈妈提供美国代孕、IVF、法律与保险协调服务。'
+    : 'Yunda Surrogacy is a California surrogacy agency supporting intended parents and surrogates with IVF, legal, and insurance coordination.',
+)
+const defaultOgImage = computed(() =>
+  baseUrl.value
+    ? `${baseUrl.value}/images/home/index-bg.webp`
+    : '/images/home/index-bg.webp',
+)
 
 // 生成 hreflang 标签，用于多语言 SEO
 const hreflangLinks = computed(() => {
@@ -62,6 +77,17 @@ useHead(() => ({
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { property: 'og:title', content: defaultOgTitle.value },
+    { property: 'og:description', content: defaultOgDescription.value },
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:image', content: defaultOgImage.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'Yunda Surrogacy' },
+    { property: 'og:locale', content: locale.value === 'zh' ? 'zh_CN' : 'en_US' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: defaultOgTitle.value },
+    { name: 'twitter:description', content: defaultOgDescription.value },
+    { name: 'twitter:image', content: defaultOgImage.value },
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },

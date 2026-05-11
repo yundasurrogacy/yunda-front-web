@@ -252,6 +252,7 @@ export const translations = {
     },
     landing: {
       heroTitle: 'Apply to Be a Surrogate in California',
+      heroImageAlt: 'Surrogate application hero image for becoming a surrogate in California',
       heroSubtitle: 'Start your surrogate application with clear, private guidance. This first step helps us understand your background, answer your questions, and guide you forward with confidence.',
       heroCompensation: 'Rewarding compensation $61,000+',
       heroTrustBullets: [
@@ -556,6 +557,7 @@ export const translations = {
     },
     landing: {
       heroTitle: '在加州申请成为代孕妈妈',
+      heroImageAlt: '加州代孕妈妈申请页面首屏图片',
       heroSubtitle: '从清晰、私密的引导开始提交申请。第一步将帮助我们了解你的背景、解答你的问题，并有信心地带你进入下一阶段。',
       heroCompensation: '丰厚补偿 $61,000+',
       heroTrustBullets: [

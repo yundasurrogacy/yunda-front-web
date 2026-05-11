@@ -190,6 +190,44 @@ function getBlogContent(blogData: Blog | null): string {
     return blogData.en_content || blogData.content || ''
   }
 }
+
+function escapeHtmlAttribute(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function addMissingImageAlt(html: string, title: string): string {
+  if (!html)
+    return ''
+
+  let imageIndex = 0
+  const baseAlt = title
+    ? `${locale.value === 'zh' ? '代孕文章配图' : 'Surrogacy article image'}: ${title}`
+    : (locale.value === 'zh' ? '代孕文章配图' : 'Surrogacy article image')
+
+  return html.replace(/<img\b([^>]*)>/gi, (tag, attrs: string) => {
+    const altMatch = attrs.match(/\salt\s*=\s*(['"])([\s\S]*?)\1/i)
+    if (altMatch?.[2]?.trim()) {
+      return tag
+    }
+
+    imageIndex += 1
+    const alt = imageIndex > 1 ? `${baseAlt} ${imageIndex}` : baseAlt
+    if (altMatch) {
+      return tag.replace(altMatch[0], ` alt="${escapeHtmlAttribute(alt)}"`)
+    }
+    return `<img${attrs} alt="${escapeHtmlAttribute(alt)}">`
+  })
+}
+
+const renderedBlogContent = computed(() =>
+  blog.value
+    ? addMissingImageAlt(getBlogContent(blog.value), getBlogTitle(blog.value))
+    : '',
+)
 // 提取纯文本摘要（去除HTML标签）
 function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
   const content = getBlogContent(blogData)
@@ -400,9 +438,9 @@ useHead(() => (blogPostingSchema.value
           <div class="p-6 md:p-8">
             <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
               <div
-                v-if="getBlogContent(blog)"
+                v-if="renderedBlogContent"
                 class="min-w-0 whitespace-pre-wrap text-gray-700 leading-relaxed"
-                v-html="getBlogContent(blog)"
+                v-html="renderedBlogContent"
               />
               <div v-else class="text-gray-500">
                 {{ blogCopy.detailNoContent }}

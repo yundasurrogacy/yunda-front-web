@@ -2,6 +2,7 @@
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 const localePath = useLocalePath()
+const { t } = useI18n()
 useScrollAnimation()
 </script>
 
@@ -56,7 +57,7 @@ useScrollAnimation()
           <div class="order-1 mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:order-2">
             <img
               src="/images/home/surrogacy-costs-for-intended-parents.jpg"
-              alt=""
+              :alt="t('home.costSection.title2')"
               class="h-full w-full object-contain"
               loading="lazy"
             >
@@ -68,7 +69,7 @@ useScrollAnimation()
           <div class="mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)]">
             <img
               src="/images/home/surrogacy-process-for-surrogates.jpg"
-              alt=""
+              :alt="t('home.parentsSurrogatesSection.surrogateSubtitle')"
               class="h-full w-full object-contain"
               loading="lazy"
             >
