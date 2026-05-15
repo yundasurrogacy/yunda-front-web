@@ -25,9 +25,9 @@ import {
   fillFormFromDraft,
 } from '~/composables/useBeSurrogateForm'
 import { getStatesByCountry } from '~/data/countries-states'
-import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
 import { translations } from '~/pages/be-surrogate/_/translation'
 import { useBeSurrogateV2Storage } from '~/pages/be-surrogate/_/useBeSurrogateV2Storage'
+import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -617,7 +617,7 @@ function scrollToPageTop() {
       >
         <img
           src="/images/be-surrogate/hero.jpg"
-          alt=""
+          :alt="t.landing.heroImageAlt"
           class="absolute inset-0 h-full w-full object-cover object-[center_22%]"
           width="1920"
           height="1080"
@@ -1389,7 +1389,7 @@ function scrollToPageTop() {
                 </p>
                 <div v-if="form.uploadPhotos.length" class="flex flex-wrap gap-4">
                   <div v-for="(photo, idx) in form.uploadPhotos" :key="idx" class="group relative">
-                    <img :src="photo" class="h-24 w-24 border rounded-2 object-cover">
+                    <img :src="photo" :alt="`${t.form.uploadPhotos} ${idx + 1}`" class="h-24 w-24 border rounded-2 object-cover">
                     <button type="button" class="absolute right-1 top-1 h-6 w-6 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-red-500" @click.stop="removePhoto(idx)">
                       <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
                     </button>
@@ -1432,7 +1432,7 @@ function scrollToPageTop() {
               <button
                 v-if="currentStep > 1"
                 type="button"
-                  class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white transition hover:opacity-90"
+                class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white transition hover:opacity-90"
                 @click="goPrev"
               >
                 {{ t.btnPrev }}

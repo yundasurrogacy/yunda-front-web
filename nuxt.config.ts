@@ -60,13 +60,18 @@ const blogRoutes = blogEntries.map((blog: { loc: string }) => blog.loc)
 const englishRoutes = [
   ...staticPages.map(page => page.loc),
   '/become-a-surrogate-mother', // legacy URL redirect
+  '/become-a-surrogay-mother', // typo URL redirect
   '/become-surrogate', // legacy URL redirect
+  '/surrogate-journey', // legacy URL redirect
+  '/surrogate-qualification', // legacy URL redirect
+  '/surrogacy-price', // legacy URL redirect
   ...blogRoutes,
 ]
 // 生成中文路由（带 /zh 前缀）
 // 处理首页路径：/ 应该映射到 /zh 而不是 /zh/
 const chineseRoutes = [
   ...staticPages.map(page => toZhPath(page.loc)),
+  '/zh/surrogacy-price', // legacy URL redirect
   ...blogRoutes.map((route: string) => toZhPath(route)),
 ]
 const prerenderRoutes = Array.from(new Set([
@@ -126,6 +131,18 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/surrogacy-price': {
+      redirect: {
+        to: '/surrogacy-cost',
+        statusCode: 301,
+      },
+    },
+    '/zh/surrogacy-price': {
+      redirect: {
+        to: '/zh/surrogacy-cost',
+        statusCode: 301,
+      },
+    },
     '/sitemap.html': {
       redirect: {
         to: '/sitemap',
@@ -145,6 +162,12 @@ export default defineNuxtConfig({
       },
     },
     '/become-a-surrogate-mother': {
+      redirect: {
+        to: '/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
+    '/become-a-surrogay-mother': {
       redirect: {
         to: '/become-a-surrogate',
         statusCode: 301,
@@ -204,13 +227,14 @@ export default defineNuxtConfig({
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
         { name: 'description', content: 'Yunda Surrogacy is a professional cross-border surrogacy agency providing comprehensive US surrogacy services. Expert team, transparent costs, warm support to help you achieve your parenthood dreams.' },
         { name: 'keywords', content: 'surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:locale', content: 'en_US' },
-        { property: 'og:site_name', content: 'Yunda Surrogacy' },
-        { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
+        {
+          'src': 'https://analytics.ahrefs.com/analytics.js',
+          'data-key': '+XByroCnWa6wxoZnMUVpYg',
+          'async': true,
+        },
         // 延迟加载第三方脚本，避免阻塞渲染；使用 requestIdleCallback 延后到浏览器空闲时加载，
         // 避免 GTM/GA 的 ccm/collect 等请求挂起时导致地址栏持续转圈
         {
@@ -260,10 +284,9 @@ export default defineNuxtConfig({
   ],
 
   icon: {
-    // Avoid Nitro prerender module-resolution issues with bundled JSON chunks.
-    // Keep icon collections as JSON modules loaded directly from node_modules.
+    // Bundle icon JSON for Node versions that require JSON import attributes.
     serverBundle: {
-      externalizeIconsJson: true,
+      externalizeIconsJson: false,
     },
   },
 
