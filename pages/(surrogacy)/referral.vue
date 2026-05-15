@@ -10,11 +10,12 @@ import ReferralEarningsSection from '@/components/surrogacy/referral/EarningsSec
 import ReferralEligibilitySection from '@/components/surrogacy/referral/EligibilitySection.vue'
 import ReferralWhyMattersSection from '@/components/surrogacy/referral/WhyMattersSection.vue'
 import HeroSection from '~/components/base/MailHeroSection.vue'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const pagePath = '/referral'
 
 const referralMilestones = computed(() => [
   t('surrogacyReferral.earningsSection.milestones.accepted'),
@@ -32,79 +33,46 @@ const referralBonuses = computed(() => [
   t('surrogacyReferral.earningsSection.bonuses.pregnancy'),
 ])
 
-const eligibilityRequirements = computed(() => Object.values({
-  age: t('surrogacyReferral.eligibilitySection.requirements.age'),
-  residence: t('surrogacyReferral.eligibilitySection.requirements.residence'),
-  pregnancy: t('surrogacyReferral.eligibilitySection.requirements.pregnancy'),
-  bmi: t('surrogacyReferral.eligibilitySection.requirements.bmi'),
-  lifestyle: t('surrogacyReferral.eligibilitySection.requirements.lifestyle'),
-  support: t('surrogacyReferral.eligibilitySection.requirements.support'),
-  health: t('surrogacyReferral.eligibilitySection.requirements.health'),
-}))
-
-const friendBenefits = computed(() => Object.values({
-  base: t('surrogacyReferral.compensationSection.benefits.base'),
-  allowances: t('surrogacyReferral.compensationSection.benefits.allowances'),
-  medication: t('surrogacyReferral.compensationSection.benefits.medication'),
-  surgery: t('surrogacyReferral.compensationSection.benefits.surgery'),
-  breastmilk: t('surrogacyReferral.compensationSection.benefits.breastmilk'),
-  bedrest: t('surrogacyReferral.compensationSection.benefits.bedrest'),
-  insurance: t('surrogacyReferral.compensationSection.benefits.insurance'),
-  lifeInsurance: t('surrogacyReferral.compensationSection.benefits.lifeInsurance'),
-  support: t('surrogacyReferral.compensationSection.benefits.support'),
-  processing: t('surrogacyReferral.compensationSection.benefits.processing'),
-}))
-
-const howToSteps = computed(() => referralMilestones.value.map((milestone, index) => ({
-  title: `${milestone}`,
-  text: `${t('surrogacyReferral.earningsSection.tableHeaders.bonus')}: ${referralBonuses.value[index] ?? ''}`,
+const schemaReferralItems = computed(() => referralMilestones.value.map((milestone, index) => ({
+  position: index + 1,
+  name: milestone,
+  description: `${t('surrogacyReferral.earningsSection.tableHeaders.bonus')}: ${referralBonuses.value[index] ?? ''}`,
+  url: pagePath,
 })))
 
-const faqItems = computed(() => [
-  {
-    question: t('surrogacyReferral.whyMattersSection.title'),
-    answer: t('surrogacyReferral.whyMattersSection.description'),
-  },
-  {
-    question: t('surrogacyReferral.eligibilitySection.title'),
-    answer: `${t('surrogacyReferral.eligibilitySection.intro')} ${eligibilityRequirements.value.join(' ')}`,
-  },
-  {
-    question: t('surrogacyReferral.compensationSection.title'),
-    answer: friendBenefits.value.join(' '),
-  },
-])
-
-const howToSchema = computed(() => buildHowToSchema({
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
   name: t('surrogacyReferral.heroSection.title'),
   description: t('surrogacyReferral.heroSection.description'),
-  steps: howToSteps.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogacy/referral',
-  locale: locale.value,
-}))
-
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: 'Surrogate Referral FAQ',
-  description: t('surrogacyReferral.earningsSection.terms1'),
-  faqs: faqItems.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogacy/referral',
-  locale: locale.value,
+  about: 'Gestational carrier referral program',
+  audience: 'Referral partners, friends or family of potential gestational carriers',
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'Surrogate Referral', url: pagePath },
+  ],
+  itemList: {
+    name: 'Referral Reward Milestones',
+    description: t('surrogacyReferral.earningsSection.terms1'),
+    items: schemaReferralItems.value,
+  },
 }))
 
 useHead(() => ({
+  title: t('surrogacyReferral.heroSection.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('surrogacyReferral.heroSection.description'),
+    },
+  ],
   script: [
-    {
-      key: 'schema-surrogacy-referral-howto',
+    ...coreServicePageSchemas.value.map((schema, index) => ({
+      key: `schema-referral-${index}`,
       type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
-    },
-    {
-      key: 'schema-surrogacy-referral-faq',
-      type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
-    },
+      children: JSON.stringify(schema),
+    })),
   ],
 }))
 </script>

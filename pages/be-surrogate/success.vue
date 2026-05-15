@@ -8,6 +8,7 @@ const localePath = useLocalePath()
 useSeoMeta({
   title: () => t('surrogate.application.successPage.title'),
   description: () => t('surrogate.application.successPage.description'),
+  robots: 'noindex,follow',
 })
 </script>
 

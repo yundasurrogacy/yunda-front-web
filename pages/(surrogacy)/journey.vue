@@ -3,9 +3,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -455,6 +458,45 @@ const translations = {
 }
 
 const c = computed(() => ((locale.value || '').startsWith('zh') ? translations.zh : translations.en))
+const pagePath = '/journey'
+const stripStepPrefix = (value: string) => value.replace(/^Step\s+\d+\s*[-–—]\s*/i, '').trim()
+const schemaJourneySteps = computed(() =>
+  c.value.howWorksSteps.map((step, index) => ({
+    position: index + 1,
+    name: stripStepPrefix(step.title),
+    description: step.body,
+    url: `${pagePath}#journey-step-${index + 1}`,
+  })),
+)
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  about: 'Gestational carrier journey and surrogate process',
+  audience: 'Gestational carriers / surrogates',
+  service: {
+    name: 'Gestational Carrier Journey Support',
+    serviceType: 'Gestational carrier process coordination',
+    areaServed: ['California', 'United States'],
+    audience: 'Gestational carriers / surrogates',
+    description: 'Support for gestational carriers through application, screening, matching, legal contract review, embryo transfer, pregnancy care, delivery coordination, and postpartum follow-up.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'Surrogate Journey', url: pagePath },
+  ],
+  faqs: c.value.faqItems.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: '7 Steps Directory',
+    description: c.value.heroSubtitle,
+    items: schemaJourneySteps.value,
+  },
+}))
 
 useHead(() => ({
   title: c.value.seoTitle,
@@ -464,6 +506,14 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-journey-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

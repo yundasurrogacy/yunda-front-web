@@ -3,9 +3,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -288,6 +291,50 @@ const translations = {
 }
 
 const c = computed(() => ((locale.value || '').startsWith('zh') ? translations.zh : translations.en))
+const pagePath = '/eligibility'
+const stripStepPrefix = (value: string) => value.replace(/^Step\s+\d+\s*[-–—]\s*/i, '').trim()
+const schemaEligibilityItems = computed(() => [
+  ...c.value.h22Steps.map((step, index) => ({
+    position: index + 1,
+    name: stripStepPrefix(step.title),
+    description: step.body,
+    url: pagePath,
+  })),
+  ...c.value.h23ReqItems.map((item, index) => ({
+    position: c.value.h22Steps.length + index + 1,
+    name: item,
+    url: pagePath,
+  })),
+])
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  about: 'Gestational carrier eligibility and surrogate requirements',
+  audience: 'Potential gestational carriers / surrogate applicants',
+  service: {
+    name: 'Gestational Carrier Eligibility Review',
+    serviceType: 'Gestational carrier eligibility review and application guidance',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers / surrogate applicants',
+    description: 'Eligibility guidance for potential gestational carriers, including age, health, pregnancy history, lifestyle factors, support system, residency status, and common disqualifying factors.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'Eligibility', url: pagePath },
+  ],
+  faqs: c.value.h25FaqItems.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: 'Surrogate Application Steps and Eligibility Checklist',
+    description: c.value.h22Title,
+    items: schemaEligibilityItems.value,
+  },
+}))
 
 useHead(() => ({
   title: c.value.seoTitle,
@@ -297,6 +344,14 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-eligibility-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

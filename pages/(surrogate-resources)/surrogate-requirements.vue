@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 useScrollAnimation()
 
@@ -248,63 +248,6 @@ const compensationHighlights = computed(() => [
   },
 ])
 
-const requirementHowToSteps = computed(() => processSteps.value.map(step => ({
-  title: step.title,
-  text: step.text,
-})))
-
-const requirementFaqs = computed(() => [
-  ...quickEligibilityCards.value.map(card => ({
-    question: card.title,
-    answer: card.items.join(' '),
-  })),
-  ...medicalLifestyleSections.value.map(section => ({
-    question: section.heading,
-    answer: section.body.join(' '),
-  })),
-  ...disqualifySections.value.map(section => ({
-    question: section.title,
-    answer: section.paragraphs.join(' '),
-  })),
-])
-
-const howToSchema = computed(() => buildHowToSchema({
-  name: pageTitle.value,
-  description: pageDescription.value,
-  steps: requirementHowToSteps.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-requirements',
-  locale: locale.value,
-}))
-
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: tt('Surrogate Requirements FAQ', '代孕要求常见问题'),
-  description: tt('Common questions about eligibility, medical screening, and disqualifying factors for surrogacy.', '关于资格、医学筛查与不符合因素的常见问题。'),
-  faqs: requirementFaqs.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-requirements',
-  locale: locale.value,
-}))
-
-useHead(() => {
-  const scripts = []
-  if (howToSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-requirements-howto',
-      type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
-    })
-  }
-  if (faqSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-requirements-faq',
-      type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
-    })
-  }
-  return scripts.length ? { script: scripts } : {}
-})
-
 const faqItems = computed(() => [
   {
     question: tt('Do surrogates get paid? How does the surrogate payment schedule work?', '代孕妈妈会获得补偿吗？付款时间表如何运作？'),
@@ -323,6 +266,61 @@ const faqItems = computed(() => [
     answer: tt('Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.', '补偿受经验、地区与医疗因素影响。既往经验与妊娠复杂度（如多胎）是重要因素；居住州的成本与需求也会影响补偿。医疗情况（如侵入性操作、卧床或并发症）可能触发额外支付。'),
   },
 ])
+
+const surrogateRequirementItemNames = [
+  'Records Review & Medical Screening',
+  'Psychological Evaluation',
+  'Legal Clearance',
+  'Cycle Prep & Embryo Transfer',
+  'Pregnancy Monitoring & Checkpoints',
+  'Ongoing Coordination & Updates',
+]
+
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/surrogate-requirements',
+  name: 'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate',
+  description: pageDescription.value,
+  about: 'Gestational carrier requirements and surrogate qualifications',
+  audience: 'Potential gestational carriers / surrogate applicants',
+  service: {
+    name: 'Gestational Carrier Requirements and Qualification Review',
+    serviceType: 'Gestational carrier eligibility and qualification guidance',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers / surrogate applicants',
+    description: 'Guidance for potential gestational carriers on surrogate requirements, qualifications, medical and lifestyle criteria, disqualifying factors, medical clearance, psychological evaluation, legal clearance, cycle preparation, embryo transfer, pregnancy monitoring, and ongoing coordination.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogate Resources' },
+    { name: 'Surrogate Requirements', url: '/surrogate-requirements' },
+  ],
+  faqs: faqItems.value,
+  itemList: {
+    name: 'Screening & Clearance Steps: IVF Surrogacy Process',
+    items: [
+      ...surrogateRequirementItemNames.map((name, index) => ({
+        position: index + 1,
+        name,
+        description: processSteps.value[index]?.text,
+        url: '/surrogate-requirements',
+      })),
+      ...((quickEligibilityCards.value[0]?.items || []).slice(0, 5).map((name, index) => ({
+        position: surrogateRequirementItemNames.length + index + 1,
+        name: name.replace(/\.$/, ''),
+        url: '/surrogate-requirements',
+      }))),
+    ],
+  },
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogate-requirements-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 
 const expandedFaq = ref<Record<string, boolean>>({})
 

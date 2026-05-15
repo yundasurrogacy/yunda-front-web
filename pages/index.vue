@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { buildHowToSchema, buildServiceSchema } from '~/utils/schema'
+import { buildHowToSchema, buildProfessionalServiceSchema } from '~/utils/schema'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
 import BlogNewsSection from '../components/home/BlogNewsSection.vue'
@@ -35,13 +35,12 @@ const journeySteps = computed(() => [
   },
 ])
 
-const serviceSchema = computed(() => buildServiceSchema({
-  name: t('home.meta.title'),
-  description: t('home.meta.description'),
-  serviceType: 'Surrogacy Agency Services',
-  providerName: 'Yunda Surrogacy',
-  areaServed: ['United States', 'China'],
-  audience: ['Intended Parents', 'Surrogates'],
+const professionalServiceSchema = computed(() => buildProfessionalServiceSchema({
+  name: 'Yunda Surrogacy',
+  description: 'Yunda Surrogacy is a professional surrogacy agency supporting intended parents and surrogates through personalized matching, coordinated care, and trusted fertility, legal, and insurance partnerships.',
+  serviceType: 'Surrogacy agency services',
+  areaServed: ['California', 'United States', 'International intended parents'],
+  audience: ['Intended parents', 'Surrogates', 'International intended parents', 'LGBTQ intended parents', 'Single parents'],
   baseUrl: siteUrl.value || undefined,
   url: '/',
   locale: locale.value,
@@ -115,11 +114,11 @@ useHead(() => ({
 
 useHead(() => {
   const scripts = []
-  if (serviceSchema.value) {
+  if (professionalServiceSchema.value) {
     scripts.push({
-      key: 'schema-home-service',
+      key: 'schema-home-professional-service',
       type: 'application/ld+json',
-      children: JSON.stringify(serviceSchema.value),
+      children: JSON.stringify(professionalServiceSchema.value),
     })
   }
   if (howToSchema.value) {

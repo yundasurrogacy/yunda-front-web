@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 useScrollAnimation()
 
@@ -339,11 +339,6 @@ const processSteps = computed(() => [
   },
 ])
 
-const howToSteps = computed(() => processSteps.value.map(step => ({
-  title: step.title,
-  text: step.description,
-})))
-
 const faqQuestions = computed(() => [
   {
     question: tt('How do agencies manage the surrogate payment schedule?', '机构如何管理代孕付款时间表？'),
@@ -391,47 +386,53 @@ function toggleFaq(question: string) {
   }
 }
 
-const faqSchemaItems = computed(() => faqQuestions.value.map(item => ({
-  question: item.question,
-  answer: item.answer,
-})))
+const surrogateCompensationItemNames = [
+  'Consultation & Early Planning',
+  'Matching & Trust Setup',
+  'Legal & Contracts',
+  'Medical Prep & Transfer',
+  'Pregnancy Milestones & Installments',
+  'Birth, Parentage, and Postpartum Support',
+]
 
-const howToSchema = computed(() => buildHowToSchema({
-  name: pageTitle.value,
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/surrogate-compensation',
+  name: 'Surrogate Compensation in the U.S. | Pay, Benefits & FAQs',
   description: pageDescription.value,
-  steps: howToSteps.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-compensation',
-  locale: locale.value,
+  about: 'Gestational carrier compensation, benefits, escrow, and payment schedule',
+  audience: 'Potential gestational carriers and intended parents',
+  service: {
+    name: 'Gestational Carrier Compensation Guidance',
+    serviceType: 'Gestational carrier compensation and escrow guidance',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers and intended parents',
+    description: 'Guidance on gestational carrier compensation, surrogate pay, benefits, payment schedule, escrow protection, reimbursements, insurance planning, legal coordination, agency fees, and pregnancy milestone payments.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogate Resources' },
+    { name: 'Surrogate Compensation', url: '/surrogate-compensation' },
+  ],
+  faqs: faqQuestions.value,
+  itemList: {
+    name: 'Surrogacy Process Timeline: Steps, Milestones & Payments',
+    items: surrogateCompensationItemNames.map((name, index) => ({
+      position: index + 1,
+      name,
+      description: processSteps.value[index]?.description,
+      url: '/surrogate-compensation',
+    })),
+  },
 }))
 
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: tt('Surrogate Compensation FAQ', '代孕补偿常见问题'),
-  description: tt('Answers about surrogate pay, benefits, and milestone-based payment schedules.', '关于代孕补偿、福利与里程碑付款的常见问题。'),
-  faqs: faqSchemaItems.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-compensation',
-  locale: locale.value,
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogate-compensation-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
-
-useHead(() => {
-  const scripts = []
-  if (howToSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-compensation-howto',
-      type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
-    })
-  }
-  if (faqSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-compensation-faq',
-      type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
-    })
-  }
-  return scripts.length ? { script: scripts } : {}
-})
 </script>
 
 <template>

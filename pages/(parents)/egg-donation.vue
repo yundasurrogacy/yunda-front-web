@@ -3,9 +3,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -297,6 +300,67 @@ const translations = {
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const pagePath = '/egg-donation'
+const schemaProcessItems = computed(() => [
+  {
+    position: 1,
+    name: 'Donor Match + Screening',
+    description: c.value.s3Steps[0]?.body1,
+    url: pagePath,
+  },
+  {
+    position: 2,
+    name: 'IVF With Donor Eggs',
+    description: c.value.s3Steps[1]?.body1,
+    url: pagePath,
+  },
+  {
+    position: 3,
+    name: 'Choosing an Egg Donor for Surrogacy',
+    description: c.value.s4Blocks[0]?.body1,
+    url: pagePath,
+  },
+  {
+    position: 4,
+    name: 'Egg Donor Screening Process',
+    description: c.value.s4Blocks[1]?.body1,
+    url: pagePath,
+  },
+  {
+    position: 5,
+    name: 'Fresh vs. Frozen Donor Eggs Planning',
+    description: c.value.s5Title,
+    url: pagePath,
+  },
+])
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  about: 'Egg donor gestational surrogacy and donor egg surrogacy process',
+  audience: 'Intended parents',
+  service: {
+    name: 'Egg Donor Gestational Surrogacy Coordination',
+    serviceType: 'Egg donor gestational surrogacy support',
+    audience: ['Intended parents', 'LGBTQ intended parents', 'single parents'],
+    description: 'Coordination support for intended parents using donor eggs in a gestational surrogacy journey, including egg donor selection, donor screening, IVF clinic coordination, embryo creation, PGT-A discussion, fresh or frozen donor egg planning, and gestational carrier matching support.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'Egg Donor Surrogacy', url: pagePath },
+  ],
+  faqs: c.value.s7Faqs.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: 'Egg Donor and IVF Process',
+    description: c.value.s3Title,
+    items: schemaProcessItems.value,
+  },
+}))
 
 useHead(() => ({
   title: c.value.seoTitle,
@@ -314,6 +378,14 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-egg-donation-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

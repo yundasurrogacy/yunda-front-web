@@ -3,9 +3,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -545,6 +548,50 @@ const translations = {
 }
 
 const c = computed(() => ((locale.value || '').startsWith('zh') ? translations.zh : translations.en))
+const pagePath = '/benefit'
+const schemaCompensationItems = computed(() => [
+  ...c.value.timelineItems.map((item, index) => ({
+    position: index + 1,
+    name: item.stage,
+    description: `${item.payment} ${item.note}`.trim(),
+    url: pagePath,
+  })),
+  ...c.value.packageBenefitsItems.map((item, index) => ({
+    position: c.value.timelineItems.length + index + 1,
+    name: item.title,
+    description: `${item.amount} ${item.timing}`.trim(),
+    url: pagePath,
+  })),
+])
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  about: 'Gestational carrier compensation, pay structure, and benefits',
+  audience: 'Potential gestational carriers / surrogate applicants',
+  service: {
+    name: 'Gestational Carrier Compensation and Benefits Guidance',
+    serviceType: 'Gestational carrier compensation guidance',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers / surrogate applicants',
+    description: 'Compensation and benefits guidance for gestational carriers, including base compensation, monthly allowance, milestone payments, escrow payment management, pregnancy-related benefits, reimbursements, and postpartum payment support.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'Compensation & Benefits', url: pagePath },
+  ],
+  faqs: c.value.faqItems.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: 'Payment Timeline and Benefits List',
+    description: c.value.timelineTitle,
+    items: schemaCompensationItems.value,
+  },
+}))
 
 function splitPaymentLines(payment: string) {
   return payment.split(/[;；]/).map(part => part.trim()).filter(Boolean)
@@ -566,6 +613,14 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-benefit-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

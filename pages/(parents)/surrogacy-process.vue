@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明与素材：`修改/2026-05-09/surrogacy-process页面改版`（含 docx）。
@@ -20,6 +21,11 @@ const PAGE_ASSETS = {
   stickyFourth: '/images/process/redesign/screen-sticky-4.png',
 } as const
 
+const { locale } = useI18n()
+const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
 /** 与期望稿第一屏一致：步骤 1/4/7 深棕，2/5/8 橄榄绿，3/6 橙 */
 function timelineBadgeClass(index: number) {
   const step = index + 1
@@ -29,9 +35,6 @@ function timelineBadgeClass(index: number) {
     return 'bg-[var(--yunda-harvest)] text-[var(--yunda-bark)]'
   return 'bg-[var(--yunda-maple)] text-[var(--yunda-petal)]'
 }
-
-const { locale } = useI18n()
-const localePath = useLocalePath()
 
 /** 第二屏右侧卡头：英文 `Step 1 — Title | duration`；中文 `步骤 1 — 标题（时长）` */
 function splitStepCardTitle(full: string) {
@@ -722,6 +725,7 @@ const whatYouDoLabel = computed(() => t.value.whatYouDoLabel)
 const whatWeDoLabel = computed(() => t.value.whatWeDoLabel)
 const outputsLabel = computed(() => t.value.outputsLabel)
 const timelineTitle = computed(() => t.value.timelineTitle)
+const timelineSteps = computed(() => t.value.timelineSteps)
 const stepsInfographicAlt = computed(() => t.value.stepsInfographicAlt)
 const stepDetails = computed(() =>
   t.value.steps.map((step) => {
@@ -748,10 +752,59 @@ const ctaBandPrimary = computed(() => t.value.ctaBandPrimary)
 const ctaBandSecondary = computed(() => t.value.ctaBandSecondary)
 const faqTitle = computed(() => t.value.faqTitle)
 const faqList = computed(() => t.value.faq)
+const pagePath = '/surrogacy-process'
+const schemaTitle = computed(() => heroTitle.value.replace(/\s*\|\s*Yunda(?: Surrogacy)?\s*$/i, '').trim())
+const schemaFaqs = computed(() =>
+  faqList.value.map(item => ({
+    question: item.q,
+    answer: item.answer.map(segment => segment.text).join(''),
+  })),
+)
+const schemaTimelineItems = computed(() =>
+  timelineSteps.value.map((step, index) => ({
+    position: index + 1,
+    name: step.title,
+    description: step.duration,
+    url: pagePath,
+  })),
+)
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: schemaTitle.value,
+  description: 'See how surrogacy works, step by step—the surrogacy procedure, criteria, matching, legal process and timeline. Basics on California surrogacy laws.',
+  about: 'Gestational surrogacy process for intended parents',
+  audience: 'Intended parents',
+  service: {
+    name: 'Gestational Surrogacy Process Support for Intended Parents',
+    serviceType: 'Gestational surrogacy agency coordination',
+    audience: 'Intended parents',
+    description: 'Support for intended parents through the gestational surrogacy process, including consultation, IVF clinic coordination, gestational carrier matching, medical screening, legal contract and escrow setup, embryo transfer preparation, and early pregnancy milestones.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'Surrogacy Process', url: pagePath },
+  ],
+  faqs: schemaFaqs.value,
+  itemList: {
+    name: '8-Step Surrogacy Timeline',
+    description: stepsIntro.value,
+    items: schemaTimelineItems.value,
+  },
+}))
 
 useHead(() => ({
   title: t.value.metaTitle,
   meta: [{ name: 'description', content: t.value.metaDesc }],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogacy-process-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

@@ -3,9 +3,12 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -465,6 +468,45 @@ const translations = {
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const pagePath = '/screening'
+const stripStepPrefix = (value: string) => value.replace(/^Step\s+\d+\s*[-–—]\s*/i, '').trim()
+const schemaScreeningItems = computed(() =>
+  c.value.processSteps.map((step, index) => ({
+    position: index + 1,
+    name: stripStepPrefix(step.title),
+    description: step.body,
+    url: pagePath,
+  })),
+)
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  about: 'Gestational carrier medical screening and eligibility confirmation',
+  audience: 'Potential gestational carriers / surrogate applicants',
+  service: {
+    name: 'Gestational Carrier Screening Coordination',
+    serviceType: 'Gestational carrier medical screening coordination',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers / surrogate applicants',
+    description: 'Coordination support for gestational carrier screening, including application review, medical records collection, baseline health checks, fertility clinic screening, uterine evaluation, insurance review, and medical clearance confirmation.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'Our Screening Process', url: pagePath },
+  ],
+  faqs: c.value.faqItems.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: 'Surrogate Screening Process',
+    description: c.value.processTitle,
+    items: schemaScreeningItems.value,
+  },
+}))
 const activeProcessStep = ref(0)
 const activeFaqIndex = ref(0)
 function selectProcessStep(index: number) {
@@ -483,6 +525,14 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-screening-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 

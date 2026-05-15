@@ -33,7 +33,6 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/become-a-surrogate', priority: 0.8 },
   { loc: '/become-surrogate-california', priority: 0.8 },
   { loc: '/blog', priority: 0.7 },
-  { loc: '/be-surrogate/success', priority: 0.7 },
   // 父母相关页面
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },
@@ -184,6 +183,7 @@ export default defineNuxtConfig({
       // 约定：页面下非页面文件（多语言、composable 等）统一放在 _ 目录，prerender 忽略所有 /_/ 路径
       ignore: [
         (path: string) => path.includes('/_/'),
+        (path: string) => path === '/be-surrogate/success' || path === '/zh/be-surrogate/success',
       ],
     },
   },

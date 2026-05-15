@@ -5,9 +5,12 @@ import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import VideoPlayer from '@/components/base/VideoPlayer.vue'
 import VideoPlayerWithCover from '@/components/base/VideoPlayerWithCover.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // 视频和封面图资源
 const videoResources = {
@@ -153,6 +156,56 @@ const t = computed(() => {
   return translations[lang]
 })
 
+const protectionTopics = computed(() => [
+  {
+    name: 'Legal Issue — How is the surrogacy process different between states?',
+    description: t.value.module1.content,
+  },
+  {
+    name: 'Legal Issue — The key components to a standard surrogacy agreement',
+    description: t.value.module2.content,
+  },
+  {
+    name: 'Escrow Issue — Surrogate Payment Process',
+    description: t.value.module3.content,
+  },
+  {
+    name: 'Insurance Issue — ART Insurance Protects Surrogate Journeys',
+    description: t.value.module4.content,
+  },
+])
+
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/surrogacy-protection-california',
+  name: 'Surrogacy Protection Explained',
+  description: t.value.meta.description,
+  about: 'California gestational surrogacy protection, escrow, legal process, and insurance guidance',
+  audience: 'Intended parents and gestational carriers',
+  service: {
+    name: 'California Gestational Surrogacy Protection Guidance',
+    serviceType: 'Gestational surrogacy legal, escrow, and insurance coordination guidance',
+    areaServed: ['California', 'United States'],
+    audience: 'Intended parents and gestational carriers',
+    description: 'California-focused guidance for gestational surrogacy protection, including state legal differences, standard surrogacy agreement components, escrow payment process, ART insurance planning, pre-birth order guidance, and payment protection.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogate Resources' },
+    { name: 'Surrogacy Protection California', url: '/surrogacy-protection-california' },
+  ],
+  faqs: t.value.faq.items,
+  itemList: {
+    name: 'California Surrogacy Protection Guide Topics',
+    items: protectionTopics.value.map((topic, index) => ({
+      position: index + 1,
+      name: topic.name,
+      description: topic.description,
+      url: '/surrogacy-protection-california',
+    })),
+  },
+}))
+
 useHead({
   title: t.value.meta.title,
   meta: [
@@ -162,6 +215,14 @@ useHead({
     },
   ],
 })
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogacy-protection-california-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 </script>
 
 <template>

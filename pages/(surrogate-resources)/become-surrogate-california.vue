@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
@@ -163,6 +163,45 @@ const applicationSteps = computed(() => [
   },
 ])
 
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/become-surrogate-california',
+  name: 'Become a Surrogate in California: Requirements, Pay and Support',
+  description: pageDescription.value,
+  about: 'Become a gestational carrier in California',
+  audience: 'Potential gestational carriers / surrogate applicants',
+  service: {
+    name: 'California Gestational Carrier Application Support',
+    serviceType: 'Gestational carrier recruitment and support in California',
+    areaServed: ['California', 'United States'],
+    audience: 'Potential gestational carriers / surrogate applicants',
+    description: 'Support for women who want to become gestational carriers in California, including eligibility review, surrogate requirements, compensation guidance, legal protection, medical and psychological screening coordination, matching, IVF preparation, and pregnancy support.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogate Resources' },
+    { name: 'Become a Surrogate in California', url: '/become-surrogate-california' },
+  ],
+  faqs: faqs.value,
+  itemList: {
+    name: 'How to Apply to Become a Surrogate in California',
+    items: applicationSteps.value.map((step, index) => ({
+      position: index + 1,
+      name: step.title,
+      description: step.description,
+      url: '/become-surrogate-california',
+    })),
+  },
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-become-surrogate-california-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
+
 interface CoverageCity {
   id: string
   name: string
@@ -232,56 +271,6 @@ function updateScrollProgress() {
   const scrollPercent = (scrollTop / docHeight) * 100
   scrollProgress.value = Math.min(scrollPercent, 100)
 }
-
-const howToSteps = computed(() => applicationSteps.value.map((step, index) => ({
-  title: tt(
-    `Step ${index + 1}: ${step.title}`,
-    `步骤 ${index + 1}：${step.title}`,
-  ),
-  text: step.description,
-})))
-
-const faqSchemaItems = computed(() => faqs.value.map(faq => ({
-  question: faq.question,
-  answer: faq.answer,
-})))
-
-const howToSchema = computed(() => buildHowToSchema({
-  name: pageTitle.value,
-  description: pageDescription.value,
-  steps: howToSteps.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/become-surrogate-california',
-  locale: locale.value,
-}))
-
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: tt('California Surrogacy FAQ', '加州代孕常见问题'),
-  description: tt('Answers to common questions about becoming a surrogate in California.', '关于在加州成为代孕妈妈的常见问题解答。'),
-  faqs: faqSchemaItems.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/become-surrogate-california',
-  locale: locale.value,
-}))
-
-useHead(() => {
-  const scripts = []
-  if (howToSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-california-howto',
-      type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
-    })
-  }
-  if (faqSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-california-faq',
-      type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
-    })
-  }
-  return scripts.length ? { script: scripts } : {}
-})
 
 onMounted(() => {
   // 創建滾動觀察器

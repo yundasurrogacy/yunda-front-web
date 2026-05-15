@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 interface FixedCost {
   title: string
@@ -41,6 +42,8 @@ useScrollAnimation()
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const translations = {
   en: {
@@ -802,6 +805,36 @@ const faqItems = computed(() =>
         },
       ],
 )
+const pagePath = '/surrogacy-cost'
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: t.value.hero.title,
+  description: t.value.metaDesc,
+  about: 'Gestational surrogacy cost planning and cost breakdown',
+  audience: 'Intended parents',
+  service: {
+    name: 'Gestational Surrogacy Cost Planning Support',
+    serviceType: 'Gestational surrogacy cost planning',
+    audience: 'Intended parents',
+    description: 'Gestational surrogacy cost planning support for intended parents, including agency fees, gestational carrier compensation, legal coordination, insurance guidance, escrow planning, payment timeline, and estimated budget breakdown.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Resources' },
+    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'Surrogacy Cost', url: pagePath },
+  ],
+  faqs: faqItems.value,
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogacy-cost-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 
 const activeReason = ref(reasons.value[0].id)
 const showCaseOnly = ref(false)

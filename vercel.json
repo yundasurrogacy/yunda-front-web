@@ -11,6 +11,14 @@
     {
       "src": "/about%EF%BC%89",
       "status": 410
+    },
+    {
+      "src": "/be-surrogate/success",
+      "status": 410
+    },
+    {
+      "src": "/zh/be-surrogate/success",
+      "status": 410
     }
   ],
   "redirects": [

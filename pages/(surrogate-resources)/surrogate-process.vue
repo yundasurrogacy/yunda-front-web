@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateStepsComponent.vue'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
@@ -250,6 +250,54 @@ const faqItems = computed(() => [
   },
 ])
 
+const surrogateProcessItemNames = [
+  'Initial Consultation & Eligibility Review',
+  'Legal Consultation & Contract Formation',
+  'Medical Screening & IVF Preparation',
+  'Embryo Transfer & Confirmation of Pregnancy',
+  'Pregnancy Monitoring & Emotional Support',
+  'Delivery & Post-Birth Legal Steps',
+]
+
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/surrogate-process',
+  name: 'Surrogacy Process: Step-by-Step Guide for Parents and Surrogates',
+  description: pageDescription.value,
+  about: 'Gestational surrogacy process for parents and gestational carriers',
+  audience: 'Intended parents and prospective gestational carriers',
+  service: {
+    name: 'Gestational Surrogacy Process Guidance',
+    serviceType: 'Gestational surrogacy process education and coordination',
+    areaServed: ['California', 'United States', 'International intended parents'],
+    audience: 'Intended parents and prospective gestational carriers',
+    description: 'Step-by-step guidance for the gestational surrogacy process, including consultation, eligibility review, legal contracts, medical screening, IVF preparation, embryo transfer, pregnancy monitoring, delivery planning, and post-birth legal steps.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Surrogate Resources' },
+    { name: 'Surrogate Process', url: '/surrogate-process' },
+  ],
+  faqs: faqItems.value,
+  itemList: {
+    name: '6 Steps in the Surrogate Process',
+    items: surrogateProcessItemNames.map((name, index) => ({
+      position: index + 1,
+      name,
+      description: timelinePhases.value[index]?.summary,
+      url: '/surrogate-process',
+    })),
+  },
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-surrogate-process-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
+
 const expandedFaq = ref<number | null>(0)
 
 function toggleFaq(index: number) {
@@ -273,53 +321,6 @@ const resourceCategories = computed(() => [
     ],
   },
 ])
-
-const howToSteps = computed(() => timelinePhases.value.map(phase => ({
-  title: tt(`${phase.label} · ${phase.title}`, `${phase.label} · ${phase.title}`),
-  text: phase.summary,
-})))
-
-const faqSchemaItems = computed(() => faqItems.value.map(item => ({
-  question: item.question,
-  answer: item.answer,
-})))
-
-const howToSchema = computed(() => buildHowToSchema({
-  name: pageTitle.value,
-  description: pageDescription.value,
-  steps: howToSteps.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-process',
-  locale: locale.value,
-}))
-
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: tt('Surrogacy Process FAQ', '代孕流程常见问题'),
-  description: tt('Common questions about the surrogacy process, IVF timeline, and legal steps.', '关于代孕流程、IVF 时间线与法律步骤的常见问题。'),
-  faqs: faqSchemaItems.value,
-  baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-process',
-  locale: locale.value,
-}))
-
-useHead(() => {
-  const scripts = []
-  if (howToSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-process-howto',
-      type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
-    })
-  }
-  if (faqSchema.value) {
-    scripts.push({
-      key: 'schema-surrogate-process-faq',
-      type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
-    })
-  }
-  return scripts.length ? { script: scripts } : {}
-})
 
 const yundaHighlights = computed(() => [
   {

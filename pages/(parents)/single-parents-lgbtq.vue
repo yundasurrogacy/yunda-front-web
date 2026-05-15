@@ -3,9 +3,12 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en: string, zh: string) => (isZh.value ? zh : en)
@@ -70,6 +73,82 @@ const stepStrip = computed(() => [
     gradient: 'linear-gradient(135deg, #f0d7b8, #fbf0da)',
   },
 ])
+const lgbtqFaqItems = computed(() => [
+  {
+    question: tt('1) How to start gay surrogacy in California?', '1）如何在加州开始同志代孕？'),
+    answer: tt('Start with a consult. We confirm what you already have (embryos or not) and map the next steps—clinic, donor, matching, legal, and timing.', '从咨询开始。我们确认你已有的准备（是否有胚胎），并规划下一步——诊所、供卵/供精、匹配、法律与时间表。'),
+  },
+  {
+    question: tt('2) How does gay surrogacy work, step by step?', '2）同志代孕的流程是怎样的？'),
+    answer: tt('Plan → create/review embryos → match and screening → legal/insurance/escrow → transfer → pregnancy support → birth + parentage paperwork.', '规划 → 创建/审核胚胎 → 匹配与筛查 → 法律/保险/资金托管 → 移植 → 孕期支持 → 分娩与亲权文件。'),
+  },
+  {
+    question: tt('3) Is gay surrogacy legal in the U.S. and in California?', '3）同志代孕在美国、加州合法吗？'),
+    answer: tt('It depends on the state. California is widely chosen for supportive same-sex surrogacy laws and clearer parentage pathways.', '因州而异。加州因对同性代孕友好、亲权路径清晰而被广泛选择。'),
+  },
+  {
+    question: tt('4) What is a PBO (pre-birth order) for gay parents?', '4）什么是同性父母的 PBO（预出生令）？'),
+    answer: tt('A pre-birth order helps confirm parentage before delivery. It often makes the hospital process and paperwork smoother.', '预出生令在分娩前确认亲权，通常能让医院流程与文件处理更顺畅。'),
+  },
+  {
+    question: tt('5) Can both dads be on the birth certificate in California?', '5）在加州，两位爸爸都能上出生证吗？'),
+    answer: tt('Often yes, with the right legal plan and documentation. We coordinate with California counsel to keep the process clear.', '通常可以，只要法律方案与文件齐备。我们会与加州律师合作，确保流程清晰。'),
+  },
+  {
+    question: tt('6) Can both moms be on the birth certificate for lesbian surrogacy?', '6）女同志代孕，两位妈妈都能上出生证吗？'),
+    answer: tt('Often yes. California parentage steps (commonly including a pre-birth order) help recognize both moms.', '通常可以。加州的亲权流程（常含预出生令）可帮助同时确认两位妈妈。'),
+  },
+  {
+    question: tt('7) How much does surrogacy for gay couples cost?', '7）同志家庭代孕要花多少钱？'),
+    answer: tt('It varies by medical pathway. Biggest drivers: IVF/donor needs, surrogate support, legal fees, insurance review, escrow, and agency coordination.', '取决于医疗路径。主要驱动包括 IVF/供卵需求、代孕支持、法律费用、保险审核、资金托管及机构协调。'),
+  },
+  {
+    question: tt('8) What are the main cost components in gay surrogacy?', '8）同志代孕的主要费用构成是什么？'),
+    answer: tt('Medical (IVF/testing/transfer), surrogate-related costs, legal + parentage, insurance/escrow, and agency support.', '医疗（IVF/检测/移植）、代孕相关费用、法律与亲权、保险/托管，以及机构支持。'),
+  },
+  {
+    question: tt('9) How do gay couples choose an egg donor, and where does IVF fit?', '9）同志伴侣如何选择供卵者？IVF 在哪里介入？'),
+    answer: tt('Many gay men surrogacy journeys use an egg donor and IVF to create embryos, then move to matching and transfer.', '许多同志家庭会用供卵和 IVF 创建胚胎，然后进入匹配与移植阶段。'),
+  },
+  {
+    question: tt('10) International parents: how do we bring a baby home after surrogacy?', '10）国际家庭：代孕后如何把宝宝带回国？'),
+    answer: tt('Plan early for documents and travel timing after birth. Requirements vary by country, so timelines should be prepared in advance.', '请提前准备出生后的文件与行程，各国要求不同，时间线需预先规划。'),
+  },
+])
+const pagePath = '/single-parents-lgbtq'
+const schemaStepItems = computed(() =>
+  stepStrip.value.map((step, index) => ({
+    position: index + 1,
+    name: step.label,
+    description: step.sub,
+    url: pagePath,
+  })),
+)
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: pagePath,
+  name: heroTitle.value,
+  description: seoDescription.value,
+  about: 'LGBTQ-friendly gestational surrogacy agency support in California',
+  audience: ['LGBTQ intended parents', 'gay couples', 'lesbian couples', 'single parents'],
+  service: {
+    name: 'LGBTQ Gestational Surrogacy Support in California',
+    serviceType: 'LGBTQ-friendly gestational surrogacy agency services',
+    audience: ['LGBTQ intended parents', 'gay couples', 'lesbian couples', 'single parents'],
+    description: 'Inclusive gestational surrogacy coordination for gay and lesbian intended parents, including first consultation, IVF and egg donation planning, gestational carrier matching, medical screening, legal and parentage coordination, insurance and escrow planning, embryo transfer, pregnancy support, and birth planning.',
+  },
+  breadcrumbs: [
+    { name: 'Home', url: '/' },
+    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'Single Parents & LGBTQ+', url: pagePath },
+  ],
+  faqs: lgbtqFaqItems.value,
+  itemList: {
+    name: '6-step LGBTQ surrogacy process',
+    description: heroDescription.value,
+    items: schemaStepItems.value,
+  },
+}))
 
 const visibleSteps = ref(1)
 
@@ -87,6 +166,14 @@ useHead({
     },
   ],
 })
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-single-parents-lgbtq-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 </script>
 
 <template>

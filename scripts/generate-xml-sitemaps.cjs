@@ -23,7 +23,6 @@ const STATIC_PAGES = [
   { loc: '/become-a-surrogate', priority: 0.8 },
   { loc: '/become-surrogate-california', priority: 0.8 },
   { loc: '/blog', priority: 0.7 },
-  { loc: '/be-surrogate/success', priority: 0.7 },
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },
   { loc: '/single-parents-lgbtq', priority: 0.7 },
