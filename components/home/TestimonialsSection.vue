@@ -180,7 +180,7 @@ function getTagClass(type: 'SURROGATE' | 'PARENT') {
     return 'bg-[var(--primary-brown)] text-white'
   }
   // PARENT 标签使用灰绿色，更接近 brand book
-  return 'bg-[var(--grayish-green)] text-[var(--dark-brown)]'
+  return 'bg-[var(--yunda-bark)] text-[var(--yunda-bark)]'
 }
 
 // 判断内容是否需要展开/收起功能（内容超过一定长度）
@@ -215,10 +215,10 @@ function formatContent(content: string | undefined) {
 </script>
 
 <template>
-  <section class="border-b border-t border-[var(--primary-brown)]/18 from-[var(--light-cream)] via-[var(--head-bg)] to-[var(--light-cream)] bg-gradient-to-b px-4 py-20 md:px-20 md:py-25">
+  <section class="border-b border-t border-[var(--primary-brown)]/18 from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-20 md:px-20 md:py-25">
     <div class="mx-auto max-w-[1400px]">
       <!-- 标题 -->
-      <h2 class="scroll-animate mb-16 text-center text-7.5 font-semibold uppercase md:mb-20 md:text-10" style="font-family: var(--font-primary)">
+      <h2 class="scroll-animate mb-16 text-center text-7.5 font-semibold uppercase md:mb-20 md:text-10" >
         {{ locale === 'zh' ? '客户评价' : 'TESTIMONIALS' }}
       </h2>
 
@@ -270,7 +270,7 @@ function formatContent(content: string | undefined) {
                 </div>
 
                 <!-- 评价内容 -->
-                <div v-if="testimonials[displayIndex]" class="mb-6 overflow-hidden text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+                <div v-if="testimonials[displayIndex]" class="mb-6 overflow-hidden text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
                   <div
                     class="content-wrapper transition-all duration-500 ease-in-out"
                     :class="{
@@ -300,7 +300,7 @@ function formatContent(content: string | undefined) {
                   <div
                     v-if="testimonials[displayIndex] && needsExpand(testimonials[displayIndex]?.content)"
                     class="expand-button group mt-3 inline-flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
-                    style="font-family: var(--font-secondary)"
+                    style="font-family: var(--font-text)"
                     @click="toggleExpand(displayIndex)"
                   >
                     <span class="font-medium transition-all duration-300 group-hover:font-semibold">
@@ -327,7 +327,7 @@ function formatContent(content: string | undefined) {
                 </div>
 
                 <!-- 作者信息 -->
-                <div v-if="testimonials[displayIndex]" class="mb-0 text-sm text-[var(--dark-brown)] font-semibold md:text-base" style="font-family: var(--font-secondary)">
+                <div v-if="testimonials[displayIndex]" class="mb-0 text-sm text-[var(--yunda-bark)] font-semibold md:text-base" style="font-family: var(--font-text)">
                   {{ testimonials[displayIndex]?.author }} / {{ testimonials[displayIndex]?.location }}
                 </div>
               </div>
@@ -349,7 +349,7 @@ function formatContent(content: string | undefined) {
             </div>
 
             <!-- 评价内容 -->
-            <div v-if="testimonials[currentIndex]" class="mb-6 overflow-hidden text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div v-if="testimonials[currentIndex]" class="mb-6 overflow-hidden text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
               <div
                 class="content-wrapper transition-all duration-500 ease-in-out"
                 :class="{
@@ -379,7 +379,7 @@ function formatContent(content: string | undefined) {
               <div
                 v-if="testimonials[currentIndex] && needsExpand(testimonials[currentIndex]?.content)"
                 class="expand-button group mt-3 inline-flex cursor-pointer items-center gap-2 text-sm text-[var(--primary-brown)] transition-all duration-300 hover:gap-3"
-                style="font-family: var(--font-secondary)"
+                style="font-family: var(--font-text)"
                 @click="toggleExpand(currentIndex)"
               >
                 <span class="font-medium transition-all duration-300 group-hover:font-semibold">
@@ -406,7 +406,7 @@ function formatContent(content: string | undefined) {
             </div>
 
             <!-- 作者信息 -->
-            <div v-if="testimonials[currentIndex]" class="mb-0 text-sm text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-secondary)">
+            <div v-if="testimonials[currentIndex]" class="mb-0 text-sm text-[var(--yunda-bark)] font-semibold" style="font-family: var(--font-text)">
               {{ testimonials[currentIndex]?.author }} / {{ testimonials[currentIndex]?.location }}
             </div>
           </div>

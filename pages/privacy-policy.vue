@@ -280,10 +280,10 @@ useHead({
 <template>
   <div>
     <AppHeader />
-    <main class="min-h-screen bg-white">
+    <main class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
         <article class="max-w-none prose prose-lg">
-          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
+          <h1 class="mb-4 font-sans text-[32px] text-[var(--yunda-bark)] font-bold leading-tight lg:text-[40px]" style="font-family: var(--font-text)">
             {{ t.title }}
           </h1>
 
@@ -292,7 +292,7 @@ useHead({
             <p><strong>{{ t.lastUpdated }}:</strong> {{ t.lastUpdatedValue }}</p>
           </div>
 
-          <div class="mb-8 text-gray-700 leading-relaxed">
+          <div class="mb-8 text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px]" style="font-family: var(--font-text)">
             <p class="mb-4">
               {{ t.intro1 }}
             </p>
@@ -303,27 +303,27 @@ useHead({
 
           <!-- Table of Contents -->
           <div class="mb-8 rounded-lg bg-gray-50 p-6">
-            <h2 class="mb-4 text-xl font-semibold">
+            <h2 class="mb-4 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
               {{ t.toc.title }}
             </h2>
             <ol class="list-decimal list-inside space-y-2">
-              <li><a href="#scope" class="text-blue-600 hover:underline">{{ t.toc.scope }}</a></li>
-              <li><a href="#information" class="text-blue-600 hover:underline">{{ t.toc.information }}</a></li>
-              <li><a href="#use" class="text-blue-600 hover:underline">{{ t.toc.use }}</a></li>
-              <li><a href="#sharing" class="text-blue-600 hover:underline">{{ t.toc.sharing }}</a></li>
-              <li><a href="#retention" class="text-blue-600 hover:underline">{{ t.toc.retention }}</a></li>
-              <li><a href="#security" class="text-blue-600 hover:underline">{{ t.toc.security }}</a></li>
-              <li><a href="#rights" class="text-blue-600 hover:underline">{{ t.toc.rights }}</a></li>
-              <li><a href="#contact" class="text-blue-600 hover:underline">{{ t.toc.contact }}</a></li>
+              <li><a href="#scope" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.scope }}</a></li>
+              <li><a href="#information" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.information }}</a></li>
+              <li><a href="#use" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.use }}</a></li>
+              <li><a href="#sharing" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.sharing }}</a></li>
+              <li><a href="#retention" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.retention }}</a></li>
+              <li><a href="#security" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.security }}</a></li>
+              <li><a href="#rights" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.rights }}</a></li>
+              <li><a href="#contact" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">{{ t.toc.contact }}</a></li>
             </ol>
           </div>
 
           <!-- Section 1: Scope -->
           <section id="scope" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               1. {{ t.scope.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.scope.content1 }}</p>
               <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.scope.item1 }}</li>
@@ -338,28 +338,28 @@ useHead({
 
           <!-- Section 2: Information We Collect -->
           <section id="information" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               2. {{ t.information.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-4">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-4" style="font-family: var(--font-text)">
               <p>{{ t.information.intro }}</p>
 
               <div>
-                <h3 class="mb-2 text-xl font-semibold">
+                <h3 class="mb-2 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
                   {{ t.information.personalIdentifiers.title }}
                 </h3>
                 <p>{{ t.information.personalIdentifiers.content }}</p>
               </div>
 
               <div>
-                <h3 class="mb-2 text-xl font-semibold">
+                <h3 class="mb-2 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
                   {{ t.information.application.title }}
                 </h3>
                 <p>{{ t.information.application.content }}</p>
               </div>
 
               <div>
-                <h3 class="mb-2 text-xl font-semibold">
+                <h3 class="mb-2 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
                   {{ t.information.sensitive.title }}
                 </h3>
                 <p>{{ t.information.sensitive.content1 }}</p>
@@ -375,14 +375,14 @@ useHead({
               </div>
 
               <div>
-                <h3 class="mb-2 text-xl font-semibold">
+                <h3 class="mb-2 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
                   {{ t.information.communication.title }}
                 </h3>
                 <p>{{ t.information.communication.content }}</p>
               </div>
 
               <div>
-                <h3 class="mb-2 text-xl font-semibold">
+                <h3 class="mb-2 font-sans text-[18px] text-[var(--yunda-bark)] font-bold lg:text-[22px]" style="font-family: var(--font-text)">
                   {{ t.information.technical.title }}
                 </h3>
                 <p>{{ t.information.technical.content }}</p>
@@ -396,10 +396,10 @@ useHead({
 
           <!-- Section 3: How We Use Information -->
           <section id="use" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               3. {{ t.use.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.use.intro }}</p>
               <ul class="ml-4 list-disc list-inside space-y-2">
                 <li>{{ t.use.item1 }}</li>
@@ -416,10 +416,10 @@ useHead({
 
           <!-- Section 4: Sharing and Disclosure -->
           <section id="sharing" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               4. {{ t.sharing.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p class="font-semibold">
                 {{ t.sharing.noSell }}
               </p>
@@ -439,20 +439,20 @@ useHead({
 
           <!-- Section 5: Data Retention -->
           <section id="retention" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               5. {{ t.retention.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px]" style="font-family: var(--font-text)">
               <p>{{ t.retention.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Data Security -->
           <section id="security" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               6. {{ t.security.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.security.content1 }}</p>
               <p>{{ t.security.content2 }}</p>
             </div>
@@ -460,7 +460,7 @@ useHead({
 
           <!-- Section 7: Your Privacy Rights -->
           <section id="rights" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               7. {{ t.rights.title }}
             </h2>
 
@@ -469,7 +469,7 @@ useHead({
               <h3 class="mb-3 text-xl font-semibold">
                 7.1 {{ t.rights.california.title }}
               </h3>
-              <div class="text-gray-700 leading-relaxed space-y-3">
+              <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
                 <p>{{ t.rights.california.content1 }}</p>
                 <p>{{ t.rights.california.content2 }}</p>
                 <p>{{ t.rights.california.content3 }}</p>
@@ -484,7 +484,7 @@ useHead({
               <h3 class="mb-3 text-xl font-semibold">
                 7.2 {{ t.rights.eu.title }}
               </h3>
-              <div class="text-gray-700 leading-relaxed space-y-3">
+              <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
                 <p>{{ t.rights.eu.content1 }}</p>
                 <ul class="ml-4 list-disc list-inside space-y-2">
                   <li>{{ t.rights.eu.item1 }}</li>
@@ -501,19 +501,19 @@ useHead({
 
           <!-- Section 8: Contact Us -->
           <section id="contact" class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               8. {{ t.contact.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.contact.content }}</p>
               <div class="rounded bg-gray-50 p-4">
                 <p>
                   <strong>{{ t.contact.email }}:</strong>
-                  <a href="mailto:kaylal@yundasurrogacy.com" class="text-blue-600 hover:underline">kaylal@yundasurrogacy.com</a>
+                  <a href="mailto:kaylal@yundasurrogacy.com" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">kaylal@yundasurrogacy.com</a>
                 </p>
                 <p>
                   <strong>{{ t.contact.phone }}:</strong>
-                  <a href="tel:+16265638656" class="text-blue-600 hover:underline">+1 (626) 563-8656</a>
+                  <a href="tel:+16265638656" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">+1 (626) 563-8656</a>
                 </p>
               </div>
             </div>

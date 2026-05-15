@@ -521,12 +521,12 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-[var(--head-bg)]">
+  <div class="min-h-screen overflow-hidden bg-[var(--yunda-petal)]">
     <AppHeader />
 
     <!-- Header -->
-    <div class="relative h-30 w-full flex items-center justify-center bg-[#BFC9BF] lg:h-80">
-      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
+    <div class="relative h-30 w-full flex items-center justify-center bg-[var(--yunda-bark)] lg:h-80">
+      <h1 class="text-center font-display text-[32px] text-[var(--yunda-petal)] font-semibold italic leading-[1.1] lg:text-[50px]">
         {{ $t('parent.application.pageTitle') }}
       </h1>
     </div>
@@ -535,32 +535,32 @@ async function handleSubmit() {
     <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
       <!-- Introduction -->
       <div class="mb-16 text-center lg:text-5">
-        <h2 class="mb-8 text-8 font-semibold" style="font-family: var(--font-primary)">
+        <h2 class="mb-8 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
           {{ $t('parent.application.welcome.title') }}
         </h2>
-        <p class="mx-auto mb-4 max-w-966px leading-relaxed">
+        <p class="mx-auto mb-4 max-w-966px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
           {{ $t('parent.application.welcome.message1') }}
         </p>
-        <p class="mx-auto mb-20 max-w-954px">
+        <p class="mx-auto mb-20 max-w-954px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
           <span v-html="$t('parent.application.welcome.message2')" />
         </p>
 
-        <p class="mx-auto mb-8 max-w-954px text-8 font-semibold" style="font-family: var(--font-primary)">
+        <p class="mx-auto mb-8 max-w-954px font-sans text-lg text-[var(--yunda-bark)] font-bold lg:text-xl" style="font-family: var(--font-text)">
           {{ $t('parent.application.welcome.message3') }}
         </p>
-        <p class="mb-12">
+        <p class="mb-12 font-sans text-base text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
           {{ $t('parent.application.welcome.scrollPrompt') }}
         </p>
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto animate-bounce">
-          <path d="M10 20L24 34L38 20" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M10 20L24 34L38 20" stroke="var(--yunda-bark)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
 
       <!-- Form Container -->
-      <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
+      <div class="mb-20 rounded-5 from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
         <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
           <!-- Basic Information Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.basicInfo') }}
           </h3>
 
@@ -586,7 +586,7 @@ async function handleSubmit() {
                       v-model="form.pronounsSelfDescribe"
                       type="text"
                       placeholder=""
-                      class="placeholder: ml-2 h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                      class="placeholder: ml-2 h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                     >
                   </div>
                 </div>
@@ -608,7 +608,7 @@ async function handleSubmit() {
                       v-model="form.genderSelfDescribe"
                       type="text"
                       placeholder=""
-                      class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                      class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                     >
                   </div>
                 </div>
@@ -638,7 +638,7 @@ async function handleSubmit() {
                       v-model="form.ethnicitySelfDescribe"
                       type="text"
                       placeholder=""
-                      class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                      class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                     >
                   </div>
                 </div>
@@ -647,7 +647,7 @@ async function handleSubmit() {
           </div>
 
           <!-- Contact Information Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.contactInfo') }}
           </h3>
 
@@ -751,18 +751,18 @@ async function handleSubmit() {
                   v-model="form.otherLanguage"
                   type="text"
                   placeholder=""
-                  class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                  class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                 >
               </div>
             </div>
 
-            <p class="text-13px text-black font-serif">
+            <p class="text-13px text-[var(--yunda-bark)] font-sans">
               {{ $t('parent.application.form.languages.note') }}
             </p>
           </div>
 
           <!-- Family Profile Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.familyProfile') }}
           </h3>
 
@@ -781,7 +781,7 @@ async function handleSubmit() {
                     v-model="form.sexualOrientationSelfDescribe"
                     type="text"
                     placeholder=""
-                    class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                    class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                   >
                 </div>
               </div>
@@ -818,7 +818,7 @@ async function handleSubmit() {
           </div>
 
           <!-- Program Interests Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.programInterests') }}
           </h3>
 
@@ -865,7 +865,7 @@ async function handleSubmit() {
           </div>
 
           <!-- Embryo & Medical Status Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.embryoMedicalStatus') }}
           </h3>
 
@@ -909,7 +909,7 @@ async function handleSubmit() {
                     v-model="form.fertilityClinicName"
                     type="text"
                     :placeholder="$t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.clinicName')"
-                    class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-black font-serif bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+                    class="placeholder: h-10 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-[var(--yunda-bark)] font-sans bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
                   >
                 </div>
                 <FormRadio v-model="form.hasFertilityClinic" name="hasFertilityClinic" value="No" :label="$t('parent.application.form.embryoMedicalStatus.hasFertilityClinic.no')" />
@@ -918,7 +918,7 @@ async function handleSubmit() {
           </div>
 
           <!-- Referral Section -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('parent.application.sections.referral') }}
           </h3>
 
@@ -968,7 +968,7 @@ async function handleSubmit() {
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="rounded-2.5 bg-[var(--grayish-green)] px-12 py-4 text-20px text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
+              class="yunda-type-button rounded-2.5 bg-[var(--yunda-bark)] px-12 py-4 text-lg text-[var(--yunda-petal)] tracking-[0.02em] shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
               :class="isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-90 cursor-pointer'"
             >
               {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('parent.application.form.submitButton') }}

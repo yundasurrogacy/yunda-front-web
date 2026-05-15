@@ -7,49 +7,50 @@ useScrollAnimation()
 </script>
 
 <template>
-  <section class="bg-[var(--head-bg)] px-4 pb-12 pt-0 md:px-12 md:pb-16 md:pt-0 lg:px-20 lg:pt-0">
+  <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-0 md:px-12 md:pb-16 md:pt-0 lg:px-20 lg:pt-0">
     <div class="mx-auto max-w-320">
       <div class="flex flex-col gap-16 lg:gap-22 xl:gap-28">
         <!-- 准父母：大屏左文右图；小屏上文下图 -->
         <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="order-2 space-y-6 lg:order-1">
-            <div style="font-family: var(--font-primary)">
-              <h2 class="text-[30px] font-semibold">
+            <div>
+              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
                 {{ $t('home.costSection.title2') }}
               </h2>
             </div>
             <p
-              class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
-              style="font-family: var(--font-secondary)"
+              class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.costSection.description1') }}
             </p>
-            <p class="text-4.5 text-[var(--dark-brown)] font-medium md:text-5" style="font-family: var(--font-secondary)">
+            <p class="font-sans text-base text-[var(--yunda-bark)] font-medium leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ $t('home.costSection.description2') }}
             </p>
-            <ul class="pl-1 space-y-4" style="font-family: var(--font-secondary)">
+            <ul class="space-y-4 pl-1" style="font-family: var(--font-text)">
               <li class="flex items-start gap-3">
-                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--primary-brown)]" />
-                <span class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5">{{ $t('home.costSection.item1') }}</span>
+                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--yunda-maple)]" />
+                <span class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]">{{ $t('home.costSection.item1') }}</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--primary-brown)]" />
-                <span class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5">{{ $t('home.costSection.item2') }}</span>
+                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--yunda-maple)]" />
+                <span class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]">{{ $t('home.costSection.item2') }}</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--primary-brown)]" />
-                <span class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5">{{ $t('home.costSection.item3') }}</span>
+                <span class="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--yunda-maple)]" />
+                <span class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]">{{ $t('home.costSection.item3') }}</span>
               </li>
             </ul>
             <p
-              class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
-              style="font-family: var(--font-secondary)"
+              class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.costSection.description4') }}
             </p>
             <NuxtLink
               :to="localePath('/surrogacy-process')"
-              class="inline-flex rounded-2.5 bg-[var(--grayish-green)] px-6 py-3 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
+              class="yunda-type-button inline-flex rounded-2.5 bg-[var(--yunda-bark)] px-6 py-3 text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity hover:opacity-95"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.parentsSurrogatesSection.parentsCta') }}
             </NuxtLink>
@@ -75,31 +76,32 @@ useScrollAnimation()
             >
           </div>
           <div class="space-y-6">
-            <div style="font-family: var(--font-primary)">
-              <h2 class="text-[30px] font-semibold">
+            <div>
+              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
                 {{ $t('home.parentsSurrogatesSection.surrogateSubtitle') }}
               </h2>
             </div>
             <p
-              class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
-              style="font-family: var(--font-secondary)"
+              class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.parentsSurrogatesSection.surrogateIntro') }}
             </p>
-            <ul class="list-disc pl-6 text-4.5 text-[var(--dark-brown)] space-y-3 md:text-5" style="font-family: var(--font-secondary)">
+            <ul class="list-disc space-y-3 pl-6 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               <li>{{ $t('home.parentsSurrogatesSection.surrogateBullet1') }}</li>
               <li>{{ $t('home.parentsSurrogatesSection.surrogateBullet2') }}</li>
               <li>{{ $t('home.parentsSurrogatesSection.surrogateBullet3') }}</li>
             </ul>
             <p
-              class="text-4.5 text-[var(--dark-brown)] leading-relaxed"
-              style="font-family: var(--font-secondary)"
+              class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.parentsSurrogatesSection.surrogateOutro') }}
             </p>
             <NuxtLink
               :to="localePath('/journey')"
-              class="inline-flex rounded-2.5 bg-[var(--grayish-green)] px-6 py-3 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
+              class="yunda-type-button inline-flex rounded-2.5 bg-[var(--yunda-bark)] px-6 py-3 text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity hover:opacity-95"
+              style="font-family: var(--font-text)"
             >
               {{ $t('home.parentsSurrogatesSection.surrogateCta') }}
             </NuxtLink>

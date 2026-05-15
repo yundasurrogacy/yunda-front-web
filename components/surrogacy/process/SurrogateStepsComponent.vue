@@ -110,7 +110,7 @@ watch(() => props.activeStep, () => {
       <!-- 左側步驟列表 -->
       <div class="w-1/3 overflow-y-auto rounded-xl bg-white p-8 shadow-lg">
         <div class="sticky top-0 mb-6 border-b border-gray-200 bg-white pb-4">
-          <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+          <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-bold" >
             6 Steps in the Surrogate Process
           </h3>
         </div>
@@ -121,7 +121,7 @@ watch(() => props.activeStep, () => {
             :key="step.id"
             class="cursor-pointer border-l-4 rounded-lg p-4 transition-all duration-300" :class="[
               activeStep === step.id
-                ? 'bg-[var(--grayish-green)] bg-opacity-20 border-[var(--grayish-green)] shadow-md'
+                ? 'bg-[var(--yunda-bark)] bg-opacity-20 border-[var(--yunda-bark)] shadow-md'
                 : 'bg-gray-50 border-transparent hover:bg-gray-100',
             ]"
             @click="setActiveStep(step.id)"
@@ -131,7 +131,7 @@ watch(() => props.activeStep, () => {
                 <div
                   class="mr-3 h-8 w-8 flex items-center justify-center rounded-full text-sm font-bold" :class="[
                     activeStep === step.id
-                      ? 'bg-[var(--grayish-green)] text-white'
+                      ? 'bg-[var(--yunda-bark)] text-white'
                       : 'bg-gray-300 text-gray-600',
                   ]"
                 >
@@ -140,7 +140,7 @@ watch(() => props.activeStep, () => {
                 <div>
                   <h4
                     class="text-sm font-semibold" :class="[
-                      activeStep === step.id ? 'text-[var(--dark-brown)]' : 'text-gray-700',
+                      activeStep === step.id ? 'text-[var(--yunda-bark)]' : 'text-gray-700',
                     ]"
                   >
                     {{ step.title }}
@@ -168,11 +168,11 @@ watch(() => props.activeStep, () => {
         >
           <!-- 步驟指示器 -->
           <div class="mb-6 flex items-center">
-            <div class="mr-4 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)]">
+            <div class="mr-4 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)]">
               <span class="text-2xl text-white font-bold">{{ step.id }}</span>
             </div>
             <div>
-              <h2 class="text-3xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+              <h2 class="text-3xl text-[var(--yunda-bark)] font-bold" >
                 {{ step.title }}
               </h2>
               <p v-if="step.duration" class="text-lg text-gray-600">
@@ -183,7 +183,7 @@ watch(() => props.activeStep, () => {
 
           <!-- 關鍵活動 -->
           <div class="mb-8">
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-semibold">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-semibold">
               Key Activities:
             </h3>
             <ul class="space-y-3">
@@ -192,7 +192,7 @@ watch(() => props.activeStep, () => {
                 :key="activity"
                 class="flex items-start"
               >
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">•</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">•</span>
                 <span class="text-[var(--primary-brown)] font-medium">{{ activity }}</span>
               </li>
             </ul>
@@ -200,7 +200,7 @@ watch(() => props.activeStep, () => {
 
           <!-- 詳細描述 -->
           <div class="mb-8">
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-semibold">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-semibold">
               Process Details:
             </h3>
             <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -210,8 +210,8 @@ watch(() => props.activeStep, () => {
 
           <!-- 額外信息 -->
           <div class="space-y-6">
-            <div class="rounded-lg bg-[var(--light-cream)] p-6">
-              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+            <div class="rounded-lg bg-[var(--yunda-petal)] p-6">
+              <h4 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
                 Additional Information:
               </h4>
               <p class="text-[var(--primary-brown)] leading-relaxed">
@@ -222,9 +222,9 @@ watch(() => props.activeStep, () => {
             <div
               v-for="section in step.sections || []"
               :key="section.heading"
-              class="border border-[var(--light-cream)] rounded-lg bg-white p-6"
+              class="border border-[var(--yunda-petal)] rounded-lg bg-white p-6"
             >
-              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+              <h4 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
                 {{ section.heading }}
               </h4>
               <ul class="text-[var(--primary-brown)] leading-relaxed space-y-2">
@@ -233,7 +233,7 @@ watch(() => props.activeStep, () => {
                   :key="item"
                   class="flex items-start"
                 >
-                  <span class="mr-2 mt-1 text-[var(--grayish-green)]">•</span>
+                  <span class="mr-2 mt-1 text-[var(--yunda-bark)]">•</span>
                   <span>{{ item }}</span>
                 </li>
               </ul>
@@ -241,9 +241,9 @@ watch(() => props.activeStep, () => {
 
             <div
               v-if="step.softCtas?.length"
-              class="border border-[var(--grayish-green)] rounded-lg bg-white p-6"
+              class="border border-[var(--yunda-bark)] rounded-lg bg-white p-6"
             >
-              <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+              <h4 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
                 Soft CTAs
               </h4>
               <ul class="text-[var(--primary-brown)] leading-relaxed space-y-2">
@@ -252,7 +252,7 @@ watch(() => props.activeStep, () => {
                   :key="cta"
                   class="flex items-start"
                 >
-                  <span class="mr-2 mt-1 text-[var(--grayish-green)]">–</span>
+                  <span class="mr-2 mt-1 text-[var(--yunda-bark)]">–</span>
                   <span>{{ cta }}</span>
                 </li>
               </ul>
@@ -266,7 +266,7 @@ watch(() => props.activeStep, () => {
     <div class="lg:hidden">
       <!-- 步驟選擇器 -->
       <div class="mb-6 rounded-xl bg-white p-6 shadow-lg">
-        <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+        <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold" >
           6 Steps in the Surrogate Process
         </h3>
         <p class="mb-6 text-sm text-[var(--primary-brown)] leading-relaxed">
@@ -279,7 +279,7 @@ watch(() => props.activeStep, () => {
             :key="step.id"
             class="border-2 rounded-lg p-3 text-left transition-all duration-300" :class="[
               activeStep === step.id
-                ? 'bg-[var(--grayish-green)] bg-opacity-20 border-[var(--grayish-green)]'
+                ? 'bg-[var(--yunda-bark)] bg-opacity-20 border-[var(--yunda-bark)]'
                 : 'bg-gray-50 border-gray-200 hover:bg-gray-100',
             ]"
             @click="setActiveStep(step.id)"
@@ -288,7 +288,7 @@ watch(() => props.activeStep, () => {
               <div
                 class="mr-2 h-6 w-6 flex items-center justify-center rounded-full text-xs font-bold" :class="[
                   activeStep === step.id
-                    ? 'bg-[var(--grayish-green)] text-white'
+                    ? 'bg-[var(--yunda-bark)] text-white'
                     : 'bg-gray-300 text-gray-600',
                 ]"
               >
@@ -298,7 +298,7 @@ watch(() => props.activeStep, () => {
             </div>
             <h4
               class="text-sm font-semibold" :class="[
-                activeStep === step.id ? 'text-[var(--dark-brown)]' : 'text-gray-700',
+                activeStep === step.id ? 'text-[var(--yunda-bark)]' : 'text-gray-700',
               ]"
             >
               {{ step.title }}
@@ -310,11 +310,11 @@ watch(() => props.activeStep, () => {
       <!-- 當前步驟詳情 -->
       <div class="rounded-xl bg-white p-6 shadow-lg">
         <div class="mb-6 flex items-center">
-          <div class="mr-4 h-12 w-12 flex items-center justify-center rounded-full bg-[var(--grayish-green)]">
+          <div class="mr-4 h-12 w-12 flex items-center justify-center rounded-full bg-[var(--yunda-bark)]">
             <span class="text-xl text-white font-bold">{{ activeStep }}</span>
           </div>
           <div>
-            <h2 class="text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h2 class="text-2xl text-[var(--yunda-bark)] font-bold" >
               {{ steps[activeStep - 1]?.title }}
             </h2>
             <p class="text-gray-600">
@@ -325,7 +325,7 @@ watch(() => props.activeStep, () => {
 
         <!-- 關鍵活動 -->
         <div class="mb-6">
-          <h3 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+          <h3 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
             Key Activities:
           </h3>
           <ul class="space-y-2">
@@ -334,7 +334,7 @@ watch(() => props.activeStep, () => {
               :key="activity"
               class="flex items-start"
             >
-              <span class="mr-2 mt-1 text-[var(--grayish-green)]">•</span>
+              <span class="mr-2 mt-1 text-[var(--yunda-bark)]">•</span>
               <span class="text-sm text-[var(--primary-brown)]">{{ activity }}</span>
             </li>
           </ul>
@@ -342,7 +342,7 @@ watch(() => props.activeStep, () => {
 
         <!-- 詳細描述 -->
         <div class="mb-6">
-          <h3 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+          <h3 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
             Process Details:
           </h3>
           <p class="text-[var(--primary-brown)] leading-relaxed">
@@ -352,8 +352,8 @@ watch(() => props.activeStep, () => {
 
         <!-- 額外信息 -->
         <div class="space-y-4">
-          <div class="rounded-lg bg-[var(--light-cream)] p-4">
-            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+          <div class="rounded-lg bg-[var(--yunda-petal)] p-4">
+            <h4 class="mb-2 text-[var(--yunda-bark)] font-semibold">
               Additional Information:
             </h4>
             <p class="text-sm text-[var(--primary-brown)] leading-relaxed">
@@ -364,9 +364,9 @@ watch(() => props.activeStep, () => {
           <div
             v-for="section in steps[activeStep - 1]?.sections || []"
             :key="section.heading"
-            class="border border-[var(--light-cream)] rounded-lg bg-white p-4"
+            class="border border-[var(--yunda-petal)] rounded-lg bg-white p-4"
           >
-            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+            <h4 class="mb-2 text-[var(--yunda-bark)] font-semibold">
               {{ section.heading }}
             </h4>
             <ul class="text-sm text-[var(--primary-brown)] leading-relaxed space-y-1">
@@ -375,7 +375,7 @@ watch(() => props.activeStep, () => {
                 :key="item"
                 class="flex items-start"
               >
-                <span class="mr-2 mt-1 text-[var(--grayish-green)]">•</span>
+                <span class="mr-2 mt-1 text-[var(--yunda-bark)]">•</span>
                 <span>{{ item }}</span>
               </li>
             </ul>
@@ -383,9 +383,9 @@ watch(() => props.activeStep, () => {
 
           <div
             v-if="steps[activeStep - 1]?.softCtas?.length"
-            class="border border-[var(--grayish-green)] rounded-lg bg-white p-4"
+            class="border border-[var(--yunda-bark)] rounded-lg bg-white p-4"
           >
-            <h4 class="mb-2 text-[var(--dark-brown)] font-semibold">
+            <h4 class="mb-2 text-[var(--yunda-bark)] font-semibold">
               Soft CTAs
             </h4>
             <ul class="text-sm text-[var(--primary-brown)] leading-relaxed space-y-1">
@@ -394,7 +394,7 @@ watch(() => props.activeStep, () => {
                 :key="cta"
                 class="flex items-start"
               >
-                <span class="mr-2 mt-1 text-[var(--grayish-green)]">–</span>
+                <span class="mr-2 mt-1 text-[var(--yunda-bark)]">–</span>
                 <span>{{ cta }}</span>
               </li>
             </ul>
@@ -412,12 +412,12 @@ watch(() => props.activeStep, () => {
 }
 
 .overflow-y-auto::-webkit-scrollbar-track {
-  background: var(--light-cream);
+  background: var(--yunda-petal);
   border-radius: 3px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: var(--grayish-green);
+  background: var(--yunda-bark);
   border-radius: 3px;
 }
 

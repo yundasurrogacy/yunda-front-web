@@ -165,31 +165,31 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
 
     <!-- Hero Section -->
-    <section class="relative bg-[#BFC9BF] py-16 lg:py-24">
+    <section class="relative bg-[var(--yunda-bark)] py-16 lg:py-24">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
         <div class="text-center">
-          <h1 class="mb-4 text-6 font-semibold italic lg:text-10" style="font-family: var(--font-primary)">
+          <h1 class="mb-4 text-6 font-semibold italic lg:text-10" >
             {{ t.hero.title }}
           </h1>
-          <h2 class="mb-6 text-4 font-semibold lg:text-6" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4 font-semibold lg:text-6" >
             {{ t.hero.subtitle }}
           </h2>
-          <p class="mx-auto mb-8 max-w-966px text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+          <p class="mx-auto mb-8 max-w-966px text-base text-[var(--yunda-bark)] leading-relaxed lg:text-lg" style="font-family: var(--font-text)">
             {{ t.hero.description }}
           </p>
           <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <NuxtLink
               :to="localePath('/be-parents')"
-              class="rounded-2.5 bg-[var(--primary-brown)] px-8 py-4 text-lg text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.3)] backdrop-blur-5 transition-opacity hover:opacity-90"
-              style="font-family: var(--font-secondary)"
+              class="rounded-2.5 bg-[var(--primary-brown)] px-8 py-4 text-lg text-[var(--yunda-petal)] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.3)] backdrop-blur-5 transition-opacity hover:opacity-90"
+              style="font-family: var(--font-text)"
             >
               {{ t.hero.cta }}
             </NuxtLink>
-            <button class="shadow-inner-white-soft rounded-[10px] bg-[var(--light-cream)] px-8 py-4 text-lg text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:underline hover:-translate-y-0.5" style="font-family: var(--font-secondary)">
+            <button class="shadow-inner-white-soft rounded-[10px] bg-[var(--yunda-petal)] px-8 py-4 text-lg text-[var(--yunda-bark)] font-semibold uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--yunda-petal)] hover:underline hover:-translate-y-0.5" style="font-family: var(--font-text)">
               {{ t.hero.downloadChecklist }}
             </button>
           </div>
@@ -198,7 +198,7 @@ useHead({
     </section>
 
     <!-- Promotional Video Section -->
-    <section class="bg-[var(--light-cream)] py-16 lg:py-24">
+    <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
         <div class="overflow-hidden rounded-2xl shadow-xl">
           <VideoPlayer
@@ -221,20 +221,20 @@ useHead({
         <!-- Module 1: Left Text, Right Video -->
         <div class="grid grid-cols-1 mb-16 gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div>
-            <h2 class="mb-4 text-4 text-[var(--dark-brown)] font-semibold lg:text-5" style="font-family: var(--font-primary)">
+            <h2 class="mb-4 text-4 text-[var(--yunda-bark)] font-semibold lg:text-5" >
               {{ t.module1.title }}
             </h2>
-            <p class="text-[var(--dark-brown)] leading-relaxed" style="font-family: var(--font-secondary)">
+            <p class="text-[var(--yunda-bark)] leading-relaxed" style="font-family: var(--font-text)">
               {{ t.module1.content }}
             </p>
-            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
               <span>California</span>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
             </div>
           </div>
           <div>
@@ -254,22 +254,22 @@ useHead({
             />
           </div>
           <div class="order-1 lg:order-2">
-            <h2 class="mb-4 text-4 text-[var(--dark-brown)] font-semibold lg:text-5" style="font-family: var(--font-primary)">
+            <h2 class="mb-4 text-4 text-[var(--yunda-bark)] font-semibold lg:text-5" >
               {{ t.module2.title }}
             </h2>
-            <p class="text-[var(--dark-brown)] leading-relaxed" style="font-family: var(--font-secondary)">
+            <p class="text-[var(--yunda-bark)] leading-relaxed" style="font-family: var(--font-text)">
               {{ t.module2.content }}
             </p>
-            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
               <span>California</span>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.bayArea }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.bayArea }}</a>
             </div>
           </div>
         </div>
@@ -277,20 +277,20 @@ useHead({
         <!-- Module 3: Left Text, Right Video -->
         <div class="grid grid-cols-1 mb-16 gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div>
-            <h2 class="mb-4 text-4 text-[var(--dark-brown)] font-semibold lg:text-5" style="font-family: var(--font-primary)">
+            <h2 class="mb-4 text-4 text-[var(--yunda-bark)] font-semibold lg:text-5" >
               {{ t.module3.title }}
             </h2>
-            <p class="text-[var(--dark-brown)] leading-relaxed" style="font-family: var(--font-secondary)">
+            <p class="text-[var(--yunda-bark)] leading-relaxed" style="font-family: var(--font-text)">
               {{ t.module3.content }}
             </p>
-            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
               <span>California</span>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
             </div>
           </div>
           <div>
@@ -310,22 +310,22 @@ useHead({
             />
           </div>
           <div class="order-1 lg:order-2">
-            <h2 class="mb-4 text-4 text-[var(--dark-brown)] font-semibold lg:text-5" style="font-family: var(--font-primary)">
+            <h2 class="mb-4 text-4 text-[var(--yunda-bark)] font-semibold lg:text-5" >
               {{ t.module4.title }}
             </h2>
-            <p class="text-[var(--dark-brown)] leading-relaxed" style="font-family: var(--font-secondary)">
+            <p class="text-[var(--yunda-bark)] leading-relaxed" style="font-family: var(--font-text)">
               {{ t.module4.content }}
             </p>
-            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+            <div class="mt-6 flex flex-wrap gap-2 text-sm text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
               <span>California</span>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.orangeCounty }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.sanDiego }}</a>
               <span>·</span>
-              <a href="#" class="text-[var(--grayish-green)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.bayArea }}</a>
+              <a href="#" class="text-[var(--yunda-bark)] transition-opacity hover:underline hover:opacity-75">{{ t.cities.bayArea }}</a>
             </div>
           </div>
         </div>
@@ -333,9 +333,9 @@ useHead({
     </section>
 
     <!-- FAQ Section -->
-    <section class="bg-[var(--light-cream)] py-12 lg:py-16">
+    <section class="bg-[var(--yunda-petal)] py-12 lg:py-16">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
-        <h2 class="mb-8 text-center text-5 text-[var(--dark-brown)] font-semibold lg:text-6" style="font-family: var(--font-primary)">
+        <h2 class="mb-8 text-center text-5 text-[var(--yunda-bark)] font-semibold lg:text-6" >
           {{ t.faq.title }}
         </h2>
         <div class="mx-auto max-w-800px space-y-6">
@@ -344,10 +344,10 @@ useHead({
             :key="index"
             class="rounded-lg bg-white p-6 shadow-sm"
           >
-            <h3 class="mb-3 text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="mb-3 text-xl text-[var(--yunda-bark)] font-semibold" >
               {{ item.question }}
             </h3>
-            <p class="text-[var(--dark-brown)] leading-relaxed" style="font-family: var(--font-secondary)">
+            <p class="text-[var(--yunda-bark)] leading-relaxed" style="font-family: var(--font-text)">
               {{ item.answer }}
             </p>
           </div>
@@ -356,22 +356,22 @@ useHead({
     </section>
 
     <!-- CTA Section -->
-    <section class="bg-[var(--grayish-green)] py-12 lg:py-16">
+    <section class="bg-[var(--yunda-bark)] py-12 lg:py-16">
       <div class="mx-auto max-w-1200px px-4 text-center lg:px-6">
-        <h2 class="mb-4 text-5 text-white font-semibold lg:text-6" style="font-family: var(--font-primary)">
+        <h2 class="mb-4 text-5 text-white font-semibold lg:text-6" >
           {{ t.cta.title }}
         </h2>
-        <p class="mb-8 text-lg text-white/90" style="font-family: var(--font-secondary)">
+        <p class="mb-8 text-lg text-white/90" style="font-family: var(--font-text)">
           {{ t.cta.subtitle }}
         </p>
         <NuxtLink
           :to="localePath('/be-parents')"
-          class="inline-block rounded-2.5 bg-[var(--primary-brown)] px-8 py-4 text-lg text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.3)] backdrop-blur-5 transition-opacity hover:opacity-90"
-          style="font-family: var(--font-secondary)"
+          class="inline-block rounded-2.5 bg-[var(--primary-brown)] px-8 py-4 text-lg text-[var(--yunda-petal)] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.3)] backdrop-blur-5 transition-opacity hover:opacity-90"
+          style="font-family: var(--font-text)"
         >
           {{ t.cta.button }}
         </NuxtLink>
-        <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm text-white/90" style="font-family: var(--font-secondary)">
+        <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm text-white/90" style="font-family: var(--font-text)">
           <span>California</span>
           <span>·</span>
           <a href="#" class="text-white transition-opacity hover:underline hover:opacity-75">{{ t.cities.losAngeles }}</a>

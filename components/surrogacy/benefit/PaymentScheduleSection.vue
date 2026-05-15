@@ -11,10 +11,10 @@ const scheduleItems = [
 </script>
 
 <template>
-  <section class="w-full bg-[#FAF7F2] px-4 py-16 lg:px-20 lg:py-20">
+  <section class="w-full bg-[var(--yunda-petal)] px-4 py-16 lg:px-20 lg:py-20">
     <div class="scroll-animate mx-auto max-w-300">
       <!-- Title -->
-      <h2 class="mb-8 text-7.5 font-semibold lg:mb-12 lg:text-10" style="font-family: var(--font-primary)">
+      <h2 class="mb-8 text-7.5 font-medium leading-[1.15] lg:mb-12 lg:text-[36px]">
         {{ $t('surrogacyBenefit.paymentScheduleSection.title') }}
       </h2>
 

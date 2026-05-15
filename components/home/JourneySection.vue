@@ -9,10 +9,10 @@ useScrollAnimation()
     <div class="mx-auto max-w-320">
       <!-- Section Header -->
       <div class="mb-16 text-center md:mb-20">
-        <h2 class="scroll-animate mb-4 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+        <h2 class="scroll-animate mb-4 text-7.5 font-semibold md:text-10" >
           {{ $t('home.journeySection.title1') }}
         </h2>
-        <p class="scroll-animate scroll-animate-delay-100 mb-6 text-6 md:text-8" style="font-family: var(--font-primary)">
+        <p class="scroll-animate scroll-animate-delay-100 mb-6 text-6 md:text-8" >
           {{ $t('home.journeySection.title2') }}
         </p>
         <p class="scroll-animate scroll-animate-delay-200 mx-auto max-w-235 text-3.5 font-normal md:max-w-235 md:text-4.5">
@@ -29,13 +29,13 @@ useScrollAnimation()
             <!-- Number Badge -->
             <div class="mb-8 flex items-center justify-center lg:mb-0 lg:flex-shrink-0">
               <div class="h-20 w-20 flex items-center justify-center rounded-full bg-[var(--primary-brown)]">
-                <span class="text-16 text-[var(--white)] font-semibold font-['Cormorant'] italic -mt-5">1</span>
+                <span class="text-16 text-[var(--white)] font-semibold font-display italic -mt-5">1</span>
               </div>
             </div>
 
             <!-- Content -->
             <div class="flex-1 text-center lg:text-left">
-              <h3 class="mb-4 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-7.5 font-semibold md:text-10" >
                 {{ $t('home.journeySection.step1.title') }}
               </h3>
               <p class="mb-8 max-w-158 lg:mb-12 lg:max-w-158">
@@ -60,13 +60,13 @@ useScrollAnimation()
             <!-- Number Badge -->
             <div class="mb-8 flex items-center justify-center lg:mb-0 lg:flex-shrink-0">
               <div class="h-20 w-20 flex items-center justify-center rounded-full bg-[var(--primary-brown)]">
-                <span class="text-16 text-[var(--white)] font-semibold font-['Cormorant'] italic -mt-5">2</span>
+                <span class="text-16 text-[var(--white)] font-semibold font-display italic -mt-5">2</span>
               </div>
             </div>
 
             <!-- Content -->
             <div class="flex-1 text-center lg:text-left">
-              <h3 class="mb-4 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-7.5 font-semibold md:text-10" >
                 {{ $t('home.journeySection.step2.title') }}
               </h3>
               <p class="mb-8 max-w-158 lg:mb-12 lg:max-w-158">
@@ -91,13 +91,13 @@ useScrollAnimation()
             <!-- Number Badge -->
             <div class="mb-8 flex items-center justify-center lg:mb-0 lg:flex-shrink-0">
               <div class="h-20 w-20 flex items-center justify-center rounded-full bg-[var(--primary-brown)]">
-                <span class="text-16 text-[var(--white)] font-semibold font-['Cormorant'] italic -mt-5">3</span>
+                <span class="text-16 text-[var(--white)] font-semibold font-display italic -mt-5">3</span>
               </div>
             </div>
 
             <!-- Content -->
             <div class="flex-1 text-center lg:text-left">
-              <h3 class="mb-4 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-7.5 font-semibold md:text-10" >
                 {{ $t('home.journeySection.step3.title') }}
               </h3>
               <p class="mb-8 max-w-158 lg:mb-12 lg:max-w-158">
@@ -122,13 +122,13 @@ useScrollAnimation()
             <!-- Number Badge -->
             <div class="mb-8 flex items-center justify-center lg:mb-0 lg:flex-shrink-0">
               <div class="h-20 w-20 flex items-center justify-center rounded-full bg-[var(--primary-brown)]">
-                <span class="text-16 text-[var(--white)] font-semibold font-['Cormorant'] italic -mt-5">4</span>
+                <span class="text-16 text-[var(--white)] font-semibold font-display italic -mt-5">4</span>
               </div>
             </div>
 
             <!-- Content -->
             <div class="flex-1 text-center lg:text-left">
-              <h3 class="mb-4 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-7.5 font-semibold md:text-10" >
                 {{ $t('home.journeySection.step4.title') }}
               </h3>
               <p class="mb-8 max-w-158 lg:mb-12 lg:max-w-158">

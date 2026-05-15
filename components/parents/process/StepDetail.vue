@@ -41,7 +41,7 @@ const stepData = computed(() => {
 </script>
 
 <template>
-  <div class="step-detail w-full flex justify-center from-[#FAF7F2] via-[#FBF0DA] to-[#FAF7F2] bg-gradient-to-b px-4 py-6">
+  <div class="step-detail w-full flex justify-center from-[var(--yunda-petal)] via-[var(--yunda-harvest)]/20 to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-6">
     <div class="container mx-auto max-w-300">
       <div class="flex flex-col items-center gap-8 lg:flex-row" :class="{ 'lg:flex-row-reverse': isEven }">
         <div class="lg:w-1/2" :class="isEven ? 'slide-right' : 'slide-left'">
@@ -51,10 +51,10 @@ const stepData = computed(() => {
           </picture>
         </div>
         <div class="lg:w-1/2" :class="isEven ? 'slide-left' : 'slide-right'">
-          <h3 class="text-3xl font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="text-3xl font-semibold" >
             {{ $t('parentsProcess.stepDetail.stepPrefix') }} {{ stepNumber }} : {{ stepData.title }}
           </h3>
-          <p class="my-2 border-b border-[var(--dark-brown)] pb-2">
+          <p class="my-2 border-b border-[var(--yunda-bark)] pb-2">
             {{ stepData.duration }}
           </p>
           <ul class="mb-2 list-disc list-inside">

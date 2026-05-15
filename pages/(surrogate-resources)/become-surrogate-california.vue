@@ -314,11 +314,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)]">
     <!-- 滾動進度條 -->
     <div class="fixed left-0 top-0 z-50 h-1 w-full bg-gray-200">
       <div
-        class="h-full bg-[var(--grayish-green)] transition-all duration-300 ease-out"
+        class="h-full bg-[var(--yunda-bark)] transition-all duration-300 ease-out"
         :style="{ width: `${scrollProgress}%` }"
       />
     </div>
@@ -326,10 +326,10 @@ onUnmounted(() => {
     <AppHeader />
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden from-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b py-20">
+    <section class="relative overflow-hidden from-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-20">
       <!-- Background Pattern -->
       <div class="absolute inset-0 opacity-5">
-        <div class="absolute left-10 top-20 h-32 w-32 rounded-full bg-[var(--grayish-green)]" />
+        <div class="absolute left-10 top-20 h-32 w-32 rounded-full bg-[var(--yunda-bark)]" />
         <div class="absolute right-20 top-40 h-24 w-24 rounded-full bg-[var(--primary-brown)]" />
         <div class="absolute bottom-20 left-1/4 h-20 w-20 rounded-full bg-[var(--olive-green)]" />
       </div>
@@ -337,7 +337,7 @@ onUnmounted(() => {
       <div class="container relative z-10 mx-auto max-w-7xl px-4">
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div class="text-center lg:text-left">
-            <h1 class="mb-6 text-5xl text-[var(--dark-brown)] font-bold leading-tight md:text-7xl" style="font-family: var(--font-primary)">
+            <h1 class="mb-6 text-5xl text-[var(--yunda-bark)] font-bold leading-tight md:text-7xl" >
               {{ tt('Become a Surrogate in California: Requirements, Pay and Support', '在加州成为代孕妈妈：要求、补偿与支持') }}
             </h1>
             <p class="mb-8 text-xl text-[var(--primary-brown)] leading-relaxed md:text-2xl">
@@ -349,12 +349,12 @@ onUnmounted(() => {
             <div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="transform rounded-lg bg-[var(--grayish-green)] px-8 py-4 text-lg text-white font-semibold shadow-lg transition-opacity transition-transform hover:scale-105 hover:opacity-90"
+                class="transform rounded-lg bg-[var(--yunda-bark)] px-8 py-4 text-lg text-white font-semibold shadow-lg transition-opacity transition-transform hover:scale-105 hover:opacity-90"
               >
                 {{ tt('Apply to Become a Surrogate', '申请成为代孕妈妈') }}
               </NuxtLink>
               <button
-                class="border-2 border-[var(--grayish-green)] rounded-lg px-8 py-4 text-lg text-[var(--grayish-green)] font-semibold transition-colors hover:bg-[var(--grayish-green)] hover:text-white"
+                class="border-2 border-[var(--yunda-bark)] rounded-lg px-8 py-4 text-lg text-[var(--yunda-bark)] font-semibold transition-colors hover:bg-[var(--yunda-bark)] hover:text-white"
                 @click="scrollToSection('requirements')"
               >
                 {{ tt('Check Requirements', '查看要求') }}
@@ -364,8 +364,8 @@ onUnmounted(() => {
 
           <!-- Hero Image Placeholder -->
           <div class="relative">
-            <div class="rounded-2xl from-[var(--light-cream)] to-[var(--grayish-green)] bg-gradient-to-br p-8 shadow-2xl">
-              <div class="aspect-square flex items-center justify-center border-2 border-[var(--grayish-green)] rounded-xl border-dashed bg-white">
+            <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-br p-8 shadow-2xl">
+              <div class="aspect-square flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
                 <div class="text-center">
                   <img src="/images/california-surrogate-mother.jpg" :alt="tt('California Surrogate Mother', '加州代孕妈妈')">
                 </div>
@@ -397,10 +397,10 @@ onUnmounted(() => {
     </section>
 
     <!-- What Is Surrogacy Section -->
-    <section class="bg-[var(--head-bg)] py-20">
+    <section class="bg-[var(--yunda-petal)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('What Is Surrogacy and Who Can Become a Surrogate Mother?', '什么是代孕？谁可以成为代孕妈妈？') }}
           </h2>
         </div>
@@ -408,7 +408,7 @@ onUnmounted(() => {
         <div class="grid mb-16 gap-12 lg:grid-cols-2">
           <!-- Understanding Gestational Surrogacy -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Understanding Gestational Surrogacy in California', '了解加州妊娠代孕') }}
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
@@ -424,7 +424,7 @@ onUnmounted(() => {
 
           <!-- Why California Is the Best State -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Why California Is the Best State for Surrogacy', '为什么加州是代孕首选州') }}
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
@@ -440,8 +440,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Image Placeholder -->
-        <div class="rounded-2xl from-[var(--light-cream)] to-[var(--grayish-green)] bg-gradient-to-r p-8 shadow-lg">
-          <div class="aspect-video flex items-center justify-center border-2 border-[var(--grayish-green)] rounded-xl border-dashed bg-white">
+        <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
+          <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
               <img src="/images/california-surrogacy-process.jpg" :alt="tt('California Surrogacy Mother', '加州代孕妈妈')">
             </div>
@@ -454,7 +454,7 @@ onUnmounted(() => {
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Why Become a Surrogate Mother with Yunda Surrogacy', '为什么选择 Yunda 成为代孕妈妈') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -464,13 +464,13 @@ onUnmounted(() => {
 
         <div class="grid mb-16 gap-8 lg:grid-cols-3">
           <!-- Emotional and Financial Rewards -->
-          <div class="group cursor-pointer rounded-xl bg-[var(--light-cream)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
+          <div class="group cursor-pointer rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" >
               {{ tt('Emotional Rewards and Fair Surrogate Pay', '情感回报与公平补偿') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -482,13 +482,13 @@ onUnmounted(() => {
           </div>
 
           <!-- Supportive Agency -->
-          <div class="group cursor-pointer rounded-xl bg-[var(--light-cream)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
+          <div class="group cursor-pointer rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" >
               {{ tt('A Supportive and Ethical Agency', '值得信赖且合规的机构') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -500,13 +500,13 @@ onUnmounted(() => {
           </div>
 
           <!-- Meaningful Journey -->
-          <div class="group cursor-pointer rounded-xl bg-[var(--light-cream)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
+          <div class="group cursor-pointer rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] transition-colors duration-300 group-hover:bg-[var(--primary-brown)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold transition-colors duration-300 group-hover:text-[var(--primary-brown)]" >
               {{ tt('A Journey Filled with Meaning', '一段充满意义的旅程') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -519,8 +519,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Call to Action -->
-        <div class="rounded-xl bg-[var(--grayish-green)] p-12 text-center">
-          <h3 class="mb-6 text-3xl text-white font-bold" style="font-family: var(--font-primary)">
+        <div class="rounded-xl bg-[var(--yunda-bark)] p-12 text-center">
+          <h3 class="mb-6 text-3xl text-white font-bold" >
             {{ tt('Ready to do something extraordinary?', '准备好做一件非凡的事吗？') }}
           </h3>
           <p class="mb-8 text-lg text-white">
@@ -528,7 +528,7 @@ onUnmounted(() => {
           </p>
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
+            class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--yunda-bark)] font-semibold shadow-lg transition-opacity hover:opacity-90"
           >
             {{ tt('Start Your Journey', '开启旅程') }}
           </NuxtLink>
@@ -537,10 +537,10 @@ onUnmounted(() => {
     </section>
 
     <!-- Statistics Section -->
-    <section id="stats-section" class="bg-[var(--grayish-green)] py-20">
+    <section id="stats-section" class="bg-[var(--yunda-bark)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-white font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-white font-bold md:text-5xl" >
             {{ tt('Why California Surrogates Choose Yunda', '为什么加州代孕妈妈选择 Yunda') }}
           </h2>
           <p class="mx-auto max-w-4xl text-xl text-white leading-relaxed opacity-90">
@@ -556,7 +556,7 @@ onUnmounted(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>
-            <div class="mb-2 text-5xl text-white font-bold" style="font-family: var(--font-primary)">
+            <div class="mb-2 text-5xl text-white font-bold" >
               ${{ animatedNumbers.compensation.toLocaleString() }}+
             </div>
             <h3 class="mb-2 text-xl text-white font-semibold">
@@ -574,7 +574,7 @@ onUnmounted(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div class="mb-2 text-5xl text-white font-bold" style="font-family: var(--font-primary)">
+            <div class="mb-2 text-5xl text-white font-bold" >
               {{ animatedNumbers.years }}+
             </div>
             <h3 class="mb-2 text-xl text-white font-semibold">
@@ -592,7 +592,7 @@ onUnmounted(() => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <div class="mb-2 text-5xl text-white font-bold" style="font-family: var(--font-primary)">
+            <div class="mb-2 text-5xl text-white font-bold" >
               {{ animatedNumbers.families.toLocaleString() }}+
             </div>
             <h3 class="mb-2 text-xl text-white font-semibold">
@@ -607,10 +607,10 @@ onUnmounted(() => {
     </section>
 
     <!-- Compensation Section -->
-    <section class="bg-[var(--head-bg)] py-20">
+    <section class="bg-[var(--yunda-petal)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Surrogate Compensation and Benefits in California', '加州代孕补偿与福利') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -623,7 +623,7 @@ onUnmounted(() => {
         <div class="grid mb-16 gap-12 lg:grid-cols-2">
           <!-- How Compensation Works -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('How Surrogate Compensation and Pay Work in California', '加州代孕补偿如何发放') }}
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
@@ -639,7 +639,7 @@ onUnmounted(() => {
 
           <!-- Benefits Beyond Financial -->
           <div class="rounded-xl bg-white p-8 shadow-lg">
-            <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Benefits Beyond Surrogate Pay', '超越补偿的福利') }}
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
@@ -656,7 +656,7 @@ onUnmounted(() => {
 
         <!-- Why California Offers Best Conditions -->
         <div class="mb-16 rounded-xl bg-white p-8 shadow-lg">
-          <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+          <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
             {{ tt('Why California Offers the Best Conditions for Surrogates', '为什么加州拥有最佳代孕环境') }}
           </h3>
           <div class="grid gap-8 md:grid-cols-2">
@@ -680,8 +680,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Compensation Image Placeholder -->
-        <div class="rounded-2xl from-[var(--light-cream)] to-[var(--grayish-green)] bg-gradient-to-r p-8 shadow-lg">
-          <div class="aspect-video flex items-center justify-center border-2 border-[var(--grayish-green)] rounded-xl border-dashed bg-white">
+        <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
+          <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
               <img src="/images/Compensation-Benefits.jpg" :alt="tt('California Surrogacy Compensation & Benefits', '加州代孕补偿与福利')">
             </div>
@@ -694,7 +694,7 @@ onUnmounted(() => {
     <section id="requirements" class="bg-white py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Surrogate Requirements: Who Qualifies to Become a Surrogate in California', '代孕要求：谁符合在加州成为代孕妈妈的条件') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -707,41 +707,41 @@ onUnmounted(() => {
 
         <div class="grid mb-16 gap-8 lg:grid-cols-3">
           <!-- Basic Qualifications -->
-          <div class="rounded-xl bg-[var(--light-cream)] p-8 shadow-lg">
-            <h3 class="mb-6 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+          <div class="rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg">
+            <h3 class="mb-6 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Basic Qualifications for Surrogates in California', '加州代孕妈妈基础条件') }}
             </h3>
             <ul class="text-[var(--primary-brown)] space-y-4">
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('Between 21 and 39 years old', '年龄在 21–39 岁之间') }}</span>
               </li>
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('U.S. citizens or permanent residents', '美国公民或永久居民') }}</span>
               </li>
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('Have given birth to at least one healthy, full-term baby', '至少有一次健康足月分娩经历') }}</span>
               </li>
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('Living a healthy lifestyle — no smoking, no drug use', '健康生活方式——不吸烟、不使用毒品') }}</span>
               </li>
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('Free from major medical or psychological conditions', '无重大身心健康问题') }}</span>
               </li>
               <li class="flex items-start">
-                <span class="mr-3 mt-1 text-[var(--grayish-green)]">✓</span>
+                <span class="mr-3 mt-1 text-[var(--yunda-bark)]">✓</span>
                 <span>{{ tt('Supported by family or a stable home environment', '家庭支持或稳定的居住环境') }}</span>
               </li>
             </ul>
           </div>
 
           <!-- Health and Emotional Screening -->
-          <div class="rounded-xl bg-[var(--light-cream)] p-8 shadow-lg">
-            <h3 class="mb-6 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+          <div class="rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg">
+            <h3 class="mb-6 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Health and Emotional Screening', '健康与心理筛查') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -753,8 +753,8 @@ onUnmounted(() => {
           </div>
 
           <!-- Legal and Financial Security -->
-          <div class="rounded-xl bg-[var(--light-cream)] p-8 shadow-lg">
-            <h3 class="mb-6 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+          <div class="rounded-xl bg-[var(--yunda-petal)] p-8 shadow-lg">
+            <h3 class="mb-6 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Legal and Financial Security for California Surrogates', '加州代孕妈妈的法律与财务保障') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -767,8 +767,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Why California Surrogates Stand Out -->
-        <div class="border-2 border-[var(--grayish-green)] rounded-xl bg-white p-8 shadow-lg">
-          <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+        <div class="border-2 border-[var(--yunda-bark)] rounded-xl bg-white p-8 shadow-lg">
+          <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
             {{ tt('Why California Surrogates Stand Out', '加州代孕妈妈为何与众不同') }}
           </h3>
           <div class="grid gap-8 md:grid-cols-2">
@@ -788,10 +788,10 @@ onUnmounted(() => {
     </section>
 
     <!-- Support System Section -->
-    <section class="bg-[var(--head-bg)] py-20">
+    <section class="bg-[var(--yunda-petal)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Your Support System: Legal, Medical, and Emotional Care', '你的支持系统：法律、医疗与情感关怀') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -802,12 +802,12 @@ onUnmounted(() => {
         <div class="grid mb-16 gap-8 lg:grid-cols-3">
           <!-- Legal Protection -->
           <div class="rounded-xl bg-white p-8 shadow-lg transition-shadow hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)]">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Legal Protection You Can Count On in California', '加州可靠的法律保障') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -820,12 +820,12 @@ onUnmounted(() => {
 
           <!-- Medical Care -->
           <div class="rounded-xl bg-white p-8 shadow-lg transition-shadow hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)]">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Medical Care from California\'s Best Specialists', '来自加州顶级专家的医疗照护') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -838,12 +838,12 @@ onUnmounted(() => {
 
           <!-- Emotional Care -->
           <div class="rounded-xl bg-white p-8 shadow-lg transition-shadow hover:shadow-xl">
-            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--grayish-green)]">
+            <div class="mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-[var(--yunda-bark)]">
               <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-xl text-[var(--yunda-bark)] font-bold" >
               {{ tt('Emotional Care and Community Connection', '情感关怀与社群连接') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
@@ -856,8 +856,8 @@ onUnmounted(() => {
         </div>
 
         <!-- The Yunda Difference -->
-        <div class="mb-16 border-2 border-[var(--grayish-green)] rounded-xl bg-white p-8 shadow-lg">
-          <h3 class="mb-6 text-2xl text-[var(--dark-brown)] font-bold" style="font-family: var(--font-primary)">
+        <div class="mb-16 border-2 border-[var(--yunda-bark)] rounded-xl bg-white p-8 shadow-lg">
+          <h3 class="mb-6 text-2xl text-[var(--yunda-bark)] font-bold" >
             {{ tt('The Yunda Difference', 'Yunda 的不同之处') }}
           </h3>
           <div class="grid gap-8 md:grid-cols-2">
@@ -873,25 +873,25 @@ onUnmounted(() => {
               <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
                 {{ tt('Becoming a surrogate mother in California isn\'t just about helping others — it\'s about being part of something bigger, something beautiful. With Yunda Surrogacy, you\'ll always have a strong support system, every step of the way.', '在加州成为代孕妈妈不仅是帮助他人，更是参与一件更伟大、更美好的事情。有 Yunda 陪伴，你在每一步都拥有强大的支持系统。') }}
               </p>
-              <div class="rounded-lg bg-[var(--light-cream)] p-6">
-                <h4 class="mb-3 text-lg text-[var(--dark-brown)] font-semibold">
+              <div class="rounded-lg bg-[var(--yunda-petal)] p-6">
+                <h4 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">
                   {{ tt('Our Promise to You:', '我们的承诺：') }}
                 </h4>
                 <ul class="text-[var(--primary-brown)] space-y-2">
                   <li class="flex items-center">
-                    <span class="mr-2 text-[var(--grayish-green)]">✓</span>
+                    <span class="mr-2 text-[var(--yunda-bark)]">✓</span>
                     <span>{{ tt('Personalized care and attention', '个性化关怀与关注') }}</span>
                   </li>
                   <li class="flex items-center">
-                    <span class="mr-2 text-[var(--grayish-green)]">✓</span>
+                    <span class="mr-2 text-[var(--yunda-bark)]">✓</span>
                     <span>{{ tt('24/7 support and communication', '全天候支持与沟通') }}</span>
                   </li>
                   <li class="flex items-center">
-                    <span class="mr-2 text-[var(--grayish-green)]">✓</span>
+                    <span class="mr-2 text-[var(--yunda-bark)]">✓</span>
                     <span>{{ tt('Transparent and fair compensation', '透明且公平的补偿') }}</span>
                   </li>
                   <li class="flex items-center">
-                    <span class="mr-2 text-[var(--grayish-green)]">✓</span>
+                    <span class="mr-2 text-[var(--yunda-bark)]">✓</span>
                     <span>{{ tt('Complete legal protection', '完整的法律保障') }}</span>
                   </li>
                 </ul>
@@ -901,8 +901,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Support System Image Placeholder -->
-        <div class="rounded-2xl from-[var(--light-cream)] to-[var(--grayish-green)] bg-gradient-to-r p-8 shadow-lg">
-          <div class="aspect-video flex items-center justify-center border-2 border-[var(--grayish-green)] rounded-xl border-dashed bg-white">
+        <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
+          <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
               <img src="/images/Legal-Medical-Emotional-Care.jpg" :alt="tt('California Surrogacy Legal, Medical & Emotional Care', '加州代孕法律、医疗与情感支持')" class="h-full w-full object-cover">
             </div>
@@ -918,12 +918,12 @@ onUnmounted(() => {
           <p class="coverage-badge">
             {{ tt('California coverage', '加州覆盖范围') }}
           </p>
-          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Where in California You Can Be a Surrogate', '在加州哪些地区可以成为代孕妈妈') }}
           </h2>
         </div>
         <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
-          <div class="rounded-3xl bg-[var(--head-bg)] p-10 shadow-lg">
+          <div class="rounded-3xl bg-[var(--yunda-petal)] p-10 shadow-lg">
             <p class="mb-6 text-lg text-[var(--primary-brown)] leading-relaxed">
               {{ tt('Yunda works with surrogates across Southern California and Northern California. Many of our surrogates live in Los Angeles, Orange County, Inland Empire, San Diego, Sacramento, San Jose and nearby cities.', 'Yunda 在南加州和北加州均招募代孕妈妈。我们的代孕妈妈分布在洛杉矶、橙县、内陆帝国、圣迭戈、萨克拉门托、圣何塞及周边城市。') }}
             </p>
@@ -951,9 +951,9 @@ onUnmounted(() => {
                 {{ city.name }}
               </button>
             </div>
-            <div class="relative overflow-hidden rounded-2xl bg-[var(--head-bg)] p-8">
+            <div class="relative overflow-hidden rounded-2xl bg-[var(--yunda-petal)] p-8">
               <svg
-                class="h-56 w-full text-[var(--grayish-green)] opacity-70"
+                class="h-56 w-full text-[var(--yunda-bark)] opacity-70"
                 viewBox="0 0 200 220"
                 fill="none"
                 stroke="currentColor"
@@ -976,7 +976,7 @@ onUnmounted(() => {
                 <p class="map-tooltip__label">
                   {{ tt('Now highlighting', '当前显示') }}
                 </p>
-                <p class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                <p class="text-2xl text-[var(--yunda-bark)] font-semibold" >
                   {{ activeCity?.name }}
                 </p>
                 <p class="text-sm text-[var(--primary-brown)]">
@@ -995,7 +995,7 @@ onUnmounted(() => {
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
         <div class="mb-16 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Surrogacy FAQs (Frequently Asked Questions)', '代孕常见问题（FAQ）') }}
           </h2>
         </div>
@@ -1004,18 +1004,18 @@ onUnmounted(() => {
           <div
             v-for="(faq, index) in faqs"
             :key="index"
-            class="overflow-hidden rounded-xl bg-[var(--light-cream)] shadow-lg"
+            class="overflow-hidden rounded-xl bg-[var(--yunda-petal)] shadow-lg"
           >
             <button
-              class="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-[var(--grayish-green)] hover:bg-opacity-20"
+              class="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-[var(--yunda-bark)] hover:bg-opacity-20"
               @click="toggleFaq(index)"
             >
-              <h3 class="pr-4 text-xl text-[var(--dark-brown)] font-semibold">
+              <h3 class="pr-4 text-xl text-[var(--yunda-bark)] font-semibold">
                 {{ faq.question }}
               </h3>
               <div class="flex-shrink-0">
                 <svg
-                  class="h-6 w-6 text-[var(--grayish-green)] transition-transform duration-300" :class="[
+                  class="h-6 w-6 text-[var(--yunda-bark)] transition-transform duration-300" :class="[
                     expandedFaqs.includes(index) ? 'rotate-180' : '',
                   ]"
                   fill="none"
@@ -1043,10 +1043,10 @@ onUnmounted(() => {
     </section>
 
     <!-- Final CTA Section -->
-    <section class="bg-[var(--head-bg)] py-20">
+    <section class="bg-[var(--yunda-petal)] py-20">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-10 text-center">
-          <h2 class="text-3xl text-[var(--dark-brown)] font-bold md:text-4xl" style="font-family: var(--font-primary)">
+          <h2 class="text-3xl text-[var(--yunda-bark)] font-bold md:text-4xl" >
             {{ tt('How to Apply to Become a Surrogate in California', '如何在加州申请成为代孕妈妈') }}
           </h2>
           <p class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -1066,7 +1066,7 @@ onUnmounted(() => {
                 {{ tt('Step', '步骤') }} {{ index + 1 }}
               </span>
             </div>
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="mb-3 text-2xl text-[var(--yunda-bark)] font-semibold" >
               {{ step.title }}
             </h3>
             <p class="text-[var(--primary-brown)] leading-relaxed">
@@ -1076,8 +1076,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Final Message -->
-        <div class="rounded-xl bg-[var(--grayish-green)] p-12 text-center">
-          <h3 class="mb-6 text-3xl text-white font-bold" style="font-family: var(--font-primary)">
+        <div class="rounded-xl bg-[var(--yunda-bark)] p-12 text-center">
+          <h3 class="mb-6 text-3xl text-white font-bold" >
             {{ tt('Join the Most Trusted Surrogacy Program in California', '加入加州最值得信赖的代孕项目') }}
           </h3>
           <p class="mb-8 text-lg text-white leading-relaxed">
@@ -1091,7 +1091,7 @@ onUnmounted(() => {
           </p>
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
+            class="rounded-lg bg-white px-12 py-4 text-xl text-[var(--yunda-bark)] font-semibold shadow-lg transition-opacity hover:opacity-90"
           >
             {{ tt('Apply Today', '立即申请') }}
           </NuxtLink>
@@ -1115,11 +1115,11 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--light-cream);
+  background: var(--yunda-petal);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--grayish-green);
+  background: var(--yunda-bark);
   border-radius: 4px;
 }
 
@@ -1165,7 +1165,7 @@ html {
 }
 
 .coverage-chip--active {
-  background: var(--grayish-green);
+  background: var(--yunda-bark);
   color: #fff;
   border-color: transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -1179,7 +1179,7 @@ html {
 }
 
 .map-dot--active {
-  fill: var(--grayish-green);
+  fill: var(--yunda-bark);
   transform: scale(1.2);
 }
 
@@ -1201,8 +1201,8 @@ html {
   margin: 0 auto 0.75rem;
   padding: 0.25rem 1rem;
   border-radius: 9999px;
-  background-color: var(--light-cream);
-  color: var(--grayish-green);
+  background-color: var(--yunda-petal);
+  color: var(--yunda-bark);
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1213,7 +1213,7 @@ html {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
-  color: var(--grayish-green);
+  color: var(--yunda-bark);
 }
 
 .coverage-header__icon {
@@ -1222,13 +1222,13 @@ html {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid var(--grayish-green);
+  border: 1px solid var(--yunda-bark);
   border-radius: 9999px;
   font-weight: 600;
 }
 
 .map-tooltip__label {
-  color: var(--grayish-green);
+  color: var(--yunda-bark);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1243,7 +1243,7 @@ html {
 }
 
 .coverage-card {
-  border: 1px solid var(--light-cream);
+  border: 1px solid var(--yunda-petal);
   background: #fff;
   padding: 2.5rem;
   border-radius: 1.5rem;
@@ -1269,7 +1269,7 @@ html {
   bottom: 0;
   left: 0;
   width: 0.375rem;
-  background: var(--grayish-green);
+  background: var(--yunda-bark);
 }
 
 .steps-card__meta {
@@ -1277,14 +1277,14 @@ html {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
-  color: var(--grayish-green);
+  color: var(--yunda-bark);
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .steps-card__badge {
-  border: 1px solid var(--grayish-green);
+  border: 1px solid var(--yunda-bark);
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   font-weight: 600;

@@ -40,7 +40,7 @@ defineEmits(['update:modelValue'])
         :value="modelValue"
         :required="required"
         :disabled="disabled"
-        class="h-15 w-full cursor-pointer appearance-none rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 pr-10 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all focus:ring-2 focus:ring-[var(--grayish-green)]"
+        class="h-15 w-full cursor-pointer appearance-none rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 pr-10 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all focus:ring-2 focus:ring-[var(--yunda-bark)]"
         @change="$emit('update:modelValue', $event.target.value)"
       >
         <option value="" disabled>

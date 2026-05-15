@@ -11,10 +11,10 @@ const supportItems = [
 </script>
 
 <template>
-  <section class="w-full from-[#FAF7F2] via-[#FBF0DA] to-[#FAF7F2] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
+  <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-harvest)]/20 to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
     <div class="scroll-animate mx-auto max-w-300">
       <!-- Title -->
-      <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+      <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" >
         {{ $t('surrogacyBenefit.familySupportSection.title') }}
       </h2>
 

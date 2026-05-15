@@ -206,11 +206,11 @@ function goToQualification() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <!-- Hero -->
-    <section class="relative overflow-hidden from-[var(--light-cream)] via-[var(--head-bg)] to-[var(--foot-bg)] bg-gradient-to-b pb-16 pt-20">
+    <section class="relative overflow-hidden from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-16 pt-20">
       <div class="pointer-events-none absolute inset-0 opacity-40">
         <div class="absolute left-20 top-10 h-40 w-40 rounded-full bg-[var(--olive-green)] blur-[140px]" />
         <div class="absolute bottom-10 right-16 h-52 w-52 rounded-full bg-[var(--primary-brown)]/70 blur-[180px]" />
@@ -221,7 +221,7 @@ function goToQualification() {
             <div class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-brown)]/10 px-3 py-1 text-3 text-[var(--primary-brown)] font-semibold">
               {{ tt('California Surrogacy Consultation | U.S. Agency (Chinese Support)', '加州代孕咨询｜美国代孕机构（中文顾问）') }}
             </div>
-            <h1 class="text-8 font-semibold leading-tight lg:text-11" style="font-family: var(--font-primary)">
+            <h1 class="text-8 font-semibold leading-tight lg:text-11" >
               {{ tt('California Surrogacy Consultation | U.S. Agency (Chinese Support)', '加州代孕咨询｜美国代孕机构（中文顾问）') }}
             </h1>
             <p class="text-4.5 leading-relaxed">
@@ -254,7 +254,7 @@ function goToQualification() {
             </p>
           </div>
           <div class="rounded-6 bg-white/90 p-6 shadow-xl backdrop-blur">
-            <div class="aspect-video w-full overflow-hidden rounded-4 bg-[var(--light-cream)]">
+            <div class="aspect-video w-full overflow-hidden rounded-4 bg-[var(--yunda-petal)]">
               <img src="/images/landingpage3/surrogacy-consultation.jpg" :alt="tt('California Surrogacy Consultation', '加州代孕咨询')" class="h-full w-full object-cover">
             </div>
           </div>
@@ -266,7 +266,7 @@ function goToQualification() {
     <section class="py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="text-center">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('Yunda turns complex California surrogacy into a controllable, manageable plan', 'Yunda 在加州代孕咨询中，重点帮你把“复杂”变成“可控”') }}
           </h2>
         </div>
@@ -288,10 +288,10 @@ function goToQualification() {
     </section>
 
     <!-- 流程概览 -->
-    <section class="bg-[var(--foot-bg)] py-16 lg:py-20">
+    <section class="bg-[var(--yunda-petal)] py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('U.S. Surrogacy Process', '美国代孕流程') }}
           </h2>
         </div>
@@ -316,7 +316,7 @@ function goToQualification() {
     <section class="py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('How much does California surrogacy cost? How to break down and pay with confidence', '加州代孕多少钱？费用怎么拆、怎么付更安心') }}
           </h2>
         </div>
@@ -328,13 +328,13 @@ function goToQualification() {
             {{ tt('Costs may vary by surrogate match and case specifics; final billing applies.', '不同代母匹配与个案情况会导致费用浮动，具体以实际账单为准。') }}
           </p>
           <div class="mt-6 space-y-4">
-            <h3 class="text-5 font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="text-5 font-semibold" >
               {{ tt('Three installment rhythm (budget by milestones)', '三笔打款节奏（让预算“按节点走”）') }}
             </h3>
             <div
               v-for="section in installmentSteps"
               :key="section.title"
-              class="border border-[var(--olive-green)]/40 rounded-5 bg-[var(--head-bg)] p-5"
+              class="border border-[var(--olive-green)]/40 rounded-5 bg-[var(--yunda-petal)] p-5"
             >
               <p class="text-4.5 text-[var(--primary-brown)] font-semibold">
                 {{ section.title }}
@@ -351,7 +351,7 @@ function goToQualification() {
               </ul>
             </div>
           </div>
-          <div class="mt-5 rounded-5 bg-[var(--foot-bg)]/80 p-4 text-4 leading-relaxed">
+          <div class="mt-5 rounded-5 bg-[var(--yunda-petal)]/80 p-4 text-4 leading-relaxed">
             <p class="text-[var(--primary-brown)] font-semibold">
               {{ tt('What’s not included?', '哪些费用不包含？') }}
             </p>
@@ -364,12 +364,12 @@ function goToQualification() {
     </section>
 
     <!-- 额外费用与保险 -->
-    <section class="bg-[var(--foot-bg)] py-16 lg:py-20">
+    <section class="bg-[var(--yunda-petal)] py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="grid gap-8 lg:grid-cols-2">
           <div class="rounded-6 bg-white p-6 shadow-lg">
             <div class="flex items-center justify-between">
-              <h2 class="text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="text-6 font-semibold" >
                 {{ tt('What situations increase costs?', '哪些情况会增加费用？') }}
               </h2>
               <button class="text-3.5 text-[var(--primary-brown)] underline" @click="expandedCosts = !expandedCosts">
@@ -390,7 +390,7 @@ function goToQualification() {
           </div>
           <div class="rounded-6 bg-white p-6 shadow-lg">
             <div class="flex items-center justify-between">
-              <h2 class="text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="text-6 font-semibold" >
                 {{ tt('How is surrogate insurance handled?', '代母保险怎么处理？') }}
               </h2>
               <button class="text-3.5 text-[var(--primary-brown)] underline" @click="expandedInsurance = !expandedInsurance">
@@ -405,7 +405,7 @@ function goToQualification() {
                 </li>
               </ul>
             </Transition>
-            <p class="mt-4 rounded-5 bg-[var(--light-cream)]/70 p-3 text-3.75 text-[var(--primary-brown)]">
+            <p class="mt-4 rounded-5 bg-[var(--yunda-petal)]/70 p-3 text-3.75 text-[var(--primary-brown)]">
               {{ tt('Mini CTA: leave your budget/state/embryo status in the form to get a custom cost range and risk checklist.', '小 CTA：表单留言“预算/州/是否已有胚胎”，获取你的专属费用区间与风险点清单') }}
             </p>
           </div>
@@ -417,7 +417,7 @@ function goToQualification() {
     <section class="py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('Founded in Los Angeles, we manage every step like a deliverable project', '作为洛杉矶起家的美国代孕机构，我们把每一步做成可交付的“项目管理”') }}
           </h2>
         </div>
@@ -430,7 +430,7 @@ function goToQualification() {
             :key="item.title"
             class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-6 shadow"
           >
-            <h3 class="text-5 text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="text-5 text-[var(--primary-brown)] font-semibold" >
               {{ item.title }}
             </h3>
             <p class="mt-2 text-4 leading-relaxed">
@@ -450,10 +450,10 @@ function goToQualification() {
     </section>
 
     <!-- 时间线 -->
-    <section class="bg-[var(--foot-bg)] py-16 lg:py-20">
+    <section class="bg-[var(--yunda-petal)] py-16 lg:py-20">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('California surrogacy timeline: key milestones at a glance', '加州代孕流程怎么走？关键节点一览') }}
           </h2>
         </div>
@@ -484,11 +484,11 @@ function goToQualification() {
     <section class="py-16 lg:py-20">
       <div class="mx-auto max-w-240 px-5 lg:px-10">
         <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <h2 class="text-7 font-semibold lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="text-7 font-semibold lg:text-8" >
             {{ tt('U.S. Surrogacy (California) FAQs', '美国代孕（加州）常见问题') }}
           </h2>
           <button
-            class="rounded-full bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-white font-semibold transition hover:bg-[var(--dark-brown)]"
+            class="rounded-full bg-[var(--primary-brown)] px-5 py-2.5 text-3.5 text-white font-semibold transition hover:bg-[var(--yunda-bark)]"
             @click="goToQualification"
           >
             {{ tt('Submit the form to receive details (advisor contact)', '提交表单领取（中文顾问对接）') }}
@@ -517,7 +517,7 @@ function goToQualification() {
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
           <button
-            class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
+            class="border border-[var(--primary-brown)] rounded-full px-6 py-3 text-3.5 text-[var(--primary-brown)] font-semibold uppercase transition hover:bg-[var(--yunda-petal)]"
             @click="goToQualification"
           >
             {{ tt('Submit the form to receive details (advisor contact)', '提交表单领取（中文顾问对接）') }}

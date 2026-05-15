@@ -435,10 +435,10 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
-    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b py-18 lg:py-24">
+    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
         <div class="absolute left-16 top-10 h-40 w-40 rounded-full bg-[var(--olive-green)] blur-[120px]" />
         <div class="absolute bottom-12 right-16 h-60 w-60 rounded-full bg-[var(--primary-brown)]/70 blur-[160px]" />
@@ -446,7 +446,7 @@ useHead(() => {
       <div class="relative mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="text-center space-y-6 lg:text-left">
-            <h1 class="text-8 font-semibold leading-tight lg:text-12" style="font-family: var(--font-primary)">
+            <h1 class="text-8 font-semibold leading-tight lg:text-12" >
               {{ tt('Surrogate Compensation in the U.S. | Pay, Benefits & FAQs', '美国代孕补偿｜补偿、福利与常见问题') }}
             </h1>
             <p class="text-4.5 leading-relaxed">
@@ -455,7 +455,7 @@ useHead(() => {
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
+                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--yunda-bark)]"
               >
                 {{ tt('Start Application', '开始申请') }}
               </NuxtLink>
@@ -486,7 +486,7 @@ useHead(() => {
                 <button
                   type="button"
                   class="rounded-full px-4 py-2 text-3.25 font-medium uppercase transition"
-                  :class="activeSection === section.id ? 'bg-[var(--primary-brown)] text-white' : 'text-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
+                  :class="activeSection === section.id ? 'bg-[var(--primary-brown)] text-white' : 'text-[var(--primary-brown)] hover:bg-[var(--yunda-petal)]'"
                   @click="scrollToSection(section.id)"
                 >
                   {{ section.label }}
@@ -508,12 +508,12 @@ useHead(() => {
       </div>
     </section>
 
-    <section id="surrogate-pay" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="surrogate-pay" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-center">
           <!-- Left Content -->
           <div class="space-y-8">
-            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
               {{ tt('How Much Do Surrogates Make? Surrogate Pay & Compensation', '代孕妈妈能获得多少补偿？') }}
             </h2>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
@@ -531,14 +531,14 @@ useHead(() => {
                 :style="{ animationDelay: `${500 + (index * 100)}ms` }"
               >
                 <div class="mb-4 flex justify-center">
-                  <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+                  <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                     <Icon :name="card.icon" class="h-6 w-6" />
                   </div>
                 </div>
                 <p class="text-3 text-[var(--primary-brown)] font-semibold tracking-wide uppercase">
                   {{ card.label }}
                 </p>
-                <p class="mt-2 text-5 font-bold" style="font-family: var(--font-primary)">
+                <p class="mt-2 text-5 font-bold" >
                   {{ card.value }}
                 </p>
               </div>
@@ -554,10 +554,10 @@ useHead(() => {
               >
                 <button
                   type="button"
-                  class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+                  class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--yunda-petal)]/30"
                   @click="togglePay(accordion.id)"
                 >
-                  <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ accordion.title }}
                   </h3>
                   <Icon
@@ -614,7 +614,7 @@ useHead(() => {
 
           <!-- Right Content -->
           <div class="space-y-8">
-            <h2 class="animate-fade-in-right text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+            <h2 class="animate-fade-in-right text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
               {{ tt('What Affects Your Surrogate Pay? Surrogate Compensation Factors', '哪些因素影响补偿？代孕补偿因素') }}
             </h2>
             <p class="animate-fade-in-right text-4.5 leading-relaxed" style="animation-delay: 200ms;">
@@ -630,10 +630,10 @@ useHead(() => {
                 :style="{ animationDelay: `${300 + (index * 150)}ms` }"
               >
                 <div class="mb-4 flex items-start gap-4">
-                  <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+                  <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                     <span class="text-4 font-bold">{{ factor.number }}</span>
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ factor.title }}
                   </h3>
                 </div>
@@ -660,10 +660,10 @@ useHead(() => {
       </div>
     </section>
 
-    <section id="payment-schedule" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="payment-schedule" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Surrogate Payment Schedule: When Are Funds Available?', '代孕付款时间表：资金何时到位？') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -679,13 +679,13 @@ useHead(() => {
             class="animate-fade-in-up rounded-8 bg-white p-8 text-center shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:-translate-y-2"
             :style="{ animationDelay: `${400 + (index * 150)}ms` }"
           >
-            <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full from-[var(--light-cream)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
+            <div class="mx-auto h-16 w-16 flex items-center justify-center rounded-full from-[var(--yunda-petal)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
               <Icon
                 :name="highlight.icon"
                 class="h-7 w-7"
               />
             </div>
-            <h3 class="mt-6 text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="mt-6 text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
               {{ highlight.title }}
             </h3>
             <p class="mt-3 text-4.25 leading-relaxed transition-all duration-300">
@@ -701,7 +701,7 @@ useHead(() => {
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-center">
           <!-- Left Content -->
           <div class="space-y-8">
-            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
               {{ tt('Surrogacy Cost & Agency Fees for Intended Parents', '意向父母的代孕成本与机构费用') }}
             </h2>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
@@ -715,7 +715,7 @@ useHead(() => {
                   <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="radix-icons:check-circled" class="h-5 w-5" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ tt('What the package covers', '方案包含内容') }}
                   </h3>
                 </div>
@@ -731,10 +731,10 @@ useHead(() => {
               </article>
               <article class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl" style="animation-delay: 400ms;">
                 <div class="mb-4 flex items-center gap-3">
-                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="radix-icons:cross-circled" class="h-5 w-5" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ tt('What the package does not cover', '方案不包含内容') }}
                   </h3>
                 </div>
@@ -757,7 +757,7 @@ useHead(() => {
                   <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--olive-green)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="radix-icons:clock" class="h-5 w-5" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ tt('How funding and payments work', '资金入账与支付方式') }}
                   </h3>
                 </div>
@@ -768,10 +768,10 @@ useHead(() => {
 
               <div class="animate-fade-in-up border border-[var(--primary-brown)]/40 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg" style="animation-delay: 800ms;">
                 <div class="mb-4 flex items-center gap-3">
-                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--dark-brown)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
+                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--yunda-bark)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="lucide:shield-check" class="h-5 w-5" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ tt('Why this structure builds trust', '为什么这种结构能建立信任') }}
                   </h3>
                 </div>
@@ -804,10 +804,10 @@ useHead(() => {
       </div>
     </section>
 
-    <section id="protections" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="protections" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Insurance, Escrow & Legal: Protecting Your Surrogate Pay', '保险、托管与法律：保护你的补偿') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -820,10 +820,10 @@ useHead(() => {
             :style="{ animationDelay: `${300 + (index * 150)}ms` }"
           >
             <div class="mb-6 flex items-center gap-4">
-              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                 <Icon name="lucide:shield-check" class="h-6 w-6" />
               </div>
-              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                 {{ section.title }}
               </h3>
             </div>
@@ -844,7 +844,7 @@ useHead(() => {
     <section id="timeline" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Surrogacy Process Timeline: Steps, Milestones & Payments', '代孕流程时间线：步骤、里程碑与付款') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -867,7 +867,7 @@ useHead(() => {
 
               <!-- Step Content -->
               <div class="flex-1 border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl">
-                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                   {{ step.title }}
                 </h3>
                 <p class="mt-3 text-4.25 leading-relaxed transition-all duration-300">
@@ -886,10 +886,10 @@ useHead(() => {
       </div>
     </section>
 
-    <section id="faq" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="faq" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Frequently Asked Questions', '常见问题') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -903,7 +903,7 @@ useHead(() => {
           >
             <button
               type="button"
-              class="w-full flex items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+              class="w-full flex items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--yunda-petal)]/30"
               @click="toggleFaq(item.question)"
             >
               <span class="text-4.5 font-semibold transition-all duration-300 hover:text-[var(--primary-brown)]">
@@ -937,13 +937,13 @@ useHead(() => {
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-[var(--dark-brown)] py-18 text-white">
+    <section class="relative overflow-hidden bg-[var(--yunda-bark)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">
         <div class="absolute left-1/4 top-0 h-60 w-60 rounded-full bg-[var(--primary-brown)]/40 blur-[160px]" />
         <div class="absolute bottom-0 right-1/5 h-48 w-48 rounded-full bg-[var(--olive-green)]/50 blur-[140px]" />
       </div>
       <div class="relative mx-auto max-w-240 px-5 text-center">
-        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" >
           {{ tt('Ready to Plan Your Surrogacy Journey?', '准备好规划你的代孕旅程了吗？') }}
         </h2>
         <p class="mt-4 text-4.5 leading-relaxed">
@@ -952,7 +952,7 @@ useHead(() => {
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
+            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase transition hover:bg-[var(--yunda-petal)]"
           >
             {{ tt('Start Application', '开始申请') }}
           </NuxtLink>

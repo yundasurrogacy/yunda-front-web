@@ -29,11 +29,11 @@ const candidateItems = [
 </script>
 
 <template>
-  <section class="w-full from-[#FAF7F2] via-[#FBF0DA] to-[#FAF7F2] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
+  <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-harvest)]/20 to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20">
     <div class="mx-auto max-w-1280px">
       <!-- Screening Includes Section -->
       <div class="scroll-animate mb-12 lg:mb-16">
-        <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" >
           {{ $t('surrogacyScreening.processSection.includesTitle') }}
         </h2>
         <div class="mb-8 space-y-2">
@@ -48,7 +48,7 @@ const candidateItems = [
 
       <!-- What Makes a Strong Candidate Section -->
       <div class="scroll-animate scroll-animate-delay-200">
-        <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="mb-6 text-7.5 font-semibold lg:mb-8 lg:text-10" >
           {{ $t('surrogacyScreening.processSection.candidateTitle') }}
         </h2>
         <p class="mb-6">

@@ -323,25 +323,25 @@ function getDetailPath(post: BlogItem): string {
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-[var(--head-bg)] px-4 py-12 md:px-20 md:py-16">
-    <div class="pointer-events-none absolute h-60 w-60 rounded-full bg-[rgba(169,108,66,0.16)] blur-3xl -left-16 -top-20" />
-    <div class="pointer-events-none absolute h-68 w-68 rounded-full bg-[rgba(132,133,112,0.22)] blur-3xl -bottom-16 -right-18" />
+  <section class="relative overflow-hidden bg-[var(--yunda-petal)] px-4 py-12 md:px-20 md:py-16">
+    <div class="pointer-events-none absolute h-60 w-60 rounded-full bg-[color-mix(in_srgb,var(--yunda-maple)_18%,transparent)] blur-3xl -left-16 -top-20" />
+    <div class="pointer-events-none absolute h-68 w-68 rounded-full bg-[color-mix(in_srgb,var(--yunda-harvest)_25%,transparent)] blur-3xl -bottom-16 -right-18" />
 
     <div class="relative z-10 mx-auto max-w-[1320px]">
       <div class="scroll-animate flex flex-wrap items-end justify-between gap-5">
         <div>
-          <p class="mb-3 inline-flex items-center rounded-full bg-[var(--head-bg)] px-4 py-1.5 text-3.2 text-[var(--primary-brown)] font-semibold tracking-[0.2em] uppercase">
+          <p class="mb-3 inline-flex items-center rounded-full border border-[var(--yunda-bark)]/12 bg-white/80 px-4 py-1.5 text-3.2 text-[var(--yunda-maple)] font-semibold tracking-[0.2em] uppercase">
             {{ copy.label }}
           </p>
-          <h2 class="text-7 text-[var(--black)] font-semibold md:text-9" style="font-family: var(--font-primary)">
+          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
             {{ copy.title }}
           </h2>
-          <p class="mt-3 max-w-3xl text-4 text-[var(--dark-brown)]/90 md:text-4.5" style="font-family: var(--font-secondary)">
+          <p class="mt-3 max-w-3xl font-sans text-base text-[var(--yunda-bark)]/90 leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
             {{ copy.subtitle }}
           </p>
         </div>
 
-        <NuxtLink :to="localePath('/blog')" class="inline-flex transform items-center gap-2 rounded-3 bg-[var(--grayish-green)] px-5 py-3 text-3.6 text-white font-semibold shadow-[0_10px_20px_rgba(132,133,112,0.35)] transition-all duration-300 hover:shadow-[0_14px_28px_rgba(132,133,112,0.4)] hover:-translate-y-0.5">
+        <NuxtLink :to="localePath('/blog')" class="yunda-type-button inline-flex transform items-center gap-2 rounded-3 bg-[var(--yunda-bark)] px-5 py-3 text-[var(--yunda-petal)] tracking-[0.02em] shadow-[0_10px_24px_rgba(60,36,21,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95" style="font-family: var(--font-text)">
           <span>{{ copy.viewAll }}</span>
           <span class="text-4.5 leading-none">→</span>
         </NuxtLink>
@@ -354,8 +354,8 @@ function getDetailPath(post: BlogItem): string {
           type="button"
           class="whitespace-nowrap border rounded-full px-3.5 py-1.8 text-3.2 font-semibold transition-all duration-300"
           :class="activeCategory === category
-            ? 'border-[var(--grayish-green)] bg-[var(--grayish-green)] text-white shadow-[0_8px_18px_rgba(132,133,112,0.35)]'
-            : 'border-[rgba(130,104,83,0.2)] bg-white/70 text-[var(--dark-brown)] hover:border-[var(--grayish-green)] hover:text-[var(--grayish-green)]'"
+            ? 'border-[var(--yunda-bark)] bg-[var(--yunda-bark)] text-[var(--yunda-petal)] shadow-[0_8px_18px_rgba(60,36,21,0.2)]'
+            : 'border-[var(--yunda-bark)]/20 bg-white/70 text-[var(--yunda-bark)] hover:border-[var(--yunda-maple)] hover:text-[var(--yunda-maple)]'"
           @click="selectCategory(category)"
         >
           {{ category === 'all' ? copy.allCategory : getCategoryLabel(category) }}
@@ -384,16 +384,16 @@ function getDetailPath(post: BlogItem): string {
             </div>
             <div class="flex flex-col p-5">
               <div class="mb-2 flex flex-wrap items-center gap-2">
-                <span class="rounded-full bg-[var(--head-bg)] px-2.5 py-1 text-2.9 text-[var(--primary-brown)] font-semibold">{{ getCategoryLabel(post.category) }}</span>
-                <span class="text-3 text-[var(--dark-brown)]/65">{{ getDateText(post) }}</span>
+                <span class="rounded-full bg-[var(--yunda-petal)] px-2.5 py-1 text-2.9 text-[var(--yunda-maple)] font-semibold">{{ getCategoryLabel(post.category) }}</span>
+                <span class="text-3 text-[var(--yunda-bark)]/65">{{ getDateText(post) }}</span>
               </div>
-              <h3 class="line-clamp-2 text-4.4 text-[var(--black)] font-semibold leading-snug">
+              <h3 class="line-clamp-2 font-sans text-[22px] text-[var(--yunda-bark)] font-bold leading-snug md:text-[26px]" style="font-family: var(--font-text)">
                 {{ getTitle(post) || copy.emptyTitle }}
               </h3>
-              <p class="line-clamp-3 mt-2 text-3.5 text-[var(--dark-brown)]/85">
+              <p class="line-clamp-3 mt-2 font-sans text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
                 {{ getExcerpt(post, 108) }}
               </p>
-              <div class="mt-4 inline-flex items-center gap-2 text-3.3 text-[var(--grayish-green)] font-semibold">
+              <div class="mt-4 inline-flex items-center gap-2 text-3.3 text-[var(--yunda-bark)] font-semibold transition-colors group-hover:text-[var(--yunda-maple)]">
                 <span>{{ copy.readMore }}</span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -403,15 +403,15 @@ function getDetailPath(post: BlogItem): string {
 
         <article
           v-if="!displayPosts.length && !isLoading"
-          class="scroll-animate scroll-animate-delay-300 border border-[rgba(130,104,83,0.14)] rounded-5 bg-white/75 p-6 lg:col-span-4 md:col-span-2"
+          class="scroll-animate scroll-animate-delay-300 border border-[var(--yunda-bark)]/14 rounded-5 bg-white/75 p-6 lg:col-span-4 md:col-span-2"
         >
-          <h3 class="text-5 text-[var(--black)] font-semibold">
+          <h3 class="font-sans text-5 text-[var(--yunda-bark)] font-bold" style="font-family: var(--font-text)">
             {{ copy.emptyTitle }}
           </h3>
-          <p class="mt-2 text-3.7 text-[var(--dark-brown)]/85">
+          <p class="mt-2 font-sans text-3.7 text-[var(--yunda-bark)]/85" style="font-family: var(--font-text)">
             {{ copy.emptyDesc }}
           </p>
-          <NuxtLink :to="localePath('/blog')" class="mt-4 inline-flex items-center text-3.5 text-[var(--grayish-green)] font-semibold">
+          <NuxtLink :to="localePath('/blog')" class="mt-4 inline-flex items-center text-3.5 text-[var(--yunda-bark)] font-semibold transition-colors hover:text-[var(--yunda-maple)]">
             {{ copy.viewAll }}
           </NuxtLink>
         </article>

@@ -19,7 +19,7 @@ useScrollAnimation()
       </div>
 
       <div class="relative z-10 mx-auto max-w-300 pt-10 text-center md:pt-10">
-        <h2 class="scroll-animate mb-6 text-7.5 font-semibold md:mb-8 md:text-10" style="font-family: var(--font-primary)">
+        <h2 class="scroll-animate mb-6 text-7.5 font-semibold md:mb-8 md:text-10" >
           {{ $t('home.globalSupportSection.title') }}
         </h2>
         <p class="scroll-animate scroll-animate-delay-100">
@@ -28,7 +28,7 @@ useScrollAnimation()
 
         <!-- CTA Button -->
         <div class="scroll-animate scroll-animate-delay-200 mt-8 md:mt-12">
-          <NuxtLink :to="localePath('/be-parents')" class="rounded-2.5 bg-[var(--light-cream)] px-4 py-3 leading-relaxed shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90">
+          <NuxtLink :to="localePath('/be-parents')" class="rounded-2.5 bg-[var(--yunda-petal)] px-4 py-3 leading-relaxed shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90">
             {{ $t('home.globalSupportSection.button') }}
           </NuxtLink>
         </div>

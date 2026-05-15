@@ -48,7 +48,7 @@ defineEmits(['update:modelValue'])
       :placeholder="placeholder"
       :required="required"
       :disabled="disabled"
-      class="h-15 w-full rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-4 placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+      class="h-15 w-full rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-4 placeholder:text-[var(--yunda-bark)]/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
       @input="$emit('update:modelValue', $event.target.value)"
     >
   </div>

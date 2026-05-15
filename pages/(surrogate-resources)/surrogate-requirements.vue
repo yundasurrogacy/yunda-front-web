@@ -373,10 +373,10 @@ const processIcons = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
-    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b py-18 lg:py-24">
+    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
         <div class="absolute left-12 top-12 h-44 w-44 rounded-full bg-[var(--olive-green)] blur-[140px]" />
         <div class="absolute bottom-14 right-16 h-60 w-60 rounded-full bg-[var(--primary-brown)]/70 blur-[180px]" />
@@ -384,7 +384,7 @@ const processIcons = [
       <div class="relative mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="text-center space-y-6 lg:text-left">
-            <h1 class="text-8 font-semibold leading-tight lg:text-12" style="font-family: var(--font-primary)">
+            <h1 class="text-8 font-semibold leading-tight lg:text-12" >
               {{ tt('Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate', '代孕要求与资格：成为代孕妈妈') }}
             </h1>
             <p class="text-4.5 leading-relaxed">
@@ -393,7 +393,7 @@ const processIcons = [
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--dark-brown)]"
+                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition hover:bg-[var(--yunda-bark)]"
               >
                 {{ tt('Check Your Eligibility', '查看资格') }}
               </NuxtLink>
@@ -424,7 +424,7 @@ const processIcons = [
                 <button
                   type="button"
                   class="rounded-full px-4 py-2 text-3 font-medium uppercase transition"
-                  :class="activeSection === section.id ? 'bg-[var(--primary-brown)] text-white' : 'text-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
+                  :class="activeSection === section.id ? 'bg-[var(--primary-brown)] text-white' : 'text-[var(--primary-brown)] hover:bg-[var(--yunda-petal)]'"
                   @click="scrollToSection(section.id)"
                 >
                   {{ section.label }}
@@ -446,9 +446,9 @@ const processIcons = [
       </div>
     </section>
 
-    <section id="quick-eligibility" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="quick-eligibility" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="mb-12 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="mb-12 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
           {{ tt('Who We\'re Looking For: Surrogacy Requirements (Quick Eligibility)', '我们寻找的代孕妈妈：快速资格要求') }}
         </h2>
 
@@ -468,7 +468,7 @@ const processIcons = [
                 class="transform border-2 rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300 hover:scale-105"
                 :class="activeRequirementTab === tab.id
                   ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg'
-                  : 'border-[var(--olive-green)] bg-white text-[var(--dark-brown)] hover:border-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
+                  : 'border-[var(--olive-green)] bg-white text-[var(--yunda-bark)] hover:border-[var(--primary-brown)] hover:bg-[var(--yunda-petal)]'"
                 :style="{ animationDelay: `${500 + (index * 100)}ms` }"
                 @click="activeRequirementTab = tab.id"
               >
@@ -479,10 +479,10 @@ const processIcons = [
             <!-- Tab Content -->
             <div class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-8 shadow-xl" style="animation-delay: 600ms;">
               <div class="mb-6 flex items-center gap-4">
-                <div class="h-16 w-16 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
+                <div class="h-16 w-16 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg transition-all duration-300 hover:scale-110">
                   <Icon :name="requirementIcons[requirementTabs.findIndex((tab: any) => tab.id === activeRequirementTab)]" class="h-8 w-8" />
                 </div>
-                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                   {{ tabContent.title }}
                 </h3>
               </div>
@@ -490,7 +490,7 @@ const processIcons = [
                 <li
                   v-for="(item, index) in tabContent.items"
                   :key="item"
-                  class="flex animate-fade-in-left items-start gap-3 rounded p-3 transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+                  class="flex animate-fade-in-left items-start gap-3 rounded p-3 transition-all duration-300 hover:bg-[var(--yunda-petal)]/30"
                   :style="{ animationDelay: `${700 + (index * 100)}ms` }"
                 >
                   <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--primary-brown)] transition-all duration-300 hover:scale-125" />
@@ -521,7 +521,7 @@ const processIcons = [
     <section id="medical-lifestyle" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Medical & Lifestyle Requirements for Gestational Surrogacy', '妊娠代孕的医疗与生活方式要求') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -537,7 +537,7 @@ const processIcons = [
               <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                 <Icon name="radix-icons:heart-filled" class="h-6 w-6" />
               </div>
-              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                 {{ section.heading }}
               </h3>
             </div>
@@ -562,14 +562,14 @@ const processIcons = [
           :alt="tt('IVF Surrogacy Process', 'IVF 代孕流程')"
           class="h-full w-full object-cover"
         >
-        <div class="absolute inset-0 bg-[var(--dark-brown)]/80" />
-        <div class="absolute inset-0 from-transparent via-[var(--dark-brown)]/60 to-[var(--dark-brown)]/90 bg-gradient-to-b" />
+        <div class="absolute inset-0 bg-[var(--yunda-bark)]/80" />
+        <div class="absolute inset-0 from-transparent via-[var(--yunda-bark)]/60 to-[var(--yunda-bark)]/90 bg-gradient-to-b" />
       </div>
 
       <div class="relative z-10 mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <!-- Title with Background -->
         <div class="text-center">
-          <h2 class="animate-fade-in-up text-7 text-white font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 text-white font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('What Can Disqualify You From Becoming a Surrogate', '哪些情况会导致无法成为代孕妈妈') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -584,10 +584,10 @@ const processIcons = [
             :style="{ animationDelay: `${300 + (index * 150)}ms` }"
           >
             <div class="mb-6 flex items-center gap-4">
-              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+              <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                 <Icon name="radix-icons:exclamation-triangle" class="h-6 w-6" />
               </div>
-              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+              <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                 {{ section.title }}
               </h3>
             </div>
@@ -607,7 +607,7 @@ const processIcons = [
     <section id="process" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 space-y-12 lg:px-10">
         <div class="text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Screening & Clearance Steps: IVF Surrogacy Process', '筛查与清关步骤：IVF 代孕流程') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -636,7 +636,7 @@ const processIcons = [
                   <div class="h-12 w-12 flex items-center justify-center rounded-full from-[var(--olive-green)] to-[var(--primary-brown)] bg-gradient-to-br text-white shadow-lg">
                     <Icon :name="processIcons[index]" class="h-6 w-6" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ step.title }}
                   </h3>
                 </div>
@@ -650,12 +650,12 @@ const processIcons = [
       </div>
     </section>
 
-    <section id="compensation" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="compensation" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-center">
           <!-- Left Content -->
           <div class="space-y-8">
-            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+            <h2 class="animate-fade-in-left text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
               {{ tt('Compensation & Support: Surrogate Pay, Escrow, and Benefits', '补偿与支持：代孕补偿、托管与福利') }}
             </h2>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
@@ -671,10 +671,10 @@ const processIcons = [
                 :style="{ animationDelay: `${300 + (index * 150)}ms` }"
               >
                 <div class="mb-4 flex items-center gap-3">
-                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br text-white shadow-lg">
+                  <div class="h-10 w-10 flex items-center justify-center rounded-full from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br text-white shadow-lg">
                     <Icon name="radix-icons:star-filled" class="h-5 w-5" />
                   </div>
-                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <h3 class="text-4 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                     {{ card.title }}
                   </h3>
                 </div>
@@ -711,7 +711,7 @@ const processIcons = [
     <section id="faq" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="mb-12 text-center">
-          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+          <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Frequently Asked Questions', '常见问题') }}
           </h2>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
@@ -725,7 +725,7 @@ const processIcons = [
           >
             <button
               type="button"
-              class="w-full flex items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+              class="w-full flex items-center justify-between gap-4 px-8 py-6 text-left transition-all duration-300 hover:bg-[var(--yunda-petal)]/30"
               @click="toggleFaq(item.question)"
             >
               <span class="text-4.5 font-semibold transition-all duration-300 hover:text-[var(--primary-brown)]">
@@ -759,13 +759,13 @@ const processIcons = [
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-[var(--dark-brown)] py-18 text-white">
+    <section class="relative overflow-hidden bg-[var(--yunda-bark)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">
         <div class="absolute left-1/4 top-0 h-60 w-60 rounded-full bg-[var(--primary-brown)]/40 blur-[160px]" />
         <div class="absolute bottom-0 right-1/5 h-48 w-48 rounded-full bg-[var(--olive-green)]/50 blur-[140px]" />
       </div>
       <div class="relative mx-auto max-w-240 px-5 text-center">
-        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="text-8 font-semibold tracking-wide uppercase lg:text-10" >
           {{ tt('Ready to Become a Surrogate?', '准备成为代孕妈妈了吗？') }}
         </h2>
         <p class="mt-4 text-4.5 leading-relaxed">
@@ -774,7 +774,7 @@ const processIcons = [
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition hover:bg-[var(--light-cream)]"
+            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase transition hover:bg-[var(--yunda-petal)]"
           >
             {{ tt('Start Application', '开始申请') }}
           </NuxtLink>

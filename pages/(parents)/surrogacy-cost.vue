@@ -951,7 +951,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <main>
@@ -967,7 +967,7 @@ onUnmounted(() => {
                     </li>
                   </ol>
                 </nav>
-                <h1 class="h1-text" style="font-family: var(--font-primary)">
+                <h1 class="h1-text">
                   {{ t.hero.title }}
                 </h1>
                 <div class="body-text space-y-3">
@@ -991,10 +991,10 @@ onUnmounted(() => {
                     {{ t.hero.secondary }}
                   </NuxtLink>
                 </div>
-                <p class="small-text text-[var(--dark-brown)]/80">
+                <p class="small-text text-[var(--yunda-bark)]/80">
                   {{ t.hero.note1 }}
                 </p>
-                <p class="micro-text text-[var(--dark-brown)]/70">
+                <p class="micro-text text-[var(--yunda-bark)]/70">
                   {{ t.hero.note2 }}
                 </p>
               </div>
@@ -1002,7 +1002,7 @@ onUnmounted(() => {
 
             <!-- <div class="hero-right scroll-animate">
               <aside class="card trust-card hero-trust-card">
-                <p class="mb-4 small-text font-semibold uppercase tracking-wide text-[var(--primary-brown)]">
+                <p class="mb-4 small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
                   Trust, No Surprises
                 </p>
                 <ul class="space-y-3 body-text">
@@ -1011,7 +1011,7 @@ onUnmounted(() => {
                     <span>{{ item }}</span>
                   </li>
                 </ul>
-                <p class="mt-4 small-text text-[var(--dark-brown)]/80">
+                <p class="mt-4 small-text text-[var(--yunda-bark)]/80">
                   You'll see each cost category explained clearly, so there are no surprises when you compare the total cost of surrogacy across California and other U.S. states.
                 </p>
               </aside>
@@ -1019,7 +1019,7 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div class="anchor-nav-wrapper border-y border-[var(--olive-green)]/30 bg-[var(--dark-brown)]/90 backdrop-blur">
+        <div class="anchor-nav-wrapper border-y border-[var(--olive-green)]/30 bg-[var(--yunda-bark)]/90 backdrop-blur">
           <div class="content-container">
             <nav class="anchor-nav" aria-label="On-page navigation">
               <button
@@ -1042,7 +1042,7 @@ onUnmounted(() => {
         <div class="content-container section-stack">
           <div class="intro-grid scroll-animate">
             <div class="space-y-4">
-              <h2 class="h2-text" style="font-family: var(--font-primary)">
+              <h2 class="h2-text">
                 {{ t.ca.title }}
               </h2>
               <div class="body-text space-y-4">
@@ -1065,7 +1065,7 @@ onUnmounted(() => {
               />
               <div class="driver-blur-overlay" aria-hidden="true" />
               <div class="driver-content">
-                <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                <h3 class="h3-text font-semibold">
                   {{ card.title }}
                 </h3>
                 <div class="body-text mt-3 space-y-3">
@@ -1083,7 +1083,7 @@ onUnmounted(() => {
               :key="card.title"
               class="card outline-card"
             >
-              <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+              <p class="h3-text font-semibold">
                 {{ card.title }}
               </p>
               <p class="body-text mt-2">
@@ -1094,10 +1094,10 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="cost-breakdown" class="section-pad cost-breakdown-section bg-[var(--head-bg)]">
+      <section id="cost-breakdown" class="section-pad cost-breakdown-section bg-[var(--yunda-petal)]">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
-            <h2 class="h2-text" style="font-family: var(--font-primary)">
+            <h2 class="h2-text">
               {{ t.breakdown.title }}
             </h2>
             <p class="body-text">
@@ -1106,7 +1106,7 @@ onUnmounted(() => {
           </div>
 
           <div class="scroll-animate card subtle-card">
-            <p class="small-text text-[var(--primary-brown)] font-semibold tracking-wide uppercase">
+            <p class="small-text text-[var(--yunda-maple)] font-semibold tracking-wide uppercase">
               {{ t.breakdown.scopeLabel }}
             </p>
             <p class="body-text mt-2">
@@ -1118,7 +1118,7 @@ onUnmounted(() => {
             <div class="card cost-table outline-card">
               <div class="cost-table-column">
                 <div class="cost-table-header">
-                  <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                  <p class="h3-text font-semibold">
                     {{ t.breakdown.fixedTitle }}
                   </p>
                 </div>
@@ -1150,7 +1150,7 @@ onUnmounted(() => {
 
               <div class="cost-table-column">
                 <div class="cost-table-header cost-table-header-variable">
-                  <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                  <p class="h3-text font-semibold">
                     {{ t.breakdown.variableTitle }}
                   </p>
                 </div>
@@ -1184,7 +1184,7 @@ onUnmounted(() => {
                 </div>
 
                 <details class="cost-table-expand">
-                  <summary class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                  <summary class="h3-text font-semibold">
                     {{ t.breakdown.additionalTitle || 'Additional Costs (If Applicable)' }}
                   </summary>
                   <ul class="body-text mt-3 space-y-2">
@@ -1197,7 +1197,7 @@ onUnmounted(() => {
             </div>
 
             <div class="card viz-card outline-card">
-              <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="h3-text font-semibold">
                 {{ t.breakdown.donutTitle || 'Where costs usually go' }}
               </h3>
               <div class="viz-body">
@@ -1222,7 +1222,7 @@ onUnmounted(() => {
       <section id="payments" class="section-pad">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
-            <h2 class="h2-text" style="font-family: var(--font-primary)">
+            <h2 class="h2-text">
               {{ t.payments.title }}
             </h2>
             <p class="body-text">
@@ -1259,10 +1259,10 @@ onUnmounted(() => {
               <div class="payment-block-header">
                 <span class="payment-index">{{ index + 1 }}</span>
                 <div class="payment-header-text">
-                  <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                  <p class="h3-text font-semibold">
                     {{ payment.title }}
                   </p>
-                  <p class="small-text text-[var(--dark-brown)]/80">
+                  <p class="small-text text-[var(--yunda-bark)]/80">
                     {{ payment.label }}
                   </p>
                 </div>
@@ -1303,7 +1303,7 @@ onUnmounted(() => {
                   <p class="cell-title">
                     {{ t.payments.labels?.notes || 'Notes' }}
                   </p>
-                  <p class="cell-body text-[var(--dark-brown)]/80">
+                  <p class="cell-body text-[var(--yunda-bark)]/80">
                     {{ payment.note }}
                   </p>
                 </div>
@@ -1313,7 +1313,7 @@ onUnmounted(() => {
 
           <div class="card subtle-card">
             <div class="flex flex-wrap items-center justify-between gap-4">
-              <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="h3-text font-semibold">
                 {{ t.payments.trustTitle || 'How Trust Payments Protect You (No \"surprise invoices\")' }}
               </h3>
               <button
@@ -1330,7 +1330,7 @@ onUnmounted(() => {
           </div>
 
           <div class="card outline-card">
-            <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="h3-text font-semibold">
               {{ t.payments.notesTitle || 'Important Notes (So you can budget accurately)' }}
             </h3>
             <ul class="body-text mt-3 space-y-2">
@@ -1342,10 +1342,10 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="why-expensive" class="section-pad bg-[var(--head-bg)]">
+      <section id="why-expensive" class="section-pad bg-[var(--yunda-petal)]">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
-            <h2 class="h2-text" style="font-family: var(--font-primary)">
+            <h2 class="h2-text">
               {{ t.why.title }}
             </h2>
             <p class="body-text">
@@ -1384,7 +1384,7 @@ onUnmounted(() => {
 
             <div class="why-cta-hero scroll-animate">
               <div class="why-cta-overlay">
-                <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                <p class="h3-text font-semibold">
                   {{ t.why.title }}
                 </p>
                 <p class="body-text mt-2">
@@ -1404,7 +1404,7 @@ onUnmounted(() => {
       <section id="faq" class="section-pad">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
-            <h2 class="h2-text" style="font-family: var(--font-primary)">
+            <h2 class="h2-text">
               {{ t.faq.title }}
             </h2>
             <p class="body-text">
@@ -1421,7 +1421,7 @@ onUnmounted(() => {
                 aria-label="Search FAQs"
                 class="faq-search"
               >
-              <span class="small-text text-[var(--dark-brown)]/70">
+              <span class="small-text text-[var(--yunda-bark)]/70">
                 {{ filteredFaqs.length }} {{ t.faq.matchWord }}
               </span>
             </div>
@@ -1449,7 +1449,7 @@ onUnmounted(() => {
                 :aria-controls="`faq-panel-${slugify(item.question)}`"
                 @click="toggleFaq(slugify(item.question))"
               >
-                <h3 class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                <h3 class="h3-text font-semibold">
                   {{ item.question }}
                 </h3>
                 <span class="accordion-icon" :class="faqOpen[slugify(item.question)] ? 'accordion-open' : ''">
@@ -1479,7 +1479,7 @@ onUnmounted(() => {
           <div id="estimate" class="card subtle-card footer-cta">
             <div class="footer-cta-content">
               <div>
-                <p class="h3-text font-semibold" style="font-family: var(--font-primary)">
+                <p class="h3-text font-semibold">
                   {{ t.footer.title }}
                 </p>
                 <p class="body-text mt-2">
@@ -1529,10 +1529,10 @@ onUnmounted(() => {
       <div v-if="showTrustDrawer" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" @click.self="showTrustDrawer = false">
         <div class="max-w-xl w-full rounded-4 bg-white p-6 shadow-xl">
           <div class="flex items-start justify-between gap-4">
-            <h3 class="text-5 font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="text-5 font-semibold">
               How the trust account works
             </h3>
-            <button type="button" aria-label="Close trust drawer" class="text-4 text-[var(--dark-brown)]/60 hover:text-[var(--dark-brown)]" @click="showTrustDrawer = false">
+            <button type="button" aria-label="Close trust drawer" class="text-4 text-[var(--yunda-bark)]/60 hover:text-[var(--yunda-bark)]" @click="showTrustDrawer = false">
               x
             </button>
           </div>
@@ -1715,7 +1715,7 @@ onUnmounted(() => {
   margin-top: 2px;
   border-radius: 999px;
   background: rgba(169, 108, 66, 0.15);
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -1764,7 +1764,7 @@ onUnmounted(() => {
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-color: var(--primary-brown);
+  background-color: var(--yunda-maple);
   background-blend-mode: multiply;
   filter: blur(2px);
   transform: scale(1);
@@ -1850,7 +1850,7 @@ onUnmounted(() => {
 }
 
 .cost-table-column:last-child .cost-table-header {
-  background: var(--primary-brown);
+  background: var(--yunda-maple);
 }
 
 .cost-table-body {
@@ -1876,7 +1876,7 @@ onUnmounted(() => {
 .cost-breakdown-section .row-desc,
 .cost-breakdown-section .row-sub,
 .cost-breakdown-section .cost-table-expand summary {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
 }
 
 .cost-breakdown-section .amount-badge,
@@ -1930,7 +1930,7 @@ onUnmounted(() => {
   border-radius: 50%;
   background: conic-gradient(
     var(--olive-green) 0deg calc(var(--p1) * 1deg * 3.6),
-    var(--primary-brown) calc(var(--p1) * 1deg * 3.6) calc((var(--p1) + var(--p2)) * 1deg * 3.6),
+    var(--yunda-maple) calc(var(--p1) * 1deg * 3.6) calc((var(--p1) + var(--p2)) * 1deg * 3.6),
     rgba(169, 108, 66, 0.65) calc((var(--p1) + var(--p2)) * 1deg * 3.6)
       calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6),
     rgba(169, 108, 66, 0.35) calc((var(--p1) + var(--p2) + var(--p3)) * 1deg * 3.6)
@@ -1968,7 +1968,7 @@ onUnmounted(() => {
   background: var(--olive-green);
 }
 .dot-comp {
-  background: var(--primary-brown);
+  background: var(--yunda-maple);
 }
 .dot-ins {
   background: rgba(169, 108, 66, 0.65);
@@ -2034,7 +2034,7 @@ onUnmounted(() => {
 
 .row-title {
   font-weight: 700;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
 }
 
 .row-desc {
@@ -2266,26 +2266,58 @@ onUnmounted(() => {
 }
 
 .h1-text {
-  font-size: 2.75rem;
-  line-height: 3.25rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.375rem;
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .h1-text {
+    font-size: 3.125rem;
+  }
 }
 
 .h2-text {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  line-height: 1.15;
+  font-weight: 500;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .h2-text {
+    font-size: 2.25rem;
+  }
 }
 
 .h3-text {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-family: var(--font-text);
+  font-size: 1.25rem;
+  line-height: 1.25;
   font-weight: 700;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .h3-text {
+    font-size: 1.5rem;
+  }
 }
 
 .body-text {
+  font-family: var(--font-text);
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.75;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .body-text {
+    font-size: 1.0625rem;
+  }
 }
 
 .small-text {
@@ -2325,7 +2357,7 @@ onUnmounted(() => {
   z-index: 40;
   margin-top: 32px;
   border-color: rgba(255, 255, 255, 0.18);
-  background: #aaa579;
+  background: var(--yunda-bark);
 }
 
 @media (min-width: 768px) {
@@ -2340,7 +2372,7 @@ onUnmounted(() => {
   gap: 12px;
   overflow-x: auto;
   padding: 16px 0;
-  font-family: var(--font-primary);
+  font-family: var(--font-text);
 }
 
 @media (min-width: 768px) {
@@ -2353,18 +2385,18 @@ onUnmounted(() => {
   border: none;
   border-radius: 0;
   padding: 0.65rem 0.95rem;
-  font-size: 1.2rem;
-  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-family: var(--font-text);
   white-space: nowrap;
   transition: all 0.2s ease;
-  color: var(--white);
+  color: var(--yunda-petal);
   background: transparent;
   cursor: pointer;
   font-weight: 600;
 }
 
 .anchor-pill-active {
-  color: var(--light-cream);
+  color: var(--yunda-petal);
   text-decoration: underline;
   text-underline-offset: 6px;
 }
@@ -2375,12 +2407,14 @@ onUnmounted(() => {
 }
 
 .btn-primary {
-  background: var(--primary-brown);
-  color: var(--white);
+  font-family: var(--font-text);
+  background: var(--yunda-bark);
+  color: var(--yunda-petal);
   border-radius: 12px;
   padding: 0.75rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -2417,13 +2451,15 @@ onUnmounted(() => {
 }
 
 .btn-secondary {
-  border: 1px solid rgba(169, 108, 66, 0.45);
-  color: var(--primary-brown);
+  font-family: var(--font-text);
+  border: 2px solid var(--yunda-bark);
+  color: var(--yunda-bark);
   background: rgba(255, 255, 255, 0.92);
   border-radius: 12px;
   padding: 0.75rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -2437,7 +2473,9 @@ onUnmounted(() => {
 
 .btn-secondary:hover {
   transform: translateY(-1px);
-  background: rgba(169, 108, 66, 0.08);
+  border-color: var(--yunda-maple);
+  color: var(--yunda-bark);
+  background: color-mix(in srgb, var(--yunda-maple) 14%, var(--yunda-petal) 86%);
 }
 
 .btn-secondary:active {
@@ -2510,7 +2548,7 @@ onUnmounted(() => {
   font-size: 1.5rem;
   font-weight: 1000;
   background: rgba(169, 108, 66, 0.1);
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
   white-space: nowrap;
 }
 
@@ -2522,7 +2560,7 @@ onUnmounted(() => {
   font-size: 0.75rem;
   line-height: 1.25rem;
   text-align: center;
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
   background: white;
 }
 
@@ -2636,7 +2674,7 @@ onUnmounted(() => {
   min-width: 32px;
   padding: 0 10px;
   border-radius: 10px;
-  background: var(--primary-brown);
+  background: var(--yunda-maple);
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -2647,7 +2685,7 @@ onUnmounted(() => {
 
 .why-title {
   font-weight: 700;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   flex: 1;
 }
 
@@ -2707,7 +2745,7 @@ onUnmounted(() => {
   height: 44px;
   width: 44px;
   border-radius: 999px;
-  background: var(--primary-brown);
+  background: var(--yunda-maple);
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -2726,7 +2764,7 @@ onUnmounted(() => {
 
 .timeline-step-label {
   font-size: 1rem;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-weight: 700;
 }
 
@@ -2756,7 +2794,7 @@ onUnmounted(() => {
   height: 44px;
   width: 44px;
   border-radius: 12px;
-  background: var(--primary-brown);
+  background: var(--yunda-maple);
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -2800,7 +2838,7 @@ onUnmounted(() => {
 
 .cell-body {
   font-size: 1rem;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   line-height: 1.5rem;
 }
 
@@ -2816,7 +2854,7 @@ onUnmounted(() => {
   list-style: none;
   display: grid;
   gap: 4px;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
 }
 
 .cell-sub {
@@ -2834,7 +2872,7 @@ onUnmounted(() => {
   width: 2.5rem;
   border-radius: 999px;
   background: rgba(169, 108, 66, 0.15);
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2844,7 +2882,7 @@ onUnmounted(() => {
 .accordion-icon {
   font-size: 0.85rem;
   transition: transform 0.2s ease;
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
 }
 
 .accordion-open {
@@ -2866,7 +2904,7 @@ details > summary::-webkit-details-marker {
 details > summary::after {
   content: '+';
   font-size: 1.25rem;
-  color: var(--primary-brown);
+  color: var(--yunda-maple);
 }
 
 details[open] > summary::after {

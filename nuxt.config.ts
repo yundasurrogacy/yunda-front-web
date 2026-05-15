@@ -311,6 +311,7 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
     '@/assets/css/fonts.css',
     '@/assets/css/colors.css',
+    '@/assets/css/yunda-typography.css',
     '@/assets/css/animations.css',
     '@/assets/css/layout.css',
   ],

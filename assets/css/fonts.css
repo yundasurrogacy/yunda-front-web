@@ -110,14 +110,30 @@
   font-display: optional;
 }
 
-/* Language-based font variables */
+/**
+ * 字体栈与《YUNDA_字体规范》§3.1、§7.1 对应关系：
+ *
+ * Global Token（新代码优先）：
+ * - --font-display → Display（en: Cormorant；zh: Source Han Serif CN → Cormorant）
+ * - --font-text    → Text（en: Source Serif 4；zh: Source Han Serif CN → Source Serif 4）
+ *
+ * 兼容别名（旧页面/组件仍可能引用，语义与上相同）：
+ * - --font-primary   → var(--font-display)
+ * - --font-secondary → var(--font-text)
+ *
+ * 页面级排版类见 assets/css/yunda-typography.css（.yunda-type-*）
+ */
 :root {
   --font-primary: 'Cormorant', serif;
   --font-secondary: 'SourceSerif4', serif;
+  --font-display: var(--font-primary);
+  --font-text: var(--font-secondary);
 }
 
 /* Chinese language font overrides */
 :root.lang-zh {
   --font-primary: 'SourceHanSerifCN', 'Cormorant', serif;
   --font-secondary: 'SourceHanSerifCN', 'SourceSerif4', serif;
+  --font-display: var(--font-primary);
+  --font-text: var(--font-secondary);
 }

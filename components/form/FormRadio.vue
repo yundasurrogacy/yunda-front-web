@@ -33,7 +33,7 @@ defineEmits(['update:modelValue'])
     >
     <div
       class="h-4 w-4 flex flex-shrink-0 items-center justify-center border border-[#271F18] rounded-0.75 transition-colors"
-      :class="modelValue === value ? 'bg-[var(--grayish-green)]' : 'bg-transparent'"
+      :class="modelValue === value ? 'bg-[var(--yunda-bark)]' : 'bg-transparent'"
     >
       <div v-if="modelValue === value" class="h-2 w-2 rounded-full bg-[#271F18]" />
     </div>

@@ -678,7 +678,7 @@ onBeforeUnmount(() => {
     <AppHeader />
 
     <!-- 博客页面主体 -->
-    <div class="min-h-screen bg-[#F7F7F2] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+    <div class="min-h-screen bg-[var(--yunda-petal)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
       <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
       <div class="w-full flex flex-col lg:flex-row">
         <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
@@ -692,15 +692,15 @@ onBeforeUnmount(() => {
             fetchpriority="high"
           >
         </div>
-        <!-- 右侧内容区域：背景色#FAF1E0，搜索卡片白色，输入框#CAD3D0 -->
-        <div class="w-full flex flex-col items-center justify-center bg-[#FAF1E0] px-8 py-16 lg:w-1/2">
+        <!-- 右侧内容区域：背景色var(--yunda-petal)，搜索卡片白色，输入框#CAD3D0 -->
+        <div class="w-full flex flex-col items-center justify-center bg-[var(--yunda-petal)] px-8 py-16 lg:w-1/2">
           <div class="mx-auto max-w-md w-full flex flex-col items-center">
-            <h1 class="mb-10 text-center text-5xl text-gray-900 font-bold font-[Cormorant,serif]">
+            <h1 class="mb-10 text-center yunda-type-blog-list-h1">
               {{ blogCopy.title }}
             </h1>
             <!-- 搜索卡片区域 -->
             <div class="w-full flex flex-col items-center rounded-xl bg-white px-8 py-6 shadow-lg">
-              <div class="mb-3 w-full text-left text-base text-gray-700 font-medium">
+              <div class="mb-3 w-full text-left text-base text-[var(--yunda-bark)] font-medium" style="font-family: var(--font-text)">
                 {{ blogCopy.search.title }}
               </div>
               <div class="relative w-full">
@@ -708,12 +708,12 @@ onBeforeUnmount(() => {
                   v-model="searchQuery"
                   type="text"
                   :placeholder="blogCopy.search.placeholder"
-                  class="w-full border border-gray-300 rounded-xl py-4 pl-12 pr-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#A9A67D]/30"
-                  style="background-color: #CAD3D0;"
+                  class="w-full border border-[var(--yunda-bark)]/20 rounded-xl py-4 pl-12 pr-4 text-base text-[var(--yunda-bark)] focus:outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]/25 lg:text-[15px]"
+                  style="font-family: var(--font-text); background-color: var(--yunda-sky);"
                 >
                 <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
                   <svg
-                    class="h-6 w-6 text-gray-500"
+                    class="h-6 w-6 text-[var(--yunda-bark)]/60"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -746,8 +746,8 @@ onBeforeUnmount(() => {
                     class="w-full touch-manipulation rounded-lg px-3 py-2.5 text-left text-xs font-medium transition-colors lg:px-4 lg:py-3 lg:text-sm"
                     :class="[
                       selectedCategory === category
-                        ? 'bg-[#A9A67D] text-white'
-                        : 'text-gray-700 active:bg-gray-100 lg:hover:bg-gray-100',
+                        ? 'bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
+                        : 'text-[var(--yunda-bark)] active:bg-[color-mix(in_srgb,var(--yunda-maple)_12%,var(--yunda-petal)_88%)] lg:hover:bg-[color-mix(in_srgb,var(--yunda-maple)_12%,var(--yunda-petal)_88%)]',
                     ]"
                     @click="selectedCategory = category"
                   >
@@ -773,8 +773,8 @@ onBeforeUnmount(() => {
             <div class="lg:col-span-3">
               <!-- 加载状态 -->
               <div v-if="loading" class="py-12 text-center">
-                <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
-                <p class="mt-4 text-gray-600">
+                <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[var(--yunda-bark)] rounded-full" />
+                <p class="mt-4 text-[var(--yunda-bark)]/75">
                   {{ blogCopy.loading }}
                 </p>
               </div>
@@ -785,7 +785,7 @@ onBeforeUnmount(() => {
                   {{ error }}
                 </div>
                 <button
-                  class="mt-4 rounded-lg bg-[#A9A67D] px-6 py-2 text-white transition-colors hover:bg-[#9A8F6D]"
+                  class="mt-4 rounded-lg bg-[var(--yunda-bark)] px-6 py-2 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
                   @click="refreshBlogData"
                 >
                   {{ blogCopy.retry }}
@@ -817,9 +817,9 @@ onBeforeUnmount(() => {
                       >
                       <div
                         v-else
-                        class="h-full w-full flex items-center justify-center from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br"
+                        class="h-full w-full flex items-center justify-center from-[var(--yunda-bark)]/20 to-[var(--yunda-harvest)]/20 bg-gradient-to-br"
                       >
-                        <div class="text-6xl text-[#A9A67D]/30">
+                        <div class="text-6xl text-[var(--yunda-bark)]/30">
                           🤱
                         </div>
                       </div>
@@ -829,28 +829,28 @@ onBeforeUnmount(() => {
                     <div class="p-5">
                       <!-- 分类标签 -->
                       <div class="mb-2">
-                        <span class="inline-block rounded-full bg-[#A9A67D]/10 px-3 py-1 text-xs text-[#A9A67D] font-medium">
+                        <span class="inline-block rounded-full bg-[var(--yunda-petal)] px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
                           {{ getCategoryName(blog.category) }}
                         </span>
                       </div>
 
                       <!-- 日期 -->
-                      <div class="mb-2 text-xs text-gray-500">
+                      <div class="mb-2 text-xs text-[var(--yunda-bark)]/70 font-semibold" style="font-family: var(--font-text)">
                         {{ formatDateShort(blog.created_at) }}
                       </div>
 
                       <!-- 标题 -->
-                      <h2 class="line-clamp-2 mb-3 text-lg text-gray-900 font-bold transition-colors group-hover:text-[#A9A67D]">
+                      <h2 class="line-clamp-2 mb-3 font-sans text-[22px] text-[var(--yunda-bark)] font-bold leading-snug transition-colors group-hover:text-[var(--yunda-maple)] lg:text-[26px]" style="font-family: var(--font-text)">
                         {{ getBlogTitle(blog) }}
                       </h2>
 
                       <!-- 内容摘要 -->
-                      <p class="line-clamp-3 mb-4 text-sm text-gray-600">
+                      <p class="line-clamp-3 mb-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[15px]" style="font-family: var(--font-text)">
                         {{ getBlogExcerpt(blog, 120) }}
                       </p>
 
                       <!-- 作者 -->
-                      <div class="flex items-center text-xs text-gray-500">
+                      <div class="flex items-center text-xs text-[var(--yunda-bark)]/60">
                         <span>{{ blog.reference_author || blogCopy.authorDefault }}</span>
                       </div>
                     </div>
@@ -863,10 +863,10 @@ onBeforeUnmount(() => {
                 <div class="mb-4 text-6xl">
                   📭
                 </div>
-                <h3 class="mb-2 text-2xl text-gray-900 font-bold">
+                <h3 class="mb-2 font-sans text-xl text-[var(--yunda-bark)] font-bold" style="font-family: var(--font-text)">
                   {{ blogCopy.noResults.title }}
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-[var(--yunda-bark)]/75">
                   {{ blogCopy.noResults.description }}
                 </p>
               </div>
@@ -877,7 +877,7 @@ onBeforeUnmount(() => {
                 class="mt-12 flex flex-col items-center space-y-4"
               >
                 <!-- 分页信息 -->
-                <div class="text-sm text-gray-600">
+                <div class="text-sm text-[var(--yunda-bark)]/75">
                   {{ blogCopy.pagination.showing }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ blogCopy.pagination.of }} {{ pagination?.totalCount || 0 }} {{ blogCopy.pagination.results }}
                 </div>
 
@@ -886,7 +886,7 @@ onBeforeUnmount(() => {
                   <!-- 首页按钮 -->
                   <button
                     :disabled="currentPage === 1"
-                    class="border border-gray-300 rounded-l-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    class="border border-[var(--yunda-bark)]/25 rounded-l-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
                     @click="currentPage = 1"
                   >
                     {{ blogCopy.pagination.first }}
@@ -895,7 +895,7 @@ onBeforeUnmount(() => {
                   <!-- 上一页按钮 -->
                   <button
                     :disabled="currentPage === 1"
-                    class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
                     @click="currentPage--"
                   >
                     <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
@@ -912,8 +912,8 @@ onBeforeUnmount(() => {
                       class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                       :class="[
                         currentPage === page
-                          ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                          : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                          ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
+                          : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
                       ]"
                       @click="currentPage = page"
                     >
@@ -930,16 +930,16 @@ onBeforeUnmount(() => {
                         class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                         :class="[
                           currentPage === page
-                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
+                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
                         ]"
                         @click="currentPage = page"
                       >
                         {{ page }}
                       </button>
-                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
                       <button
-                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
                         @click="currentPage = totalPages"
                       >
                         {{ totalPages }}
@@ -948,20 +948,20 @@ onBeforeUnmount(() => {
                     <template v-else-if="currentPage >= totalPages - 3">
                       <!-- 当前页在后4页时 -->
                       <button
-                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
                         @click="currentPage = 1"
                       >
                         1
                       </button>
-                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
                       <button
                         v-for="page in [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]"
                         :key="page"
                         class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                         :class="[
                           currentPage === page
-                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
+                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
                         ]"
                         @click="currentPage = page"
                       >
@@ -971,28 +971,28 @@ onBeforeUnmount(() => {
                     <template v-else>
                       <!-- 当前页在中间时 -->
                       <button
-                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
                         @click="currentPage = 1"
                       >
                         1
                       </button>
-                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
                       <button
                         v-for="page in [currentPage - 1, currentPage, currentPage + 1]"
                         :key="page"
                         class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                         :class="[
                           currentPage === page
-                            ? 'text-white bg-[#A9A67D] border-[#A9A67D]'
-                            : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50 hover:text-gray-700',
+                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
+                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
                         ]"
                         @click="currentPage = page"
                       >
                         {{ page }}
                       </button>
-                      <span class="px-3 py-2 text-sm text-gray-500">...</span>
+                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
                       <button
-                        class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors hover:bg-gray-50 hover:text-gray-700"
+                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
                         @click="currentPage = totalPages"
                       >
                         {{ totalPages }}
@@ -1003,7 +1003,7 @@ onBeforeUnmount(() => {
                   <!-- 下一页按钮 -->
                   <button
                     :disabled="currentPage === totalPages"
-                    class="border-b border-t border-gray-300 bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
                     @click="currentPage++"
                   >
                     <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
@@ -1014,7 +1014,7 @@ onBeforeUnmount(() => {
                   <!-- 末页按钮 -->
                   <button
                     :disabled="currentPage === totalPages"
-                    class="border border-gray-300 rounded-r-lg bg-white px-3 py-2 text-sm text-gray-500 font-medium transition-colors disabled:cursor-not-allowed hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50"
+                    class="border border-[var(--yunda-bark)]/25 rounded-r-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
                     @click="currentPage = totalPages"
                   >
                     {{ blogCopy.pagination.last }}
@@ -1023,17 +1023,17 @@ onBeforeUnmount(() => {
 
                 <!-- 快速跳转 -->
                 <div class="flex items-center text-sm space-x-2">
-                  <span class="text-gray-600">{{ blogCopy.pagination.goTo }}</span>
+                  <span class="text-[var(--yunda-bark)]/75">{{ blogCopy.pagination.goTo }}</span>
                   <input
                     v-model.number="jumpToPage"
                     type="number"
                     :min="1"
                     :max="totalPages"
-                    class="w-16 border border-gray-300 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#A9A67D]"
+                    class="w-16 border border-[var(--yunda-bark)]/25 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]"
                     @keyup.enter="jumpToPageHandler"
                   >
                   <button
-                    class="rounded bg-[#A9A67D] px-3 py-1 text-sm text-white transition-colors hover:bg-[#9A8F6D]"
+                    class="rounded bg-[var(--yunda-bark)] px-3 py-1 text-sm text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
                     @click="jumpToPageHandler"
                   >
                     {{ blogCopy.pagination.go }}
@@ -1055,8 +1055,8 @@ onBeforeUnmount(() => {
               </div>
               <div class="lg:col-span-3">
                 <div class="py-12 text-center">
-                  <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[#A9A67D] rounded-full" />
-                  <p class="mt-4 text-gray-600">
+                  <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[var(--yunda-bark)] rounded-full" />
+                  <p class="mt-4 text-[var(--yunda-bark)]/75">
                     {{ blogCopy.loading }}
                   </p>
                 </div>
@@ -1072,13 +1072,13 @@ onBeforeUnmount(() => {
           <div class="grid grid-cols-2 gap-4">
             <NuxtLink
               :to="localePath('/be-parents')"
-              class="inline-flex items-center justify-center rounded-xl bg-[var(--primary-brown)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[var(--yunda-bark)] px-6 py-4 text-center text-[var(--yunda-petal)] tracking-[0.02em] transition hover:opacity-90"
             >
               {{ ctaCopy.parent }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/be-surrogate')"
-              class="inline-flex items-center justify-center rounded-xl bg-[var(--olive-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-6 py-4 text-center text-[var(--yunda-bark)] tracking-[0.02em] transition hover:opacity-95"
             >
               {{ ctaCopy.surrogate }}
             </NuxtLink>
@@ -1088,17 +1088,17 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Mobile Fixed Bottom CTA -->
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#153d53] bg-[#153d53] pb-[env(safe-area-inset-bottom)] md:hidden">
-      <div class="grid grid-cols-2">
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--yunda-bark)]/15 bg-[var(--yunda-petal)] pb-[env(safe-area-inset-bottom)] md:hidden">
+      <div class="grid grid-cols-2 gap-px bg-[var(--yunda-bark)]/10">
         <NuxtLink
           :to="localePath('/be-parents')"
-          class="flex items-center justify-center bg-[#114f86] px-3 py-3 text-center text-white"
+          class="flex items-center justify-center bg-[var(--yunda-bark)] px-3 py-3 text-center text-[var(--yunda-petal)] yunda-type-button"
         >
           {{ ctaCopy.parent }}
         </NuxtLink>
         <NuxtLink
           :to="localePath('/be-surrogate')"
-          class="flex items-center justify-center bg-[var(--grayish-green)] px-3 py-3 text-center text-white"
+          class="flex items-center justify-center bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-3 py-3 text-center text-[var(--yunda-bark)] yunda-type-button"
         >
           {{ ctaCopy.surrogate }}
         </NuxtLink>

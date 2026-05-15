@@ -5,10 +5,10 @@ useScrollAnimation()
 </script>
 
 <template>
-  <section class="bg-[var(--grayish-green)] px-4 py-20 md:px-20 md:py-25">
+  <section class="bg-[var(--yunda-bark)] px-4 py-20 md:px-20 md:py-25">
     <div class="mx-auto max-w-300">
       <!-- 标题部分 - 居中对齐 -->
-      <div class="mb-8 text-center md:mb-10" style="font-family: var(--font-primary)">
+      <div class="mb-8 text-center md:mb-10" >
         <h2 class="scroll-animate mb-2 text-7.5 font-semibold md:mb-3 md:text-10">
           {{ $t('home.costSection.title1') }}
         </h2>

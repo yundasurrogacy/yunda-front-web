@@ -595,7 +595,7 @@ function setActiveStep(stepId: number) {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
 
     <!-- Hero / Overview -->
@@ -603,10 +603,10 @@ function setActiveStep(stepId: number) {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p class="mb-3 inline-flex items-center rounded-full bg-[var(--light-cream)] px-4 py-1 text-sm text-[var(--primary-brown)] tracking-wide uppercase">
+            <p class="mb-3 inline-flex items-center rounded-full bg-[var(--yunda-petal)] px-4 py-1 text-sm text-[var(--primary-brown)] tracking-wide uppercase">
               {{ tt('Surrogacy process guide', '代孕流程指南') }}
             </p>
-            <h1 class="mb-8 text-4xl text-[var(--dark-brown)] font-bold md:text-6xl" style="font-family: var(--font-primary)">
+            <h1 class="mb-8 text-4xl text-[var(--yunda-bark)] font-bold md:text-6xl" >
               {{ tt('Surrogacy Process: Step-by-Step Guide for Parents and Surrogates', '代孕流程：意向父母与代孕妈妈的分步指南') }}
             </h1>
             <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-5 md:text-xl">
@@ -616,7 +616,7 @@ function setActiveStep(stepId: number) {
             </div>
           </div>
           <div class="relative">
-            <div class="overflow-hidden rounded-3xl bg-[var(--head-bg)] p-3 shadow-2xl">
+            <div class="overflow-hidden rounded-3xl bg-[var(--yunda-petal)] p-3 shadow-2xl">
               <img
                 src="/images/california-surrogacy-process.jpg"
                 :alt="tt('Surrogacy journey in California', '加州代孕旅程')"
@@ -629,14 +629,14 @@ function setActiveStep(stepId: number) {
           </div>
         </div>
       </div>
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 from-[var(--head-bg)] to-transparent bg-gradient-to-t" />
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 from-[var(--yunda-petal)] to-transparent bg-gradient-to-t" />
     </section>
 
     <!-- Readiness Pillars -->
-    <section class="bg-[var(--head-bg)] py-24">
+    <section class="bg-[var(--yunda-petal)] py-24">
       <div class="container mx-auto max-w-6xl px-4">
         <div class="mx-auto mb-14 max-w-3xl text-center">
-          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Legal, Medical & Emotional Readiness', '法律、医疗与情感准备') }}
           </h2>
         </div>
@@ -646,8 +646,8 @@ function setActiveStep(stepId: number) {
             :key="pillar.title"
             class="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg transition-shadow hover:shadow-2xl"
           >
-            <div class="absolute inset-y-0 left-0 w-1 rounded-full bg-[var(--grayish-green)] opacity-60" />
-            <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <div class="absolute inset-y-0 left-0 w-1 rounded-full bg-[var(--yunda-bark)] opacity-60" />
+            <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-semibold" >
               {{ pillar.title }}
             </h3>
             <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -662,7 +662,7 @@ function setActiveStep(stepId: number) {
     <section class="bg-white py-20">
       <div class="container mx-auto max-w-6xl px-4">
         <div class="mx-auto mb-12 max-w-3xl text-center">
-          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Choose Your Surrogacy Track', '选择你的代孕路径') }}
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -674,13 +674,13 @@ function setActiveStep(stepId: number) {
             v-for="cta in softCtas"
             :key="cta.label"
             :to="cta.link"
-            class="group relative overflow-hidden border border-[var(--grayish-green)] rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg transition-all hover:shadow-2xl hover:-translate-y-1"
+            class="group relative overflow-hidden border border-[var(--yunda-bark)] rounded-3xl bg-[var(--yunda-petal)] p-8 shadow-lg transition-all hover:shadow-2xl hover:-translate-y-1"
           >
             <div class="absolute inset-0 from-white/0 via-white/30 to-white/60 bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100" />
-            <span class="mb-3 inline-block text-sm text-[var(--grayish-green)] tracking-wide uppercase">
+            <span class="mb-3 inline-block text-sm text-[var(--yunda-bark)] tracking-wide uppercase">
               {{ cta.label }}
             </span>
-            <p class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <p class="text-xl text-[var(--yunda-bark)] font-semibold" >
               {{ cta.description }}
             </p>
           </NuxtLink>
@@ -692,7 +692,7 @@ function setActiveStep(stepId: number) {
     <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-12 text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Step-by-Step Breakdown of the Surrogacy process', '代孕流程分步详解') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -708,11 +708,11 @@ function setActiveStep(stepId: number) {
     </section>
 
     <!-- Flowchart & Checklist Section -->
-    <section class="bg-[var(--head-bg)] py-24">
+    <section class="bg-[var(--yunda-petal)] py-24">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+            <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
               {{ tt('Surrogacy process Flowchart & Checklist', '代孕流程图与清单') }}
             </h2>
             <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -725,16 +725,16 @@ function setActiveStep(stepId: number) {
                 class="rounded-3xl bg-white p-8 shadow-lg"
               >
                 <div class="mb-4 flex items-center justify-between">
-                  <h3 class="text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+                  <h3 class="text-2xl text-[var(--yunda-bark)] font-semibold" >
                     {{ stage.id }}. {{ stage.title }}
                   </h3>
-                  <span class="h-10 w-10 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white font-semibold">
+                  <span class="h-10 w-10 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-white font-semibold">
                     {{ stage.id }}
                   </span>
                 </div>
                 <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-2">
-                  <p><strong class="text-[var(--dark-brown)]">{{ tt('Parents:', '意向父母：') }}</strong> {{ stage.parents }}</p>
-                  <p><strong class="text-[var(--dark-brown)]">{{ tt('Surrogates:', '代孕妈妈：') }}</strong> {{ stage.surrogates }}</p>
+                  <p><strong class="text-[var(--yunda-bark)]">{{ tt('Parents:', '意向父母：') }}</strong> {{ stage.parents }}</p>
+                  <p><strong class="text-[var(--yunda-bark)]">{{ tt('Surrogates:', '代孕妈妈：') }}</strong> {{ stage.surrogates }}</p>
                   <p>{{ stage.summary }}</p>
                 </div>
               </div>
@@ -742,7 +742,7 @@ function setActiveStep(stepId: number) {
           </div>
           <div class="space-y-8">
             <div class="rounded-3xl bg-white p-8 shadow-lg">
-              <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-semibold" >
                 {{ tt('Dual-Track Flowchart (Parents & Surrogates)', '双路径流程（意向父母 & 代孕妈妈）') }}
               </h3>
               <ol class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-4">
@@ -755,7 +755,7 @@ function setActiveStep(stepId: number) {
               </ol>
             </div>
             <div class="rounded-3xl bg-white p-8 shadow-lg">
-              <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-semibold" >
                 {{ tt('Printable Checklist (Highlights)', '可打印清单（重点）') }}
               </h3>
               <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
@@ -768,7 +768,7 @@ function setActiveStep(stepId: number) {
               </ul>
             </div>
             <div class="rounded-3xl bg-white p-8 shadow-lg">
-              <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-semibold" >
                 {{ tt('Recruit + Process Balance Note', '招募与流程平衡说明') }}
               </h3>
               <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -784,7 +784,7 @@ function setActiveStep(stepId: number) {
     <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mx-auto mb-12 max-w-3xl text-center">
-          <h2 class="mb-6 text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('FAQ About the Surrogacy process', '代孕流程常见问题') }}
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -795,16 +795,16 @@ function setActiveStep(stepId: number) {
           <div
             v-for="(faq, index) in faqItems"
             :key="faq.question"
-            class="border border-[var(--light-cream)] rounded-3xl bg-[var(--head-bg)] px-6 py-5 shadow-sm transition-colors hover:border-[var(--grayish-green)]"
+            class="border border-[var(--yunda-petal)] rounded-3xl bg-[var(--yunda-petal)] px-6 py-5 shadow-sm transition-colors hover:border-[var(--yunda-bark)]"
           >
             <button
               class="w-full flex items-center justify-between text-left"
               @click="toggleFaq(index)"
             >
-              <h3 class="text-xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+              <h3 class="text-xl text-[var(--yunda-bark)] font-semibold" >
                 {{ faq.question }}
               </h3>
-              <span class="ml-4 text-2xl text-[var(--grayish-green)]">
+              <span class="ml-4 text-2xl text-[var(--yunda-bark)]">
                 {{ expandedFaq === index ? '−' : '+' }}
               </span>
             </button>
@@ -822,10 +822,10 @@ function setActiveStep(stepId: number) {
     </section>
 
     <!-- Resources Section -->
-    <section class="bg-[var(--head-bg)] py-24">
+    <section class="bg-[var(--yunda-petal)] py-24">
       <div class="container mx-auto max-w-6xl px-4">
         <div class="mb-12 text-center">
-          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Resources & Educational Materials', '资源与学习材料') }}
           </h2>
           <p class="mt-4 text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -838,7 +838,7 @@ function setActiveStep(stepId: number) {
             :key="resource.title"
             class="rounded-3xl bg-white p-8 shadow-lg"
           >
-            <h3 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-2xl text-[var(--yunda-bark)] font-semibold" >
               {{ resource.title }}
             </h3>
             <ul class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-3">
@@ -858,7 +858,7 @@ function setActiveStep(stepId: number) {
     <section class="bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mx-auto mb-12 max-w-4xl text-center space-y-4">
-          <h2 class="text-4xl text-[var(--dark-brown)] font-bold md:text-5xl" style="font-family: var(--font-primary)">
+          <h2 class="text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
             {{ tt('Why Choose Yunda Surrogacy Agency 🩵', '为什么选择 Yunda 代孕机构 🩵') }}
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -869,9 +869,9 @@ function setActiveStep(stepId: number) {
           <div
             v-for="highlight in yundaHighlights"
             :key="highlight.title"
-            class="rounded-3xl bg-[var(--head-bg)] p-8 shadow-lg"
+            class="rounded-3xl bg-[var(--yunda-petal)] p-8 shadow-lg"
           >
-            <h3 class="mb-3 text-2xl text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-primary)">
+            <h3 class="mb-3 text-2xl text-[var(--yunda-bark)] font-semibold" >
               {{ highlight.title }}
             </h3>
             <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
@@ -879,8 +879,8 @@ function setActiveStep(stepId: number) {
             </p>
           </div>
         </div>
-        <div class="mt-12 rounded-3xl bg-[var(--grayish-green)] px-8 py-10 text-white shadow-xl">
-          <h3 class="mb-4 text-2xl font-semibold" style="font-family: var(--font-primary)">
+        <div class="mt-12 rounded-3xl bg-[var(--yunda-bark)] px-8 py-10 text-white shadow-xl">
+          <h3 class="mb-4 text-2xl font-semibold" >
             {{ tt('Start Your Journey with Yunda', '与 Yunda 开启旅程') }}
           </h3>
           <ul class="text-lg leading-relaxed space-y-3">
@@ -896,10 +896,10 @@ function setActiveStep(stepId: number) {
     </section>
 
     <!-- Final CTA -->
-    <section class="bg-[var(--head-bg)] py-20">
+    <section class="bg-[var(--yunda-petal)] py-20">
       <div class="container mx-auto max-w-6xl px-4 text-center">
-        <div class="rounded-3xl bg-[var(--grayish-green)] px-8 py-12 shadow-xl sm:px-16">
-          <h3 class="mb-4 text-3xl text-white font-bold md:text-4xl" style="font-family: var(--font-primary)">
+        <div class="rounded-3xl bg-[var(--yunda-bark)] px-8 py-12 shadow-xl sm:px-16">
+          <h3 class="mb-4 text-3xl text-white font-bold md:text-4xl" >
             {{ tt('Start Your Journey with Yunda', '与 Yunda 开启旅程') }}
           </h3>
           <p class="mx-auto mb-8 max-w-3xl text-lg text-white leading-relaxed">
@@ -908,13 +908,13 @@ function setActiveStep(stepId: number) {
           <div class="flex flex-wrap justify-center gap-4">
             <NuxtLink
               to="/be-parents"
-              class="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base text-[var(--grayish-green)] font-semibold shadow-lg transition-opacity hover:opacity-90"
+              class="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base text-[var(--yunda-bark)] font-semibold shadow-lg transition-opacity hover:opacity-90"
             >
               {{ tt('Book a Consult', '预约咨询') }}
             </NuxtLink>
             <NuxtLink
               to="/be-surrogate"
-              class="inline-flex items-center justify-center border border-white rounded-xl px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--grayish-green)]"
+              class="inline-flex items-center justify-center border border-white rounded-xl px-8 py-4 text-base text-white font-semibold transition-colors hover:bg-white hover:text-[var(--yunda-bark)]"
             >
               {{ tt('Check Eligibility', '查看资格') }}
             </NuxtLink>

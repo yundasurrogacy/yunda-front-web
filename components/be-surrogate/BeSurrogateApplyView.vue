@@ -603,11 +603,11 @@ function scrollToPageTop() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
     <div
       class="relative overflow-x-hidden"
-      :class="currentStep === 1 ? '' : 'bg-[var(--head-bg)]'"
+      :class="currentStep === 1 ? '' : 'bg-[var(--yunda-petal)]'"
     >
       <!-- 第一屏：占满视口（扣除固定顶栏），背景图铺全屏 -->
       <div
@@ -643,18 +643,17 @@ function scrollToPageTop() {
           >
             <h1
               id="be-surrogate-hero"
-              class="text-8 text-white font-semibold italic lg:text-12 sm:text-10 xl:text-14"
-              style="font-family: var(--font-primary)"
+              class="font-display text-[32px] text-white font-semibold italic leading-[1.1] sm:text-[40px] lg:text-[50px] xl:text-[3.2rem] xl:leading-tight"
             >
               {{ t.landing.heroTitle }}
             </h1>
             <p
               class="text-4 text-white/95 leading-snug md:text-5 sm:text-4.5"
-              style="font-family: var(--font-secondary)"
+              style="font-family: var(--font-text)"
             >
               {{ t.landing.heroSubtitle }}
             </p>
-            <p class="text-4.5 text-[#c17c45] font-bold md:text-6 sm:text-5">
+            <p class="text-4.5 text-[var(--yunda-maple)] font-bold md:text-6 sm:text-5">
               {{ t.landing.heroCompensation }}
             </p>
           </div>
@@ -671,7 +670,7 @@ function scrollToPageTop() {
               :class="currentStep === 1 ? 'mb-2 shrink-0' : 'mb-6'"
             >
               <span
-                class="text-sage-700 font-medium"
+                class="text-[var(--yunda-bark)] font-medium"
                 :class="currentStep === 1 ? 'text-3.5 sm:text-4' : 'text-5'"
               >
                 {{ t.stepIndicator(currentStep, TOTAL_STEPS) }}
@@ -683,7 +682,7 @@ function scrollToPageTop() {
                   class="flex-1 rounded-full"
                   :class="[
                     currentStep === 1 ? 'h-1.5 sm:h-2' : 'h-2',
-                    currentStep >= s ? 'bg-[var(--grayish-green)]' : 'bg-gray-200',
+                    currentStep >= s ? 'bg-[var(--yunda-bark)]' : 'bg-gray-200',
                   ]"
                 />
               </div>
@@ -696,8 +695,8 @@ function scrollToPageTop() {
               class="gc-step1-density scroll-mt-16 space-y-2 sm:space-y-2.5"
             >
               <h2
-                class="text-sage-700 text-5 font-semibold sm:text-6"
-                style="font-family: var(--font-primary)"
+                class="text-[var(--yunda-bark)] text-5 font-semibold sm:text-6"
+                
               >
                 {{ t.step1Title }}
               </h2>
@@ -736,18 +735,18 @@ function scrollToPageTop() {
                   <FormInput v-model="form.general_info.home_address" :label="t.gcIntake.homeAddress" />
                 </div>
                 <div data-field="height_weight" class="lg:col-span-2">
-                  <label class="text-sage-700 mb-1 block text-3.5 leading-snug sm:mb-1.5">{{ t.gcIntake.heightWeight }} <span class="text-red-500">*</span></label>
+                  <label class="text-[var(--yunda-bark)] mb-1 block text-3.5 leading-snug sm:mb-1.5">{{ t.gcIntake.heightWeight }} <span class="text-red-500">*</span></label>
                   <div class="flex flex-wrap gap-2 sm:gap-3">
                     <div class="flex items-center gap-2">
-                      <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-11 w-16 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-20 sm:px-3 placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                      <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-11 w-16 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-20 sm:px-3 placeholder:text-[var(--yunda-bark)]/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                       <span class="text-3 text-gray-600">{{ t.form.units.feet }}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                      <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-11 w-16 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-20 sm:px-3 placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                      <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-11 w-16 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-20 sm:px-3 placeholder:text-[var(--yunda-bark)]/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                       <span class="text-3 text-gray-600">{{ t.form.units.inches }}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                      <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-11 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-24 sm:px-3 placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                      <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-11 w-20 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-2.5 text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none sm:h-12 sm:w-24 sm:px-3 placeholder:text-[var(--yunda-bark)]/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                       <span class="text-3 text-gray-600">{{ t.form.units.pounds }}</span>
                     </div>
                   </div>
@@ -810,7 +809,7 @@ function scrollToPageTop() {
 
             <!-- Step 2: 二、怀孕与分娩史 -->
             <div v-show="currentStep === 2" ref="step2Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step2Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -842,7 +841,7 @@ function scrollToPageTop() {
 
             <!-- Step 3: 三、分娩记录 -->
             <div v-show="currentStep === 3" ref="step3Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step3Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -861,7 +860,7 @@ function scrollToPageTop() {
                 <div v-for="(d, idx) in form.delivery_history" :key="idx" :data-field="`delivery_${idx}`" class="rounded-3 bg-[rgba(234,232,208,0.15)] p-6">
                   <div class="mb-4 flex justify-between">
                     <span class="font-semibold">{{ t.gcIntake.babyNum(idx + 1) }}</span>
-                    <button type="button" class="text-4 text-[var(--grayish-green)] hover:underline" @click="removeDelivery(idx)">
+                    <button type="button" class="text-4 text-[var(--yunda-bark)] hover:underline" @click="removeDelivery(idx)">
                       {{ t.gcIntake.removeDelivery }}
                     </button>
                   </div>
@@ -874,7 +873,7 @@ function scrollToPageTop() {
                     <FormInput v-model="d.hospital" :label="t.gcIntake.deliveryHospital" />
                   </div>
                 </div>
-                <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= 10" @click="addDelivery">
+                <button type="button" class="rounded-2 bg-[var(--yunda-bark)] px-8 py-3 text-[var(--yunda-petal)] font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= 10" @click="addDelivery">
                   {{ t.gcIntake.addDelivery }}
                 </button>
               </div>
@@ -882,7 +881,7 @@ function scrollToPageTop() {
 
             <!-- Step 4: 四、孕期相关病史 -->
             <div v-show="currentStep === 4" ref="step4Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step4Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -955,7 +954,7 @@ function scrollToPageTop() {
 
             <!-- Step 5: 五、医疗与健康史 -->
             <div v-show="currentStep === 5" ref="step5Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step5Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1040,7 +1039,7 @@ function scrollToPageTop() {
 
             <!-- Step 6: 六、心理健康史 -->
             <div v-show="currentStep === 6" ref="step6Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step6Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1086,7 +1085,7 @@ function scrollToPageTop() {
 
             <!-- Step 7: 七、药物使用史 -->
             <div v-show="currentStep === 7" ref="step7Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step7Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1140,7 +1139,7 @@ function scrollToPageTop() {
 
             <!-- Step 8: 八、传染病史 -->
             <div v-show="currentStep === 8" ref="step8Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step8Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1185,7 +1184,7 @@ function scrollToPageTop() {
 
             <!-- Step 9: 九、其他医疗状况 -->
             <div v-show="currentStep === 9" ref="step9Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step9Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1240,7 +1239,7 @@ function scrollToPageTop() {
 
             <!-- Step 10: 十、偏好与匹配考量 -->
             <div v-show="currentStep === 10" ref="step10Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step10Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1323,7 +1322,7 @@ function scrollToPageTop() {
 
             <!-- Step 11: 十一、法律与行政 -->
             <div v-show="currentStep === 11" ref="step11Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step11Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1360,7 +1359,7 @@ function scrollToPageTop() {
 
             <!-- Step 12: 十二、备注 -->
             <div v-show="currentStep === 12" ref="step12Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step12Title }}
               </h2>
               <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1380,7 +1379,7 @@ function scrollToPageTop() {
 
             <!-- Step 13: 上传照片与同意 -->
             <div v-show="currentStep === 13" ref="step13Ref" class="scroll-mt-24 space-y-6">
-              <h2 class="text-sage-700 text-6 font-semibold" style="font-family: var(--font-primary)">
+              <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
                 {{ t.step13Title }}
               </h2>
               <div data-field="uploadPhotos" class="space-y-4">
@@ -1397,14 +1396,14 @@ function scrollToPageTop() {
                 </div>
                 <div
                   class="flex flex-col cursor-pointer items-center justify-center border-2 rounded-4 border-dashed py-10 transition"
-                  :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
+                  :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--yunda-bark)] hover:bg-[rgba(234,232,208,0.25)]'"
                   @dragover.prevent
                   @drop.prevent="handleDrop"
                   @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
                 >
                   <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-gray-500">{{ t.form.uploadPhotosMaxTip }}</span>
                   <template v-else>
-                    <span class="mb-2 block text-6 text-[var(--grayish-green)]">+</span>
+                    <span class="mb-2 block text-6 text-[var(--yunda-bark)]">+</span>
                     <span class="text-5 text-gray-600">{{ t.form.uploadPhotosTip }}</span>
                   </template>
                   <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
@@ -1432,7 +1431,7 @@ function scrollToPageTop() {
               <button
                 v-if="currentStep > 1"
                 type="button"
-                class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white transition hover:opacity-90"
+                class="rounded-2 bg-[var(--yunda-bark)] px-8 py-3 text-[var(--yunda-petal)] transition hover:opacity-90"
                 @click="goPrev"
               >
                 {{ t.btnPrev }}
@@ -1440,7 +1439,7 @@ function scrollToPageTop() {
               <template v-if="currentStep < TOTAL_STEPS">
                 <button
                   type="button"
-                  class="rounded-2 bg-[var(--grayish-green)] px-6 py-2.5 text-4 text-white font-semibold transition sm:px-8 sm:py-3 sm:text-4.5 disabled:opacity-50 hover:opacity-90"
+                  class="rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition sm:px-8 sm:py-3 sm:text-4.5 disabled:opacity-50 hover:opacity-90"
                   :disabled="isSubmitting"
                   @click="goNext"
                 >
@@ -1450,7 +1449,7 @@ function scrollToPageTop() {
               <template v-else>
                 <button
                   type="button"
-                  class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-semibold transition disabled:opacity-50 hover:opacity-90"
+                  class="rounded-2 bg-[var(--yunda-bark)] px-8 py-3 text-[var(--yunda-petal)] font-semibold transition disabled:opacity-50 hover:opacity-90"
                   :disabled="!isStep13Valid || isSubmitting || uploadingPhotos"
                   :class="{ 'opacity-50 cursor-not-allowed': !isStep13Valid }"
                   @click="submitFinal"
@@ -1465,7 +1464,7 @@ function scrollToPageTop() {
         <p
           v-if="currentStep === 1"
           class="mt-auto shrink-0 px-2 pb-1 pt-2 text-center text-3.5 text-white/95 leading-snug tracking-wide sm:text-4"
-          style="font-family: var(--font-secondary)"
+          style="font-family: var(--font-text)"
         >
           {{ t.landing.heroPillars }}
         </p>
@@ -1474,17 +1473,17 @@ function scrollToPageTop() {
 
     <AssociationSection variant="plain" class="!pb-0" />
 
-    <section class="bg-[var(--head-bg)] px-4 pb-12 pt-0 md:px-16 md:pb-16 md:pt-0">
+    <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-0 md:px-16 md:pb-16 md:pt-0">
       <div class="mx-auto max-w-220 text-center">
         <p
-          class="text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5"
-          style="font-family: var(--font-secondary)"
+          class="text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5"
+          style="font-family: var(--font-text)"
         >
           {{ t.landing.trustBlurb }}
         </p>
         <button
           type="button"
-          class="shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
+          class="yunda-type-button shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
           @click="scrollToPageTop"
         >
           {{ t.landing.ctaBecomeSurrogate }}
@@ -1492,14 +1491,14 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="bg-[var(--head-bg)] px-4 py-12 md:px-16 md:py-16">
+    <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-320">
-        <h2 class="text-center text-7 font-semibold md:text-9" style="font-family: var(--font-primary)">
+        <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px]">
           {{ t.landing.shortsTitle }}
         </h2>
         <p
-          class="mx-auto mt-5 max-w-200 text-center text-4.5 text-[var(--dark-brown)] leading-relaxed md:text-5"
-          style="font-family: var(--font-secondary)"
+          class="mx-auto mt-5 max-w-200 text-center text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5"
+          style="font-family: var(--font-text)"
         >
           {{ t.landing.shortsIntro }}
         </p>
@@ -1553,22 +1552,21 @@ function scrollToPageTop() {
       </div>
     </section>
 
-    <section class="bg-[var(--head-bg)] px-4 py-12 md:px-16 md:py-16">
+    <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-280 lg:max-w-320">
         <h2
-          class="mx-auto mb-12 text-center text-6 font-semibold md:mb-14 md:text-8 md:whitespace-nowrap lg:text-9"
-          style="font-family: var(--font-primary)"
+          class="mx-auto mb-12 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-14 md:text-[36px] md:whitespace-nowrap"
         >
           {{ t.landing.eligibilitySectionTitle }}
         </h2>
         <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           <div class="w-full md:max-w-lg md:justify-self-end">
-            <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+            <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
               {{ t.landing.ifYouAreHeading }}
             </h3>
             <ul
-              class="mt-5 list-disc pl-6 text-4.5 text-[var(--dark-brown)] space-y-3 md:text-5"
-              style="font-family: var(--font-secondary)"
+              class="mt-5 list-disc pl-6 text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
+              style="font-family: var(--font-text)"
             >
               <li v-for="(item, i) in t.landing.ifYouAreItems" :key="`if-${i}`">
                 {{ item }}
@@ -1576,18 +1574,18 @@ function scrollToPageTop() {
             </ul>
             <NuxtLink
               :to="localePath('/eligibility')"
-              class="mt-6 inline-flex rounded-2 bg-[var(--grayish-green)] px-6 py-2.5 text-4 text-white font-semibold transition hover:opacity-90"
+              class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition hover:opacity-90"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
           </div>
           <div class="w-full md:max-w-lg md:justify-self-start">
-            <h3 class="text-6 font-semibold md:text-7" style="font-family: var(--font-primary)">
+            <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
               {{ t.landing.youWillReceiveHeading }}
             </h3>
             <ul
-              class="mt-5 list-disc pl-6 text-4.5 text-[var(--dark-brown)] space-y-3 md:text-5"
-              style="font-family: var(--font-secondary)"
+              class="mt-5 list-disc pl-6 text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
+              style="font-family: var(--font-text)"
             >
               <li v-for="(item, i) in t.landing.youWillReceiveItems" :key="`recv-${i}`">
                 {{ item }}
@@ -1595,14 +1593,14 @@ function scrollToPageTop() {
             </ul>
             <NuxtLink
               :to="localePath('/benefit')"
-              class="mt-6 inline-flex rounded-2 bg-[var(--grayish-green)] px-6 py-2.5 text-4 text-white font-semibold transition hover:opacity-90"
+              class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition hover:opacity-90"
             >
               {{ t.landing.learnMore }}
             </NuxtLink>
           </div>
         </div>
 
-        <h3 class="mt-16 text-center text-6 font-semibold md:mt-20 md:text-7" style="font-family: var(--font-primary)">
+        <h3 class="mt-16 text-center font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:mt-20 md:text-[24px]" style="font-family: var(--font-text)">
           {{ t.landing.processTitle }}
         </h3>
         <div class="mt-8 flex justify-center">
@@ -1624,7 +1622,7 @@ function scrollToPageTop() {
         <div class="mt-10 flex justify-center">
           <button
             type="button"
-            class="shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--grayish-green)] px-8 py-3.5 text-4 text-white font-semibold tracking-wide uppercase transition hover:opacity-90"
+            class="yunda-type-button shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
             @click="scrollToPageTop"
           >
             {{ t.landing.processCta }}

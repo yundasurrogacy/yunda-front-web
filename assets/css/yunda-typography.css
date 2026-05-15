@@ -1,0 +1,186 @@
+/**
+ * YUNDA 全局排版语义类（v1）
+ * 设计依据：修改/2026-05-15/YUNDA_字体规范.md §3.2–3.3
+ * 用法：改版区块/新页面优先加 class；旧页可逐步替换内联字号。
+ */
+
+.yunda-type-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.yunda-type-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.15;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-h2 {
+    font-size: 2.625rem;
+  }
+}
+
+.yunda-type-h3 {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-h3 {
+    font-size: 1.875rem;
+  }
+}
+
+.yunda-type-h4 {
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-h4 {
+    font-size: 1.5rem;
+  }
+}
+
+.yunda-type-body {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--yunda-bark);
+}
+
+.yunda-type-body-lg {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--yunda-bark);
+}
+
+.yunda-type-caption {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-caption {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+
+.yunda-type-button {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-button {
+    font-size: 1rem;
+  }
+}
+
+.yunda-type-nav {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--yunda-bark);
+}
+
+/* §6.4 Blog 列表 */
+.yunda-type-blog-list-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.125rem;
+  line-height: 1.1;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-blog-list-h1 {
+    font-size: 2.875rem;
+  }
+}
+
+.yunda-type-blog-card-title {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.3;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-blog-card-title {
+    font-size: 1.625rem;
+  }
+}
+
+/* §6.5 Blog 文章 */
+.yunda-type-blog-article-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 1.1;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-blog-article-h1 {
+    font-size: 3rem;
+  }
+}
+
+.yunda-type-blog-meta {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--yunda-bark) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-blog-meta {
+    font-size: 0.875rem;
+  }
+}
+
+.yunda-type-blog-prose {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .yunda-type-blog-prose {
+    font-size: 1.125rem;
+  }
+}

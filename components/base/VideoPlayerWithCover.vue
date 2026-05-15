@@ -66,7 +66,7 @@ function handleVideoClick() {
       <div class="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity hover:bg-black/30">
         <div class="h-20 w-20 flex items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform hover:scale-110">
           <svg
-            class="ml-1 h-8 w-8 text-[var(--dark-brown)]"
+            class="ml-1 h-8 w-8 text-[var(--yunda-bark)]"
             fill="currentColor"
             viewBox="0 0 24 24"
           >

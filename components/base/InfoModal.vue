@@ -33,19 +33,19 @@ defineEmits(['update:modelValue', 'close'])
           <!-- Header -->
           <div class="mb-8 h-20 w-full bg-[#BFC9BF] shadow-[4px_4px_4px_rgba(0,0,0,0.25)] blur-[2px] lg:h-24" />
           <div class="px-8 pb-8 lg:px-12 lg:pb-12">
-            <h2 class="mb-8 text-center text-10 text-[var(--dark-brown)] font-semibold font-['Cormorant'] italic lg:mb-12 lg:text-16">
+            <h2 class="mb-8 text-center text-10 text-[var(--yunda-bark)] font-semibold font-display italic lg:mb-12 lg:text-16">
               {{ $t('surrogacy.application.title') }}
             </h2>
 
             <!-- Message -->
-            <p class="mb-8 text-center text-8 text-[var(--dark-brown)] font-medium font-['Cormorant'] lg:mb-10 lg:text-10">
+            <p class="mb-8 text-center text-8 text-[var(--yunda-bark)] font-medium font-display lg:mb-10 lg:text-10">
               {{ message }}
             </p>
 
             <!-- Close Button -->
             <div class="flex justify-center">
               <button
-                class="rounded-full bg-[#F6ECD8] from-[#B2BBB2] to-[#B2BBB2] bg-gradient-to-b px-12 py-2.5 text-6 text-[#FFFCF6] font-medium font-['SourceSerif4'] bg-blend-overlay transition-opacity hover:opacity-90"
+                class="rounded-full bg-[#F6ECD8] from-[#B2BBB2] to-[#B2BBB2] bg-gradient-to-b px-12 py-2.5 text-6 text-[var(--yunda-petal)] font-medium font-['SourceSerif4'] bg-blend-overlay transition-opacity hover:opacity-90"
                 @click="$emit('update:modelValue', false); $emit('close')"
               >
                 {{ buttonText || $t('common.ok') }}

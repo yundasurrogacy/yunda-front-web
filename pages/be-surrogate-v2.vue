@@ -945,11 +945,11 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-[var(--head-bg)]">
+  <div class="min-h-screen overflow-hidden bg-[var(--yunda-petal)]">
     <AppHeader />
     <!-- Header -->
-    <div class="relative h-30 w-full flex items-center justify-center bg-[#BFC9BF] lg:h-80">
-      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
+    <div class="relative h-30 w-full flex items-center justify-center bg-[var(--yunda-bark)] lg:h-80">
+      <h1 class="text-center font-display text-[32px] text-[var(--yunda-petal)] font-semibold italic leading-[1.1] lg:text-[50px]">
         {{ $t('surrogate.application.pageTitle') }}
       </h1>
     </div>
@@ -958,25 +958,25 @@ async function handleSubmit() {
     <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
       <!-- Success Message -->
       <div class="mb-16 text-center lg:text-5">
-        <h2 class="mb-8 text-8 font-semibold" style="font-family: var(--font-primary)">
+        <h2 class="mb-8 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
           {{ $t('surrogate.application.congratulations.title') }}
         </h2>
-        <p class="mx-auto mb-4 max-w-966px leading-relaxed">
+        <p class="mx-auto mb-4 max-w-966px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
           {{ $t('surrogate.application.congratulations.message1') }}
         </p>
-        <p class="mx-auto mb-12 max-w-954px">
+        <p class="mx-auto mb-12 max-w-954px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
           {{ $t('surrogate.application.congratulations.message2') }}
         </p>
-        <p class="mx-auto max-w-954px text-8 font-semibold" style="font-family: var(--font-primary)">
+        <p class="mx-auto max-w-954px font-sans text-lg text-[var(--yunda-bark)] font-bold lg:text-xl" style="font-family: var(--font-text)">
           {{ $t('surrogate.application.congratulations.thanks') }}
         </p>
       </div>
 
       <!-- Form Container -->
-      <div class="mb-20 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
+      <div class="mb-20 rounded-5 from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
         <form data-allow-automatic-events="false" @submit.prevent="handleSubmit">
           <!-- I. General Information -->
-          <h3 id="section-general" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-general" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.generalInfo') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1003,16 +1003,16 @@ async function handleSubmit() {
               <div>
                 <label class="mb-4 block leading-6">{{ $t('surrogate.application.gcIntake.heightWeight') }} <span class="text-red-500">*</span></label>
                 <div class="flex gap-2">
-                  <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                  <input v-model="form.general_info.height_feet" type="number" min="4" max="7" placeholder="5" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.feet') }}</span>
-                  <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                  <input v-model="form.general_info.height_inches" type="number" min="0" max="11" placeholder="6" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.inches') }}</span>
                 </div>
               </div>
               <div>
                 <label class="mb-4 block leading-6">{{ $t('surrogate.application.form.weight') }} <span class="text-red-500">*</span></label>
                 <div class="flex gap-2">
-                  <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]">
+                  <input v-model="form.general_info.weight" type="number" min="80" max="300" placeholder="140" class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--yunda-bark)]">
                   <span class="flex items-center text-gray-600">{{ $t('surrogate.application.form.units.pounds') }}</span>
                 </div>
               </div>
@@ -1089,7 +1089,7 @@ async function handleSubmit() {
           </div>
 
           <!-- II. Pregnancy & Birth History -->
-          <h3 id="section-pregnancy-birth" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-pregnancy-birth" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.pregnancyBirthHistory') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1119,7 +1119,7 @@ async function handleSubmit() {
           </div>
 
           <!-- III. Delivery History -->
-          <h3 id="section-delivery" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-delivery" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.deliveryHistory') }}
           </h3>
           <div class="mb-16 space-y-6">
@@ -1138,7 +1138,7 @@ async function handleSubmit() {
                 <h4 class="text-5 font-semibold">
                   {{ $t('surrogate.application.gcIntake.babyNum', { n: idx + 1 }) }}
                 </h4>
-                <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-4 py-2 text-4 text-white transition hover:opacity-90" @click="removeDelivery(idx)">
+                <button type="button" class="rounded-2 bg-[var(--yunda-bark)] px-4 py-2 text-4 text-[var(--yunda-petal)] transition hover:opacity-90" @click="removeDelivery(idx)">
                   {{ $t('surrogate.application.gcIntake.removeDelivery') }}
                 </button>
               </div>
@@ -1151,7 +1151,7 @@ async function handleSubmit() {
                 <FormInput v-model="d.hospital" :label="$t('surrogate.application.gcIntake.deliveryHospital')" class="lg:col-span-2" required />
               </div>
             </div>
-            <button type="button" class="rounded-2 bg-[var(--grayish-green)] px-8 py-3 text-white font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= MAX_DELIVERY_HISTORY" @click="addDelivery">
+            <button type="button" class="rounded-2 bg-[var(--yunda-bark)] px-8 py-3 text-[var(--yunda-petal)] font-bold shadow transition disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-90" :disabled="form.delivery_history.length >= MAX_DELIVERY_HISTORY" @click="addDelivery">
               <svg width="18" height="18" fill="none" viewBox="0 0 18 18" class="mr-2 inline align-middle"><path d="M9 2v14M2 9h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
               {{ $t('surrogate.application.gcIntake.addDelivery') }}
             </button>
@@ -1161,10 +1161,10 @@ async function handleSubmit() {
           </div>
 
           <!-- IV. Pregnancy-Related Medical History -->
-          <h3 id="section-pregnancy-medical" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-pregnancy-medical" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.pregnancyMedical') }}
           </h3>
-          <p class="text-sage-700 mb-4">
+          <p class="text-[var(--yunda-bark)] mb-4">
             {{ $t('surrogate.application.gcIntake.pregMedicalIntro') }}
           </p>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1221,7 +1221,7 @@ async function handleSubmit() {
           </div>
 
           <!-- V. Medical & Health -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.medicalHealth') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1250,7 +1250,7 @@ async function handleSubmit() {
             <p class="text-xs text-gray-500 lg:col-span-2">
               {{ $t('surrogate.application.gcIntake.papSmearNote') }}
             </p>
-            <p class="text-sage-700 text-sm lg:col-span-2">
+            <p class="text-[var(--yunda-bark)] text-sm lg:col-span-2">
               {{ $t('surrogate.application.gcIntake.vaccinationIntro') }}
             </p>
             <div>
@@ -1291,10 +1291,10 @@ async function handleSubmit() {
           </div>
 
           <!-- VI. Mental Health -->
-          <h3 id="section-mental-health" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-mental-health" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.mentalHealth') }}
           </h3>
-          <p class="text-sage-700 mb-4">
+          <p class="text-[var(--yunda-bark)] mb-4">
             {{ $t('surrogate.application.gcIntake.mentalHealthIntro') }}
           </p>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1329,7 +1329,7 @@ async function handleSubmit() {
           </div>
 
           <!-- VII. Substance Use -->
-          <h3 id="section-substance-use" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-substance-use" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.substanceUse') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1339,7 +1339,7 @@ async function handleSubmit() {
               </p><div class="flex gap-8">
                 <FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="no" :label="$t('surrogate.application.form.no')" /><FormRadio v-model="form.substance_use.drug_use_pregnancy" name="drugPreg" value="yes" :label="$t('surrogate.application.form.yes')" />
               </div><div v-if="form.substance_use.drug_use_pregnancy === 'yes'" class="mt-4 space-y-2">
-                <p class="text-sage-700 text-sm">
+                <p class="text-[var(--yunda-bark)] text-sm">
                   {{ $t('surrogate.application.gcIntake.drugTypes') }}
                 </p><div class="flex flex-wrap gap-4">
                   <FormCheckbox v-model="form.substance_use.drug_marijuana" :label="$t('surrogate.application.gcIntake.drugMarijuana')" /><FormCheckbox v-model="form.substance_use.drug_fentanyl" :label="$t('surrogate.application.gcIntake.drugFentanyl')" /><FormCheckbox v-model="form.substance_use.drug_methamphetamine" :label="$t('surrogate.application.gcIntake.drugMethamphetamine')" /><FormCheckbox v-model="form.substance_use.drug_mdma" :label="$t('surrogate.application.gcIntake.drugMDMA')" /><FormInput v-model="form.substance_use.drug_other" :label="$t('surrogate.application.gcIntake.drugOther')" />
@@ -1370,10 +1370,10 @@ async function handleSubmit() {
           </div>
 
           <!-- VIII. Infectious Disease -->
-          <h3 class="mb-8 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 class="mb-8 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.infectiousDisease') }}
           </h3>
-          <p class="text-sage-700 mb-4">
+          <p class="text-[var(--yunda-bark)] mb-4">
             {{ $t('surrogate.application.gcIntake.infectiousIntro') }}
           </p>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1408,7 +1408,7 @@ async function handleSubmit() {
           </div>
 
           <!-- IX. Other Medical -->
-          <h3 id="section-other-medical" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-other-medical" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.otherMedical') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1450,7 +1450,7 @@ async function handleSubmit() {
           </div>
 
           <!-- X. Preferences -->
-          <h3 id="section-preferences" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-preferences" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.preferences') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1515,7 +1515,7 @@ async function handleSubmit() {
           </div>
 
           <!-- XI. Legal & Administrative -->
-          <h3 id="section-legal" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-legal" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.legalAdmin') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1544,7 +1544,7 @@ async function handleSubmit() {
           </div>
 
           <!-- XII. Notes -->
-          <h3 id="section-notes" class="mb-8 scroll-mt-24 text-6 font-semibold" style="font-family: var(--font-primary)">
+          <h3 id="section-notes" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.gcIntake.sections.notes') }}
           </h3>
           <div class="grid grid-cols-1 mb-16 gap-6 lg:grid-cols-2 lg:gap-x-28">
@@ -1559,7 +1559,7 @@ async function handleSubmit() {
           </div>
 
           <!-- 上传照片 Upload Photos (minimum 2) -->
-          <h3 id="section-upload-photos" class="mb-8 scroll-mt-24 text-6 font-semibold">
+          <h3 id="section-upload-photos" class="mb-8 scroll-mt-24 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:text-[24px]" style="font-family: var(--font-text)">
             {{ $t('surrogate.application.sections.uploadPhotos') }} <span class="text-red-500">*</span>
           </h3>
           <div class="mb-16 space-y-6">
@@ -1580,15 +1580,15 @@ async function handleSubmit() {
             <!-- 上传区域：最多 10 张，达上限后不再可点击 -->
             <div
               class="group relative flex flex-col items-center justify-center border-2 rounded-4 border-dashed py-12 shadow-sm transition"
-              :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'cursor-pointer border-[var(--grayish-green)] hover:border-[var(--grayish-green)] hover:bg-[rgba(234,232,208,0.25)]'"
+              :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'cursor-pointer border-[var(--yunda-bark)] hover:border-[var(--yunda-bark)] hover:bg-[rgba(234,232,208,0.25)]'"
               @dragover.prevent
               @drop.prevent="handleDrop"
               @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
             >
               <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-5 text-gray-500">{{ $t('surrogate.application.form.uploadPhotosMaxTip') }}</span>
               <template v-else>
-                <span class="mb-4 block text-8 text-[var(--grayish-green)] opacity-60">+</span>
-                <span class="text-5 text-gray-600 transition group-hover:text-[var(--grayish-green)]">{{ $t('surrogate.application.form.uploadPhotosTip') }}</span>
+                <span class="mb-4 block text-8 text-[var(--yunda-bark)] opacity-60">+</span>
+                <span class="text-5 text-gray-600 transition group-hover:text-[var(--yunda-bark)]">{{ $t('surrogate.application.form.uploadPhotosTip') }}</span>
               </template>
               <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
             </div>
@@ -1612,7 +1612,7 @@ async function handleSubmit() {
             <button
               type="submit"
               :disabled="!form.finalConsent || isSubmitting"
-              class="rounded-2.5 bg-[var(--grayish-green)] px-12 py-4 text-20px text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
+              class="rounded-2.5 yunda-type-button bg-[var(--yunda-bark)] px-12 py-4 text-lg text-[var(--yunda-petal)] tracking-[0.02em] shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity"
               :class="form.finalConsent && !isSubmitting ? 'hover:opacity-90 cursor-pointer' : 'opacity-50 cursor-not-allowed'"
             >
               {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('surrogate.application.form.submitButton') }}

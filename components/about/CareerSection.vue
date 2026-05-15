@@ -5,13 +5,13 @@ useScrollAnimation()
 </script>
 
 <template>
-  <div class="career-section bg-[#A9A67D] px-6 py-20 lg:px-20">
+  <div class="career-section bg-[var(--yunda-bark)] px-6 py-20 text-[var(--yunda-petal)] lg:px-20">
     <div class="scroll-animate container mx-auto text-center">
-      <h2 class="mx-auto mb-8 max-w-4xl text-3xl font-semibold lg:text-5xl" style="font-family: var(--font-primary)">
+      <h2 class="mx-auto mb-8 max-w-4xl font-display text-[32px] font-medium leading-[1.15] lg:text-[42px]">
         {{ $t('about.careers.title') }}
       </h2>
-      <p class="mx-auto mb-12 max-w-4xl text-base lg:text-xl" v-html="$t('about.careers.description')" />
-      <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] lg:text-4 hover:-translate-y-0.5">
+      <p class="mx-auto mb-12 max-w-4xl font-sans text-base leading-[1.75] lg:text-[19px]" style="font-family: var(--font-text)" v-html="$t('about.careers.description')" />
+      <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="yunda-type-button inline-flex transform items-center justify-center rounded-[10px] bg-[var(--yunda-petal)] px-5 py-3 text-[var(--yunda-bark)] tracking-[0.02em] transition-all duration-300 ease-in-out active:translate-y-0 hover:-translate-y-0.5 hover:opacity-95 lg:text-base" style="font-family: var(--font-text)">
         {{ $t('about.careers.button') }}
       </a>
     </div>

@@ -318,44 +318,44 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <main>
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-[#fff3e5] to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-[#fff3e5] to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-18%] h-[340px] w-[360px] rounded-full bg-white/60 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-14%] h-[380px] w-[420px] rounded-full bg-[var(--light-cream)]/70 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-14%] h-[380px] w-[420px] rounded-full bg-[var(--yunda-petal)]/70 blur-3xl" />
           <div class="absolute bottom-[-22%] left-[-20%] h-[420px] w-[520px] rounded-[58%] bg-white/55 blur-3xl" />
-          <div class="absolute bottom-[-24%] right-[-18%] h-[420px] w-[520px] rounded-[60%] bg-[var(--light-cream)]/60 blur-3xl" />
+          <div class="absolute bottom-[-24%] right-[-18%] h-[420px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1760px] w-full px-6 py-14 lg:px-14 lg:py-20">
           <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
             <div class="space-y-6">
-              <h1 class="text-4xl font-semibold leading-tight lg:text-[52px]" style="font-family: var(--font-primary)">
+              <h1 class="font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
                 {{ c.heroTitle }}
               </h1>
 
-              <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.heroLead }}
               </p>
-              <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.heroBody }}
               </p>
 
               <div class="flex flex-wrap gap-4">
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-6 py-3 text-sm text-white font-semibold shadow-[0_16px_30px_rgba(169,108,66,0.26)] transition-transform duration-200 hover:-translate-y-0.5"
-                  style="font-family: var(--font-secondary)"
+                  class="inline-flex items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-6 py-3 text-sm text-[var(--yunda-petal)] font-semibold shadow-[0_16px_30px_rgba(169,108,66,0.26)] transition-transform duration-200 hover:-translate-y-0.5"
+                  style="font-family: var(--font-text)"
                 >
                   {{ c.ctaPrimary }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/surrogacy-cost')"
-                  class="inline-flex items-center justify-center border border-[var(--primary-brown)]/30 rounded-[12px] bg-white/85 px-6 py-3 text-sm text-[var(--dark-brown)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
-                  style="font-family: var(--font-secondary)"
+                  class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/30 rounded-[12px] bg-white/85 px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
+                  style="font-family: var(--font-text)"
                 >
                   {{ c.ctaSecondary }}
                 </NuxtLink>
@@ -363,7 +363,7 @@ useHead(() => ({
             </div>
 
             <div class="relative">
-              <div class="relative isolate overflow-hidden border border-[var(--primary-brown)]/35 rounded-[32px] shadow-[0_26px_70px_rgba(169,108,66,0.20)]">
+              <div class="relative isolate overflow-hidden border border-[var(--yunda-maple)]/35 rounded-[32px] shadow-[0_26px_70px_rgba(169,108,66,0.20)]">
                 <div class="absolute inset-0 from-[#f9d9b7] via-[#eab07d] to-[#d88556] bg-gradient-to-r" />
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.36),transparent_42%),radial-gradient(circle_at_80%_24%,rgba(255,255,255,0.26),transparent_38%)]" />
 
@@ -401,59 +401,59 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden bg-[var(--head-bg)]">
+      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-20%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[400px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[400px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[480px] rounded-[55%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-16%] h-[420px] w-[500px] rounded-[58%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-20%] right-[-16%] h-[420px] w-[500px] rounded-[58%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
           <div class="grid mx-auto max-w-[1480px] gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
             <div class="space-y-5">
-              <h2 class="text-3xl font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s2Title }}
               </h2>
-              <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.s2Body1 }}
               </p>
-              <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.s2Body2 }}
               </p>
             </div>
 
             <div class="relative flex justify-center">
-              <div class="relative aspect-square max-w-[420px] w-full overflow-hidden border border-[var(--primary-brown)]/25 rounded-[28px] bg-white/85 p-7 shadow-[0_24px_60px_rgba(169,108,66,0.18)] backdrop-blur-md">
+              <div class="relative aspect-square max-w-[420px] w-full overflow-hidden border border-[var(--yunda-maple)]/25 rounded-[28px] bg-white/85 p-7 shadow-[0_24px_60px_rgba(169,108,66,0.18)] backdrop-blur-md">
                 <div class="absolute inset-0 from-[#ffe6c9] via-[#f9d3a8] to-[#e9a36d] bg-gradient-to-br opacity-70" />
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(255,255,255,0.7),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.45),transparent_40%)]" />
                 <div class="relative h-full flex flex-col justify-between rounded-[18px] bg-white/78 p-6 shadow-[0_12px_28px_rgba(39,31,24,0.10)]">
                   <div class="space-y-3">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-brown)]/10 px-4 py-1.5 text-base text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-secondary)">
-                      <span class="h-7 w-7 inline-flex items-center justify-center rounded-full bg-[var(--primary-brown)] text-lg text-white">✶</span>
+                    <div class="inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-4 py-1.5 text-base text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                      <span class="h-7 w-7 inline-flex items-center justify-center rounded-full bg-[var(--yunda-maple)] text-lg text-white">✶</span>
                       <span>{{ c.s2CardTitle }}</span>
                     </div>
-                    <h3 class="text-2xl text-[var(--dark-brown)] font-semibold leading-snug lg:text-[26px]" style="font-family: var(--font-primary)">
+                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
                       {{ c.s2CardSub }}
                     </h3>
                   </div>
 
-                  <ul class="text-base text-[var(--dark-brown)]/90 leading-relaxed space-y-2 lg:text-lg" style="font-family: var(--font-secondary)">
+                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2 lg:text-lg" style="font-family: var(--font-text)">
                     <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                       <span>{{ c.s2Checklist[0] }}</span>
                     </li>
                     <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                       <span>{{ c.s2Checklist[1] }}</span>
                     </li>
                     <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                       <span>{{ c.s2Checklist[2] }}</span>
                     </li>
                   </ul>
 
-                  <div class="mt-2 inline-flex items-center gap-2 text-base text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-secondary)" />
+                  <div class="mt-2 inline-flex items-center gap-2 text-base text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)" />
                 </div>
               </div>
             </div>
@@ -461,18 +461,18 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-22%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-20%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/55 blur-3xl" />
-          <div class="absolute bottom-[-22%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-22%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
           <div class="mx-auto max-w-[1480px] space-y-12">
             <div class="text-center space-y-3">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s3Title }}
               </h2>
             </div>
@@ -485,22 +485,22 @@ useHead(() => ({
                 :class="idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''"
               >
                 <div class="space-y-4">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-[var(--primary-brown)]/10 px-3 py-1 text-xs text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-secondary)">
-                    <span class="h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                  <div class="inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                    <span class="h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                     <span>{{ step.title }}</span>
                   </div>
-                  <h3 class="text-2xl text-[var(--dark-brown)] font-semibold leading-snug lg:text-[26px]" style="font-family: var(--font-primary)">
+                  <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
                     {{ step.title }}
                   </h3>
-                  <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                  <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                     {{ step.body1 }}
                   </p>
-                  <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                  <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                     {{ step.body2 }}
                   </p>
                 </div>
 
-                <div class="relative overflow-hidden border border-[var(--primary-brown)]/25 rounded-[26px] bg-white/80 shadow-[0_20px_52px_rgba(64,84,120,0.12)]">
+                <div class="relative overflow-hidden border border-[var(--yunda-maple)]/25 rounded-[26px] bg-white/80 shadow-[0_20px_52px_rgba(64,84,120,0.12)]">
                   <img
                     :src="step.img"
                     :alt="step.imgAlt"
@@ -515,18 +515,18 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden bg-[var(--head-bg)]">
+      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-18%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
           <div class="mx-auto max-w-[1480px] space-y-10">
             <div class="text-center space-y-3">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s4Title }}
               </h2>
             </div>
@@ -535,39 +535,39 @@ useHead(() => ({
               <div
                 v-for="(card, idx) in c.s4Blocks"
                 :key="card.title"
-                class="relative overflow-hidden border border-[var(--primary-brown)]/28 rounded-[22px] bg-white/88 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md"
+                class="relative overflow-hidden border border-[var(--yunda-maple)]/28 rounded-[22px] bg-white/88 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md"
                 :class="idx === 0 ? 'from-[#fff7ee] via-white to-[#fdf0df] bg-gradient-to-br' : 'from-[#fff4e6] via-white to-[#faead8] bg-gradient-to-br'"
               >
                 <div class="flex items-start gap-3">
-                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--primary-brown)]/10 text-lg text-[var(--primary-brown)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-secondary)">
+                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)]/10 text-lg text-[var(--yunda-maple)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-text)">
                     {{ idx + 1 }}
                   </div>
                   <div class="space-y-2">
-                    <h3 class="text-2xl text-[var(--dark-brown)] font-semibold leading-snug lg:text-[26px]" style="font-family: var(--font-primary)">
+                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
                       {{ card.title }}
                     </h3>
-                    <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                       {{ card.body1 }}
                     </p>
-                    <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                       {{ card.body2 }}
                     </p>
                   </div>
                 </div>
 
                 <div class="grid mt-4 gap-3 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:gap-4">
-                  <ul class="text-base text-[var(--dark-brown)]/90 leading-relaxed space-y-2" style="font-family: var(--font-secondary)">
+                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2" style="font-family: var(--font-text)">
                     <li
                       v-for="b in card.bullets"
                       :key="b"
                       class="flex gap-2"
                     >
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                       <span>{{ b }}</span>
                     </li>
                   </ul>
 
-                  <div class="relative overflow-hidden border border-[var(--primary-brown)]/24 rounded-[18px] bg-white/90 shadow-[0_16px_44px_rgba(169,108,66,0.16)] lg:place-self-center">
+                  <div class="relative overflow-hidden border border-[var(--yunda-maple)]/24 rounded-[18px] bg-white/90 shadow-[0_16px_44px_rgba(169,108,66,0.16)] lg:place-self-center">
                     <img
                       :src="card.img"
                       :alt="card.imgAlt"
@@ -579,8 +579,8 @@ useHead(() => ({
                   </div>
                 </div>
 
-                <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--primary-brown)]/10 px-3 py-1 text-xs text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-secondary)">
-                  <span class="h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                  <span class="h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                   <span>{{ card.tag }}</span>
                 </div>
               </div>
@@ -589,18 +589,18 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-20%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
           <div class="mx-auto max-w-[1480px] space-y-12">
             <div class="text-center space-y-3">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s5Title }}
               </h2>
             </div>
@@ -609,34 +609,34 @@ useHead(() => ({
               <div
                 v-for="(card, idx) in c.s5Cards"
                 :key="card.title"
-                class="relative flex flex-col gap-4 overflow-hidden border border-[var(--primary-brown)]/28 rounded-[22px] bg-white/90 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md transition-transform duration-300 ease-out hover:shadow-[0_24px_54px_rgba(39,31,24,0.16)] hover:-translate-y-1"
+                class="relative flex flex-col gap-4 overflow-hidden border border-[var(--yunda-maple)]/28 rounded-[22px] bg-white/90 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md transition-transform duration-300 ease-out hover:shadow-[0_24px_54px_rgba(39,31,24,0.16)] hover:-translate-y-1"
                 :class="idx === 0 ? 'from-[#fff7ee] via-white to-[#fdf0df] bg-gradient-to-br' : 'from-[#fff4e6] via-white to-[#faead8] bg-gradient-to-br'"
               >
                 <div class="flex items-start gap-3">
-                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--primary-brown)]/10 text-lg text-[var(--primary-brown)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-secondary)">
+                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)]/10 text-lg text-[var(--yunda-maple)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-text)">
                     {{ idx + 1 }}
                   </div>
                   <div class="space-y-2">
-                    <h3 class="text-2xl text-[var(--dark-brown)] font-semibold leading-snug lg:text-[26px]" style="font-family: var(--font-primary)">
+                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
                       {{ card.title }}
                     </h3>
-                    <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                       {{ card.body1 }}
                     </p>
-                    <p class="text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                       {{ card.body2 }}
                     </p>
                   </div>
                 </div>
 
                 <div class="grid gap-3 lg:grid-cols-1 lg:items-center lg:gap-4">
-                  <ul class="text-base text-[var(--dark-brown)]/90 leading-relaxed space-y-2" style="font-family: var(--font-secondary)">
+                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2" style="font-family: var(--font-text)">
                     <li
                       v-for="b in card.bullets"
                       :key="b"
                       class="flex gap-2"
                     >
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
+                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
                       <span>{{ b }}</span>
                     </li>
                   </ul>
@@ -648,7 +648,7 @@ useHead(() => ({
               <div
                 v-for="photo in c.s5Gallery"
                 :key="photo.src"
-                class="relative overflow-hidden border border-[var(--primary-brown)]/20 rounded-[18px] bg-white/90 shadow-[0_14px_40px_rgba(64,84,120,0.12)] transition-transform duration-300 ease-out hover:shadow-[0_20px_48px_rgba(39,31,24,0.14)] hover:-translate-y-1"
+                class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-[18px] bg-white/90 shadow-[0_14px_40px_rgba(64,84,120,0.12)] transition-transform duration-300 ease-out hover:shadow-[0_20px_48px_rgba(39,31,24,0.14)] hover:-translate-y-1"
               >
                 <img
                   :src="photo.src"
@@ -663,18 +663,18 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden bg-[var(--head-bg)]">
+      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-18%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
           <div class="mx-auto max-w-[1480px] space-y-8">
             <div class="text-center space-y-3">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s7Title }}
               </h2>
             </div>
@@ -683,15 +683,15 @@ useHead(() => ({
               <details
                 v-for="faq in c.s7Faqs"
                 :key="faq.q"
-                class="group border border-[var(--primary-brown)]/22 rounded-[16px] bg-white/88 px-4 py-3 shadow-[0_12px_32px_rgba(64,84,120,0.10)] transition-all hover:border-[var(--primary-brown)]/35 hover:shadow-[0_16px_38px_rgba(64,84,120,0.12)] hover:-translate-y-0.5"
+                class="group border border-[var(--yunda-maple)]/22 rounded-[16px] bg-white/88 px-4 py-3 shadow-[0_12px_32px_rgba(64,84,120,0.10)] transition-all hover:border-[var(--yunda-maple)]/35 hover:shadow-[0_16px_38px_rgba(64,84,120,0.12)] hover:-translate-y-0.5"
               >
                 <summary class="flex cursor-pointer list-none items-start gap-2 text-left">
-                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--primary-brown)]" />
-                  <span class="text-lg text-[var(--dark-brown)] font-semibold transition-colors duration-200 lg:text-xl group-open:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
+                  <span class="text-lg text-[var(--yunda-bark)] font-semibold transition-colors duration-200 lg:text-xl group-open:text-[var(--yunda-maple)]" >
                     {{ faq.q }}
                   </span>
                 </summary>
-                <p class="mt-2 pl-6 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-2 pl-6 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ faq.a }}
                 </p>
               </details>

@@ -132,8 +132,8 @@ onBeforeUnmount(() => {
     class="px-4 py-12 md:px-20 md:py-16"
     :class="
       props.variant === 'plain'
-        ? 'bg-[var(--head-bg)]'
-        : 'bg-[var(--head-bg)]'
+        ? 'bg-[var(--yunda-petal)]'
+        : 'bg-[color-mix(in_srgb,var(--yunda-harvest)_18%,var(--yunda-petal))]'
     "
   >
     <div class="mx-auto max-w-[1400px]">
@@ -146,10 +146,10 @@ onBeforeUnmount(() => {
         >
       </div>
       <div class="scroll-animate text-center">
-        <h2 class="text-7 text-black font-semibold md:text-9" style="font-family: var(--font-primary)">
+        <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
           {{ heading }}
         </h2>
-        <p class="mt-4 text-4 text-[var(--dark-brown)] md:text-4.5" style="font-family: var(--font-secondary)">
+        <p class="mt-4 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
           {{ subheading }}
         </p>
       </div>

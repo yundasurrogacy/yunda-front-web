@@ -112,20 +112,22 @@ watch(() => route.fullPath, () => {
   justify-content: center;
   gap: 0.25rem;
   padding: 0.45rem 0.4rem calc(0.45rem + env(safe-area-inset-bottom));
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
+  font-family: var(--font-text);
   font-size: clamp(0.79rem, 3.1vw, 0.92rem);
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
 .mobile-apply-cta-button.parents {
-  background: color-mix(in srgb, var(--primary-brown) 55%, white);
+  background: color-mix(in srgb, var(--yunda-petal) 55%, var(--yunda-maple) 45%);
   border-top-left-radius: 0.95rem;
 }
 
 .mobile-apply-cta-button.surrogate {
-  background: color-mix(in srgb, var(--olive-green) 70%, white);
+  background: color-mix(in srgb, var(--yunda-petal) 60%, var(--yunda-harvest) 40%);
   border-top-right-radius: 0.95rem;
 }
 
@@ -136,7 +138,7 @@ watch(() => route.fullPath, () => {
 .mobile-apply-icon {
   width: 1.35rem;
   height: 1.35rem;
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
 }
 
 .mobile-apply-icon svg {

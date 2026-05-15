@@ -1,8 +1,20 @@
+/**
+ * 颜色：YUNDA v1 语义色 + 历史变量映射
+ * 规范：修改/2026-05-15/YUNDA_字体规范.md §4
+ * 新代码优先使用 --yunda-*；旧代码继续用 --dark-brown 等即可得到 Bark/Petal/Maple 对齐。
+ */
 :root {
-  --primary-brown: #a96c42;
-  --light-cream: #fbf0da;
+  --yunda-bark: #3c2415;
+  --yunda-petal: #faf1e0;
+  --yunda-sky: #cad3d0;
+  --yunda-harvest: #bab58d;
+  --yunda-maple: #c17c45;
+
+  --dark-brown: var(--yunda-bark);
+  --light-cream: var(--yunda-petal);
+  --primary-brown: var(--yunda-maple);
+
   --grayish-green: #bfc9bf;
-  --dark-brown: #271f18;
   --olive-green: #a9a67d;
   --black: #000000;
   --white: #ffffff;

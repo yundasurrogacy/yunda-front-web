@@ -179,10 +179,10 @@ useHead({
 <template>
   <div>
     <AppHeader />
-    <main class="min-h-screen bg-white">
+    <main class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
         <article class="max-w-none prose prose-lg">
-          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
+          <h1 class="mb-4 font-sans text-[32px] text-[var(--yunda-bark)] font-bold leading-tight lg:text-[40px]" style="font-family: var(--font-text)">
             {{ t.title }}
           </h1>
 
@@ -191,7 +191,7 @@ useHead({
             <p><strong>{{ t.lastUpdated }}:</strong> {{ t.lastUpdatedValue }}</p>
           </div>
 
-          <div class="mb-8 text-gray-700 leading-relaxed">
+          <div class="mb-8 text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px]" style="font-family: var(--font-text)">
             <p class="mb-4">
               {{ t.intro }}
             </p>
@@ -199,70 +199,70 @@ useHead({
 
           <!-- Section 1: Acceptance of Terms -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               1. {{ t.section1.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section1.content }}</p>
             </div>
           </section>
 
           <!-- Section 2: Services Description -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               2. {{ t.section2.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section2.content }}</p>
             </div>
           </section>
 
           <!-- Section 3: Eligibility -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               3. {{ t.section3.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section3.content }}</p>
             </div>
           </section>
 
           <!-- Section 4: User Responsibilities -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               4. {{ t.section4.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section4.content }}</p>
             </div>
           </section>
 
           <!-- Section 5: Privacy and Data Protection -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               5. {{ t.section5.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section5.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Intellectual Property -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               6. {{ t.section6.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section6.content }}</p>
             </div>
           </section>
 
           <!-- Section 7: User Submissions -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               7. {{ t.section7.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section7.content1 }}</p>
               <p>{{ t.section7.content2 }}</p>
               <p class="mt-4 font-semibold">
@@ -289,10 +289,10 @@ useHead({
 
           <!-- Section 8: Disclaimer of Warranties -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               8. {{ t.section8.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section8.content1 }}</p>
               <p>{{ t.section8.content2 }}</p>
             </div>
@@ -300,23 +300,23 @@ useHead({
 
           <!-- Section 9: Governing Law -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               9. {{ t.section9.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section9.content }}</p>
             </div>
           </section>
 
           <!-- Section 10: Privacy Policy -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               10. {{ t.section10.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section10.content }}</p>
               <p>
-                <NuxtLink :to="localePath('/privacy-policy')" class="text-blue-600 hover:underline">
+                <NuxtLink :to="localePath('/privacy-policy')" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">
                   {{ t.section10.link }}
                 </NuxtLink>
               </p>
@@ -325,19 +325,19 @@ useHead({
 
           <!-- Section 11: Contact Us -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               11. {{ t.section11.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section11.content }}</p>
               <div class="rounded bg-gray-50 p-4">
                 <p>
                   <strong>{{ t.section11.phone }}:</strong>
-                  <a href="tel:+16265638656" class="text-blue-600 hover:underline">+1 (626) 563-8656</a>
+                  <a href="tel:+16265638656" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">+1 (626) 563-8656</a>
                 </p>
                 <p>
                   <strong>{{ t.section11.email }}:</strong>
-                  <a href="mailto:kaylal@yundasurrogacy.com" class="text-blue-600 hover:underline">kaylal@yundasurrogacy.com</a>
+                  <a href="mailto:kaylal@yundasurrogacy.com" class="text-[var(--yunda-bark)] hover:text-[var(--yunda-maple)] underline">kaylal@yundasurrogacy.com</a>
                 </p>
               </div>
             </div>

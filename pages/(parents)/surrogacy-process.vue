@@ -24,10 +24,10 @@ const PAGE_ASSETS = {
 function timelineBadgeClass(index: number) {
   const step = index + 1
   if (step === 1 || step === 4 || step === 7)
-    return 'bg-[#3d2b1f] text-white'
+    return 'bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
   if (step === 2 || step === 5 || step === 8)
-    return 'bg-[#8a9b7d] text-white'
-  return 'bg-[#c68653] text-white'
+    return 'bg-[var(--yunda-harvest)] text-[var(--yunda-bark)]'
+  return 'bg-[var(--yunda-maple)] text-[var(--yunda-petal)]'
 }
 
 const { locale } = useI18n()
@@ -756,7 +756,7 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <main>
@@ -782,34 +782,34 @@ useHead(() => ({
           <div class="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-10">
             <!-- 左：文案 + 桌面 CTA -->
             <div class="relative max-w-xl lg:col-span-5 lg:max-w-none">
-              <h1 class="relative text-4xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[52px] sm:text-5xl" style="font-family: var(--font-primary)">
+              <h1 class="relative font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
                 {{ heroTitle }}
               </h1>
-              <p class="relative mt-6 text-lg text-[var(--dark-brown)]/90 leading-relaxed lg:text-xl" style="font-family: var(--font-secondary)">
+              <p class="relative mt-6 text-base text-[var(--yunda-bark)]/90 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ heroSubtitle }}
               </p>
-              <ul class="relative mt-6 list-none space-y-3" style="font-family: var(--font-secondary)">
+              <ul class="relative mt-6 list-none space-y-3" style="font-family: var(--font-text)">
                 <li
                   v-for="(bullet, bi) in heroTrustBullets"
                   :key="bi"
-                  class="flex gap-3 text-base text-[var(--dark-brown)]/90 leading-relaxed"
+                  class="flex gap-3 text-base text-[var(--yunda-bark)]/90 leading-[1.75]"
                 >
-                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/80" />
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--yunda-maple)]/80" />
                   <span>{{ bullet }}</span>
                 </li>
               </ul>
               <div class="relative mt-8 hidden flex-wrap gap-4 lg:flex">
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex items-center justify-center rounded-[6px] bg-[#c68653] px-6 py-3 text-base text-white font-semibold shadow-sm transition-opacity hover:opacity-95"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaPrimary }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex items-center justify-center border-2 border-[#c68653] rounded-[6px] bg-white px-6 py-3 text-base text-[#c68653] font-semibold transition-colors hover:bg-[#c68653]/5"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-6 py-3 text-base text-[var(--yunda-bark)] tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaSecondary }}
                 </NuxtLink>
@@ -820,12 +820,12 @@ useHead(() => ({
             <div class="relative flex flex-col lg:col-span-4">
               <div class="relative overflow-hidden rounded-2xl bg-white/45 px-4 py-6 shadow-none ring-1 ring-white/40 backdrop-blur-md lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 sm:px-5 lg:shadow-none lg:ring-0 lg:backdrop-blur-none">
                 <div class="relative">
-                  <h2 class="text-center text-2xl text-[var(--dark-brown)] font-semibold leading-snug lg:text-left lg:text-[26px] sm:text-3xl xl:text-3xl" style="font-family: var(--font-primary)">
+                  <h2 class="text-center font-display text-[24px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-left sm:text-[28px]">
                     {{ timelineTitle }}
                   </h2>
                   <div class="relative mt-6 pl-1">
                     <div class="pointer-events-none absolute bottom-2 left-[14px] top-2 w-6 sm:left-4" aria-hidden="true">
-                      <svg class="h-full w-full text-[#a67c52]" fill="none" preserveAspectRatio="none" viewBox="0 0 24 520" xmlns="http://www.w3.org/2000/svg">
+                      <svg class="h-full w-full text-[var(--yunda-maple)]" fill="none" preserveAspectRatio="none" viewBox="0 0 24 520" xmlns="http://www.w3.org/2000/svg">
                         <path
                           vector-effect="non-scaling-stroke"
                           stroke="currentColor"
@@ -836,24 +836,23 @@ useHead(() => ({
                         />
                       </svg>
                     </div>
-                    <ul class="relative list-none space-y-0" style="font-family: var(--font-secondary)">
+                    <ul class="relative list-none space-y-0" style="font-family: var(--font-text)">
                       <li
                         v-for="(row, ri) in heroTimelineItems"
                         :key="ri"
                         class="relative flex gap-4 pb-6 pl-0 last:pb-0"
                       >
                         <div
-                          class="ring-[3px] relative z-10 mt-0.5 h-8 w-8 flex shrink-0 items-center justify-center rounded-full text-xs font-semibold shadow-sm ring-white/95 sm:h-9 sm:w-9 sm:text-sm"
+                          class="font-display relative z-10 mt-0.5 h-8 w-8 flex shrink-0 items-center justify-center rounded-full text-xs font-semibold shadow-sm ring-[3px] ring-white/95 sm:h-9 sm:w-9 sm:text-sm"
                           :class="timelineBadgeClass(ri)"
-                          style="font-family: var(--font-primary)"
                         >
                           {{ ri + 1 }}
                         </div>
                         <div class="min-w-0 pt-0.5">
-                          <p class="text-[15px] text-[var(--dark-brown)] font-semibold leading-snug sm:text-base" style="font-family: var(--font-primary)">
+                          <p class="font-sans text-[15px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-base" style="font-family: var(--font-text)">
                             {{ row.title }}
                           </p>
-                          <p class="mt-0.5 text-sm text-[var(--dark-brown)]/75">
+                          <p class="mt-0.5 text-sm text-[var(--yunda-bark)]/75">
                             {{ row.duration }}
                           </p>
                         </div>
@@ -865,15 +864,15 @@ useHead(() => ({
               <div class="mt-8 flex flex-wrap gap-4 lg:hidden">
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex flex-1 items-center justify-center rounded-[6px] bg-[#c68653] px-4 py-3 text-sm text-white font-semibold sm:flex-none sm:px-6 sm:text-base"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex flex-1 items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-4 py-3 text-sm text-[var(--yunda-petal)] tracking-[0.02em] sm:flex-none sm:px-6 sm:text-base"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaPrimary }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex flex-1 items-center justify-center border-2 border-[#c68653] rounded-[6px] bg-white px-4 py-3 text-sm text-[#c68653] font-semibold sm:flex-none sm:px-6 sm:text-base"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex flex-1 items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-4 py-3 text-sm text-[var(--yunda-bark)] tracking-[0.02em] sm:flex-none sm:px-6 sm:text-base transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaSecondary }}
                 </NuxtLink>
@@ -886,16 +885,16 @@ useHead(() => ({
       </section>
 
       <!-- 第二屏：左改版 `第二屏.png` 整幅长图；右 8 步说明卡（对齐期望稿版式） -->
-      <section class="relative isolate w-full overflow-hidden from-[#f7ecde] via-[#f9f5ee] to-[var(--head-bg)] bg-gradient-to-b">
+      <section class="relative isolate w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-14%] top-[-20%] h-[320px] w-[360px] rounded-full bg-white/60 blur-3xl" />
           <div class="absolute bottom-[-24%] right-[-10%] h-[420px] w-[460px] rounded-full bg-[#efe2d3]/60 blur-3xl" />
         </div>
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[44px] sm:text-4xl" style="font-family: var(--font-primary)">
+          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
             {{ stepsTitle }}
           </h2>
-          <p class="mx-auto mt-6 max-w-4xl text-center text-lg text-[var(--dark-brown)]/85 leading-relaxed" style="font-family: var(--font-secondary)">
+          <p class="mx-auto mt-6 max-w-4xl text-center text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
             <span v-for="(part, index) in splitDurationEmphasis(stepsIntro)" :key="`steps2-intro-${index}`" :class="part.isEmphasis ? 'duration-emphasis' : ''">
               {{ part.text }}
             </span>
@@ -930,18 +929,18 @@ useHead(() => ({
               >
                 <div class="flex items-start justify-between gap-3 border-b border-[#e5e0d9] bg-[#f5f2ed] px-4 py-4 sm:gap-4 sm:px-5 sm:py-4">
                   <div class="min-w-0 flex flex-1 items-start gap-3 sm:gap-3.5">
-                    <div class="h-10 w-10 flex shrink-0 items-center justify-center rounded-full bg-[#8e8e8e] text-sm text-white font-semibold sm:h-11 sm:w-11" style="font-family: var(--font-primary)">
+                    <div class="font-display h-10 w-10 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-sm text-[var(--yunda-petal)] font-semibold sm:h-11 sm:w-11">
                       {{ step.id }}
                     </div>
-                    <h3 class="min-w-0 pt-0.5 text-left text-base text-[var(--dark-brown)] font-semibold leading-snug sm:text-lg" style="font-family: var(--font-primary)">
+                    <h3 class="min-w-0 pt-0.5 text-left font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
                       {{ step.cardTitle }}
                     </h3>
                   </div>
                   <div class="flex shrink-0 items-center gap-1.5 pt-0.5 sm:gap-2">
-                    <span v-if="step.cardDuration" class="whitespace-nowrap text-right text-xs text-[var(--dark-brown)]/75 leading-snug sm:text-sm" style="font-family: var(--font-secondary)">
+                    <span v-if="step.cardDuration" class="whitespace-nowrap text-right text-xs text-[var(--yunda-bark)]/75 leading-snug sm:text-sm" style="font-family: var(--font-text)">
                       {{ step.cardDuration }}
                     </span>
-                    <span class="shrink-0 text-[var(--dark-brown)]/30" aria-hidden="true">
+                    <span class="shrink-0 text-[var(--yunda-bark)]/30" aria-hidden="true">
                       <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                       </svg>
@@ -951,13 +950,13 @@ useHead(() => ({
                 <div class="bg-white px-4 py-0.5 divide-y divide-[#e8e3dc] sm:px-5">
                   <div class="flex items-start gap-3 py-3.5 sm:gap-4 sm:py-4">
                     <div
-                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[#8e8e8e] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
-                      style="font-family: var(--font-secondary)"
+                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[var(--yunda-bark)] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
+                      style="font-family: var(--font-text)"
                     >
                       {{ whatYouDoLabel }}
                     </div>
                     <div class="min-w-0 flex-1 pt-0.5">
-                      <ul class="m-0 list-none p-0 text-sm text-[var(--dark-brown)]/90 leading-relaxed space-y-1.5" style="font-family: var(--font-secondary)">
+                      <ul class="m-0 list-none p-0 text-base text-[var(--yunda-bark)]/90 leading-[1.75] space-y-1.5 sm:text-[17px]" style="font-family: var(--font-text)">
                         <li v-for="item in step.you" :key="item">
                           {{ item }}
                         </li>
@@ -966,13 +965,13 @@ useHead(() => ({
                   </div>
                   <div class="flex items-start gap-3 py-3.5 sm:gap-4 sm:py-4">
                     <div
-                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[#8b9dad] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
-                      style="font-family: var(--font-secondary)"
+                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[color-mix(in_srgb,var(--yunda-harvest)_75%,var(--yunda-sky)_25%)] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
+                      style="font-family: var(--font-text)"
                     >
                       {{ whatWeDoLabel }}
                     </div>
                     <div class="min-w-0 flex-1 pt-0.5">
-                      <ul class="m-0 list-none p-0 text-sm text-[var(--dark-brown)]/90 leading-relaxed space-y-1.5" style="font-family: var(--font-secondary)">
+                      <ul class="m-0 list-none p-0 text-base text-[var(--yunda-bark)]/90 leading-[1.75] space-y-1.5 sm:text-[17px]" style="font-family: var(--font-text)">
                         <li v-for="item in step.we" :key="item">
                           {{ item }}
                         </li>
@@ -981,13 +980,13 @@ useHead(() => ({
                   </div>
                   <div class="flex items-start gap-3 py-3.5 sm:gap-4 sm:py-4">
                     <div
-                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[#b8926e] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
-                      style="font-family: var(--font-secondary)"
+                      class="w-40 flex shrink-0 flex-col self-start justify-center rounded-lg bg-[var(--yunda-maple)] px-2 py-2.5 text-center text-[11px] text-white font-semibold leading-snug sm:w-44 sm:py-3 sm:text-xs"
+                      style="font-family: var(--font-text)"
                     >
                       {{ outputsLabel }}
                     </div>
                     <div class="min-w-0 flex-1 pt-0.5">
-                      <ul class="m-0 list-none p-0 text-sm text-[var(--dark-brown)]/90 leading-relaxed space-y-1.5" style="font-family: var(--font-secondary)">
+                      <ul class="m-0 list-none p-0 text-base text-[var(--yunda-bark)]/90 leading-[1.75] space-y-1.5 sm:text-[17px]" style="font-family: var(--font-text)">
                         <li v-for="item in step.outputs" :key="item">
                           {{ item }}
                         </li>
@@ -1002,12 +1001,12 @@ useHead(() => ({
       </section>
 
       <!-- Helpful guides：期望稿第三屏 — 三列等高铁卡（圆陶土图标 + 衬线标题/正文 + 底通宽 CTA） -->
-      <section class="relative isolate w-full bg-[#fdf9f3]">
+      <section class="relative isolate w-full bg-[var(--yunda-petal)]">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute right-[-12%] top-[-16%] h-[320px] w-[360px] rounded-full bg-white/70 blur-3xl" />
         </div>
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[44px] sm:text-4xl" style="font-family: var(--font-primary)">
+          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
             {{ guidesTitle }}
           </h2>
           <div class="grid mx-auto mt-12 max-w-6xl gap-6 lg:grid-cols-3 sm:grid-cols-2 lg:mt-14 lg:gap-8">
@@ -1017,7 +1016,7 @@ useHead(() => ({
               class="h-full min-h-0 flex flex-col overflow-hidden border border-[#f0e4d6] rounded-2xl bg-[#fff5e9] shadow-[0_8px_28px_rgba(90,60,40,0.06)]"
             >
               <div class="flex flex-1 flex-col items-center px-6 pb-6 pt-8 text-center">
-                <div class="h-[72px] w-[72px] flex shrink-0 items-center justify-center rounded-full bg-[#d37b3f] text-white shadow-sm" aria-hidden="true">
+                <div class="h-[72px] w-[72px] flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)] text-[var(--yunda-petal)] shadow-sm" aria-hidden="true">
                   <!-- 费用：钞票 + 计算器示意 -->
                   <svg v-if="card.icon === 'cost'" class="h-9 w-9" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h8v10H4V10z" />
@@ -1041,17 +1040,17 @@ useHead(() => ({
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 5.75v1.5M17 6.25h1" />
                   </svg>
                 </div>
-                <h3 class="mt-5 text-lg text-[var(--dark-brown)] font-semibold leading-snug sm:text-xl" style="font-family: var(--font-primary)">
+                <h3 class="mt-5 font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
                   {{ card.title }}
                 </h3>
-                <p class="mt-3 max-w-sm flex-1 text-sm text-[var(--dark-brown)]/90 leading-relaxed sm:text-base" style="font-family: var(--font-primary)">
+                <p class="mt-3 max-w-sm flex-1 text-base text-[var(--yunda-bark)]/90 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                   {{ card.body }}
                 </p>
               </div>
               <NuxtLink
                 :to="localePath(card.to)"
-                class="block w-full bg-[#d37b3f] py-3.5 text-center text-sm text-white font-semibold tracking-wide transition-colors hover:bg-[#c26d36] sm:py-4 sm:text-base"
-                style="font-family: var(--font-secondary)"
+                class="yunda-type-button block w-full bg-[var(--yunda-bark)] py-3.5 text-center text-sm text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity hover:opacity-95 sm:py-4 sm:text-base"
+                style="font-family: var(--font-text)"
               >
                 {{ card.cta }}
               </NuxtLink>
@@ -1064,10 +1063,10 @@ useHead(() => ({
       <section class="relative isolate w-full overflow-hidden bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 lg:py-20 xl:px-24">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[44px] sm:text-4xl" style="font-family: var(--font-primary)">
+            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
               {{ changeTitle }}
             </h2>
-            <p class="mt-5 text-base text-[var(--dark-brown)]/85 leading-relaxed sm:text-lg" style="font-family: var(--font-secondary)">
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
               {{ changeIntro }}
             </p>
           </div>
@@ -1091,29 +1090,29 @@ useHead(() => ({
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16 10l2 7h-4l2-7" />
                 </svg>
               </div>
-              <h3 class="text-lg text-[var(--dark-brown)] font-semibold leading-snug sm:text-xl" style="font-family: var(--font-primary)">
+              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
                 {{ card.title }}
               </h3>
-              <p class="mt-4 max-w-sm text-sm text-[var(--dark-brown)]/88 leading-relaxed sm:text-base" style="font-family: var(--font-secondary)">
+              <p class="mt-4 max-w-sm text-base text-[var(--yunda-bark)]/88 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                 {{ card.body }}
               </p>
             </div>
           </div>
-          <p class="mx-auto mt-14 max-w-3xl text-center text-base text-[var(--dark-brown)]/82 leading-relaxed md:mt-16 sm:text-lg" style="font-family: var(--font-secondary)">
+          <p class="mx-auto mt-14 max-w-3xl text-center text-base text-[var(--yunda-bark)]/82 leading-[1.75] md:mt-16 sm:text-[17px]" style="font-family: var(--font-text)">
             {{ changeCtaLine }}
           </p>
           <div class="mt-8 flex flex-wrap justify-center gap-4">
             <NuxtLink
               :to="localePath('/be-parents')"
-              class="inline-flex items-center justify-center rounded-[6px] bg-[#c68653] px-6 py-3 text-base text-white font-semibold shadow-sm transition-opacity hover:opacity-95"
-              style="font-family: var(--font-secondary)"
+              class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
+              style="font-family: var(--font-text)"
             >
               {{ changePrimary }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/surrogacy-cost')"
-              class="inline-flex items-center justify-center border-2 border-[#c68653] rounded-[6px] bg-white px-6 py-3 text-base text-[#c68653] font-semibold transition-colors hover:bg-[#c68653]/5"
-              style="font-family: var(--font-secondary)"
+              class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-6 py-3 text-base text-[var(--yunda-bark)] tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
+              style="font-family: var(--font-text)"
             >
               {{ changeSecondary }}
             </NuxtLink>
@@ -1124,7 +1123,7 @@ useHead(() => ({
       <!-- Why Yunda：六卡（改版未提供整幅第五屏切片，此处不贴原型整图） -->
       <section class="relative isolate w-full bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center text-4xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[44px]" style="font-family: var(--font-primary)">
+          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
             {{ whyYundaTitle }}
           </h2>
           <p class="sr-only">
@@ -1134,13 +1133,12 @@ useHead(() => ({
             <div
               v-for="card in whyYundaCards"
               :key="card.title"
-              class="bg-[#fdf5e6] px-6 py-8 text-center shadow-none"
-              style="font-family: var(--font-primary)"
+              class="bg-[color-mix(in_srgb,var(--yunda-petal)_92%,var(--yunda-maple)_8%)] px-6 py-8 text-center shadow-none"
             >
-              <h3 class="text-lg text-[var(--dark-brown)] font-semibold leading-snug">
+              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
                 {{ card.title }}
               </h3>
-              <p class="mt-3 text-sm text-[var(--dark-brown)]/85 leading-relaxed" style="font-family: var(--font-secondary)">
+              <p class="mt-3 text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                 {{ card.body }}
               </p>
             </div>
@@ -1153,24 +1151,24 @@ useHead(() => ({
         <div class="relative mx-auto max-w-[1960px] px-0 lg:px-16 xl:px-24">
           <div class="grid items-stretch lg:grid-cols-2">
             <div class="flex flex-col justify-center px-6 py-14 lg:px-12 lg:py-20">
-              <h2 class="text-left text-3xl text-[var(--dark-brown)] font-semibold leading-tight sm:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="text-left font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ ctaBandTitle }}
               </h2>
-              <p class="mt-4 max-w-xl text-left text-base text-[var(--dark-brown)]/85 leading-relaxed sm:text-lg" style="font-family: var(--font-secondary)">
+              <p class="mt-4 max-w-xl text-left text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                 {{ ctaBandBody }}
               </p>
               <div class="mt-8 flex flex-wrap gap-4">
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="inline-flex items-center justify-center rounded-[6px] bg-[#c68653] px-6 py-3 text-base text-white font-semibold shadow-sm transition-opacity hover:opacity-95"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaBandPrimary }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/surrogacy-cost')"
-                  class="inline-flex items-center justify-center border-2 border-[#c68653] rounded-[6px] bg-white px-6 py-3 text-base text-[#c68653] font-semibold transition-colors hover:bg-[#c68653]/5"
-                  style="font-family: var(--font-secondary)"
+                  class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-6 py-3 text-base text-[var(--yunda-bark)] tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
+                  style="font-family: var(--font-text)"
                 >
                   {{ ctaBandSecondary }}
                 </NuxtLink>
@@ -1190,9 +1188,9 @@ useHead(() => ({
       </section>
 
       <!-- FAQ：浅底白卡片条（对标原型第七屏层次） -->
-      <section class="relative isolate w-full bg-[#faf8f5] py-16">
+      <section class="relative isolate w-full bg-[color-mix(in_srgb,var(--yunda-petal)_88%,var(--yunda-sky)_12%)] py-16">
         <div class="relative mx-auto max-w-[960px] px-6 lg:px-8">
-          <h2 class="text-4xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-[40px]" style="font-family: var(--font-primary)">
+          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
             {{ faqTitle }}
           </h2>
           <div class="mt-8 space-y-3">
@@ -1201,15 +1199,15 @@ useHead(() => ({
               :key="faq.q"
               class="group rounded-[10px] bg-white px-5 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
             >
-              <summary class="cursor-pointer list-none text-base text-[var(--dark-brown)] font-medium" style="font-family: var(--font-secondary)">
+              <summary class="cursor-pointer list-none text-base text-[var(--yunda-bark)] font-bold leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                 {{ index + 1 }}) {{ faq.q }}
               </summary>
-              <p class="mt-3 text-sm text-[var(--dark-brown)]/80 leading-relaxed" style="font-family: var(--font-secondary)">
+              <p class="mt-3 text-base text-[var(--yunda-bark)]/80 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
                 <template v-for="(seg, segIndex) in faq.answer" :key="`faq-${index}-seg-${segIndex}`">
                   <NuxtLink
                     v-if="seg.type === 'link'"
                     :to="localePath(seg.to || '/')"
-                    class="text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/50 underline-offset-2 hover:text-[var(--dark-brown)]"
+                    class="text-[var(--yunda-maple)] underline decoration-[var(--yunda-maple)]/50 underline-offset-2 hover:text-[var(--yunda-bark)]"
                   >
                     {{ seg.text }}
                   </NuxtLink>

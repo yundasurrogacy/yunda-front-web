@@ -11,17 +11,17 @@ onMounted(() => {
 
 <template>
   <div
-    class="team-section from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b px-4 py-8 lg:px-20 lg:py-20"
+    class="team-section bg-[var(--yunda-petal)] px-4 py-8 lg:px-20 lg:py-20"
   >
     <div class="container mx-auto w-full md:max-w-300">
       <!-- Kayla Luo -->
       <div class="team-member mb-16 flex flex-col gap-8 py-4 lg:flex-row lg:items-center">
         <!-- 移动端标题在图片上方 -->
         <div class="text-center lg:hidden">
-          <h2 class="mb-2 text-30px font-semibold" style="font-family: var(--font-primary)">
+          <h2 class="mb-2 font-display text-[30px] text-[var(--yunda-bark)] font-medium lg:text-[38px]">
             {{ $t('about.team.kaylaLuo.name') }}
           </h2>
-          <p class="text-16px">
+          <p class="font-sans text-base text-[var(--yunda-maple)] font-semibold lg:text-[18px]" style="font-family: var(--font-text)">
             {{ $t('about.team.kaylaLuo.title') }}
           </p>
         </div>
@@ -40,13 +40,13 @@ onMounted(() => {
 
         <div class="slide-right flex-1 text-center lg:text-left">
           <!-- 桌面端标题在图片旁边 -->
-          <h2 class="mb-2 hidden text-30px text-[#271F18] font-semibold lg:block lg:text-3xl" style="font-family: var(--font-primary)">
+          <h2 class="mb-2 hidden font-display text-[30px] text-[var(--yunda-bark)] font-medium lg:block lg:text-[38px]">
             {{ $t('about.team.kaylaLuo.name') }}
           </h2>
-          <p class="mb-6 hidden text-16px lg:mb-4 lg:block lg:text-xl">
+          <p class="mb-6 hidden font-sans text-base text-[var(--yunda-maple)] font-semibold lg:mb-4 lg:block lg:text-[18px]" style="font-family: var(--font-text)">
             {{ $t('about.team.kaylaLuo.title') }}
           </p>
-          <div class="text-14px space-y-4 lg:text-lg">
+          <div class="space-y-4 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
             <p>
               {{ $t('about.team.kaylaLuo.bio.paragraph1') }}
             </p>

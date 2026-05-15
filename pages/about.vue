@@ -104,7 +104,7 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>
+  <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <AboutHeroSection />
     <AboutTeamSection />

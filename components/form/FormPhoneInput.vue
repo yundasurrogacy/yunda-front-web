@@ -104,7 +104,7 @@ watch(() => props.defaultCountry, (newCountry) => {
       <div class="relative w-30">
         <button
           type="button"
-          class="h-15 w-full flex cursor-pointer items-center justify-between rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-4 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all focus:ring-2 focus:ring-[var(--grayish-green)]"
+          class="h-15 w-full flex cursor-pointer items-center justify-between rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-4 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all focus:ring-2 focus:ring-[var(--yunda-bark)]"
           @click="showDropdown = !showDropdown"
         >
           <div class="flex items-center gap-2">
@@ -124,7 +124,7 @@ watch(() => props.defaultCountry, (newCountry) => {
               v-model="searchQuery"
               type="text"
               placeholder="Search country..."
-              class="h-8 w-full rounded-2 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-3.5 outline-none focus:ring-2 focus:ring-[var(--grayish-green)]"
+              class="h-8 w-full rounded-2 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-3 text-3.5 outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]"
               @click.stop
             >
           </div>
@@ -152,7 +152,7 @@ watch(() => props.defaultCountry, (newCountry) => {
         type="tel"
         :placeholder="placeholder"
         :required="required"
-        class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-black/60 focus:ring-2 focus:ring-[var(--grayish-green)]"
+        class="h-15 flex-1 rounded-2.5 border-none bg-[rgba(234.35,232.57,208.37,0.20)] px-4 bg-blend-overlay shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(255,255,255,0.6)] outline-none backdrop-blur-5 transition-all placeholder:text-[var(--yunda-bark)]/60 focus:ring-2 focus:ring-[var(--yunda-bark)]"
         @input="$emit('update:modelValue', $event.target.value)"
       >
     </div>

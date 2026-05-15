@@ -31,11 +31,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="hero-section relative min-h-50 w-full from-[var(--head-bg)] to-[var(--hero-center)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
+  <section class="hero-section relative min-h-50 w-full from-[var(--yunda-petal)] to-[var(--hero-center)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
     <!-- Hero Background with Gradient -->
     <div class="scroll-animate mx-auto text-center text-3 lg:max-w-320 lg:text-5">
       <!-- Title -->
-      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" >
         {{ title }}
       </h1>
 
@@ -46,7 +46,7 @@ onMounted(() => {
         </p>
       </div>
       <!-- CTA Button -->
-      <NuxtLink :to="localePath('/be-parents')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] hover:-translate-y-0.5">
+      <NuxtLink :to="localePath('/be-parents')" class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--yunda-petal)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--yunda-petal)] hover:-translate-y-0.5">
         {{ buttonText }}
       </NuxtLink>
     </div>

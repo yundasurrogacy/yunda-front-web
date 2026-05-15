@@ -267,19 +267,19 @@ function toggleMute() {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(169, 166, 125, 0.85);
+  border: 1.5px solid color-mix(in srgb, var(--yunda-petal) 45%, transparent);
+  background-color: color-mix(in srgb, var(--yunda-bark) 72%, transparent);
   backdrop-filter: blur(8px);
-  color: #fff;
+  color: var(--yunda-petal);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(60, 36, 21, 0.2);
 }
 
 .mute-toggle:hover {
-  background-color: rgba(169, 166, 125, 0.95);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: color-mix(in srgb, var(--yunda-maple) 88%, var(--yunda-bark) 12%);
+  border-color: color-mix(in srgb, var(--yunda-petal) 55%, transparent);
+  box-shadow: 0 4px 12px rgba(60, 36, 21, 0.28);
   transform: scale(1.05);
 }
 
@@ -290,6 +290,6 @@ function toggleMute() {
 .mute-icon {
   width: 20px;
   height: 20px;
-  stroke: #fff;
+  stroke: var(--yunda-petal);
 }
 </style>

@@ -12,19 +12,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-[var(--head-bg)]">
+  <div class="min-h-screen overflow-hidden bg-[var(--yunda-petal)]">
     <AppHeader />
     <div class="relative mx-auto mt-20 max-w-300 px-4 py-16 text-center lg:px-0">
-      <div class="mb-12 rounded-5 bg-[var(--foot-bg)] p-12 shadow-lg">
-        <h1 class="mb-6 text-8 font-semibold" style="font-family: var(--font-primary)">
+      <div class="mb-12 rounded-5 bg-[var(--yunda-petal)] p-12 shadow-lg">
+        <h1 class="mb-6 font-display text-[32px] text-[var(--yunda-bark)] font-semibold leading-[1.1] lg:text-[50px]">
           {{ $t('surrogate.application.successPage.title') }}
         </h1>
-        <p class="mx-auto mb-8 max-w-2xl text-5 leading-relaxed text-[var(--dark-brown)]">
+        <p class="mx-auto mb-8 max-w-2xl font-sans text-base leading-[1.75] text-[var(--yunda-bark)] lg:text-[17px]" style="font-family: var(--font-text)">
           {{ $t('surrogate.application.successPage.message') }}
         </p>
         <NuxtLink
           :to="localePath('/')"
-          class="inline-flex rounded-2.5 bg-[var(--grayish-green)] px-8 py-3 text-5 font-semibold text-[#FFFCF6] transition-opacity hover:opacity-90"
+          class="yunda-type-button inline-flex rounded-2.5 bg-[var(--yunda-bark)] px-8 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity hover:opacity-90"
         >
           {{ $t('surrogate.application.successPage.backHome') }}
         </NuxtLink>

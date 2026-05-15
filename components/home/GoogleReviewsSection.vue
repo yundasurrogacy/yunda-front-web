@@ -33,11 +33,10 @@ const reviews = computed(() => [
 </script>
 
 <template>
-  <section class="bg-[var(--head-bg)] px-4 py-12 md:px-20 md:py-16">
+  <section class="bg-[color-mix(in_srgb,var(--yunda-sky)_22%,var(--yunda-petal))] px-4 py-12 md:px-20 md:py-16">
     <div class="mx-auto max-w-300">
       <h2
-        class="scroll-animate mb-12 text-center text-7.5 font-semibold md:mb-16 md:text-10"
-        style="font-family: var(--font-primary)"
+        class="scroll-animate mb-12 text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-16 md:text-[42px]"
       >
         {{ $t('home.googleReviewsSection.title') }}
       </h2>
@@ -45,13 +44,13 @@ const reviews = computed(() => [
         <article
           v-for="(item, idx) in reviews"
           :key="idx"
-          class="scroll-animate flex flex-col border-2 border-[var(--primary-brown)]/20 rounded-2xl bg-[#FAF8F3] p-8 shadow-[0_12px_32px_rgba(39,31,24,0.08)]"
+          class="scroll-animate flex flex-col border-2 border-[var(--yunda-bark)]/15 rounded-2xl bg-[var(--yunda-petal)] p-8 shadow-[0_12px_32px_rgba(60,36,21,0.08)]"
           :class="idx % 2 ? 'scroll-animate-delay-100' : ''"
         >
-          <p class="flex-1 text-4.5 leading-relaxed text-[var(--dark-brown)]" style="font-family: var(--font-secondary)">
+          <p class="flex-1 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
             “{{ $t(item.textKey) }}”
           </p>
-          <p class="mt-6 text-sm font-semibold text-[var(--primary-brown)] md:text-base">
+          <p class="mt-6 text-sm text-[var(--yunda-maple)] font-semibold md:text-base">
             {{ $t(item.authorKey) }}
           </p>
           <a
@@ -59,14 +58,14 @@ const reviews = computed(() => [
             :href="item.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-4 inline-flex items-center gap-2 text-4 font-semibold text-[var(--grayish-green)] underline-offset-4 transition hover:underline"
+            class="mt-4 inline-flex items-center gap-2 text-4 text-[var(--yunda-bark)] font-semibold underline-offset-4 transition-colors hover:text-[var(--yunda-maple)] hover:underline"
           >
             {{ $t('home.googleReviewsSection.readOnGoogle') }}
             <span aria-hidden="true">↗</span>
           </a>
           <p
             v-else
-            class="mt-4 text-4 font-semibold text-[var(--grayish-green)]"
+            class="mt-4 text-4 text-[var(--yunda-bark)] font-semibold"
           >
             {{ $t('home.googleReviewsSection.historyLabel') }}
           </p>

@@ -193,12 +193,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
 
     <!-- Header -->
-    <div class="relative h-30 w-full flex items-center justify-center bg-[#BFC9BF] lg:h-80">
-      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
+    <div class="relative h-30 w-full flex items-center justify-center bg-[var(--yunda-bark)] lg:h-80">
+      <h1 class="text-center font-display text-[32px] text-[var(--yunda-petal)] font-semibold italic leading-[1.1] lg:text-[50px]">
         {{ content.title }}
       </h1>
     </div>
@@ -208,7 +208,7 @@ onMounted(() => {
       <!-- Thank You Message -->
       <div class="mb-8 text-center lg:mb-10">
         <div class="mx-auto max-w-966px">
-          <p class="mb-4 text-5 font-semibold leading-relaxed lg:text-6" style="font-family: var(--font-primary)">
+          <p class="mb-4 font-sans text-base text-[var(--yunda-bark)] font-bold leading-[1.75] lg:text-xl" style="font-family: var(--font-text)">
             {{ content.message }}
           </p>
         </div>
@@ -216,14 +216,14 @@ onMounted(() => {
 
       <!-- Booking Section -->
       <div class="mx-auto max-w-966px">
-        <div class="mb-8 rounded-5 from-[var(--foot-bg)] via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b p-6 shadow-black/20 shadow-xl lg:p-8">
-          <h2 class="mb-3 text-5 font-semibold lg:mb-4 lg:text-6" style="font-family: var(--font-primary)">
+        <div class="mb-8 rounded-5 from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b p-6 shadow-black/20 shadow-xl lg:p-8">
+          <h2 class="mb-3 font-sans text-[20px] text-[var(--yunda-bark)] font-bold lg:mb-4 lg:text-[24px]" style="font-family: var(--font-text)">
             {{ content.bookingTitle }}
           </h2>
-          <p class="mb-4 text-gray-700 lg:mb-5">
+          <p class="mb-4 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:mb-5 lg:text-[17px]" style="font-family: var(--font-text)">
             {{ content.bookingDescription }}
           </p>
-          <p class="mb-6 text-sm text-gray-600 italic">
+          <p class="mb-6 text-sm text-[var(--yunda-bark)]/80 italic" style="font-family: var(--font-text)">
             {{ content.note }}
           </p>
 

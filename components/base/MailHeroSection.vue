@@ -30,11 +30,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="mail-hero-section relative min-h-50 w-full from-[var(--head-bg)] via-[var(--hero-center)] to-[var(--head-bg)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
+  <section class="mail-hero-section relative min-h-50 w-full from-[var(--yunda-petal)] via-[var(--hero-center)] to-[var(--yunda-petal)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
     <!-- Hero Background with Gradient -->
     <div class="scroll-animate mx-auto text-center text-3 lg:max-w-320 lg:text-5">
       <!-- Title -->
-      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" style="font-family: var(--font-primary)">
+      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" >
         {{ title }}
       </h1>
 
@@ -47,7 +47,7 @@ onMounted(() => {
       <!-- CTA Button -->
       <a
         href="mailto:kayla@yundasurrogacy.com"
-        class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--light-cream)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--head-bg)] lg:text-4 hover:-translate-y-0.5"
+        class="shadow-inner-white-soft inline-flex transform items-center justify-center rounded-[10px] bg-[var(--yunda-petal)] px-4 py-3 uppercase backdrop-blur-20 transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--yunda-petal)] lg:text-4 hover:-translate-y-0.5"
       >
         {{ buttonText }}
       </a>

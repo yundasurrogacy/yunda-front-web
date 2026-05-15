@@ -222,14 +222,14 @@
 <style scoped>
 /* Base Section */
 .steps-timeline {
-  background-color: var(--head-bg);
+  background-color: var(--yunda-petal);
 }
 
 /* Title */
 .title {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 30px;
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-weight: 600;
   text-align: center;
   margin-bottom: 48px;
@@ -279,122 +279,122 @@
 /* Row 1: Start point - vertical line down to center */
 .row-1 .timeline-center {
   border-bottom-right-radius: 60px;
-  border-right: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-right: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   margin-bottom: -2px;
 }
 /* Row 2: Step 1 (Left) - connect from center to left */
 .row-2 .timeline-left {
-  border-left: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-left: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
 }
 
 .row-2 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 /* Row 3: Step 2 (Right) - connect from center to right */
 .row-3 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 .row-3 .timeline-right {
   margin-top: -2px;
-  border-right: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-right: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-bottom-right-radius: 60px;
   border-top-right-radius: 60px;
 }
 
 /* Row 4: Step 3 (Left) - connect from center to left */
 .row-4 .timeline-left {
-  border-left: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-left: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
   margin-top: -2px;
 }
 
 .row-4 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 /* Row 5: Step 4 (Right) - connect from center to right */
 .row-5 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 .row-5 .timeline-right {
   margin-top: -2px;
-  border-right: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-right: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-bottom-right-radius: 60px;
   border-top-right-radius: 60px;
 }
 
 /* Row 6: Step 5 (Left) - connect from center to left */
 .row-6 .timeline-left {
-  border-left: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-left: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
   margin-top: -2px;
 }
 
 .row-6 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 /* Row 7: Step 6 (Right) - connect from center to right */
 .row-7 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 .row-7 .timeline-right {
   margin-top: -2px;
-  border-right: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-right: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-bottom-right-radius: 60px;
   border-top-right-radius: 60px;
 }
 
 /* Row 8: Step 7 (Left) - connect from center to left */
 .row-8 .timeline-left {
-  border-left: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-left: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
   margin-top: -2px;
 }
 
 .row-8 .timeline-center {
-  border-bottom: 2px solid var(--dark-brown);
+  border-bottom: 2px solid var(--yunda-bark);
 }
 
 /* Row 9: Step 8 (Right) - connect from center to right */
 
 .row-9 .timeline-right {
   margin-top: -2px;
-  border-right: 2px solid var(--dark-brown);
-  border-top: 2px solid var(--dark-brown);
-  border-bottom: 2px solid var(--dark-brown);
+  border-right: 2px solid var(--yunda-bark);
+  border-top: 2px solid var(--yunda-bark);
+  border-bottom: 2px solid var(--yunda-bark);
   border-bottom-right-radius: 60px;
   border-top-right-radius: 60px;
 }
 
 /* Row 10: End point - connect from center */
 .row-10 .timeline-center {
-  border-top: 2px solid var(--dark-brown);
-  border-left: 2px solid var(--dark-brown);
+  border-top: 2px solid var(--yunda-bark);
+  border-left: 2px solid var(--yunda-bark);
   border-top-left-radius: 60px;
   margin-top: -2px;
 }
@@ -403,7 +403,7 @@
 .start-dot {
   width: 40px;
   height: 40px;
-  background-color: var(--grayish-green);
+  background-color: var(--yunda-bark);
   border-radius: 50%;
   top: -50px;
   right: -22px;
@@ -413,7 +413,7 @@
 .end-dot {
   width: 40px;
   height: 40px;
-  background-color: var(--grayish-green);
+  background-color: var(--yunda-bark);
   border-radius: 50%;
   bottom: -50px;
   left: -20px;
@@ -447,7 +447,7 @@
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.8),
-    var(--grayish-green) 90%,
+    var(--yunda-bark) 90%,
     rgba(100, 100, 100, 0.1) 100%
   );
   border-radius: 50%;
@@ -458,7 +458,7 @@
 }
 
 .step-number {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 64px;
   font-family: 'Cormorant', serif;
   font-weight: bold;
@@ -476,15 +476,16 @@
 }
 
 .step-title {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 32px;
-  font-family: var(--font-primary);
+  font-family: var(--font-text);
+  font-weight: 700;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
 .step-subtitle {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 20px;
   margin-bottom: 8px;
 }
@@ -500,16 +501,16 @@
 }
 
 .duration-text {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 32px;
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-weight: 500;
 }
 
 .step-duration-mobile {
-  color: var(--dark-brown);
+  color: var(--yunda-bark);
   font-size: 28px;
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   display: none;
 }
 

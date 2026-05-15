@@ -118,12 +118,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-[var(--foot-bg)]">
+  <div class="min-h-screen overflow-hidden bg-[var(--yunda-petal)]">
     <AppHeader />
 
     <!-- Header -->
     <div class="relative h-30 w-full flex items-center justify-center bg-[#d8d9ca] lg:h-80">
-      <h1 class="text-center text-8 font-semibold italic lg:text-16" style="font-family: var(--font-primary)">
+      <h1 class="text-center text-8 font-semibold italic lg:text-16" >
         {{ $t('surrogacy.application.title') }}
       </h1>
     </div>
@@ -135,7 +135,7 @@ onMounted(() => {
         <div v-if="showQuestion" class="relative rounded-5 bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20">
           <div class="px-8 py-10 lg:px-16 lg:py-20">
             <!-- Question -->
-            <p class="mx-auto mb-8 w-full text-center text-4.5 lg:mb-10 lg:text-6" style="font-family: var(--font-primary)">
+            <p class="mx-auto mb-8 w-full text-center text-4.5 lg:mb-10 lg:text-6" >
               {{ $t(questions[currentQuestionIndex]) }}
             </p>
 
@@ -144,7 +144,7 @@ onMounted(() => {
               <button
                 class="h-10 min-w-60 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-5 bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all lg:h-15 lg:w-120 hover:border-2 hover:border-[#B2BBB2] lg:text-6"
                 :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === true }"
-                style="font-family: var(--font-primary)" @click="handleAnswer(true)"
+                 @click="handleAnswer(true)"
               >
                 {{ $t('common.yes') }}
               </button>
@@ -152,7 +152,7 @@ onMounted(() => {
               <button
                 class="h-10 min-w-60 rounded-2.5 bg-[rgba(246.29,236.19,216,0.50)] from-[rgba(234.35,232.57,208.37,0.75)] to-[rgba(234.35,232.57,208.37,0.75)] bg-gradient-to-b text-5 bg-blend-overlay shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-all lg:h-15 lg:w-120 hover:border-2 hover:border-[#B2BBB2] lg:text-6"
                 :class="{ 'border-2 border-[#B2BBB2]': selectedAnswer === false }"
-                style="font-family: var(--font-primary)" @click="handleAnswer(false)"
+                 @click="handleAnswer(false)"
               >
                 {{ $t('common.no') }}
               </button>
@@ -164,14 +164,14 @@ onMounted(() => {
         <div v-if="showInfo" class="relative rounded-5 bg-[#f1f2ea] shadow-[0_0_30px_4px_rgba(0,0,0,0.1)] shadow-black/20">
           <div class="px-8 py-10 lg:px-20 lg:py-20">
             <!-- Message -->
-            <p class="mb-8 text-center text-5 lg:mb-10 lg:text-8" style="font-family: var(--font-primary)">
+            <p class="mb-8 text-center text-5 lg:mb-10 lg:text-8" >
               {{ $t(infoMessage) }}
             </p>
 
             <!-- Button -->
             <div class="flex justify-center">
               <button
-                class="rounded-full bg-[var(--grayish-green)] px-8 py-2 text-5 text-[#FFFCF6] transition-opacity lg:px-12 lg:py-2.5 lg:text-6 hover:opacity-90"
+                class="rounded-full bg-[var(--yunda-bark)] px-8 py-2 text-5 text-[var(--yunda-petal)] transition-opacity lg:px-12 lg:py-2.5 lg:text-6 hover:opacity-90"
                 @click="handleInfoClose"
               >
                 {{ buttonText }}

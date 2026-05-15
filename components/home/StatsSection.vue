@@ -31,18 +31,18 @@ const partners = [
       <div class="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-0">
         <div class="scroll-animate flex-1 lg:pr-12 xl:pr-16">
           <h2
-            class="text-6 text-black font-bold font-sans md:text-7.5"
+            class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]"
           >
             {{ $t('home.statsSection.chooseUsTitle') }}
           </h2>
           <div class="lg:mt-8 lg:flex lg:flex-1 lg:flex-col lg:justify-center">
             <p
-              class="mt-6 text-4.5 text-black leading-relaxed font-sans md:text-5 md:leading-relaxed lg:mt-0"
+              class="mt-6 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:text-[17px] lg:mt-0"
             >
               {{ $t('home.statsSection.chooseUsParagraph1') }}
             </p>
             <p
-              class="mt-4 text-4.5 text-black leading-relaxed font-sans md:mt-5 md:text-5 md:leading-relaxed"
+              class="mt-4 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:mt-5 md:text-[17px]"
             >
               {{ $t('home.statsSection.chooseUsParagraph2') }}
             </p>
@@ -50,18 +50,20 @@ const partners = [
         </div>
 
         <div
-          class="hidden w-px shrink-0 self-stretch bg-black lg:block"
+          class="hidden w-px shrink-0 self-stretch bg-[var(--yunda-bark)]/20 lg:block"
           aria-hidden="true"
         />
 
         <div class="scroll-animate scroll-animate-delay-100 flex-1 lg:pl-12 xl:pl-16">
           <h3
-            class="text-6 text-black font-bold font-sans md:text-7.5"
+            class="font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-[1.25] md:text-[30px]"
+            style="font-family: var(--font-text)"
           >
             {{ $t('home.statsSection.advantagesTitle') }}
           </h3>
           <ul
-            class="mt-6 text-4.5 text-black leading-relaxed font-sans md:mt-7 space-y-4 md:text-5 md:leading-relaxed md:space-y-5"
+            class="mt-6 font-sans text-base text-[var(--yunda-bark)] leading-[1.75] md:mt-7 md:space-y-5 md:text-[17px] space-y-4"
+            style="font-family: var(--font-text)"
           >
             <li class="pl-[1.4em] -indent-[1.4em]">
               {{ $t('home.statsSection.advantage1a') }}<strong>{{ $t('home.statsSection.advantage1b') }}</strong>
@@ -81,8 +83,7 @@ const partners = [
 
       <div class="pb-6 pt-12 lg:pb-10 lg:pt-16 md:pb-8 md:pt-14">
         <h2
-          class="scroll-animate scroll-animate-delay-200 mb-8 text-center text-[40px] text-black font-semibold md:mb-10"
-          style="font-family: var(--font-primary)"
+          class="scroll-animate scroll-animate-delay-200 mb-8 text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-10 md:text-[42px]"
         >
           {{ $t('home.associationSection.title') }}
         </h2>

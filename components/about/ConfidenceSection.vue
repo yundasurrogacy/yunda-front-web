@@ -4,14 +4,14 @@
 <template>
   <div class="confidence-section bg-[#A9A67D] px-4 py-16">
     <div class="container mx-auto text-center">
-      <h2 class="mb-6 text-7.5 text-[#271F18] font-bold font-['Cormorant'] lg:text-10">
+      <h2 class="mb-6 text-7.5 text-[var(--yunda-bark)] font-bold font-display lg:text-10">
         {{ $t('parentsProcess.confidenceSection.title') }}<br class="lg:hidden">
       </h2>
-      <p class="mx-auto mb-8 max-w-300 text-sm text-[#271F18] font-['SourceSerif4'] lg:text-xl">
+      <p class="mx-auto mb-8 max-w-300 text-sm text-[var(--yunda-bark)] font-['SourceSerif4'] lg:text-xl">
         {{ $t('parentsProcess.confidenceSection.description1') }}
         {{ $t('parentsProcess.confidenceSection.description2') }}
       </p>
-      <button class="shadow-inner-white-soft rounded-lg bg-[#FBF0DA] px-4 py-3 text-xs text-[#271F18] font-['SourceSerif4'] uppercase backdrop-blur-lg lg:text-base">
+      <button class="shadow-inner-white-soft rounded-lg bg-[#FBF0DA] px-4 py-3 text-xs text-[var(--yunda-bark)] font-['SourceSerif4'] uppercase backdrop-blur-lg lg:text-base">
         {{ $t('home.processHeroSection.button') }}
       </button>
     </div>

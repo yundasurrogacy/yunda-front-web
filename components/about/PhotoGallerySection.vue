@@ -188,20 +188,20 @@ watch(activeCategory, () => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-[rgba(234,232,208,0.2)] px-4 py-20 md:px-20 md:py-25">
+  <section class="relative overflow-hidden bg-[var(--yunda-petal)] px-4 py-20 md:px-20 md:py-25">
     <!-- 装饰性背景元素 -->
     <div class="pointer-events-none absolute inset-0 opacity-5">
-      <div class="absolute h-96 w-96 rounded-full bg-[var(--grayish-green)] blur-3xl -left-20 -top-20" />
-      <div class="absolute h-96 w-96 rounded-full bg-[var(--primary-brown)] blur-3xl -bottom-20 -right-20" />
+      <div class="absolute h-96 w-96 rounded-full bg-[color-mix(in_srgb,var(--yunda-sky)_40%,transparent)] blur-3xl -left-20 -top-20" />
+      <div class="absolute h-96 w-96 rounded-full bg-[color-mix(in_srgb,var(--yunda-maple)_25%,transparent)] blur-3xl -bottom-20 -right-20" />
     </div>
 
     <div class="relative mx-auto max-w-320">
       <!-- 标题区域 -->
       <div class="scroll-animate mb-10 text-center md:mb-16">
-        <h2 class="mb-6 text-7.5 font-semibold md:text-10" style="font-family: var(--font-primary)">
+        <h2 class="mb-6 font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
           {{ $t('about.photoGallery.title') }}
         </h2>
-        <p class="mx-auto max-w-235 text-3.5 text-gray-700 leading-relaxed md:text-4.5">
+        <p class="mx-auto max-w-235 font-sans text-base text-[var(--yunda-bark)]/90 leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
           {{ $t('about.photoGallery.description') }}
         </p>
       </div>
@@ -213,8 +213,8 @@ watch(activeCategory, () => {
           :key="cat.key"
           class="relative rounded-full px-6 py-2.5 text-4 font-medium transition-all duration-300 md:px-8 md:py-3 md:text-5"
           :class="activeCategory === cat.key
-            ? 'bg-[var(--grayish-green)] text-white shadow-lg shadow-[var(--grayish-green)]/30 scale-105'
-            : 'bg-white/80 text-gray-700 backdrop-blur-sm hover:bg-white hover:shadow-md hover:scale-105'"
+            ? 'bg-[var(--yunda-bark)] text-[var(--yunda-petal)] shadow-lg shadow-[rgba(60,36,21,0.2)] scale-105'
+            : 'bg-white/80 text-[var(--yunda-bark)] backdrop-blur-sm hover:border-[var(--yunda-maple)] hover:text-[var(--yunda-maple)] hover:shadow-md hover:scale-105'"
           @click="activeCategory = cat.key"
         >
           {{ $t(`about.photoGallery.categories.${cat.key}`) }}
@@ -227,7 +227,7 @@ watch(activeCategory, () => {
         <button
           v-if="canScrollLeft"
           :aria-label="$t('about.photoGallery.viewMore')"
-          class="absolute left-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 lg:left-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl"
+          class="absolute left-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-[var(--yunda-petal)] shadow-xl transition-all duration-300 lg:left-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:opacity-95 hover:shadow-2xl"
           @click="scrollLeft"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:h-8 md:w-8">
@@ -258,7 +258,7 @@ watch(activeCategory, () => {
         <button
           v-if="canScrollRight"
           :aria-label="$t('about.photoGallery.viewMore')"
-          class="absolute right-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--grayish-green)] text-white shadow-xl transition-all duration-300 lg:right-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:bg-[var(--grayish-green)] hover:shadow-2xl"
+          class="absolute right-0 top-1/2 z-10 h-14 w-14 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-[var(--yunda-petal)] shadow-xl transition-all duration-300 lg:right-4 md:h-16 md:w-16 -translate-y-1/2 hover:scale-110 hover:opacity-95 hover:shadow-2xl"
           @click="scrollRight"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="md:h-8 md:w-8">
@@ -269,7 +269,7 @@ watch(activeCategory, () => {
 
       <!-- 照片数量提示 -->
       <div v-if="filteredPhotos.length > photosPerView" class="mt-8 text-center">
-        <p class="text-3.5 text-gray-600 md:text-4">
+        <p class="font-sans text-3.5 text-[var(--yunda-bark)]/70 md:text-4" style="font-family: var(--font-text)">
           {{ $t('about.photoGallery.viewing') }} {{ visibleStartIndex + 1 }}-{{ Math.min(visibleStartIndex + photosPerView, filteredPhotos.length) }} / {{ filteredPhotos.length }} {{ $t('about.photoGallery.photos') }}
         </p>
       </div>

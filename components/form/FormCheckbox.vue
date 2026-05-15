@@ -27,7 +27,7 @@ defineEmits(['update:modelValue'])
     >
     <div
       class="h-4 w-4 flex flex-shrink-0 items-center justify-center border border-[#271F18] rounded-0.75 transition-colors"
-      :class="modelValue ? 'bg-[var(--grayish-green)]' : 'bg-transparent'"
+      :class="modelValue ? 'bg-[var(--yunda-bark)]' : 'bg-transparent'"
     >
       <svg v-if="modelValue" width="12" height="12" viewBox="0 0 12 12" fill="none">
         <path d="M2 6L5 9L10 3" stroke="#271F18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

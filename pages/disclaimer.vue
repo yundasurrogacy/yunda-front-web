@@ -112,10 +112,10 @@ useHead({
 <template>
   <div>
     <AppHeader />
-    <main class="min-h-screen bg-white">
+    <main class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
       <div class="mx-auto max-w-4xl px-4 py-12 md:px-8 md:py-16">
         <article class="max-w-none prose prose-lg">
-          <h1 class="mb-4 text-4xl text-[var(--dark-brown)] font-bold">
+          <h1 class="mb-4 font-sans text-[32px] text-[var(--yunda-bark)] font-bold leading-tight lg:text-[40px]" style="font-family: var(--font-text)">
             {{ t.title }}
           </h1>
 
@@ -128,80 +128,80 @@ useHead({
 
           <!-- Section 1: Informational Purposes Only -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               1. {{ t.section1.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section1.content }}</p>
             </div>
           </section>
 
           <!-- Section 2: No Medical Advice -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               2. {{ t.section2.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section2.content }}</p>
             </div>
           </section>
 
           <!-- Section 3: No Legal Advice -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               3. {{ t.section3.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section3.content }}</p>
             </div>
           </section>
 
           <!-- Section 4: No Professional Relationship -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               4. {{ t.section4.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section4.content }}</p>
             </div>
           </section>
 
           <!-- Section 5: No Guarantee of Outcomes -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               5. {{ t.section5.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section5.content }}</p>
             </div>
           </section>
 
           <!-- Section 6: Third-Party Service Providers -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               6. {{ t.section6.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section6.content }}</p>
             </div>
           </section>
 
           <!-- Section 7: International Considerations -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               7. {{ t.section7.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section7.content }}</p>
             </div>
           </section>
 
           <!-- Section 8: User Responsibility -->
           <section class="mb-8">
-            <h2 class="mb-4 text-2xl text-[var(--dark-brown)] font-semibold">
+            <h2 class="mb-4 font-sans text-[24px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[28px]" style="font-family: var(--font-text)">
               8. {{ t.section8.title }}
             </h2>
-            <div class="text-gray-700 leading-relaxed space-y-3">
+            <div class="text-[var(--yunda-bark)]/90 leading-[1.75] text-base lg:text-[15px] space-y-3" style="font-family: var(--font-text)">
               <p>{{ t.section8.content }}</p>
             </div>
           </section>

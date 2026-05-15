@@ -56,8 +56,8 @@ useHead(() => ({
 
 <style scoped>
 .sitemap-page {
-  background: var(--head-bg);
-  color: var(--dark-brown);
+  background: var(--yunda-petal);
+  color: var(--yunda-bark);
 }
 
 .sitemap-main {

@@ -514,11 +514,11 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <!-- Hero -->
-    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--light-cream)] to-[var(--foot-bg)] bg-gradient-to-b py-18 lg:py-24">
+    <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
         <div class="absolute left-10 top-10 h-40 w-40 animate-pulse rounded-full bg-[var(--olive-green)] blur-[120px]" />
         <div class="absolute bottom-10 right-10 h-60 w-60 animate-pulse rounded-full bg-[var(--primary-brown)]/70 blur-[160px]" style="animation-delay: 1s;" />
@@ -526,7 +526,7 @@ useHead(() => {
       <div class="relative mx-auto max-w-280 px-5 lg:px-10">
         <div class="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div class="animate-fade-in-up text-center space-y-6 lg:text-left">
-            <h1 class="text-8 font-semibold leading-tight transition-all duration-700 hover:scale-105 lg:text-12" style="font-family: var(--font-primary)">
+            <h1 class="text-8 font-semibold leading-tight transition-all duration-700 hover:scale-105 lg:text-12" >
               {{ tt('Become a Surrogate in Southern California: A Supported, Transparent Path with Yunda', '成为南加州代孕妈妈：Yunda 提供清晰、透明的支持路径') }}
             </h1>
             <p class="mx-auto max-w-160 text-4.5 leading-relaxed lg:mx-0">
@@ -535,7 +535,7 @@ useHead(() => {
             <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
               <NuxtLink
                 to="/be-surrogate"
-                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--dark-brown)] hover:shadow-lg"
+                class="rounded-full bg-[var(--primary-brown)] px-6 py-3 text-3.5 text-white font-semibold uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--yunda-bark)] hover:shadow-lg"
               >
                 {{ tt('Start Application', '开始申请') }}
               </NuxtLink>
@@ -561,7 +561,7 @@ useHead(() => {
       <div class="mx-auto max-w-280 px-5 lg:px-10">
         <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
           <div class="animate-fade-in-left lg:w-1/3">
-            <h2 class="text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+            <h2 class="text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
               {{ tt('Why Women Choose Surrogacy', '为什么女性选择代孕') }}
             </h2>
             <p class="mt-4 text-4.5 leading-relaxed">
@@ -573,7 +573,7 @@ useHead(() => {
                 :key="tab.id"
                 type="button"
                 class="transform border rounded-4 px-4 py-3 text-left transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                :class="tab.id === activeTabId ? 'border-[var(--primary-brown)] bg-[var(--light-cream)] shadow-lg shadow-black/10 scale-105' : 'border-[var(--olive-green)]/40 bg-white hover:border-[var(--primary-brown)]/60 hover:bg-[var(--light-cream)]/50'"
+                :class="tab.id === activeTabId ? 'border-[var(--primary-brown)] bg-[var(--yunda-petal)] shadow-lg shadow-black/10 scale-105' : 'border-[var(--olive-green)]/40 bg-white hover:border-[var(--primary-brown)]/60 hover:bg-[var(--yunda-petal)]/50'"
                 :style="{ animationDelay: `${index * 100}ms` }"
                 @click="activeTabId = tab.id"
               >
@@ -589,7 +589,7 @@ useHead(() => {
               </div>
             </div>
             <div class="max-w-150 w-full border border-[var(--olive-green)]/40 rounded-5 bg-white/90 p-8 shadow-black/10 shadow-lg transition-all duration-500 hover:shadow-xl">
-              <h3 class="text-6 font-semibold uppercase transition-all duration-300" style="font-family: var(--font-primary)">
+              <h3 class="text-6 font-semibold uppercase transition-all duration-300" >
                 {{ activeTab.title }}
               </h3>
               <div class="mt-6 text-4.25 leading-relaxed transition-all duration-500 space-y-4">
@@ -608,9 +608,9 @@ useHead(() => {
     </section>
 
     <!-- Requirements -->
-    <section id="requirements" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="requirements" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
           {{ tt('Surrogacy Requirements & Qualifications', '代孕要求与资格') }}
         </h2>
         <div class="mt-8 space-y-6">
@@ -622,10 +622,10 @@ useHead(() => {
           >
             <button
               type="button"
-              class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--light-cream)]/30"
+              class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-[var(--yunda-petal)]/30"
               @click="toggleRequirement(dropdown.id)"
             >
-              <h3 class="text-5 font-semibold uppercase transition-all duration-300" style="font-family: var(--font-primary)">
+              <h3 class="text-5 font-semibold uppercase transition-all duration-300" >
                 {{ dropdown.title }}
               </h3>
               <Icon
@@ -672,7 +672,7 @@ useHead(() => {
     <!-- Journey -->
     <section id="journey" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
           {{ tt('Your Surrogacy Journey: Steps & Timeline', '代孕旅程：步骤与时间线') }}
         </h2>
         <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed" style="animation-delay: 200ms;">
@@ -698,7 +698,7 @@ useHead(() => {
 
               <!-- Step Content -->
               <div class="flex-1 border border-[var(--olive-green)]/40 rounded-5 bg-white/95 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-[var(--primary-brown)] hover:shadow-xl">
-                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+                <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
                   {{ step.title }}
                 </h3>
                 <div class="mt-4 text-4.25 leading-relaxed space-y-3">
@@ -731,9 +731,9 @@ useHead(() => {
     </section>
 
     <!-- Compensation -->
-    <section id="compensation" class="bg-[var(--foot-bg)] py-18 lg:py-24">
+    <section id="compensation" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
           {{ tt('Compensation & Benefits', '补偿与福利') }}
         </h2>
         <p class="mt-6 animate-fade-in-up text-4.25 leading-relaxed" style="animation-delay: 400ms;">
@@ -743,12 +743,12 @@ useHead(() => {
         <!-- Compensation Overview Cards -->
         <div class="grid mt-12 gap-8 lg:grid-cols-3">
           <!-- Base Compensation Card -->
-          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--primary-brown)] to-[var(--dark-brown)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 300ms;">
+          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--primary-brown)] to-[var(--yunda-bark)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 300ms;">
             <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
               <Icon name="radix-icons:star-filled" class="h-8 w-8 text-white" />
             </div>
 
-            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" >
               {{ tt('Base Compensation', '基础补偿') }}
             </h3>
             <div class="mb-4 text-center">
@@ -767,7 +767,7 @@ useHead(() => {
             <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
               <Icon name="radix-icons:calendar" class="h-8 w-8 text-white" />
             </div>
-            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" >
               {{ tt('Monthly Support', '月度支持') }}
             </h3>
             <div class="mb-4 text-center">
@@ -782,11 +782,11 @@ useHead(() => {
           </div>
 
           <!-- Additional Benefits Card -->
-          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--dark-brown)] to-[var(--olive-green)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 700ms;">
+          <div class="hover:shadow-3xl animate-fade-in-up rounded-8 from-[var(--yunda-bark)] to-[var(--olive-green)] bg-gradient-to-br p-8 text-white shadow-2xl transition-all duration-500 hover:scale-105" style="animation-delay: 700ms;">
             <div class="mx-auto mb-6 h-16 w-16 flex items-center justify-center rounded-full bg-white/20">
               <Icon name="radix-icons:heart" class="h-8 w-8 text-white" />
             </div>
-            <h3 class="mb-4 text-center text-5 font-bold uppercase" style="font-family: var(--font-primary)">
+            <h3 class="mb-4 text-center text-5 font-bold uppercase" >
               {{ tt('Additional Benefits', '额外福利') }}
             </h3>
             <div class="mb-4 text-center">
@@ -811,7 +811,7 @@ useHead(() => {
               class="border-2 rounded-full px-6 py-3 text-3.5 font-semibold uppercase transition-all duration-300"
               :class="activeCompensationTab === tab.id
                 ? 'border-[var(--primary-brown)] bg-[var(--primary-brown)] text-white shadow-lg'
-                : 'border-[var(--olive-green)] bg-white text-[var(--dark-brown)] hover:border-[var(--primary-brown)] hover:bg-[var(--light-cream)]'"
+                : 'border-[var(--olive-green)] bg-white text-[var(--yunda-bark)] hover:border-[var(--primary-brown)] hover:bg-[var(--yunda-petal)]'"
               :style="{ animationDelay: `${1000 + (index * 100)}ms` }"
               @click="activeCompensationTab = tab.id"
             >
@@ -822,7 +822,7 @@ useHead(() => {
           <!-- Tab Content -->
           <div class="animate-fade-in-up border border-[var(--olive-green)]/30 rounded-8 bg-white/95 p-8 shadow-xl" style="animation-delay: 1200ms;">
             <div v-if="activeCompensationTab === 'coverage'" class="space-y-6">
-              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" >
                 {{ tt('What Surrogate Compensation Covers', '补偿覆盖范围') }}
               </h3>
               <div class="grid gap-6 lg:grid-cols-2">
@@ -835,7 +835,7 @@ useHead(() => {
                     {{ paragraph }}
                   </p>
                 </div>
-                <div class="rounded-6 bg-[var(--light-cream)]/50 p-6">
+                <div class="rounded-6 bg-[var(--yunda-petal)]/50 p-6">
                   <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
                     {{ tt('Typical Inclusions', '常见包含项') }}
                   </h4>
@@ -854,7 +854,7 @@ useHead(() => {
             </div>
 
             <div v-if="activeCompensationTab === 'payments'" class="space-y-6">
-              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" >
                 {{ tt('How Payments Work', '支付方式') }}
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
@@ -867,7 +867,7 @@ useHead(() => {
                     {{ paragraph }}
                   </p>
                 </div>
-                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--light-cream)] to-white bg-gradient-to-br p-6">
+                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--yunda-petal)] to-white bg-gradient-to-br p-6">
                   <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
                     {{ tt('Payment Timeline', '付款时间线') }}
                   </h4>
@@ -888,7 +888,7 @@ useHead(() => {
             </div>
 
             <div v-if="activeCompensationTab === 'benefits'" class="space-y-6">
-              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" >
                 {{ tt('Benefits That Make Life Easier', '让生活更轻松的福利') }}
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
@@ -904,7 +904,7 @@ useHead(() => {
                     {{ benefitsClosingParagraph }}
                   </p>
                 </div>
-                <div class="rounded-6 bg-[var(--light-cream)]/50 p-6">
+                <div class="rounded-6 bg-[var(--yunda-petal)]/50 p-6">
                   <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
                     {{ tt('Support Examples', '支持示例') }}
                   </h4>
@@ -923,7 +923,7 @@ useHead(() => {
             </div>
 
             <div v-if="activeCompensationTab === 'protection'" class="space-y-6">
-              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" style="font-family: var(--font-primary)">
+              <h3 class="mb-6 text-5 text-[var(--primary-brown)] font-semibold uppercase" >
                 {{ tt('Legal, Insurance, and Protection', '法律、保险与保障') }}
               </h3>
               <div class="grid gap-8 lg:grid-cols-2">
@@ -935,7 +935,7 @@ useHead(() => {
                     {{ experiencedCarrierParagraph }}
                   </p>
                 </div>
-                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--light-cream)] to-white bg-gradient-to-br p-6">
+                <div class="border border-[var(--olive-green)]/30 rounded-6 from-[var(--yunda-petal)] to-white bg-gradient-to-br p-6">
                   <h4 class="mb-4 text-4 text-[var(--primary-brown)] font-semibold uppercase">
                     {{ tt('Our Promise', '我们的承诺') }}
                   </h4>
@@ -959,7 +959,7 @@ useHead(() => {
     <!-- Why Yunda -->
     <section id="why-yunda" class="py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" >
           {{ tt('Why Yunda', '为什么选择 Yunda') }}
         </h2>
         <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed transition-all duration-500" style="animation-delay: 200ms;">
@@ -974,10 +974,10 @@ useHead(() => {
           <div
             v-for="(pillar, index) in yundaPillars"
             :key="pillar.title"
-            class="animate-fade-in-up border border-[var(--primary-brown)]/30 rounded-5 bg-white/90 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--light-cream)]/60 hover:shadow-xl hover:-translate-y-2"
+            class="animate-fade-in-up border border-[var(--primary-brown)]/30 rounded-5 bg-white/90 p-6 shadow-black/10 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--yunda-petal)]/60 hover:shadow-xl hover:-translate-y-2"
             :style="{ animationDelay: `${400 + (index * 200)}ms` }"
           >
-            <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" style="font-family: var(--font-primary)">
+            <h3 class="text-5 font-semibold uppercase transition-all duration-300 hover:text-[var(--primary-brown)]" >
               {{ pillar.title }}
             </h3>
             <p class="mt-3 text-4.25 leading-relaxed transition-all duration-300">
@@ -989,13 +989,13 @@ useHead(() => {
     </section>
 
     <!-- CTA -->
-    <section class="relative overflow-hidden bg-[var(--dark-brown)] py-18 text-white">
+    <section class="relative overflow-hidden bg-[var(--yunda-bark)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">
         <div class="absolute left-1/4 top-0 h-60 w-60 animate-pulse rounded-full bg-[var(--primary-brown)]/40 blur-[160px]" />
         <div class="absolute bottom-0 right-1/5 h-48 w-48 animate-pulse rounded-full bg-[var(--olive-green)]/50 blur-[140px]" style="animation-delay: 1s;" />
       </div>
       <div class="relative mx-auto max-w-260 px-5 text-center">
-        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" style="font-family: var(--font-primary)">
+        <h2 class="animate-fade-in-up text-8 font-semibold tracking-wide uppercase transition-all duration-700 hover:scale-105 lg:text-10" >
           {{ tt('Ready to Carry with Confidence?', '准备好自信开启代孕之旅？') }}
         </h2>
         <p class="mt-4 animate-fade-in-up text-4.5 leading-relaxed transition-all duration-500" style="animation-delay: 200ms;">
@@ -1004,7 +1004,7 @@ useHead(() => {
         <div class="mt-8 flex flex-wrap animate-fade-in-up justify-center gap-4" style="animation-delay: 400ms;">
           <NuxtLink
             to="/be-surrogate"
-            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--dark-brown)] font-semibold uppercase transition-all duration-300 hover:scale-110 hover:bg-[var(--light-cream)] hover:shadow-xl"
+            class="rounded-full bg-white px-6 py-3 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase transition-all duration-300 hover:scale-110 hover:bg-[var(--yunda-petal)] hover:shadow-xl"
           >
             {{ tt('Start Application', '开始申请') }}
           </NuxtLink>

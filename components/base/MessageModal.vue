@@ -43,7 +43,7 @@ function close() {
         <div class="absolute inset-0 bg-black/50" @click="close" />
 
         <!-- Modal -->
-        <div class="relative max-h-[90vh] max-w-md w-full overflow-y-auto rounded-3 bg-[var(--light-cream)] p-8 shadow-2xl">
+        <div class="relative max-h-[90vh] max-w-md w-full overflow-y-auto rounded-3 bg-[var(--yunda-petal)] p-8 shadow-2xl">
           <!-- Icon -->
           <div class="mb-6 flex justify-center">
             <div
@@ -63,12 +63,12 @@ function close() {
           </div>
 
           <!-- Title -->
-          <h3 class="mb-4 text-center text-6 font-semibold font-['Cormorant']">
+          <h3 class="mb-4 text-center text-6 font-semibold font-display">
             {{ title }}
           </h3>
 
           <!-- Message -->
-          <div class="mb-6 text-4 text-[var(--dark-brown)] font-serif">
+          <div class="mb-6 text-4 text-[var(--yunda-bark)] font-serif">
             <!-- Single message -->
             <p v-if="typeof message === 'string'" class="text-center">
               {{ message }}
@@ -86,7 +86,7 @@ function close() {
           <!-- Actions -->
           <div class="flex justify-center">
             <button
-              class="rounded-2.5 bg-[var(--grayish-green)] px-8 py-3 text-4 text-[#FFFCF6] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90"
+              class="rounded-2.5 bg-[var(--yunda-bark)] px-8 py-3 text-4 text-[var(--yunda-petal)] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.5)] backdrop-blur-5 transition-opacity hover:opacity-90"
               @click="close"
             >
               {{ buttonText }}

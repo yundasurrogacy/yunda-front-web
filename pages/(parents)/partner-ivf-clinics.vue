@@ -258,42 +258,42 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--head-bg)] text-[var(--dark-brown)]">
+  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
 
     <main>
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-br">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-br">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-12%] top-[-20%] h-72 w-72 rounded-full bg-white/70 blur-3xl" />
-          <div class="absolute right-[-10%] top-[-18%] h-80 w-80 rounded-full bg-[var(--light-cream)]/60 blur-3xl" />
+          <div class="absolute right-[-10%] top-[-18%] h-80 w-80 rounded-full bg-[var(--yunda-petal)]/60 blur-3xl" />
           <div class="absolute bottom-[-28%] left-[-18%] h-96 w-[520px] rounded-[55%] bg-white/65 blur-3xl" />
-          <div class="absolute bottom-[-30%] right-[-18%] h-96 w-[520px] rounded-[60%] bg-[var(--light-cream)]/55 blur-3xl" />
+          <div class="absolute bottom-[-30%] right-[-18%] h-96 w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
           <div class="mx-auto max-w-[1400px] border border-white/70 rounded-[32px] bg-white/80 p-8 shadow-[0_28px_70px_rgba(64,84,120,0.08)] backdrop-blur-xl lg:p-12">
             <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
               <div>
-                <h1 class="text-4xl font-semibold leading-tight lg:text-[52px]" style="font-family: var(--font-primary)">
+                <h1 class="font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
                   {{ c.heroTitle }}
                 </h1>
 
-                <p class="mt-4 text-base text-[var(--dark-brown)]/80 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-4 text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.heroDescription }}
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-4">
                   <NuxtLink
                     :to="localePath('/be-parents')"
-                    class="inline-flex items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-6 py-3 text-sm text-white font-semibold shadow-[0_16px_30px_rgba(169,108,66,0.28)] transition-transform duration-200 hover:-translate-y-0.5"
-                    style="font-family: var(--font-secondary)"
+                    class="inline-flex items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-6 py-3 text-sm text-[var(--yunda-petal)] font-semibold shadow-[0_16px_30px_rgba(169,108,66,0.28)] transition-transform duration-200 hover:-translate-y-0.5"
+                    style="font-family: var(--font-text)"
                   >
                     {{ c.ctaPrimary }}
                   </NuxtLink>
                   <button
                     type="button"
-                    class="inline-flex items-center justify-center border border-[var(--primary-brown)]/30 rounded-[12px] bg-white/80 px-6 py-3 text-sm text-[var(--dark-brown)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
-                    style="font-family: var(--font-secondary)"
+                    class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/30 rounded-[12px] bg-white/80 px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
+                    style="font-family: var(--font-text)"
                   >
                     {{ c.ctaSecondary }}
                   </button>
@@ -319,41 +319,41 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-[#fbf4e6] to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-[#fbf4e6] to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-20%] top-[-18%] h-[420px] w-[420px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-22%] top-[-10%] h-[520px] w-[520px] rounded-full bg-[var(--light-cream)]/70 blur-3xl" />
+          <div class="absolute right-[-22%] top-[-10%] h-[520px] w-[520px] rounded-full bg-[var(--yunda-petal)]/70 blur-3xl" />
           <div class="absolute bottom-[-18%] right-[-14%] h-[340px] w-[420px] rounded-full bg-white/65 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/90 p-8 shadow-[0_20px_60px_rgba(64,84,120,0.08)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/90 p-8 shadow-[0_20px_60px_rgba(64,84,120,0.08)] backdrop-blur-xl lg:p-12">
             <div class="mb-8">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s1Title }}
               </h2>
-              <p class="mt-4 text-base text-[var(--dark-brown)]/80 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="mt-4 text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.s1Intro }}
               </p>
             </div>
 
             <div class="grid gap-6 lg:grid-cols-2">
-              <div class="border border-[var(--primary-brown)]/40 rounded-[26px] bg-[var(--head-bg)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--primary-brown)]/60 px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/40 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--yunda-maple)]/60 px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.path1Tag }}
                 </div>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-4 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-4 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.path1List" :key="item">
                     {{ item }}
                   </li>
                 </ul>
               </div>
 
-              <div class="border border-[var(--primary-brown)]/40 rounded-[26px] bg-[var(--light-cream)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/40 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.path2Tag }}
                 </div>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-4 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-4 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.path2List" :key="item">
                     {{ item }}
                   </li>
@@ -361,41 +361,41 @@ useHead(() => ({
               </div>
             </div>
 
-            <p class="mt-10 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+            <p class="mt-10 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
               {{ c.s1Closing }}
             </p>
           </div>
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-16%] h-[360px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-20%] top-[-8%] h-[480px] w-[480px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-20%] top-[-8%] h-[480px] w-[480px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-22%] left-[-12%] h-[380px] w-[460px] rounded-[55%] bg-white/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_20px_60px_rgba(64,84,120,0.08)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_20px_60px_rgba(64,84,120,0.08)] backdrop-blur-xl lg:p-12">
             <div class="mb-10 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div class="max-w-4xl">
-                <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+                <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                   {{ c.s2Title }}
                 </h2>
-                <p class="mt-4 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.s2Intro }}
                 </p>
               </div>
-              <div class="flex flex-wrap gap-3 text-sm font-semibold" style="font-family: var(--font-secondary)">
+              <div class="flex flex-wrap gap-3 text-sm font-semibold" style="font-family: var(--font-text)">
                 <NuxtLink
                   :to="localePath('/surrogacy-cost')"
-                  class="inline-flex items-center border border-[var(--primary-brown)]/30 rounded-full bg-[var(--head-bg)] px-4 py-2 text-[var(--primary-brown)] hover:border-[var(--primary-brown)]/50"
+                  class="inline-flex items-center border border-[var(--yunda-maple)]/30 rounded-full bg-[var(--yunda-petal)] px-4 py-2 text-[var(--yunda-maple)] hover:border-[var(--yunda-maple)]/50"
                 >
                   {{ c.chipCost }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/surrogacy-process')"
-                  class="inline-flex items-center border border-[var(--olive-green)]/30 rounded-full bg-[var(--light-cream)] px-4 py-2 text-[var(--olive-green)] hover:border-[var(--olive-green)]/50"
+                  class="inline-flex items-center border border-[var(--olive-green)]/30 rounded-full bg-[var(--yunda-petal)] px-4 py-2 text-[var(--olive-green)] hover:border-[var(--olive-green)]/50"
                 >
                   {{ c.chipProcess }}
                 </NuxtLink>
@@ -403,28 +403,28 @@ useHead(() => ({
             </div>
 
             <div class="grid gap-6 lg:grid-cols-2">
-              <div class="border border-[var(--primary-brown)]/40 rounded-[26px] bg-[var(--head-bg)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--primary-brown)] px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/40 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--yunda-maple)] px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.clinicTag }}
                 </div>
-                <p class="mb-4 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mb-4 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.clinicIntro }}
                 </p>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-3 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-3 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.clinicList" :key="item">
                     {{ item }}
                   </li>
                 </ul>
               </div>
 
-              <div class="border border-[var(--primary-brown)]/40 rounded-[26px] bg-[var(--light-cream)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/40 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_38px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.agencyTag }}
                 </div>
-                <p class="mb-4 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mb-4 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.agencyIntro }}
                 </p>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-3 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-3 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.agencyList" :key="item">
                     {{ item }}
                   </li>
@@ -435,37 +435,37 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-[#fbf4e6] to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-[#fbf4e6] to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-10%] h-[340px] w-[420px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-24%] top-[-12%] h-[520px] w-[520px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-24%] top-[-12%] h-[520px] w-[520px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] right-[-10%] h-[360px] w-[460px] rounded-[60%] bg-white/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
             <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div class="max-w-4xl">
-                <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+                <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                   {{ c.s3Title }}
                 </h2>
-                <p class="mt-4 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.s3Intro }}
-                  <NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                  <NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                     {{ c.linkPartner }}
                   </NuxtLink>.
                 </p>
               </div>
-              <div class="flex flex-wrap gap-3 text-sm font-semibold" style="font-family: var(--font-secondary)">
+              <div class="flex flex-wrap gap-3 text-sm font-semibold" style="font-family: var(--font-text)">
                 <NuxtLink
                   :to="localePath('/surrogacy-process')"
-                  class="inline-flex items-center border border-[var(--primary-brown)]/30 rounded-full bg-[var(--head-bg)] px-4 py-2 text-[var(--primary-brown)] hover:border-[var(--primary-brown)]/50"
+                  class="inline-flex items-center border border-[var(--yunda-maple)]/30 rounded-full bg-[var(--yunda-petal)] px-4 py-2 text-[var(--yunda-maple)] hover:border-[var(--yunda-maple)]/50"
                 >
                   {{ c.chipProcess2 }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/surrogacy-cost')"
-                  class="inline-flex items-center border border-[var(--olive-green)]/30 rounded-full bg-[var(--light-cream)] px-4 py-2 text-[var(--olive-green)] hover:border-[var(--olive-green)]/50"
+                  class="inline-flex items-center border border-[var(--olive-green)]/30 rounded-full bg-[var(--yunda-petal)] px-4 py-2 text-[var(--olive-green)] hover:border-[var(--olive-green)]/50"
                 >
                   {{ c.chipCost2 }}
                 </NuxtLink>
@@ -474,27 +474,27 @@ useHead(() => ({
 
             <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <div class="space-y-6">
-                <div class="border border-[var(--primary-brown)]/30 rounded-[24px] bg-[var(--head-bg)] p-6 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                  <div class="mb-3 inline-flex items-center rounded-full bg-[var(--primary-brown)]/60 px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+                <div class="border border-[var(--yunda-maple)]/30 rounded-[24px] bg-[var(--yunda-petal)] p-6 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                  <div class="mb-3 inline-flex items-center rounded-full bg-[var(--yunda-maple)]/60 px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                     {{ c.labTag }}
                   </div>
-                  <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                  <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                     {{ c.labBody }}
                   </p>
                 </div>
 
-                <div class="border border-[var(--primary-brown)]/30 rounded-[24px] bg-white p-6 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                  <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+                <div class="border border-[var(--yunda-maple)]/30 rounded-[24px] bg-white p-6 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                  <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                     {{ c.scheduleTag }}
                   </div>
-                  <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                  <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                     {{ c.scheduleBody }}
                   </p>
                 </div>
               </div>
 
               <div class="flex items-start justify-center">
-                <div class="max-w-[520px] w-full overflow-hidden border border-[var(--primary-brown)]/20 rounded-[28px] bg-[var(--head-bg)] shadow-[0_22px_52px_rgba(64,84,120,0.12)]">
+                <div class="max-w-[520px] w-full overflow-hidden border border-[var(--yunda-maple)]/20 rounded-[28px] bg-[var(--yunda-petal)] shadow-[0_22px_52px_rgba(64,84,120,0.12)]">
                   <picture>
                     <source srcset="/images/ip/surrogacy-insurance.png" type="image/png">
                     <img
@@ -512,32 +512,32 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-12%] h-[380px] w-[420px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-22%] top-[-14%] h-[540px] w-[540px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-22%] top-[-14%] h-[540px] w-[540px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-20%] right-[-12%] h-[360px] w-[460px] rounded-[60%] bg-white/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
             <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div class="flex items-start gap-4">
-                <picture class="hidden h-16 w-16 overflow-hidden border border-[var(--primary-brown)]/25 rounded-full bg-[var(--head-bg)] shadow-[0_10px_28px_rgba(64,84,120,0.12)] lg:block">
+                <picture class="hidden h-16 w-16 overflow-hidden border border-[var(--yunda-maple)]/25 rounded-full bg-[var(--yunda-petal)] shadow-[0_10px_28px_rgba(64,84,120,0.12)] lg:block">
                   <source srcset="/images/surrogacy/i-s-3.png" type="image/png">
                   <img src="/images/surrogacy/i-s-3.png" alt="Insurance coverage illustration" class="h-full w-full object-cover">
                 </picture>
                 <div>
-                  <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+                  <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                     {{ c.s4Title }}
                   </h2>
-                  <p class="mt-4 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                  <p class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                     {{ c.s4Intro }}
-                    <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                    <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                       {{ c.linkCost }}
                     </NuxtLink>
                     <span class="mx-1">·</span>
-                    <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                    <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                       {{ c.linkProcess3 }}
                     </NuxtLink>.
                   </p>
@@ -546,31 +546,31 @@ useHead(() => ({
             </div>
 
             <div class="grid gap-6 lg:grid-cols-2">
-              <div class="border border-[var(--primary-brown)]/35 rounded-[26px] bg-[var(--head-bg)] p-6 shadow-[0_18px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--primary-brown)]/60 px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/35 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--yunda-maple)]/60 px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.usTag }}
                 </div>
-                <p class="mb-4 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mb-4 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.usIntro }}
                 </p>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-3 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-3 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.usList" :key="item">
                     {{ item }}
                   </li>
                 </ul>
-                <p class="mt-4 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-4 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.usClosing }}
                 </p>
               </div>
 
-              <div class="border border-[var(--primary-brown)]/35 rounded-[26px] bg-[var(--light-cream)] p-6 shadow-[0_18px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="border border-[var(--yunda-maple)]/35 rounded-[26px] bg-[var(--yunda-petal)] p-6 shadow-[0_18px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-4 inline-flex items-center rounded-full bg-[var(--olive-green)] px-6 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.intlTag }}
                 </div>
-                <p class="mb-4 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mb-4 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.intlIntro }}
                 </p>
-                <ul class="text-base text-[var(--dark-brown)] leading-relaxed space-y-3 lg:text-lg" style="font-family: var(--font-secondary)">
+                <ul class="text-base text-[var(--yunda-bark)] leading-[1.75] space-y-3 lg:text-lg" style="font-family: var(--font-text)">
                   <li v-for="item in c.intlList" :key="item">
                     {{ item }}
                   </li>
@@ -581,32 +581,32 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-18%] top-[-10%] h-[340px] w-[420px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-24%] top-[-12%] h-[520px] w-[520px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-24%] top-[-12%] h-[520px] w-[520px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-18%] right-[-10%] h-[360px] w-[460px] rounded-[60%] bg-white/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
             <div class="mb-10">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s5Title }}
               </h2>
-              <p class="mt-4 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.s5Intro }}
-                <NuxtLink :to="localePath('/surrogacy-protection-california')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                <NuxtLink :to="localePath('/surrogacy-protection-california')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                   {{ c.linkProtect }}
                 </NuxtLink>
                 <span />
-                <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                   {{ c.linkProcess4 }}
                 </NuxtLink>.
               </p>
             </div>
 
-            <div class="mb-10 border border-[var(--primary-brown)]/25 rounded-[26px] bg-[var(--head-bg)]/80 p-4 shadow-[0_18px_48px_rgba(64,84,120,0.12)]">
+            <div class="mb-10 border border-[var(--yunda-maple)]/25 rounded-[26px] bg-[var(--yunda-petal)]/80 p-4 shadow-[0_18px_48px_rgba(64,84,120,0.12)]">
               <div class="grid gap-3 lg:grid-cols-4 sm:grid-cols-2">
                 <div
                   v-for="(photo, idx) in asrmPhotos"
@@ -619,44 +619,44 @@ useHead(() => ({
             </div>
 
             <div class="grid gap-6 lg:grid-cols-2">
-              <div class="h-full border border-[var(--primary-brown)]/30 rounded-[22px] bg-[var(--light-cream)]/80 p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--primary-brown)] px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="h-full border border-[var(--yunda-maple)]/30 rounded-[22px] bg-[var(--yunda-petal)]/80 p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--yunda-maple)] px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.medicalTag }}
                 </div>
-                <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.medicalBody }}
                 </p>
               </div>
 
-              <div class="h-full border border-[var(--primary-brown)]/30 rounded-[22px] bg-white p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--primary-brown)]/70 px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="h-full border border-[var(--yunda-maple)]/30 rounded-[22px] bg-white p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--yunda-maple)]/70 px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.bestTag }}
                 </div>
-                <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.bestBody }}
                 </p>
               </div>
 
-              <div class="h-full border border-[var(--primary-brown)]/30 rounded-[22px] bg-[var(--head-bg)] p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="h-full border border-[var(--yunda-maple)]/30 rounded-[22px] bg-[var(--yunda-petal)] p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.psyTag }}
                 </div>
-                <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.psyBody }}
                 </p>
               </div>
 
-              <div class="h-full border border-[var(--primary-brown)]/30 rounded-[22px] bg-[var(--light-cream)]/80 p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
-                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-white font-semibold" style="font-family: var(--font-secondary)">
+              <div class="h-full border border-[var(--yunda-maple)]/30 rounded-[22px] bg-[var(--yunda-petal)]/80 p-5 shadow-[0_16px_40px_rgba(64,84,120,0.10)]">
+                <div class="mb-3 inline-flex items-center rounded-full bg-[var(--olive-green)] px-5 py-2 text-sm text-[var(--yunda-petal)] font-semibold" style="font-family: var(--font-text)">
                   {{ c.learnTag }}
                 </div>
-                <p class="text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ c.learnBodyPrefix }}
-                  <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                  <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                     {{ c.learnBodyMid }}
                   </NuxtLink>
                   {{ c.learnBodySuffix }}
-                  <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--primary-brown)] underline underline-offset-4 hover:text-[var(--dark-brown)]">
+                  <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--yunda-maple)] underline underline-offset-4 hover:text-[var(--yunda-bark)]">
                     {{ c.learnBodyCost }}
                   </NuxtLink>.
                 </p>
@@ -666,20 +666,20 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--head-bg)] via-white to-[var(--light-cream)] bg-gradient-to-b">
+      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
           <div class="absolute left-[-16%] top-[-12%] h-[340px] w-[420px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-20%] top-[-10%] h-[520px] w-[520px] rounded-full bg-[var(--light-cream)]/65 blur-3xl" />
+          <div class="absolute right-[-20%] top-[-10%] h-[520px] w-[520px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
           <div class="absolute bottom-[-16%] right-[-10%] h-[360px] w-[440px] rounded-[60%] bg-white/60 blur-3xl" />
         </div>
 
         <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-16 lg:py-24">
-          <div class="mx-auto max-w-[1480px] border border-[var(--primary-brown)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
+          <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
             <div class="mb-8">
-              <h2 class="text-3xl text-[var(--dark-brown)] font-semibold leading-tight lg:text-4xl" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                 {{ c.s6Title }}
               </h2>
-              <p class="mt-3 text-base text-[var(--dark-brown)]/85 leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+              <p class="mt-3 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                 {{ c.s6Intro }}
               </p>
             </div>
@@ -688,15 +688,15 @@ useHead(() => ({
               <details
                 v-for="(faq, idx) in c.faqs"
                 :key="faq.q"
-                class="group border border-[var(--primary-brown)]/25 rounded-[18px] p-4 shadow-[0_14px_32px_rgba(64,84,120,0.10)]" :class="[
-                  idx % 2 === 0 ? 'bg-[var(--head-bg)]' : 'bg-white',
+                class="group border border-[var(--yunda-maple)]/25 rounded-[18px] p-4 shadow-[0_14px_32px_rgba(64,84,120,0.10)]" :class="[
+                  idx % 2 === 0 ? 'bg-[var(--yunda-petal)]' : 'bg-white',
                 ]"
               >
-                <summary class="flex cursor-pointer items-center justify-between gap-4 text-base text-[var(--dark-brown)] font-semibold" style="font-family: var(--font-secondary)">
+                <summary class="flex cursor-pointer items-center justify-between gap-4 text-base text-[var(--yunda-bark)] font-semibold" style="font-family: var(--font-text)">
                   {{ idx + 1 }}) {{ faq.q }}
-                  <span class="text-[var(--primary-brown)] transition-transform duration-200 group-open:rotate-45">+</span>
+                  <span class="text-[var(--yunda-maple)] transition-transform duration-200 group-open:rotate-45">+</span>
                 </summary>
-                <p class="mt-3 text-base text-[var(--dark-brown)] leading-relaxed lg:text-lg" style="font-family: var(--font-secondary)">
+                <p class="mt-3 text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
                   {{ faq.a }}
                 </p>
               </details>

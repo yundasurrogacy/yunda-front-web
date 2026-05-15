@@ -134,24 +134,24 @@ useHead(() => {
 </script>
 
 <template>
-  <div>
+  <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <HeroSection />
     <StatsSection />
     <WhatSetsUsApartSection />
     <OurServicesSection />
     <CommitmentSection />
-    <section class="bg-[var(--head-bg)] px-4 py-[60px] md:px-20">
+    <section class="bg-[var(--yunda-petal)] px-4 py-[60px] md:px-20">
       <div class="mx-auto max-w-[1400px]">
         <div class="grid gap-8 py-2 md:min-h-[500px] md:grid-cols-10 md:items-center md:gap-10">
-          <div class="text-[var(--dark-brown)] md:col-span-4">
-            <h2 class="text-[30px] font-bold leading-[1.35]" style="font-family: var(--font-primary)">
+          <div class="text-[var(--yunda-bark)] md:col-span-4">
+            <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
               Yunda Surrogacy - Building families. Creating futures.
             </h2>
-            <p class="mt-8 text-4.5 leading-relaxed md:text-5" style="font-family: var(--font-secondary)">
+            <p class="mt-8 font-sans text-base leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               At Yunda Surrogacy, we believe that every journey to parenthood deserves care, professionalism, and respect.
             </p>
-            <p class="text-4.5 leading-relaxed md:text-5" style="font-family: var(--font-secondary)">
+            <p class="mt-2 font-sans text-base leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               Yunda Surrogacy is more than a bridge between families - we are a partner built on integrity, compassion, and commitment to creating life with love.
             </p>
           </div>

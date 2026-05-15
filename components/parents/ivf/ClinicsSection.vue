@@ -22,15 +22,15 @@ const clinicNames = [
 
 <template>
   <section
-    class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20"
+    class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-16 lg:px-20 lg:py-20"
   >
     <div class="mx-auto max-w-300">
       <!-- Title -->
-      <h2 class="mb-12 text-center text-7.5 font-semibold lg:mb-16 lg:text-left lg:text-10" style="font-family: var(--font-primary)">
+      <h2 class="mb-12 text-center text-7.5 font-semibold lg:mb-16 lg:text-left lg:text-10" >
         {{ $t('parentsIvf.clinicsSection.title') }}
       </h2>
       <!-- Clinic Names -->
-      <div class="mb-8 text-5 font-semibold font-['Cormorant'] lg:text-10">
+      <div class="mb-8 text-5 font-semibold font-display lg:text-10">
         <!-- 第一行：3个诊所名称，占2、4、6列 -->
         <div class="grid grid-cols-7 mb-4">
           <div /> <!-- 空列1 -->

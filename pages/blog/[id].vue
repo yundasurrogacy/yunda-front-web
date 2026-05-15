@@ -359,11 +359,11 @@ useHead(() => (blogPostingSchema.value
     <AppHeader />
 
     <!-- 博客详情页面主体 -->
-    <div class="min-h-screen bg-[#F7F7F2] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+    <div class="min-h-screen bg-[var(--yunda-petal)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
       <!-- 加载状态 -->
       <div v-if="loading" class="flex items-center justify-center py-24">
-        <div class="inline-block size-12 animate-spin border-4 border-[#A9A67D] border-b-transparent rounded-full" />
-        <p class="ml-4 text-lg text-gray-600">
+        <div class="inline-block size-12 animate-spin border-4 border-[var(--yunda-bark)] border-b-transparent rounded-full" />
+        <p class="ml-4 text-lg text-[var(--yunda-bark)]/75">
           {{ blogCopy.loading }}
         </p>
       </div>
@@ -374,7 +374,7 @@ useHead(() => (blogPostingSchema.value
           {{ error }}
         </div>
         <button
-          class="mt-6 rounded-lg bg-[#A9A67D] px-6 py-3 text-white transition-colors hover:bg-[#9A8F6D]"
+          class="yunda-type-button mt-6 rounded-lg bg-[var(--yunda-bark)] px-6 py-3 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
           @click="goBack"
         >
           {{ blogCopy.backToList }}
@@ -385,7 +385,7 @@ useHead(() => (blogPostingSchema.value
       <div v-else-if="blog" class="mx-auto max-w-4xl px-4 py-6">
         <!-- 返回按钮 -->
         <button
-          class="mb-6 flex items-center text-[#A9A67D] transition-colors hover:text-[#9A8F6D]"
+          class="mb-6 flex items-center text-sm text-[var(--yunda-bark)] font-semibold transition-colors hover:text-[var(--yunda-maple)]" style="font-family: var(--font-text)"
           @click="goBack"
         >
           <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -409,24 +409,24 @@ useHead(() => (blogPostingSchema.value
           </div>
 
           <!-- 文章头部 -->
-          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-6">
+          <div class="from-[var(--yunda-bark)]/5 to-[var(--yunda-harvest)]/5 bg-gradient-to-r p-6">
             <div class="mb-4">
-              <span class="inline-flex items-center rounded-full bg-[#A9A67D] px-4 py-1.5 text-sm text-white font-medium shadow-sm">
+              <span class="inline-flex items-center rounded-full bg-[var(--yunda-petal)] px-4 py-1.5 text-xs text-[var(--yunda-maple)] font-bold shadow-sm lg:text-[13px]" style="font-family: var(--font-text)">
                 {{ getCategoryName(blog.category) }}
               </span>
             </div>
-            <h1 class="mb-4 text-4xl text-gray-900 font-bold leading-tight font-[Cormorant,serif] md:text-5xl">
+            <h1 class="mb-4 yunda-type-blog-article-h1">
               {{ getBlogTitle(blog) }}
             </h1>
-            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+            <div class="yunda-type-blog-meta flex flex-wrap items-center gap-4">
               <div class="flex items-center">
-                <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
                 <span class="font-medium">{{ blog.reference_author || blogCopy.authorDefault }}</span>
               </div>
               <div class="flex items-center">
-                <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
                 </svg>
                 <span>{{ blog.created_at ? formatDate(blog.created_at) : '' }}</span>
@@ -439,10 +439,10 @@ useHead(() => (blogPostingSchema.value
             <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
               <div
                 v-if="renderedBlogContent"
-                class="min-w-0 whitespace-pre-wrap text-gray-700 leading-relaxed"
+                class="min-w-0 whitespace-pre-wrap text-[var(--yunda-bark)] leading-[1.8]" style="font-family: var(--font-text)"
                 v-html="renderedBlogContent"
               />
-              <div v-else class="text-gray-500">
+              <div v-else class="text-[var(--yunda-bark)]/60">
                 {{ blogCopy.detailNoContent }}
               </div>
             </div>
@@ -450,13 +450,13 @@ useHead(() => (blogPostingSchema.value
             <!-- 标签区域 -->
             <div
               v-if="blog.tags"
-              class="mt-12 border-t border-gray-200 pt-8"
+              class="mt-12 border-t border-[var(--yunda-bark)]/15 pt-8"
             >
               <div class="mb-4 flex items-center">
-                <svg class="mr-2 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
-                <h4 class="text-sm text-gray-700 font-medium">
+                <h4 class="text-sm text-[var(--yunda-bark)] font-medium">
                   {{ blogCopy.tagsTitle }}
                 </h4>
               </div>
@@ -464,7 +464,7 @@ useHead(() => (blogPostingSchema.value
                 <span
                   v-for="tag in blog.tags.split('|')"
                   :key="tag"
-                  class="inline-flex items-center border border-gray-200 rounded-full bg-white px-3 py-1.5 text-xs text-gray-700 font-medium shadow-sm transition-all duration-200 hover:border-gray-300 hover:bg-gray-50"
+                  class="inline-flex items-center border border-[var(--yunda-bark)]/15 rounded-full bg-white px-3 py-1.5 text-xs text-[var(--yunda-bark)] font-medium shadow-sm transition-all duration-200 hover:border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)]"
                 >
                   {{ tag }}
                 </span>
@@ -472,9 +472,9 @@ useHead(() => (blogPostingSchema.value
             </div>
 
             <!-- 返回按钮 -->
-            <div class="mt-12 border-t border-gray-200 pt-8">
+            <div class="mt-12 border-t border-[var(--yunda-bark)]/15 pt-8">
               <button
-                class="flex items-center rounded-lg bg-[#A9A67D] px-6 py-3 text-white transition-colors hover:bg-[#9A8F6D]"
+                class="yunda-type-button flex items-center rounded-lg bg-[var(--yunda-bark)] px-6 py-3 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
                 @click="goBack"
               >
                 <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -493,13 +493,13 @@ useHead(() => (blogPostingSchema.value
           <div class="grid grid-cols-2 gap-4">
             <NuxtLink
               :to="localePath('/be-parents')"
-              class="inline-flex items-center justify-center rounded-xl bg-[var(--primary-brown)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[var(--yunda-bark)] px-6 py-4 text-center text-[var(--yunda-petal)] tracking-[0.02em] transition hover:opacity-90"
             >
               {{ ctaCopy.parent }}
             </NuxtLink>
             <NuxtLink
               :to="localePath('/be-surrogate')"
-              class="inline-flex items-center justify-center rounded-xl bg-[var(--olive-green)] px-6 py-4 text-center text-white font-semibold transition hover:opacity-90"
+              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-6 py-4 text-center text-[var(--yunda-bark)] tracking-[0.02em] transition hover:opacity-95"
             >
               {{ ctaCopy.surrogate }}
             </NuxtLink>
@@ -509,17 +509,17 @@ useHead(() => (blogPostingSchema.value
     </div>
 
     <!-- Mobile Fixed Bottom CTA -->
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[#153d53] bg-[#153d53] pb-[env(safe-area-inset-bottom)] md:hidden">
-      <div class="grid grid-cols-2">
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--yunda-bark)]/15 bg-[var(--yunda-petal)] pb-[env(safe-area-inset-bottom)] md:hidden">
+      <div class="grid grid-cols-2 gap-px bg-[var(--yunda-bark)]/10">
         <NuxtLink
           :to="localePath('/be-parents')"
-          class="flex items-center justify-center bg-[#114f86] px-3 py-3 text-center text-white"
+          class="yunda-type-button flex items-center justify-center bg-[var(--yunda-bark)] px-3 py-3 text-center text-[var(--yunda-petal)]"
         >
           {{ ctaCopy.parent }}
         </NuxtLink>
         <NuxtLink
           :to="localePath('/be-surrogate')"
-          class="flex items-center justify-center bg-[var(--grayish-green)] px-3 py-3 text-center text-white"
+          class="yunda-type-button flex items-center justify-center bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-3 py-3 text-center text-[var(--yunda-bark)]"
         >
           {{ ctaCopy.surrogate }}
         </NuxtLink>
@@ -541,35 +541,61 @@ useHead(() => (blogPostingSchema.value
 .prose p {
   margin-bottom: 1.5rem;
   line-height: 1.8;
-  color: #374151;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .prose p {
+    font-size: 1.125rem;
+  }
 }
 
 :deep(.prose h1),
-:deep(.prose h2),
+:deep(.prose h2) {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--yunda-bark);
+  line-height: 1.15;
+}
+
 :deep(.prose h3),
 :deep(.prose h4),
 :deep(.prose h5),
 :deep(.prose h6) {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-weight: 800;
-  color: #111827;
-  line-height: 1.3;
+  font-family: var(--font-text);
+  font-weight: 700;
+  color: var(--yunda-bark);
+  line-height: 1.25;
 }
 
 :deep(.prose h1) {
-  font-size: 2.5rem;
-  font-weight: 900;
+  font-size: 2.25rem;
 }
 
 :deep(.prose h2) {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  :deep(.prose h2) {
+    font-size: 2.125rem;
+  }
 }
 
 :deep(.prose h3) {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  :deep(.prose h3) {
+    font-size: 1.5rem;
+  }
 }
 
 .prose ul,
@@ -585,22 +611,22 @@ useHead(() => (blogPostingSchema.value
 
 .prose strong {
   font-weight: 600;
-  color: #111827;
+  color: var(--yunda-bark);
 }
 
 .prose em {
   font-style: italic;
-  color: #6b7280;
+  color: color-mix(in srgb, var(--yunda-bark) 75%, transparent);
 }
 
 :deep(.prose a) {
-  color: #8b5a2b;
+  color: var(--yunda-bark);
   text-decoration: underline;
   text-underline-offset: 3px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 :deep(.prose a:hover) {
-  color: #6f4420;
+  color: var(--yunda-maple);
 }
 </style>

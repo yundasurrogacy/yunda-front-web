@@ -29,8 +29,11 @@ export default defineConfig({
   ],
   theme: {
     fontFamily: {
-      sans: ['Cormorant'],
-      serif: ['SourceSerif4'],
+      /* 正文 / 表单 / 导航：Source Serif（与 v1「Text」一致；勿再把 sans 配成 Cormorant） */
+      sans: ['SourceSerif4', 'serif'],
+      serif: ['SourceSerif4', 'serif'],
+      /* 展示标题：Cormorant — 使用 Uno `font-display` */
+      display: ['Cormorant', 'serif'],
     },
     animation: {
       keyframes: {

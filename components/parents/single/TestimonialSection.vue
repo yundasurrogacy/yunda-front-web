@@ -10,7 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="w-full bg-[var(--head-bg)] px-8 py-16 lg:px-0 lg:py-24">
+  <section class="w-full bg-[var(--yunda-petal)] px-8 py-16 lg:px-0 lg:py-24">
     <div class="h-auto lg:h-112 md:flex md:items-center">
       <!-- Image Section -->
       <div class="slide-left mb-8 md:mb-0 md:w-1/2">
@@ -29,7 +29,7 @@ onMounted(() => {
       <!-- Content Section -->
       <div class="slide-right flex flex-col justify-between text-3.5 md:w-1/2 md:px-10 lg:text-5">
         <!-- Title -->
-        <h2 class="mb-6 text-center text-6 font-semibold md:mb-18 md:text-left lg:text-8" style="font-family: var(--font-primary)">
+        <h2 class="mb-6 text-center text-6 font-semibold md:mb-18 md:text-left lg:text-8" >
           {{ $t('parentsSingle.testimonialSection.title') }}
         </h2>
 

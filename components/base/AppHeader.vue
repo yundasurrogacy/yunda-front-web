@@ -15,7 +15,7 @@ const isHomePage = computed(() => route.path === homePath.value)
   <!-- 占位元素，防止内容被固定的 header 遮挡 -->
   <div class="h-20 w-full md:h-25" />
 
-  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--head-bg)] px-4.5 md:h-25 md:px-20">
+  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
     <!-- Left Menu Button (always visible) -->
     <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
       <img src="/images/base/left_icon.svg" alt="Menu" class="h-10 w-10">
@@ -41,7 +41,7 @@ const isHomePage = computed(() => route.path === homePath.value)
     </div>
 
     <!-- Language switcher: same EN / 中文 control on mobile and desktop -->
-    <nav class="flex shrink-0 items-center" aria-label="Language">
+    <nav class="app-header-lang flex shrink-0 items-center" aria-label="Language">
       <LanguageSwitcher />
     </nav>
   </header>
@@ -54,6 +54,20 @@ const isHomePage = computed(() => route.path === homePath.value)
 /* Styles specific to AppHeader */
 header {
   /* 添加阴影效果，使吸顶导航更加明显 */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(60, 36, 21, 0.08);
+}
+
+/* 语言切换：正文 Text + Bark，悬停 Maple（不改动 LanguageSwitcher 组件文件） */
+.app-header-lang :deep(button) {
+  font-family: var(--font-text);
+  color: var(--yunda-bark);
+}
+
+.app-header-lang :deep(button:hover) {
+  color: var(--yunda-maple);
+}
+
+.app-header-lang :deep(span[aria-hidden='true']) {
+  color: color-mix(in srgb, var(--yunda-bark) 38%, transparent);
 }
 </style>

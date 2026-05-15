@@ -471,43 +471,43 @@ useHead(() => ({
   <div>
     <AppHeader />
     <main>
-      <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-14 pt-24 lg:pt-28">
+      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-14 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--head-bg)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
+          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--yunda-petal)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
             <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
               <div class="max-w-[780px]">
-                <h1 class="text-7.5 text-[var(--dark-brown)] font-semibold leading-tight lg:text-10" style="font-family: var(--font-primary)">
+                <h1 class="font-display text-[38px] text-[var(--yunda-bark)] font-semibold leading-[1.1] lg:text-[50px]">
                   {{ c.heroTitle }}
                 </h1>
-                <p class="mt-3 text-3.5 text-[var(--dark-brown)] leading-relaxed opacity-85 lg:text-5" style="font-family: var(--font-secondary)">
+                <p class="mt-3 text-3.5 text-[var(--yunda-bark)] leading-relaxed opacity-85 lg:text-5" style="font-family: var(--font-text)">
                   {{ c.heroSubtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-3">
                   <a
                     href="#journey-step-1"
-                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--primary-brown)] px-8 py-5 text-4 text-[#FFFCF6] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                  >
+                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-8 py-5 text-4 text-[var(--yunda-petal)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                 ">
                     {{ c.primaryCta }}
                   </a>
                   <NuxtLink
                     :to="localePath('/be-surrogate')"
                     class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                  >
+                 ">
                     <span>{{ c.secondaryCta }}</span>
                     <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
                 </div>
                 <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
-                  <p class="text-3.8 text-[var(--dark-brown)] font-semibold lg:text-4.4" style="font-family: var(--font-primary)">
+                  <p class="font-sans text-lg text-[var(--yunda-bark)] font-bold lg:text-xl" style="font-family: var(--font-text)">
                     {{ c.onPageTitle }}
                   </p>
                   <ul class="mt-2 grid gap-1.5">
                     <li
                       v-for="(item, index) in c.onPageItems"
                       :key="`journey-onpage-${index}`"
-                      class="flex items-start gap-2.5 text-3.4 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4"
-                      style="font-family: var(--font-secondary)"
-                    >
+                      class="flex items-start gap-2.5 text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-4"
+                      style="font-family: var(--font-text)"
+                   ">
                       <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
                       <span>{{ item }}</span>
                     </li>
@@ -524,12 +524,12 @@ useHead(() => ({
                     class="h-[380px] w-full object-cover"
                     loading="eager"
                     decoding="async"
-                  >
+                 ">
                 </div>
               </div>
             </div>
-            <div class="border-t border-[var(--primary-brown)] bg-[var(--light-cream)] px-6 py-4 lg:px-12">
-              <div class="flex flex-wrap items-center justify-start gap-6 text-3 text-[var(--dark-brown)] opacity-80 md:text-3.5" style="font-family: var(--font-secondary)">
+            <div class="border-t border-[var(--primary-brown)] bg-[var(--yunda-petal)] px-6 py-4 lg:px-12">
+              <div class="flex flex-wrap items-center justify-start gap-6 text-3 text-[var(--yunda-bark)] opacity-80 md:text-3.5" style="font-family: var(--font-text)">
                 <div class="flex items-center gap-2">
                   <Icon name="radix-icons:check-circled" class="h-4 w-4 text-[var(--primary-brown)]" />
                   <span>{{ c.features[0] }}</span>
@@ -548,24 +548,24 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full bg-[var(--head-bg)] pb-18 lg:pb-22">
+      <section class="w-full bg-[var(--yunda-petal)] pb-18 lg:pb-22">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/20 rounded-[18px] bg-white/92 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="grid gap-8 px-6 py-8 lg:grid-cols-[1.08fr_0.92fr] lg:px-10 lg:py-10">
               <div>
-                <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+                <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                   {{ c.processTitle }}
                 </h2>
-                <p class="mt-4 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">
+                <p class="mt-4 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
                   {{ c.processBody1 }}
                 </p>
-                <p class="mt-3 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">
+                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
                   {{ c.processBody2 }}
                 </p>
-                <p class="mt-3 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">
+                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
                   {{ c.processBody3 }}
                 </p>
-                <p class="mt-5 text-3.5 text-[var(--dark-brown)]/76 leading-relaxed" style="font-family: var(--font-secondary)">
+                <p class="mt-5 text-3.5 text-[var(--yunda-bark)]/76 leading-relaxed" style="font-family: var(--font-text)">
                   {{ c.processLinksPrefix }}
                   <NuxtLink :to="localePath('/become-a-surrogate')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
                     {{ c.processLinkApplication }}
@@ -582,11 +582,11 @@ useHead(() => ({
                 </p>
               </div>
 
-              <aside class="border border-[var(--primary-brown)]/20 rounded-[14px] from-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b p-5 lg:p-6">
-                <h3 class="text-4.8 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.8" style="font-family: var(--font-primary)">
+              <aside class="border border-[var(--primary-brown)]/20 rounded-[14px] from-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b p-5 lg:p-6">
+                <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
                   {{ c.processPathTitle }}
                 </h3>
-                <p class="mt-3 text-3.5 text-[var(--dark-brown)]/80 leading-relaxed lg:text-4.3" style="font-family: var(--font-secondary)">
+                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/80 leading-relaxed lg:text-4.3" style="font-family: var(--font-text)">
                   {{ c.processPathIntro }}
                 </p>
                 <ol class="grid mt-5 gap-2.5">
@@ -594,11 +594,11 @@ useHead(() => ({
                     v-for="(step, index) in c.processSteps"
                     :key="`process-step-${index}`"
                     class="flex items-start gap-3 border border-[var(--primary-brown)]/20 rounded-[10px] bg-white/88 px-3.5 py-2.5"
-                  >
-                    <span class="mt-0.4 h-6 w-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--primary-brown)] text-3 text-[#FFFCF6] font-semibold" style="font-family: var(--font-primary)">
+                 ">
+                    <span class="mt-0.4 h-6 w-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                       {{ index + 1 }}
                     </span>
-                    <span class="text-3.5 text-[var(--dark-brown)]/84 leading-relaxed" style="font-family: var(--font-secondary)">
+                    <span class="text-3.5 text-[var(--yunda-bark)]/84 leading-relaxed" style="font-family: var(--font-text)">
                       {{ step }}
                     </span>
                   </li>
@@ -609,20 +609,20 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-22 lg:pb-26">
+      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-22 lg:pb-26">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/92 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="px-6 py-8 lg:px-10 lg:py-10">
-              <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                 {{ c.howWorksTitle }}
               </h2>
 
-              <div class="mt-6 border border-[var(--primary-brown)]/20 rounded-[14px] bg-[var(--head-bg)]/80 p-4 lg:p-5">
+              <div class="mt-6 border border-[var(--primary-brown)]/20 rounded-[14px] bg-[var(--yunda-petal)]/80 p-4 lg:p-5">
                 <div class="flex flex-wrap items-center gap-2 text-3.3 lg:text-3.7">
-                  <span class="inline-flex items-center rounded-full bg-[var(--primary-brown)]/12 px-3 py-1 text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-primary)">
+                  <span class="inline-flex items-center rounded-full bg-[var(--primary-brown)]/12 px-3 py-1 text-[var(--primary-brown)] font-semibold">
                     {{ c.howWorksTocLabel }}
                   </span>
-                  <span class="text-[var(--dark-brown)]/78" style="font-family: var(--font-secondary)">
+                  <span class="text-[var(--yunda-bark)]/78" style="font-family: var(--font-text)">
                     {{ c.howWorksTocHint }}
                   </span>
                 </div>
@@ -631,10 +631,10 @@ useHead(() => ({
                     v-for="(step, index) in c.howWorksSteps"
                     :key="`toc-step-${index}`"
                     :href="`#journey-step-${index + 1}`"
-                    class="inline-flex items-center gap-2 border border-[var(--primary-brown)]/28 rounded-full bg-white/92 px-3.5 py-1.5 text-3.2 text-[var(--dark-brown)]/86 leading-none transition-all duration-200 hover:border-[var(--primary-brown)]/45 hover:bg-[var(--light-cream)]"
-                    style="font-family: var(--font-secondary)"
-                  >
-                    <span class="h-5 w-5 inline-flex items-center justify-center rounded-full bg-[var(--primary-brown)] text-2.7 text-[#FFFCF6] font-semibold" style="font-family: var(--font-primary)">
+                    class="inline-flex items-center gap-2 border border-[var(--primary-brown)]/28 rounded-full bg-white/92 px-3.5 py-1.5 text-3.2 text-[var(--yunda-bark)]/86 leading-none transition-all duration-200 hover:border-[var(--primary-brown)]/45 hover:bg-[var(--yunda-petal)]"
+                    style="font-family: var(--font-text)"
+                 ">
+                    <span class="h-5 w-5 inline-flex items-center justify-center rounded-full bg-[var(--primary-brown)] text-2.7 text-[var(--yunda-petal)] font-semibold">
                       {{ index + 1 }}
                     </span>
                     <span>{{ step.title }}</span>
@@ -648,16 +648,16 @@ useHead(() => ({
                   :id="`journey-step-${index + 1}`"
                   :key="`journey-step-card-${index}`"
                   class="scroll-mt-28 border border-[var(--primary-brown)]/20 rounded-[14px] bg-white/95 px-5 py-5 shadow-[0_10px_24px_rgba(39,31,24,0.05)] lg:px-6 lg:py-5"
-                >
+               ">
                   <div class="flex items-start gap-3">
-                    <span class="mt-0.2 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--primary-brown)] text-3 text-[#FFFCF6] font-semibold" style="font-family: var(--font-primary)">
+                    <span class="mt-0.2 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                       {{ index + 1 }}
                     </span>
                     <div>
-                      <h3 class="text-4.4 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.4" style="font-family: var(--font-primary)">
+                      <h3 class="text-4.4 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-5.4">
                         {{ step.title }}
                       </h3>
-                      <p class="mt-2 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+                      <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                         {{ step.body }}
                       </p>
                     </div>
@@ -666,15 +666,15 @@ useHead(() => ({
               </div>
 
               <div class="mt-8 border-t border-[var(--primary-brown)]/16 pt-6">
-                <h3 class="text-4.8 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.8" style="font-family: var(--font-primary)">
+                <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
                   {{ c.howWorksImageTitle }}
                 </h3>
                 <div class="grid mt-4 gap-4 lg:grid-cols-3 sm:grid-cols-2">
                   <div
                     v-for="(image, index) in c.howWorksImages"
                     :key="`how-works-image-${index}`"
-                    class="overflow-hidden border border-[var(--primary-brown)]/22 rounded-[12px] bg-[var(--head-bg)]/82 shadow-[0_10px_24px_rgba(39,31,24,0.05)]"
-                  >
+                    class="overflow-hidden border border-[var(--primary-brown)]/22 rounded-[12px] bg-[var(--yunda-petal)]/82 shadow-[0_10px_24px_rgba(39,31,24,0.05)]"
+                 ">
                     <img
                       :src="image.src"
                       :alt="image.alt"
@@ -683,7 +683,7 @@ useHead(() => ({
                       class="h-[500px] w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                    >
+                   ">
                   </div>
                 </div>
               </div>
@@ -692,60 +692,60 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full bg-[var(--head-bg)] pb-18 lg:pb-22">
+      <section class="w-full bg-[var(--yunda-petal)] pb-18 lg:pb-22">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="px-6 py-8 lg:px-10 lg:py-10">
-              <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                 {{ c.compareTitle }}
               </h2>
-              <p class="mt-3 text-3.5 text-[var(--dark-brown)]/76 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+              <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/76 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                 {{ c.compareIntent }}
               </p>
 
               <div class="grid mt-6 gap-5 lg:grid-cols-2">
-                <article class="border border-[var(--primary-brown)]/20 rounded-[14px] bg-[var(--head-bg)]/78 px-5 py-5">
-                  <h3 class="text-4.8 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.8" style="font-family: var(--font-primary)">
+                <article class="border border-[var(--primary-brown)]/20 rounded-[14px] bg-[var(--yunda-petal)]/78 px-5 py-5">
+                  <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
                     {{ c.compareGestationalTitle }}
                   </h3>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                     {{ c.compareGestationalBody1 }}
                   </p>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                     {{ c.compareGestationalBody2 }}
                   </p>
                 </article>
 
-                <article class="border border-[var(--grayish-green)]/60 rounded-[14px] bg-[var(--light-cream)]/48 px-5 py-5">
-                  <h3 class="text-4.8 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.8" style="font-family: var(--font-primary)">
+                <article class="border border-[var(--yunda-bark)]/60 rounded-[14px] bg-[var(--yunda-petal)]/48 px-5 py-5">
+                  <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
                     {{ c.compareDiffTitle }}
                   </h3>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                     {{ c.compareDiffBody1 }}
                   </p>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/86 font-semibold leading-relaxed lg:text-4.2" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/86 font-semibold leading-relaxed lg:text-4.2" style="font-family: var(--font-text)">
                     {{ c.compareDiffLabel }}
                   </p>
                   <ul class="grid mt-3 gap-2.5">
                     <li
                       v-for="(item, index) in c.compareDiffItems"
                       :key="`compare-diff-${index}`"
-                      class="flex items-start gap-2.5 border border-[var(--grayish-green)]/45 rounded-[10px] bg-white/84 px-3.5 py-3"
-                    >
+                      class="flex items-start gap-2.5 border border-[var(--yunda-bark)]/45 rounded-[10px] bg-white/84 px-3.5 py-3"
+                   ">
                       <Icon name="radix-icons:check-circled" class="mt-0.4 h-4 w-4 shrink-0 text-[var(--primary-brown)]" />
-                      <p class="text-3.4 text-[var(--dark-brown)]/84 leading-relaxed" style="font-family: var(--font-secondary)">
+                      <p class="text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed" style="font-family: var(--font-text)">
                         <span class="font-semibold">{{ item.title }}:</span>
                         <span class="ml-1">{{ item.body }}</span>
                       </p>
                     </li>
                   </ul>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
                     {{ c.compareDiffBody2 }}
                   </p>
                 </article>
               </div>
 
-              <p class="mt-5 text-3.5 text-[var(--dark-brown)]/76 leading-relaxed" style="font-family: var(--font-secondary)">
+              <p class="mt-5 text-3.5 text-[var(--yunda-bark)]/76 leading-relaxed" style="font-family: var(--font-text)">
                 {{ c.compareLinksPrefix }}
                 <NuxtLink :to="localePath('/surrogacy-process')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
                   {{ c.compareLink1 }}
@@ -761,28 +761,28 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-24 lg:pb-28">
+      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-24 lg:pb-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="px-6 py-8 lg:px-10 lg:py-10">
-              <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                 {{ c.dnaTitle }}
               </h2>
 
               <div class="grid mt-6 gap-6 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
-                  <p class="text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">
+                  <p class="text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
                     {{ c.dnaBody1 }}
                   </p>
-                  <p class="mt-3 text-3.5 text-[var(--dark-brown)]/83 leading-relaxed lg:text-4.5" style="font-family: var(--font-secondary)">
+                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/83 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
                     {{ c.dnaBody2 }}
                   </p>
 
-                  <div class="mt-5 border border-[var(--primary-brown)]/24 rounded-[12px] bg-[var(--head-bg)]/82 px-4 py-4">
-                    <h3 class="text-4.4 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.2" style="font-family: var(--font-primary)">
+                  <div class="mt-5 border border-[var(--primary-brown)]/24 rounded-[12px] bg-[var(--yunda-petal)]/82 px-4 py-4">
+                    <h3 class="text-4.4 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-5.2">
                       {{ c.dnaTakeawayTitle }}
                     </h3>
-                    <p class="mt-2 text-3.5 text-[var(--dark-brown)]/84 leading-relaxed lg:text-4.3" style="font-family: var(--font-secondary)">
+                    <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-4.3" style="font-family: var(--font-text)">
                       {{ c.dnaTakeawayBody }}
                     </p>
                   </div>
@@ -792,19 +792,19 @@ useHead(() => ({
                   <article
                     v-for="(item, index) in c.dnaFaqs"
                     :key="`dna-faq-${index}`"
-                    class="border border-[var(--grayish-green)]/55 rounded-[12px] bg-white/92 px-4 py-4"
-                  >
-                    <h3 class="text-4 text-[var(--dark-brown)] font-semibold leading-tight lg:text-4.8" style="font-family: var(--font-primary)">
+                    class="border border-[var(--yunda-bark)]/55 rounded-[12px] bg-white/92 px-4 py-4"
+                 ">
+                    <h3 class="text-4 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-4.8">
                       {{ item.q }}
                     </h3>
-                    <p class="mt-2 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.3" style="font-family: var(--font-secondary)">
+                    <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.3" style="font-family: var(--font-text)">
                       {{ item.a }}
                     </p>
                   </article>
                 </aside>
               </div>
 
-              <p class="mt-5 text-3.5 text-[var(--dark-brown)]/76 leading-relaxed" style="font-family: var(--font-secondary)">
+              <p class="mt-5 text-3.5 text-[var(--yunda-bark)]/76 leading-relaxed" style="font-family: var(--font-text)">
                 {{ c.dnaLinksPrefix }}
                 <a href="#journey-step-5" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
                   {{ c.dnaLink1 }}
@@ -820,11 +820,11 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full bg-[var(--head-bg)] pb-24 lg:pb-30">
+      <section class="w-full bg-[var(--yunda-petal)] pb-24 lg:pb-30">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="px-6 py-8 lg:px-10 lg:py-10">
-              <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                 {{ c.pregSupportTitle }}
               </h2>
 
@@ -832,13 +832,13 @@ useHead(() => ({
                 <article
                   v-for="(item, index) in c.pregSupportSections"
                   :key="`preg-support-${index}`"
-                  class="grid items-center gap-4 border border-[var(--primary-brown)]/18 rounded-[14px] bg-[var(--head-bg)]/76 p-4 lg:grid-cols-[1.04fr_0.96fr] lg:gap-6 lg:p-5"
-                >
+                  class="grid items-center gap-4 border border-[var(--primary-brown)]/18 rounded-[14px] bg-[var(--yunda-petal)]/76 p-4 lg:grid-cols-[1.04fr_0.96fr] lg:gap-6 lg:p-5"
+               ">
                   <div>
-                    <h3 class="text-4.3 text-[var(--dark-brown)] font-semibold leading-tight lg:text-5.1" style="font-family: var(--font-primary)">
+                    <h3 class="text-4.3 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-5.1">
                       {{ item.title }}
                     </h3>
-                    <p class="mt-2 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.3" style="font-family: var(--font-secondary)">
+                    <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.3" style="font-family: var(--font-text)">
                       {{ item.body }}
                     </p>
                   </div>
@@ -851,7 +851,7 @@ useHead(() => ({
                       class="h-full w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                    >
+                   ">
                   </div>
                 </article>
               </div>
@@ -860,11 +860,11 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="w-full from-[var(--head-bg)] via-[var(--light-cream)] to-[var(--head-bg)] bg-gradient-to-b pb-26 lg:pb-32">
+      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-26 lg:pb-32">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
           <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 shadow-[0_16px_34px_rgba(39,31,24,0.06)]">
             <div class="px-6 py-8 lg:px-10 lg:py-10">
-              <h2 class="text-6 text-[var(--dark-brown)] font-semibold leading-tight lg:text-8" style="font-family: var(--font-primary)">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
                 {{ c.faqTitle }}
               </h2>
 
@@ -872,12 +872,12 @@ useHead(() => ({
                 <article
                   v-for="(item, index) in c.faqItems"
                   :key="`journey-faq-${index}`"
-                  class="border border-[var(--primary-brown)]/18 rounded-[12px] bg-[var(--head-bg)]/78 px-4 py-4 shadow-[0_8px_20px_rgba(39,31,24,0.04)]"
-                >
-                  <h3 class="text-4.2 text-[var(--dark-brown)] font-semibold leading-tight lg:text-4.8" style="font-family: var(--font-primary)">
+                  class="border border-[var(--primary-brown)]/18 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_20px_rgba(39,31,24,0.04)]"
+               ">
+                  <h3 class="text-4.2 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-4.8">
                     {{ item.q }}
                   </h3>
-                  <p class="mt-2 text-3.5 text-[var(--dark-brown)]/82 leading-relaxed lg:text-4.2" style="font-family: var(--font-secondary)">
+                  <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.2" style="font-family: var(--font-text)">
                     {{ item.a }}
                   </p>
                 </article>
