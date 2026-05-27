@@ -409,7 +409,7 @@ useHead(() => (blogPostingSchema.value
           </div>
 
           <!-- 文章头部 -->
-          <div class="from-[var(--yunda-bark)]/5 to-[var(--yunda-harvest)]/5 bg-gradient-to-r p-6">
+          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-6">
             <div class="mb-4">
               <span class="inline-flex items-center rounded-full bg-[var(--yunda-petal)] px-4 py-1.5 text-xs text-[var(--yunda-maple)] font-bold shadow-sm lg:text-[13px]" style="font-family: var(--font-text)">
                 {{ getCategoryName(blog.category) }}

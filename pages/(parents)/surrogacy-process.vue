@@ -6,20 +6,48 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
- * 改版说明与素材：`修改/2026-05-09/surrogacy-process页面改版`（含 docx）。
+ * 改版说明与素材：`修改/2026-05-27/surrogacy-process页面修改`（含 docx）。
  * 静态文件统一放在 `public/images/process/redesign/`。
- *
- * `修改/2026-05-09/期望的结果样式` 为**原型图**，用来对齐版式；第二屏左侧主图使用改版目录 `第二屏.png`（见 `screen-02-timeline.png`）。
  */
 const PAGE_ASSETS = {
-  /** 同改版目录 `第一屏.png`，竖版实景 */
+  /** 同改版目录 `第一屏.png` */
   heroScene: '/images/process/redesign/hero-scene.png',
-  /** 改版目录 `第二屏.png`：8 步蜿蜒插画长图，置于第二屏左侧 */
-  stepsTimelineIllustration: '/images/process/redesign/screen-02-timeline.png',
-  /** 改版 `第六屏.png`（CTA 条右侧主图） */
+  /** 改版 `第二屏 (1–8).png`：每步单独插画，与右侧说明卡一一对应 */
+  stepIllustrations: [
+    '/images/process/redesign/screen-02-step-01.png',
+    '/images/process/redesign/screen-02-step-02.png',
+    '/images/process/redesign/screen-02-step-03.png',
+    '/images/process/redesign/screen-02-step-04.png',
+    '/images/process/redesign/screen-02-step-05.png',
+    '/images/process/redesign/screen-02-step-06.png',
+    '/images/process/redesign/screen-02-step-07.png',
+    '/images/process/redesign/screen-02-step-08.png',
+  ],
+  guideIcons: {
+    cost: '/images/process/redesign/screen-03-guide-1.png',
+    legal: '/images/process/redesign/screen-03-guide-2.png',
+    timeline: '/images/process/redesign/screen-03-guide-3.png',
+  },
+  changeIcons: {
+    people: '/images/process/redesign/screen-04-icon-people.png',
+    calendar: '/images/process/redesign/screen-04-icon-calendar.png',
+    legal: '/images/process/redesign/screen-04-icon-legal.png',
+  },
+  /** 改版 `第六屏.png`（CTA 条右侧主图，叠轻度虚化） */
   ctaBandPhoto: '/images/process/redesign/screen-06-cta.png',
-  stickyFourth: '/images/process/redesign/screen-sticky-4.png',
 } as const
+
+function stepIllustrationSrc(stepId: number) {
+  return PAGE_ASSETS.stepIllustrations[stepId - 1] ?? PAGE_ASSETS.stepIllustrations[0]
+}
+
+function guideIconSrc(icon: 'cost' | 'legal' | 'timeline') {
+  return PAGE_ASSETS.guideIcons[icon]
+}
+
+function changeIconSrc(icon: 'people' | 'calendar' | 'legal') {
+  return PAGE_ASSETS.changeIcons[icon]
+}
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -145,9 +173,6 @@ interface LocaleBlock {
   changeTitle: string
   changeIntro: string
   changeCards: { title: string, body: string, icon: 'people' | 'calendar' | 'legal' }[]
-  changeCtaLine: string
-  changePrimary: string
-  changeSecondary: string
   whyYundaTitle: string
   whyIllustrationAlt: string
   whyYunda: WhyCard[]
@@ -359,9 +384,6 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
           'Contracts, escrow setup, and legal clearance are required before embryo transfer. This is a key step in the California surrogacy process.',
       },
     ],
-    changeCtaLine: 'Ready to keep your timeline on track? Start with a clear plan and a cost range you can trust.',
-    changePrimary: 'Start Your Surrogacy Process',
-    changeSecondary: 'Get a Free Timeline & Cost Estimate',
     whyYundaTitle: 'Why Intended Parents Choose Yunda Surrogacy',
     whyIllustrationAlt: 'Six reasons intended parents choose Yunda Surrogacy.',
     whyYunda: [
@@ -611,9 +633,6 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
         body: '合同、托管与法律放行是移植前的必要步骤，也是加州代孕流程中的关键环节。',
       },
     ],
-    changeCtaLine: '想让时间线更可控？先厘清计划与预算区间，再迈出下一步。',
-    changePrimary: '开始你的代孕流程',
-    changeSecondary: '获取免费时间线与费用估算',
     whyYundaTitle: '准父母为何选择 Yunda',
     whyIllustrationAlt: '准父母选择 Yunda 的六大理由示意。',
     whyYunda: [
@@ -740,9 +759,6 @@ const helpfulGuides = computed(() => t.value.helpfulGuides)
 const changeTitle = computed(() => t.value.changeTitle)
 const changeIntro = computed(() => t.value.changeIntro)
 const changeCards = computed(() => t.value.changeCards)
-const changeCtaLine = computed(() => t.value.changeCtaLine)
-const changePrimary = computed(() => t.value.changePrimary)
-const changeSecondary = computed(() => t.value.changeSecondary)
 const whyYundaTitle = computed(() => t.value.whyYundaTitle)
 const whyIllustrationAlt = computed(() => t.value.whyIllustrationAlt)
 const whyYundaCards = computed(() => t.value.whyYunda)
@@ -813,28 +829,27 @@ useHead(() => ({
     <AppHeader />
 
     <main>
-      <!-- Hero：整段 `bg-cover` 铺改版实景；渐变把文案区与右侧人物衔接（对标原型，非贴原型 PNG） -->
-      <section class="relative isolate w-full overflow-hidden bg-white pb-16 pt-12 lg:min-h-[min(88vh,820px)] lg:pb-24 lg:pt-20">
+      <!-- Hero：右侧局部实景 + 虚化；左栏文案与 CTA 下移、按钮组水平居中 -->
+      <section class="relative isolate w-full overflow-hidden bg-white pb-16 pt-12 lg:min-h-[min(88vh,820px)] lg:pb-24 lg:pt-16">
         <div
           aria-hidden="true"
-          class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat max-lg:bg-[position:center_22%] lg:bg-right"
-          :style="{ backgroundImage: `url('${PAGE_ASSETS.heroScene}')` }"
-        />
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute inset-0 lg:hidden"
-          style="background: linear-gradient(to bottom, #ffffff 0%, #ffffff 7%, rgba(255,255,255,0.98) 16%, rgba(255,255,255,0.9) 28%, rgba(255,255,255,0.62) 44%, rgba(255,255,255,0.28) 62%, rgba(255,255,255,0.08) 78%, transparent 100%)"
-        />
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute inset-0 hidden lg:block"
-          style="background: linear-gradient(to right, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,0.78) 48%, rgba(255,255,255,0.48) 60%, rgba(255,255,255,0.2) 74%, rgba(255,255,255,0.04) 86%, transparent 100%)"
-        />
+          class="pointer-events-none absolute inset-x-0 bottom-0 top-[38%] lg:hidden"
+        >
+          <img
+            :src="PAGE_ASSETS.heroScene"
+            alt=""
+            class="h-full w-full object-cover object-[72%_28%] blur-[5px] scale-105"
+          >
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(to bottom, #ffffff 0%, #ffffff 12%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.72) 48%, rgba(255,255,255,0.35) 68%, transparent 100%)"
+          />
+        </div>
 
         <div class="relative z-10 mx-auto max-w-[1920px] px-6 lg:px-14 xl:px-20">
           <div class="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-10">
             <!-- 左：文案 + 桌面 CTA -->
-            <div class="relative max-w-xl lg:col-span-5 lg:max-w-none">
+            <div class="relative max-w-xl lg:col-span-5 lg:max-w-none lg:pt-10 xl:pt-16">
               <h1 class="relative font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
                 {{ heroTitle }}
               </h1>
@@ -851,7 +866,7 @@ useHead(() => ({
                   <span>{{ bullet }}</span>
                 </li>
               </ul>
-              <div class="relative mt-8 hidden flex-wrap gap-4 lg:flex">
+              <div class="relative mt-8 hidden flex-wrap justify-center gap-4 lg:flex">
                 <NuxtLink
                   :to="localePath('/be-parents')"
                   class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
@@ -914,25 +929,35 @@ useHead(() => ({
                   </div>
                 </div>
               </div>
-              <div class="mt-8 flex flex-wrap gap-4 lg:hidden">
+              <div class="mt-8 flex flex-wrap justify-center gap-4 lg:hidden">
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="yunda-type-button inline-flex flex-1 items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-4 py-3 text-sm text-[var(--yunda-petal)] tracking-[0.02em] sm:flex-none sm:px-6 sm:text-base"
+                  class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-4 py-3 text-sm text-[var(--yunda-petal)] tracking-[0.02em] sm:px-6 sm:text-base"
                   style="font-family: var(--font-text)"
                 >
                   {{ ctaPrimary }}
                 </NuxtLink>
                 <NuxtLink
                   :to="localePath('/be-parents')"
-                  class="yunda-type-button inline-flex flex-1 items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-4 py-3 text-sm text-[var(--yunda-bark)] tracking-[0.02em] sm:flex-none sm:px-6 sm:text-base transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
+                  class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-4 py-3 text-sm text-[var(--yunda-bark)] tracking-[0.02em] sm:px-6 sm:text-base transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
                   style="font-family: var(--font-text)"
                 >
                   {{ ctaSecondary }}
                 </NuxtLink>
               </div>
             </div>
-            <!-- 右：留白给背景人物（对标原型三栏节奏） -->
-            <div class="hidden min-h-[1px] lg:col-span-3 lg:block" aria-hidden="true" />
+            <!-- 右：局部孕妈妈实景 + 左侧虚化渐隐（对标第一屏稿） -->
+            <div class="relative hidden min-h-[520px] overflow-hidden lg:col-span-3 lg:block" aria-hidden="true">
+              <img
+                :src="PAGE_ASSETS.heroScene"
+                alt=""
+                class="absolute right-[-8%] top-1/2 h-[min(94%,760px)] w-[155%] max-w-none -translate-y-[46%] object-cover object-[58%_32%] blur-[4px]"
+              >
+              <div
+                class="absolute inset-0"
+                style="background: linear-gradient(to right, #ffffff 0%, #ffffff 18%, rgba(255,255,255,0.92) 32%, rgba(255,255,255,0.55) 52%, rgba(255,255,255,0.15) 72%, transparent 100%)"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -956,28 +981,26 @@ useHead(() => ({
             {{ stepsInfographicAlt }}
           </p>
 
-          <div class="mt-12 flex flex-col gap-12 lg:grid lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,1fr)] lg:items-start lg:gap-12 xl:gap-16">
-            <!-- 左：改版竖版 8 步插画整图（与右侧步骤一一对应） -->
-            <aside class="order-1 lg:order-none">
-              <div class="overflow-hidden border border-[#dcd6cc] rounded-2xl bg-[#faf9f6] p-3 shadow-[0_12px_40px_rgba(64,84,120,0.06)] sm:p-4">
+          <!-- 每步：左单独插画 + 右说明卡（与改版第二屏 1–8 一一对应） -->
+          <div class="mt-12 space-y-8 lg:space-y-10">
+            <div
+              v-for="step in stepDetails"
+              :key="`step-row-${step.id}`"
+              class="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(220px,0.38fr)_minmax(0,1fr)] lg:items-start lg:gap-8 xl:gap-12"
+            >
+              <div class="overflow-hidden border border-[#dcd6cc] rounded-2xl bg-[#faf9f6] p-3 shadow-[0_8px_28px_rgba(64,84,120,0.05)] sm:p-4">
                 <img
-                  :src="PAGE_ASSETS.stepsTimelineIllustration"
-                  :alt="stepsInfographicAlt"
-                  class="mx-auto block max-w-[min(100%,420px)] w-full select-none object-contain lg:max-w-none"
-                  width="472"
-                  height="1110"
+                  :src="stepIllustrationSrc(step.id)"
+                  :alt="`${stepsInfographicAlt} — ${step.cardTitle}`"
+                  class="mx-auto block w-full max-w-[420px] select-none object-contain lg:max-w-none"
+                  width="640"
+                  height="400"
                   loading="lazy"
                   decoding="async"
-                  fetchpriority="low"
                 >
               </div>
-            </aside>
 
-            <!-- 右：8 步卡 — 顶栏灰圈白字 + 标题 + 时长与 chevron；正文为三「行」：左色块标签 + 右说明（对齐期望稿） -->
-            <div class="order-2 lg:order-none space-y-4 lg:space-y-5">
               <article
-                v-for="step in stepDetails"
-                :key="`step-card-${step.id}`"
                 class="overflow-hidden border border-[#e0dbd4] rounded-2xl bg-[#faf8f5] shadow-[0_6px_24px_rgba(64,52,40,0.05)]"
               >
                 <div class="flex items-start justify-between gap-3 border-b border-[#e5e0d9] bg-[#f5f2ed] px-4 py-4 sm:gap-4 sm:px-5 sm:py-4">
@@ -1053,11 +1076,8 @@ useHead(() => ({
         </div>
       </section>
 
-      <!-- Helpful guides：期望稿第三屏 — 三列等高铁卡（圆陶土图标 + 衬线标题/正文 + 底通宽 CTA） -->
-      <section class="relative isolate w-full bg-[var(--yunda-petal)]">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute right-[-12%] top-[-16%] h-[320px] w-[360px] rounded-full bg-white/70 blur-3xl" />
-        </div>
+      <!-- Helpful guides：第三屏白底 + 提供图标 -->
+      <section class="relative isolate w-full bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
           <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
             {{ guidesTitle }}
@@ -1069,30 +1089,15 @@ useHead(() => ({
               class="h-full min-h-0 flex flex-col overflow-hidden border border-[#f0e4d6] rounded-2xl bg-[#fff5e9] shadow-[0_8px_28px_rgba(90,60,40,0.06)]"
             >
               <div class="flex flex-1 flex-col items-center px-6 pb-6 pt-8 text-center">
-                <div class="h-[72px] w-[72px] flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)] text-[var(--yunda-petal)] shadow-sm" aria-hidden="true">
-                  <!-- 费用：钞票 + 计算器示意 -->
-                  <svg v-if="card.icon === 'cost'" class="h-9 w-9" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h8v10H4V10z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 13h4M6 16h4" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 8h6v12h-6V8z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11h2M16 14h2M16 17h2" />
-                  </svg>
-                  <!-- 法律：文书 + 天平 -->
-                  <svg v-else-if="card.icon === 'legal'" class="h-9 w-9" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 4h10v14H7V4z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 8h6M9 11h6M9 14h4" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 20l1.5-3h5L16 20" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.5 14h1" />
-                  </svg>
-                  <!-- 时间线：清单 + 时钟 -->
-                  <svg v-else class="h-9 w-9" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6l1 2h3a1 1 0 011 1v13a2 2 0 01-2 2H7a2 2 0 01-2-2V6a1 1 0 011-1h3l1-2z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 13h6M8 16h5" />
-                    <circle cx="17" cy="7" r="2.25" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 5.75v1.5M17 6.25h1" />
-                  </svg>
-                </div>
+                <img
+                  :src="guideIconSrc(card.icon)"
+                  alt=""
+                  class="h-[72px] w-[72px] shrink-0 object-contain"
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                  decoding="async"
+                >
                 <h3 class="mt-5 font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
                   {{ card.title }}
                 </h3>
@@ -1129,20 +1134,15 @@ useHead(() => ({
               :key="card.title"
               class="h-full min-h-0 flex flex-col items-center rounded-[20px] bg-[#fdf5e6] px-6 py-10 text-center shadow-[0_4px_24px_rgba(55,40,25,0.06)] ring-1 ring-[#f0e6d4]/80"
             >
-              <div class="mb-5 h-14 w-14 flex shrink-0 items-center justify-center" aria-hidden="true">
-                <svg v-if="card.icon === 'people'" class="h-11 w-11 text-[#2563eb]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.433-2.127M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                </svg>
-                <svg v-else-if="card.icon === 'calendar'" class="h-11 w-11 text-[#0d9488]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 2.25 2.25L15.75 11.25" />
-                </svg>
-                <svg v-else-if="card.icon === 'legal'" class="h-11 w-11 text-[#7c3aed]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v15M5 10h14" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10l-2 7h4l-2-7" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 10l2 7h-4l2-7" />
-                </svg>
-              </div>
+              <img
+                :src="changeIconSrc(card.icon)"
+                alt=""
+                class="mb-5 h-14 w-14 shrink-0 object-contain"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+              >
               <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
                 {{ card.title }}
               </h3>
@@ -1150,25 +1150,6 @@ useHead(() => ({
                 {{ card.body }}
               </p>
             </div>
-          </div>
-          <p class="mx-auto mt-14 max-w-3xl text-center text-base text-[var(--yunda-bark)]/82 leading-[1.75] md:mt-16 sm:text-[17px]" style="font-family: var(--font-text)">
-            {{ changeCtaLine }}
-          </p>
-          <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <NuxtLink
-              :to="localePath('/be-parents')"
-              class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
-              style="font-family: var(--font-text)"
-            >
-              {{ changePrimary }}
-            </NuxtLink>
-            <NuxtLink
-              :to="localePath('/surrogacy-cost')"
-              class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-6 py-3 text-base text-[var(--yunda-bark)] tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
-              style="font-family: var(--font-text)"
-            >
-              {{ changeSecondary }}
-            </NuxtLink>
           </div>
         </div>
       </section>
@@ -1227,14 +1208,18 @@ useHead(() => ({
                 </NuxtLink>
               </div>
             </div>
-            <div class="relative min-h-[280px] lg:min-h-[360px]">
+            <div class="relative min-h-[280px] overflow-hidden lg:min-h-[360px]">
               <img
                 :src="PAGE_ASSETS.ctaBandPhoto"
                 alt=""
-                class="h-full w-full object-cover object-center lg:absolute lg:inset-0 lg:min-h-full"
+                class="h-full w-full scale-[1.04] object-cover object-center blur-[5px] lg:absolute lg:inset-0 lg:min-h-full lg:blur-[7px]"
                 loading="lazy"
                 decoding="async"
               >
+              <div
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 bg-gradient-to-l from-white via-white/25 to-transparent lg:via-white/10"
+              />
             </div>
           </div>
         </div>

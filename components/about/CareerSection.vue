@@ -5,7 +5,7 @@ useScrollAnimation()
 </script>
 
 <template>
-  <div class="career-section bg-[var(--yunda-bark)] px-6 py-20 text-[var(--yunda-petal)] lg:px-20">
+  <div class="career-section bg-[var(--yunda-maple)] px-6 py-20 text-[var(--yunda-petal)] lg:px-20">
     <div class="scroll-animate container mx-auto text-center">
       <h2 class="mx-auto mb-8 max-w-4xl font-display text-[32px] font-medium leading-[1.15] lg:text-[42px]">
         {{ $t('about.careers.title') }}

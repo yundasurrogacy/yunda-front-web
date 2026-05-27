@@ -817,7 +817,7 @@ onBeforeUnmount(() => {
                       >
                       <div
                         v-else
-                        class="h-full w-full flex items-center justify-center from-[var(--yunda-bark)]/20 to-[var(--yunda-harvest)]/20 bg-gradient-to-br"
+                        class="h-full w-full flex items-center justify-center from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br"
                       >
                         <div class="text-6xl text-[var(--yunda-bark)]/30">
                           🤱
