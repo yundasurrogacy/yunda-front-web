@@ -1,9 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 async function fetchBlogEntries() {
+  const urls = [
+    process.env.BLOG_SLUGS_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs?limit=2000',
+    'https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=2000',
+  ]
+
   try {
-    const response = await fetch('https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=2000')
-    const data = await response.json()
+    let data: any = null
+
+    for (const url of urls) {
+      const response = await fetch(url)
+      if (!response.ok)
+        continue
+
+      data = await response.json()
+      if (data?.blogs && Array.isArray(data.blogs))
+        break
+    }
 
     if (data?.blogs && Array.isArray(data.blogs)) {
       return data.blogs
@@ -215,12 +229,6 @@ export default defineNuxtConfig({
           as: 'image',
           type: 'image/webp',
           fetchpriority: 'high',
-        },
-        {
-          rel: 'prefetch',
-          href: '/images/blog-hero.webp',
-          as: 'image',
-          type: 'image/webp',
         },
       ],
       meta: [

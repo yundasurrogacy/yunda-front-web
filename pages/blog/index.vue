@@ -1,34 +1,30 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { buildBlogListSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
-// 禁用服务端渲染，避免 hydration 错误
-definePageMeta({
-  ssr: false,
-})
-
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
 const blogCopyEn = {
   meta: {
     title: 'Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing',
     description: 'Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.',
   },
   title: 'Blog',
-  heroAlt: 'Surrogacy Consultation',
+  intro: 'This blog is your go-to resource for everything surrogacy-related. Whether you’re an intended parent considering your options or a potential surrogate seeking guidance, our articles offer expert insights, real experiences, and valuable resources to support you at every stage of your journey.',
   search: {
     title: 'Blog Search',
-    placeholder: 'Search blog articles...',
+    placeholder: 'Search',
   },
   categories: {
-    all: 'All',
-    categoryRelatedToSurrogate: 'Surrogate Related',
-    categoryRelatedToParents: 'Intended Parents Related',
+    all: 'All Blogs',
+    categoryRelatedToSurrogate: 'Surrogates',
+    categoryRelatedToParents: 'Parent',
     categoryRelatedToBrand: 'Yunda Brand Related',
     categoryRelatedToProcess: 'Surrogacy Process Related',
     categoryRelatedToLaw: 'Legal & Regulatory Related',
@@ -39,6 +35,9 @@ const blogCopyEn = {
     categoryRelatedToPsychology: 'Psychology & Emotional Related',
   },
   authorDefault: 'Yunda Team',
+  readMore: 'Read More',
+  seeAll: 'See all',
+  showLess: 'Show less',
   tagsTitle: 'Related Tags',
   loading: 'Loading...',
   retry: 'Retry',
@@ -68,15 +67,15 @@ const blogCopyZh = {
     description: '孕达代孕知识博客，分享专业的代孕资讯、成功案例、医学知识、法律法规等，帮助准父母和代孕妈妈了解更多代孕相关信息。',
   },
   title: '博客',
-  heroAlt: '代孕咨询',
+  intro: '这里汇集代孕相关的专业资讯、真实经验与实用资源，帮助准父母和潜在代孕妈妈在每个阶段都能更清楚地了解流程、选择和注意事项。',
   search: {
     title: '博客搜索',
-    placeholder: '搜索博客文章...',
+    placeholder: '搜索',
   },
   categories: {
-    all: '全部',
-    categoryRelatedToSurrogate: '代孕妈妈相关',
-    categoryRelatedToParents: '准父母相关',
+    all: '全部博客',
+    categoryRelatedToSurrogate: '代孕妈妈',
+    categoryRelatedToParents: '准父母',
     categoryRelatedToBrand: '孕达品牌相关',
     categoryRelatedToProcess: '代孕流程相关',
     categoryRelatedToLaw: '法律法规相关',
@@ -87,6 +86,9 @@ const blogCopyZh = {
     categoryRelatedToPsychology: '心理情绪相关',
   },
   authorDefault: '孕达团队',
+  readMore: '阅读更多',
+  seeAll: '查看更多',
+  showLess: '收起',
   tagsTitle: '相关标签',
   loading: '加载中...',
   retry: '重试',
@@ -127,9 +129,7 @@ function getBlogTitle(blog: Blog | null): string {
   if (!blog)
     return ''
 
-  // 服务端统一使用英文优先，避免 hydration 错误
-  // 客户端根据语言选择
-  const currentLocale = import.meta.client ? locale.value : 'en'
+  const currentLocale = locale.value
 
   if (currentLocale === 'zh') {
     // 中文时：优先中文，再是英文
@@ -146,9 +146,7 @@ function getBlogContent(blog: Blog | null): string {
   if (!blog)
     return ''
 
-  // 服务端统一使用英文优先，避免 hydration 错误
-  // 客户端根据语言选择
-  const currentLocale = import.meta.client ? locale.value : 'en'
+  const currentLocale = locale.value
 
   if (currentLocale === 'zh') {
     // 中文时：优先中文，再是英文
@@ -162,14 +160,34 @@ function getBlogContent(blog: Blog | null): string {
 
 // 提取纯文本摘要（去除HTML标签）
 function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
+  if (blog) {
+    const currentLocale = locale.value
+    const sourceExcerpt = currentLocale === 'zh'
+      ? blog.excerpt || blog.meta_description || blog.en_excerpt || blog.en_meta_description
+      : blog.en_excerpt || blog.en_meta_description || blog.excerpt || blog.meta_description
+
+    if (sourceExcerpt) {
+      const cleanedExcerpt = sourceExcerpt.replace(/\s+/g, ' ').trim()
+      return cleanedExcerpt.length > maxLength ? `${cleanedExcerpt.substring(0, maxLength)}...` : cleanedExcerpt
+    }
+  }
+
   const content = getBlogContent(blog)
   if (!content)
     return ''
 
-  // 移除 HTML 标签
-  const plainText = content.replace(/<[^>]*>/g, '')
-  // 移除多余的空白字符
-  const cleaned = plainText.replace(/\s+/g, ' ').trim()
+  const cleaned = content
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim()
 
   // 截取指定长度
   if (cleaned.length > maxLength) {
@@ -198,6 +216,16 @@ useHead(() => ({
       property: 'og:type',
       content: 'website',
     },
+    {
+      property: 'og:url',
+      content: `${siteUrl.value}${localePath('/blog')}`,
+    },
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: `${siteUrl.value}${localePath('/blog')}`,
+    },
   ],
 }))
 
@@ -212,9 +240,13 @@ interface Blog {
   id: number
   route_id?: string
   title: string
-  content: string
+  content?: string
   en_title?: string
   en_content?: string
+  excerpt?: string
+  en_excerpt?: string
+  meta_description?: string
+  en_meta_description?: string
   category: string
   cover_img_url: string
   tags: string
@@ -223,20 +255,58 @@ interface Blog {
   updated_at: string
 }
 
+interface BlogListResponse {
+  blogs: Blog[]
+  pagination?: {
+    currentPage?: number
+    totalPages?: number
+    totalCount?: number
+    limit?: number
+    hasNextPage?: boolean
+    hasPrevPage?: boolean
+  }
+}
+
+interface DisplayBlog {
+  id: number
+  title: string
+  excerpt: string
+  featuredExcerpt: string
+  categoryLabel: string
+  coverImgUrl: string
+  author: string
+  dateShort: string
+  detailPath: string
+  raw: Blog
+}
+
 const searchQuery = ref('')
+const blogApiUrl = computed(() => `${apiBase.value}/api/blog`)
+const blogCategoriesApiUrl = computed(() => `${apiBase.value}/api/blog/categories`)
+const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
+const initialBlogsCacheKey = computed(() => `blogs-initial-v3-${blogApiLang.value}`)
 const selectedCategory = ref('all')
 const currentPage = ref(1)
+const jumpToPage = ref(1)
 const itemsPerPage = 9
+let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
 
-// 使用客户端渲染获取博客数据，避免 SSR 阻塞
-// 添加缓存策略，减少重复请求
-const { data: blogsData, pending: loading, error } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
-  key: 'blogs',
-  server: false, // 改为客户端渲染，提升首次加载速度
-  default: () => ({ blogs: [], pagination: { totalPages: 1 } }),
+// 首屏通过 SSR 获取，保证 SEO 可以抓到文章内容；客户端筛选/分页继续复用同一接口。
+const { data: blogsData, pending: loading, error } = await useFetch<BlogListResponse>(blogApiUrl, {
+  key: initialBlogsCacheKey.value,
+  query: {
+    page: 1,
+    limit: itemsPerPage,
+    lang: blogApiLang.value,
+  },
+  default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),
   transform: (data: any) => data,
   // 添加缓存，5分钟内不重复请求
-  getCachedData: (key) => {
+  getCachedData: (key, nuxtApp) => {
+    const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    if (payloadData)
+      return payloadData
+
     if (import.meta.client) {
       const cached = sessionStorage.getItem(key)
       if (cached) {
@@ -258,7 +328,7 @@ const { data: blogsData, pending: loading, error } = await useFetch('https://yun
     // 缓存响应数据
     if (import.meta.client && response._data) {
       try {
-        sessionStorage.setItem('blogs', JSON.stringify({
+        sessionStorage.setItem(initialBlogsCacheKey.value, JSON.stringify({
           data: response._data,
           timestamp: Date.now(),
         }))
@@ -271,7 +341,7 @@ const { data: blogsData, pending: loading, error } = await useFetch('https://yun
 })
 
 const blogs = computed(() => blogsData.value?.blogs || [])
-const pagination = computed(() => blogsData.value?.pagination || { totalPages: 1 })
+const pagination = computed(() => blogsData.value?.pagination || { totalPages: 1, totalCount: 0 })
 const totalPages = computed(() => pagination.value?.totalPages || 1)
 
 // 分类选项配置
@@ -300,14 +370,24 @@ function getCategoryName(categoryValue: string): string {
   return categoryValue
 }
 
-// 使用客户端渲染获取分类数据，添加缓存
-const { data: categoriesData } = await useFetch('https://yunda-admin-system.yundasurrogacy.com/api/blog/categories', {
-  key: 'blog-categories',
-  server: false, // 改为客户端渲染
+// 获取博客详情页路径
+function getBlogDetailPath(blog: Blog): string {
+  // 使用 localePath 确保路径包含正确的语言前缀
+  // 只有当route_id存在时才使用route_id跳转，否则使用id
+  const path = blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
+  return localePath(path)
+}
+
+const { data: categoriesData } = await useFetch(blogCategoriesApiUrl, {
+  key: 'blog-categories-v2',
   default: () => ({ categories: [], categoryCounts: {} }),
   transform: (data: any) => data,
   // 添加缓存，10分钟内不重复请求（分类数据变化较少）
-  getCachedData: (key) => {
+  getCachedData: (key, nuxtApp) => {
+    const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    if (payloadData)
+      return payloadData
+
     if (import.meta.client) {
       const cached = sessionStorage.getItem(key)
       if (cached) {
@@ -329,7 +409,7 @@ const { data: categoriesData } = await useFetch('https://yunda-admin-system.yund
     // 缓存响应数据
     if (import.meta.client && response._data) {
       try {
-        sessionStorage.setItem('blog-categories', JSON.stringify({
+        sessionStorage.setItem('blog-categories-v2', JSON.stringify({
           data: response._data,
           timestamp: Date.now(),
         }))
@@ -376,6 +456,9 @@ const categoryCounts = computed(() => {
 })
 
 const totalCount = computed(() => {
+  if (pagination.value?.totalCount)
+    return pagination.value.totalCount
+
   const counts = categoryCounts.value
   if (counts && Object.keys(counts).length > 0) {
     const sum = Object.values(counts)
@@ -384,17 +467,109 @@ const totalCount = computed(() => {
     if (sum > 0)
       return sum
   }
-  return pagination.value?.totalCount ?? blogs.value?.length ?? 0
+  return blogs.value?.length ?? 0
 })
 
-const jumpToPage = ref(1)
+function toDisplayBlog(blog: Blog): DisplayBlog {
+  return {
+    id: blog.id,
+    title: getBlogTitle(blog),
+    excerpt: getBlogExcerpt(blog, 120),
+    featuredExcerpt: getBlogExcerpt(blog, 180),
+    categoryLabel: getCategoryName(blog.category),
+    coverImgUrl: blog.cover_img_url,
+    author: blog.reference_author || blogCopy.value.authorDefault,
+    dateShort: formatDateShort(blog.created_at),
+    detailPath: getBlogDetailPath(blog),
+    raw: blog,
+  }
+}
 
-// 获取博客详情页路径
-function getBlogDetailPath(blog: Blog): string {
-  // 使用 localePath 确保路径包含正确的语言前缀
-  // 只有当route_id存在时才使用route_id跳转，否则使用id
-  const path = blog.route_id ? `/blog/${blog.route_id}` : `/blog/${blog.id}`
-  return localePath(path)
+const displayBlogs = computed(() => blogs.value.map(blog => toDisplayBlog(blog)))
+const featuredBlog = computed(() => displayBlogs.value[0] || null)
+const articleBlogs = computed(() => displayBlogs.value.slice(1))
+
+async function refreshBlogData() {
+  try {
+    const params = new URLSearchParams({
+      page: currentPage.value.toString(),
+      limit: itemsPerPage.toString(),
+      lang: blogApiLang.value,
+    })
+
+    if (searchQuery.value.trim())
+      params.append('search', searchQuery.value.trim())
+
+    if (selectedCategory.value && selectedCategory.value !== 'all') {
+      const categoryOption = categoryOptions.find(option => option.key === selectedCategory.value)
+      if (categoryOption)
+        params.append('category', categoryOption.value)
+    }
+
+    const cacheKey = `blogs-${params.toString()}`
+
+    if (import.meta.client) {
+      const cached = sessionStorage.getItem(cacheKey)
+      if (cached) {
+        try {
+          const { data, timestamp } = JSON.parse(cached)
+          if (Date.now() - timestamp < 2 * 60 * 1000) {
+            blogsData.value = data
+            return
+          }
+        }
+        catch {
+          // 忽略缓存解析错误
+        }
+      }
+    }
+
+    const response = await $fetch<BlogListResponse>(`${blogApiUrl.value}?${params.toString()}`)
+
+    if (response?.blogs) {
+      blogsData.value = response
+
+      if (import.meta.client) {
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify({
+            data: response,
+            timestamp: Date.now(),
+          }))
+        }
+        catch {
+          // 忽略存储错误
+        }
+      }
+    }
+  }
+  catch (err) {
+    console.error('Error refreshing blogs:', err)
+  }
+}
+
+function scrollToContent() {
+  if (!import.meta.client)
+    return
+
+  const blogContent = document.querySelector('.blog-content-area') as HTMLElement | null
+  if (!blogContent)
+    return
+
+  window.scrollTo({
+    top: Math.max(blogContent.offsetTop - 100, 0),
+    behavior: 'smooth',
+  })
+}
+
+function selectCategory(category: string) {
+  selectedCategory.value = category
+}
+
+function jumpToPageHandler() {
+  const page = Math.max(1, Math.min(totalPages.value, jumpToPage.value))
+  if (page !== currentPage.value)
+    currentPage.value = page
+  jumpToPage.value = page
 }
 
 const blogListSchema = computed(() => {
@@ -434,22 +609,40 @@ useHead(() => (blogListSchema.value
 // 清除筛选
 function clearFilters() {
   searchQuery.value = ''
-  selectedCategory.value = 'all' // 使用 key 而不是翻译文本
+  selectedCategory.value = 'all'
   currentPage.value = 1
-  // 清除筛选后滚动到内容区域
-  scrollToTop()
+  scrollToContent()
 }
 
-// 快速跳转处理
-function jumpToPageHandler() {
-  const page = Math.max(1, Math.min(totalPages.value, jumpToPage.value))
-  if (page !== currentPage.value) {
-    currentPage.value = page
-    // 跳转后滚动到顶部
-    scrollToTop()
-  }
-  jumpToPage.value = page
-}
+watch(searchQuery, () => {
+  if (searchDebounceTimer)
+    clearTimeout(searchDebounceTimer)
+
+  searchDebounceTimer = setTimeout(() => {
+    currentPage.value = 1
+    jumpToPage.value = 1
+    refreshBlogData()
+    scrollToContent()
+  }, 300)
+})
+
+watch(selectedCategory, () => {
+  currentPage.value = 1
+  jumpToPage.value = 1
+  refreshBlogData()
+  scrollToContent()
+})
+
+watch(currentPage, () => {
+  jumpToPage.value = currentPage.value
+  refreshBlogData()
+  scrollToContent()
+})
+
+onBeforeUnmount(() => {
+  if (searchDebounceTimer)
+    clearTimeout(searchDebounceTimer)
+})
 
 // 格式化短日期
 function formatDateShort(dateString: string) {
@@ -475,202 +668,6 @@ function formatDateShort(dateString: string) {
     })
   }
 }
-
-// 刷新博客数据（用于筛选和分页）
-async function refreshBlogData() {
-  try {
-    // 构建查询参数
-    const params = new URLSearchParams({
-      page: currentPage.value.toString(),
-      limit: itemsPerPage.toString(),
-    })
-
-    // 添加搜索参数
-    if (searchQuery.value.trim()) {
-      params.append('search', searchQuery.value.trim())
-    }
-
-    // 添加分类参数
-    if (selectedCategory.value && selectedCategory.value !== 'all') {
-      // 将分类 key 转换为对应的中文值发送给 API
-      const categoryOption = categoryOptions.find(option => option.key === selectedCategory.value)
-      if (categoryOption) {
-        params.append('category', categoryOption.value)
-      }
-    }
-
-    // 构建缓存 key
-    const cacheKey = `blogs-${params.toString()}`
-
-    // 检查缓存
-    if (import.meta.client) {
-      const cached = sessionStorage.getItem(cacheKey)
-      if (cached) {
-        try {
-          const { data, timestamp } = JSON.parse(cached)
-          // 2分钟缓存（筛选和分页数据缓存时间较短）
-          if (Date.now() - timestamp < 2 * 60 * 1000) {
-            blogsData.value = data
-            return
-          }
-        }
-        catch {
-          // 忽略缓存解析错误
-        }
-      }
-    }
-
-    // 使用 $fetch 重新获取数据
-    const response = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?${params.toString()}`)
-
-    if (response && (response as any).blogs) {
-      blogsData.value = response as any
-
-      // 缓存响应数据
-      if (import.meta.client) {
-        try {
-          sessionStorage.setItem(cacheKey, JSON.stringify({
-            data: response,
-            timestamp: Date.now(),
-          }))
-        }
-        catch {
-          // 忽略存储错误
-        }
-      }
-    }
-  }
-  catch (err) {
-    console.error('Error refreshing blogs:', err)
-  }
-}
-
-// 监听筛选条件变化，重置页码并重新获取数据
-watch([searchQuery, selectedCategory], () => {
-  currentPage.value = 1
-  refreshBlogData()
-  // 搜索/筛选后也滚动到内容区域
-  scrollToTop()
-})
-
-// 监听页码变化，重新获取数据并滚动到顶部
-watch(currentPage, () => {
-  refreshBlogData()
-  // 滚动到页面顶部
-  scrollToTop()
-})
-
-// 滚动到博客内容区域顶部
-function scrollToTop() {
-  // 只在客户端执行滚动操作
-  if (!import.meta.client)
-    return
-
-  // 滚动到博客内容区域的开始位置，留出一些空间给sticky导航
-  const blogContent = document.querySelector('.blog-content-area') as HTMLElement
-  if (blogContent) {
-    window.scrollTo({
-      top: Math.max(blogContent.offsetTop - 100, 0),
-      behavior: 'smooth',
-    })
-  }
-  else {
-    // 如果没有找到博客内容区域，则滚动到页面顶部
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
-}
-
-const categorySidebar = ref<HTMLElement | null>(null)
-const blogContentArea = ref<HTMLElement | null>(null)
-let sidebarWidth = 0 // 保存侧边栏的初始宽度
-let sidebarLeft = 0 // 保存侧边栏的初始 left 位置
-
-// 处理滚动，使分类区域在滚动到内容区域时固定（仅桌面端）
-function handleScroll() {
-  if (!import.meta.client || !categorySidebar.value || !blogContentArea.value)
-    return
-
-  // 移动端（小于 1024px）不执行固定逻辑，使用默认的 sticky 行为
-  if (window.innerWidth < 1024) {
-    const sidebar = categorySidebar.value
-    sidebar.style.position = 'sticky'
-    sidebar.style.top = '0'
-    sidebar.style.width = 'auto'
-    sidebar.style.left = 'auto'
-    sidebar.style.maxHeight = 'none'
-    sidebar.style.overflowY = 'visible'
-    return
-  }
-
-  const sidebar = categorySidebar.value
-  const contentArea = blogContentArea.value
-  const headerHeight = 96 // top-24 = 96px
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  const contentTop = contentArea.offsetTop
-  const contentHeight = contentArea.offsetHeight
-  const sidebarHeight = sidebar.offsetHeight
-  const viewportHeight = window.innerHeight
-
-  // 保存初始宽度和位置（只在第一次或宽度变化时更新）
-  if (sidebarWidth === 0 || sidebar.offsetWidth !== sidebarWidth) {
-    sidebarWidth = sidebar.offsetWidth
-    const sidebarRect = sidebar.getBoundingClientRect()
-    sidebarLeft = sidebarRect.left
-  }
-
-  // 当滚动到内容区域时，固定侧边栏
-  if (scrollTop >= contentTop - headerHeight) {
-    const maxTop = contentTop + contentHeight - sidebarHeight - headerHeight
-    // 确保侧边栏不会超出内容区域底部
-    if (scrollTop + headerHeight + sidebarHeight <= contentTop + contentHeight) {
-      sidebar.style.position = 'fixed'
-      sidebar.style.top = `${headerHeight}px`
-      sidebar.style.width = `${sidebarWidth}px`
-      sidebar.style.left = `${sidebarLeft}px`
-    }
-    else {
-      sidebar.style.position = 'absolute'
-      sidebar.style.top = `${maxTop}px`
-      sidebar.style.width = `${sidebarWidth}px`
-      sidebar.style.left = 'auto'
-    }
-  }
-  else {
-    sidebar.style.position = 'sticky'
-    sidebar.style.top = `${headerHeight}px`
-    sidebar.style.width = 'auto'
-    sidebar.style.left = 'auto'
-  }
-
-  // 限制最大高度，避免超出视口
-  const maxHeight = viewportHeight - headerHeight - 20
-  sidebar.style.maxHeight = `${maxHeight}px`
-  sidebar.style.overflowY = 'auto'
-}
-
-onMounted(() => {
-  if (!import.meta.client)
-    return
-
-  // 初始设置
-  handleScroll()
-
-  // 监听滚动事件
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  window.addEventListener('resize', handleScroll, { passive: true })
-})
-
-onBeforeUnmount(() => {
-  if (!import.meta.client)
-    return
-
-  // 清理事件监听器
-  window.removeEventListener('scroll', handleScroll)
-  window.removeEventListener('resize', handleScroll)
-})
 </script>
 
 <template>
@@ -679,396 +676,296 @@ onBeforeUnmount(() => {
 
     <!-- 博客页面主体 -->
     <div class="min-h-screen bg-[var(--yunda-petal)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
-      <!-- 第一屏：图片与内容分栏，左图右内容，背景分色 -->
-      <div class="w-full flex flex-col lg:flex-row">
-        <!-- 左侧图片区域：宽度一半，高度自适应，图片等比例显示 -->
-        <div class="w-full flex items-center justify-center bg-white p-0 lg:w-1/2" style="aspect-ratio: 16/9;">
-          <img
-            src="/images/blog-hero.webp"
-            :alt="blogCopy.heroAlt"
-            class="m-0 h-full w-full rounded-none object-cover"
-            style="display:block;"
-            loading="eager"
-            fetchpriority="high"
-          >
+      <!-- 顶部：标题说明 + 分类 tabs + 搜索 -->
+      <section class="blog-content-area mx-auto max-w-[1400px] px-5 pb-8 pt-14 lg:px-8 lg:pb-12 lg:pt-20">
+        <div class="max-w-[1200px]">
+          <h1 class="mb-5 text-[48px] text-[var(--yunda-bark)] font-extrabold leading-none tracking-normal md:text-[56px]" style="font-family: var(--font-text)">
+            {{ blogCopy.title }}
+          </h1>
+          <p class="max-w-[1200px] text-base text-[var(--yunda-bark)] font-bold leading-[1.65] md:text-lg" style="font-family: var(--font-text)">
+            {{ blogCopy.intro }}
+          </p>
         </div>
-        <!-- 右侧内容区域：背景色var(--yunda-petal)，搜索卡片白色，输入框#CAD3D0 -->
-        <div class="w-full flex flex-col items-center justify-center bg-[var(--yunda-petal)] px-8 py-16 lg:w-1/2">
-          <div class="mx-auto max-w-md w-full flex flex-col items-center">
-            <h1 class="mb-10 text-center yunda-type-blog-list-h1">
-              {{ blogCopy.title }}
-            </h1>
-            <!-- 搜索卡片区域 -->
-            <div class="w-full flex flex-col items-center rounded-xl bg-white px-8 py-6 shadow-lg">
-              <div class="mb-3 w-full text-left text-base text-[var(--yunda-bark)] font-medium" style="font-family: var(--font-text)">
-                {{ blogCopy.search.title }}
-              </div>
-              <div class="relative w-full">
-                <input
-                  v-model="searchQuery"
-                  type="text"
-                  :placeholder="blogCopy.search.placeholder"
-                  class="w-full border border-[var(--yunda-bark)]/20 rounded-xl py-4 pl-12 pr-4 text-base text-[var(--yunda-bark)] focus:outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]/25 lg:text-[15px]"
-                  style="font-family: var(--font-text); background-color: var(--yunda-sky);"
-                >
-                <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
-                  <svg
-                    class="h-6 w-6 text-[var(--yunda-bark)]/60"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-8 lg:mt-20 lg:grid-cols-[4fr_1fr] lg:items-start xl:grid-cols-[5fr_1fr]">
+          <div class="min-w-0">
+            <div class="flex gap-x-4 gap-y-6 overflow-x-auto pb-2 -mx-5 px-5 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0 xl:gap-x-6">
+              <button
+                v-for="category in categories"
+                :key="category"
+                class="min-h-[64px] shrink-0 touch-manipulation border-b px-3 text-lg font-extrabold leading-tight transition-colors md:px-4 lg:min-w-[0]"
+                :class="[
+                  selectedCategory === category
+                    ? 'border-[var(--yunda-bark)] bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
+                    : 'border-[var(--yunda-maple)] bg-transparent text-[var(--yunda-bark)]/80 active:text-[var(--yunda-maple)] lg:hover:text-[var(--yunda-maple)]',
+                ]"
+                style="font-family: var(--font-text)"
+                @click="selectCategory(category)"
+              >
+                {{ getUiCategoryLabel(category) }}
+              </button>
+            </div>
+
+            <div
+              v-if="searchQuery || selectedCategory !== 'all'"
+              class="pt-4"
+            >
+              <button
+                class="rounded-md px-3 py-2 text-sm text-[var(--yunda-maple)] font-semibold transition-colors active:bg-white/70 lg:hover:bg-white/70"
+                @click="clearFilters"
+              >
+                {{ blogCopy.clearFilters }}
+              </button>
+            </div>
+          </div>
+
+          <div class="w-full">
+            <label class="sr-only" for="blog-search-input">{{ blogCopy.search.title }}</label>
+            <div class="relative">
+              <input
+                id="blog-search-input"
+                v-model="searchQuery"
+                type="text"
+                :placeholder="blogCopy.search.placeholder"
+                class="h-[58px] w-full rounded-full border border-[var(--yunda-bark)]/20 bg-white py-4 pl-6 pr-14 text-base text-[var(--yunda-bark)] outline-none transition placeholder:text-[var(--yunda-bark)]/35 focus:border-[var(--yunda-maple)] focus:ring-4 focus:ring-[var(--yunda-maple)]/10"
+                style="font-family: var(--font-text)"
+              >
+              <svg
+                class="pointer-events-none absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--yunda-bark)]/35"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M21 21l-5.2-5.2m1.7-5.1a6.8 6.8 0 11-13.6 0 6.8 6.8 0 0113.6 0z"
+                />
+              </svg>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- 第二屏：分类列表 + 内容展示 -->
-      <div ref="blogContentArea" class="blog-content-area mx-auto max-w-7xl px-4 py-12">
-        <ClientOnly>
-          <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
-            <!-- 左侧：分类列表 -->
-            <div class="lg:col-span-1">
-              <div ref="categorySidebar" class="sticky top-0 z-10 mb-4 rounded-xl bg-white p-4 shadow-lg lg:top-24 lg:mb-0 lg:p-6">
-                <div class="space-y-2">
-                  <button
-                    v-for="category in categories"
-                    :key="category"
-                    class="w-full touch-manipulation rounded-lg px-3 py-2.5 text-left text-xs font-medium transition-colors lg:px-4 lg:py-3 lg:text-sm"
-                    :class="[
-                      selectedCategory === category
-                        ? 'bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
-                        : 'text-[var(--yunda-bark)] active:bg-[color-mix(in_srgb,var(--yunda-maple)_12%,var(--yunda-petal)_88%)] lg:hover:bg-[color-mix(in_srgb,var(--yunda-maple)_12%,var(--yunda-petal)_88%)]',
-                    ]"
-                    @click="selectedCategory = category"
+      <!-- 内容：Featured + 文章网格 -->
+      <div class="mx-auto max-w-[1400px] px-5 py-7 lg:px-8 lg:py-10">
+        <div>
+          <div v-if="loading" class="py-12 text-center">
+            <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[var(--yunda-bark)] rounded-full" />
+            <p class="mt-4 text-[var(--yunda-bark)]/75">
+              {{ blogCopy.loading }}
+            </p>
+          </div>
+
+          <div v-else-if="error" class="py-12 text-center">
+            <div class="text-lg text-red-500">
+              {{ error }}
+            </div>
+            <button
+              class="mt-4 rounded-lg bg-[var(--yunda-bark)] px-6 py-2 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
+              @click="refreshBlogData"
+            >
+              {{ blogCopy.retry }}
+            </button>
+          </div>
+
+          <div v-else-if="displayBlogs.length" class="space-y-10">
+            <article
+              v-if="featuredBlog"
+              class="group overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
+            >
+              <NuxtLink
+                :to="featuredBlog.detailPath"
+                prefetch
+                class="grid cursor-pointer lg:grid-cols-[1.05fr_0.95fr]"
+              >
+                <div class="aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[330px]">
+                  <img
+                    v-if="featuredBlog.coverImgUrl"
+                    :src="featuredBlog.coverImgUrl"
+                    :alt="featuredBlog.title"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    width="760"
+                    height="480"
+                    sizes="(min-width: 1024px) 52vw, 100vw"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
                   >
-                    {{ getUiCategoryLabel(category) }}
-                    <span class="ml-2 opacity-75">
-                      ({{ category === 'all' ? totalCount : (categoryCounts[category] || 0) }})
+                  <div
+                    v-else
+                    class="h-full min-h-[260px] w-full from-[var(--yunda-bark)]/20 to-[var(--yunda-harvest)]/20 bg-gradient-to-br"
+                  />
+                </div>
+
+                <div class="flex flex-col justify-center p-5 lg:p-8">
+                  <div class="mb-3">
+                    <span class="inline-block rounded-full bg-[var(--yunda-petal)] px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                      {{ featuredBlog.categoryLabel }}
                     </span>
-                  </button>
-                </div>
-
-                <!-- 清除筛选按钮 -->
-                <button
-                  v-if="searchQuery || selectedCategory !== 'all'"
-                  class="mt-3 w-full touch-manipulation rounded-lg px-3 py-2 text-xs text-red-600 font-medium transition-colors lg:mt-4 active:bg-red-50 lg:px-4 lg:text-sm lg:hover:bg-red-50 lg:hover:text-red-700"
-                  @click="clearFilters"
-                >
-                  {{ blogCopy.clearFilters }}
-                </button>
-              </div>
-            </div>
-
-            <!-- 右侧：博客内容展示 -->
-            <div class="lg:col-span-3">
-              <!-- 加载状态 -->
-              <div v-if="loading" class="py-12 text-center">
-                <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[var(--yunda-bark)] rounded-full" />
-                <p class="mt-4 text-[var(--yunda-bark)]/75">
-                  {{ blogCopy.loading }}
-                </p>
-              </div>
-
-              <!-- 错误状态 -->
-              <div v-else-if="error" class="py-12 text-center">
-                <div class="text-lg text-red-500">
-                  {{ error }}
-                </div>
-                <button
-                  class="mt-4 rounded-lg bg-[var(--yunda-bark)] px-6 py-2 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
-                  @click="refreshBlogData"
-                >
-                  {{ blogCopy.retry }}
-                </button>
-              </div>
-
-              <!-- 博客列表 - 桌面端四列 -->
-              <div
-                v-else-if="blogs.length"
-                class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4"
-              >
-                <article
-                  v-for="blog in blogs"
-                  :key="blog.id"
-                  class="group overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-                >
-                  <NuxtLink
-                    :to="getBlogDetailPath(blog)"
-                    prefetch
-                    class="block cursor-pointer"
-                  >
-                    <!-- 博客封面图片 - 正方形 -->
-                    <div class="aspect-square overflow-hidden">
-                      <img
-                        v-if="blog.cover_img_url"
-                        :src="blog.cover_img_url"
-                        :alt="getBlogTitle(blog)"
-                        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      >
-                      <div
-                        v-else
-                        class="h-full w-full flex items-center justify-center from-[#A9A67D]/20 to-[#8B9A7D]/20 bg-gradient-to-br"
-                      >
-                        <div class="text-6xl text-[var(--yunda-bark)]/30">
-                          🤱
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- 博客内容 -->
-                    <div class="p-5">
-                      <!-- 分类标签 -->
-                      <div class="mb-2">
-                        <span class="inline-block rounded-full bg-[var(--yunda-petal)] px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
-                          {{ getCategoryName(blog.category) }}
-                        </span>
-                      </div>
-
-                      <!-- 日期 -->
-                      <div class="mb-2 text-xs text-[var(--yunda-bark)]/70 font-semibold" style="font-family: var(--font-text)">
-                        {{ formatDateShort(blog.created_at) }}
-                      </div>
-
-                      <!-- 标题 -->
-                      <h2 class="line-clamp-2 mb-3 font-sans text-[22px] text-[var(--yunda-bark)] font-bold leading-snug transition-colors group-hover:text-[var(--yunda-maple)] lg:text-[26px]" style="font-family: var(--font-text)">
-                        {{ getBlogTitle(blog) }}
-                      </h2>
-
-                      <!-- 内容摘要 -->
-                      <p class="line-clamp-3 mb-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[15px]" style="font-family: var(--font-text)">
-                        {{ getBlogExcerpt(blog, 120) }}
-                      </p>
-
-                      <!-- 作者 -->
-                      <div class="flex items-center text-xs text-[var(--yunda-bark)]/60">
-                        <span>{{ blog.reference_author || blogCopy.authorDefault }}</span>
-                      </div>
-                    </div>
-                  </NuxtLink>
-                </article>
-              </div>
-
-              <!-- 空状态 -->
-              <div v-else class="py-12 text-center">
-                <div class="mb-4 text-6xl">
-                  📭
-                </div>
-                <h3 class="mb-2 font-sans text-xl text-[var(--yunda-bark)] font-bold" style="font-family: var(--font-text)">
-                  {{ blogCopy.noResults.title }}
-                </h3>
-                <p class="text-[var(--yunda-bark)]/75">
-                  {{ blogCopy.noResults.description }}
-                </p>
-              </div>
-
-              <!-- 分页 -->
-              <div
-                v-if="totalPages > 1"
-                class="mt-12 flex flex-col items-center space-y-4"
-              >
-                <!-- 分页信息 -->
-                <div class="text-sm text-[var(--yunda-bark)]/75">
-                  {{ blogCopy.pagination.showing }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, (pagination?.totalCount || 0)) }} {{ blogCopy.pagination.of }} {{ pagination?.totalCount || 0 }} {{ blogCopy.pagination.results }}
-                </div>
-
-                <!-- 分页导航 -->
-                <nav class="flex items-center space-x-1">
-                  <!-- 首页按钮 -->
-                  <button
-                    :disabled="currentPage === 1"
-                    class="border border-[var(--yunda-bark)]/25 rounded-l-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                    @click="currentPage = 1"
-                  >
-                    {{ blogCopy.pagination.first }}
-                  </button>
-
-                  <!-- 上一页按钮 -->
-                  <button
-                    :disabled="currentPage === 1"
-                    class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                    @click="currentPage--"
-                  >
-                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
-
-                  <!-- 页码按钮 -->
-                  <template v-if="totalPages <= 7">
-                    <!-- 总页数少于等于7时，显示所有页码 -->
-                    <button
-                      v-for="page in Array.from({ length: totalPages }, (_, i) => i + 1)"
-                      :key="page"
-                      class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                      :class="[
-                        currentPage === page
-                          ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
-                          : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
-                      ]"
-                      @click="currentPage = page"
-                    >
-                      {{ page }}
-                    </button>
-                  </template>
-                  <template v-else>
-                    <!-- 总页数大于7时，显示省略号 -->
-                    <template v-if="currentPage <= 4">
-                      <!-- 当前页在前4页时 -->
-                      <button
-                        v-for="page in [1, 2, 3, 4, 5]"
-                        :key="page"
-                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                        :class="[
-                          currentPage === page
-                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
-                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
-                        ]"
-                        @click="currentPage = page"
-                      >
-                        {{ page }}
-                      </button>
-                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
-                      <button
-                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
-                        @click="currentPage = totalPages"
-                      >
-                        {{ totalPages }}
-                      </button>
-                    </template>
-                    <template v-else-if="currentPage >= totalPages - 3">
-                      <!-- 当前页在后4页时 -->
-                      <button
-                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
-                        @click="currentPage = 1"
-                      >
-                        1
-                      </button>
-                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
-                      <button
-                        v-for="page in [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]"
-                        :key="page"
-                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                        :class="[
-                          currentPage === page
-                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
-                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
-                        ]"
-                        @click="currentPage = page"
-                      >
-                        {{ page }}
-                      </button>
-                    </template>
-                    <template v-else>
-                      <!-- 当前页在中间时 -->
-                      <button
-                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
-                        @click="currentPage = 1"
-                      >
-                        1
-                      </button>
-                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
-                      <button
-                        v-for="page in [currentPage - 1, currentPage, currentPage + 1]"
-                        :key="page"
-                        class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
-                        :class="[
-                          currentPage === page
-                            ? 'text-[var(--yunda-petal)] bg-[var(--yunda-bark)] border-[var(--yunda-bark)]'
-                            : 'text-[var(--yunda-bark)]/60 bg-white border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
-                        ]"
-                        @click="currentPage = page"
-                      >
-                        {{ page }}
-                      </button>
-                      <span class="px-3 py-2 text-sm text-[var(--yunda-bark)]/60">...</span>
-                      <button
-                        class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
-                        @click="currentPage = totalPages"
-                      >
-                        {{ totalPages }}
-                      </button>
-                    </template>
-                  </template>
-
-                  <!-- 下一页按钮 -->
-                  <button
-                    :disabled="currentPage === totalPages"
-                    class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                    @click="currentPage++"
-                  >
-                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
-
-                  <!-- 末页按钮 -->
-                  <button
-                    :disabled="currentPage === totalPages"
-                    class="border border-[var(--yunda-bark)]/25 rounded-r-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                    @click="currentPage = totalPages"
-                  >
-                    {{ blogCopy.pagination.last }}
-                  </button>
-                </nav>
-
-                <!-- 快速跳转 -->
-                <div class="flex items-center text-sm space-x-2">
-                  <span class="text-[var(--yunda-bark)]/75">{{ blogCopy.pagination.goTo }}</span>
-                  <input
-                    v-model.number="jumpToPage"
-                    type="number"
-                    :min="1"
-                    :max="totalPages"
-                    class="w-16 border border-[var(--yunda-bark)]/25 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]"
-                    @keyup.enter="jumpToPageHandler"
-                  >
-                  <button
-                    class="rounded bg-[var(--yunda-bark)] px-3 py-1 text-sm text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
-                    @click="jumpToPageHandler"
-                  >
-                    {{ blogCopy.pagination.go }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <template #fallback>
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
-              <div class="lg:col-span-1">
-                <div class="sticky top-24 rounded-xl bg-white p-6 shadow-lg">
-                  <div class="space-y-2">
-                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
-                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
-                    <div class="h-12 w-full animate-pulse rounded-lg bg-gray-200" />
+                  </div>
+                  <div class="mb-3 text-sm text-[var(--yunda-bark)]/65 font-semibold" style="font-family: var(--font-text)">
+                    {{ featuredBlog.dateShort }}
+                  </div>
+                  <h2 class="line-clamp-3 mb-4 text-[22px] text-[var(--yunda-bark)] font-bold leading-tight transition-colors group-hover:text-[var(--yunda-maple)]" style="font-family: var(--font-display)">
+                    {{ featuredBlog.title }}
+                  </h2>
+                  <p class="line-clamp-3 mb-5 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.7]" style="font-family: var(--font-text)">
+                    {{ featuredBlog.featuredExcerpt }}
+                  </p>
+                  <div class="text-[var(--yunda-maple)] font-bold" style="font-family: var(--font-text)">
+                    {{ blogCopy.readMore }}
                   </div>
                 </div>
+              </NuxtLink>
+            </article>
+
+            <div
+              v-if="articleBlogs.length"
+              class="grid grid-cols-1 gap-5 lg:grid-cols-3 md:grid-cols-2"
+            >
+              <article
+                v-for="blog in articleBlogs"
+                :key="blog.id"
+                class="group overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
+              >
+                <NuxtLink
+                  :to="blog.detailPath"
+                  prefetch
+                  class="h-full flex flex-col cursor-pointer"
+                >
+                  <div class="aspect-[16/11] overflow-hidden">
+                    <img
+                      v-if="blog.coverImgUrl"
+                      :src="blog.coverImgUrl"
+                      :alt="blog.title"
+                      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      width="420"
+                      height="315"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                    <div
+                      v-else
+                      class="h-full w-full from-[var(--yunda-bark)]/20 to-[var(--yunda-harvest)]/20 bg-gradient-to-br"
+                    />
+                  </div>
+
+                  <div class="flex flex-1 flex-col p-4">
+                    <div class="mb-2">
+                      <span class="inline-block rounded-full bg-[var(--yunda-petal)] px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                        {{ blog.categoryLabel }}
+                      </span>
+                    </div>
+                    <div class="mb-2 text-xs text-[var(--yunda-bark)]/70 font-semibold" style="font-family: var(--font-text)">
+                      {{ blog.dateShort }}
+                    </div>
+                    <h2 class="line-clamp-2 mb-3 text-[22px] text-[var(--yunda-bark)] font-bold leading-snug transition-colors group-hover:text-[var(--yunda-maple)]" style="font-family: var(--font-display)">
+                      {{ blog.title }}
+                    </h2>
+                    <p class="line-clamp-3 mb-4 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.7]" style="font-family: var(--font-text)">
+                      {{ blog.excerpt }}
+                    </p>
+                    <div class="mt-auto flex items-center justify-between text-xs text-[var(--yunda-bark)]/60">
+                      <span>{{ blog.author }}</span>
+                      <span class="text-[var(--yunda-maple)] font-bold">{{ blogCopy.readMore }}</span>
+                    </div>
+                  </div>
+                </NuxtLink>
+              </article>
+            </div>
+
+            <div
+              v-if="totalPages > 1"
+              class="mt-12 flex flex-col items-center space-y-4"
+            >
+              <div class="text-sm text-[var(--yunda-bark)]/75">
+                {{ blogCopy.pagination.showing }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, pagination?.totalCount || 0) }} {{ blogCopy.pagination.of }} {{ pagination?.totalCount || 0 }} {{ blogCopy.pagination.results }}
               </div>
-              <div class="lg:col-span-3">
-                <div class="py-12 text-center">
-                  <div class="inline-block h-8 w-8 animate-spin border-b-2 border-[var(--yunda-bark)] rounded-full" />
-                  <p class="mt-4 text-[var(--yunda-bark)]/75">
-                    {{ blogCopy.loading }}
-                  </p>
-                </div>
+
+              <nav class="flex items-center space-x-1">
+                <button
+                  :disabled="currentPage === 1"
+                  class="border border-[var(--yunda-bark)]/25 rounded-l-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
+                  @click="currentPage = 1"
+                >
+                  {{ blogCopy.pagination.first }}
+                </button>
+                <button
+                  :disabled="currentPage === 1"
+                  class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
+                  @click="currentPage--"
+                >
+                  ‹
+                </button>
+                <button
+                  v-for="page in Array.from({ length: Math.min(totalPages, 7) }, (_, index) => index + Math.max(1, Math.min(currentPage - 3, Math.max(totalPages - 6, 1))))"
+                  :key="page"
+                  class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
+                  :class="[
+                    currentPage === page
+                      ? 'border-[var(--yunda-bark)] bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
+                      : 'border-[var(--yunda-bark)]/25 bg-white text-[var(--yunda-bark)]/60 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
+                  ]"
+                  @click="currentPage = page"
+                >
+                  {{ page }}
+                </button>
+                <button
+                  :disabled="currentPage === totalPages"
+                  class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
+                  @click="currentPage++"
+                >
+                  ›
+                </button>
+                <button
+                  :disabled="currentPage === totalPages"
+                  class="border border-[var(--yunda-bark)]/25 rounded-r-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
+                  @click="currentPage = totalPages"
+                >
+                  {{ blogCopy.pagination.last }}
+                </button>
+              </nav>
+
+              <div class="flex items-center text-sm space-x-2">
+                <span class="text-[var(--yunda-bark)]/75">{{ blogCopy.pagination.goTo }}</span>
+                <input
+                  v-model.number="jumpToPage"
+                  type="number"
+                  :min="1"
+                  :max="totalPages"
+                  class="w-16 border border-[var(--yunda-bark)]/25 rounded px-2 py-1 text-center focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--yunda-bark)]"
+                  @keyup.enter="jumpToPageHandler"
+                >
+                <button
+                  class="rounded bg-[var(--yunda-bark)] px-3 py-1 text-sm text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
+                  @click="jumpToPageHandler"
+                >
+                  {{ blogCopy.pagination.go }}
+                </button>
               </div>
             </div>
-          </template>
-        </ClientOnly>
+          </div>
+
+          <div v-else class="py-12 text-center">
+            <div class="mb-4 text-6xl">
+              📭
+            </div>
+            <h3 class="mb-2 text-xl text-[var(--yunda-bark)] font-bold font-sans" style="font-family: var(--font-text)">
+              {{ blogCopy.noResults.title }}
+            </h3>
+            <p class="text-[var(--yunda-bark)]/75">
+              {{ blogCopy.noResults.description }}
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Desktop Bottom CTA -->
       <section class="hidden px-4 pb-12 md:block">
-        <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-[1400px]">
           <div class="grid grid-cols-2 gap-4">
             <NuxtLink
               :to="localePath('/be-parents')"
@@ -1092,13 +989,13 @@ onBeforeUnmount(() => {
       <div class="grid grid-cols-2 gap-px bg-[var(--yunda-bark)]/10">
         <NuxtLink
           :to="localePath('/be-parents')"
-          class="flex items-center justify-center bg-[var(--yunda-bark)] px-3 py-3 text-center text-[var(--yunda-petal)] yunda-type-button"
+          class="yunda-type-button flex items-center justify-center bg-[var(--yunda-bark)] px-3 py-3 text-center text-[var(--yunda-petal)]"
         >
           {{ ctaCopy.parent }}
         </NuxtLink>
         <NuxtLink
           :to="localePath('/be-surrogate')"
-          class="flex items-center justify-center bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-3 py-3 text-center text-[var(--yunda-bark)] yunda-type-button"
+          class="yunda-type-button flex items-center justify-center bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-3 py-3 text-center text-[var(--yunda-bark)]"
         >
           {{ ctaCopy.surrogate }}
         </NuxtLink>

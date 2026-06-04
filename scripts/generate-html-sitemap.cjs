@@ -3,7 +3,8 @@ const https = require('node:https')
 const path = require('node:path')
 const process = require('node:process')
 
-const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
+const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs'
+const BLOG_API_FALLBACK_URL = process.env.BLOG_API_FALLBACK_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
 const OUTPUT_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
 
@@ -141,25 +142,38 @@ function fetchJson(url) {
 }
 
 async function fetchAllBlogs() {
+  const endpoints = [BLOG_API_URL, BLOG_API_FALLBACK_URL]
   const allBlogs = []
-  let page = 1
-  let totalPages = 1
 
-  do {
-    const url = `${BLOG_API_URL}?page=${page}&limit=${BLOG_API_LIMIT}`
-    const response = await fetchJson(url)
-    const blogs = Array.isArray(response?.blogs) ? response.blogs : []
-    allBlogs.push(...blogs)
+  for (const endpoint of endpoints) {
+    allBlogs.length = 0
+    let page = 1
+    let totalPages = 1
 
-    const pagination = response?.pagination || {}
-    totalPages = Number.parseInt(pagination.totalPages || totalPages, 10)
+    try {
+      do {
+        const url = `${endpoint}?page=${page}&limit=${BLOG_API_LIMIT}`
+        const response = await fetchJson(url)
+        const blogs = Array.isArray(response?.blogs) ? response.blogs : []
+        allBlogs.push(...blogs)
 
-    if (pagination.hasNextPage === false) {
-      break
+        const pagination = response?.pagination || {}
+        totalPages = Number.parseInt(pagination.totalPages || totalPages, 10)
+
+        if (pagination.hasNextPage === false) {
+          break
+        }
+
+        page += 1
+      } while (page <= totalPages)
+
+      return allBlogs
     }
-
-    page += 1
-  } while (page <= totalPages)
+    catch (error) {
+      if (endpoint === endpoints[endpoints.length - 1])
+        throw error
+    }
+  }
 
   return allBlogs
 }
