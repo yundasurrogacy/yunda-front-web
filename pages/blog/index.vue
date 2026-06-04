@@ -288,7 +288,7 @@ const initialBlogsCacheKey = computed(() => `blogs-initial-v3-${blogApiLang.valu
 const selectedCategory = ref('all')
 const currentPage = ref(1)
 const jumpToPage = ref(1)
-const itemsPerPage = 9
+const itemsPerPage = 10
 let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
 
 // 首屏通过 SSR 获取，保证 SEO 可以抓到文章内容；客户端筛选/分页继续复用同一接口。
