@@ -33,6 +33,7 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/become-a-surrogate', priority: 0.8 },
   { loc: '/become-surrogate-california', priority: 0.8 },
   { loc: '/blog', priority: 0.7 },
+  { loc: '/resources', priority: 0.7 },
   // 父母相关页面
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },

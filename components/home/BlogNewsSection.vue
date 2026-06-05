@@ -12,8 +12,10 @@ interface BlogItem {
   route_id?: string
   title?: string
   content?: string
+  excerpt?: string
   en_title?: string
   en_content?: string
+  en_excerpt?: string
   category?: string
   cover_img_url?: string
   created_at?: string
@@ -252,11 +254,18 @@ function stripHtml(content?: string): string {
   return content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
 }
 
+/** 列表接口只返回 excerpt，详情才有 content；需兼容两种字段 */
+function getLocalizedBody(post: BlogItem): string {
+  if (locale.value === 'zh')
+    return stripHtml(post.content) || stripHtml(post.excerpt) || ''
+  return stripHtml(post.en_content) || stripHtml(post.en_excerpt) || ''
+}
+
 function hasLocalizedContent(post: BlogItem): boolean {
-  if (locale.value === 'zh') {
-    return Boolean((post.title || '').trim()) && stripHtml(post.content).length > 0
-  }
-  return Boolean((post.en_title || '').trim()) && stripHtml(post.en_content).length > 0
+  const title = locale.value === 'zh'
+    ? (post.title || '').trim()
+    : (post.en_title || post.title || '').trim()
+  return Boolean(title) && getLocalizedBody(post).length > 0
 }
 
 const localizedPosts = computed(() => posts.value
@@ -274,17 +283,11 @@ const displayPosts = computed(() => localizedPosts.value.slice(0, 4))
 function getTitle(post: BlogItem): string {
   if (locale.value === 'zh')
     return (post.title || '').trim()
-  return (post.en_title || '').trim()
-}
-
-function getContent(post: BlogItem): string {
-  if (locale.value === 'zh')
-    return post.content || ''
-  return post.en_content || ''
+  return (post.en_title || post.title || '').trim()
 }
 
 function getExcerpt(post: BlogItem, maxLength: number): string {
-  const plain = stripHtml(getContent(post))
+  const plain = getLocalizedBody(post)
   if (!plain)
     return copy.value.emptyDesc
   if (plain.length <= maxLength)

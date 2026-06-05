@@ -179,6 +179,14 @@ const localePath = useLocalePath()
               <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('menu.careers') }}</a>
               <hr class="my-2 border-[var(--yunda-bark)]">
               <NuxtLink
+                :to="localePath('/resources')"
+                prefetch
+                class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
+              >
+                {{ $t('menu.resources') }}
+              </NuxtLink>
+              <hr class="my-2 border-[var(--yunda-bark)]">
+              <NuxtLink
                 :to="localePath('/blog')"
                 prefetch
                 class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
