@@ -782,13 +782,13 @@ useHead(() => ({
             <div
               v-for="(rowSteps, rowIndex) in stepsTimelineRows"
               :key="`steps-row-${rowIndex}`"
-              class="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-3"
+              class="grid grid-cols-1 items-stretch gap-10 sm:grid-cols-2 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-3"
             >
               <div
                 v-for="(step, stepIndex) in rowSteps"
                 :id="`journey-step-${step.id}`"
                 :key="`journey-step-${step.id}`"
-                class="journey-step-tile scroll-mt-28 relative mx-auto flex max-w-[300px] flex-col items-center text-center lg:mx-0 lg:max-w-none"
+                class="journey-step-tile scroll-mt-28 relative mx-auto flex h-full w-full max-w-[300px] flex-col items-center text-center sm:max-w-none lg:mx-0"
                 :class="{ 'journey-step-tile--connector': stepIndex < rowSteps.length - 1 }"
               >
                   <span class="font-display inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--yunda-maple)] text-sm text-[var(--yunda-petal)] font-semibold">
@@ -811,15 +811,15 @@ useHead(() => ({
                     {{ stepShortTitle(step.title) }}
                   </h3>
 
-                  <details class="group mt-4 w-full border border-[#e0dbd4] rounded-xl bg-[#faf8f5] text-left shadow-[0_2px_10px_rgba(60,36,21,0.04)]">
-                    <summary class="flex cursor-pointer list-none items-center gap-2.5 px-3 py-2.5 text-left text-sm text-[var(--yunda-bark)] leading-snug marker:content-none sm:px-3.5" style="font-family: var(--font-text)">
+                  <details class="journey-step-details group mt-4 w-full border border-[#e0dbd4] rounded-xl bg-[#faf8f5] text-left shadow-[0_2px_10px_rgba(60,36,21,0.04)]">
+                    <summary class="flex shrink-0 cursor-pointer list-none items-center gap-2.5 px-3 py-2.5 text-left text-sm text-[var(--yunda-bark)] leading-snug marker:content-none sm:px-3.5" style="font-family: var(--font-text)">
                       <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--yunda-maple)_18%,var(--yunda-petal)_82%)] text-xs text-[var(--yunda-maple)] font-bold">
                         ?
                       </span>
                       <span class="min-w-0 flex-1">{{ c.stepAccordionLabel }}</span>
                       <span class="shrink-0 text-lg text-[var(--yunda-maple)] leading-none transition-transform duration-200 group-open:rotate-45">+</span>
                     </summary>
-                    <div class="space-y-3.5 border-t border-[#e8e3dc] bg-white px-3.5 py-3.5 sm:px-4 sm:py-4">
+                    <div class="journey-step-details-body space-y-3.5 border-t border-[#e8e3dc] bg-white px-3.5 py-3.5 sm:px-4 sm:py-4">
                       <div
                         v-for="row in ([
                           { key: 'you', label: c.whatYouDoLabel, segments: step.you },
@@ -1030,6 +1030,21 @@ useHead(() => ({
     width: 1px;
     background: color-mix(in srgb, var(--yunda-harvest) 58%, transparent);
     pointer-events: none;
+  }
+}
+
+/* 同行步骤卡展开后底部详情区等高（Grid 拉齐列高 + details 区域 flex 撑满） */
+@media (min-width: 640px) {
+  .journey-step-details {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .journey-step-details-body {
+    flex: 1 1 auto;
   }
 }
 
