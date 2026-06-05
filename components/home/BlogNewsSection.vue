@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 
 useScrollAnimation()
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const runtimeConfig = useRuntimeConfig()
+const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
+const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
 
 interface BlogItem {
   id?: number
@@ -14,6 +17,10 @@ interface BlogItem {
   content?: string
   en_title?: string
   en_content?: string
+  excerpt?: string
+  en_excerpt?: string
+  meta_description?: string
+  en_meta_description?: string
   category?: string
   cover_img_url?: string
   created_at?: string
@@ -118,7 +125,7 @@ let activeRequestId = 0
 const CACHE_TTL_MS = 5 * 60 * 1000
 
 function getCategoryCacheKey(category: string) {
-  return `home-blog-news:${category}`
+  return `home-blog-news:${blogApiLang.value}:${category}`
 }
 
 function readCategoryCache(category: string): BlogItem[] | null {
@@ -157,10 +164,11 @@ function writeCategoryCache(category: string, data: BlogItem[]) {
 }
 
 async function fetchCategoryPosts(category: string): Promise<BlogItem[]> {
-  const response = await $fetch<BlogApiResponse>('https://yunda-admin-system.yundasurrogacy.com/api/blog', {
+  const response = await $fetch<BlogApiResponse>(`${apiBase.value}/api/blog`, {
     query: {
       page: 1,
       limit: 8,
+      lang: blogApiLang.value,
       ...(category === 'all' ? {} : { category }),
     },
   })
@@ -240,6 +248,11 @@ onMounted(() => {
   }
 })
 
+watch(blogApiLang, () => {
+  postsData.value = []
+  void loadPostsByCategory(activeCategory.value)
+})
+
 const posts = computed(() => {
   if (postsData.value.length)
     return postsData.value
@@ -253,10 +266,11 @@ function stripHtml(content?: string): string {
 }
 
 function hasLocalizedContent(post: BlogItem): boolean {
+  const localizedSummary = getLocalizedSummary(post)
   if (locale.value === 'zh') {
-    return Boolean((post.title || '').trim()) && stripHtml(post.content).length > 0
+    return Boolean((post.title || post.en_title || '').trim()) && localizedSummary.length > 0
   }
-  return Boolean((post.en_title || '').trim()) && stripHtml(post.en_content).length > 0
+  return Boolean((post.en_title || post.title || '').trim()) && localizedSummary.length > 0
 }
 
 const localizedPosts = computed(() => posts.value
@@ -273,18 +287,20 @@ const displayPosts = computed(() => localizedPosts.value.slice(0, 4))
 
 function getTitle(post: BlogItem): string {
   if (locale.value === 'zh')
-    return (post.title || '').trim()
-  return (post.en_title || '').trim()
+    return (post.title || post.en_title || '').trim()
+  return (post.en_title || post.title || '').trim()
 }
 
-function getContent(post: BlogItem): string {
-  if (locale.value === 'zh')
-    return post.content || ''
-  return post.en_content || ''
+function getLocalizedSummary(post: BlogItem): string {
+  const source = locale.value === 'zh'
+    ? post.excerpt || post.meta_description || post.content || post.en_excerpt || post.en_meta_description || post.en_content
+    : post.en_excerpt || post.en_meta_description || post.en_content || post.excerpt || post.meta_description || post.content
+
+  return stripHtml(source)
 }
 
 function getExcerpt(post: BlogItem, maxLength: number): string {
-  const plain = stripHtml(getContent(post))
+  const plain = getLocalizedSummary(post)
   if (!plain)
     return copy.value.emptyDesc
   if (plain.length <= maxLength)
