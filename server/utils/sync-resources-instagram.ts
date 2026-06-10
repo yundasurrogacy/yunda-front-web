@@ -4,10 +4,6 @@ import { fetchInstagramGraphMedia, indexInstagramGraphMediaByShortcode, type Ins
 import { RESOURCES_INSTAGRAM_POSTS } from '../../utils/resources-instagram-posts'
 import type { ResourcesInstagramPostPreview, ResourcesInstagramResponse } from './resources-instagram-types'
 
-function getInstagramMediaProxyPath(postId: string) {
-  return `/api/resources/instagram/media/${postId}`
-}
-
 function buildPostPreview(
   post: (typeof RESOURCES_INSTAGRAM_POSTS)[number],
   graphByShortcode: Map<string, InstagramGraphMedia>,
@@ -20,7 +16,7 @@ function buildPostPreview(
   return {
     id: post.id,
     url: graphItem?.permalink ?? post.url,
-    image: getInstagramMediaProxyPath(post.id),
+    image: post.fallbackImage,
     likes: graphItem?.like_count ?? embedMeta?.likes ?? post.fallbackLikes,
     comments: graphItem?.comments_count ?? embedMeta?.comments ?? post.fallbackComments,
     syncedAt: new Date().toISOString(),

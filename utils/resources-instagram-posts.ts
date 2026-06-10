@@ -12,9 +12,8 @@ export interface ResourcesInstagramPost {
 /**
  * 对照 docx：第三屏 Surrogates Updates + 第四屏 Events
  *
- * 服务端 `/api/resources/instagram` 会按这些链接自动同步：
- * - 封面图（经 `/api/resources/instagram/media/:id` 代理）
- * - 点赞 / 评论数（embed 解析；若配置 Graph API 则优先官方数据）
+ * 封面使用 `public` 下静态图（`fallbackImage`），适配 Vercel 静态部署。
+ * 可选 `/api/resources/instagram` 同步点赞 / 评论（embed 或 Graph API）。
  *
  * 可选环境变量（生产 .env）：
  * - INSTAGRAM_GRAPH_ACCESS_TOKEN

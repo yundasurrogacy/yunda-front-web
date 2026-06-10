@@ -180,7 +180,7 @@ function buildInstagramCards(section: 'updates' | 'events'): IgPostCard[] {
     .map(post => ({
       id: post.id,
       url: post.url,
-      image: `/api/resources/instagram/media/${post.id}`,
+      image: post.fallbackImage,
       alt: IG_ALTS[post.id] || post.id,
       likes: post.fallbackLikes,
       comments: post.fallbackComments,
@@ -190,7 +190,7 @@ function buildInstagramCards(section: 'updates' | 'events'): IgPostCard[] {
 const SURROGATE_UPDATES_BASE = buildInstagramCards('updates')
 const EVENT_POSTS_BASE = buildInstagramCards('events')
 
-const { data: igFeed, pending: igPending } = useFetch<ResourcesInstagramResponse>('/api/resources/instagram', {
+const { data: igFeed } = useFetch<ResourcesInstagramResponse>('/api/resources/instagram', {
   lazy: true,
 })
 
@@ -205,7 +205,6 @@ function mergeInstagramCards(baseCards: IgPostCard[]): IgPostCard[] {
     return {
       ...card,
       url: live.url,
-      image: live.image,
       likes: live.likes ?? card.likes,
       comments: live.comments ?? card.comments,
     }
@@ -378,14 +377,7 @@ useHead(() => ({
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.updatesIntro }}
             </p>
-            <div v-if="igPending" class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
-              <div
-                v-for="post in SURROGATE_UPDATES_BASE"
-                :key="`updates-skeleton-${post.id}`"
-                class="aspect-[4/5] animate-pulse rounded-2xl bg-[color-mix(in_srgb,var(--yunda-petal)_65%,var(--yunda-bark)_10%)] ring-1 ring-[#ebe4d8]/80"
-              />
-            </div>
-            <div v-else class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in surrogateUpdateCards"
                 :key="post.id"
@@ -429,14 +421,7 @@ useHead(() => ({
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.eventsIntro }}
             </p>
-            <div v-if="igPending" class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
-              <div
-                v-for="post in EVENT_POSTS_BASE"
-                :key="`events-skeleton-${post.id}`"
-                class="aspect-[4/5] animate-pulse rounded-2xl bg-[color-mix(in_srgb,var(--yunda-petal)_65%,var(--yunda-bark)_10%)] ring-1 ring-[#ebe4d8]/80"
-              />
-            </div>
-            <div v-else class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in eventPostCards"
                 :key="post.id"
