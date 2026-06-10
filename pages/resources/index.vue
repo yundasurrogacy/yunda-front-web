@@ -3,11 +3,14 @@
  * 改版说明：`修改/2026-06-05/Resources & Media Center 页面/Resources & Media Center 页面排版.docx`
  * 独立页面 `/resources`；`/blog` 保持原博客列表不变。
  */
-import { computed, ref } from 'vue'
+import type { ResourcesInstagramResponse } from '~/server/utils/resources-instagram-types'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
+import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
+import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/resources-substack-posts'
 
 definePageMeta({ ssr: false })
 
@@ -18,17 +21,27 @@ const PAGE_ASSETS = {
 const SUBSTACK_HOME = 'https://yundasurrogacy.substack.com/'
 const INSTAGRAM_HOME = 'https://www.instagram.com/yunda_surrogacy_/'
 
-interface SubstackPost {
+interface SubstackPostConfig {
   title: string
   excerpt: string
   url: string
+  kind: 'article' | 'channel'
 }
 
-interface IgPost {
-  id: string
+interface SubstackCard {
+  title: string
+  excerpt: string
+  url: string
   image: string
+}
+
+interface IgPostCard {
+  id: string
   url: string
   alt: string
+  image: string
+  likes: number | null
+  comments: number | null
 }
 
 interface LocaleBlock {
@@ -40,14 +53,14 @@ interface LocaleBlock {
   substackTitle: string
   substackIntro: string
   substackCta: string
-  substackPosts: SubstackPost[]
+  substackPosts: SubstackPostConfig[]
+  substackReadOn: string
   updatesTitle: string
   updatesIntro: string
   eventsTitle: string
   eventsIntro: string
   followSocial: string
-  igModalClose: string
-  igOpenOnInstagram: string
+  igViewPost: string
   ctaTitle: string
   ctaBody: string
   ctaParents: string
@@ -67,18 +80,22 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     substackIntro:
       'We’ll continue sharing honest answers, behind-the-scenes insights, and guidance for women exploring the surrogacy journey.',
     substackCta: 'Visit Substack',
+    substackReadOn: 'Read on Substack',
     substackPosts: [
       {
+        kind: 'article',
         title: 'Yunda Surrogate 101: Common Questions, Fears, and Misunderstandings About Surrogacy',
         excerpt: 'Why we ask so many intake questions—and how gestational surrogacy, legal protections, and matching preferences really work.',
         url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-common-questions',
       },
       {
+        kind: 'article',
         title: 'Yunda Surrogate 101: What Does It Really Mean to “Qualify” as a Surrogate?',
         excerpt: 'A plain-language look at medical, legal, and lifestyle factors that shape surrogate eligibility.',
         url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-what-does-it',
       },
       {
+        kind: 'channel',
         title: 'More stories & support on Substack',
         excerpt: 'Read the latest updates from our team and subscribe for new posts.',
         url: SUBSTACK_HOME,
@@ -91,8 +108,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     eventsIntro:
       'Explore Yunda’s latest events, conferences, webinars, and community moments in the surrogacy field.',
     followSocial: 'Follow us on Instagram',
-    igModalClose: 'Close',
-    igOpenOnInstagram: 'View on Instagram',
+    igViewPost: 'View on Instagram',
     ctaTitle: 'Start Your Surrogacy Journey with Care, Clarity, and Support',
     ctaBody:
       'At Yunda Surrogacy, we listen first, understand your needs, and guide you through each step with professionalism, transparency, and compassion. Our team is here to help you move forward with confidence.',
@@ -111,18 +127,22 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     substackIntro:
       '我们将持续分享真实解答、幕后见闻，以及为正在了解代孕的女性提供的指引。',
     substackCta: '前往 Substack',
+    substackReadOn: '在 Substack 阅读',
     substackPosts: [
       {
+        kind: 'article',
         title: 'Yunda 代孕 101：关于代孕的常见问题、顾虑与误解',
         excerpt: '为什么我们问这么多初筛问题——以及妊娠代孕、法律保障与匹配偏好如何运作。',
         url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-common-questions',
       },
       {
+        kind: 'article',
         title: 'Yunda 代孕 101：“符合代孕资格”究竟意味着什么？',
         excerpt: '用通俗语言说明影响代孕资格的医疗、法律与生活方式因素。',
         url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-what-does-it',
       },
       {
+        kind: 'channel',
         title: '在 Substack 阅读更多',
         excerpt: '查看团队最新文章并订阅更新。',
         url: SUBSTACK_HOME,
@@ -133,8 +153,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     eventsTitle: '活动',
     eventsIntro: '了解 Yunda 在代孕领域的最新活动、会议、线上分享与社区瞬间。',
     followSocial: '关注我们的 Instagram',
-    igModalClose: '关闭',
-    igOpenOnInstagram: '在 Instagram 查看',
+    igViewPost: '在 Instagram 查看',
     ctaTitle: '以关怀、清晰与支持，开启你的代孕之旅',
     ctaBody:
       '在 Yunda，我们先倾听、理解你的需求，再以专业、透明与温暖陪伴你走过每一步。我们的团队助你自信前行。',
@@ -144,24 +163,78 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
   },
 }
 
-const SURROGATE_UPDATES: IgPost[] = [
-  { id: 'u1', image: '/images/resources-media/ig-updates-01.png', url: 'https://www.instagram.com/p/DYdqwe7FCMw/?img_index=1', alt: 'Surrogate update 1' },
-  { id: 'u2', image: '/images/resources-media/ig-updates-02.png', url: 'https://www.instagram.com/p/DYDslbgH5nG/', alt: 'Surrogate update 2' },
-  { id: 'u3', image: '/images/resources-media/ig-updates-03.png', url: 'https://www.instagram.com/p/DX61gSODn4H/?img_index=1', alt: 'Surrogate update 3' },
-  { id: 'u4', image: '/images/resources-media/ig-updates-04.png', url: 'https://www.instagram.com/p/DWz-B57ASED/?img_index=1', alt: 'Surrogate update 4' },
-]
+const IG_ALTS: Record<string, string> = {
+  u1: 'Surrogate update 1',
+  u2: 'Surrogate update 2',
+  u3: 'Surrogate update 3',
+  u4: 'Surrogate update 4',
+  e1: 'Yunda event 1',
+  e2: 'Yunda event 2',
+  e3: 'Yunda event 3',
+  e4: 'Yunda event 4',
+}
 
-const EVENT_POSTS: IgPost[] = [
-  { id: 'e1', image: '/images/resources-media/ig-events-01.png', url: 'https://www.instagram.com/p/DYWFOI5lGRC/?img_index=1', alt: 'Yunda event 1' },
-  { id: 'e2', image: '/images/resources-media/ig-events-02.png', url: 'https://www.instagram.com/p/DXrY2MCDDtR/?img_index=1', alt: 'Yunda event 2' },
-  { id: 'e3', image: '/images/resources-media/ig-events-03.png', url: 'https://www.instagram.com/p/DXYIj9BgTZo/?img_index=1', alt: 'Yunda event 3' },
-  { id: 'e4', image: '/images/resources-media/ig-events-04.png', url: 'https://www.instagram.com/p/DWpqnN4Ex3v/', alt: 'Yunda event 4' },
-]
+function buildInstagramCards(section: 'updates' | 'events'): IgPostCard[] {
+  return RESOURCES_INSTAGRAM_POSTS
+    .filter(post => post.section === section)
+    .map(post => ({
+      id: post.id,
+      url: post.url,
+      image: `/api/resources/instagram/media/${post.id}`,
+      alt: IG_ALTS[post.id] || post.id,
+      likes: post.fallbackLikes,
+      comments: post.fallbackComments,
+    }))
+}
+
+const SURROGATE_UPDATES_BASE = buildInstagramCards('updates')
+const EVENT_POSTS_BASE = buildInstagramCards('events')
+
+const { data: igFeed, pending: igPending } = useFetch<ResourcesInstagramResponse>('/api/resources/instagram', {
+  lazy: true,
+})
+
+function mergeInstagramCards(baseCards: IgPostCard[]): IgPostCard[] {
+  const livePosts = [...(igFeed.value?.updates ?? []), ...(igFeed.value?.events ?? [])]
+
+  return baseCards.map((card) => {
+    const live = livePosts.find(item => item.id === card.id)
+    if (!live)
+      return card
+
+    return {
+      ...card,
+      url: live.url,
+      image: live.image,
+      likes: live.likes ?? card.likes,
+      comments: live.comments ?? card.comments,
+    }
+  })
+}
 
 const { locale } = useI18n()
+
+const surrogateUpdateCards = computed(() => mergeInstagramCards(SURROGATE_UPDATES_BASE))
+const eventPostCards = computed(() => mergeInstagramCards(EVENT_POSTS_BASE))
+
+function formatIgCount(value: number | null) {
+  if (value == null)
+    return '—'
+
+  return value.toLocaleString(locale.value === 'zh' ? 'zh-CN' : 'en-US')
+}
 const localePath = useLocalePath()
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+
+const substackCards = computed<SubstackCard[]>(() =>
+  c.value.substackPosts.map(post => ({
+    title: post.title,
+    excerpt: post.excerpt,
+    url: post.url,
+    image: getSubstackFallbackImage(post.url),
+  })),
+)
 
 /** 第一屏分区导航（对照 docx 稿四色 Tab） */
 const sectionNav = computed(() => [
@@ -186,16 +259,6 @@ const sectionNav = computed(() => [
     className: 'bg-[var(--yunda-bark)] text-[var(--yunda-petal)]',
   },
 ])
-
-const activeIgPost = ref<IgPost | null>(null)
-
-function openIgPost(post: IgPost) {
-  activeIgPost.value = post
-}
-
-function closeIgModal() {
-  activeIgPost.value = null
-}
 
 useHead(() => ({
   title: c.value.metaTitle,
@@ -263,27 +326,33 @@ useHead(() => ({
           </p>
           <div class="mt-10 grid gap-6 lg:grid-cols-3">
             <a
-              v-for="(post, index) in c.substackPosts"
-              :key="`substack-${index}`"
+              v-for="post in substackCards"
+              :key="`substack-${normalizeSubstackPostUrl(post.url)}`"
               :href="post.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#ebe4d8] bg-[#faf8f5] shadow-[0_6px_24px_rgba(55,40,25,0.05)] transition-shadow hover:shadow-[0_10px_32px_rgba(55,40,25,0.08)]"
+              class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#ebe4d8] bg-[#faf8f5] shadow-[0_6px_24px_rgba(55,40,25,0.05)] transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(55,40,25,0.1)]"
             >
-              <div class="aspect-[16/10] overflow-hidden bg-[var(--yunda-petal)]">
+              <div class="relative aspect-[16/10] overflow-hidden bg-[var(--yunda-petal)]">
                 <img
-                  src="/images/resources-media/substack-card.png"
-                  alt=""
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  :src="post.image"
+                  :alt="post.title"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   loading="lazy"
+                  decoding="async"
                 >
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <div class="flex flex-1 flex-col p-5">
-                <h3 class="font-sans text-[18px] font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
+                <h3 class="font-sans text-[18px] font-bold leading-snug transition-colors group-hover:text-[var(--yunda-maple)] lg:text-[20px]" style="font-family: var(--font-text)">
                   {{ post.title }}
                 </h3>
                 <p class="mt-3 flex-1 text-sm text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
                   {{ post.excerpt }}
+                </p>
+                <p class="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
+                  {{ c.substackReadOn }}
+                  <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </p>
               </div>
             </a>
@@ -309,21 +378,47 @@ useHead(() => ({
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.updatesIntro }}
             </p>
-            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
-              <button
-                v-for="post in SURROGATE_UPDATES"
+            <div v-if="igPending" class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+              <div
+                v-for="post in SURROGATE_UPDATES_BASE"
+                :key="`updates-skeleton-${post.id}`"
+                class="aspect-[4/5] animate-pulse rounded-2xl bg-[color-mix(in_srgb,var(--yunda-petal)_65%,var(--yunda-bark)_10%)] ring-1 ring-[#ebe4d8]/80"
+              />
+            </div>
+            <div v-else class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+              <a
+                v-for="post in surrogateUpdateCards"
                 :key="post.id"
-                type="button"
-                class="group overflow-hidden rounded-2xl bg-white text-left shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-shadow hover:shadow-[0_10px_28px_rgba(55,40,25,0.1)]"
-                @click="openIgPost(post)"
+                :href="post.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
+                :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
                 <img
                   :src="post.image"
                   :alt="post.alt"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
                   loading="lazy"
+                  decoding="async"
                 >
-              </button>
+                <div
+                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
+                  style="font-family: var(--font-text)"
+                >
+                  <div class="flex items-center gap-3 font-semibold">
+                    <span class="inline-flex items-center gap-1.5">
+                      <Icon name="radix-icons:heart-filled" class="h-3.5 w-3.5 shrink-0" />
+                      {{ formatIgCount(post.likes) }}
+                    </span>
+                    <span class="inline-flex items-center gap-1.5">
+                      <Icon name="radix-icons:chat-bubble" class="h-3.5 w-3.5 shrink-0" />
+                      {{ formatIgCount(post.comments) }}
+                    </span>
+                  </div>
+                  <span class="font-semibold opacity-90">{{ c.igViewPost }}</span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -334,21 +429,47 @@ useHead(() => ({
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.eventsIntro }}
             </p>
-            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
-              <button
-                v-for="post in EVENT_POSTS"
+            <div v-if="igPending" class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+              <div
+                v-for="post in EVENT_POSTS_BASE"
+                :key="`events-skeleton-${post.id}`"
+                class="aspect-[4/5] animate-pulse rounded-2xl bg-[color-mix(in_srgb,var(--yunda-petal)_65%,var(--yunda-bark)_10%)] ring-1 ring-[#ebe4d8]/80"
+              />
+            </div>
+            <div v-else class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+              <a
+                v-for="post in eventPostCards"
                 :key="post.id"
-                type="button"
-                class="group overflow-hidden rounded-2xl bg-white text-left shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-shadow hover:shadow-[0_10px_28px_rgba(55,40,25,0.1)]"
-                @click="openIgPost(post)"
+                :href="post.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
+                :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
                 <img
                   :src="post.image"
                   :alt="post.alt"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
                   loading="lazy"
+                  decoding="async"
                 >
-              </button>
+                <div
+                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
+                  style="font-family: var(--font-text)"
+                >
+                  <div class="flex items-center gap-3 font-semibold">
+                    <span class="inline-flex items-center gap-1.5">
+                      <Icon name="radix-icons:heart-filled" class="h-3.5 w-3.5 shrink-0" />
+                      {{ formatIgCount(post.likes) }}
+                    </span>
+                    <span class="inline-flex items-center gap-1.5">
+                      <Icon name="radix-icons:chat-bubble" class="h-3.5 w-3.5 shrink-0" />
+                      {{ formatIgCount(post.comments) }}
+                    </span>
+                  </div>
+                  <span class="font-semibold opacity-90">{{ c.igViewPost }}</span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -414,43 +535,6 @@ useHead(() => ({
         </div>
       </section>
     </main>
-
-    <Teleport to="body">
-      <div
-        v-if="activeIgPost"
-        class="fixed inset-0 z-[120] flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px]"
-        role="dialog"
-        aria-modal="true"
-        @click.self="closeIgModal"
-      >
-        <div class="relative max-h-[92vh] w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl">
-          <button
-            type="button"
-            class="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-lg text-white leading-none"
-            :aria-label="c.igModalClose"
-            @click="closeIgModal"
-          >
-            ×
-          </button>
-          <img
-            :src="activeIgPost.image"
-            :alt="activeIgPost.alt"
-            class="max-h-[78vh] w-full object-contain"
-          >
-          <div class="border-t border-[#ebe4d8] px-5 py-4 text-center">
-            <a
-              :href="activeIgPost.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm text-[var(--yunda-maple)] font-semibold underline underline-offset-4"
-              style="font-family: var(--font-text)"
-            >
-              {{ c.igOpenOnInstagram }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </Teleport>
 
     <AppFooter />
   </div>
