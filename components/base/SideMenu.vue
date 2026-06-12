@@ -220,6 +220,14 @@ function toggleMenu() {
                   {{ $t("menu.careers") }}
                 </a>
                 <NuxtLink
+                  :to="localePath('/resources')"
+                  prefetch
+                  class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                  @click="toggleMenu"
+                >
+                  {{ $t("menu.resources") }}
+                </NuxtLink>
+                <NuxtLink
                   :to="localePath('/blog')"
                   prefetch
                   class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
@@ -431,6 +439,14 @@ function toggleMenu() {
                 >
                   {{ $t("menu.careers") }}
                 </a>
+                <NuxtLink
+                  :to="localePath('/resources')"
+                  prefetch
+                  class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                  @click="toggleMenu"
+                >
+                  {{ $t("menu.resources") }}
+                </NuxtLink>
                 <NuxtLink
                   :to="localePath('/blog')"
                   prefetch

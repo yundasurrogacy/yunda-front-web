@@ -47,6 +47,7 @@ const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
   { loc: '/become-a-surrogate', priority: 0.8 },
   { loc: '/become-surrogate-california', priority: 0.8 },
   { loc: '/blog', priority: 0.7 },
+  { loc: '/resources', priority: 0.7 },
   // 父母相关页面
   { loc: '/egg-donation', priority: 0.7 },
   { loc: '/partner-ivf-clinics', priority: 0.7 },
@@ -112,6 +113,12 @@ export default defineNuxtConfig({
           target: apiProxyTarget,
           changeOrigin: true,
           rewrite: (path: string) => path.replace(/^\/api/, '/api'),
+          bypass: (req) => {
+            const url = req.url || ''
+            // 由 Nuxt Nitro 提供的本地 server routes，不走后台代理
+            if (url.startsWith('/api/resources/instagram') || url.startsWith('/api/substack.posts'))
+              return url
+          },
         },
       },
     },
@@ -203,6 +210,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    // Instagram Graph API（可选）：配置后可从官方接口同步点赞/评论；见 utils/resources-instagram-posts.ts
+    instagramAccessToken: process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN || '',
+    instagramUserId: process.env.INSTAGRAM_USER_ID || '',
+    instagramFetchEmbed: process.env.INSTAGRAM_FETCH_EMBED === 'true',
     public: {
       siteUrl: 'https://www.yundasurrogacy.com',
       // 本地调试留空则用相对路径 /api（走 vite 代理）；生产需指向后台，未配置时默认 yunda-admin-system

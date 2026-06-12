@@ -6,7 +6,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
- * 改版说明与素材：`修改/2026-05-27/surrogacy-process页面修改`（含 docx）。
+ * 改版说明与素材：`修改/2026-06-05/process页面修改.docx`（含各屏参考图）。
  * 静态文件统一放在 `public/images/process/redesign/`。
  */
 const PAGE_ASSETS = {
@@ -829,28 +829,29 @@ useHead(() => ({
     <AppHeader />
 
     <main>
-      <!-- Hero：右侧局部实景 + 虚化；左栏文案与 CTA 下移、按钮组水平居中 -->
-      <section class="relative isolate w-full overflow-hidden bg-white pb-16 pt-12 lg:min-h-[min(88vh,820px)] lg:pb-24 lg:pt-16">
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute inset-x-0 bottom-0 top-[38%] lg:hidden"
-        >
+      <!-- 第一屏（2026-06-05）：整屏虚化背景（右侧局部孕妈妈图）+ 左文案 / 右时间线；左栏下移、CTA 居中 -->
+      <section class="relative isolate w-full overflow-hidden bg-white pb-16 pt-12 lg:min-h-[min(88vh,820px)] lg:pb-24 lg:pt-14">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
           <img
             :src="PAGE_ASSETS.heroScene"
             alt=""
-            class="h-full w-full object-cover object-[72%_28%] blur-[5px] scale-105"
+            class="absolute inset-0 h-full w-full scale-[1.08] object-cover object-[82%_38%] blur-[8px] lg:object-[88%_42%] lg:blur-[10px]"
           >
           <div
             class="absolute inset-0"
-            style="background: linear-gradient(to bottom, #ffffff 0%, #ffffff 12%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.72) 48%, rgba(255,255,255,0.35) 68%, transparent 100%)"
+            style="background: linear-gradient(105deg, #ffffff 0%, #ffffff 34%, rgba(255,255,255,0.97) 48%, rgba(255,255,255,0.82) 58%, rgba(255,255,255,0.45) 72%, rgba(255,255,255,0.12) 86%, transparent 100%)"
+          />
+          <div
+            class="absolute inset-0 lg:hidden"
+            style="background: linear-gradient(to bottom, #ffffff 0%, #ffffff 14%, rgba(255,255,255,0.94) 32%, rgba(255,255,255,0.7) 52%, rgba(255,255,255,0.25) 72%, transparent 100%)"
           />
         </div>
 
         <div class="relative z-10 mx-auto max-w-[1920px] px-6 lg:px-14 xl:px-20">
-          <div class="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-10">
-            <!-- 左：文案 + 桌面 CTA -->
-            <div class="relative max-w-xl lg:col-span-5 lg:max-w-none lg:pt-10 xl:pt-16">
-              <h1 class="relative font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-x-12 xl:gap-x-16">
+            <!-- 左：文案 + CTA（相对参考稿整体下移） -->
+            <div class="relative max-w-xl lg:max-w-none lg:pt-20 xl:pt-28">
+              <h1 class="relative text-[38px] font-semibold leading-[1.1] font-display lg:text-[50px] sm:text-[42px]">
                 {{ heroTitle }}
               </h1>
               <p class="relative mt-6 text-base text-[var(--yunda-bark)]/90 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
@@ -866,7 +867,7 @@ useHead(() => ({
                   <span>{{ bullet }}</span>
                 </li>
               </ul>
-              <div class="relative mt-8 hidden flex-wrap justify-center gap-4 lg:flex">
+              <div class="relative mt-10 w-full flex flex-wrap justify-center gap-4 lg:mt-14">
                 <NuxtLink
                   :to="localePath('/be-parents')"
                   class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-6 py-3 text-base text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95"
@@ -884,79 +885,49 @@ useHead(() => ({
               </div>
             </div>
 
-            <!-- 中：时间线（PC 与左文同属渐变白区；移动轻玻璃） -->
-            <div class="relative flex flex-col lg:col-span-4">
-              <div class="relative overflow-hidden rounded-2xl bg-white/45 px-4 py-6 shadow-none ring-1 ring-white/40 backdrop-blur-md lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 sm:px-5 lg:shadow-none lg:ring-0 lg:backdrop-blur-none">
-                <div class="relative">
-                  <h2 class="text-center font-display text-[24px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-left sm:text-[28px]">
-                    {{ timelineTitle }}
-                  </h2>
-                  <div class="relative mt-6 pl-1">
-                    <div class="pointer-events-none absolute bottom-2 left-[14px] top-2 w-6 sm:left-4" aria-hidden="true">
-                      <svg class="h-full w-full text-[var(--yunda-maple)]" fill="none" preserveAspectRatio="none" viewBox="0 0 24 520" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          vector-effect="non-scaling-stroke"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2.25"
-                          d="M 14 8 C 22 48 6 88 14 128 S 22 168 14 208 S 6 248 14 288 S 22 328 14 368 S 6 408 14 448 S 22 488 14 512"
-                        />
-                      </svg>
-                    </div>
-                    <ul class="relative list-none space-y-0" style="font-family: var(--font-text)">
-                      <li
-                        v-for="(row, ri) in heroTimelineItems"
-                        :key="ri"
-                        class="relative flex gap-4 pb-6 pl-0 last:pb-0"
-                      >
-                        <div
-                          class="font-display relative z-10 mt-0.5 h-8 w-8 flex shrink-0 items-center justify-center rounded-full text-xs font-semibold shadow-sm ring-[3px] ring-white/95 sm:h-9 sm:w-9 sm:text-sm"
-                          :class="timelineBadgeClass(ri)"
-                        >
-                          {{ ri + 1 }}
-                        </div>
-                        <div class="min-w-0 pt-0.5">
-                          <p class="font-sans text-[15px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-base" style="font-family: var(--font-text)">
-                            {{ row.title }}
-                          </p>
-                          <p class="mt-0.5 text-sm text-[var(--yunda-bark)]/75">
-                            {{ row.duration }}
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
+            <!-- 右：8 步时间线 -->
+            <div class="relative flex flex-col lg:pt-6">
+              <div class="relative overflow-hidden rounded-2xl bg-white/50 px-4 py-6 ring-1 ring-white/50 backdrop-blur-sm lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 sm:px-5 lg:ring-0 lg:backdrop-blur-none">
+                <h2 class="text-center text-[24px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-left sm:text-[28px]">
+                  {{ timelineTitle }}
+                </h2>
+                <div class="relative mt-6 pl-1">
+                  <div class="pointer-events-none absolute bottom-2 left-[14px] top-2 w-6 sm:left-4" aria-hidden="true">
+                    <svg class="h-full w-full text-[var(--yunda-maple)]" fill="none" preserveAspectRatio="none" viewBox="0 0 24 520" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        vector-effect="non-scaling-stroke"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.25"
+                        d="M 14 8 C 22 48 6 88 14 128 S 22 168 14 208 S 6 248 14 288 S 22 328 14 368 S 6 408 14 448 S 22 488 14 512"
+                      />
+                    </svg>
                   </div>
+                  <ul class="relative list-none space-y-0" style="font-family: var(--font-text)">
+                    <li
+                      v-for="(row, ri) in heroTimelineItems"
+                      :key="ri"
+                      class="relative flex gap-4 pb-6 pl-0 last:pb-0"
+                    >
+                      <div
+                        class="ring-[3px] relative z-10 mt-0.5 h-8 w-8 flex shrink-0 items-center justify-center rounded-full text-xs font-semibold font-display shadow-sm ring-white/95 sm:h-9 sm:w-9 sm:text-sm"
+                        :class="timelineBadgeClass(ri)"
+                      >
+                        {{ ri + 1 }}
+                      </div>
+                      <div class="min-w-0 pt-0.5">
+                        <p class="text-[15px] text-[var(--yunda-bark)] font-bold leading-snug font-sans sm:text-base" style="font-family: var(--font-text)">
+                          {{ row.title }}
+                        </p>
+                        <p class="mt-0.5 text-sm text-[var(--yunda-bark)]/75">
+                          {{ row.duration }}
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="mt-8 flex flex-wrap justify-center gap-4 lg:hidden">
-                <NuxtLink
-                  :to="localePath('/be-parents')"
-                  class="yunda-type-button inline-flex items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-4 py-3 text-sm text-[var(--yunda-petal)] tracking-[0.02em] sm:px-6 sm:text-base"
-                  style="font-family: var(--font-text)"
-                >
-                  {{ ctaPrimary }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/be-parents')"
-                  class="yunda-type-button inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-4 py-3 text-sm text-[var(--yunda-bark)] tracking-[0.02em] sm:px-6 sm:text-base transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)]"
-                  style="font-family: var(--font-text)"
-                >
-                  {{ ctaSecondary }}
-                </NuxtLink>
-              </div>
-            </div>
-            <!-- 右：局部孕妈妈实景 + 左侧虚化渐隐（对标第一屏稿） -->
-            <div class="relative hidden min-h-[520px] overflow-hidden lg:col-span-3 lg:block" aria-hidden="true">
-              <img
-                :src="PAGE_ASSETS.heroScene"
-                alt=""
-                class="absolute right-[-8%] top-1/2 h-[min(94%,760px)] w-[155%] max-w-none -translate-y-[46%] object-cover object-[58%_32%] blur-[4px]"
-              >
-              <div
-                class="absolute inset-0"
-                style="background: linear-gradient(to right, #ffffff 0%, #ffffff 18%, rgba(255,255,255,0.92) 32%, rgba(255,255,255,0.55) 52%, rgba(255,255,255,0.15) 72%, transparent 100%)"
-              />
             </div>
           </div>
         </div>
@@ -969,7 +940,7 @@ useHead(() => ({
           <div class="absolute bottom-[-24%] right-[-10%] h-[420px] w-[460px] rounded-full bg-[#efe2d3]/60 blur-3xl" />
         </div>
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
+          <h2 class="text-center text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
             {{ stepsTitle }}
           </h2>
           <p class="mx-auto mt-6 max-w-4xl text-center text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
@@ -992,7 +963,7 @@ useHead(() => ({
                 <img
                   :src="stepIllustrationSrc(step.id)"
                   :alt="`${stepsInfographicAlt} — ${step.cardTitle}`"
-                  class="mx-auto block w-full max-w-[420px] select-none object-contain lg:max-w-none"
+                  class="mx-auto block max-w-[420px] w-full select-none object-contain lg:max-w-none"
                   width="640"
                   height="400"
                   loading="lazy"
@@ -1005,10 +976,10 @@ useHead(() => ({
               >
                 <div class="flex items-start justify-between gap-3 border-b border-[#e5e0d9] bg-[#f5f2ed] px-4 py-4 sm:gap-4 sm:px-5 sm:py-4">
                   <div class="min-w-0 flex flex-1 items-start gap-3 sm:gap-3.5">
-                    <div class="font-display h-10 w-10 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-sm text-[var(--yunda-petal)] font-semibold sm:h-11 sm:w-11">
+                    <div class="h-10 w-10 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-sm text-[var(--yunda-petal)] font-semibold font-display sm:h-11 sm:w-11">
                       {{ step.id }}
                     </div>
-                    <h3 class="min-w-0 pt-0.5 text-left font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
+                    <h3 class="min-w-0 pt-0.5 text-left text-[20px] text-[var(--yunda-bark)] font-bold leading-snug font-sans lg:text-[24px] sm:text-[22px]" style="font-family: var(--font-text)">
                       {{ step.cardTitle }}
                     </h3>
                   </div>
@@ -1079,14 +1050,14 @@ useHead(() => ({
       <!-- Helpful guides：第三屏白底 + 提供图标 -->
       <section class="relative isolate w-full bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
+          <h2 class="text-center text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
             {{ guidesTitle }}
           </h2>
           <div class="grid mx-auto mt-12 max-w-6xl gap-6 lg:grid-cols-3 sm:grid-cols-2 lg:mt-14 lg:gap-8">
             <article
               v-for="card in helpfulGuides"
               :key="card.title"
-              class="h-full min-h-0 flex flex-col overflow-hidden border border-[#f0e4d6] rounded-2xl bg-[#fff5e9] shadow-[0_8px_28px_rgba(90,60,40,0.06)]"
+              class="h-full min-h-0 flex flex-col overflow-hidden border border-[#ebe4d8] rounded-2xl bg-white shadow-[0_8px_28px_rgba(90,60,40,0.06)]"
             >
               <div class="flex flex-1 flex-col items-center px-6 pb-6 pt-8 text-center">
                 <img
@@ -1098,7 +1069,7 @@ useHead(() => ({
                   loading="lazy"
                   decoding="async"
                 >
-                <h3 class="mt-5 font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
+                <h3 class="mt-5 text-[20px] text-[var(--yunda-bark)] font-bold leading-snug font-sans sm:text-[24px]" style="font-family: var(--font-text)">
                   {{ card.title }}
                 </h3>
                 <p class="mt-3 max-w-sm flex-1 text-base text-[var(--yunda-bark)]/90 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
@@ -1107,7 +1078,7 @@ useHead(() => ({
               </div>
               <NuxtLink
                 :to="localePath(card.to)"
-                class="yunda-type-button block w-full bg-[var(--yunda-bark)] py-3.5 text-center text-sm text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity hover:opacity-95 sm:py-4 sm:text-base"
+                class="yunda-type-button block w-full bg-[var(--yunda-bark)] py-3.5 text-center text-sm text-[var(--yunda-petal)] tracking-[0.02em] transition-opacity sm:py-4 sm:text-base hover:opacity-95"
                 style="font-family: var(--font-text)"
               >
                 {{ card.cta }}
@@ -1121,7 +1092,7 @@ useHead(() => ({
       <section class="relative isolate w-full overflow-hidden bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 lg:py-20 xl:px-24">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
+            <h2 class="text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
               {{ changeTitle }}
             </h2>
             <p class="mt-5 text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
@@ -1143,7 +1114,7 @@ useHead(() => ({
                 loading="lazy"
                 decoding="async"
               >
-              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
+              <h3 class="text-[20px] text-[var(--yunda-bark)] font-bold leading-snug font-sans sm:text-[24px]" style="font-family: var(--font-text)">
                 {{ card.title }}
               </h3>
               <p class="mt-4 max-w-sm text-base text-[var(--yunda-bark)]/88 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
@@ -1157,7 +1128,7 @@ useHead(() => ({
       <!-- Why Yunda：六卡（改版未提供整幅第五屏切片，此处不贴原型整图） -->
       <section class="relative isolate w-full bg-white">
         <div class="relative mx-auto max-w-[1960px] px-6 py-16 lg:px-16 xl:px-24">
-          <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
+          <h2 class="text-center text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
             {{ whyYundaTitle }}
           </h2>
           <p class="sr-only">
@@ -1169,7 +1140,7 @@ useHead(() => ({
               :key="card.title"
               class="bg-[color-mix(in_srgb,var(--yunda-petal)_92%,var(--yunda-maple)_8%)] px-6 py-8 text-center shadow-none"
             >
-              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[24px]" style="font-family: var(--font-text)">
+              <h3 class="text-[20px] text-[var(--yunda-bark)] font-bold leading-snug font-sans sm:text-[24px]" style="font-family: var(--font-text)">
                 {{ card.title }}
               </h3>
               <p class="mt-3 text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
@@ -1185,7 +1156,7 @@ useHead(() => ({
         <div class="relative mx-auto max-w-[1960px] px-0 lg:px-16 xl:px-24">
           <div class="grid items-stretch lg:grid-cols-2">
             <div class="flex flex-col justify-center px-6 py-14 lg:px-12 lg:py-20">
-              <h2 class="text-left font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
+              <h2 class="text-left text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
                 {{ ctaBandTitle }}
               </h2>
               <p class="mt-4 max-w-xl text-left text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
@@ -1209,16 +1180,26 @@ useHead(() => ({
               </div>
             </div>
             <div class="relative min-h-[280px] overflow-hidden lg:min-h-[360px]">
+              <!-- 底层：右侧完整清晰；左侧由虚化层 + 白渐变与文案衔接 -->
               <img
                 :src="PAGE_ASSETS.ctaBandPhoto"
                 alt=""
-                class="h-full w-full scale-[1.04] object-cover object-center blur-[5px] lg:absolute lg:inset-0 lg:min-h-full lg:blur-[7px]"
+                class="cta-band-photo-base h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
+                loading="lazy"
+                decoding="async"
+              >
+              <!-- 虚化仅在左侧，向右渐隐至清晰 -->
+              <img
+                :src="PAGE_ASSETS.ctaBandPhoto"
+                alt=""
+                aria-hidden="true"
+                class="cta-band-photo-blur pointer-events-none h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
                 loading="lazy"
                 decoding="async"
               >
               <div
                 aria-hidden="true"
-                class="pointer-events-none absolute inset-0 bg-gradient-to-l from-white via-white/25 to-transparent lg:via-white/10"
+                class="cta-band-photo-fade pointer-events-none absolute inset-0"
               />
             </div>
           </div>
@@ -1228,7 +1209,7 @@ useHead(() => ({
       <!-- FAQ：浅底白卡片条（对标原型第七屏层次） -->
       <section class="relative isolate w-full bg-[color-mix(in_srgb,var(--yunda-petal)_88%,var(--yunda-sky)_12%)] py-16">
         <div class="relative mx-auto max-w-[960px] px-6 lg:px-8">
-          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
+          <h2 class="text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px]">
             {{ faqTitle }}
           </h2>
           <div class="mt-8 space-y-3">
@@ -1268,5 +1249,38 @@ useHead(() => ({
 .duration-emphasis {
   font-size: 1.15em;
   font-weight: 600;
+}
+
+/* 第六屏：左侧虚化融入文案，右侧保持清晰（右侧不做白雾/虚化） */
+.cta-band-photo-blur {
+  filter: blur(12px);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 0.88) 18%,
+    rgba(0, 0, 0, 0.45) 34%,
+    transparent 52%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 0.88) 18%,
+    rgba(0, 0, 0, 0.45) 34%,
+    transparent 52%,
+    transparent 100%
+  );
+}
+
+.cta-band-photo-fade {
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.94) 12%,
+    rgba(255, 255, 255, 0.55) 22%,
+    rgba(255, 255, 255, 0.12) 36%,
+    transparent 48%,
+    transparent 100%
+  );
 }
 </style>

@@ -15,9 +15,9 @@ interface BlogItem {
   route_id?: string
   title?: string
   content?: string
+  excerpt?: string
   en_title?: string
   en_content?: string
-  excerpt?: string
   en_excerpt?: string
   meta_description?: string
   en_meta_description?: string
@@ -249,6 +249,7 @@ onMounted(() => {
 })
 
 watch(blogApiLang, () => {
+  inMemoryCategoryCache.clear()
   postsData.value = []
   void loadPostsByCategory(activeCategory.value)
 })
@@ -291,6 +292,7 @@ function getTitle(post: BlogItem): string {
   return (post.en_title || post.title || '').trim()
 }
 
+/** 列表接口通常只返回 excerpt/meta description，详情接口才返回完整 content。 */
 function getLocalizedSummary(post: BlogItem): string {
   const source = locale.value === 'zh'
     ? post.excerpt || post.meta_description || post.content || post.en_excerpt || post.en_meta_description || post.en_content
