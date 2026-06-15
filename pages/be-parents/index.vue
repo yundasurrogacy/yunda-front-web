@@ -127,6 +127,219 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 const router = useRouter()
 const localePath = useLocalePath()
 
+function tt(en: string, zh: string) {
+  return locale.value === 'zh' ? zh : en
+}
+
+const heroProofPoints = computed(() => [
+  tt('California-centered U.S. surrogacy agency', '以加州为核心的美国代孕机构'),
+  tt('English / Mandarin bilingual support', '英文 / 中文双语支持'),
+  tt('Legal, insurance, escrow, and IVF coordination', '法律、保险、托管与 IVF 协调'),
+  tt('Support for international, LGBTQ+, and single intended parents', '支持国际、LGBTQ+ 与单身意向父母'),
+])
+
+const trustLogos = [
+  { name: 'ASRM', logo: '/images/asrm-logo.svg' },
+  { name: 'ART Risk', logo: '/images/ART-Risk-LOGO-NEW.png' },
+  { name: 'SeedTrust', logo: '/images/SeedTrust-Logo-Stacked.png', class: 'scale-115' },
+  { name: 'MHB', logo: '/images/mhb-logo-transparent.png' },
+  { name: 'RESOLVE', logo: '/images/resolve-logo.png', class: 'scale-110' },
+]
+
+const intendedParentAudiences = computed(() => [
+  {
+    icon: 'lucide:flask-conical',
+    title: tt('You already have embryos', '你已经有胚胎'),
+    copy: tt(
+      'We help coordinate surrogate matching, screening, legal steps, escrow setup, transfer planning, and pregnancy support with your IVF clinic.',
+      '我们可协助与 IVF 诊所衔接代母匹配、筛查、法律步骤、托管账户、移植计划与孕期支持。',
+    ),
+  },
+  {
+    icon: 'lucide:building-2',
+    title: tt('You are still choosing an IVF clinic', '你仍在选择 IVF 诊所'),
+    copy: tt(
+      'We can help you understand clinic coordination, donor egg options, embryo creation timelines, and what to prepare before matching.',
+      '我们可以帮助你了解诊所协调、供卵选择、胚胎创建时间线，以及匹配前需要准备的事项。',
+    ),
+  },
+  {
+    icon: 'lucide:languages',
+    title: tt('You are international or Chinese-speaking', '你是国际或中文家庭'),
+    copy: tt(
+      'Our bilingual team supports English and Mandarin communication and helps international intended parents understand the U.S. surrogacy process.',
+      '我们的双语团队支持英文与中文沟通，帮助国际意向父母理解美国代孕流程。',
+    ),
+  },
+  {
+    icon: 'lucide:heart-handshake',
+    title: tt('You are LGBTQ+ or a single intended parent', '你是 LGBTQ+ 或单身意向父母'),
+    copy: tt(
+      'We support inclusive family-building paths and help you understand donor coordination, parentage planning, and agency support.',
+      '我们支持多元家庭路径，帮助你了解捐赠者协调、亲权规划与机构支持。',
+    ),
+  },
+  {
+    icon: 'lucide:search-check',
+    title: tt('You are comparing surrogacy agencies', '你正在比较代孕机构'),
+    copy: tt(
+      'We help you compare timeline, cost, protection, communication, and what is included before you choose an agency.',
+      '我们帮助你在选择机构前比较时间线、费用、保障、沟通方式与服务包含内容。',
+    ),
+  },
+])
+
+const afterApplySteps = computed(() => [
+  {
+    title: tt('Tell us where you are now', '告诉我们你目前在哪一步'),
+    copy: tt(
+      'Share your goals, timeline, family profile, embryo or clinic status, and early questions.',
+      '分享你的目标、时间线、家庭情况、胚胎或诊所状态，以及早期问题。',
+    ),
+  },
+  {
+    title: tt('Receive a private team review', '获得团队私密评估'),
+    copy: tt(
+      'Our team reviews your information and identifies the most relevant next steps for your surrogacy journey.',
+      '我们的团队会审阅你的信息，并梳理与你的代孕旅程最相关的下一步。',
+    ),
+  },
+  {
+    title: tt('Get personalized guidance', '获得个性化指导'),
+    copy: tt(
+      'We follow up with a personalized information package and, if helpful, a private consultation. No pressure and no commitment.',
+      '我们会发送个性化资料包；如适合，也可安排私密咨询。无压力，无承诺。',
+    ),
+  },
+])
+
+const protectionPillars = computed(() => [
+  {
+    icon: 'lucide:users',
+    title: tt('Surrogate matching', '代母匹配'),
+    copy: tt(
+      'We help align preferences, expectations, readiness, and communication style so the match starts with clarity.',
+      '我们帮助协调偏好、期待、准备度与沟通方式，让匹配从清晰开始。',
+    ),
+  },
+  {
+    icon: 'lucide:receipt-text',
+    title: tt('Cost planning', '费用规划'),
+    copy: tt(
+      'We explain agency services, surrogate compensation, IVF clinic costs, legal fees, insurance needs, escrow, and case-dependent expenses.',
+      '我们说明机构服务、代母补偿、IVF 诊所费用、法律费用、保险需求、托管与个案相关费用。',
+    ),
+  },
+  {
+    icon: 'lucide:scale',
+    title: tt('Legal coordination', '法律协调'),
+    copy: tt(
+      'We coordinate with qualified legal professionals around contracts, parentage planning, and key timing milestones.',
+      '我们与合格法律专业人士协调合同、亲权规划与关键时间节点。',
+    ),
+  },
+  {
+    icon: 'lucide:shield-check',
+    title: tt('Insurance review', '保险审查'),
+    copy: tt(
+      'We help review pregnancy coverage, newborn insurance planning, and the insurance questions that can affect total cost.',
+      '我们协助审查孕期保险、新生儿保险规划，以及可能影响总费用的保险问题。',
+    ),
+  },
+  {
+    icon: 'lucide:landmark',
+    title: tt('Escrow and trust account support', '托管与信托账户支持'),
+    copy: tt(
+      'Milestone-based fund management helps keep payments organized, documented, and easier to understand.',
+      '基于里程碑的资金管理让付款更有序、更可记录，也更易理解。',
+    ),
+  },
+  {
+    icon: 'lucide:clipboard-check',
+    title: tt('IVF clinic coordination', 'IVF 诊所协调'),
+    copy: tt(
+      'We support communication around embryo status, donor egg needs, transfer timing, clinic requirements, and pregnancy updates.',
+      '我们支持围绕胚胎状态、供卵需求、移植时间、诊所要求与孕期更新的沟通。',
+    ),
+  },
+])
+
+const parentTestimonials = computed(() => [
+  {
+    quote: tt(
+      'We felt genuinely supported at every step. The team was transparent, kind, and professional.',
+      '从每一步中，我们都感受到真诚支持。团队透明、温暖且专业。',
+    ),
+    author: tt('Intended Parent', '意向父母'),
+  },
+  {
+    quote: tt(
+      'Clear communication, strong coordination with clinic and legal partners, and true care for both surrogates and parents.',
+      '清晰沟通、与诊所及法律伙伴的强协调，以及对代母和父母双方真正的关怀。',
+    ),
+    author: tt('Growing Family', '成长中的家庭'),
+  },
+])
+
+const landingFaqItems = computed(() => [
+  {
+    question: tt('Do I need embryos before applying?', '申请前必须已经有胚胎吗？'),
+    answer: tt(
+      'No. Some intended parents come to Yunda with embryos already created, while others are still choosing an IVF clinic or considering donor eggs. The application helps us understand where you are so we can guide the next step.',
+      '不必须。有些意向父母已经有胚胎，有些仍在选择 IVF 诊所或考虑供卵。申请表帮助我们了解你目前的阶段，以便给出下一步建议。',
+    ),
+  },
+  {
+    question: tt('Can I apply if I am still choosing an IVF clinic?', '如果我还在选择 IVF 诊所，可以申请吗？'),
+    answer: tt(
+      'Yes. We can help you understand how clinic selection, embryo creation, donor egg options, and transfer planning fit into the broader surrogacy process.',
+      '可以。我们可以帮助你理解诊所选择、胚胎创建、供卵选择和移植计划如何纳入整体代孕流程。',
+    ),
+  },
+  {
+    question: tt('How much does surrogacy usually cost?', '代孕通常需要多少钱？'),
+    answer: tt(
+      'Total cost depends on your clinic, embryo status, surrogate match, legal path, insurance needs, escrow, and pregnancy-related expenses. Yunda provides cost education and planning support so you can understand likely cost categories before moving forward.',
+      '总费用取决于诊所、胚胎状态、代母匹配、法律路径、保险需求、托管和孕期相关费用。孕达提供费用教育与规划支持，帮助你在推进前理解主要费用类别。',
+    ),
+  },
+  {
+    question: tt('What happens after I submit the application?', '提交申请后会发生什么？'),
+    answer: tt(
+      'Our team reviews your information privately and follows up with a personalized information package. If appropriate, we may also invite you to schedule a private consultation.',
+      '我们的团队会私密审阅你的信息，并发送个性化资料包。如适合，也可能邀请你预约私密咨询。',
+    ),
+  },
+  {
+    question: tt('Will I be pressured to sign with Yunda?', '提交后会被催促签约吗？'),
+    answer: tt(
+      'No. Submitting the application does not create a contract or obligation. It helps us understand your situation and provide guidance that fits your stage of the journey.',
+      '不会。提交申请不会形成合同或义务。它只是帮助我们了解你的情况，并提供适合你当前阶段的指导。',
+    ),
+  },
+  {
+    question: tt('Do you support international or Chinese-speaking intended parents?', '你们支持国际或中文意向父母吗？'),
+    answer: tt(
+      'Yes. Yunda supports international and Chinese-speaking intended parents with bilingual English and Mandarin communication and cross-border journey coordination.',
+      '支持。孕达为国际和中文意向父母提供英文与中文双语沟通，以及跨境旅程协调。',
+    ),
+  },
+  {
+    question: tt('Do you support LGBTQ+ couples and single parents?', '你们支持 LGBTQ+ 伴侣和单身父母吗？'),
+    answer: tt(
+      'Yes. Yunda supports LGBTQ+ couples, single parents, and intended parents from many family structures. We help coordinate the process with respect, clarity, and appropriate professional support.',
+      '支持。孕达支持 LGBTQ+ 伴侣、单身父母以及多种家庭结构的意向父母，并以尊重、清晰和合适的专业支持协调整个流程。',
+    ),
+  },
+  {
+    question: tt('How are legal, insurance, and escrow steps handled?', '法律、保险和托管步骤如何处理？'),
+    answer: tt(
+      'Yunda coordinates with qualified legal, insurance, escrow, and fertility professionals so intended parents understand key steps, timing, and responsibilities throughout the journey.',
+      '孕达会与合格的法律、保险、托管和生育专业人士协调，帮助意向父母理解关键步骤、时间节点与责任。',
+    ),
+  },
+])
+
 const parentHowToSteps = computed(() => [
   {
     title: t('parent.application.sections.basicInfo'),
@@ -147,18 +360,7 @@ const parentHowToSteps = computed(() => [
 ])
 
 const parentFaqItems = computed(() => [
-  {
-    question: `${t('parent.application.welcome.title')}?`,
-    answer: `${t('parent.application.welcome.message1')} ${t('parent.application.welcome.message2')}`,
-  },
-  {
-    question: `${t('parent.application.sections.programInterests')}?`,
-    answer: t('parent.application.welcome.message3'),
-  },
-  {
-    question: `${t('parent.application.sections.consent')}?`,
-    answer: t('parent.application.form.consentAgreement.disclaimer'),
-  },
+  ...landingFaqItems.value,
 ])
 
 const parentHowToSchema = computed(() => buildHowToSchema({
@@ -195,7 +397,22 @@ useHead(() => {
       children: JSON.stringify(parentFaqSchema.value),
     })
   }
-  return scripts.length ? { script: scripts } : {}
+  return {
+    title: tt(
+      'Surrogacy for Intended Parents | Private Guidance from Yunda',
+      '准父母代孕申请 | 孕达代孕',
+    ),
+    meta: [
+      {
+        name: 'description',
+        content: tt(
+          'Start your surrogacy journey with private guidance from Yunda Surrogacy. We support intended parents with matching, IVF clinic coordination, legal steps, insurance review, escrow, and bilingual care.',
+          '通过孕达代孕开启你的代孕旅程。我们为准父母提供匹配、IVF 诊所协调、法律步骤、保险审查、托管和双语支持。',
+        ),
+      },
+    ],
+    ...(scripts.length ? { script: scripts } : {}),
+  }
 })
 
 // Modal state
@@ -524,37 +741,305 @@ async function handleSubmit() {
   <div class="min-h-screen overflow-hidden bg-[var(--yunda-petal)]">
     <AppHeader />
 
-    <!-- Header -->
-    <div class="relative h-30 w-full flex items-center justify-center bg-[var(--yunda-bark)] lg:h-80">
-      <h1 class="text-center font-display text-[32px] text-[var(--yunda-petal)] font-semibold italic leading-[1.1] lg:text-[50px]">
-        {{ $t('parent.application.pageTitle') }}
-      </h1>
-    </div>
+    <!-- Hero -->
+    <section class="relative w-full max-w-full overflow-hidden bg-[var(--yunda-bark)]">
+      <div class="absolute inset-0 opacity-24" aria-hidden="true">
+        <img
+          src="/images/ip/gynecologist-offering-couple.jpg"
+          :alt="tt('Private surrogacy guidance for intended parents', '为准父母提供私密代孕指导')"
+          class="h-full w-full object-cover object-center"
+          width="1600"
+          height="1067"
+          fetchpriority="high"
+        >
+      </div>
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,42,31,0.95),rgba(61,42,31,0.82),rgba(61,42,31,0.54))]" aria-hidden="true" />
+
+      <div class="relative mx-auto grid min-h-[calc(100svh-72px)] w-full max-w-320 min-w-0 place-items-center gap-10 overflow-hidden px-6 py-12 md:px-10 lg:min-h-[620px] lg:grid-cols-[1.08fr_0.92fr] lg:px-12 lg:py-24">
+        <div class="parent-hero-copy mx-auto w-full max-w-[34rem] min-w-0 overflow-hidden text-center lg:mx-0 lg:max-w-full lg:text-left">
+          <h1 class="w-full font-display text-[36px] text-[var(--yunda-petal)] font-semibold leading-[1.08] sm:max-w-4xl sm:text-[42px] md:text-[60px] lg:text-[72px]">
+            {{ tt('Start Your Surrogacy Journey With Clear, Private Guidance', '用清晰、私密的指导开启你的代孕旅程') }}
+          </h1>
+          <p class="mt-6 w-full max-w-full break-words text-[18px] text-[var(--yunda-petal)]/92 leading-[1.75] lg:max-w-3xl md:text-[20px]">
+            {{ tt('Yunda Surrogacy helps intended parents plan a gestational surrogacy journey with coordinated support for matching, IVF clinics, legal steps, insurance review, escrow, and ongoing case management.', '孕达代孕帮助准父母规划妊娠代孕旅程，协调匹配、IVF 诊所、法律步骤、保险审查、托管账户和全程个案管理。') }}
+          </p>
+          <p class="mt-4 w-full max-w-full break-words text-base text-[var(--yunda-petal)]/82 leading-[1.7] lg:max-w-3xl md:text-[17px]">
+            {{ tt('Whether you are in the U.S. or abroad, already have embryos, are still choosing a clinic, or need egg donor guidance, our team helps you understand the next step before you commit.', '无论你在美国或海外、已经有胚胎、仍在选择诊所，或需要供卵路径指导，我们都会帮助你在承诺前先理解下一步。') }}
+          </p>
+
+          <div class="mt-8 flex w-full max-w-full min-w-0 flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#application-form" class="inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-2.5 bg-[var(--yunda-petal)] px-5 py-4 text-center text-[var(--yunda-bark)] font-bold shadow-[0_14px_34px_rgba(0,0,0,0.22)] transition-opacity sm:w-auto sm:px-6 hover:opacity-90">
+              <span class="min-w-0 break-words">{{ tt('Get My Personalized Surrogacy Plan', '获取我的个性化代孕方案') }}</span>
+              <Icon name="lucide:arrow-right" class="h-5 w-5" />
+            </a>
+            <NuxtLink :to="localePath('/surrogacy-cost')" class="inline-flex w-full min-w-0 items-center justify-center gap-2 rounded-2.5 border border-[var(--yunda-petal)]/55 px-5 py-4 text-center text-[var(--yunda-petal)] font-bold transition-colors sm:w-auto sm:px-6 hover:bg-[var(--yunda-petal)]/10">
+              <span class="min-w-0 break-words">{{ tt('Review Surrogacy Costs', '先了解代孕费用') }}</span>
+              <Icon name="lucide:receipt-text" class="h-5 w-5" />
+            </NuxtLink>
+          </div>
+          <p class="mt-5 text-sm text-[var(--yunda-petal)]/78">
+            {{ tt('Private review within 24-48 hours. No pressure. No commitment.', '24-48 小时内私密评估。无压力，无承诺。') }}
+          </p>
+        </div>
+
+        <aside class="parent-hero-card w-[calc(100vw-96px)] max-w-[calc(100vw-96px)] min-w-0 rounded-3 border border-[var(--yunda-bark)]/10 bg-[rgba(255,248,235,0.92)] p-5 text-[var(--yunda-bark)] shadow-[0_20px_50px_rgba(0,0,0,0.18)] backdrop-blur-md sm:w-full sm:max-w-full md:p-7">
+          <p class="mb-5 text-sm text-[var(--yunda-bark)]/68 font-semibold uppercase">
+            {{ tt('What Yunda helps coordinate', '孕达协助协调') }}
+          </p>
+          <ul class="space-y-4">
+            <li v-for="point in heroProofPoints" :key="point" class="flex min-w-0 items-start gap-3 break-words text-[var(--yunda-bark)] leading-[1.55]">
+              <Icon name="lucide:check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-[var(--yunda-maple)]" />
+              <span class="min-w-0">{{ point }}</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-[color-mix(in_srgb,var(--yunda-sky)_26%,var(--yunda-petal))] px-5 py-10">
+      <div class="mx-auto max-w-320">
+        <p class="mx-auto max-w-4xl break-words text-center text-sm text-[var(--yunda-bark)]/72 font-semibold uppercase tracking-[0.08em]">
+          {{ tt('Trusted coordination across fertility, legal, insurance, and escrow partners', '在生殖、法律、保险与托管环节提供可信协调') }}
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          <div v-for="partner in trustLogos" :key="partner.name" class="h-14 flex items-center justify-center md:h-18">
+            <img :src="partner.logo" :alt="partner.name" class="max-h-full w-auto object-contain" :class="partner.class" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Main Content -->
-    <div class="relative mx-auto mt-10 max-w-300 px-4 lg:px-0">
-      <!-- Introduction -->
-      <div class="mb-16 text-center lg:text-5">
-        <h2 class="mb-8 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
-          {{ $t('parent.application.welcome.title') }}
-        </h2>
-        <p class="mx-auto mb-4 max-w-966px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
-          {{ $t('parent.application.welcome.message1') }}
-        </p>
-        <p class="mx-auto mb-20 max-w-954px font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
-          <span v-html="$t('parent.application.welcome.message2')" />
-        </p>
+    <div class="relative mx-auto max-w-320 px-4 lg:px-8">
+      <!-- Problem -->
+      <section class="grid gap-10 py-16 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:py-22">
+        <div>
+          <p class="mb-4 text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
+            {{ tt('Private intended parent guidance', '准父母私密指导') }}
+          </p>
+          <h2 class="font-display text-[34px] text-[var(--yunda-bark)] font-medium leading-[1.12] md:text-[48px]">
+            {{ tt('Surrogacy Should Not Feel Like a Maze', '代孕不应该像一座迷宫') }}
+          </h2>
+        </div>
+        <div class="space-y-5 text-[17px] text-[var(--yunda-bark)] leading-[1.8]">
+          <p>
+            {{ tt('For intended parents, surrogacy can feel overwhelming before it even begins. You may be comparing agencies, reviewing IVF options, trying to understand legal parentage, estimating costs, or wondering how surrogate matching works.', '对准父母来说，代孕在真正开始前就可能令人不知所措。你可能正在比较机构、评估 IVF 选择、理解法律亲权、估算费用，或想知道代母匹配如何进行。') }}
+          </p>
+          <p>
+            {{ tt('You should not have to coordinate every clinic, legal, insurance, escrow, and timeline detail alone. Yunda helps bring those moving parts into one clear path, so you can make decisions with more confidence and fewer surprises.', '你不应该独自协调诊所、法律、保险、托管和时间线的每个细节。孕达帮助把这些复杂环节纳入清晰路径，让你更有信心地做决定，并减少意外。') }}
+          </p>
+        </div>
+      </section>
 
-        <p class="mx-auto mb-8 max-w-954px font-sans text-lg text-[var(--yunda-bark)] font-bold lg:text-xl" style="font-family: var(--font-text)">
-          {{ $t('parent.application.welcome.message3') }}
+      <!-- Audience Fit -->
+      <section class="py-6 lg:py-10">
+        <div class="mb-9 max-w-3xl">
+          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
+            {{ tt('Wherever You Are in the Journey, We Can Help You Understand the Next Step', '无论你处在哪个阶段，我们都能帮你看清下一步') }}
+          </h2>
+          <p class="mt-5 text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('You do not need to have every answer before reaching out. The application helps us understand where you are now, what matters most, and what kind of support would be useful.', '联系前你不需要已经有所有答案。申请表会帮助我们了解你目前的阶段、最在意的问题，以及你需要什么支持。') }}
+          </p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          <article v-for="item in intendedParentAudiences" :key="item.title" class="rounded-2 border border-[var(--yunda-bark)]/10 bg-white/68 p-5 shadow-[0_10px_26px_rgba(60,36,21,0.07)]">
+            <Icon :name="item.icon" class="mb-4 h-7 w-7 text-[var(--yunda-maple)]" />
+            <h3 class="text-[18px] text-[var(--yunda-bark)] font-bold leading-[1.25]">
+              {{ item.title }}
+            </h3>
+            <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.65]">
+              {{ item.copy }}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- After Apply -->
+      <section class="py-16 lg:py-20">
+        <div class="rounded-3 bg-[var(--yunda-bark)] px-5 py-10 md:px-8 lg:px-12">
+          <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p class="mb-4 text-sm text-[var(--yunda-gold)] font-bold uppercase tracking-[0.08em]">
+                {{ tt('No pressure next step', '无压力的下一步') }}
+              </p>
+              <h2 class="font-display text-[32px] text-[var(--yunda-petal)] font-medium leading-[1.15] md:text-[44px]">
+                {{ tt('What Happens After You Submit the Application', '提交申请后会发生什么') }}
+              </h2>
+              <p class="mt-5 text-[var(--yunda-petal)]/82 leading-[1.75]">
+                {{ tt('This application is not a contract. It gives our team enough context to guide you responsibly and prepare information that fits your situation.', '这份申请不是合同。它只是让我们的团队有足够背景，以负责任的方式为你准备适合你情况的信息。') }}
+              </p>
+            </div>
+            <div class="grid gap-4">
+              <article v-for="(step, index) in afterApplySteps" :key="step.title" class="flex gap-4 rounded-2 bg-[rgba(255,248,235,0.94)] p-5 text-[var(--yunda-bark)] shadow-[0_12px_28px_rgba(0,0,0,0.12)] ring-1 ring-[var(--yunda-petal)]/35">
+                <span class="h-9 w-9 shrink-0 flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-[var(--yunda-petal)] font-bold">{{ index + 1 }}</span>
+                <div>
+                  <h3 class="text-[var(--yunda-bark)] font-bold">
+                    {{ step.title }}
+                  </h3>
+                  <p class="mt-2 text-sm text-[var(--yunda-bark)]/78 leading-[1.65]">
+                    {{ step.copy }}
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="mt-8">
+            <a href="#application-form" class="inline-flex items-center justify-center gap-2 rounded-2.5 bg-[var(--yunda-petal)] px-6 py-4 text-[var(--yunda-bark)] font-bold transition-opacity hover:opacity-90">
+              {{ tt('Get My Personalized Surrogacy Plan', '获取我的个性化代孕方案') }}
+              <Icon name="lucide:arrow-right" class="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Protection -->
+      <section class="py-8 lg:py-14">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
+            {{ tt('A Surrogacy Journey Needs More Than Matching', '代孕旅程需要的不只是匹配') }}
+          </h2>
+          <p class="mt-5 text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('Yunda supports intended parents across the practical, financial, legal, medical, and emotional details that shape a safer journey.', '孕达在实际操作、费用、法律、医疗和情绪支持等关键细节中陪伴准父母，让旅程更清晰、更有保护。') }}
+          </p>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <article v-for="pillar in protectionPillars" :key="pillar.title" class="rounded-2 border border-[var(--yunda-bark)]/10 bg-[color-mix(in_srgb,var(--yunda-gold)_11%,white)] p-6">
+            <Icon :name="pillar.icon" class="mb-4 h-7 w-7 text-[var(--yunda-maple)]" />
+            <h3 class="text-[19px] text-[var(--yunda-bark)] font-bold">
+              {{ pillar.title }}
+            </h3>
+            <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.65]">
+              {{ pillar.copy }}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cost and Timeline -->
+      <section class="grid gap-6 py-14 lg:grid-cols-2 lg:py-20">
+        <article class="rounded-3 bg-[color-mix(in_srgb,var(--yunda-sky)_34%,white)] p-6 md:p-8">
+          <Icon name="lucide:receipt-text" class="mb-5 h-8 w-8 text-[var(--yunda-maple)]" />
+          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+            {{ tt('Understand the Cost Before You Commit', '承诺前，先理解费用') }}
+          </h2>
+          <p class="mt-5 text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('Surrogacy cost depends on your embryo status, IVF clinic, surrogate match, legal path, insurance needs, escrow, and pregnancy-related expenses. Yunda helps you separate fixed costs from case-dependent costs and ask better questions before you move forward.', '代孕费用取决于胚胎状态、IVF 诊所、代母匹配、法律路径、保险需求、托管与孕期相关费用。孕达帮助你区分固定费用和个案相关费用，并在推进前提出更清晰的问题。') }}
+          </p>
+          <NuxtLink :to="localePath('/surrogacy-cost')" class="mt-6 inline-flex items-center gap-2 text-[var(--yunda-bark)] font-bold underline-offset-4 hover:underline">
+            {{ tt('Review Surrogacy Cost Breakdown', '查看代孕费用拆解') }}
+            <Icon name="lucide:arrow-right" class="h-5 w-5" />
+          </NuxtLink>
+        </article>
+
+        <article class="rounded-3 bg-[color-mix(in_srgb,var(--yunda-maple)_10%,white)] p-6 md:p-8">
+          <Icon name="lucide:calendar-clock" class="mb-5 h-8 w-8 text-[var(--yunda-maple)]" />
+          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+            {{ tt('Move Forward With a Clearer Timeline', '用更清晰的时间线推进') }}
+          </h2>
+          <p class="mt-5 text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('Yunda emphasizes no-waitlist matching and personalized coordination. Your exact timeline depends on medical readiness, clinic schedule, legal path, insurance needs, and the type of match that feels right for your family.', '孕达强调无等待名单匹配与个性化协调。你的实际时间线取决于医疗准备、诊所安排、法律路径、保险需求，以及适合你家庭的匹配类型。') }}
+          </p>
+          <NuxtLink :to="localePath('/surrogacy-process')" class="mt-6 inline-flex items-center gap-2 text-[var(--yunda-bark)] font-bold underline-offset-4 hover:underline">
+            {{ tt('See the Surrogacy Process', '查看代孕流程') }}
+            <Icon name="lucide:arrow-right" class="h-5 w-5" />
+          </NuxtLink>
+        </article>
+      </section>
+
+      <!-- Specialized Support -->
+      <section class="grid gap-6 py-8 lg:grid-cols-2 lg:py-14">
+        <article class="overflow-hidden rounded-3 bg-white shadow-[0_16px_40px_rgba(60,36,21,0.08)]">
+          <img src="/images/ip/driverCards-3.jpeg" :alt="tt('International intended parent support', '国际准父母支持')" class="h-56 w-full object-cover" loading="lazy">
+          <div class="p-6 md:p-8">
+            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15]">
+              {{ tt('Support for International and Chinese-Speaking Intended Parents', '支持国际与中文准父母') }}
+            </h2>
+            <p class="mt-4 text-[var(--yunda-bark)] leading-[1.75]">
+              {{ tt('Cross-border surrogacy can bring extra questions: language, time zones, travel planning, U.S. clinic coordination, legal timing, insurance, escrow, and newborn paperwork. Yunda helps make the process easier to understand with bilingual English and Mandarin support.', '跨境代孕会带来额外问题：语言、时差、旅行规划、美国诊所协调、法律时间节点、保险、托管与新生儿文件。孕达以英文和中文双语支持，让流程更容易理解。') }}
+            </p>
+            <a href="#application-form" class="mt-6 inline-flex items-center gap-2 text-[var(--yunda-bark)] font-bold underline-offset-4 hover:underline">
+              {{ tt('Talk to a Bilingual Coordinator', '与双语顾问沟通') }}
+              <Icon name="lucide:arrow-right" class="h-5 w-5" />
+            </a>
+          </div>
+        </article>
+
+        <article class="overflow-hidden rounded-3 bg-white shadow-[0_16px_40px_rgba(60,36,21,0.08)]">
+          <img src="/images/ip/LGBTQ-Friendly.webp" :alt="tt('Inclusive surrogacy support', '包容性代孕支持')" class="h-56 w-full object-cover" loading="lazy">
+          <div class="p-6 md:p-8">
+            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15]">
+              {{ tt('Inclusive Surrogacy Support for LGBTQ+ and Single Intended Parents', '支持 LGBTQ+ 与单身准父母') }}
+            </h2>
+            <p class="mt-4 text-[var(--yunda-bark)] leading-[1.75]">
+              {{ tt('Yunda supports intended parents from many family structures, including LGBTQ+ couples and single parents. We help you understand the surrogacy process, donor egg or donor sperm coordination if needed, and parentage planning with appropriate legal professionals.', '孕达支持多种家庭结构的准父母，包括 LGBTQ+ 伴侣和单身父母。我们帮助你理解代孕流程、必要时的供卵或供精协调，以及由合适法律专业人士参与的亲权规划。') }}
+            </p>
+            <NuxtLink :to="localePath('/single-parents-lgbtq')" class="mt-6 inline-flex items-center gap-2 text-[var(--yunda-bark)] font-bold underline-offset-4 hover:underline">
+              {{ tt('Explore LGBTQ+ and Single Parent Surrogacy', '了解 LGBTQ+ 与单身父母代孕') }}
+              <Icon name="lucide:arrow-right" class="h-5 w-5" />
+            </NuxtLink>
+          </div>
+        </article>
+      </section>
+
+      <!-- Testimonials and Founder -->
+      <section class="grid gap-6 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">
+        <div>
+          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
+            {{ tt('Clear Communication Matters When the Stakes Are This High', '在如此重要的决定中，清晰沟通很关键') }}
+          </h2>
+          <div class="mt-8 grid gap-4">
+            <blockquote v-for="item in parentTestimonials" :key="item.quote" class="rounded-2 border border-[var(--yunda-bark)]/10 bg-white/78 p-6">
+              <p class="text-[var(--yunda-bark)] leading-[1.75]">
+                “{{ item.quote }}”
+              </p>
+              <footer class="mt-4 text-sm text-[var(--yunda-maple)] font-bold">
+                {{ item.author }}
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+        <article class="rounded-3 bg-[var(--yunda-bark)] p-6 text-[var(--yunda-petal)] md:p-8">
+          <img src="/images/base/kayla-luo.webp" :alt="tt('Kayla Luo, Yunda Surrogacy', 'Kayla Luo，孕达代孕')" class="mb-6 h-28 w-28 rounded-full object-cover ring-4 ring-[var(--yunda-petal)]/18" loading="lazy">
+          <h2 class="font-display text-[30px] font-medium leading-[1.15]">
+            {{ tt('Guidance From a Team That Understands the Journey', '来自真正理解这段旅程的团队') }}
+          </h2>
+          <p class="mt-5 text-[var(--yunda-petal)]/82 leading-[1.75]">
+            {{ tt('Yunda’s North America leadership brings assisted reproduction experience, bilingual cross-border support, and personal understanding of the surrogacy journey. That perspective shapes clear communication, ethical coordination, careful planning, and respectful support.', '孕达北美团队拥有辅助生殖经验、双语跨境支持，以及对代孕旅程的切身理解。这种视角塑造了清晰沟通、伦理协调、谨慎规划和尊重式支持。') }}
+          </p>
+          <NuxtLink :to="localePath('/about')" class="mt-6 inline-flex items-center gap-2 font-bold underline-offset-4 hover:underline">
+            {{ tt('Meet the Yunda Team', '了解孕达团队') }}
+            <Icon name="lucide:arrow-right" class="h-5 w-5" />
+          </NuxtLink>
+        </article>
+      </section>
+
+      <!-- Application Intro -->
+      <section id="application-form" class="scroll-mt-24 py-10 text-center">
+        <p class="mb-4 text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
+          {{ tt('Private intended parent application', '准父母私密申请') }}
         </p>
-        <p class="mb-12 font-sans text-base text-[var(--yunda-bark)]" style="font-family: var(--font-text)">
-          {{ $t('parent.application.welcome.scrollPrompt') }}
+        <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
+          {{ tt('Start With a Private Intended Parent Application', '从一份私密准父母申请开始') }}
+        </h2>
+        <p class="mx-auto mt-5 max-w-3xl text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+          {{ tt('Complete this private intake so our team can understand your goals, timeline, embryo or clinic status, and the kind of guidance you need. After submission, we will review your information and follow up with a personalized information package.', '完成这份私密信息表，让我们的团队了解你的目标、时间线、胚胎或诊所状态，以及你需要的指导。提交后，我们会审阅你的信息并发送个性化资料包。') }}
         </p>
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto animate-bounce">
-          <path d="M10 20L24 34L38 20" stroke="var(--yunda-bark)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </div>
+        <div class="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/72 px-4 py-2 text-sm text-[var(--yunda-bark)] ring-1 ring-[var(--yunda-bark)]/10">
+            <Icon name="lucide:lock-keyhole" class="h-4 w-4" />
+            {{ tt('Private review by the Yunda team', '孕达团队私密审阅') }}
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/72 px-4 py-2 text-sm text-[var(--yunda-bark)] ring-1 ring-[var(--yunda-bark)]/10">
+            <Icon name="lucide:hand-heart" class="h-4 w-4" />
+            {{ tt('No pressure and no commitment', '无压力，无承诺') }}
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/72 px-4 py-2 text-sm text-[var(--yunda-bark)] ring-1 ring-[var(--yunda-bark)]/10">
+            <Icon name="lucide:languages" class="h-4 w-4" />
+            {{ tt('Bilingual support available', '可提供双语支持') }}
+          </span>
+        </div>
+      </section>
 
       <!-- Form Container -->
       <div class="mb-20 rounded-5 from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b p-8 p-8 shadow-black/20 shadow-xl lg:p-12">
@@ -974,6 +1459,9 @@ async function handleSubmit() {
               {{ isSubmitting ? $t('parent.application.form.submittingButton') : $t('parent.application.form.submitButton') }}
             </button>
           </div>
+          <p class="mx-auto mt-4 max-w-3xl text-center text-13px text-[var(--yunda-bark)]/72 leading-[1.65]">
+            {{ tt('By submitting, you are requesting private guidance from Yunda Surrogacy. This does not create a contract or obligation to begin a surrogacy program. Medical and legal decisions should be made with qualified professionals.', '提交后，你是在向孕达代孕请求私密指导。这不会形成合同，也不代表你必须开始代孕项目。医疗和法律决定应与合格专业人士共同做出。') }}
+          </p>
           <div
             v-if="hasTriedSubmit && requiredFieldErrors.length > 0 && !isSubmitting"
             class="mx-auto mt-4 max-w-2xl border border-red-200 rounded-2.5 bg-red-50 p-4 text-red-700"
@@ -990,6 +1478,26 @@ async function handleSubmit() {
           </div>
         </form>
       </div>
+
+      <!-- FAQ -->
+      <section class="py-10 lg:py-16">
+        <div class="mx-auto max-w-4xl">
+          <h2 class="text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
+            {{ tt('Questions Intended Parents Often Ask Before Applying', '准父母申请前常见问题') }}
+          </h2>
+          <div class="mt-8 divide-y divide-[var(--yunda-bark)]/12 rounded-3 border border-[var(--yunda-bark)]/12 bg-white/78">
+            <details v-for="item in landingFaqItems" :key="item.question" class="group p-5 md:p-6">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] text-[var(--yunda-bark)] font-bold">
+                {{ item.question }}
+                <Icon name="lucide:chevron-down" class="h-5 w-5 shrink-0 transition-transform group-open:rotate-180" />
+              </summary>
+              <p class="mt-4 text-[var(--yunda-bark)]/78 leading-[1.75]">
+                {{ item.answer }}
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
     </div>
     <AppFooter />
 
@@ -1004,3 +1512,13 @@ async function handleSubmit() {
     />
   </div>
 </template>
+
+<style scoped>
+@media (max-width: 640px) {
+  .parent-hero-card :deep(li),
+  .parent-hero-card :deep(p) {
+    max-width: calc(100vw - 40px);
+    overflow-wrap: anywhere;
+  }
+}
+</style>
