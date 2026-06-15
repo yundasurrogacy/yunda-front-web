@@ -225,6 +225,7 @@ function createUrlNode(entry) {
 function createUrlSetXml(localeEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     '  <!-- Pages -->',
     ...localeEntries.pages.map(createUrlNode),
@@ -239,6 +240,7 @@ function createIndexXml() {
   const now = new Date().toISOString().slice(0, 10)
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     '  <sitemap>',
     `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-en.xml'))}</loc>`,
