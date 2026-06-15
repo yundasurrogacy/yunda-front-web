@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import seoRoutes from './data/seo-routes.json'
 
 async function fetchBlogEntries() {
   const urls = [
@@ -36,31 +37,7 @@ async function fetchBlogEntries() {
   return []
 }
 
-const staticPages: Array<{ loc: string, priority: 1 | 0.9 | 0.8 | 0.7 }> = [
-  { loc: '/', priority: 1 },
-  { loc: '/about', priority: 0.9 },
-  { loc: '/be-parents', priority: 0.9 },
-  { loc: '/be-surrogate', priority: 0.9 },
-  { loc: '/surrogate-requirements', priority: 0.8 },
-  { loc: '/surrogate-process', priority: 0.8 },
-  { loc: '/surrogate-compensation', priority: 0.8 },
-  { loc: '/become-a-surrogate', priority: 0.8 },
-  { loc: '/become-surrogate-california', priority: 0.8 },
-  { loc: '/blog', priority: 0.7 },
-  { loc: '/resources', priority: 0.7 },
-  // 父母相关页面
-  { loc: '/egg-donation', priority: 0.7 },
-  { loc: '/partner-ivf-clinics', priority: 0.7 },
-  { loc: '/single-parents-lgbtq', priority: 0.7 },
-  { loc: '/surrogacy-cost', priority: 0.8 },
-  { loc: '/surrogacy-process', priority: 0.8 },
-  // 代孕者相关页面
-  { loc: '/benefit', priority: 0.7 },
-  { loc: '/eligibility', priority: 0.7 },
-  { loc: '/journey', priority: 0.7 },
-  { loc: '/referral', priority: 0.7 },
-  { loc: '/screening', priority: 0.7 },
-]
+const staticPages = seoRoutes.staticPages
 
 function toZhPath(loc: string) {
   return loc === '/' ? '/zh' : `/zh${loc}`
@@ -70,22 +47,34 @@ function toZhPath(loc: string) {
 const blogEntries = await fetchBlogEntries()
 const blogRoutes = blogEntries.map((blog: { loc: string }) => blog.loc)
 
+const legacyRedirectPaths = new Set([
+  '/become-a-surrogate-mother',
+  '/become-a-surrogay-mother',
+  '/become-surrogate',
+  '/surrogate-journey',
+  '/surrogate-qualification',
+  '/surrogacy-price',
+  '/zh/become-a-surrogate-mother',
+  '/zh/become-a-surrogay-mother',
+  '/zh/become-surrogate',
+  '/zh/surrogate-journey',
+  '/zh/surrogate-qualification',
+  '/zh/surrogacy-price',
+  '/sitemap.html',
+  '/zh/sitemap.html',
+  '/be-surrogate-v2',
+  '/zh/be-surrogate-v2',
+])
+
 // 生成英文路由（默认语言，无前缀）
 const englishRoutes = [
   ...staticPages.map(page => page.loc),
-  '/become-a-surrogate-mother', // legacy URL redirect
-  '/become-a-surrogay-mother', // typo URL redirect
-  '/become-surrogate', // legacy URL redirect
-  '/surrogate-journey', // legacy URL redirect
-  '/surrogate-qualification', // legacy URL redirect
-  '/surrogacy-price', // legacy URL redirect
   ...blogRoutes,
 ]
 // 生成中文路由（带 /zh 前缀）
 // 处理首页路径：/ 应该映射到 /zh 而不是 /zh/
 const chineseRoutes = [
   ...staticPages.map(page => toZhPath(page.loc)),
-  '/zh/surrogacy-price', // legacy URL redirect
   ...blogRoutes.map((route: string) => toZhPath(route)),
 ]
 const prerenderRoutes = Array.from(new Set([
@@ -151,6 +140,12 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/zh/surrogate-journey': {
+      redirect: {
+        to: '/zh/surrogate-process',
+        statusCode: 301,
+      },
+    },
     '/surrogacy-price': {
       redirect: {
         to: '/surrogacy-cost',
@@ -181,15 +176,33 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/zh/become-surrogate': {
+      redirect: {
+        to: '/zh/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
     '/become-a-surrogate-mother': {
       redirect: {
         to: '/become-a-surrogate',
         statusCode: 301,
       },
     },
+    '/zh/become-a-surrogate-mother': {
+      redirect: {
+        to: '/zh/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
     '/become-a-surrogay-mother': {
       redirect: {
         to: '/become-a-surrogate',
+        statusCode: 301,
+      },
+    },
+    '/zh/become-a-surrogay-mother': {
+      redirect: {
+        to: '/zh/become-a-surrogate',
         statusCode: 301,
       },
     },
@@ -204,6 +217,7 @@ export default defineNuxtConfig({
       // 约定：页面下非页面文件（多语言、composable 等）统一放在 _ 目录，prerender 忽略所有 /_/ 路径
       ignore: [
         (path: string) => path.includes('/_/'),
+        (path: string) => legacyRedirectPaths.has(path),
         (path: string) => path === '/be-surrogate/success' || path === '/zh/be-surrogate/success',
       ],
     },

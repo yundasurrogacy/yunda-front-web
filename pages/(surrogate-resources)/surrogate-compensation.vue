@@ -402,6 +402,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: pageDescription.value,
   about: 'Gestational carrier compensation, benefits, escrow, and payment schedule',
   audience: 'Potential gestational carriers and intended parents',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Compensation Guidance',
     serviceType: 'Gestational carrier compensation and escrow guidance',

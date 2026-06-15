@@ -591,6 +591,7 @@ export interface CoreServicePageSchemaOptions {
     description?: string
     items: ItemListElement[]
   }
+  locale?: string
   inLanguage?: string
 }
 
@@ -599,7 +600,7 @@ export function buildCoreServicePageSchemas(options: CoreServicePageSchemaOption
   const pageUrl = resolveUrl(baseUrl, options.path)
   const organizationId = `${baseUrl}/#organization`
   const websiteId = `${baseUrl}/#website`
-  const inLanguage = options.inLanguage || 'en-US'
+  const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
   const schemas: SchemaRecord[] = [
     buildWebPageSchema({
       baseUrl,
@@ -655,7 +656,7 @@ export function buildCoreServicePageSchemas(options: CoreServicePageSchemaOption
       description: options.itemList.description,
       items: options.itemList.items,
       includeContext: true,
-      locale: 'en',
+      locale: inLanguage === 'zh-CN' ? 'zh' : 'en',
     }))
   }
 

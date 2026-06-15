@@ -34,9 +34,9 @@ const defaultSlides: SurrogateGallerySlide[] = [
   { src: '/images/home/surrogate-8.png', alt: 'Surrogate mother outdoors' },
   { src: '/images/home/surrogate-9.png', alt: 'Surrogate mother taking a mirror selfie' },
   { src: '/images/home/surrogate-10.jpeg', alt: 'Surrogate mother holding baby' },
-  { src: '/images/home/surrogate-11.png', alt: 'Surrogate mother portrait' },
-  { src: '/images/home/surrogate-12.png', alt: 'Surrogate mother smiling' },
-  { src: '/images/home/surrogate-13.png', alt: 'Surrogate mother with family' },
+  { src: '/images/home/surrogate-11.jpg', alt: 'Surrogate mother portrait' },
+  { src: '/images/home/surrogate-12.jpg', alt: 'Surrogate mother smiling' },
+  { src: '/images/home/surrogate-13.jpg', alt: 'Surrogate mother with family' },
 ]
 
 const slides = computed(() =>

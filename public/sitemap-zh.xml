@@ -1,573 +1,894 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Pages -->
   <url>
     <loc>https://www.yundasurrogacy.com/zh</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/about</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/about" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/be-parents</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/be-parents" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/be-parents" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/be-parents" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/be-surrogate</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/be-surrogate" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/be-surrogate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/be-surrogate" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogate-requirements</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-requirements" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-requirements" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-requirements" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogate-process</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-process" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-process" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogate-compensation</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-compensation" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-compensation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-compensation" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/become-a-surrogate</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/become-a-surrogate" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/become-a-surrogate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/become-a-surrogate" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/become-surrogate-california</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/become-surrogate-california" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/become-surrogate-california" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/become-surrogate-california" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog" />
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/resources</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/resources" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/resources" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/resources" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/egg-donation</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/egg-donation" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/egg-donation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/egg-donation" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/partner-ivf-clinics</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/partner-ivf-clinics" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/partner-ivf-clinics" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/partner-ivf-clinics" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/single-parents-lgbtq</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/single-parents-lgbtq" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/single-parents-lgbtq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/single-parents-lgbtq" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogacy-cost</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-cost" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-cost" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-cost" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogacy-process</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-process" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-process" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/california-surrogacy-consultation</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/california-surrogacy-consultation" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/california-surrogacy-consultation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/california-surrogacy-consultation" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/surrogacy-protection-california</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-protection-california" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-protection-california" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-protection-california" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/benefit</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/benefit" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/benefit" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/benefit" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/eligibility</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/eligibility" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/eligibility" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/eligibility" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/journey</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/journey" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/journey" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/journey" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/referral</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/referral" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/referral" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/referral" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/screening</loc>
-    <lastmod>2026-06-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/screening" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/screening" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/screening" />
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/privacy-policy" />
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/terms-of-service</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/terms-of-service" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/terms-of-service" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/terms-of-service" />
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/disclaimer</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/disclaimer" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/disclaimer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/disclaimer" />
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
   </url>
   <!-- Blog -->
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained" />
     <lastmod>2026-06-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare" />
     <lastmod>2026-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate" />
     <lastmod>2026-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed" />
     <lastmod>2026-05-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All" />
     <lastmod>2026-05-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents" />
     <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You" />
     <lastmod>2026-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask" />
     <lastmod>2026-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States" />
     <lastmod>2026-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend" />
     <lastmod>2026-05-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution" />
     <lastmod>2026-05-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights" />
     <lastmod>2026-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights" />
     <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/New-Fertility-Coverage-Rules-for-LGBTQ+-Single-Parents-in-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/New-Fertility-Coverage-Rules-for-LGBTQ+-Single-Parents-in-2026" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/New-Fertility-Coverage-Rules-for-LGBTQ+-Single-Parents-in-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/New-Fertility-Coverage-Rules-for-LGBTQ+-Single-Parents-in-2026" />
     <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask" />
     <lastmod>2026-04-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide" />
     <lastmod>2026-04-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained" />
     <lastmod>2026-04-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents" />
     <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy" />
     <lastmod>2026-04-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy" />
     <lastmod>2026-03-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families" />
     <lastmod>2026-03-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next" />
     <lastmod>2026-03-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know" />
     <lastmod>2026-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogacy-After-Hysterectomy-Is-It-Still-Possible" />
     <lastmod>2026-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation" />
     <lastmod>2026-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know" />
     <lastmod>2026-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy" />
     <lastmod>2026-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign" />
     <lastmod>2026-02-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning" />
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy" />
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today" />
     <lastmod>2026-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish" />
     <lastmod>2026-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions" />
     <lastmod>2026-01-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship" />
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads" />
     <lastmod>2026-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong" />
     <lastmod>2026-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws" />
     <lastmod>2026-01-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents" />
     <lastmod>2026-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026" />
     <lastmod>2026-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Best-Surrogacy-Agencies-in-California-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Best-Surrogacy-Agencies-in-California-2026" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Best-Surrogacy-Agencies-in-California-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Best-Surrogacy-Agencies-in-California-2026" />
     <lastmod>2026-01-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin" />
     <lastmod>2025-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing" />
     <lastmod>2025-12-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process" />
     <lastmod>2026-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation" />
     <lastmod>2025-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogacy-cost-in-Los-Angeles:-full-cost-breakdown-of-Agency-Fees" />
     <lastmod>2025-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area" />
     <lastmod>2025-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate" />
     <lastmod>2025-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California" />
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos" />
     <lastmod>2026-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide" />
     <lastmod>2026-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process" />
     <lastmod>2025-11-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide" />
     <lastmod>2025-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025" />
     <lastmod>2025-11-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/how-to-afford-surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/how-to-afford-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/how-to-afford-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/how-to-afford-surrogacy" />
     <lastmod>2025-11-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/the-7-most-asked-questions-about-becoming-an-egg-donor" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/the-7-most-asked-questions-about-becoming-an-egg-donor" />
     <lastmod>2025-11-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby" />
     <lastmod>2025-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Much-Does-Surrogacy-Cost-And-Pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Much-Does-Surrogacy-Cost-And-Pricing" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Much-Does-Surrogacy-Cost-And-Pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Much-Does-Surrogacy-Cost-And-Pricing" />
     <lastmod>2026-03-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide" />
     <lastmod>2025-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family" />
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/U-S-Surrogacy-Laws-Is-It-Legal</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/U-S-Surrogacy-Laws-Is-It-Legal" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/U-S-Surrogacy-Laws-Is-It-Legal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/U-S-Surrogacy-Laws-Is-It-Legal" />
     <lastmod>2025-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Average-Compensation-Surrogacy-Cost-in-California</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Average-Compensation-Surrogacy-Cost-in-California" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Average-Compensation-Surrogacy-Cost-in-California" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Average-Compensation-Surrogacy-Cost-in-California" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogacy-Insurance-A-2025-Coverage-Guide</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogacy-Insurance-A-2025-Coverage-Guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogacy-Insurance-A-2025-Coverage-Guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogacy-Insurance-A-2025-Coverage-Guide" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California" />
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda" />
     <lastmod>2025-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers" />
     <lastmod>2026-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning" />
     <lastmod>2026-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria" />
     <lastmod>2026-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know" />
     <lastmod>2026-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

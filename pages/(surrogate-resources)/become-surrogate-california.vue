@@ -170,6 +170,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: pageDescription.value,
   about: 'Become a gestational carrier in California',
   audience: 'Potential gestational carriers / surrogate applicants',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'California Gestational Carrier Application Support',
     serviceType: 'Gestational carrier recruitment and support in California',

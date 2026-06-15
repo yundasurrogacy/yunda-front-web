@@ -266,6 +266,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: pageDescription.value,
   about: 'Gestational surrogacy process for parents and gestational carriers',
   audience: 'Intended parents and prospective gestational carriers',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Surrogacy Process Guidance',
     serviceType: 'Gestational surrogacy process education and coordination',

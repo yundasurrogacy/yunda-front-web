@@ -313,6 +313,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: c.value.seoDescription,
   about: 'Gestational carrier eligibility and surrogate requirements',
   audience: 'Potential gestational carriers / surrogate applicants',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Eligibility Review',
     serviceType: 'Gestational carrier eligibility review and application guidance',
@@ -374,13 +375,13 @@ useHead(() => ({
                   <a
                     href="#surrogate-requirements"
                     class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-8 py-5 text-4 text-[var(--yunda-petal)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 ">
+                 >
                     {{ c.primaryCta }}
                   </a>
                   <NuxtLink
                     :to="localePath('/be-surrogate')"
                     class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 ">
+                 >
                     <span>{{ c.secondaryCta }}</span>
                     <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
@@ -395,7 +396,7 @@ useHead(() => ({
                       :key="`eligibility-onpage-${index}`"
                       class="flex items-start gap-2.5 text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-4"
                       style="font-family: var(--font-text)"
-                   ">
+                   >
                       <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
                       <span>{{ item }}</span>
                     </li>
@@ -413,7 +414,7 @@ useHead(() => ({
                     class="h-[380px] w-full object-cover lg:h-[420px]"
                     loading="eager"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </div>
             </div>
@@ -505,7 +506,7 @@ useHead(() => ({
                 v-for="(step, index) in c.h22Steps"
                 :key="`h22-step-${index}`"
                 class="border border-[var(--primary-brown)]/20 rounded-[14px] bg-[var(--yunda-petal)]/80 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)] lg:px-5 lg:py-5"
-             ">
+             >
                 <div class="flex items-start gap-3">
                   <span class="mt-0.2 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                     {{ index + 1 }}
@@ -562,7 +563,7 @@ useHead(() => ({
                       v-for="(item, index) in c.h23ReqItems"
                       :key="`h23-req-item-${index}`"
                       class="flex items-start gap-2.5 border border-[var(--primary-brown)]/16 rounded-[10px] bg-white/86 px-3.5 py-2.5"
-                   ">
+                   >
                       <Icon name="radix-icons:check-circled" class="mt-0.3 h-4 w-4 shrink-0 text-[var(--primary-brown)]" />
                       <span class="text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-3.8" style="font-family: var(--font-text)">
                         {{ item }}
@@ -583,7 +584,7 @@ useHead(() => ({
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
@@ -592,7 +593,7 @@ useHead(() => ({
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </div>
             </div>
@@ -620,7 +621,7 @@ useHead(() => ({
                     v-for="(item, index) in c.h24CommonItems"
                     :key="`h24-common-item-${index}`"
                     class="flex items-start gap-2.5 border border-[var(--primary-brown)]/16 rounded-[10px] bg-white/86 px-3.5 py-2.5"
-                 ">
+                 >
                     <Icon name="radix-icons:cross-circled" class="mt-0.3 h-4 w-4 shrink-0 text-[var(--primary-brown)]" />
                     <span class="text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-3.8" style="font-family: var(--font-text)">
                       {{ item }}
@@ -637,7 +638,7 @@ useHead(() => ({
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
@@ -646,7 +647,7 @@ useHead(() => ({
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </div>
             </div>
@@ -666,7 +667,7 @@ useHead(() => ({
                 v-for="(item, index) in c.h25FaqItems"
                 :key="`h25-faq-item-${index}`"
                 class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)]"
-             ">
+             >
                 <div class="flex items-start gap-3">
                   <span class="mt-0.5 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                     {{ index + 1 }}

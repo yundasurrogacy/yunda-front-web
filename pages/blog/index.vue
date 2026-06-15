@@ -163,7 +163,7 @@ function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
   if (blog) {
     const currentLocale = locale.value
     const sourceExcerpt = currentLocale === 'zh'
-      ? blog.excerpt || blog.meta_description || blog.en_excerpt || blog.en_meta_description
+      ? blog.excerpt || blog.meta_description
       : blog.en_excerpt || blog.en_meta_description || blog.excerpt || blog.meta_description
 
     if (sourceExcerpt) {
@@ -193,7 +193,27 @@ function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
   if (cleaned.length > maxLength) {
     return `${cleaned.substring(0, maxLength)}...`
   }
+  if (cleaned)
+    return cleaned
+
+  const title = blog ? getBlogTitle(blog) : ''
+  if (locale.value === 'zh' && title) {
+    const fallback = `阅读孕达代孕关于「${title}」的中文代孕指南，了解流程、费用、法律、筛查与家庭规划重点。`
+    return fallback.length > maxLength ? `${fallback.substring(0, maxLength)}...` : fallback
+  }
+
   return cleaned
+}
+
+function hasCjkText(text: string): boolean {
+  return /[\u3400-\u9FFF]/.test(text)
+}
+
+function getDisplayBlogTitle(blog: Blog | null): string {
+  const title = getBlogTitle(blog).trim()
+  if (locale.value === 'zh' && title && !hasCjkText(title))
+    return `代孕文章：${title}`
+  return title
 }
 
 // SEO 配置
@@ -473,7 +493,7 @@ const totalCount = computed(() => {
 function toDisplayBlog(blog: Blog): DisplayBlog {
   return {
     id: blog.id,
-    title: getBlogTitle(blog),
+    title: getDisplayBlogTitle(blog),
     excerpt: getBlogExcerpt(blog, 120),
     featuredExcerpt: getBlogExcerpt(blog, 180),
     categoryLabel: getCategoryName(blog.category),
@@ -584,7 +604,7 @@ const blogListSchema = computed(() => {
     locale: locale.value,
     path: '/blog',
     items: list.slice(0, 10).map((blogItem, index) => ({
-      name: getBlogTitle(blogItem),
+      name: getDisplayBlogTitle(blogItem),
       url: getBlogDetailPath(blogItem),
       position: index + 1,
       description: getBlogExcerpt(blogItem, 155),

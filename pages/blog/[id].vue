@@ -85,6 +85,10 @@ interface Blog {
   content?: string
   en_title?: string
   en_content?: string
+  excerpt?: string
+  en_excerpt?: string
+  meta_description?: string
+  en_meta_description?: string
   category: string
   cover_img_url: string
   tags: string
@@ -321,6 +325,65 @@ function truncateText(text: string, maxLength: number): string {
   return chars.slice(0, maxLength).join('').trim()
 }
 
+function hasCjkText(text: string): boolean {
+  return /[\u3400-\u9FFF]/.test(text)
+}
+
+function buildLocalizedBlogTitle(blogData: Blog | null): string {
+  const title = blogData ? getBlogTitle(blogData).trim() : blogCopy.value.meta.title
+  if (!title)
+    return blogCopy.value.meta.title
+
+  if (locale.value === 'zh') {
+    const localizedTitle = hasCjkText(title) ? title : `代孕文章：${title}`
+    return localizedTitle.includes('孕达') ? localizedTitle : `${localizedTitle} | 孕达代孕博客`
+  }
+
+  return title
+}
+
+function getBlogMetaSource(blogData: Blog | null): string {
+  if (!blogData)
+    return ''
+
+  if (locale.value === 'zh') {
+    return blogData.meta_description
+      || blogData.excerpt
+      || htmlToPlainText(blogData.content || '')
+      || ''
+  }
+
+  return blogData.en_meta_description
+    || blogData.en_excerpt
+    || htmlToPlainText(blogData.en_content || '')
+    || blogData.meta_description
+    || blogData.excerpt
+    || htmlToPlainText(blogData.content || '')
+    || ''
+}
+
+function buildLocalizedBlogDescription(blogData: Blog | null, maxLength: number = 155): string {
+  if (!blogData)
+    return truncateMetaDescription(blogCopy.value.meta.description, maxLength)
+
+  const metaSource = getBlogMetaSource(blogData)
+  if (metaSource)
+    return truncateText(metaSource, maxLength)
+
+  const title = getBlogTitle(blogData).trim()
+  if (locale.value === 'zh') {
+    return truncateText(
+      `阅读孕达代孕关于「${title}」的中文代孕指南，了解流程、费用、法律、筛查与家庭规划重点。`,
+      maxLength,
+    )
+  }
+
+  return truncateText(
+    `Read Yunda Surrogacy's guide to ${title}, including practical surrogacy process, cost, legal, screening, and family-building insights.`,
+    maxLength,
+  )
+}
+
 function getHtmlAttribute(attrs: string, name: string): string {
   const match = attrs.match(new RegExp(`\\s${name}\\s*=\\s*(['"])([\\s\\S]*?)\\1`, 'i'))
   return match?.[2] ? decodeHtmlEntities(match[2]).trim() : ''
@@ -426,10 +489,12 @@ const structuredBlogContent = computed(() =>
 
 // 提取纯文本摘要（去除HTML标签）
 function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
-  const content = blogData === blog.value ? structuredBlogContent.value.bodyText : htmlToPlainText(getBlogContent(blogData))
+  const content = blogData === blog.value
+    ? structuredBlogContent.value.bodyText
+    : getBlogMetaSource(blogData) || htmlToPlainText(getBlogContent(blogData))
 
   // 截取指定长度
-  return truncateText(content, maxLength)
+  return content ? truncateText(content, maxLength) : buildLocalizedBlogDescription(blogData, maxLength)
 }
 // 根据当前语言获取分类名称
 function getCategoryName(categoryValue: string): string {
@@ -487,8 +552,8 @@ const blogPostingSchema = computed(() => {
   const authorName = blog.value.reference_author || blogCopy.value.authorDefault
 
   return buildBlogPostingSchema({
-    title: getBlogTitle(blog.value),
-    description: structuredBlogContent.value.summary,
+    title: buildLocalizedBlogTitle(blog.value),
+    description: buildLocalizedBlogDescription(blog.value, 155),
     articleBody: structuredBlogContent.value.articleBody,
     image: uniqueValues([blog.value.cover_img_url, ...structuredBlogContent.value.images]).slice(0, 6),
     url: localizedBlogUrl,
@@ -521,9 +586,9 @@ const currentBlogUrl = computed(() => {
   return `${resolvedSiteUrl.value}${localePath(blogPath)}`
 })
 
-const currentBlogTitle = computed(() => blog.value ? getBlogTitle(blog.value) : blogCopy.value.meta.title)
+const currentBlogTitle = computed(() => buildLocalizedBlogTitle(blog.value))
 const currentBlogDescription = computed(() =>
-  blog.value ? getBlogExcerpt(blog.value, 155) : truncateMetaDescription(blogCopy.value.meta.description),
+  buildLocalizedBlogDescription(blog.value, 155),
 )
 const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}/images/home/index-bg.webp`)
 
@@ -543,7 +608,7 @@ const blogStructuredData = computed(() => {
     items: [
       { name: locale.value === 'zh' ? '首页' : 'Home', url: localePath('/') },
       { name: locale.value === 'zh' ? '博客' : 'Blog', url: localePath('/blog') },
-      { name: getBlogTitle(blog.value), url: localePath(blogPath) },
+      { name: buildLocalizedBlogTitle(blog.value), url: localePath(blogPath) },
     ],
   })
   const webpageSchema = buildWebPageSchema({
@@ -552,8 +617,8 @@ const blogStructuredData = computed(() => {
     pageId,
     organizationId,
     websiteId,
-    name: getBlogTitle(blog.value),
-    description: getBlogExcerpt(blog.value, 155),
+    name: buildLocalizedBlogTitle(blog.value),
+    description: buildLocalizedBlogDescription(blog.value, 155),
     about: getCategoryName(blog.value.category),
     audience: locale.value === 'zh'
       ? ['准父母', '代孕妈妈', '代孕资讯读者']
@@ -571,8 +636,8 @@ const blogStructuredData = computed(() => {
     const faqSchema = buildFAQPageSchema({
       baseUrl,
       url: localePath(blogPath),
-      name: `${getBlogTitle(blog.value)} FAQ`,
-      description: structuredBlogContent.value.summary,
+      name: `${buildLocalizedBlogTitle(blog.value)} FAQ`,
+      description: buildLocalizedBlogDescription(blog.value, 155),
       faqs: structuredBlogContent.value.faqs,
       locale: locale.value,
     })

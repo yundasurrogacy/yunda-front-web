@@ -12,8 +12,6 @@ import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
 import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
 import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/resources-substack-posts'
 
-definePageMeta({ ssr: false })
-
 const PAGE_ASSETS = {
   hero: '/images/resources-media/hero.webp',
 } as const

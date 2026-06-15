@@ -383,6 +383,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: c.value.seoDescription,
   about: 'Gestational carrier screening after application',
   audience: 'Potential gestational carriers / surrogate applicants',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Screening Coordination',
     serviceType: 'Gestational carrier screening coordination',

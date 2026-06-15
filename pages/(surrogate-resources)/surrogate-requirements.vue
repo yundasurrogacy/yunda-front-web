@@ -283,6 +283,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: pageDescription.value,
   about: 'Gestational carrier requirements and surrogate qualifications',
   audience: 'Potential gestational carriers / surrogate applicants',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Requirements and Qualification Review',
     serviceType: 'Gestational carrier eligibility and qualification guidance',

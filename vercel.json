@@ -23,6 +23,11 @@
   ],
   "redirects": [
     {
+      "source": "/become-surrogate",
+      "destination": "/become-a-surrogate",
+      "permanent": true
+    },
+    {
       "source": "/become-a-surrogate-mother",
       "destination": "/become-a-surrogate",
       "permanent": true
@@ -38,6 +43,11 @@
       "permanent": true
     },
     {
+      "source": "/zh/surrogate-journey",
+      "destination": "/zh/surrogate-process",
+      "permanent": true
+    },
+    {
       "source": "/surrogate-qualification",
       "destination": "/be-surrogate",
       "permanent": true
@@ -45,6 +55,41 @@
     {
       "source": "/surrogacy-price",
       "destination": "/surrogacy-cost",
+      "permanent": true
+    },
+    {
+      "source": "/zh/become-surrogate",
+      "destination": "/zh/become-a-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/zh/become-a-surrogate-mother",
+      "destination": "/zh/become-a-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/zh/become-a-surrogay-mother",
+      "destination": "/zh/become-a-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.html",
+      "destination": "/sitemap",
+      "permanent": true
+    },
+    {
+      "source": "/zh/sitemap.html",
+      "destination": "/zh/sitemap",
+      "permanent": true
+    },
+    {
+      "source": "/be-surrogate-v2",
+      "destination": "/be-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/zh/be-surrogate-v2",
+      "destination": "/zh/be-surrogate",
       "permanent": true
     },
     {
