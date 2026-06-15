@@ -12,7 +12,7 @@ import ReferralWhyMattersSection from '@/components/surrogacy/referral/WhyMatter
 import HeroSection from '~/components/base/MailHeroSection.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const pagePath = '/referral'
@@ -47,6 +47,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: t('surrogacyReferral.heroSection.description'),
   about: 'Gestational carrier referral program',
   audience: 'Referral partners, friends or family of potential gestational carriers',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   breadcrumbs: [
     { name: 'Home', url: '/' },
     { name: 'Surrogates', url: '/be-surrogate' },

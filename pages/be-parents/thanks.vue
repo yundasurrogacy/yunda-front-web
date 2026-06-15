@@ -53,6 +53,10 @@ useHead({
       name: 'description',
       content: content.value.meta.description,
     },
+    {
+      name: 'robots',
+      content: 'noindex,follow',
+    },
   ],
   script: [
     {

@@ -11,31 +11,9 @@ const OUTPUT_INDEX_PATH = path.join(process.cwd(), 'public', 'sitemap.xml')
 const OUTPUT_EN_PATH = path.join(process.cwd(), 'public', 'sitemap-en.xml')
 const OUTPUT_ZH_PATH = path.join(process.cwd(), 'public', 'sitemap-zh.xml')
 const HTML_SITEMAP_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
+const SEO_ROUTES_PATH = path.join(process.cwd(), 'data', 'seo-routes.json')
 
-const STATIC_PAGES = [
-  { loc: '/', priority: 1 },
-  { loc: '/about', priority: 0.9 },
-  { loc: '/be-parents', priority: 0.9 },
-  { loc: '/be-surrogate', priority: 0.9 },
-  { loc: '/surrogate-requirements', priority: 0.8 },
-  { loc: '/surrogate-process', priority: 0.8 },
-  { loc: '/surrogate-compensation', priority: 0.8 },
-  { loc: '/become-a-surrogate', priority: 0.8 },
-  { loc: '/become-surrogate-california', priority: 0.8 },
-  { loc: '/blog', priority: 0.7 },
-  { loc: '/egg-donation', priority: 0.7 },
-  { loc: '/partner-ivf-clinics', priority: 0.7 },
-  { loc: '/single-parents-lgbtq', priority: 0.7 },
-  { loc: '/surrogacy-cost', priority: 0.8 },
-  { loc: '/surrogacy-process', priority: 0.8 },
-  { loc: '/california-surrogacy-consultation', priority: 0.7 },
-  { loc: '/surrogacy-protection-california', priority: 0.7 },
-  { loc: '/benefit', priority: 0.7 },
-  { loc: '/eligibility', priority: 0.7 },
-  { loc: '/journey', priority: 0.7 },
-  { loc: '/referral', priority: 0.7 },
-  { loc: '/screening', priority: 0.7 },
-]
+const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).staticPages
 
 function toZhPath(loc) {
   return loc === '/' ? '/zh' : `/zh${loc}`
@@ -52,6 +30,22 @@ function escapeXml(value) {
 
 function toAbsoluteUrl(loc) {
   return new URL(loc, `${SITE_URL}/`).toString()
+}
+
+function toBasePath(loc) {
+  return loc.replace(/^\/zh(?=\/|$)/, '') || '/'
+}
+
+function createAlternateLinks(loc) {
+  const basePath = toBasePath(loc)
+  const enLoc = basePath
+  const zhLoc = toZhPath(basePath)
+
+  return [
+    { hreflang: 'en-US', href: toAbsoluteUrl(enLoc) },
+    { hreflang: 'zh-CN', href: toAbsoluteUrl(zhLoc) },
+    { hreflang: 'x-default', href: toAbsoluteUrl(enLoc) },
+  ]
 }
 
 function fetchJson(url) {
@@ -203,6 +197,9 @@ function createUrlNode(entry) {
   const lines = [
     '  <url>',
     `    <loc>${escapeXml(toAbsoluteUrl(entry.loc))}</loc>`,
+    ...createAlternateLinks(entry.loc).map(alternate =>
+      `    <xhtml:link rel="alternate" hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}" />`,
+    ),
     `    <lastmod>${escapeXml(entry.lastmod)}</lastmod>`,
     `    <changefreq>${escapeXml(entry.changefreq)}</changefreq>`,
     `    <priority>${entry.priority.toFixed(1)}</priority>`,
@@ -214,7 +211,7 @@ function createUrlNode(entry) {
 function createUrlSetXml(localeEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     '  <!-- Pages -->',
     ...localeEntries.pages.map(createUrlNode),
     '  <!-- Blog -->',

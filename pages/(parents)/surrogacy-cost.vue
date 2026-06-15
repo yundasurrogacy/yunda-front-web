@@ -90,7 +90,7 @@ const translations = {
         {
           id: 'compensation',
           title: 'Surrogate Compensation & Local Cost Differences',
-          image: '/images/ip/cost/surrogate-cost-2.png',
+          image: '/images/ip/cost/surrogate-cost-2.jpg',
           content: [
             'A big part of surrogacy cost breakdown is surrogate compensation. In California (and some nearby markets), compensation expectations and cost-of-living can be higher than many other states—so the total cost of surrogacy may trend higher there.',
           ],
@@ -98,7 +98,7 @@ const translations = {
         {
           id: 'insurance',
           title: 'Insurance: The #1 Reason California vs. U.S. Costs Feel Different',
-          image: '/images/ip/cost/surrogate-cost-3.png',
+          image: '/images/ip/cost/surrogate-cost-3.jpg',
           content: [
             'When intended parents ask me how much does surrogacy cost in the U.S., insurance is usually the biggest wildcard. Even in California, coverage can vary a lot depending on the surrogate’s plan, exclusions, deductibles, and out-of-pocket maximums.',
           ],
@@ -423,7 +423,7 @@ const translations = {
         {
           id: 'compensation',
           title: '代孕补偿与当地成本差异',
-          image: '/images/ip/cost/surrogate-cost-2.png',
+          image: '/images/ip/cost/surrogate-cost-2.jpg',
           content: [
             '补偿是费用大头。加州及周边的补偿期望与生活成本更高，总成本可能更高。',
           ],
@@ -431,7 +431,7 @@ const translations = {
         {
           id: 'insurance',
           title: '保险：导致加州与美国费用不同的头号因素',
-          image: '/images/ip/cost/surrogate-cost-3.png',
+          image: '/images/ip/cost/surrogate-cost-3.jpg',
           content: [
             '保险是最大不确定性，覆盖/排除/免赔/自付上限差异大。',
           ],
@@ -813,6 +813,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: t.value.metaDesc,
   about: 'Gestational surrogacy cost planning and cost breakdown',
   audience: 'Intended parents',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Surrogacy Cost Planning Support',
     serviceType: 'Gestational surrogacy cost planning',
@@ -2138,7 +2139,7 @@ onUnmounted(() => {
 .footer-cta-image {
   border-radius: 16px;
   min-height: 200px;
-  background: url('public/images/ip/How-Surrogacy-Agreements.webp') center/cover no-repeat;
+  background: url('/images/ip/How-Surrogacy-Agreements.jpg') center/cover no-repeat;
   border: 1px solid rgba(39, 31, 24, 0.1);
   background-size: cover;
   background-position: center;

@@ -182,6 +182,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: t.value.meta.description,
   about: 'California gestational surrogacy protection, escrow, legal process, and insurance guidance',
   audience: 'Intended parents and gestational carriers',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'California Gestational Surrogacy Protection Guidance',
     serviceType: 'Gestational surrogacy legal, escrow, and insurance coordination guidance',

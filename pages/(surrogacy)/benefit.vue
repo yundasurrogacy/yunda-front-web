@@ -570,6 +570,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: c.value.seoDescription,
   about: 'Gestational carrier compensation, pay structure, and benefits',
   audience: 'Potential gestational carriers / surrogate applicants',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Compensation and Benefits Guidance',
     serviceType: 'Gestational carrier compensation guidance',
@@ -643,13 +644,13 @@ useHead(() => ({
                   <a
                     href="#compensation-details"
                     class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-8 py-5 text-4 text-[var(--yunda-petal)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 ">
+                 >
                     {{ c.primaryCta }}
                   </a>
                   <NuxtLink
                     :to="localePath('/be-surrogate')"
                     class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 ">
+                 >
                     <span>{{ c.secondaryCta }}</span>
                     <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
                   </NuxtLink>
@@ -664,7 +665,7 @@ useHead(() => ({
                       :key="`benefit-onpage-${index}`"
                       class="flex items-start gap-2.5 text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-4"
                       style="font-family: var(--font-text)"
-                   ">
+                   >
                       <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
                       <span>{{ item }}</span>
                     </li>
@@ -681,7 +682,7 @@ useHead(() => ({
                     class="h-[380px] w-full object-cover"
                     loading="eager"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </div>
             </div>
@@ -785,7 +786,7 @@ useHead(() => ({
                       class="h-full w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                   ">
+                   >
                   </div>
                 </div>
 
@@ -868,7 +869,7 @@ useHead(() => ({
                     v-for="(item, index) in c.structureItems"
                     :key="`structure-item-${index}`"
                     class="flex items-start gap-3 border border-[var(--yunda-bark)]/45 rounded-[10px] bg-white/82 px-3.5 py-3"
-                 ">
+                 >
                     <span class="mt-0.2 h-6 w-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                       {{ index + 1 }}
                     </span>
@@ -934,7 +935,7 @@ useHead(() => ({
                         v-for="(item, index) in c.packageCoreBullets"
                         :key="`package-core-${index}`"
                         class="flex items-start gap-2 border border-[var(--yunda-bark)]/45 rounded-[10px] bg-white/80 px-3.5 py-2.5"
-                     ">
+                     >
                         <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--olive-green)]" />
                         <span class="text-3.5 text-[var(--yunda-bark)]/86 leading-relaxed" style="font-family: var(--font-text)">
                           {{ item }}
@@ -951,7 +952,7 @@ useHead(() => ({
                     class="h-full max-h-[310px] w-full object-contain"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </div>
             </article>
@@ -961,7 +962,7 @@ useHead(() => ({
                 v-for="(item, index) in c.packageAmountRows"
                 :key="`package-amount-${index}`"
                 class="border border-[var(--primary-brown)]/20 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-3"
-             ">
+             >
                 <p class="text-3 text-[var(--yunda-bark)]/75 font-medium" style="font-family: var(--font-text)">
                   {{ item.label }}
                 </p>
@@ -987,7 +988,7 @@ useHead(() => ({
                   v-for="(item, index) in c.packageBenefitsItems"
                   :key="`benefit-item-${index}`"
                   class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/75 px-4 py-4"
-               ">
+               >
                   <div class="grid items-center gap-3 sm:grid-cols-[1fr_auto]">
                     <div>
                       <h4 class="text-4 text-[var(--yunda-bark)] font-semibold font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
@@ -1038,7 +1039,7 @@ useHead(() => ({
                     class="max-h-[260px] w-full object-contain"
                     loading="lazy"
                     decoding="async"
-                 ">
+                 >
                 </div>
               </article>
             </div>
@@ -1048,7 +1049,7 @@ useHead(() => ({
                 v-for="(item, index) in c.timelineItems"
                 :key="`timeline-item-${index}`"
                 class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)]"
-             ">
+             >
                 <div class="grid items-start gap-3 lg:grid-cols-[auto_1fr]">
                   <div class="h-8 w-8 inline-flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                     {{ index + 1 }}
@@ -1066,7 +1067,7 @@ useHead(() => ({
                       <div
                         class="grid justify-items-center gap-1 border border-[var(--yunda-bark)]/35 rounded-[10px] bg-white/70 px-4 py-3 text-center"
                         :class="hasCurrencyValue(item.payment) ? 'min-h-[96px] lg:min-h-[108px]' : 'min-h-[108px] lg:min-h-[120px]'"
-                     ">
+                     >
                         <p
                           v-for="(line, lineIndex) in splitPaymentLines(item.payment)"
                           :key="`timeline-payment-${index}-${lineIndex}`"
@@ -1115,7 +1116,7 @@ useHead(() => ({
                     v-for="(row, index) in c.statePayRows"
                     :key="`state-pay-row-${index}`"
                     class="align-top"
-                 ">
+                 >
                     <td class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-4.2 text-[var(--yunda-bark)] font-semibold leading-relaxed lg:text-4.8">
                       {{ row.state }}
                     </td>
@@ -1148,7 +1149,7 @@ useHead(() => ({
                 v-for="(item, index) in c.faqItems"
                 :key="`faq-item-${index}`"
                 class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)]"
-             ">
+             >
                 <div class="flex items-start gap-3">
                   <span class="mt-0.5 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
                     {{ index + 1 }}

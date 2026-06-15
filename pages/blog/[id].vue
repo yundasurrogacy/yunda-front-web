@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBlogPostingSchema } from '~/utils/schema'
+import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildFAQPageSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -10,7 +10,10 @@ const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
+const nuxtApp = useNuxtApp()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const resolvedSiteUrl = computed(() => siteUrl.value || 'https://www.yundasurrogacy.com')
+const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
 
 const blogCopyEn = {
   meta: {
@@ -79,9 +82,13 @@ interface Blog {
   id: number
   route_id?: string
   title: string
-  content: string
+  content?: string
   en_title?: string
   en_content?: string
+  excerpt?: string
+  en_excerpt?: string
+  meta_description?: string
+  en_meta_description?: string
   category: string
   cover_img_url: string
   tags: string
@@ -90,14 +97,26 @@ interface Blog {
   updated_at: string
 }
 
+const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
+const blogCacheKey = computed(() => `blog-${route.params.id}-${blogApiLang.value}`)
+const blogApiUrl = computed(() => {
+  const routeId = encodeURIComponent(String(route.params.id))
+  return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}`
+})
+
 // 获取博客详情数据，支持缓存和预加载
 // 首先尝试通过route_id查询，如果失败则通过id查询
-const { data: blog, pending: loading, error } = await useFetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?route_id=${route.params.id}`, {
-  key: `blog-${route.params.id}`,
+const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
+  key: blogCacheKey.value,
   server: true, // 保持服务端渲染以支持 SEO
   default: () => null,
   // 添加客户端缓存，10分钟内不重复请求
   getCachedData: (key) => {
+    const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
+    if (payloadData) {
+      return payloadData
+    }
+
     if (import.meta.client) {
       const cached = sessionStorage.getItem(key)
       if (cached) {
@@ -119,7 +138,7 @@ const { data: blog, pending: loading, error } = await useFetch(`https://yunda-ad
     // 缓存响应数据
     if (import.meta.client && response._data) {
       try {
-        sessionStorage.setItem(`blog-${route.params.id}`, JSON.stringify({
+        sessionStorage.setItem(blogCacheKey.value, JSON.stringify({
           data: response._data,
           timestamp: Date.now(),
         }))
@@ -135,7 +154,7 @@ const { data: blog, pending: loading, error } = await useFetch(`https://yunda-ad
     }
     // 如果通过route_id查询失败，尝试通过id查询
     try {
-      const fallbackResponse = await $fetch(`https://yunda-admin-system.yundasurrogacy.com/api/blog?id=${route.params.id}`)
+      const fallbackResponse = await $fetch(`${apiBase.value}/api/blog?id=${encodeURIComponent(String(route.params.id))}&lang=${blogApiLang.value}`)
       if (fallbackResponse && typeof fallbackResponse === 'object' && 'id' in fallbackResponse && 'title' in fallbackResponse) {
         return fallbackResponse as Blog
       }
@@ -210,40 +229,272 @@ function addMissingImageAlt(html: string, title: string): string {
 
   return html.replace(/<img\b([^>]*)>/gi, (tag, attrs: string) => {
     const altMatch = attrs.match(/\salt\s*=\s*(['"])([\s\S]*?)\1/i)
-    if (altMatch?.[2]?.trim()) {
-      return tag
+    let nextAttrs = attrs
+
+    if (!altMatch?.[2]?.trim()) {
+      imageIndex += 1
+      const alt = imageIndex > 1 ? `${baseAlt} ${imageIndex}` : baseAlt
+      nextAttrs = altMatch
+        ? attrs.replace(altMatch[0], ` alt="${escapeHtmlAttribute(alt)}"`)
+        : `${attrs} alt="${escapeHtmlAttribute(alt)}"`
     }
 
-    imageIndex += 1
-    const alt = imageIndex > 1 ? `${baseAlt} ${imageIndex}` : baseAlt
-    if (altMatch) {
-      return tag.replace(altMatch[0], ` alt="${escapeHtmlAttribute(alt)}"`)
-    }
-    return `<img${attrs} alt="${escapeHtmlAttribute(alt)}">`
+    return `<img${ensureImagePerformanceAttrs(nextAttrs)}>`
   })
+}
+
+function ensureAttribute(attrs: string, name: string, value: string): string {
+  const attrPattern = new RegExp(`\\s${name}\\s*=`, 'i')
+  return attrPattern.test(attrs) ? attrs : `${attrs} ${name}="${value}"`
+}
+
+function ensureImagePerformanceAttrs(attrs: string): string {
+  return [
+    ['loading', 'lazy'],
+    ['decoding', 'async'],
+    ['referrerpolicy', 'no-referrer-when-downgrade'],
+  ].reduce((nextAttrs, [name, value]) => ensureAttribute(nextAttrs, name, value), attrs)
+}
+
+function sanitizeBlogHtml(html: string): string {
+  if (!html)
+    return ''
+
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+    .replace(/\s(?:href|src)\s*=\s*(['"])\s*javascript:[\s\S]*?\1/gi, '')
 }
 
 const renderedBlogContent = computed(() =>
   blog.value
-    ? addMissingImageAlt(getBlogContent(blog.value), getBlogTitle(blog.value))
+    ? addMissingImageAlt(sanitizeBlogHtml(getBlogContent(blog.value)), getBlogTitle(blog.value))
     : '',
 )
-// 提取纯文本摘要（去除HTML标签）
-function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
-  const content = getBlogContent(blogData)
-  if (!content)
+
+interface ExtractedFAQ {
+  question: string
+  answer: string
+}
+
+interface StructuredBlogContent {
+  bodyText: string
+  articleBody: string
+  summary: string
+  wordCount: number
+  images: string[]
+  headings: string[]
+  faqs: ExtractedFAQ[]
+}
+
+function decodeHtmlEntities(value: string): string {
+  return value
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&rsquo;/g, '’')
+    .replace(/&lsquo;/g, '‘')
+    .replace(/&rdquo;/g, '”')
+    .replace(/&ldquo;/g, '“')
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+}
+
+function htmlToPlainText(html: string): string {
+  if (!html)
     return ''
 
-  // 移除 HTML 标签
-  const plainText = content.replace(/<[^>]*>/g, '')
-  // 移除多余的空白字符
-  const cleaned = plainText.replace(/\s+/g, ' ').trim()
+  return decodeHtmlEntities(html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<(br|\/p|\/li|\/h[1-6]|\/div|\/section)\b[^>]*>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim())
+}
+
+function truncateText(text: string, maxLength: number): string {
+  const chars = Array.from(text.replace(/\s+/g, ' ').trim())
+  if (chars.length <= maxLength)
+    return chars.join('')
+
+  return chars.slice(0, maxLength).join('').trim()
+}
+
+function hasCjkText(text: string): boolean {
+  return /[\u3400-\u9FFF]/.test(text)
+}
+
+function buildLocalizedBlogTitle(blogData: Blog | null): string {
+  const title = blogData ? getBlogTitle(blogData).trim() : blogCopy.value.meta.title
+  if (!title)
+    return blogCopy.value.meta.title
+
+  if (locale.value === 'zh') {
+    const localizedTitle = hasCjkText(title) ? title : `代孕文章：${title}`
+    return localizedTitle.includes('孕达') ? localizedTitle : `${localizedTitle} | 孕达代孕博客`
+  }
+
+  return title
+}
+
+function getBlogMetaSource(blogData: Blog | null): string {
+  if (!blogData)
+    return ''
+
+  if (locale.value === 'zh') {
+    return blogData.meta_description
+      || blogData.excerpt
+      || htmlToPlainText(blogData.content || '')
+      || ''
+  }
+
+  return blogData.en_meta_description
+    || blogData.en_excerpt
+    || htmlToPlainText(blogData.en_content || '')
+    || blogData.meta_description
+    || blogData.excerpt
+    || htmlToPlainText(blogData.content || '')
+    || ''
+}
+
+function buildLocalizedBlogDescription(blogData: Blog | null, maxLength: number = 155): string {
+  if (!blogData)
+    return truncateMetaDescription(blogCopy.value.meta.description, maxLength)
+
+  const metaSource = getBlogMetaSource(blogData)
+  if (metaSource)
+    return truncateText(metaSource, maxLength)
+
+  const title = getBlogTitle(blogData).trim()
+  if (locale.value === 'zh') {
+    return truncateText(
+      `阅读孕达代孕关于「${title}」的中文代孕指南，了解流程、费用、法律、筛查与家庭规划重点。`,
+      maxLength,
+    )
+  }
+
+  return truncateText(
+    `Read Yunda Surrogacy's guide to ${title}, including practical surrogacy process, cost, legal, screening, and family-building insights.`,
+    maxLength,
+  )
+}
+
+function getHtmlAttribute(attrs: string, name: string): string {
+  const match = attrs.match(new RegExp(`\\s${name}\\s*=\\s*(['"])([\\s\\S]*?)\\1`, 'i'))
+  return match?.[2] ? decodeHtmlEntities(match[2]).trim() : ''
+}
+
+function uniqueValues(values: string[]): string[] {
+  return Array.from(new Set(values.filter(Boolean)))
+}
+
+function extractImagesFromHtml(html: string): string[] {
+  return uniqueValues([...html.matchAll(/<img\b([^>]*)>/gi)]
+    .map(match => getHtmlAttribute(match[1], 'src'))
+    .filter(src => /^https?:\/\//i.test(src)))
+}
+
+function extractHeadingsFromHtml(html: string): string[] {
+  return uniqueValues([...html.matchAll(/<h([2-4])\b[^>]*>([\s\S]*?)<\/h\1>/gi)]
+    .map(match => htmlToPlainText(match[2]))
+    .filter(heading => heading.length >= 3 && !/^(faq|常见问题|问答)$/i.test(heading))
+    .slice(0, 8))
+}
+
+function isFaqHeading(text: string): boolean {
+  return /\bfaq\b|frequently asked questions|常见问题|问答/i.test(text)
+}
+
+function looksLikeQuestion(text: string): boolean {
+  return /[?？]$/.test(text)
+    || /^(do|does|did|can|could|is|are|was|were|will|would|should|what|when|where|why|how)\b/i.test(text)
+    || /^(什么|如何|怎么|为什么|是否|能否|可以|需要|多久|多少)/.test(text)
+}
+
+function extractFaqsFromHtml(html: string): ExtractedFAQ[] {
+  const faqHeadingMatch = [...html.matchAll(/<h([2-4])\b[^>]*>([\s\S]*?)<\/h\1>/gi)]
+    .find(match => isFaqHeading(htmlToPlainText(match[2])))
+
+  if (faqHeadingMatch?.index === undefined)
+    return []
+
+  const afterFaqHeading = html.slice(faqHeadingMatch.index + faqHeadingMatch[0].length)
+  const nextMajorHeadingIndex = afterFaqHeading.search(/<h[12]\b[^>]*>/i)
+  const faqHtml = nextMajorHeadingIndex >= 0 ? afterFaqHeading.slice(0, nextMajorHeadingIndex) : afterFaqHeading
+  const blocks = [...faqHtml.matchAll(/<(h[3-5]|p|li)\b[^>]*>([\s\S]*?)<\/\1>/gi)]
+    .map(match => ({
+      tag: match[1].toLowerCase(),
+      text: htmlToPlainText(match[2]),
+    }))
+    .filter(block => block.text)
+
+  const faqs: ExtractedFAQ[] = []
+  let currentQuestion = ''
+  let answerParts: string[] = []
+
+  function pushCurrentFaq() {
+    const answer = answerParts.join(' ').replace(/\s+/g, ' ').trim()
+    if (currentQuestion && answer.length >= 8) {
+      faqs.push({
+        question: currentQuestion,
+        answer: truncateText(answer, 500),
+      })
+    }
+    currentQuestion = ''
+    answerParts = []
+  }
+
+  blocks.forEach((block) => {
+    const isQuestionBlock = /^h[3-5]$/.test(block.tag) || looksLikeQuestion(block.text)
+    if (isQuestionBlock) {
+      pushCurrentFaq()
+      currentQuestion = block.text
+      return
+    }
+
+    if (currentQuestion)
+      answerParts.push(block.text)
+  })
+
+  pushCurrentFaq()
+
+  return faqs
+    .filter(faq => faq.question.length >= 8 && faq.answer.length >= 8)
+    .slice(0, 6)
+}
+
+function extractStructuredBlogContent(html: string): StructuredBlogContent {
+  const bodyText = htmlToPlainText(html)
+  const words = bodyText.match(/[\p{L}\p{N}]+/gu) || []
+
+  return {
+    bodyText,
+    articleBody: truncateText(bodyText, 1200),
+    summary: truncateText(bodyText, 155),
+    wordCount: words.length,
+    images: extractImagesFromHtml(html),
+    headings: extractHeadingsFromHtml(html),
+    faqs: extractFaqsFromHtml(html),
+  }
+}
+
+const structuredBlogContent = computed(() =>
+  extractStructuredBlogContent(renderedBlogContent.value),
+)
+
+// 提取纯文本摘要（去除HTML标签）
+function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
+  const content = blogData === blog.value
+    ? structuredBlogContent.value.bodyText
+    : getBlogMetaSource(blogData) || htmlToPlainText(getBlogContent(blogData))
 
   // 截取指定长度
-  if (cleaned.length > maxLength) {
-    return cleaned.substring(0, maxLength)
-  }
-  return cleaned
+  return content ? truncateText(content, maxLength) : buildLocalizedBlogDescription(blogData, maxLength)
 }
 // 根据当前语言获取分类名称
 function getCategoryName(categoryValue: string): string {
@@ -290,46 +541,173 @@ const blogPostingSchema = computed(() => {
     return null
 
   const blogUrl = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
+  const localizedBlogUrl = localePath(blogUrl)
+  const baseUrl = resolvedSiteUrl.value
+  const pageUrl = currentBlogUrl.value
+  const pageId = `${pageUrl}#webpage`
+  const articleId = `${pageUrl}#article`
+  const blogId = `${resolvedSiteUrl.value}${localePath('/blog')}#blog`
+  const organizationId = `${resolvedSiteUrl.value}/#organization`
+  const websiteId = `${resolvedSiteUrl.value}/#website`
+  const authorName = blog.value.reference_author || blogCopy.value.authorDefault
 
   return buildBlogPostingSchema({
-    title: getBlogTitle(blog.value),
-    description: getBlogExcerpt(blog.value, 155),
-    articleBody: getBlogContent(blog.value),
-    image: blog.value.cover_img_url,
-    url: blogUrl,
-    baseUrl: siteUrl.value || undefined,
+    title: buildLocalizedBlogTitle(blog.value),
+    description: buildLocalizedBlogDescription(blog.value, 155),
+    articleBody: structuredBlogContent.value.articleBody,
+    image: uniqueValues([blog.value.cover_img_url, ...structuredBlogContent.value.images]).slice(0, 6),
+    url: localizedBlogUrl,
+    baseUrl,
     locale: locale.value,
-    author: blog.value.reference_author || blogCopy.value.authorDefault,
+    author: authorName,
+    authorType: authorName === blogCopy.value.authorDefault ? 'Organization' : 'Person',
     datePublished: blog.value.created_at,
     dateModified: blog.value.updated_at,
-    keywords: blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : undefined,
+    keywords: uniqueValues([
+      ...(blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : []),
+      ...structuredBlogContent.value.headings.slice(0, 4),
+    ]),
     category: getCategoryName(blog.value.category),
+    wordCount: structuredBlogContent.value.wordCount,
+    articleId,
+    pageId,
+    blogId,
+    organizationId,
+    websiteId,
+    includeContext: false,
   })
+})
+
+const currentBlogUrl = computed(() => {
+  if (!blog.value)
+    return `${resolvedSiteUrl.value}${localePath('/blog')}`
+
+  const blogPath = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
+  return `${resolvedSiteUrl.value}${localePath(blogPath)}`
+})
+
+const currentBlogTitle = computed(() => buildLocalizedBlogTitle(blog.value))
+const currentBlogDescription = computed(() =>
+  buildLocalizedBlogDescription(blog.value, 155),
+)
+const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}/images/home/index-bg.webp`)
+
+const blogStructuredData = computed(() => {
+  if (!blog.value || !blogPostingSchema.value)
+    return null
+
+  const blogPath = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
+  const baseUrl = resolvedSiteUrl.value
+  const pageUrl = currentBlogUrl.value
+  const pageId = `${pageUrl}#webpage`
+  const organizationId = `${resolvedSiteUrl.value}/#organization`
+  const websiteId = `${resolvedSiteUrl.value}/#website`
+  const breadcrumbSchema = buildBreadcrumbListSchema({
+    baseUrl,
+    includeContext: false,
+    items: [
+      { name: locale.value === 'zh' ? '首页' : 'Home', url: localePath('/') },
+      { name: locale.value === 'zh' ? '博客' : 'Blog', url: localePath('/blog') },
+      { name: buildLocalizedBlogTitle(blog.value), url: localePath(blogPath) },
+    ],
+  })
+  const webpageSchema = buildWebPageSchema({
+    baseUrl,
+    url: localePath(blogPath),
+    pageId,
+    organizationId,
+    websiteId,
+    name: buildLocalizedBlogTitle(blog.value),
+    description: buildLocalizedBlogDescription(blog.value, 155),
+    about: getCategoryName(blog.value.category),
+    audience: locale.value === 'zh'
+      ? ['准父母', '代孕妈妈', '代孕资讯读者']
+      : ['Intended parents', 'Surrogates', 'Surrogacy information readers'],
+    locale: locale.value,
+  })
+  const { '@context': _webpageContext, ...webpageNode } = webpageSchema
+  const graphNodes = [
+    webpageNode,
+    blogPostingSchema.value,
+    breadcrumbSchema,
+  ]
+
+  if (structuredBlogContent.value.faqs.length >= 2) {
+    const faqSchema = buildFAQPageSchema({
+      baseUrl,
+      url: localePath(blogPath),
+      name: `${buildLocalizedBlogTitle(blog.value)} FAQ`,
+      description: buildLocalizedBlogDescription(blog.value, 155),
+      faqs: structuredBlogContent.value.faqs,
+      locale: locale.value,
+    })
+    const { '@context': _faqContext, ...faqNode } = faqSchema
+    graphNodes.push(faqNode)
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graphNodes,
+  }
 })
 
 // SEO 配置
 useHead(() => ({
-  title: blog.value ? getBlogTitle(blog.value) : blogCopy.value.meta.title,
+  title: currentBlogTitle.value,
   meta: [
     {
       name: 'description',
-      content: blog.value ? getBlogExcerpt(blog.value, 155) : truncateMetaDescription(blogCopy.value.meta.description),
+      content: currentBlogDescription.value,
     },
     {
       property: 'og:title',
-      content: blog.value ? getBlogTitle(blog.value) : blogCopy.value.meta.title,
+      content: currentBlogTitle.value,
     },
     {
       property: 'og:description',
-      content: blog.value ? getBlogExcerpt(blog.value, 155) : truncateMetaDescription(blogCopy.value.meta.description),
+      content: currentBlogDescription.value,
     },
     {
       property: 'og:type',
       content: 'article',
     },
     {
+      property: 'og:url',
+      content: currentBlogUrl.value,
+    },
+    {
       property: 'og:image',
-      content: blog.value?.cover_img_url || '',
+      content: currentBlogImage.value,
+    },
+    {
+      property: 'article:published_time',
+      content: blog.value?.created_at || '',
+    },
+    {
+      property: 'article:modified_time',
+      content: blog.value?.updated_at || blog.value?.created_at || '',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: currentBlogTitle.value,
+    },
+    {
+      name: 'twitter:description',
+      content: currentBlogDescription.value,
+    },
+    {
+      name: 'twitter:image',
+      content: currentBlogImage.value,
+    },
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: currentBlogUrl.value,
     },
   ],
 }))
@@ -341,13 +719,13 @@ function truncateMetaDescription(text: string, maxLength: number = 155) {
   return cleaned.length > maxLength ? cleaned.slice(0, maxLength) : cleaned
 }
 
-useHead(() => (blogPostingSchema.value
+useHead(() => (blogStructuredData.value
   ? {
       script: [
         {
-          key: 'schema-blog-post',
+          key: 'schema-blog-post-graph',
           type: 'application/ld+json',
-          children: JSON.stringify(blogPostingSchema.value),
+          children: JSON.stringify(blogStructuredData.value),
         },
       ],
     }
@@ -405,6 +783,12 @@ useHead(() => (blogPostingSchema.value
               :src="blog.cover_img_url"
               :alt="getBlogTitle(blog)"
               class="size-full object-cover"
+              width="896"
+              height="448"
+              sizes="(min-width: 1024px) 896px, 100vw"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             >
           </div>
 

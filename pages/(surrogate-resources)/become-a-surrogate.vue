@@ -549,7 +549,7 @@ useHead(() => {
           </div>
           <div class="flex animate-fade-in-right justify-center">
             <div class="image-placeholder max-w-500 w-full transition-all duration-500 hover:scale-105">
-              <img src="public/images/landing-page1/become-a-surrogate-mother.jpg" :alt="tt('Become a surrogate', '成为代孕妈妈')">
+              <img src="/images/landing-page1/become-a-surrogate-mother.jpg" :alt="tt('Become a surrogate', '成为代孕妈妈')">
             </div>
           </div>
         </div>
@@ -585,7 +585,7 @@ useHead(() => {
           <div class="flex flex-col animate-fade-in-right items-center gap-8 text-center lg:w-2/3">
             <div class="max-w-150 w-full border border-[var(--primary-brown)]/50 rounded-5 border-dashed bg-white/60 p-6 text-3.5 text-[var(--primary-brown)] tracking-wide uppercase transition-all duration-500 hover:scale-105 hover:shadow-lg">
               <div class="image-placeholder">
-                <img src="public/images/landing-page1/Women-Choose-Surrogacy.jpg" :alt="tt('Women choose surrogacy', '女性选择代孕')">
+                <img src="/images/landing-page1/Women-Choose-Surrogacy.jpg" :alt="tt('Women choose surrogacy', '女性选择代孕')">
               </div>
             </div>
             <div class="max-w-150 w-full border border-[var(--olive-green)]/40 rounded-5 bg-white/90 p-8 shadow-black/10 shadow-lg transition-all duration-500 hover:shadow-xl">

@@ -91,7 +91,7 @@ const defaultCards: BlogItem[] = [
     content: '从健康记录到支持系统，系统讲解筛选标准。',
     en_content: 'From health history to support systems, here is how screening works in practice.',
     category: '代孕妈妈相关',
-    cover_img_url: '/images/home/surrogate-11.png',
+    cover_img_url: '/images/home/surrogate-11.jpg',
   },
   {
     title: '费用结构与预算规划建议',
@@ -99,7 +99,7 @@ const defaultCards: BlogItem[] = [
     content: '明确主要费用模块，减少流程中的不确定性。',
     en_content: 'Understand core cost modules and reduce surprises throughout the journey.',
     category: '行业动态相关',
-    cover_img_url: '/images/home/surrogate-12.png',
+    cover_img_url: '/images/home/surrogate-12.jpg',
   },
   {
     title: '代孕法律流程中需要重点关注什么',
@@ -107,7 +107,7 @@ const defaultCards: BlogItem[] = [
     content: '从合同、亲权判令到关键时间节点，帮助你提前准备法律环节。',
     en_content: 'From contracts to parentage orders, understand the legal checkpoints before you start.',
     category: '法律法规相关',
-    cover_img_url: '/images/home/surrogate-13.png',
+    cover_img_url: '/images/home/surrogate-13.jpg',
   },
 ]
 

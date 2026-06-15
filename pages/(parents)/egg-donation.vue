@@ -340,6 +340,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: c.value.seoDescription,
   about: 'Egg donor gestational surrogacy and donor egg surrogacy process',
   audience: 'Intended parents',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Egg Donor Gestational Surrogacy Coordination',
     serviceType: 'Egg donor gestational surrogacy support',
@@ -455,9 +456,9 @@ useHead(() => ({
                     </div>
                     <div class="flex-1 overflow-hidden border border-white/55 rounded-[24px] bg-white/45 shadow-[0_18px_40px_rgba(39,31,24,0.18)] backdrop-blur-md transition-transform duration-300 ease-out will-change-transform group-hover:shadow-[0_24px_52px_rgba(39,31,24,0.20)] group-hover:-translate-y-1">
                       <picture>
-                        <source srcset="public/images/ip/egg/Egg-Donor-Surrogacy-2.jpg" type="image/webp">
+                        <source srcset="/images/ip/egg/Egg-Donor-Surrogacy-2.jpg" type="image/jpeg">
                         <img
-                          src="public/images/ip/egg/Egg-Donor-Surrogacy-2.jpg"
+                          src="/images/ip/egg/Egg-Donor-Surrogacy-2.jpg"
                           :alt="c.heroImgAlt"
                           class="h-full w-full object-cover"
                           loading="lazy"

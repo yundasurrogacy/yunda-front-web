@@ -36,7 +36,6 @@ const shouldShow = computed(() => {
   const hiddenPaths = [
     localePath('/be-surrogate'),
     localePath('/be-surrogate/success'),
-    localePath('/be-surrogate-v2'),
     localePath('/surrogacy-cost'),
   ].map(normalizePath)
 

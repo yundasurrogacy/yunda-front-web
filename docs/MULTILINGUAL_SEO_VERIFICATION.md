@@ -1,170 +1,138 @@
 # 多语言 SEO 验证指南
 
-## 1. 检查 HTML Head 标签
+本项目使用 Nuxt i18n 的 `prefix_except_default` 策略：
 
-### 1.1 验证 hreflang 标签
+- 英文默认语言：无 URL 前缀，例如 `https://www.yundasurrogacy.com/about`
+- 中文语言：`/zh` 前缀，例如 `https://www.yundasurrogacy.com/zh/about`
+- XML sitemap index：`https://www.yundasurrogacy.com/sitemap.xml`
+- 英文 sitemap：`https://www.yundasurrogacy.com/sitemap-en.xml`
+- 中文 sitemap：`https://www.yundasurrogacy.com/sitemap-zh.xml`
 
-访问页面后，查看页面源代码（右键 -> 查看源代码），检查 `<head>` 部分应该包含：
+## 1. HTML Head 验证
+
+### 1.1 hreflang
+
+英文页面应包含：
 
 ```html
-<link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/about" />
-<link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/about" />
-<link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/about" />
+<link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/about">
+<link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/about">
+<link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/about">
 ```
 
-**验证步骤：**
+中文页面应包含同一组互相指向的 alternate URL。
 
-1. 访问英文页面：`https://www.yundasurrogacy.com/about`
-   - 应包含指向英文和中文版本的 hreflang 标签
-   - x-default 应指向英文版本
+### 1.2 HTML lang
 
-2. 访问中文页面：`https://www.yundasurrogacy.com/zh/about`
-   - 应包含指向英文和中文版本的 hreflang 标签
-   - x-default 应指向英文版本
+- 英文页面：`<html lang="en-US">`
+- 中文页面：`<html lang="zh-CN">`
 
-### 1.2 验证 HTML lang 属性
+### 1.3 Canonical
 
-检查 `<html>` 标签的 `lang` 属性：
+- 英文页面：`<link rel="canonical" href="https://www.yundasurrogacy.com/about">`
+- 中文页面：`<link rel="canonical" href="https://www.yundasurrogacy.com/zh/about">`
 
-- 英文页面：`<html lang="en">`
-- 中文页面：`<html lang="zh">`
+每个语言版本必须自引用 canonical，不能把中文 canonical 到英文。
 
-### 1.3 验证 Canonical URL
+## 2. XML Sitemap 验证
 
-检查 `<link rel="canonical">` 标签：
+### 2.1 Sitemap Index
 
-- 英文页面：`<link rel="canonical" href="https://www.yundasurrogacy.com/about" />`
-- 中文页面：`<link rel="canonical" href="https://www.yundasurrogacy.com/zh/about" />`
+访问：
 
-## 2. 验证 Sitemap
+```text
+https://www.yundasurrogacy.com/sitemap.xml
+```
 
-### 2.1 检查 Sitemap Index
-
-访问：`https://www.yundasurrogacy.com/sitemap_index.xml`
-
-应该看到：
+应包含：
 
 ```xml
-<sitemapindex>
-    <sitemap>
-        <loc>https://www.yundasurrogacy.com/__sitemap__/zh-CN.xml</loc>
-    </sitemap>
-    <sitemap>
-        <loc>https://www.yundasurrogacy.com/__sitemap__/en-US.xml</loc>
-    </sitemap>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.yundasurrogacy.com/sitemap-en.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.yundasurrogacy.com/sitemap-zh.xml</loc>
+  </sitemap>
 </sitemapindex>
 ```
 
-### 2.2 检查语言特定的 Sitemap
+### 2.2 语言 Sitemap
 
-- 英文 Sitemap：`https://www.yundasurrogacy.com/__sitemap__/en-US.xml`
-- 中文 Sitemap：`https://www.yundasurrogacy.com/__sitemap__/zh-CN.xml`
+访问：
 
-每个 sitemap 应该包含相应语言的所有页面。
+```text
+https://www.yundasurrogacy.com/sitemap-en.xml
+https://www.yundasurrogacy.com/sitemap-zh.xml
+```
 
-### 2.3 检查 hreflang 在 Sitemap 中
+每个 `<urlset>` 应包含 `xmlns:xhtml="http://www.w3.org/1999/xhtml"`。
 
-每个 URL 应该包含 `xhtml:link` 标签指向其他语言版本。
+每个 URL 应包含完整 hreflang alternate，例如：
 
-## 3. 验证 URL 结构
+```xml
+<url>
+  <loc>https://www.yundasurrogacy.com/about</loc>
+  <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/about" />
+  <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/about" />
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/about" />
+</url>
+```
 
-### 3.1 英文页面（默认语言，无前缀）
+## 3. 结构化数据语言验证
 
-- ✅ `https://www.yundasurrogacy.com/`
-- ✅ `https://www.yundasurrogacy.com/about`
-- ✅ `https://www.yundasurrogacy.com/become-a-surrogate`
+中文页面 JSON-LD 不应混入 `"inLanguage":"en-US"`。
 
-### 3.2 中文页面（带 /zh 前缀）
+重点检查：
 
-- ✅ `https://www.yundasurrogacy.com/zh`
-- ✅ `https://www.yundasurrogacy.com/zh/about`
-- ✅ `https://www.yundasurrogacy.com/zh/become-a-surrogate`
+- `/zh/surrogacy-cost`
+- `/zh/surrogacy-process`
+- `/zh/surrogate-requirements`
+- `/zh/benefit`
+- `/zh/journey`
+- `/zh/screening`
 
-## 4. 使用在线工具验证
-
-### 4.1 Google Search Console
-
-1. 登录 Google Search Console
-2. 提交 sitemap：`https://www.yundasurrogacy.com/sitemap_index.xml`
-3. 检查"索引覆盖率"报告
-4. 使用"URL 检查"工具验证单个页面
-
-### 4.2 在线 hreflang 检查工具
-
-- **hreflang Tags Testing Tool**: https://technicalseo.com/tools/hreflang/
-- **Merkle Hreflang Tool**: https://technicalseo.com/tools/hreflang/
-- **XML Sitemap Validator**: https://www.xml-sitemaps.com/validate-xml-sitemap.html
-
-### 4.3 浏览器扩展工具
-
-- **SEO META in 1 CLICK** (Chrome 扩展)
-- **hreflang Tags Viewer** (Chrome 扩展)
-
-## 5. 命令行验证
-
-### 5.1 检查 hreflang 标签
+## 4. 命令行验证
 
 ```bash
-# 检查英文页面
+# HTML hreflang
 curl -s https://www.yundasurrogacy.com/about | grep -i "hreflang"
-
-# 检查中文页面
 curl -s https://www.yundasurrogacy.com/zh/about | grep -i "hreflang"
-```
 
-### 5.2 检查 HTML lang 属性
-
-```bash
-curl -s https://www.yundasurrogacy.com/about | grep -i "html lang"
-curl -s https://www.yundasurrogacy.com/zh/about | grep -i "html lang"
-```
-
-### 5.3 检查 Canonical URL
-
-```bash
+# Canonical
 curl -s https://www.yundasurrogacy.com/about | grep -i "canonical"
 curl -s https://www.yundasurrogacy.com/zh/about | grep -i "canonical"
+
+# Sitemap index
+curl -s https://www.yundasurrogacy.com/sitemap.xml | grep -i "sitemap-"
+
+# Sitemap hreflang
+curl -s https://www.yundasurrogacy.com/sitemap-en.xml | grep -i "xhtml:link" | head
+curl -s https://www.yundasurrogacy.com/sitemap-zh.xml | grep -i "xhtml:link" | head
+
+# JSON-LD language smoke check
+curl -s https://www.yundasurrogacy.com/zh/surrogacy-cost | grep -o '"inLanguage":"[^"]*"' | sort | uniq -c
 ```
+
+## 5. Search Console 提交
+
+提交 sitemap index：
+
+```text
+https://www.yundasurrogacy.com/sitemap.xml
+```
+
+不需要单独提交旧路径 `/sitemap_index.xml` 或 `/__sitemap__/...`，这些不是当前项目生成的 sitemap URL。
 
 ## 6. 验证清单
 
-### ✅ 必须检查的项目
-
-- [ ] 每个页面都有正确的 `html lang` 属性
-- [ ] 每个页面都有 `canonical` 标签
-- [ ] 每个页面都有 `hreflang` 标签指向所有语言版本
-- [ ] `x-default` 指向默认语言（英文）
-- [ ] Sitemap 包含所有语言版本的页面
-- [ ] 每个语言的 sitemap 都是可访问的
-- [ ] URL 结构正确（英文无前缀，中文有 `/zh` 前缀）
-- [ ] 语言切换链接工作正常
-- [ ] 内部链接使用 `localePath` 保留语言前缀
-
-### ✅ Google Search Console 验证
-
-- [ ] 提交了 `sitemap_index.xml`
-- [ ] Sitemap 被成功读取
-- [ ] 没有 hreflang 错误
-- [ ] 所有语言版本都被索引
-
-## 7. 常见问题排查
-
-### 问题 1: hreflang 标签缺失
-
-**解决**: 检查 `app.vue` 中的 `hreflangLinks` computed 是否正确生成
-
-### 问题 2: 错误的 URL 路径
-
-**解决**: 检查 `basePath` 计算逻辑，确保正确处理 `/zh` 前缀
-
-### 问题 3: Sitemap 不包含所有页面
-
-**解决**: 检查 `nuxt.config.ts` 中的 `staticPages` 和 `urls` 配置
-
-### 问题 4: Canonical URL 错误
-
-**解决**: 检查 `canonicalUrl` computed 是否正确生成完整 URL
-
-## 8. 自动化验证脚本
-
-创建一个简单的验证脚本来自动检查这些项目。
+- [ ] 每个页面都有正确的 `html lang`
+- [ ] 每个 indexable 页面有且仅有一个 canonical
+- [ ] 英文页面 canonical 到英文 URL
+- [ ] 中文页面 canonical 到 `/zh` URL
+- [ ] HTML head 包含 `en-US`、`zh-CN`、`x-default`
+- [ ] sitemap index 可访问
+- [ ] `sitemap-en.xml` 和 `sitemap-zh.xml` 可访问
+- [ ] sitemap URL 节点包含 `xhtml:link`
+- [ ] 中文页面 JSON-LD 使用 `zh-CN`
+- [ ] noindex 页面不进入 XML sitemap

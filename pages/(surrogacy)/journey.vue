@@ -617,6 +617,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: c.value.seoDescription,
   about: 'Gestational carrier journey and surrogate process',
   audience: 'Gestational carriers / surrogates',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Carrier Journey Support',
     serviceType: 'Gestational carrier process coordination',

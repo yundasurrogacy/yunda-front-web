@@ -791,6 +791,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: 'See how surrogacy works, step by step—the surrogacy procedure, criteria, matching, legal process and timeline. Basics on California surrogacy laws.',
   about: 'Gestational surrogacy process for intended parents',
   audience: 'Intended parents',
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'Gestational Surrogacy Process Support for Intended Parents',
     serviceType: 'Gestational surrogacy agency coordination',

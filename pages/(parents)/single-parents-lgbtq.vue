@@ -131,6 +131,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   description: seoDescription.value,
   about: 'LGBTQ-friendly gestational surrogacy agency support in California',
   audience: ['LGBTQ intended parents', 'gay couples', 'lesbian couples', 'single parents'],
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
     name: 'LGBTQ Gestational Surrogacy Support in California',
     serviceType: 'LGBTQ-friendly gestational surrogacy agency services',
@@ -202,9 +203,9 @@ useHead(() => ({
             <div class="grid gap-4 lg:grid-cols-2">
               <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
                 <picture>
-                  <source srcset="/images/ip/Gay-Lesbia-Surrogacy.png" type="image/jpeg">
+                  <source srcset="/images/ip/Gay-Lesbia-Surrogacy.jpg" type="image/jpeg">
                   <img
-                    src="/images/ip/Gay-Lesbia-Surrogacy.png"
+                    src="/images/ip/Gay-Lesbia-Surrogacy.jpg"
                     alt="LGBTQ intended parents celebrating together"
                     class="h-[320px] w-full object-cover lg:h-[420px]"
                     loading="lazy"
@@ -215,9 +216,9 @@ useHead(() => ({
 
               <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
                 <picture>
-                  <source srcset="/images/ip/Gay-Surrogacy.png" type="image/jpeg">
+                  <source srcset="/images/ip/Gay-Surrogacy.jpg" type="image/jpeg">
                   <img
-                    src="/images/ip/Gay-Surrogacy.png"
+                    src="/images/ip/Gay-Surrogacy.jpg"
                     alt="LGBTQ intended parents celebrating together"
                     class="h-[320px] w-full object-cover lg:h-[420px]"
                     loading="lazy"
@@ -273,9 +274,9 @@ useHead(() => ({
           <div class="grid gap-8 lg:grid-cols-2">
             <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
               <picture>
-                <source srcset="/images/ip/Gay-Surrogacy.png" type="image/png">
+                <source srcset="/images/ip/Gay-Surrogacy.jpg" type="image/jpeg">
                 <img
-                  src="/images/ip/Gay-Surrogacy.png"
+                  src="/images/ip/Gay-Surrogacy.jpg"
                   alt="Gay couple walking together during their surrogacy journey"
                   class="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
@@ -303,9 +304,9 @@ useHead(() => ({
 
             <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
               <picture>
-                <source srcset="public/images/ip/LGBTQ-Surrogacy.png" type="image/jpeg">
+                <source srcset="/images/ip/LGBTQ-Surrogacy.jpg" type="image/jpeg">
                 <img
-                  src="public/images/ip/LGBTQ-Surrogacy.png"
+                  src="/images/ip/LGBTQ-Surrogacy.jpg"
                   alt="Lesbian couple smiling together during surrogacy planning"
                   class="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
@@ -466,9 +467,9 @@ useHead(() => ({
             <div class="grid h-full items-stretch gap-6 p-6 lg:grid-cols-[1.05fr_1fr] lg:p-10">
               <div class="relative h-full overflow-hidden rounded-[20px]">
                 <picture>
-                  <source srcset="public/images/ip/LGBTQ-Friendly.webp" type="image/jpeg">
+                  <source srcset="/images/ip/LGBTQ-Friendly.webp" type="image/webp">
                   <img
-                    src="public/images/ip/LGBTQ-Friendly.webp"
+                    src="/images/ip/LGBTQ-Friendly.webp"
                     alt="LGBTQ intended parents sharing a moment"
                     class="h-full w-full rounded-[20px] object-cover"
                     loading="lazy"
