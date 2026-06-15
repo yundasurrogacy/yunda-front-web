@@ -7,6 +7,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明与素材：`修改/2026-06-05-2/Screening页面改版/`
+ * 细节调整：`修改/2026-06-11/Screening页面细节调整.docx`
  * 静态文件：`public/images/screening/redesign/`
  */
 /** 仅第一屏人物图为实拍素材；screen-05~07 为配色/排版稿，非页面插图 */
@@ -50,7 +51,7 @@ const translations = {
       { num: '03', label: 'Psychological Evaluation' },
     ],
     primaryCta: 'Surrogate Application',
-    secondaryCta: 'See the Surrogate Journey',
+    secondaryCta: 'View Process Steps',
     afterApplyTitle: 'What Happens After You Apply to Become a Surrogate?',
     afterApplySections: [
       {
@@ -216,7 +217,7 @@ const translations = {
       { num: '03', label: '心理评估' },
     ],
     primaryCta: '代孕申请',
-    secondaryCta: '查看代孕旅程',
+    secondaryCta: '查看流程步骤',
     afterApplyTitle: '申请成为代孕妈妈之后会发生什么？',
     afterApplySections: [
       {
@@ -477,6 +478,22 @@ useHead(() => ({
                     </li>
                   </ul>
                 </div>
+              <div class="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+                <NuxtLink
+                  :to="localePath('/be-surrogate')"
+                  class="yunda-type-button inline-flex min-h-[56px] w-full items-center justify-center rounded-[6px] bg-[var(--yunda-bark)] px-8 py-3.5 text-[var(--yunda-petal)] tracking-[0.02em] shadow-sm transition-opacity hover:opacity-95 sm:min-w-[240px] sm:w-auto"
+                  style="font-family: var(--font-text)"
+                >
+                  {{ c.primaryCta }}
+                </NuxtLink>
+                <a
+                  href="#after-apply"
+                  class="yunda-type-button inline-flex min-h-[56px] w-full items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-8 py-3.5 text-[var(--yunda-bark)] tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)] hover:bg-[color-mix(in_srgb,var(--yunda-maple)_14%,var(--yunda-petal)_86%)] sm:min-w-[240px] sm:w-auto"
+                  style="font-family: var(--font-text)"
+                >
+                  {{ c.secondaryCta }}
+                </a>
+              </div>
               </div>
 
             <div class="screening-hero-panel w-full rounded-[24px] px-4 py-4 sm:px-5 sm:py-5 lg:px-6 lg:py-6">
@@ -537,45 +554,33 @@ useHead(() => ({
             </div>
 
               <div v-if="card.expandable" class="mt-auto flex flex-col pt-6">
-                <template v-if="afterApplyExpanded[index]">
-                  <p class="font-display text-[16px] font-semibold text-[var(--yunda-bark)] lg:text-[17px]">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-4 text-left"
+                  :aria-expanded="afterApplyExpanded[index]"
+                  @click="toggleAfterApplyCard(index)"
+                >
+                  <span class="font-display text-[16px] font-semibold text-[var(--yunda-bark)] lg:text-[17px]">
                     {{ card.bulletsLabel }}
-                  </p>
-                  <ul class="mt-3 grid gap-2.5">
-                    <li
-                      v-for="(bullet, bi) in card.bullets"
-                      :key="`after-top-bullet-${index}-${bi}`"
-                      class="flex items-start gap-2.5 font-display text-[14px] leading-[1.7] text-[var(--yunda-bark)] lg:text-[15px]"
-                    >
-                      <span class="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-full bg-[var(--yunda-bark)]/45" />
-                      <span>{{ bullet }}</span>
-                    </li>
-                  </ul>
-                </template>
-
-                <div class="relative mt-5 border-t border-[var(--yunda-bark)]/18">
-                      <button
-                    v-if="afterApplyExpanded[index]"
-                        type="button"
-                    class="absolute -top-3.5 right-0 inline-flex h-7 w-7 items-center justify-center font-display text-[20px] leading-none text-[var(--yunda-bark)]/65"
-                    :aria-label="card.bulletsLabel"
-                    @click="toggleAfterApplyCard(index)"
+                  </span>
+                  <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center font-display text-[20px] leading-none text-[var(--yunda-bark)]/65">
+                    {{ afterApplyExpanded[index] ? '−' : '+' }}
+                  </span>
+                </button>
+                <div class="mt-4 border-t border-[var(--yunda-bark)]/18" />
+                <ul
+                  v-if="afterApplyExpanded[index]"
+                  class="mt-4 grid gap-2.5"
+                >
+                  <li
+                    v-for="(bullet, bi) in card.bullets"
+                    :key="`after-top-bullet-${index}-${bi}`"
+                    class="flex items-start gap-2.5 font-display text-[14px] leading-[1.7] text-[var(--yunda-bark)] lg:text-[15px]"
                   >
-                    −
-                  </button>
-                  <button
-                    v-else
-                    type="button"
-                    class="flex w-full items-center justify-between gap-4 pt-4 text-left"
-                    :aria-expanded="false"
-                    @click="toggleAfterApplyCard(index)"
-                  >
-                    <span class="font-display text-[16px] font-semibold text-[var(--yunda-bark)]">
-                      {{ card.bulletsLabel }}
-                        </span>
-                    <span class="font-display text-[22px] leading-none text-[var(--yunda-bark)]/65">+</span>
-                      </button>
-                    </div>
+                    <span class="mt-[9px] h-[5px] w-[5px] shrink-0 rounded-full bg-[var(--yunda-bark)]/45" />
+                    <span>{{ bullet }}</span>
+                  </li>
+                </ul>
               </div>
                       </article>
             </div>
