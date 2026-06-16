@@ -522,7 +522,9 @@ onMounted(async () => {
         }
       }
       catch {
-        // loadDraftFailed
+        applicationId.value = null
+        clearStorage()
+        syncUrlId(null)
       }
     }
   }
@@ -549,6 +551,53 @@ function getFieldLabel(key: string): string {
   return labels[key] ?? key
 }
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error && error.message)
+    return error.message
+  return locale.value === 'zh'
+    ? '保存草稿失败，请稍后再试。'
+    : 'Unable to save your draft. Please try again.'
+}
+
+function shouldCreateNewDraftAfterUpdate(error: unknown) {
+  const err = error as { response?: { status?: number, data?: { code?: number, message?: string } }, message?: string }
+  const status = err.response?.status ?? err.response?.data?.code
+  const message = `${err.response?.data?.message ?? err.message ?? ''}`.toLowerCase()
+  return status === 404 || message.includes('not found') || message.includes('not exist')
+}
+
+async function createDraft(payload: SurrogateMotherApplicationData) {
+  const res = await submitSurrogateApplication({
+    application_type: 'surrogate_mother',
+    application_data: payload,
+    status: 'draft',
+  })
+  const data = (res as { data?: { id?: number } })?.data ?? (res as { success?: boolean, data?: { id?: number } })?.data
+  const id = data?.id
+  if (id == null)
+    throw new Error(locale.value === 'zh' ? '保存草稿失败：未返回申请 ID。' : 'Unable to save draft: missing application ID.')
+  applicationId.value = id
+  syncUrlId(id)
+}
+
+async function saveDraft(payload: SurrogateMotherApplicationData) {
+  if (applicationId.value == null) {
+    await createDraft(payload)
+    return
+  }
+
+  try {
+    await updateApplicationById(applicationId.value, { application_data: payload, status: 'draft' })
+  }
+  catch (error) {
+    if (!shouldCreateNewDraftAfterUpdate(error))
+      throw error
+    applicationId.value = null
+    syncUrlId(null)
+    await createDraft(payload)
+  }
+}
+
 async function goNext() {
   validationError.value = ''
   const step = currentStep.value
@@ -563,24 +612,12 @@ async function goNext() {
   isSubmitting.value = true
   try {
     const payload = buildFullPayload(form)
-    if (applicationId.value == null) {
-      const res = await submitSurrogateApplication({
-        application_type: 'surrogate_mother',
-        application_data: payload,
-        status: 'draft',
-      })
-      const data = (res as { data?: { id?: number } })?.data ?? (res as { success?: boolean, data?: { id?: number } })?.data
-      const id = data?.id
-      if (id != null) {
-        applicationId.value = id
-        syncUrlId(id)
-      }
-    }
-    else {
-      await updateApplicationById(applicationId.value, { application_data: payload })
-    }
+    await saveDraft(payload)
     currentStep.value = step + 1
     syncUrlStep(currentStep.value)
+  }
+  catch (error) {
+    validationError.value = getErrorMessage(error)
   }
   finally {
     isSubmitting.value = false
@@ -608,6 +645,9 @@ async function submitFinal() {
     })
     clearStorage()
     await router.push(localePath('/be-surrogate/success'))
+  }
+  catch (error) {
+    validationError.value = getErrorMessage(error)
   }
   finally {
     isSubmitting.value = false

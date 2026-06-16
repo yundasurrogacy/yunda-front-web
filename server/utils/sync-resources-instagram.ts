@@ -27,7 +27,7 @@ export async function syncResourcesInstagramPosts(): Promise<ResourcesInstagramR
   const config = useRuntimeConfig()
   const token = config.instagramAccessToken as string
   const userId = config.instagramUserId as string
-  const fetchEmbed = config.instagramFetchEmbed === true || config.instagramFetchEmbed === 'true'
+  const fetchEmbed = config.instagramFetchEmbed === true
 
   let graphByShortcode = new Map<string, InstagramGraphMedia>()
 
