@@ -533,11 +533,6 @@ function getFieldLabel(key: string): string {
 }
 
 function getErrorMessage(error: unknown) {
-  if (shouldCreateNewDraftAfterUpdate(error)) {
-    return locale.value === 'zh'
-      ? '当前草稿已失效，请重新保存后再提交。'
-      : 'This draft is no longer available. Please save again before submitting.'
-  }
   if (error instanceof Error && error.message)
     return error.message
   return locale.value === 'zh'

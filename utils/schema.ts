@@ -235,46 +235,81 @@ export interface BlogPostingSchemaOptions {
   title: string
   description?: string
   articleBody?: string
-  image?: string
+  image?: string | string[]
   url?: string
   baseUrl?: string
   locale?: string
   author?: string
+  authorType?: 'Person' | 'Organization'
   datePublished?: string
   dateModified?: string
   keywords?: string[]
   category?: string
+  wordCount?: number
+  articleId?: string
+  pageId?: string
+  blogId?: string
+  organizationId?: string
+  websiteId?: string
+  includeContext?: boolean
 }
 
 export function buildBlogPostingSchema(options: BlogPostingSchemaOptions) {
   const baseUrl = options.baseUrl || DEFAULT_BASE_URL
-
-  return cleanSchema({
-    '@context': 'https://schema.org',
+  const articleUrl = resolveUrl(baseUrl, options.url || '')
+  const articleId = options.articleId || `${articleUrl}#article`
+  const pageId = options.pageId || `${articleUrl}#webpage`
+  const blogId = options.blogId || `${baseUrl}/blog#blog`
+  const organizationId = options.organizationId || `${baseUrl}/#organization`
+  const websiteId = options.websiteId || `${baseUrl}/#website`
+  const imageUrls = Array.isArray(options.image)
+    ? options.image
+    : (options.image ? [options.image] : [])
+  const imageObjects = imageUrls
+    .filter(Boolean)
+    .map(image => ({
+      '@type': 'ImageObject',
+      'url': resolveUrl(baseUrl, image),
+    }))
+  const schema: SchemaRecord = {
     '@type': 'BlogPosting',
+    '@id': articleId,
     'headline': options.title,
     'description': options.description,
     'articleBody': options.articleBody,
-    'image': options.image,
-    'url': resolveUrl(baseUrl, options.url || ''),
-    'mainEntityOfPage': resolveUrl(baseUrl, options.url || ''),
+    'image': imageObjects.length > 1 ? imageObjects : imageObjects[0],
+    'thumbnailUrl': imageUrls[0] ? resolveUrl(baseUrl, imageUrls[0]) : undefined,
+    'url': articleUrl,
+    'mainEntityOfPage': {
+      '@id': pageId,
+    },
+    'isPartOf': [
+      { '@id': blogId },
+      { '@id': websiteId },
+    ],
     'author': options.author
       ? {
-          '@type': 'Person',
+          '@type': options.authorType || 'Person',
           'name': options.author,
         }
-      : undefined,
-    'publisher': cleanSchema({
-      '@type': 'Organization',
-      'name': DEFAULT_SITE_NAME,
-      'logo': `${baseUrl}/images/base/logo.webp`,
-    }),
+      : {
+          '@id': organizationId,
+        },
+    'publisher': {
+      '@id': organizationId,
+    },
     'datePublished': options.datePublished,
     'dateModified': options.dateModified || options.datePublished,
-    'keywords': options.keywords,
+    'keywords': options.keywords?.length ? options.keywords.join(', ') : undefined,
     'articleSection': options.category,
+    'wordCount': options.wordCount,
     'inLanguage': options.locale === 'zh' ? 'zh-CN' : 'en-US',
-  })
+  }
+
+  if (options.includeContext !== false)
+    schema['@context'] = 'https://schema.org'
+
+  return cleanSchema(schema)
 }
 
 export interface ServiceOffer {
