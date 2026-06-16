@@ -53,6 +53,7 @@ function handleApiError(error: any): never {
     const errorMessage = errorData.errors?.map(e => e.message).join(', ') || errorData.message || '请求失败'
     apiError.message = errorMessage
     apiError.response = {
+      status: error.statusCode ?? error.status,
       data: errorData,
     }
   }
