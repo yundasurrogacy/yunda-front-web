@@ -533,6 +533,11 @@ function getFieldLabel(key: string): string {
 }
 
 function getErrorMessage(error: unknown) {
+  if (shouldCreateNewDraftAfterUpdate(error)) {
+    return locale.value === 'zh'
+      ? '当前草稿已失效，请重新保存后再提交。'
+      : 'This draft is no longer available. Please save again before submitting.'
+  }
   if (error instanceof Error && error.message)
     return error.message
   return locale.value === 'zh'
@@ -541,24 +546,28 @@ function getErrorMessage(error: unknown) {
 }
 
 function shouldCreateNewDraftAfterUpdate(error: unknown) {
-  const err = error as { response?: { status?: number, data?: { code?: number, message?: string } }, message?: string }
-  const status = err.response?.status ?? err.response?.data?.code
+  const err = error as { status?: number, statusCode?: number, response?: { status?: number, statusCode?: number, data?: { code?: number, message?: string, statusCode?: number } }, message?: string }
+  const status = err.statusCode ?? err.status ?? err.response?.statusCode ?? err.response?.status ?? err.response?.data?.statusCode ?? err.response?.data?.code
   const message = `${err.response?.data?.message ?? err.message ?? ''}`.toLowerCase()
-  return status === 404 || message.includes('not found') || message.includes('not exist')
+  return status === 404 || message.includes('not found') || message.includes('not exist') || message.includes('未找到')
 }
 
-async function createDraft(payload: SurrogateMotherApplicationData) {
+async function createApplication(payload: SurrogateMotherApplicationData, status: 'draft' | 'pending') {
   const res = await submitSurrogateApplication({
     application_type: 'surrogate_mother',
     application_data: payload,
-    status: 'draft',
+    status,
   })
   const data = (res as { data?: { id?: number } })?.data ?? (res as { success?: boolean, data?: { id?: number } })?.data
   const id = data?.id
   if (id == null)
-    throw new Error(locale.value === 'zh' ? '保存草稿失败：未返回申请 ID。' : 'Unable to save draft: missing application ID.')
+    throw new Error(locale.value === 'zh' ? '保存申请失败：未返回申请 ID。' : 'Unable to save application: missing application ID.')
   applicationId.value = id
   syncUrlId(id)
+}
+
+async function createDraft(payload: SurrogateMotherApplicationData) {
+  await createApplication(payload, 'draft')
 }
 
 async function saveDraft(payload: SurrogateMotherApplicationData) {
@@ -612,18 +621,30 @@ async function submitFinal() {
     validationError.value = t.value.validationRequiredWithField(getFieldLabel(result))
     return
   }
-  if (applicationId.value == null)
-    return
   if (uploadingPhotos.value)
     return
 
   isSubmitting.value = true
   try {
     const payload = buildFullPayload(form)
-    await updateApplicationById(applicationId.value, {
-      application_data: payload,
-      status: 'pending',
-    })
+    if (applicationId.value == null) {
+      await createApplication(payload, 'pending')
+    }
+    else {
+      try {
+        await updateApplicationById(applicationId.value, {
+          application_data: payload,
+          status: 'pending',
+        })
+      }
+      catch (error) {
+        if (!shouldCreateNewDraftAfterUpdate(error))
+          throw error
+        applicationId.value = null
+        syncUrlId(null)
+        await createApplication(payload, 'pending')
+      }
+    }
     clearStorage()
     await router.push(localePath('/be-surrogate/success'))
   }
