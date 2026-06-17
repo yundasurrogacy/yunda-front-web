@@ -12,7 +12,7 @@ import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
 import { useApi } from '~/composables/useApi'
 import { getAllCountries, getPhoneCodeByCountry, getStatesByCountry } from '~/data/countries-states'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas, buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 const form = reactive({
   // 基本信息 - 保留用于fullLegalName合并
@@ -381,8 +381,46 @@ const parentFaqSchema = computed(() => buildFAQPageSchema({
   locale: locale.value,
 }))
 
+const parentCoreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/be-parents',
+  name: tt('Surrogacy for Intended Parents', '准父母代孕服务'),
+  description: tt(
+    'Private surrogacy guidance for intended parents, including matching, IVF clinic coordination, legal steps, insurance review, escrow, and bilingual care.',
+    '为准父母提供私密代孕指导，包括匹配、IVF 诊所协调、法律步骤、保险审查、托管和双语支持。',
+  ),
+  about: tt('Intended parent surrogacy application and private consultation pathway', '准父母代孕申请与私密咨询路径'),
+  audience: [
+    tt('Intended parents', '准父母'),
+    tt('International intended parents', '国际准父母'),
+    tt('LGBTQ+ intended parents', 'LGBTQ+ 准父母'),
+    tt('Single intended parents', '单身准父母'),
+  ],
+  service: {
+    name: tt('Intended Parent Surrogacy Program', '准父母代孕项目'),
+    description: tt(
+      'Yunda supports intended parents with surrogate matching, IVF clinic coordination, cost planning, legal coordination, insurance review, escrow support, and case management.',
+      '孕达为准父母提供代母匹配、IVF 诊所协调、费用规划、法律协调、保险审查、托管支持和个案管理。',
+    ),
+    serviceType: tt('Intended parent surrogacy services', '准父母代孕服务'),
+    areaServed: ['California', 'United States', 'International intended parents'],
+  },
+  breadcrumbs: [
+    { name: tt('Home', '首页'), url: '/' },
+    { name: tt('For Intended Parents', '准父母'), url: '/be-parents' },
+  ],
+  locale: locale.value,
+}))
+
 useHead(() => {
   const scripts = []
+  parentCoreServicePageSchemas.value.forEach((schema, index) => {
+    scripts.push({
+      key: `schema-parent-core-${index}`,
+      type: 'application/ld+json',
+      children: JSON.stringify(schema),
+    })
+  })
   if (parentHowToSchema.value) {
     scripts.push({
       key: 'schema-parent-howto',

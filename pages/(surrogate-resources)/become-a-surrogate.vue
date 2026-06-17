@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas, buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
@@ -493,8 +493,42 @@ const faqSchema = computed(() => buildFAQPageSchema({
   locale: locale.value,
 }))
 
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/become-a-surrogate',
+  name: pageTitle.value,
+  description: pageDescription.value,
+  about: tt('Southern California surrogate requirements, process, and pay', '南加州代孕妈妈要求、流程与补偿'),
+  audience: [
+    tt('Surrogate candidates in Southern California', '南加州代孕妈妈候选人'),
+    tt('Women considering becoming a surrogate', '正在考虑成为代孕妈妈的女性'),
+  ],
+  service: {
+    name: tt('Southern California Surrogate Program', '南加州代孕妈妈项目'),
+    description: tt(
+      'Yunda explains surrogate requirements, process steps, compensation, clinic expectations, legal protection, and support for women considering surrogacy in Southern California.',
+      '孕达为正在考虑南加州代孕的女性说明代孕要求、流程步骤、补偿、诊所要求、法律保护和支持。',
+    ),
+    serviceType: tt('Surrogate education and application support', '代孕妈妈教育与申请支持'),
+    areaServed: ['Southern California', 'Los Angeles', 'San Diego', 'California'],
+  },
+  breadcrumbs: [
+    { name: tt('Home', '首页'), url: '/' },
+    { name: tt('Surrogate Resources', '代孕资源'), url: '/surrogate-requirements' },
+    { name: tt('Become a Surrogate', '成为代孕妈妈'), url: '/become-a-surrogate' },
+  ],
+  locale: locale.value,
+}))
+
 useHead(() => {
   const scripts = []
+  coreServicePageSchemas.value.forEach((schema, index) => {
+    scripts.push({
+      key: `schema-become-surrogate-core-${index}`,
+      type: 'application/ld+json',
+      children: JSON.stringify(schema),
+    })
+  })
   if (howToSchema.value) {
     scripts.push({
       key: 'schema-become-surrogate-howto',

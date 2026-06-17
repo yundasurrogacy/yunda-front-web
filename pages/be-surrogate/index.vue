@@ -28,11 +28,14 @@ import { getStatesByCountry } from '~/data/countries-states'
 import { translations } from '~/pages/be-surrogate/_/translation'
 import { useBeSurrogateV2Storage } from '~/pages/be-surrogate/_/useBeSurrogateV2Storage'
 import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // 页面内联多语言（与 privacy-policy 相同方式，无需插件，SSR 友好）
 const t = computed(() => translations[locale.value === 'zh' ? 'zh' : 'en'])
@@ -167,6 +170,59 @@ const v2FaqItems = computed(() => [
     a: tt('The team reviews your application, contacts you for follow-up, and explains compensation, screening, legal coordination, insurance review, escrow, and matching if you may qualify.', '团队会审核你的申请，联系你进行后续沟通，并在你可能符合条件时说明补偿、筛查、法律协调、保险审查、托管和匹配流程。'),
   },
 ])
+
+const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/be-surrogate',
+  name: tt('Apply to Be a Surrogate', '申请成为代孕妈妈'),
+  description: tt(
+    'Private surrogate application page for compensation, eligibility, legal protection, insurance review, escrow, screening, and matching support.',
+    '私密代孕妈妈申请页，说明补偿、资格、法律保护、保险审查、托管、筛查和匹配支持。',
+  ),
+  about: tt('Surrogate application, compensation, eligibility, and support', '代孕妈妈申请、补偿、资格与支持'),
+  audience: [
+    tt('Surrogate candidates', '代孕妈妈候选人'),
+    tt('Women considering surrogacy', '正在考虑代孕的女性'),
+  ],
+  service: {
+    name: tt('Surrogate Mother Program', '代孕妈妈项目'),
+    description: tt(
+      'Yunda supports qualified surrogate candidates with private eligibility review, compensation education, medical screening coordination, legal coordination, insurance review, escrow payment protection, and matching.',
+      '孕达为符合条件的代孕妈妈候选人提供私密资格评估、补偿说明、医学筛查协调、法律协调、保险审查、托管付款保障和匹配支持。',
+    ),
+    serviceType: tt('Surrogate application and support services', '代孕妈妈申请与支持服务'),
+    areaServed: ['California', 'United States'],
+    audience: [
+      tt('Surrogate candidates', '代孕妈妈候选人'),
+      tt('Women considering surrogacy', '正在考虑代孕的女性'),
+    ],
+  },
+  breadcrumbs: [
+    { name: tt('Home', '首页'), url: '/' },
+    { name: tt('Apply to Be a Surrogate', '申请成为代孕妈妈'), url: '/be-surrogate' },
+  ],
+  faqs: v2FaqItems.value.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: tt('Surrogate application next steps', '代孕妈妈申请后续步骤'),
+    items: v2AfterApplySteps.value.map((step, index) => ({
+      position: index + 1,
+      name: step,
+      url: '/be-surrogate',
+    })),
+  },
+  locale: locale.value,
+}))
+
+useHead(() => ({
+  script: surrogateCoreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-be-surrogate-core-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 
 /** 防抖保存到 localStorage，表单或步骤变化时自动保存 */
 let saveTimeout: ReturnType<typeof setTimeout> | null = null

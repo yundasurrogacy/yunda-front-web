@@ -3,9 +3,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const asrmPhotos = [
   'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-1.jpg',
@@ -246,6 +249,66 @@ const translations = {
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
 
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/partner-ivf-clinics',
+  name: c.value.seoTitle,
+  description: c.value.seoDescription,
+  about: locale.value === 'zh'
+    ? '加州代孕中的 IVF 诊所、保险、法律与托管协调'
+    : 'IVF clinic, insurance, legal, and escrow coordination for California surrogacy',
+  audience: locale.value === 'zh'
+    ? ['准父母', '国际准父母', '正在选择 IVF 诊所的家庭']
+    : ['Intended parents', 'International intended parents', 'Families choosing an IVF clinic'],
+  service: {
+    name: locale.value === 'zh'
+      ? '代孕 IVF 诊所与保险协调'
+      : 'Surrogacy IVF Clinic and Insurance Coordination',
+    description: locale.value === 'zh'
+      ? 'Yunda 帮助准父母理解 IVF 诊所选择、胚胎创建、保险覆盖、法律步骤、托管和加州代孕流程中的协调事项。'
+      : 'Yunda helps intended parents understand IVF clinic selection, embryo creation, insurance coverage, legal steps, escrow, and coordination in the California surrogacy process.',
+    serviceType: locale.value === 'zh'
+      ? 'IVF 诊所与代孕协调服务'
+      : 'IVF clinic and surrogacy coordination services',
+    areaServed: ['California', 'United States', 'International intended parents'],
+  },
+  breadcrumbs: [
+    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
+    { name: locale.value === 'zh' ? '准父母' : 'Intended Parents', url: '/be-parents' },
+    { name: locale.value === 'zh' ? '合作 IVF 诊所' : 'Partner IVF Clinics', url: '/partner-ivf-clinics' },
+  ],
+  faqs: c.value.faqs.map(faq => ({
+    question: faq.q,
+    answer: faq.a,
+  })),
+  itemList: {
+    name: locale.value === 'zh'
+      ? 'IVF 与代孕协调主题'
+      : 'IVF and surrogacy coordination topics',
+    items: [
+      {
+        position: 1,
+        name: c.value.s1Title,
+        description: c.value.s1Intro,
+        url: '/partner-ivf-clinics',
+      },
+      {
+        position: 2,
+        name: c.value.s2Title,
+        description: c.value.s2Intro,
+        url: '/partner-ivf-clinics',
+      },
+      {
+        position: 3,
+        name: c.value.s4Title,
+        description: c.value.s4Intro,
+        url: '/partner-ivf-clinics',
+      },
+    ],
+  },
+  locale: locale.value,
+}))
+
 useHead(() => ({
   title: c.value.seoTitle,
   meta: [
@@ -254,6 +317,11 @@ useHead(() => ({
       content: c.value.seoDescription,
     },
   ],
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-partner-ivf-clinics-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
 }))
 </script>
 
