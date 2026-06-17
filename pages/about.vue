@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildBreadcrumbListSchema, buildWebPageSchema } from '~/utils/schema'
 import AboutCareerSection from '../components/about/CareerSection.vue'
 import AboutHeroSection from '../components/about/HeroSection.vue'
 import PhotoGallerySection from '../components/about/PhotoGallerySection.vue'
@@ -46,58 +46,66 @@ function teamBio(nameKey) {
 const teamMembers = computed(() => [
   {
     title: t('about.team.kaylaLuo.name'),
+    jobTitle: t('about.team.kaylaLuo.title'),
     text: teamBio('kaylaLuo').join(' '),
   },
 ])
 
-const howToSchema = computed(() => buildHowToSchema({
-  name: t('about.meta.title'),
-  description: t('about.meta.description'),
-  steps: [
-    {
-      title: t('about.hero.title'),
-      text: heroParagraphs.value.join(' '),
-    },
-    ...teamMembers.value,
-  ],
+const aboutPageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value || undefined,
   url: '/about',
+  name: t('about.meta.title'),
+  description: t('about.meta.description'),
+  about: heroParagraphs.value.join(' '),
+  audience: locale.value === 'zh'
+    ? ['准父母', '代孕妈妈', '国际家庭']
+    : ['Intended parents', 'Surrogates', 'International families'],
   locale: locale.value,
 }))
 
-const faqSchema = computed(() => buildFAQPageSchema({
-  name: 'About Yunda FAQ',
-  description: t('about.careers.description'),
-  faqs: [
-    {
-      question: t('about.team.kaylaLuo.title'),
-      answer: teamMembers.value[0]?.text || '',
-    },
-    {
-      question: t('about.careers.title'),
-      answer: t('about.careers.description'),
-    },
-    {
-      question: t('about.photoGallery.title'),
-      answer: t('about.photoGallery.description'),
-    },
-  ],
+const aboutBreadcrumbSchema = computed(() => buildBreadcrumbListSchema({
   baseUrl: siteUrl.value || undefined,
-  url: '/about',
   locale: locale.value,
+  items: [
+    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
+    { name: locale.value === 'zh' ? '关于我们' : 'About', url: '/about' },
+  ],
 }))
+
+const founderSchema = computed(() => {
+  const baseUrl = siteUrl.value || 'https://www.yundasurrogacy.com'
+  const aboutPath = locale.value === 'zh' ? '/zh/about' : '/about'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${baseUrl}/about#kayla-luo`,
+    'name': teamMembers.value[0]?.title,
+    'jobTitle': teamMembers.value[0]?.jobTitle,
+    'description': teamMembers.value[0]?.text,
+    'url': `${baseUrl}${aboutPath}`,
+    'worksFor': {
+      '@id': `${baseUrl}/#organization`,
+    },
+  }
+})
 
 useHead(() => ({
   script: [
     {
-      key: 'schema-about-howto',
+      key: 'schema-about-page',
       type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
+      children: JSON.stringify(aboutPageSchema.value),
     },
     {
-      key: 'schema-about-faq',
+      key: 'schema-about-breadcrumb',
       type: 'application/ld+json',
-      children: JSON.stringify(faqSchema.value),
+      children: JSON.stringify(aboutBreadcrumbSchema.value),
+    },
+    {
+      key: 'schema-about-founder',
+      type: 'application/ld+json',
+      children: JSON.stringify(founderSchema.value),
     },
   ],
 }))

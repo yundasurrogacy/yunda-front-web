@@ -11,6 +11,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
 import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
 import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/resources-substack-posts'
+import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
 
 const PAGE_ASSETS = {
   hero: '/images/resources-media/hero.webp',
@@ -210,6 +211,8 @@ function mergeInstagramCards(baseCards: IgPostCard[]): IgPostCard[] {
 }
 
 const { locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const surrogateUpdateCards = computed(() => mergeInstagramCards(SURROGATE_UPDATES_BASE))
 const eventPostCards = computed(() => mergeInstagramCards(EVENT_POSTS_BASE))
@@ -257,10 +260,84 @@ const sectionNav = computed(() => [
   },
 ])
 
+const resourcesItemListSchema = computed(() => buildItemListSchema({
+  baseUrl: siteUrl.value || undefined,
+  locale: locale.value,
+  name: c.value.heroTitle,
+  description: c.value.metaDescription,
+  items: [
+    {
+      position: 1,
+      name: c.value.surrogacyBlogTitle,
+      description: c.value.metaDescription,
+      url: '/blog',
+    },
+    ...substackCards.value.map((post, index) => ({
+      position: index + 2,
+      name: post.title,
+      description: post.excerpt,
+      image: post.image,
+      url: post.url,
+    })),
+    ...surrogateUpdateCards.value.slice(0, 4).map((post, index) => ({
+      position: index + substackCards.value.length + 2,
+      name: `${c.value.updatesTitle} ${index + 1}`,
+      description: c.value.updatesIntro,
+      image: post.image,
+      url: post.url,
+    })),
+    ...eventPostCards.value.slice(0, 4).map((post, index) => ({
+      position: index + substackCards.value.length + surrogateUpdateCards.value.slice(0, 4).length + 2,
+      name: `${c.value.eventsTitle} ${index + 1}`,
+      description: c.value.eventsIntro,
+      image: post.image,
+      url: post.url,
+    })),
+  ],
+}))
+
+const resourcesPageSchema = computed(() => buildWebPageSchema({
+  baseUrl: siteUrl.value || undefined,
+  url: '/resources',
+  name: c.value.metaTitle,
+  description: c.value.metaDescription,
+  about: c.value.heroTitle,
+  audience: locale.value === 'zh'
+    ? ['准父母', '代孕妈妈', '代孕资讯读者']
+    : ['Intended parents', 'Surrogates', 'Surrogacy information readers'],
+  locale: locale.value,
+}))
+
+const resourcesBreadcrumbSchema = computed(() => buildBreadcrumbListSchema({
+  baseUrl: siteUrl.value || undefined,
+  locale: locale.value,
+  items: [
+    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
+    { name: c.value.heroTitle, url: '/resources' },
+  ],
+}))
+
 useHead(() => ({
   title: c.value.metaTitle,
   meta: [{ name: 'description', content: c.value.metaDescription }],
   link: [{ rel: 'preload', as: 'image', href: PAGE_ASSETS.hero, fetchpriority: 'high' }],
+  script: [
+    {
+      key: 'schema-resources-page',
+      type: 'application/ld+json',
+      children: JSON.stringify(resourcesPageSchema.value),
+    },
+    {
+      key: 'schema-resources-breadcrumb',
+      type: 'application/ld+json',
+      children: JSON.stringify(resourcesBreadcrumbSchema.value),
+    },
+    {
+      key: 'schema-resources-item-list',
+      type: 'application/ld+json',
+      children: JSON.stringify(resourcesItemListSchema.value),
+    },
+  ],
 }))
 </script>
 
