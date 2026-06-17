@@ -1,9 +1,59 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
+
+/**
+ * 改版说明：`修改/2026-06-16/benefit页面改版/benefit页面优化.docx`
+ * 静态素材：`public/images/benefit/redesign/`
+ */
+const PAGE_ASSETS = {
+  hero: '/images/benefit/redesign/hero.jpg',
+  cta: '/images/benefit/redesign/cta.jpg',
+  heroFeatures: [
+    '/images/benefit/redesign/hero-feature-01.jpg',
+    '/images/benefit/redesign/hero-feature-02.jpg',
+    '/images/benefit/redesign/hero-feature-03.jpg',
+  ],
+  overview: [
+    '/images/benefit/redesign/overview-01.png',
+    '/images/benefit/redesign/overview-02.png',
+    '/images/benefit/redesign/overview-03.png',
+    '/images/benefit/redesign/overview-04.png',
+  ],
+  paymentSteps: [
+    '/images/benefit/redesign/payment-step-01.png',
+    '/images/benefit/redesign/payment-step-02.png',
+    '/images/benefit/redesign/payment-step-03.png',
+  ],
+  benefits: [
+    '/images/benefit/redesign/benefit-01.png',
+    '/images/benefit/redesign/benefit-02.png',
+    '/images/benefit/redesign/benefit-03.png',
+    '/images/benefit/redesign/benefit-04.png',
+    '/images/benefit/redesign/benefit-05.png',
+    '/images/benefit/redesign/benefit-06.png',
+    '/images/benefit/redesign/benefit-07.png',
+  ],
+  timeline: [
+    '/images/benefit/redesign/timeline-01.png',
+    '/images/benefit/redesign/timeline-02.png',
+    '/images/benefit/redesign/timeline-03.png',
+    '/images/benefit/redesign/timeline-04.png',
+    '/images/benefit/redesign/timeline-05.png',
+    '/images/benefit/redesign/timeline-06.png',
+    '/images/benefit/redesign/timeline-07.png',
+  ],
+  states: [
+    '/images/benefit/redesign/state-01.png',
+    '/images/benefit/redesign/state-02.png',
+    '/images/benefit/redesign/state-03.png',
+    '/images/benefit/redesign/state-04.png',
+    '/images/benefit/redesign/state-05.png',
+  ],
+} as const
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -15,554 +65,194 @@ const translations = {
     seoTitle: 'Surrogate Compensation: Pay, Benefits & Support | Yunda Surrogacy',
     seoDescription: 'Understand surrogate compensation in California and the U.S., including base pay, milestones, and support. Get a clear, private pay overview.',
     heroTitle: 'Surrogate Pay and Compensation, Clearly Explained',
-    heroConclusion1:
-      'Surrogacy pay is not a traditional salary. It is a clear compensation package with base pay, monthly support, and milestone-based payments, typically managed through escrow.',
-    heroConclusion2:
-      'Total pay can vary by state, insurance fit, and medical factors, so we outline the timeline and common questions (including miscarriage and eligibility) upfront. If you are ready, apply to get a realistic pay estimate based on your profile.',
-    heroSubtitle: 'Understand how surrogate compensation works, including base pay, milestone payments, and ongoing support, with a clear overview you can use for real planning.',
-    primaryCta: 'View Compensation Details',
-    secondaryCta: 'Surrogate Application',
-    heroImageAlt: 'Surrogate compensation consultation in the United States',
+    heroSubtitle: 'Understand how surrogate compensation works, including base pay, milestone payments, and ongoing support—so you can feel informed and confident every step of the way.',
+    heroPayLabelLine1: 'Average surrogate',
+    heroPayLabelLine2: 'pay',
+    heroPayAmount: '$61,000+',
     features: [
-      'Clear guidance on pay structure, timing, and milestones',
-      'Thoughtful coordination around compensation, support, and benefits',
-      'Private, respectful conversations so you can plan with confidence',
+      'Clear and transparent pay structure',
+      'Supportive guidance from start to finish',
+      'Private, respectful conversations',
     ],
-    onPageTitle: 'On this page, you’ll learn:',
+    primaryCta: 'View Compensation Details',
+    secondaryCta: 'Start Your Surrogate Application',
+    onPageTitle: 'On this page, you’ll learn',
+    onPageTitleLine1: 'On this page,',
+    onPageTitleLine2: 'you’ll learn',
     onPageItems: [
-      'how surrogate compensation is typically structured',
-      'when payments often begin and how milestones work',
-      'what support and common benefits may include',
-      'what factors can affect total compensation',
+      'How surrogate compensation is structured',
+      'What’s included in your compensation package',
+      'When and how payments are made',
+      'State-by-state pay comparisons and key FAQs',
     ],
-    overviewTitle: 'Surrogate Pay Overview: Average Surrogate Pay, Surrogate Mother Pay Rate & What Affects It',
-    overviewIntro:
-      'A practical way to read surrogate compensation is to split base pay from the full package, then map which factors move your final number.',
-    avgCardLabel: 'Average surrogate pay',
-    avgH3: 'Average surrogate pay: what "average" really means',
-    avgBody1:
-      'When people ask about average surrogate pay (or surrogate average pay), it helps to separate base pay from the total package.',
-    avgBaseLabel: 'Personalized Base Compensation',
-    avgBaseValue: '$61,000+',
-    avgBaseNote: 'Paid monthly starting after a confirmed heartbeat.',
-    avgTotalLabel: 'Total average pay for surrogate mothers',
-    avgTotalNote: 'Can include monthly allowance, IVF-related stipends, and pregnancy/recovery benefits.',
-    avgLinkPrefix: 'For a line-item view, see',
-    avgLink1: 'surrogate compensation details',
-    avgLinkMiddle: 'and compare broader',
-    avgLink2: 'surrogacy cost structure',
-    avgLinkSuffix: 'for context.',
-    rateCardLabel: 'Surrogate mother pay rate',
-    rateH3: 'Surrogate mother pay rate: what affects it most',
-    rateBody1:
-      'Your surrogate mother\'s pay rate is shaped by your experience level, where you live, and whether you have eligible health insurance.',
-    rateFactors: [
-      'Experience level: first-time vs. repeat surrogate',
-      'State differences and local market conditions',
-      'Eligible insurance fit for surrogacy care',
-      'Medical details: multiples, procedures, and delivery factors',
+    overviewTitle: 'Compensation Overview',
+    overviewIntro: 'Surrogates are generously compensated for the time, commitment, and incredible gift they provide.',
+    overviewCards: [
+      { title: 'Average Surrogate Pay', amount: '$61,000+', text: 'The average total compensation surrogates earn across the U.S.' },
+      { title: 'Personalized Base Compensation', amount: '$61,000 – $70,000+', text: 'Base pay varies based on your experience, location, and the program you choose.' },
+      { title: 'Monthly Allowance', amount: '$300+ /month', text: 'Non-reimbursable allowance for the duration of your pregnancy.' },
+      { title: 'Estimated Benefits Total', amount: '$11,000', text: 'Total of stipends, allowances, and reimbursements beyond base compensation.' },
     ],
-    rateLinkPrefix: 'We set compensation clearly and support payouts through',
-    rateLink1: 'escrow payment management',
-    rateLinkMiddle: 'plus',
-    rateLink2: 'medical screening and eligibility review',
-    rateLinkSuffix: 'so payments stay safe and on time.',
-    compVsSalaryTitle: 'Surrogate Compensation: How Surrogate Payment Works',
-    salaryH3: 'First-time surrogate compensation: total package at a glance',
-    salaryBody1:
-      'Yunda lists Personalized Base Compensation: $61,000+ for first-time surrogates. This base is typically paid monthly starting after a confirmed heartbeat.',
-    salaryBody2:
-      'Your total first-time surrogate compensation can be higher when you include the monthly allowance and common benefits tied to the IVF process and pregnancy support.',
-    salaryLinkPrefix: 'If you want a full package breakdown, review',
-    salaryLink1: 'surrogate compensation details',
-    salaryLinkMiddle: 'and our',
-    salaryLink2: 'screening process',
-    salaryLinkSuffix: 'for eligibility context.',
-    structureH3: 'How surrogate payment is typically structured',
-    structureBody1: 'Most surrogate payment plans have two core parts:',
-    structureItems: [
-      'Base compensation (the main portion of surrogate mother compensation), paid in scheduled installments during the journey.',
-      'Reimbursements and allowances for real expenses and extra time tied to the process (appointments, approved travel, and other agreed items).',
+    paymentTitle: 'How Surrogate Payment Works',
+    paymentSteps: [
+      { title: 'Base Compensation', text: 'Your base pay is paid in installments throughout your journey, starting when a heartbeat is confirmed.' },
+      { title: 'Reimbursements & Allowances', text: 'You’ll receive additional payments for expenses and monthly support to help make your journey easier.' },
+      { title: 'Escrow Payment Management', text: 'All payments are securely managed through an escrow account for protection and peace of mind.' },
     ],
-    structureBody2:
-      'Payments are usually handled through escrow to keep everything orderly and on time.',
-    structureBody3:
-      'You will know what triggers each payment, what is reimbursable, and what needs documentation, so you can move forward with confidence in a way that feels respectful and steady.',
-    structureLinkPrefix: 'Next, you can',
-    structureLink1: 'apply to become a surrogate',
-    structureLinkMiddle: 'or compare',
-    structureLink2: 'surrogacy cost structure',
-    structureLinkSuffix: 'to see how funding is organized across the journey.',
-    packageTitle: 'Surrogate Compensation Package: Base Pay, Monthly Allowance & Common Benefits',
-    packageCardTitle: 'Surrogate Compensation Package: $61,000-$70,000+',
-    packageH3Core: 'Base pay + monthly allowance (your core surrogate mother pay)',
-    packageCoreBody1:
-      'Your surrogate compensation starts with a clear base, then steady support month to month. For first-time surrogates, Yunda lists Personalized Base Compensation: $61,000 to $70,000+, paid monthly starting from a confirmed heartbeat.',
-    packageCoreBody2:
-      'On top of that, there is a monthly allowance to help cover everyday needs during the journey, including transportation, meals, childcare, and miscellaneous expenses. This keeps your surrogate payment practical, not just on paper.',
-    packageCoreBullets: [
-      'Personalized Base Pay: $61,000-$70,000+ per journey',
-      'Monthly Non-Reimbursable Allowance: $300+ per month',
-    ],
-    packageH3Benefits: 'Common benefits that build the full compensation package',
-    packageBenefitsIntro1:
-      'Beyond base pay, the benefits package includes set stipends tied to real milestones.',
-    packageBenefitsIntro2:
-      'Estimated benefits total: $11,000 (actual amounts vary by personal situation and medical needs).',
-    packageBenefitsItems: [
-      {
-        title: 'Embryo Transfer Stipend',
-        amount: '$2,000 (per transfer)',
-        timing: 'Paid within 10 business days after embryo transfer',
-      },
-      {
-        title: 'Signing Bonus',
-        amount: '$1,000',
-        timing: 'Paid after the legal contract is notarized',
-      },
-      {
-        title: 'Injection Medication Stipend',
-        amount: '$1,200 (per cycle)',
-        timing: 'Paid within 10 days after starting medication, by transfer cycle',
-      },
-      {
-        title: 'Monthly Non-Reimbursable Allowance',
-        amount: '$300/month (estimated $3,600 for 12 months)',
-        timing: 'Paid on the 1st of each month after contract signing',
-      },
-      {
-        title: 'Maternity Clothing Stipend',
-        amount: '$1,000',
-        timing: 'One-time at 15 weeks (+$200 for multiples)',
-      },
-      {
-        title: 'Surrogate Health Support',
-        amount: '$1,000',
-        timing: 'Paid after heartbeat confirmation (non-refundable)',
-      },
-      {
-        title: 'Housekeeping/Cleaning Stipend',
-        amount: '$1,200',
-        timing: 'Reimbursed starting from week 28',
-      },
-    ],
-    packageAmountRows: [
-      { label: 'Personalized Base Compensation', amount: '$61,000-$70,000+' },
-      { label: 'Monthly Non-Reimbursable Allowance', amount: '$300+/month' },
-      { label: 'Estimated Benefits Total', amount: '$11,000' },
+    packageTitle: 'Surrogate Compensation Package',
+    packageIntro: 'Your compensation package includes the following benefits and support.',
+    packageBenefits: [
+      { title: 'Embryo Transfer Stipend', subtitle: 'Per Transfer', amount: '$2,000' },
+      { title: 'Signing Bonus', subtitle: 'Upon Contract Signing', amount: '$1,000' },
+      { title: 'Injection Medication Stipend', subtitle: 'Per Cycle', amount: '$1,200' },
+      { title: 'Monthly Non-Reimbursable Allowance', subtitle: 'Throughout Pregnancy', amount: '$300 /month' },
+      { title: 'Maternity Clothing Stipend', subtitle: 'During Pregnancy', amount: '$1,000' },
+      { title: 'Surrogate Health Support', subtitle: 'Wellness & Self-Care', amount: '$1,000' },
+      { title: 'Housekeeping / Cleaning Stipend', subtitle: 'During Pregnancy', amount: '$1,200' },
     ],
     timelineTitle: 'Payment Timeline: Do Surrogates Get Paid Monthly and When Does Pay Start?',
-    timelineFlowLabel: 'Meds -> Transfer -> Heartbeat -> Pregnancy -> Delivery',
-    timelineH3Start: 'Do surrogates get paid monthly-and when does surrogate payment start?',
-    timelineStartBody1:
-      'With Yunda, surrogate payment follows clear milestones. Some support starts after the legal agreement, but the monthly pay most surrogates mean usually begins after a confirmed heartbeat, when base compensation starts paying out in scheduled monthly installments.',
-    timelineH3Flow: 'Payment timeline (meds -> transfer -> heartbeat -> pregnancy -> delivery)',
-    timelineFlowImgAlt: 'Surrogate payment timeline flow: meds, transfer, heartbeat, pregnancy, delivery',
     timelineItems: [
-      {
-        stage: 'Legal contract signed + notarized',
-        payment: 'Signing bonus: $1,000; Monthly allowance: $300/month',
-        note: 'Starts after legal completion and supports early-stage journey costs.',
-      },
-      {
-        stage: 'Medication start',
-        payment: 'Injection medication stipend: $1,200',
-        note: 'Paid by transfer cycle after medication begins.',
-      },
-      {
-        stage: 'Embryo transfer',
-        payment: '$2,000 (per transfer)',
-        note: 'Triggered after each embryo transfer event.',
-      },
-      {
-        stage: 'Heartbeat confirmed',
-        payment: 'Base compensation: $61,000 begins monthly over 10 months; Health support: $1,000 (one-time)',
-        note: 'This is typically the point where core monthly compensation starts.',
-      },
-      {
-        stage: '15 weeks',
-        payment: 'Maternity clothing stipend: $1,000 (+$200 for multiples)',
-        note: 'One-time support tied to pregnancy progression.',
-      },
-      {
-        stage: '28 weeks',
-        payment: 'Housekeeping support: $1,200',
-        note: 'Reimbursement support begins at late-pregnancy stage.',
-      },
-      {
-        stage: 'Delivery + postpartum',
-        payment: 'Remaining scheduled payments and approved reimbursements are completed through escrow per the agreement.',
-        note: 'Final releases and reconciliations follow contract terms.',
-      },
+      { title: 'Legal Contract Signed', lines: ['Signing bonus: $1,000', 'Monthly allowance: $300/month'] },
+      { title: 'Medication Start', lines: ['Injection medication stipend: $1,200'] },
+      { title: 'Embryo Transfer', lines: ['$2,000 (per transfer)'] },
+      { title: 'Heartbeat Confirmed', lines: ['Base compensation: $61,000 begins monthly over 10 months', 'Health support: $1,000 (one-time)'] },
+      { title: '15 Weeks', lines: ['Maternity clothing stipend: $1,000 (+$200 for multiples)'] },
+      { title: '28 Weeks', lines: ['Housekeeping support: $1,200'] },
+      { title: 'Delivery + Postpartum', lines: ['Remaining scheduled payments and approved reimbursements are completed through escrow per the agreement.'] },
     ],
-    statePayTitle: 'State-by-State Surrogate Pay (U.S. & California Focus)',
-    statePayHeaders: [
-      'State / Region',
-      'Compensation Level (Relative)',
-      'Why It Can Differ',
-      'What to Pay Attention To',
-    ],
-    statePayRows: [
-      {
-        state: 'U.S. Overall (Average)',
-        level: 'Baseline reference',
-        why: 'Large variation by state due to living costs, insurance markets, clinic density, and demand.',
-        attention: 'Look at the full package: base pay + allowances + benefits + reimbursements.',
-      },
-      {
-        state: 'California (CA)',
-        level: 'Often higher',
-        why: 'Higher living costs; strong clinic availability; steady demand; insurance and network factors can affect total.',
-        attention: 'For average surrogate compensation in California, insurance fit and in-network access often matter most.',
-      },
-      {
-        state: 'Florida (FL)',
-        level: 'Wide range',
-        why: 'Insurance rules and network access vary; some areas have concentrated clinic options, others require more travel.',
-        attention: 'Confirm maternity coverage, deductible/out-of-pocket, and out-of-network exposure.',
-      },
-      {
-        state: 'Washington (WA)',
-        level: 'Mid to higher (varies by city)',
-        why: 'Higher costs in major metros; strong medical access in certain regions; stable demand.',
-        attention: 'Travel time to clinics, monitoring schedule, and support planning.',
-      },
-      {
-        state: 'Texas (TX)',
-        level: 'Mid to higher (varies by city)',
-        why: 'Big differences between major cities and smaller areas; insurance and clinic access can shift overall planning.',
-        attention: 'Location, clinic access, and insurance eligibility are key drivers.',
-      },
+    timelineCta: 'BECOME A SURROGATE',
+    stateTitle: 'State-by-State Surrogate Pay',
+    stateIntro: 'Compensation can vary by state. Here’s how key states compare.',
+    stateCards: [
+      { title: 'U.S. Overall', amount: '$61,000+', text: 'National average total compensation.' },
+      { title: 'California', amount: '$70,000+', text: 'Among the highest compensation in the country.' },
+      { title: 'Florida', amount: '$58,000+', text: 'Competitive pay with strong intended parent programs.' },
+      { title: 'Washington', amount: '$64,000+', text: 'High compensation with excellent legal protections.' },
+      { title: 'Texas', amount: '$55,000+', text: 'Strong programs with competitive compensation options.' },
     ],
     faqTitle: 'Surrogate Pay FAQ: Miscarriage Pay, Eligibility, and Common Questions',
     faqItems: [
-      {
-        q: 'Do surrogates get paid?',
-        a: 'Yes. In most U.S. journeys, surrogates receive structured surrogate compensation and reimbursements. The terms are written into a legal agreement and paid on a set timeline.',
-      },
-      {
-        q: 'Do surrogate mothers get paid, or is it a "salary"?',
-        a: 'Surrogates are typically paid as compensation, not a traditional salary. That means payments follow milestones and agreed support items, rather than hourly wages.',
-      },
-      {
-        q: 'Can surrogates get paid monthly?',
-        a: 'Often, yes. Many programs use milestone-based payments, and base compensation is commonly paid in monthly installments after key pregnancy confirmation steps.',
-      },
-      {
-        q: 'Do surrogates get paid if they miscarry?',
-        a: 'It depends on the stage of pregnancy and what the agreement states. Many arrangements include clear terms for compensation already earned and for what happens if a pregnancy ends early.',
-      },
-      {
-        q: 'How much do surrogate mothers get paid?',
-        a: 'It varies by experience, state, and medical factors. The best way to understand compensation is to look at the full package: base pay, allowances, benefits, and reimbursements.',
-      },
-      {
-        q: 'How much do surrogates make a year?',
-        a: 'Surrogacy compensation is not guaranteed annual income because the timeline can span many months and varies by matching and clinic schedules. We usually explain expected totals over the journey instead.',
-      },
-      {
-        q: 'How much do surrogates make overall?',
-        a: 'If you are asking what surrogates get paid, the total depends on base compensation plus milestone benefits and any situation-based add-ons defined in the agreement.',
-      },
-      {
-        q: 'What does a surrogate make in California compared to other states?',
-        a: 'California often trends higher because of cost of living, clinic access, and local demand. Still, the real number depends on insurance, location, and your specific journey plan.',
-      },
-      {
-        q: 'How much can I make as a surrogate?',
-        a: 'It depends on whether you are first-time or experienced, your state, and your medical and insurance profile. It also depends on whether you qualify smoothly for screening and matching.',
-      },
-      {
-        q: 'How much can you make as a surrogate if you are eligible and ready?',
-        a: 'If you are eligible, the fastest path is getting screened, confirming insurance fit, and moving into matching. From there, compensation is clearer because it is written, scheduled, and tied to specific milestones.',
-      },
+      { q: 'Do surrogates get paid?', a: 'Yes. In most U.S. journeys, surrogates receive structured surrogate compensation and reimbursements. The terms are written into a legal agreement and paid on a set timeline.' },
+      { q: 'Do surrogate mothers get paid, or is it a "salary"?', a: 'Surrogates are typically paid as compensation, not a traditional salary. That means payments follow milestones and agreed support items, rather than hourly wages.' },
+      { q: 'Can surrogates get paid monthly?', a: 'Often, yes. Many programs use milestone-based payments, and base compensation is commonly paid in monthly installments after key pregnancy confirmation steps.' },
+      { q: 'Do surrogates get paid if they miscarry?', a: 'It depends on the stage of pregnancy and what the agreement states. Many arrangements include clear terms for compensation already earned and for what happens if a pregnancy ends early.' },
+      { q: 'How much do surrogate mothers get paid?', a: 'It varies by experience, state, and medical factors. The best way to understand compensation is to look at the full package: base pay, allowances, benefits, and reimbursements.' },
+      { q: 'How much do surrogates make a year?', a: 'Surrogacy compensation is not guaranteed annual income because the timeline can span many months and varies by matching and clinic schedules. We usually explain expected totals over the journey instead.' },
+      { q: 'How much do surrogates make overall?', a: 'If you are asking what surrogates get paid, the total depends on base compensation plus milestone benefits and any situation-based add-ons defined in the agreement.' },
+      { q: 'What does a surrogate make in California compared to other states?', a: 'California often trends higher because of cost of living, clinic access, and local demand. Still, the real number depends on insurance, location, and your specific journey plan.' },
+      { q: 'How much can I make as a surrogate?', a: 'It depends on whether you are first-time or experienced, your state, and your medical and insurance profile. It also depends on whether you qualify smoothly for screening and matching.' },
+      { q: 'How much can you make as a surrogate if you are eligible and ready?', a: 'If you are eligible, the fastest path is getting screened, confirming insurance fit, and moving into matching. From there, compensation is clearer because it is written, scheduled, and tied to specific milestones.' },
     ],
+    ctaTitle: 'Ready to Talk Through Compensation With Confidence?',
+    ctaBody: 'We’re here to answer your questions and walk you through every detail—so you always feel informed and supported.',
+    ctaButton: 'Start Your Surrogate Application',
   },
   zh: {
     seoTitle: '代孕妈妈补偿：报酬、福利与支持 | Yunda',
     seoDescription: '了解加州和美国的代孕妈妈补偿，包括基础报酬、里程碑付款和支持。获得清晰、私密的报酬概览。',
     heroTitle: '代母补偿与报酬，清晰说明',
-    heroConclusion1:
-      '代孕补偿不是传统薪资，而是一套清晰的补偿方案：基础补偿、月度支持和里程碑付款，通常通过第三方托管账户（Escrow）管理。',
-    heroConclusion2:
-      '总代补偿会因所在州、保险适配度和医疗因素而变化，所以我们会提前说明付款时间线与常见问题（包括流产与资格评估）。如果你准备好了，可以提交申请，我们会基于你的个人情况给出更贴近实际的补偿预估。',
-    heroSubtitle: '了解代母补偿如何运作，包括基础补偿、里程碑付款与持续支持，帮助你做出可执行的规划。',
-    primaryCta: '查看补偿详情',
-    secondaryCta: 'Surrogate Application',
-    heroImageAlt: '美国代孕补偿咨询场景',
+    heroSubtitle: '了解代母补偿如何运作，包括基础补偿、里程碑付款与持续支持，让你在每一步都更安心、更有把握。',
+    heroPayLabelLine1: '平均代孕',
+    heroPayLabelLine2: '补偿',
+    heroPayAmount: '$61,000+',
     features: [
-      '清晰说明补偿结构、支付节奏与关键节点',
-      '围绕补偿、支持与福利进行细致协同',
-      '以私密、尊重的沟通帮助你安心规划',
+      '清晰透明的报酬结构',
+      '从始至终的贴心引导',
+      '私密、尊重的沟通方式',
     ],
-    onPageTitle: '本页你将了解：',
+    primaryCta: '查看补偿详情',
+    secondaryCta: '开始代孕申请',
+    onPageTitle: '本页你将了解',
+    onPageTitleLine1: '本页',
+    onPageTitleLine2: '你将了解',
     onPageItems: [
       '代母补偿通常如何构成',
-      '付款通常何时开始、里程碑如何触发',
-      '常见支持与福利通常包含哪些内容',
-      '哪些因素会影响总补偿',
+      '补偿方案包含哪些内容',
+      '付款何时、如何发放',
+      '各州补偿对比与常见问题',
     ],
-    overviewTitle: '代孕补偿总览：平均补偿、代孕妈妈报酬水平，以及影响因素',
-    overviewIntro:
-      '看代孕补偿最实用的方法，是把基础补偿和整体补偿包分开看，再明确哪些因素会影响你的最终金额。',
-    avgCardLabel: '平均代孕补偿',
-    avgH3: '平均代孕补偿：为什么“平均值”要分开看',
-    avgBody1:
-      '当大家问平均代孕补偿（average surrogate pay）时，建议先区分基础补偿（base pay）和整体补偿包（total package）。',
-    avgBaseLabel: '个性化基础补偿',
-    avgBaseValue: '$61,000+',
-    avgBaseNote: '通常在确认胎心后开始按月发放。',
-    avgTotalLabel: '总代补偿（不止基础补偿）',
-    avgTotalNote: '还可包含月度津贴、IVF 相关补贴以及孕期/恢复支持，覆盖真实生活支出。',
-    avgLinkPrefix: '想看明细可查看',
-    avgLink1: '代孕补偿详情',
-    avgLinkMiddle: '，并结合',
-    avgLink2: '代孕费用结构',
-    avgLinkSuffix: '一起评估。',
-    rateCardLabel: '代孕妈妈报酬水平',
-    rateH3: '代孕妈妈报酬水平：最关键的影响因素',
-    rateBody1:
-      '你的报酬水平主要由几个现实因素决定：经验水平、所在州、以及是否具备可用健康保险。',
-    rateFactors: [
-      '经验水平：首次代孕或重复代孕',
-      '地区差异：居住州与当地补偿环境',
-      '保险适配：是否有可用于代孕的保险',
-      '医疗细节：多胎、特定医疗操作与分娩情况',
+    overviewTitle: '补偿总览',
+    overviewIntro: '代孕妈妈因其投入的时间、承诺与非凡的付出，将获得丰厚且结构清晰的补偿。',
+    overviewCards: [
+      { title: '平均代孕补偿', amount: '$61,000+', text: '美国范围内代孕妈妈获得的平均总补偿。' },
+      { title: '个性化基础补偿', amount: '$61,000 – $70,000+', text: '基础补偿因经验、所在地与所选项目而有所不同。' },
+      { title: '月度津贴', amount: '$300+ /月', text: '孕期全程发放的非报销类津贴。' },
+      { title: '福利预计总额', amount: '$11,000', text: '除基础补偿外的津贴、补贴与报销合计。' },
     ],
-    rateLinkPrefix: '我们会用清晰的个性化方式设定补偿，并通过',
-    rateLink1: '托管支付机制',
-    rateLinkMiddle: '与',
-    rateLink2: '医学筛查与资格审核',
-    rateLinkSuffix: '协同推进，确保发放安全、准时、可追踪。',
-    compVsSalaryTitle: '代孕补偿 ：代孕付款机制如何运作',
-    salaryH3: '首次代孕补偿：总补偿包一览',
-    salaryBody1:
-      'Yunda 对首次代孕妈妈给出的个性化基础补偿为 $61,000+，通常在确认胎心后按月发放。',
-    salaryBody2:
-      '在此基础上，如果叠加月度津贴以及与 IVF 流程和孕期支持相关的常见福利，首次代孕的总补偿通常会更高。',
-    salaryLinkPrefix: '如果你想看完整补偿拆解，可以查看',
-    salaryLink1: '代孕补偿详情',
-    salaryLinkMiddle: '和',
-    salaryLink2: '医学筛查流程',
-    salaryLinkSuffix: '来理解资格与流程前置条件。',
-    structureH3: '代孕付款通常如何构成',
-    structureBody1: '大多数代孕付款方案由两部分组成：',
-    structureItems: [
-      '基础补偿（代孕妈妈补偿的核心部分），在旅程中按既定里程碑分期发放。',
-      '报销与津贴，用于覆盖真实支出和额外投入（如就诊、获批出行及合同约定项目）。',
+    paymentTitle: '代孕付款如何运作',
+    paymentSteps: [
+      { title: '基础补偿', text: '基础报酬在旅程中分期发放，通常在确认胎心后开始。' },
+      { title: '报销与津贴', text: '你还会收到额外费用报销与月度支持，让旅程更从容。' },
+      { title: '托管支付管理', text: '所有款项通过第三方托管账户安全管理，保障发放有序、安心可控。' },
     ],
-    structureBody2:
-      '付款通常通过第三方托管（escrow）执行，以确保流程有序、发放准时。',
-    structureBody3:
-      '你会清楚知道每笔款项的触发条件、哪些费用可报销、需要哪些凭证，从而更稳妥、更安心地推进整个旅程。',
-    structureLinkPrefix: '下一步你可以',
-    structureLink1: '提交代孕申请',
-    structureLinkMiddle: '或查看',
-    structureLink2: '代孕费用结构',
-    structureLinkSuffix: '，了解整个流程的资金安排方式。',
-    packageTitle: '代孕补偿方案：基础补偿、月度津贴与常见福利',
-    packageCardTitle: '代孕补偿方案：$61,000-$70,000+',
-    packageH3Core: '基础补偿 + 月度津贴（你的核心代孕补偿）',
-    packageCoreBody1:
-      '代孕补偿通常从清晰的基础补偿开始，再叠加每月的稳定支持。针对首次代孕妈妈，Yunda 的个性化基础补偿通常为 $61,000-$70,000+，并在确认胎心后按月发放。',
-    packageCoreBody2:
-      '在此基础上，还有月度津贴用于覆盖旅程中的日常支出，如交通、餐食、托育和杂项费用，让代孕补偿在现实生活中更可执行，而不只是“纸面数字”。',
-    packageCoreBullets: [
-      '个性化基础补偿：每段旅程 $61,000-$70,000+',
-      '月度非报销津贴：每月 $300+',
+    packageTitle: '代孕补偿方案',
+    packageIntro: '你的补偿方案包含以下福利与支持项目。',
+    packageBenefits: [
+      { title: '胚胎移植津贴', subtitle: '每次移植', amount: '$2,000' },
+      { title: '签约奖金', subtitle: '合同签署后', amount: '$1,000' },
+      { title: '注射用药津贴', subtitle: '每个周期', amount: '$1,200' },
+      { title: '月度非报销津贴', subtitle: '整个孕期', amount: '$300 /月' },
+      { title: '孕期服装津贴', subtitle: '孕期期间', amount: '$1,000' },
+      { title: '代孕健康支持', subtitle: '身心照护', amount: '$1,000' },
+      { title: '家政/清洁津贴', subtitle: '孕期期间', amount: '$1,200' },
     ],
-    packageH3Benefits: '构成完整补偿包的常见福利',
-    packageBenefitsIntro1:
-      '除基础补偿外，福利包还包含与真实里程碑挂钩的固定津贴。',
-    packageBenefitsIntro2:
-      '福利预计总额约 $11,000（实际金额会因个人情况与医疗需求而变化）。',
-    packageBenefitsItems: [
-      {
-        title: '胚胎移植津贴',
-        amount: '$2,000（每次移植）',
-        timing: '胚胎移植后 10 个工作日内发放',
-      },
-      {
-        title: '签约奖金',
-        amount: '$1,000',
-        timing: '法律合同完成公证后发放',
-      },
-      {
-        title: '注射用药津贴',
-        amount: '$1,200（每个周期）',
-        timing: '每个移植周期开始用药后 10 天内发放',
-      },
-      {
-        title: '月度非报销津贴',
-        amount: '$300/月（12 个月预计 $3,600）',
-        timing: '合同签署后每月 1 日发放',
-      },
-      {
-        title: '孕期服装津贴',
-        amount: '$1,000',
-        timing: '孕 15 周一次性发放（多胎额外 +$200）',
-      },
-      {
-        title: '代孕健康支持津贴',
-        amount: '$1,000',
-        timing: '确认胎心后发放（不退还）',
-      },
-      {
-        title: '家政/清洁津贴',
-        amount: '$1,200',
-        timing: '从孕 28 周开始按规则报销',
-      },
-    ],
-    packageAmountRows: [
-      { label: '个性化基础补偿', amount: '$61,000-$70,000+' },
-      { label: '月度非报销津贴', amount: '$300+/月' },
-      { label: '福利预计总额', amount: '$11,000' },
-    ],
-    timelineTitle: '付款时间线：代孕妈妈会按月收款吗？从什么时候开始？',
-    timelineFlowLabel: '用药 -> 移植 -> 胎心 -> 孕期 -> 分娩',
-    timelineH3Start: '代孕妈妈会按月收款吗？付款从什么时候开始？',
-    timelineStartBody1:
-      '在 Yunda，代孕付款遵循清晰里程碑。部分支持会在法律协议完成后启动，但大多数人说的“按月收款”，通常从确认胎心后开始，即基础补偿进入按月分期发放。',
-    timelineH3Flow: '付款时间线（用药 -> 移植 -> 胎心 -> 孕期 -> 分娩）',
-    timelineFlowImgAlt: '代孕付款时间线流程图：用药、移植、胎心、孕期、分娩',
+    timelineTitle: '付款时间线：代孕妈妈是否按月领取报酬？何时开始发放？',
     timelineItems: [
-      {
-        stage: '法律合同签署并公证',
-        payment: '签约奖金：$1,000；月度津贴：$300/月（预计总计 $3,600）',
-        note: '法律流程完成后启动，支持早期阶段支出。',
-      },
-      {
-        stage: '开始用药',
-        payment: '注射用药津贴：$1,200（每周期）',
-        note: '按移植周期，在用药后触发发放。',
-      },
-      {
-        stage: '胚胎移植',
-        payment: '$2,000（每次移植）',
-        note: '每次移植完成后触发对应津贴。',
-      },
-      {
-        stage: '确认胎心',
-        payment: '基础补偿：$61,000 在 10 个月内按月发放；健康支持津贴：$1,000（一次性）',
-        note: '这通常是核心“月度补偿”正式开始的节点。',
-      },
-      {
-        stage: '孕 15 周',
-        payment: '孕期服装津贴：$1,000（多胎 +$200）',
-        note: '与孕周相关的一次性支持。',
-      },
-      {
-        stage: '孕 28 周',
-        payment: '家政支持：$1,200（报销）',
-        note: '进入孕晚期后按规则开始报销。',
-      },
-      {
-        stage: '分娩 + 产后',
-        payment: '剩余计划付款与获批报销将按协议通过托管完成结算。',
-        note: '最终发放与核对依据合同条款执行。',
-      },
+      { title: '法律合同签署', lines: ['签约奖金：$1,000', '月度津贴：$300/月'] },
+      { title: '开始用药', lines: ['注射用药津贴：$1,200'] },
+      { title: '胚胎移植', lines: ['$2,000（每次移植）'] },
+      { title: '确认胎心', lines: ['基础补偿：$61,000 在 10 个月内按月发放', '健康支持津贴：$1,000（一次性）'] },
+      { title: '孕 15 周', lines: ['孕期服装津贴：$1,000（多胎 +$200）'] },
+      { title: '孕 28 周', lines: ['家政支持：$1,200'] },
+      { title: '分娩 + 产后', lines: ['剩余计划付款与获批报销将按协议通过托管完成结算。'] },
     ],
-    statePayTitle: '各州代孕补偿对比（美国整体与加州重点）',
-    statePayHeaders: [
-      '州 / 地区',
-      '补偿水平（相对）',
-      '为什么会有差异',
-      '重点关注项',
-    ],
-    statePayRows: [
-      {
-        state: '美国整体（平均）',
-        level: '基准参考',
-        why: '各州生活成本、保险市场、诊所密度和供需差异明显，补偿区间波动较大。',
-        attention: '要看完整补偿包：基础补偿 + 津贴 + 福利 + 报销。',
-      },
-      {
-        state: '加州（CA）',
-        level: '通常更高',
-        why: '生活成本高；诊所资源密集；需求稳定；保险和网络内/外就医因素会影响总额。',
-        attention: '关注加州平均补偿时，保险适配度和网络内可及性通常最关键。',
-      },
-      {
-        state: '佛罗里达（FL）',
-        level: '区间较宽',
-        why: '保险规则和网络可及性差异大；部分区域诊所集中，部分区域需要更多跨城出行。',
-        attention: '优先确认孕产覆盖、免赔额/自付上限与网络外风险。',
-      },
-      {
-        state: '华盛顿州（WA）',
-        level: '中到偏高（城市差异明显）',
-        why: '核心城市成本更高；部分地区医疗资源强；整体需求稳定。',
-        attention: '重点评估就诊通勤时间、监测频次与支持计划。',
-      },
-      {
-        state: '德州（TX）',
-        level: '中到偏高（城市差异明显）',
-        why: '大城市与小城市差异显著；保险和诊所可及性会明显影响整体规划。',
-        attention: '地理位置、诊所可及性与保险资格是关键驱动。',
-      },
+    timelineCta: '成为代孕妈妈',
+    stateTitle: '各州代孕补偿对比',
+    stateIntro: '补偿因州而异，以下是主要州的参考对比。',
+    stateCards: [
+      { title: '美国整体', amount: '$61,000+', text: '全国平均总补偿参考值。' },
+      { title: '加州', amount: '$70,000+', text: '全美补偿水平较高的地区之一。' },
+      { title: '佛罗里达', amount: '$58,000+', text: '补偿具竞争力，意向父母项目成熟。' },
+      { title: '华盛顿州', amount: '$64,000+', text: '补偿较高，法律保障完善。' },
+      { title: '德州', amount: '$55,000+', text: '项目成熟，补偿方案具竞争力。' },
     ],
     faqTitle: '代孕补偿 FAQ：流产补偿、资格与常见问题',
     faqItems: [
-      {
-        q: '代孕妈妈会获得补偿吗？',
-        a: '会。在美国大多数代孕项目中，代孕妈妈会获得结构化补偿与报销。条款会写入法律协议，并按明确时间线执行发放。',
-      },
-      {
-        q: '代孕妈妈获得的是“工资”吗？',
-        a: '通常不是传统工资，而是补偿方案。也就是说，付款依据里程碑和约定支持项目执行，而不是按小时计薪。',
-      },
-      {
-        q: '代孕补偿可以按月发放吗？',
-        a: '多数情况下可以。很多项目采用里程碑付款机制，基础补偿通常在关键妊娠确认后按月分期发放。',
-      },
-      {
-        q: '如果发生流产，代孕妈妈还能拿到补偿吗？',
-        a: '取决于妊娠阶段和合同条款。很多协议会明确已产生补偿如何处理，以及妊娠提前结束时的发放规则。',
-      },
-      {
-        q: '代孕妈妈一般能拿多少补偿？',
-        a: '金额会因经验、所在州和医疗因素而变化。最可靠的方式是看完整补偿包：基础补偿、津贴、福利和报销。',
-      },
-      {
-        q: '代孕妈妈一年能赚多少？',
-        a: '代孕补偿通常不是“固定年收入”，因为时间线会跨越多个月，且受匹配和诊所排期影响。更建议看整段旅程的预计总额。',
-      },
-      {
-        q: '代孕整体能拿到多少？',
-        a: '总体金额通常由基础补偿、里程碑福利以及合同约定的情境附加项共同组成。',
-      },
-      {
-        q: '加州与其他州相比，补偿差异大吗？',
-        a: '加州通常偏高，常见原因包括生活成本、诊所可及性和本地需求。但具体金额仍取决于保险、所在地和个人旅程方案。',
-      },
-      {
-        q: '我作为代孕妈妈大概能拿多少？',
-        a: '取决于你是首次还是有经验代孕、所在州、以及医疗和保险档案情况，也与是否顺利通过筛查和匹配有关。',
-      },
-      {
-        q: '如果我符合资格并准备好了，补偿怎么更快明确？',
-        a: '最快路径通常是先完成筛查、确认保险适配并进入匹配。进入匹配后，补偿会通过书面协议与里程碑时间表变得更清晰。',
-      },
+      { q: '代孕妈妈会获得补偿吗？', a: '会。在美国大多数代孕项目中，代孕妈妈会获得结构化补偿与报销。条款会写入法律协议，并按明确时间线执行发放。' },
+      { q: '代孕妈妈获得的是“工资”吗？', a: '通常不是传统工资，而是补偿方案。也就是说，付款依据里程碑和约定支持项目执行，而不是按小时计薪。' },
+      { q: '代孕补偿可以按月发放吗？', a: '多数情况下可以。很多项目采用里程碑付款机制，基础补偿通常在关键妊娠确认后按月分期发放。' },
+      { q: '如果发生流产，代孕妈妈还能拿到补偿吗？', a: '取决于妊娠阶段和合同条款。很多协议会明确已产生补偿如何处理，以及妊娠提前结束时的发放规则。' },
+      { q: '代孕妈妈一般能拿多少补偿？', a: '金额会因经验、所在州和医疗因素而变化。最可靠的方式是看完整补偿包：基础补偿、津贴、福利和报销。' },
+      { q: '代孕妈妈一年能赚多少？', a: '代孕补偿通常不是“固定年收入”，因为时间线会跨越多个月，且受匹配和诊所排期影响。更建议看整段旅程的预计总额。' },
+      { q: '代孕整体能拿到多少？', a: '总体金额通常由基础补偿、里程碑福利以及合同约定的情境附加项共同组成。' },
+      { q: '加州与其他州相比，补偿差异大吗？', a: '加州通常偏高，常见原因包括生活成本、诊所可及性和本地需求。但具体金额仍取决于保险、所在地和个人旅程方案。' },
+      { q: '我作为代孕妈妈大概能拿多少？', a: '取决于你是首次还是有经验代孕、所在州、以及医疗和保险档案情况，也与是否顺利通过筛查和匹配有关。' },
+      { q: '如果我符合资格并准备好了，补偿怎么更快明确？', a: '最快路径通常是先完成筛查、确认保险适配并进入匹配。进入匹配后，补偿会通过书面协议与里程碑时间表变得更清晰。' },
     ],
+    ctaTitle: '准备好安心了解补偿细节了吗？',
+    ctaBody: '我们随时解答你的疑问，陪你理清每一步，让你始终感到被支持与尊重。',
+    ctaButton: '开始代孕申请',
   },
 }
 
-const c = computed(() => ((locale.value || '').startsWith('zh') ? translations.zh : translations.en))
+const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
 const pagePath = '/benefit'
+
 const schemaCompensationItems = computed(() => [
   ...c.value.timelineItems.map((item, index) => ({
     position: index + 1,
-    name: item.stage,
-    description: `${item.payment} ${item.note}`.trim(),
+    name: item.title,
+    description: item.lines.join(' '),
     url: pagePath,
   })),
-  ...c.value.packageBenefitsItems.map((item, index) => ({
+  ...c.value.packageBenefits.map((item, index) => ({
     position: c.value.timelineItems.length + index + 1,
     name: item.title,
-    description: `${item.amount} ${item.timing}`.trim(),
+    description: `${item.amount} ${item.subtitle}`.trim(),
     url: pagePath,
   })),
 ])
+
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
   path: pagePath,
@@ -594,26 +284,29 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
 }))
 
-function splitPaymentLines(payment: string) {
-  return payment.split(/[;；]/).map(part => part.trim()).filter(Boolean)
-}
-
 function highlightAmounts(line: string) {
-  return line.replace(/\$\d[\d,]*(\+)?(\/[a-z\u4E00-\u9FFF]+)?/gi, '<span class="timeline-amount">$&</span>')
+  return line.replace(/\$\d[\d,]*(\+)?(\/[a-z\u4E00-\u9FFF]+)?/gi, '<span class="benefit-amount">$&</span>')
 }
 
-function hasCurrencyValue(payment: string) {
-  return /\$\d/.test(payment)
+const openFaqSet = ref(new Set<number>())
+
+function toggleFaq(index: number) {
+  const next = new Set(openFaqSet.value)
+  if (next.has(index))
+    next.delete(index)
+  else
+    next.add(index)
+  openFaqSet.value = next
+}
+
+function isFaqOpen(index: number) {
+  return openFaqSet.value.has(index)
 }
 
 useHead(() => ({
   title: c.value.seoTitle,
-  meta: [
-    {
-      name: 'description',
-      content: c.value.seoDescription,
-    },
-  ],
+  meta: [{ name: 'description', content: c.value.seoDescription }],
+  link: [{ rel: 'preload', as: 'image', href: PAGE_ASSETS.hero, fetchpriority: 'high' }],
 }))
 
 useHead(() => ({
@@ -626,557 +319,1069 @@ useHead(() => ({
 </script>
 
 <template>
-  <div>
+  <div class="benefit-page min-h-screen text-[var(--yunda-bark)]">
     <AppHeader />
+
     <main>
-      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-10 pt-24 lg:pt-28">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/35 rounded-[24px] bg-[var(--yunda-petal)] shadow-[0_12px_26px_rgba(39,31,24,0.07)]">
-            <div class="grid items-center gap-10 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14">
-              <div class="max-w-[760px]">
-                <h1 class="font-display text-[38px] text-[var(--yunda-bark)] font-semibold leading-[1.1] lg:text-[50px]">
-                  {{ c.heroTitle }}
-                </h1>
-                <p class="mt-6 text-3.5 text-[var(--yunda-bark)] leading-relaxed opacity-75 lg:text-4.8" style="font-family: var(--font-text)">
-                  {{ c.heroSubtitle }}
-                </p>
-                <div class="mt-8 flex flex-wrap items-center gap-3">
-                  <a
-                    href="#compensation-details"
-                    class="inline-flex w-full border border-transparent sm:w-[360px] min-h-[68px] items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-8 py-5 text-4 text-[var(--yunda-petal)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(169,108,66,0.2)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 >
-                    {{ c.primaryCta }}
-                  </a>
-                  <NuxtLink
-                    :to="localePath('/be-surrogate')"
-                    class="inline-flex w-full border border-[var(--primary-brown)]/45 sm:w-[360px] min-h-[68px] items-center justify-center gap-2 rounded-[12px] bg-white/88 px-8 py-5 text-4 text-[var(--primary-brown)] font-extrabold tracking-[0.02em] shadow-[0_6px_14px_rgba(39,31,24,0.06)] transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
-                 >
-                    <span>{{ c.secondaryCta }}</span>
-                    <Icon name="radix-icons:arrow-right" class="h-4.5 w-4.5" />
-                  </NuxtLink>
-                </div>
-                <div class="mt-6 border border-[var(--primary-brown)]/18 rounded-[16px] bg-white/82 p-4">
-                  <p class="font-sans text-lg text-[var(--yunda-bark)] font-bold lg:text-xl" style="font-family: var(--font-text)">
-                    {{ c.onPageTitle }}
-                  </p>
-                  <ul class="mt-2 grid gap-1.5">
-                    <li
-                      v-for="(item, index) in c.onPageItems"
-                      :key="`benefit-onpage-${index}`"
-                      class="flex items-start gap-2.5 text-3.4 text-[var(--yunda-bark)]/84 leading-relaxed lg:text-4"
-                      style="font-family: var(--font-text)"
-                   >
-                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary-brown)]/75" />
-                      <span>{{ item }}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="flex items-center justify-center lg:justify-end">
-                <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)]">
+      <!-- 第一屏：对照 docx + 设计稿 -->
+      <section class="benefit-hero benefit-section-spacing relative isolate w-full overflow-hidden">
+        <div class="benefit-section-inner relative z-10 mx-auto max-w-[1400px]">
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+            <div class="lg:pr-2">
+              <h1 class="benefit-type-h1 max-w-[620px]">
+                {{ c.heroTitle }}
+              </h1>
+              <p class="benefit-type-hero-lead mt-5 max-w-[600px] text-[var(--yunda-bark)]/90 lg:mt-6">
+                {{ c.heroSubtitle }}
+              </p>
+
+              <div class="mt-8 grid grid-cols-3 gap-3 sm:gap-5">
+                <div
+                  v-for="(feature, index) in c.features"
+                  :key="`feature-${index}`"
+                  class="flex flex-col items-center text-center"
+                >
                   <img
-                    src="/images/gc/gc-pic/Surrogate-Pay-Overview.png"
-                    :alt="c.heroImageAlt"
-                    width="520"
-                    height="380"
-                    class="h-[380px] w-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                 >
+                    :src="PAGE_ASSETS.heroFeatures[index]"
+                    alt=""
+                    class="h-14 w-14 object-contain sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem]"
+                    loading="lazy"
+                  >
+                  <p class="benefit-type-caption mt-4 text-[var(--yunda-bark)]">
+                    {{ feature }}
+                  </p>
                 </div>
               </div>
+
+              <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+                <a
+                  href="#compensation-overview"
+                  class="benefit-hero-cta-primary yunda-type-button inline-flex min-h-[52px] w-full items-center justify-center rounded-[6px] px-6 py-3.5 shadow-sm transition-opacity hover:opacity-95 sm:min-w-[220px] sm:w-auto lg:min-w-[240px]"
+                >
+                  {{ c.primaryCta }}
+                </a>
+                <NuxtLink
+                  :to="localePath('/be-surrogate')"
+                  class="benefit-hero-cta-secondary yunda-type-button inline-flex min-h-[52px] w-full items-center justify-center rounded-[6px] border-2 px-6 py-3.5 transition-colors hover:opacity-90 sm:min-w-[220px] sm:w-auto lg:min-w-[260px]"
+                >
+                  {{ c.secondaryCta }}
+                </NuxtLink>
+              </div>
             </div>
-            <div class="border-t border-[var(--primary-brown)] bg-[var(--yunda-petal)] px-6 py-4 lg:px-12">
-              <div class="flex flex-wrap items-center justify-start gap-6 text-3 text-[var(--yunda-bark)] opacity-80 md:text-3.5" style="font-family: var(--font-text)">
-                <div class="flex items-center gap-2">
-                  <Icon name="radix-icons:check-circled" class="h-4 w-4 text-[var(--primary-brown)]" />
-                  <span>{{ c.features[0] }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <Icon name="radix-icons:check-circled" class="h-4 w-4 text-[var(--primary-brown)]" />
-                  <span>{{ c.features[1] }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <Icon name="radix-icons:check-circled" class="h-4 w-4 text-[var(--primary-brown)]" />
-                  <span>{{ c.features[2] }}</span>
-                </div>
+
+            <div class="benefit-hero-visual relative min-h-[360px] sm:min-h-[420px] lg:min-h-[500px]">
+              <div aria-hidden="true" class="benefit-hero-arch pointer-events-none absolute inset-y-0 right-0 w-[88%] max-w-[520px]" />
+              <img
+                :src="PAGE_ASSETS.hero"
+                :alt="c.heroTitle"
+                class="benefit-hero-photo relative z-[1] ml-auto h-full w-[92%] max-w-[540px] object-cover object-[center_28%] sm:w-[88%]"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+              <div class="benefit-hero-pay-card absolute bottom-4 right-2 z-[2] sm:bottom-6 sm:right-4">
+                <p class="benefit-hero-pay-label">
+                  {{ c.heroPayLabelLine1 }}<br>{{ c.heroPayLabelLine2 }}
+                </p>
+                <p class="benefit-hero-pay-amount">
+                  {{ c.heroPayAmount }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="benefit-onpage mt-6 overflow-hidden rounded-[16px] lg:mt-8 lg:rounded-[18px]">
+            <div class="benefit-onpage-grid">
+              <div class="benefit-onpage-heading px-5 py-6 sm:px-6 lg:px-8 lg:py-7">
+                <p class="benefit-type-onpage-heading">
+                  {{ c.onPageTitleLine1 }}<br>{{ c.onPageTitleLine2 }}
+                </p>
+              </div>
+              <div
+                v-for="(item, index) in c.onPageItems"
+                :key="`onpage-${index}`"
+                class="benefit-onpage-item flex flex-col items-center px-4 py-6 text-center sm:px-5 lg:px-6 lg:py-7"
+              >
+                <span class="benefit-onpage-check inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-9 sm:w-9">
+                  <Icon name="radix-icons:check" class="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                </span>
+                <p class="benefit-type-caption mt-3.5 text-[var(--yunda-bark)]">
+                  {{ item }}
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-[var(--yunda-petal)] pb-16 lg:pb-20">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/20 rounded-[18px] bg-white/90 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 id="compensation-details" class="scroll-mt-28 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
-              {{ c.overviewTitle }}
-            </h2>
-            <p class="mt-3 max-w-[1200px] text-3.5 text-[var(--yunda-bark)]/80 leading-relaxed lg:text-4.5" style="font-family: var(--font-text)">
-              {{ c.overviewIntro }}
-            </p>
+      <!-- 第二屏：对照 docx image3 + image4 -->
+      <section id="compensation-overview" class="benefit-section benefit-section-after-hero scroll-mt-28 w-full">
+        <div class="benefit-overview-panel">
+          <div class="benefit-section-inner mx-auto max-w-[1400px]">
+            <div class="benefit-overview-block text-center">
+              <h2 class="benefit-section-title">
+                {{ c.overviewTitle }}
+              </h2>
+              <p class="benefit-type-intro mx-auto mt-4 max-w-3xl lg:mt-5">
+                {{ c.overviewIntro }}
+              </p>
 
-            <div class="grid mt-8 gap-6 lg:grid-cols-2">
-              <article class="overflow-hidden border border-[#dcc8a4] rounded-[14px] bg-[#f7efe0] shadow-[0_12px_28px_rgba(39,31,24,0.06)]">
-                <div class="flex items-center justify-between gap-4 border-b border-[#dfcba9] bg-[#f2e5cd] px-5 py-4">
-                  <div>
-                    <p class="text-3.5 text-[var(--yunda-bark)]/75 font-semibold tracking-[0.03em] uppercase" style="font-family: var(--font-text)">
-                      {{ c.avgCardLabel }}
-                    </p>
-                    <p class="mt-1 text-9 text-[var(--yunda-maple)] font-semibold leading-none lg:text-10">
-                      {{ c.avgBaseValue }}
-                    </p>
-                  </div>
-                  <div class="h-20 w-20 flex shrink-0 items-center justify-center border border-[#d1b382] rounded-full bg-[#f9eecf] text-[#cc9a3a] shadow-[inset_0_0_0_4px_rgba(204,154,58,0.14)]">
-                    <Icon name="lucide:badge-dollar-sign" class="h-10 w-10" />
-                  </div>
-                </div>
-
-                <div class="px-5 py-5">
-                  <h3 class="text-4.5 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                    {{ c.avgH3 }}
+              <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4 lg:gap-5">
+                <article
+                  v-for="(card, index) in c.overviewCards"
+                  :key="`overview-${index}`"
+                  class="benefit-overview-card flex h-full flex-col items-center rounded-[20px] px-5 py-7 text-center sm:px-6 sm:py-8"
+                >
+                  <img
+                    :src="PAGE_ASSETS.overview[index]"
+                    alt=""
+                    class="benefit-overview-icon h-[3.75rem] w-[3.75rem] object-contain lg:h-[4.5rem] lg:w-[4.5rem]"
+                    loading="lazy"
+                  >
+                  <h3 class="benefit-type-card-title mt-5">
+                    {{ card.title }}
                   </h3>
-                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.25" style="font-family: var(--font-text)">
-                    {{ c.avgBody1 }}
+                  <p class="benefit-type-amount mt-3 text-[28px] lg:text-[32px]">
+                    {{ card.amount }}
                   </p>
-
-                  <div class="mt-4 border border-[#dcc8a4]/80 rounded-[10px] bg-white/72 px-4 py-3">
-                    <p class="text-3.5 text-[var(--yunda-bark)]/85 leading-relaxed" style="font-family: var(--font-text)">
-                      <span class="text-[var(--yunda-bark)] font-semibold">{{ c.avgBaseLabel }}:</span>
-                      <span class="mx-1 text-[var(--yunda-maple)] font-semibold">{{ c.avgBaseValue }}</span>
-                      {{ c.avgBaseNote }}
-                    </p>
-                  </div>
-
-                  <div class="mt-3 border border-[#dcc8a4]/80 rounded-[10px] bg-white/72 px-4 py-3">
-                    <p class="text-3.5 text-[var(--yunda-bark)]/85 leading-relaxed" style="font-family: var(--font-text)">
-                      <span class="text-[var(--yunda-bark)] font-semibold">{{ c.avgTotalLabel }}:</span>
-                      {{ c.avgTotalNote }}
-                    </p>
-                  </div>
-
-                  <p class="mt-4 text-3.5 text-[var(--yunda-bark)]/78 leading-relaxed" style="font-family: var(--font-text)">
-                    {{ c.avgLinkPrefix }}
-                    <NuxtLink :to="localePath('/surrogate-compensation')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                      {{ c.avgLink1 }}
-                    </NuxtLink>
-                    <span class="mx-1">{{ c.avgLinkMiddle }}</span>
-                    <NuxtLink :to="localePath('/surrogacy-cost')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                      {{ c.avgLink2 }}
-                    </NuxtLink>
-                    <span>{{ c.avgLinkSuffix }}</span>
+                  <p class="benefit-type-card-body mt-3 text-[var(--yunda-bark)]/84">
+                    {{ card.text }}
                   </p>
-                </div>
-              </article>
-
-              <article class="overflow-hidden border border-[var(--yunda-bark)]/70 rounded-[14px] bg-[var(--yunda-petal)] shadow-[0_12px_28px_rgba(39,31,24,0.06)]">
-                <div class="grid items-center gap-4 border-b border-[var(--yunda-bark)]/75 bg-[var(--faq-bg)]/40 px-5 py-4 sm:grid-cols-[1fr_auto]">
-                  <div>
-                    <p class="text-3.5 text-[var(--yunda-bark)]/75 font-semibold tracking-[0.03em] uppercase" style="font-family: var(--font-text)">
-                      {{ c.rateCardLabel }}
-                    </p>
-                    <p class="mt-1 text-9 text-[var(--primary-brown)] font-semibold leading-none lg:text-10">
-                      {{ c.avgBaseValue }}
-                    </p>
-                  </div>
-                  <div class="h-24 w-30 overflow-hidden border border-[var(--yunda-bark)]/70 rounded-[10px] bg-white/75">
-                    <img
-                      src="/images/landingpage2/Surrogate-Compensation-Factors.jpg"
-                      :alt="c.rateCardLabel"
-                      class="h-full w-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                   >
-                  </div>
-                </div>
-
-                <div class="px-5 py-5">
-                  <h3 class="text-4.5 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                    {{ c.rateH3 }}
-                  </h3>
-                  <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.25" style="font-family: var(--font-text)">
-                    {{ c.rateBody1 }}
-                  </p>
-
-                  <ul class="grid mt-4 gap-2">
-                    <li v-for="(factor, index) in c.rateFactors" :key="`rate-factor-${index}`" class="flex items-start gap-2">
-                      <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--olive-green)]" />
-                      <span class="text-3.5 text-[var(--yunda-bark)]/86 leading-relaxed" style="font-family: var(--font-text)">
-                        {{ factor }}
-                      </span>
-                    </li>
-                  </ul>
-
-                  <p class="mt-4 border-t border-[var(--yunda-bark)]/70 pt-4 text-3.5 text-[var(--yunda-bark)]/78 leading-relaxed" style="font-family: var(--font-text)">
-                    {{ c.rateLinkPrefix }}
-                    <NuxtLink :to="localePath('/surrogate-compensation')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                      {{ c.rateLink1 }}
-                    </NuxtLink>
-                    <span class="mx-1">{{ c.rateLinkMiddle }}</span>
-                    <NuxtLink :to="localePath('/screening')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                      {{ c.rateLink2 }}
-                    </NuxtLink>
-                    <span>{{ c.rateLinkSuffix }}</span>
-                  </p>
-                </div>
-              </article>
+                </article>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="w-full from-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-18 lg:pb-22">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/20 rounded-[18px] bg-white/92 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
-              {{ c.compVsSalaryTitle }}
-            </h2>
-
-            <div class="grid mt-7 gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <article class="border border-[var(--primary-brown)]/18 rounded-[14px] bg-[var(--yunda-petal)]/75 px-5 py-5 shadow-[0_10px_24px_rgba(39,31,24,0.05)]">
-                <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ c.salaryH3 }}
-                </h3>
-                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.salaryBody1 }}
-                </p>
-                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.salaryBody2 }}
-                </p>
-                <p class="mt-4 border-t border-[var(--primary-brown)]/18 pt-4 text-3.5 text-[var(--yunda-bark)]/78 leading-relaxed" style="font-family: var(--font-text)">
-                  {{ c.salaryLinkPrefix }}
-                  <NuxtLink :to="localePath('/surrogate-compensation')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                    {{ c.salaryLink1 }}
-                  </NuxtLink>
-                  <span class="mx-1">{{ c.salaryLinkMiddle }}</span>
-                  <NuxtLink :to="localePath('/screening')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                    {{ c.salaryLink2 }}
-                  </NuxtLink>
-                  <span>{{ c.salaryLinkSuffix }}</span>
-                </p>
-              </article>
-
-              <article class="border border-[var(--yunda-bark)]/70 rounded-[14px] bg-[var(--yunda-petal)]/45 px-5 py-5 shadow-[0_10px_24px_rgba(39,31,24,0.05)]">
-                <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ c.structureH3 }}
-                </h3>
-                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.structureBody1 }}
-                </p>
-
-                <ul class="grid mt-4 gap-3">
-                  <li
-                    v-for="(item, index) in c.structureItems"
-                    :key="`structure-item-${index}`"
-                    class="flex items-start gap-3 border border-[var(--yunda-bark)]/45 rounded-[10px] bg-white/82 px-3.5 py-3"
-                 >
-                    <span class="mt-0.2 h-6 w-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
+        <div class="benefit-payment-panel">
+          <div class="benefit-section-inner mx-auto max-w-[1400px]">
+            <div class="benefit-payment-block text-center">
+              <h3 class="benefit-type-subsection-title">
+                {{ c.paymentTitle }}
+              </h3>
+              <div class="mt-6 grid gap-4 text-left lg:mt-8 lg:grid-cols-3 lg:gap-5">
+                <article
+                  v-for="(step, index) in c.paymentSteps"
+                  :key="`payment-${index}`"
+                  class="benefit-payment-step rounded-[20px] px-5 py-5 sm:px-6 sm:py-6"
+                >
+                  <div class="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-2 sm:gap-x-4 sm:gap-y-2.5">
+                    <span class="benefit-payment-step-badge col-start-1 row-start-1 inline-flex h-7 w-7 items-center justify-center rounded-full font-bold leading-none text-white sm:h-8 sm:w-8">
                       {{ index + 1 }}
                     </span>
-                    <span class="text-3.5 text-[var(--yunda-bark)]/84 leading-relaxed" style="font-family: var(--font-text)">
-                      {{ item }}
-                    </span>
-                  </li>
-                </ul>
-
-                <p class="mt-4 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.structureBody2 }}
-                </p>
-                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.structureBody3 }}
-                </p>
-                <p class="mt-4 border-t border-[var(--yunda-bark)]/70 pt-4 text-3.5 text-[var(--yunda-bark)]/78 leading-relaxed" style="font-family: var(--font-text)">
-                  {{ c.structureLinkPrefix }}
-                  <NuxtLink :to="localePath('/become-a-surrogate')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                    {{ c.structureLink1 }}
-                  </NuxtLink>
-                  <span class="mx-1">{{ c.structureLinkMiddle }}</span>
-                  <NuxtLink :to="localePath('/surrogacy-cost')" class="mx-1 text-[var(--primary-brown)] underline decoration-[var(--primary-brown)]/45 underline-offset-4 hover:opacity-80">
-                    {{ c.structureLink2 }}
-                  </NuxtLink>
-                  <span>{{ c.structureLinkSuffix }}</span>
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-full bg-[var(--yunda-petal)] pb-20 lg:pb-24">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/92 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
-              {{ c.packageTitle }}
-            </h2>
-
-            <article class="mt-7 overflow-hidden border border-[var(--yunda-bark)]/75 rounded-[16px] bg-[var(--yunda-petal)] shadow-[0_14px_28px_rgba(39,31,24,0.06)]">
-              <div class="grid lg:grid-cols-[1.22fr_0.78fr]">
-                <div>
-                  <div class="border-b border-[var(--yunda-bark)]/70 bg-[var(--yunda-petal)] px-5 py-4 lg:px-6">
-                    <h3 class="text-5 text-[var(--yunda-bark)] font-semibold leading-tight lg:text-6">
-                      {{ c.packageCardTitle }}
-                    </h3>
-                    <div class="mt-3 h-3.5 w-56 rounded-full bg-[var(--primary-brown)]/88" />
-                  </div>
-
-                  <div class="px-5 py-5 lg:px-6 lg:py-6">
-                    <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ c.packageH3Core }}
-                    </h3>
-                    <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                      {{ c.packageCoreBody1 }}
-                    </p>
-                    <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                      {{ c.packageCoreBody2 }}
-                    </p>
-
-                    <ul class="grid mt-4 gap-2">
-                      <li
-                        v-for="(item, index) in c.packageCoreBullets"
-                        :key="`package-core-${index}`"
-                        class="flex items-start gap-2 border border-[var(--yunda-bark)]/45 rounded-[10px] bg-white/80 px-3.5 py-2.5"
-                     >
-                        <Icon name="radix-icons:check-circled" class="mt-0.5 h-4 w-4 text-[var(--olive-green)]" />
-                        <span class="text-3.5 text-[var(--yunda-bark)]/86 leading-relaxed" style="font-family: var(--font-text)">
-                          {{ item }}
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="border-t border-[var(--yunda-bark)]/55 bg-[var(--yunda-petal)]/85 p-4 lg:border-l lg:border-t-0 lg:p-5">
-                  <img
-                    src="/images/gc/gc-pic/Surrogate-Compensation.png"
-                    :alt="c.packageTitle"
-                    class="h-full max-h-[310px] w-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                 >
-                </div>
-              </div>
-            </article>
-
-            <div class="grid mt-4 gap-3 lg:grid-cols-3">
-              <article
-                v-for="(item, index) in c.packageAmountRows"
-                :key="`package-amount-${index}`"
-                class="border border-[var(--primary-brown)]/20 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-3"
-             >
-                <p class="text-3 text-[var(--yunda-bark)]/75 font-medium" style="font-family: var(--font-text)">
-                  {{ item.label }}
-                </p>
-                <p class="mt-1 text-5 text-[var(--primary-brown)] font-semibold leading-none lg:text-6">
-                  {{ item.amount }}
-                </p>
-              </article>
-            </div>
-
-            <article class="mt-8 border border-[var(--primary-brown)]/16 rounded-[16px] bg-white/86 p-5 shadow-[0_10px_24px_rgba(39,31,24,0.05)] lg:p-6">
-              <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                {{ c.packageH3Benefits }}
-              </h3>
-              <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                {{ c.packageBenefitsIntro1 }}
-              </p>
-              <p class="mt-2 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                {{ c.packageBenefitsIntro2 }}
-              </p>
-
-              <div class="grid mt-5 gap-3 lg:grid-cols-2">
-                <article
-                  v-for="(item, index) in c.packageBenefitsItems"
-                  :key="`benefit-item-${index}`"
-                  class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/75 px-4 py-4"
-               >
-                  <div class="grid items-center gap-3 sm:grid-cols-[1fr_auto]">
-                    <div>
-                      <h4 class="text-4 text-[var(--yunda-bark)] font-semibold font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                        {{ item.title }}
+                    <img
+                      :src="PAGE_ASSETS.paymentSteps[index]"
+                      alt=""
+                      class="benefit-payment-icon col-start-1 row-start-2 h-11 w-11 object-contain sm:h-12 sm:w-12 lg:h-[3.25rem] lg:w-[3.25rem]"
+                      loading="lazy"
+                    >
+                    <div class="col-start-2 row-span-2 row-start-1 min-w-0 self-center sm:self-start sm:pt-1">
+                      <h4 class="benefit-type-card-title">
+                        {{ step.title }}
                       </h4>
-                      <p class="mt-2 text-3.25 text-[var(--yunda-bark)]/78 leading-relaxed" style="font-family: var(--font-text)">
-                        {{ item.timing }}
+                      <p class="benefit-type-card-body mt-2 text-[var(--yunda-bark)]/86">
+                        {{ step.text }}
                       </p>
-                    </div>
-                    <div class="justify-self-start sm:justify-self-end">
-                      <span class="inline-flex items-center justify-center rounded-full bg-[var(--primary-brown)] px-5 py-2 text-3 text-[var(--yunda-petal)] font-semibold leading-none lg:min-w-[180px]" style="font-family: var(--font-text)">
-                        {{ item.amount }}
-                      </span>
                     </div>
                   </div>
                 </article>
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-22 lg:pb-26">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/92 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
+      <!-- 第三屏：对照 docx image5 -->
+      <section id="compensation-package" class="benefit-section benefit-package-section w-full">
+        <div class="benefit-section-inner mx-auto max-w-[1400px]">
+          <div class="benefit-package-block text-center">
+            <h2 class="benefit-section-title">
+              {{ c.packageTitle }}
+            </h2>
+            <p class="benefit-type-intro mx-auto mt-4 max-w-3xl lg:mt-5">
+              {{ c.packageIntro }}
+            </p>
+
+            <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-12 lg:gap-5">
+              <article
+                v-for="(item, index) in c.packageBenefits"
+                :key="`benefit-${index}`"
+                class="benefit-package-card flex h-full flex-col items-center rounded-[20px] px-5 py-7 text-center sm:px-6 sm:py-8 lg:col-span-3"
+                :class="index === 4 ? 'lg:col-start-2' : ''"
+              >
+                <img
+                  :src="PAGE_ASSETS.benefits[index]"
+                  alt=""
+                  class="benefit-package-icon h-[3.75rem] w-[3.75rem] object-contain lg:h-[4.5rem] lg:w-[4.5rem]"
+                  loading="lazy"
+                >
+                <h3 class="benefit-type-card-title mt-5">
+                  {{ item.title }}
+                </h3>
+                <p class="benefit-type-card-body mt-2 text-[var(--yunda-bark)]/72">
+                  {{ item.subtitle }}
+                </p>
+                <p class="benefit-type-amount mt-3 text-[26px] lg:text-[30px]">
+                  {{ item.amount }}
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第四屏：对照 docx image6 -->
+      <section id="payment-timeline" class="benefit-section benefit-timeline-section w-full">
+        <div class="benefit-section-inner mx-auto max-w-[1400px]">
+          <div class="benefit-timeline-panel overflow-hidden rounded-[24px] px-4 py-8 sm:px-6 sm:py-10 lg:rounded-[28px] lg:px-10 lg:py-12">
+            <!-- docx 第四屏无可见 H2，标题保留给 SEO / 读屏 -->
+            <h2 class="sr-only">
               {{ c.timelineTitle }}
             </h2>
 
-            <div class="grid mt-6 gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-              <article class="border border-[var(--primary-brown)]/18 rounded-[14px] bg-[var(--yunda-petal)]/78 px-5 py-5">
-                <h3 class="text-4.8 text-[var(--yunda-bark)] font-semibold font-bold leading-tight lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ c.timelineH3Start }}
-                </h3>
-                <p class="mt-3 text-3.5 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                  {{ c.timelineStartBody1 }}
-                </p>
-                <div class="mt-4 inline-flex items-center rounded-full bg-[var(--primary-brown)]/12 px-3.5 py-1.5 text-3 text-[var(--primary-brown)] font-semibold" style="font-family: var(--font-text)">
-                  {{ c.timelineFlowLabel }}
-                </div>
-              </article>
+            <div class="benefit-timeline-track relative lg:mt-2">
+              <div class="benefit-timeline-rail hidden lg:block" aria-hidden="true">
+                <div class="benefit-timeline-line" />
+              </div>
 
-              <article class="border border-[var(--yunda-bark)]/70 rounded-[14px] bg-[var(--yunda-petal)]/48 px-5 py-5">
-                <div class="h-full w-full flex items-center justify-center">
-                  <img
-                    src="/images/gc/gc-pic/payment-timeline-flow.svg"
-                    :alt="c.timelineFlowImgAlt"
-                    class="max-h-[260px] w-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                 >
-                </div>
-              </article>
-            </div>
-
-            <div class="grid mt-7 gap-3">
-              <article
-                v-for="(item, index) in c.timelineItems"
-                :key="`timeline-item-${index}`"
-                class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)]"
-             >
-                <div class="grid items-start gap-3 lg:grid-cols-[auto_1fr]">
-                  <div class="h-8 w-8 inline-flex items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
-                    {{ index + 1 }}
-                  </div>
-                  <div>
-                    <div class="grid gap-3 lg:grid-cols-[minmax(260px,0.42fr)_1fr] lg:items-center">
-                      <div>
-                        <h4 class="text-4 text-[var(--yunda-bark)] font-semibold font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                          {{ item.stage }}
-                        </h4>
-                        <p class="mt-2 text-3.2 text-[var(--yunda-bark)]/76 leading-relaxed lg:text-3.5" style="font-family: var(--font-text)">
-                          {{ item.note }}
-                        </p>
-                      </div>
-                      <div
-                        class="grid justify-items-center gap-1 border border-[var(--yunda-bark)]/35 rounded-[10px] bg-white/70 px-4 py-3 text-center"
-                        :class="hasCurrencyValue(item.payment) ? 'min-h-[96px] lg:min-h-[108px]' : 'min-h-[108px] lg:min-h-[120px]'"
-                     >
-                        <p
-                          v-for="(line, lineIndex) in splitPaymentLines(item.payment)"
-                          :key="`timeline-payment-${index}-${lineIndex}`"
-                          class="w-full text-[var(--primary-brown)] font-semibold leading-snug"
-                          :class="hasCurrencyValue(item.payment) ? 'text-4.2 lg:text-5.2' : 'text-3.8 lg:text-4.6'"
-                          
-                          v-html="highlightAmounts(line)"
-                        />
-                      </div>
+              <div class="benefit-timeline-steps grid grid-cols-1 gap-5 lg:grid-cols-7 lg:gap-3">
+                <article
+                  v-for="(item, index) in c.timelineItems"
+                  :key="`timeline-${index}`"
+                  class="benefit-timeline-step relative flex flex-col items-center text-center lg:items-center"
+                >
+                  <div class="benefit-timeline-node-wrap flex w-full items-center justify-center">
+                    <div
+                      class="benefit-timeline-node relative z-[2] flex items-center justify-center rounded-full"
+                      :class="index === 3 ? 'benefit-timeline-node--featured' : ''"
+                    >
+                      <img
+                        :src="PAGE_ASSETS.timeline[index]"
+                        alt=""
+                        class="benefit-timeline-icon object-contain"
+                        :class="index === 3 ? 'h-10 w-10 lg:h-12 lg:w-12' : 'h-8 w-8 lg:h-10 lg:w-10'"
+                        loading="lazy"
+                      >
                     </div>
                   </div>
-                </div>
+                  <h3 class="benefit-type-card-title benefit-type-card-title--compact mt-4 lg:mt-5">
+                    {{ item.title }}
+                  </h3>
+                  <div class="mt-2 grid w-full max-w-[220px] gap-1.5 px-1 lg:max-w-none">
+                    <p
+                      v-for="(line, lineIndex) in item.lines"
+                      :key="`timeline-line-${index}-${lineIndex}`"
+                      class="benefit-type-caption text-[var(--yunda-bark)]/88"
+                      v-html="highlightAmounts(line)"
+                    />
+                  </div>
+                  <span
+                    v-if="index < c.timelineItems.length - 1"
+                    class="benefit-timeline-mobile-connector mt-5 block h-8 w-px bg-[color-mix(in_srgb,var(--benefit-timeline-gold)_70%,transparent)] lg:hidden"
+                    aria-hidden="true"
+                  />
+                </article>
+              </div>
+            </div>
+
+            <div class="mt-9 flex justify-center lg:mt-11">
+              <NuxtLink
+                :to="localePath('/be-surrogate')"
+                class="benefit-timeline-cta yunda-type-button inline-flex min-h-[52px] items-center justify-center rounded-[8px] px-10 py-3.5 uppercase shadow-sm transition-opacity hover:opacity-95 lg:min-h-[56px] lg:px-14"
+              >
+                {{ c.timelineCta }}
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第五屏：对照 docx image7 -->
+      <section id="state-pay" class="benefit-section benefit-state-section w-full">
+        <div class="benefit-section-inner mx-auto max-w-[1400px]">
+          <div class="benefit-state-block text-center">
+            <h2 class="benefit-section-title">
+              {{ c.stateTitle }}
+            </h2>
+            <p class="benefit-type-intro mx-auto mt-4 max-w-3xl lg:mt-5">
+              {{ c.stateIntro }}
+            </p>
+
+            <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-5 lg:gap-5">
+              <article
+                v-for="(card, index) in c.stateCards"
+                :key="`state-${index}`"
+                class="benefit-state-card relative flex h-full flex-col items-center rounded-[20px] px-5 py-7 text-center sm:px-6 sm:py-8"
+              >
+                <span
+                  v-if="index === 1"
+                  class="benefit-state-badge absolute right-4 top-4 inline-flex h-7 w-7 items-center justify-center rounded-full"
+                  aria-hidden="true"
+                >
+                  <Icon name="radix-icons:star-filled" class="h-3.5 w-3.5 text-white" />
+                </span>
+                <img
+                  :src="PAGE_ASSETS.states[index]"
+                  alt=""
+                  class="benefit-state-icon h-16 w-16 object-contain lg:h-[4.5rem] lg:w-[4.5rem]"
+                  loading="lazy"
+                >
+                <h3 class="benefit-type-card-title mt-5">
+                  {{ card.title }}
+                </h3>
+                <p class="benefit-type-state-amount mt-3">
+                  {{ card.amount }}
+                </p>
+                <p class="benefit-type-card-body mt-3 text-[var(--yunda-bark)]/84">
+                  {{ card.text }}
+                </p>
               </article>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-[var(--yunda-petal)] pb-24 lg:pb-28">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 px-4 py-6 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-8 lg:py-8 sm:px-6">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
-              {{ c.statePayTitle }}
-            </h2>
-
-            <div class="mt-6 overflow-x-auto border border-[var(--yunda-bark)]/55 rounded-[12px]">
-              <table class="min-w-[980px] w-full border-collapse bg-[var(--yunda-petal)]/72">
-                <thead>
-                  <tr class="bg-[var(--yunda-petal)]/55">
-                    <th class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-left text-4.2 text-[var(--yunda-bark)] font-semibold lg:text-5">
-                      {{ c.statePayHeaders[0] }}
-                    </th>
-                    <th class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-left text-4.2 text-[var(--yunda-bark)] font-semibold lg:text-5">
-                      {{ c.statePayHeaders[1] }}
-                    </th>
-                    <th class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-left text-4.2 text-[var(--yunda-bark)] font-semibold lg:text-5">
-                      {{ c.statePayHeaders[2] }}
-                    </th>
-                    <th class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-left text-4.2 text-[var(--yunda-bark)] font-semibold lg:text-5">
-                      {{ c.statePayHeaders[3] }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(row, index) in c.statePayRows"
-                    :key="`state-pay-row-${index}`"
-                    class="align-top"
-                 >
-                    <td class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-4.2 text-[var(--yunda-bark)] font-semibold leading-relaxed lg:text-4.8">
-                      {{ row.state }}
-                    </td>
-                    <td class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-3.8 text-[var(--yunda-bark)]/88 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                      {{ row.level }}
-                    </td>
-                    <td class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-3.8 text-[var(--yunda-bark)]/86 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                      {{ row.why }}
-                    </td>
-                    <td class="border border-[var(--yunda-bark)]/45 px-3 py-3 text-3.8 text-[var(--yunda-bark)]/90 leading-relaxed lg:text-4.4" style="font-family: var(--font-text)">
-                      {{ row.attention }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-24 lg:pb-30">
-        <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">
-          <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[18px] bg-white/94 px-6 py-8 shadow-[0_16px_34px_rgba(39,31,24,0.06)] lg:px-10 lg:py-10">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[36px]">
+      <!-- 第六屏：对照 docx image8 -->
+      <section id="faq" class="benefit-section benefit-faq-section w-full">
+        <div class="benefit-section-inner mx-auto max-w-[1400px]">
+          <div class="benefit-faq-block text-center">
+            <h2 class="benefit-section-title benefit-section-title--faq mx-auto max-w-5xl">
               {{ c.faqTitle }}
             </h2>
 
-            <div class="grid mt-6 gap-3 lg:grid-cols-2">
+            <div class="mt-8 grid grid-cols-1 gap-3 text-left sm:grid-cols-2 lg:mt-10 lg:gap-4">
               <article
                 v-for="(item, index) in c.faqItems"
-                :key="`faq-item-${index}`"
-                class="border border-[var(--yunda-bark)]/45 rounded-[12px] bg-[var(--yunda-petal)]/78 px-4 py-4 shadow-[0_8px_18px_rgba(39,31,24,0.04)]"
-             >
-                <div class="flex items-start gap-3">
-                  <span class="mt-0.5 h-7 w-7 inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-bark)] text-3 text-[var(--yunda-petal)] font-semibold">
-                    {{ index + 1 }}
+                :key="`faq-${index}`"
+                class="benefit-faq-item rounded-[16px]"
+              >
+                <button
+                  type="button"
+                  class="benefit-faq-trigger flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-[1.125rem]"
+                  :aria-expanded="isFaqOpen(index)"
+                  @click="toggleFaq(index)"
+                >
+                  <h3 class="benefit-type-faq-question">
+                    {{ item.q }}
+                  </h3>
+                  <span class="benefit-faq-toggle shrink-0 leading-none" aria-hidden="true">
+                    {{ isFaqOpen(index) ? '−' : '+' }}
                   </span>
-                  <div>
-                    <h3 class="text-4 text-[var(--yunda-bark)] font-semibold font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                      {{ item.q }}
-                    </h3>
-                    <p class="mt-2 text-3.3 text-[var(--yunda-bark)]/82 leading-relaxed lg:text-3.8" style="font-family: var(--font-text)">
-                      {{ item.a }}
-                    </p>
-                  </div>
+                </button>
+                <div
+                  v-show="isFaqOpen(index)"
+                  class="benefit-faq-answer border-t border-[color-mix(in_srgb,var(--yunda-bark)_10%,transparent)] px-5 pb-5 pt-3 sm:px-6 sm:pb-6 sm:pt-4"
+                >
+                  <p class="benefit-type-faq-answer">
+                    {{ item.a }}
+                  </p>
                 </div>
               </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第七屏：对照 docx image10 -->
+      <section class="benefit-section benefit-cta-section benefit-section--last w-full">
+        <div class="benefit-section-inner mx-auto max-w-[1400px]">
+          <div class="benefit-cta overflow-hidden rounded-[24px] lg:rounded-[28px]">
+            <div class="grid lg:grid-cols-2 lg:items-stretch">
+              <div class="benefit-cta-copy flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14 xl:px-14">
+                <h2 class="benefit-section-title benefit-section-title--faq max-w-xl">
+                  {{ c.ctaTitle }}
+                </h2>
+                <p class="benefit-type-intro mt-4 max-w-lg lg:mt-5">
+                  {{ c.ctaBody }}
+                </p>
+                <NuxtLink
+                  :to="localePath('/be-surrogate')"
+                  class="benefit-cta-button yunda-type-button mt-8 inline-flex w-full min-h-[52px] items-center justify-center gap-2 rounded-[8px] px-8 py-3.5 shadow-sm transition-opacity hover:opacity-95 sm:w-fit lg:min-h-[56px]"
+                >
+                  <span>{{ c.ctaButton }}</span>
+                  <Icon name="radix-icons:arrow-right" class="h-4 w-4" />
+                </NuxtLink>
+              </div>
+
+              <div class="benefit-cta-visual relative min-h-[260px] overflow-hidden sm:min-h-[300px] lg:min-h-[360px]">
+                <img
+                  :src="PAGE_ASSETS.cta"
+                  :alt="c.ctaTitle"
+                  class="benefit-cta-photo-base absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <img
+                  :src="PAGE_ASSETS.cta"
+                  alt=""
+                  aria-hidden="true"
+                  class="benefit-cta-photo-blur pointer-events-none absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <div aria-hidden="true" class="benefit-cta-photo-fade pointer-events-none absolute inset-0" />
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
+
     <AppFooter />
   </div>
 </template>
 
 <style scoped>
-.timeline-amount {
+.benefit-page {
+  --benefit-px: 1.5rem;
+  --benefit-px-lg: 2.5rem;
+  --benefit-hero-pt: 1.5rem;
+  --benefit-hero-pt-lg: 2rem;
+  --benefit-hero-pb: 0;
+  --benefit-hero-pb-lg: 0;
+  --benefit-gap-after-hero: 2.5rem;
+  --benefit-gap-after-hero-lg: 3.5rem;
+  --benefit-gap: 2.5rem;
+  --benefit-gap-lg: 3.5rem;
+  --benefit-title-gap: 0;
+  --benefit-last-pb: 2.5rem;
+  --benefit-last-pb-lg: 3.5rem;
+  --benefit-cream: #f9f1e7;
+  --benefit-cream-soft: #fdf8f1;
+  --benefit-cream-card: #faf4ea;
+  --benefit-payment-badge: #b5ad96;
+  --benefit-timeline-gold: #c4a86c;
+  --benefit-timeline-cta: #a8946a;
+  --benefit-sage: #d4ddd6;
+  --benefit-sage-deep: #c8d3cb;
+  --benefit-panel: #e8ece9;
+  background: #fff;
+}
+
+.benefit-section-inner {
+  padding-left: var(--benefit-px);
+  padding-right: var(--benefit-px);
+}
+
+.benefit-hero {
+  background: #fff;
+}
+
+.benefit-section-spacing {
+  padding-top: var(--benefit-hero-pt);
+  padding-bottom: var(--benefit-hero-pb);
+}
+
+.benefit-section {
+  padding-top: var(--benefit-gap);
+}
+
+.benefit-section.benefit-section-after-hero {
+  padding-top: var(--benefit-gap-after-hero);
+}
+
+.benefit-section--last {
+  padding-bottom: var(--benefit-last-pb);
+}
+
+/* 排版对齐：PDF 专题落地页 Token（/surrogacy-process 同级）+ 全局字号 */
+.benefit-type-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.375rem;
+  line-height: 1.1;
   color: var(--yunda-bark);
+}
+
+.benefit-type-hero-lead {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--yunda-bark);
+}
+
+.benefit-section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.875rem;
+  line-height: 1.15;
+  color: var(--yunda-bark);
+}
+
+.benefit-section-title--long,
+.benefit-section-title--faq {
+  /* 语义修饰类：字号与 .benefit-section-title 相同 */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.benefit-type-intro {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--yunda-bark) 88%, transparent);
+}
+
+.benefit-type-card-title {
+  font-family: var(--font-text);
   font-weight: 700;
-  font-size: 1.08em;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-card-title--compact {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.benefit-type-card-body {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-subsection-title {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-caption {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-onpage-heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-amount {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--yunda-maple);
+}
+
+.benefit-type-faq-question {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--yunda-bark);
+}
+
+.benefit-type-faq-answer {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--yunda-bark) 86%, transparent);
+}
+
+.benefit-section-warm {
+  background: var(--benefit-cream-soft);
+}
+
+.benefit-overview-panel {
+  background: #fff;
+  padding-bottom: 2.5rem;
+}
+
+.benefit-payment-panel {
+  background: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.benefit-package-section {
+  background: #fff;
+}
+
+.benefit-timeline-section {
+  background: #fff;
+}
+
+.benefit-timeline-panel {
+  background: var(--benefit-sage);
+}
+
+.benefit-timeline-rail {
+  position: absolute;
+  top: 0;
+  left: 7.5%;
+  right: 7.5%;
+  z-index: 0;
+  height: var(--benefit-timeline-node-row);
+  pointer-events: none;
+}
+
+.benefit-timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+  background: color-mix(in srgb, var(--benefit-timeline-gold) 82%, #fff 18%);
+}
+
+.benefit-timeline-line::before {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--benefit-timeline-gold) 90%, #fff 10%) 2.5px, transparent 2.6px);
+  background-size: calc(100% / 6) 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.benefit-timeline-track {
+  --benefit-timeline-node-row: 5rem;
+}
+
+.benefit-timeline-node-wrap {
+  height: var(--benefit-timeline-node-row);
+}
+
+@media (max-width: 1023px) {
+  .benefit-timeline-node-wrap {
+    height: auto;
+    min-height: 4.75rem;
+  }
+
+  .benefit-timeline-node--featured {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+.benefit-timeline-steps {
+  position: relative;
+  z-index: 1;
+}
+
+.benefit-timeline-node {
+  width: 4.75rem;
+  height: 4.75rem;
+  background: var(--benefit-cream-card);
+  border: 1.5px solid color-mix(in srgb, var(--benefit-timeline-gold) 88%, #fff 12%);
+  box-shadow: none;
+}
+
+.benefit-timeline-node--featured {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.benefit-timeline-cta {
+  background: var(--benefit-timeline-cta);
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .benefit-timeline-track {
+    --benefit-timeline-node-row: 7.25rem;
+  }
+
+  .benefit-timeline-node {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .benefit-timeline-node--featured {
+    width: 7.25rem;
+    height: 7.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefit-overview-panel {
+    padding-bottom: 3.5rem;
+  }
+}
+
+.benefit-onpage {
+  background: var(--benefit-sage);
+  border: 1px solid color-mix(in srgb, var(--yunda-bark) 8%, transparent);
+}
+
+.benefit-onpage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.benefit-onpage-heading,
+.benefit-onpage-item {
+  border-bottom: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+}
+
+.benefit-onpage-item:last-child {
+  border-bottom: none;
+}
+
+.benefit-onpage-check {
+  background: var(--yunda-maple);
+}
+
+.benefit-hero-visual {
+  isolation: isolate;
+}
+
+.benefit-hero-arch {
+  border-radius: 999px 0 0 999px;
+  background: var(--benefit-sage);
+}
+
+.benefit-hero-photo {
+  min-height: 360px;
+  border-radius: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 100%);
+}
+
+.benefit-hero-pay-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 9.75rem;
+  min-height: 9.75rem;
+  padding: 1rem 0.75rem;
+  border-radius: 14px;
+  background: var(--benefit-sage);
+  border: none;
+  box-shadow: 0 6px 20px rgba(55, 40, 25, 0.1);
+  text-align: center;
+}
+
+.benefit-hero-pay-label {
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--yunda-bark);
+}
+
+.benefit-hero-pay-amount {
+  margin-top: 0.5rem;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.625rem;
+  line-height: 1;
+  color: var(--yunda-maple);
+}
+
+@media (min-width: 640px) {
+  .benefit-hero-pay-card {
+    width: 10.5rem;
+    min-height: 10.5rem;
+    padding: 1.125rem 0.875rem;
+    border-radius: 16px;
+  }
+
+  .benefit-hero-pay-label {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .benefit-hero-pay-amount {
+    margin-top: 0.625rem;
+    font-size: 1.875rem;
+  }
+}
+
+.benefit-hero-cta-primary {
+  background: var(--yunda-maple);
+  color: #fff;
+}
+
+.benefit-hero-cta-secondary {
+  border-color: var(--yunda-maple);
+  background: #fff;
+  color: var(--yunda-maple);
+}
+
+.benefit-overview-icon,
+.benefit-payment-icon,
+.benefit-package-icon,
+.benefit-timeline-icon {
+  display: block;
+  mix-blend-mode: darken;
+}
+
+.benefit-overview-card {
+  background: var(--benefit-cream-card);
+  border: 1px solid color-mix(in srgb, var(--benefit-timeline-gold) 28%, #ebe4d8);
+  box-shadow: none;
+}
+
+.benefit-payment-step {
+  background: var(--benefit-cream-card);
+  border: none;
+  box-shadow: none;
+}
+
+.benefit-payment-step-badge {
+  background: var(--benefit-payment-badge);
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+}
+
+.benefit-package-card {
+  background: var(--benefit-cream-card);
+  border: 1px solid color-mix(in srgb, var(--benefit-timeline-gold) 28%, #ebe4d8);
+  box-shadow: none;
+}
+
+.benefit-state-section {
+  background: #fff;
+}
+
+.benefit-faq-section {
+  background: #fff;
+}
+
+.benefit-faq-item {
+  background: var(--benefit-cream-card);
+  border: 1px solid color-mix(in srgb, var(--benefit-timeline-gold) 32%, #ebe4d8);
+  box-shadow: none;
+}
+
+.benefit-faq-trigger {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.benefit-faq-item {
+  overflow: hidden;
+}
+
+.benefit-faq-toggle {
+  width: 1.75rem;
+  font-family: var(--font-text);
+  font-size: 1.375rem;
+  font-weight: 300;
+  color: color-mix(in srgb, var(--yunda-bark) 72%, transparent);
+  text-align: center;
+}
+
+.benefit-state-card {
+  background: var(--benefit-cream-card);
+  border: none;
+  box-shadow: none;
+}
+
+.benefit-type-state-amount {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.625rem;
+  line-height: 1;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 1024px) {
+  .benefit-type-state-amount {
+    font-size: 1.875rem;
+  }
+}
+
+.benefit-state-badge {
+  background: var(--benefit-timeline-gold);
+}
+
+.benefit-state-icon {
+  display: block;
+  mix-blend-mode: darken;
+}
+
+.benefit-cta-section {
+  background: #fff;
+}
+
+.benefit-cta {
+  background: var(--benefit-cream-card);
+  border: none;
+  box-shadow: 0 10px 32px rgba(55, 40, 25, 0.07);
+}
+
+.benefit-cta-button {
+  background: var(--yunda-maple);
+  color: #fff;
+}
+
+.benefit-cta-photo-blur {
+  filter: blur(12px);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 0.88) 18%,
+    rgba(0, 0, 0, 0.45) 34%,
+    transparent 52%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    rgba(0, 0, 0, 0.88) 18%,
+    rgba(0, 0, 0, 0.45) 34%,
+    transparent 52%,
+    transparent 100%
+  );
+}
+
+.benefit-cta-photo-fade {
+  background: linear-gradient(
+    to right,
+    var(--benefit-cream-card) 0%,
+    color-mix(in srgb, var(--benefit-cream-card) 94%, transparent) 12%,
+    color-mix(in srgb, var(--benefit-cream-card) 55%, transparent) 22%,
+    color-mix(in srgb, var(--benefit-cream-card) 12%, transparent) 36%,
+    transparent 48%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 1023px) {
+  .benefit-cta-photo-blur {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 55%,
+      rgba(0, 0, 0, 0.75) 78%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 55%,
+      rgba(0, 0, 0, 0.75) 78%,
+      #000 100%
+    );
+  }
+
+  .benefit-cta-photo-fade {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--benefit-cream-card) 18%, transparent) 58%,
+      color-mix(in srgb, var(--benefit-cream-card) 72%, transparent) 78%,
+      var(--benefit-cream-card) 100%
+    );
+  }
+}
+
+:deep(.benefit-amount) {
+  color: var(--yunda-maple);
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .benefit-section-inner {
+    padding-left: var(--benefit-px-lg);
+    padding-right: var(--benefit-px-lg);
+  }
+
+  .benefit-section-spacing {
+    padding-top: var(--benefit-hero-pt-lg);
+    padding-bottom: var(--benefit-hero-pb-lg);
+  }
+
+  .benefit-section.benefit-section-after-hero {
+    padding-top: var(--benefit-gap-after-hero-lg);
+  }
+
+  .benefit-section {
+    padding-top: var(--benefit-gap-lg);
+  }
+
+  .benefit-section--last {
+    padding-bottom: var(--benefit-last-pb-lg);
+  }
+
+  .benefit-type-h1 {
+    font-size: 3.125rem;
+  }
+
+  .benefit-type-hero-lead {
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .benefit-section-title {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
+
+  .benefit-type-intro,
+  .benefit-type-card-body,
+  .benefit-type-faq-answer {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .benefit-type-card-title,
+  .benefit-type-subsection-title {
+    font-size: 1.5rem;
+  }
+
+  .benefit-type-card-title--compact {
+    font-size: 1.0625rem;
+  }
+
+  .benefit-type-caption {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .benefit-type-onpage-heading {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .benefit-type-faq-question {
+    font-size: 1.0625rem;
+  }
+
+  .benefit-payment-step-badge {
+    font-size: 0.875rem;
+  }
+
+  .benefit-onpage-grid {
+    grid-template-columns: minmax(190px, 0.95fr) repeat(4, minmax(0, 1fr));
+  }
+
+  .benefit-onpage-heading,
+  .benefit-onpage-item {
+    border-bottom: none;
+    border-right: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+  }
+
+  .benefit-onpage-item:last-child {
+    border-right: none;
+  }
+
+  .benefit-onpage-heading {
+    align-content: center;
+  }
+
+  .benefit-hero-photo {
+    min-height: 500px;
+  }
 }
 </style>
