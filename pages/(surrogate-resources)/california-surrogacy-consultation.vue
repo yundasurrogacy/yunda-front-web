@@ -4,25 +4,32 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 useScrollAnimation()
 
 const { locale } = useI18n()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en: string, zh: string) => (isZh.value ? zh : en)
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+const pageTitle = computed(() => tt(
+  'California Surrogacy Consultation | Yunda Surrogacy USA | Transparent Pricing',
+  '加州代孕咨询｜Yunda Surrogacy 美国代孕机构｜费用明细透明',
+))
+
+const pageDescription = computed(() => tt(
+  'California surrogacy consultation for Chinese families: surrogate matching, transparent fees, and timeline planning, with PBO parentage support. Submit the form to receive a pricing checklist.',
+  '面向华人家庭的加州代孕咨询：代母筛选匹配、费用明细与时间线透明；协同律师办理PBO亲权。提交表单获取报价清单。',
+))
 
 useHead(() => ({
-  title: tt(
-    'California Surrogacy Consultation | Yunda Surrogacy USA | Transparent Pricing',
-    '加州代孕咨询｜Yunda Surrogacy 美国代孕机构｜费用明细透明',
-  ),
+  title: pageTitle.value,
   meta: [
     {
       name: 'description',
-      content: tt(
-        'California surrogacy consultation for Chinese families: surrogate matching, transparent fees, and timeline planning, with PBO parentage support. Submit the form to receive a pricing checklist.',
-        '面向华人家庭的加州代孕咨询：代母筛选匹配、费用明细与时间线透明；协同律师办理PBO亲权。提交表单获取报价清单。',
-      ),
+      content: pageDescription.value,
     },
   ],
 }))
@@ -203,6 +210,57 @@ function toggleFaq(q: string) {
 function goToQualification() {
   navigateTo(qualificationUrl.value)
 }
+
+const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/california-surrogacy-consultation',
+  name: pageTitle.value,
+  description: pageDescription.value,
+  about: tt(
+    'California surrogacy consultation for Chinese-speaking and international intended parents',
+    '面向中文与国际准父母的加州代孕咨询',
+  ),
+  audience: [
+    tt('Chinese-speaking intended parents', '中文准父母'),
+    tt('International intended parents', '国际准父母'),
+    tt('Families comparing California surrogacy costs', '正在比较加州代孕费用的家庭'),
+  ],
+  service: {
+    name: tt('California Surrogacy Consultation', '加州代孕咨询'),
+    description: tt(
+      'Yunda provides consultation for surrogate screening and matching, transparent cost planning, process timeline guidance, legal coordination, escrow planning, insurance questions, and bilingual support.',
+      '孕达提供代母筛选与匹配、透明费用规划、流程时间线指导、法律协调、托管规划、保险问题和双语支持相关咨询。',
+    ),
+    serviceType: tt('California surrogacy consultation services', '加州代孕咨询服务'),
+    areaServed: ['California', 'United States', 'International intended parents'],
+  },
+  breadcrumbs: [
+    { name: tt('Home', '首页'), url: '/' },
+    { name: tt('Surrogate Resources', '代孕资源'), url: '/surrogate-requirements' },
+    { name: tt('California Surrogacy Consultation', '加州代孕咨询'), url: '/california-surrogacy-consultation' },
+  ],
+  faqs: faqItems.value.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: tt('California surrogacy consultation process', '加州代孕咨询流程'),
+    items: processSteps.value.map((step, index) => ({
+      position: index + 1,
+      name: step,
+      url: '/california-surrogacy-consultation',
+    })),
+  },
+  locale: locale.value,
+}))
+
+useHead(() => ({
+  script: coreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-california-surrogacy-consultation-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 </script>
 
 <template>

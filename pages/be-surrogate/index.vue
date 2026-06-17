@@ -25,27 +25,40 @@ import {
   fillFormFromDraft,
 } from '~/composables/useBeSurrogateForm'
 import { getStatesByCountry } from '~/data/countries-states'
+import { translations } from '~/pages/be-surrogate/_/translation'
+import { useBeSurrogateV2Storage } from '~/pages/be-surrogate/_/useBeSurrogateV2Storage'
 import { uploadFilesToQiniu } from '~/utils/qiniuDirectUpload'
-import { translations } from './_/translation'
-import { useBeSurrogateV2Storage } from './_/useBeSurrogateV2Storage'
+import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 // 页面内联多语言（与 privacy-policy 相同方式，无需插件，SSR 友好）
 const t = computed(() => translations[locale.value === 'zh' ? 'zh' : 'en'])
+const isZh = computed(() => locale.value === 'zh')
+function tt(en: string, zh: string) {
+  return isZh.value ? zh : en
+}
 const shouldNoindexStepUrl = computed(() => {
   const step = Number(route.query.step)
   return route.query.id != null || (!Number.isNaN(step) && step > 1)
 })
 useHead(() => ({
-  title: t.value.seoTitle,
+  title: tt(
+    'Apply to Be a Surrogate With Clear Pay, Protection, and Support | Yunda Surrogacy',
+    '在清晰补偿、保障与支持下申请成为代孕妈妈 | 孕达代孕',
+  ),
   meta: [
     {
       name: 'description',
-      content: t.value.seoDescription,
+      content: tt(
+        'Start your private surrogate application with Yunda. Learn about compensation, eligibility, legal protection, insurance review, escrow, screening, and matching.',
+        '通过孕达开始私密代孕妈妈申请，了解补偿、资格、法律保护、保险审查、托管、筛查与匹配流程。',
+      ),
     },
     ...(shouldNoindexStepUrl.value
       ? [{
@@ -101,6 +114,115 @@ const beSurrogateGallerySlides = [
   { src: '/images/be-surrogate/gallery-7.jpg', alt: 'Yunda surrogate' },
   { src: '/images/be-surrogate/gallery-8.jpg', alt: 'Yunda surrogate' },
 ]
+
+const v2HeroTrustChips = computed(() => [
+  tt('$61,000+ compensation package', '$61,000+ 总补偿方案'),
+  tt('Independent escrow payment protection', '独立托管保障付款'),
+  tt('Legal and insurance coordination', '法律与保险协调'),
+  tt('Private review by the Yunda team', '孕达团队私密审核'),
+])
+
+const v2ProtectionPillars = computed(() => [
+  {
+    title: tt('Legal Protection', '法律保护'),
+    body: tt('You are guided through independent legal coordination before moving forward.', '在进入关键步骤前，我们会协助安排独立法律协调。'),
+  },
+  {
+    title: tt('Insurance Review', '保险审查'),
+    body: tt('Your coverage is reviewed so medical responsibilities are understood clearly.', '我们会审查保险覆盖范围，让医疗责任更清晰。'),
+  },
+  {
+    title: tt('Escrow Payments', '托管付款'),
+    body: tt('Compensation is handled through escrow for clearer payment protection.', '补偿通过托管账户处理，付款保障更明确。'),
+  },
+  {
+    title: tt('Private Team Review', '私密团队审核'),
+    body: tt('Your application is reviewed confidentially by the Yunda team.', '你的申请由孕达团队私密审核。'),
+  },
+])
+
+const v2AfterApplySteps = computed(() => [
+  tt('We privately review your eligibility and application details.', '我们会私密审核你的资格和申请信息。'),
+  tt('A coordinator contacts you to answer questions and confirm next steps.', '协调员会联系你解答问题并确认下一步。'),
+  tt('If there is a fit, we guide you through records, screening, legal, insurance, and matching.', '如果初步符合，我们会协助你完成病历、筛查、法律、保险与匹配流程。'),
+  tt('You decide whether to continue before any commitment is made.', '在做出任何承诺前，你可以决定是否继续。'),
+])
+
+const v2FaqItems = computed(() => [
+  {
+    q: tt('How much can I earn as a surrogate with Yunda?', '通过孕达成为代孕妈妈可以获得多少补偿？'),
+    a: tt('Qualified surrogates may receive a $61,000+ total compensation package, including base compensation and support benefits. Exact amounts depend on eligibility, agreement terms, and approved allowances.', '符合条件的代孕妈妈可获得 $61,000+ 总补偿方案，包括基础补偿和支持福利。具体金额取决于资格、协议条款和经批准的补偿项目。'),
+  },
+  {
+    q: tt('Is submitting the application a commitment?', '提交申请是否代表已经承诺？'),
+    a: tt('No. Submitting the application only starts a private eligibility review. You can ask questions and decide whether to continue before any agreement is signed.', '不是。提交申请只是开始私密资格评估。在签署任何协议前，你都可以提问并决定是否继续。'),
+  },
+  {
+    q: tt('Why do you ask detailed health and pregnancy questions?', '为什么需要填写详细健康和怀孕问题？'),
+    a: tt('These details help us understand whether surrogacy may be medically appropriate and what records or screening may be needed next.', '这些信息帮助我们判断代孕是否可能适合你，以及后续可能需要哪些病历或筛查。'),
+  },
+  {
+    q: tt('Who sees my application information?', '谁会看到我的申请信息？'),
+    a: tt('Your information is reviewed privately by the Yunda team for eligibility and next-step coordination. It is not sold or shared publicly.', '你的信息由孕达团队用于资格评估和后续协调，不会出售或公开分享。'),
+  },
+  {
+    q: tt('What happens after I apply?', '提交后会发生什么？'),
+    a: tt('The team reviews your application, contacts you for follow-up, and explains compensation, screening, legal coordination, insurance review, escrow, and matching if you may qualify.', '团队会审核你的申请，联系你进行后续沟通，并在你可能符合条件时说明补偿、筛查、法律协调、保险审查、托管和匹配流程。'),
+  },
+])
+
+const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
+  baseUrl: siteUrl.value || undefined,
+  path: '/be-surrogate',
+  name: tt('Apply to Be a Surrogate', '申请成为代孕妈妈'),
+  description: tt(
+    'Private surrogate application page for compensation, eligibility, legal protection, insurance review, escrow, screening, and matching support.',
+    '私密代孕妈妈申请页，说明补偿、资格、法律保护、保险审查、托管、筛查和匹配支持。',
+  ),
+  about: tt('Surrogate application, compensation, eligibility, and support', '代孕妈妈申请、补偿、资格与支持'),
+  audience: [
+    tt('Surrogate candidates', '代孕妈妈候选人'),
+    tt('Women considering surrogacy', '正在考虑代孕的女性'),
+  ],
+  service: {
+    name: tt('Surrogate Mother Program', '代孕妈妈项目'),
+    description: tt(
+      'Yunda supports qualified surrogate candidates with private eligibility review, compensation education, medical screening coordination, legal coordination, insurance review, escrow payment protection, and matching.',
+      '孕达为符合条件的代孕妈妈候选人提供私密资格评估、补偿说明、医学筛查协调、法律协调、保险审查、托管付款保障和匹配支持。',
+    ),
+    serviceType: tt('Surrogate application and support services', '代孕妈妈申请与支持服务'),
+    areaServed: ['California', 'United States'],
+    audience: [
+      tt('Surrogate candidates', '代孕妈妈候选人'),
+      tt('Women considering surrogacy', '正在考虑代孕的女性'),
+    ],
+  },
+  breadcrumbs: [
+    { name: tt('Home', '首页'), url: '/' },
+    { name: tt('Apply to Be a Surrogate', '申请成为代孕妈妈'), url: '/be-surrogate' },
+  ],
+  faqs: v2FaqItems.value.map(item => ({
+    question: item.q,
+    answer: item.a,
+  })),
+  itemList: {
+    name: tt('Surrogate application next steps', '代孕妈妈申请后续步骤'),
+    items: v2AfterApplySteps.value.map((step, index) => ({
+      position: index + 1,
+      name: step,
+      url: '/be-surrogate',
+    })),
+  },
+  locale: locale.value,
+}))
+
+useHead(() => ({
+  script: surrogateCoreServicePageSchemas.value.map((schema, index) => ({
+    key: `schema-be-surrogate-core-${index}`,
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  })),
+}))
 
 /** 防抖保存到 localStorage，表单或步骤变化时自动保存 */
 let saveTimeout: ReturnType<typeof setTimeout> | null = null
@@ -711,20 +833,29 @@ function scrollToPageTop() {
                 id="be-surrogate-hero"
                 class="font-display text-[32px] text-white font-semibold italic leading-[1.1] sm:text-[40px] lg:text-[50px] xl:text-[3.2rem] xl:leading-tight"
               >
-                {{ t.landing.heroTitle }}
+                {{ tt('Apply to Be a Surrogate With Clear Pay, Protection, and Support', '在清晰补偿、保障与支持下申请成为代孕妈妈') }}
               </h1>
               <p
                 class="text-4 text-white/95 leading-snug lg:text-[1.05rem] sm:text-4.5 lg:leading-relaxed"
                 style="font-family: var(--font-text)"
               >
-                {{ t.landing.heroSubtitle }}
+                {{ tt('Start your private surrogate application with Yunda. We review your eligibility, answer your questions, and guide you through compensation, screening, legal coordination, insurance review, escrow, and matching.', '通过孕达开始你的私密代孕妈妈申请。我们会评估你的资格，解答你的问题，并协助你了解补偿、筛查、法律协调、保险审查、托管与匹配流程。') }}
               </p>
               <p
                 class="max-w-full w-fit inline-flex self-center text-center text-4.5 text-[var(--yunda-maple)] font-bold leading-snug lg:text-5.5 sm:text-5"
                 style="font-family: var(--font-text)"
               >
-                {{ t.landing.heroCompensation }}
+                {{ tt('$61,000+ total compensation package for qualified surrogates', '符合条件的代孕妈妈可获得 $61,000+ 总补偿方案') }}
               </p>
+              <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
+                <span
+                  v-for="chip in v2HeroTrustChips"
+                  :key="chip"
+                  class="rounded-full border border-white/35 bg-white/12 px-3 py-2 text-center text-3.5 text-white font-medium leading-snug backdrop-blur-sm"
+                >
+                  {{ chip }}
+                </span>
+              </div>
             </div>
 
             <div
@@ -749,11 +880,26 @@ function scrollToPageTop() {
                 </div>
               </div>
 
+              <div v-if="currentStep === 1" class="mb-3 rounded-3 bg-[rgba(234,232,208,0.32)] p-3 text-[var(--yunda-bark)]">
+                <p class="text-4 font-bold leading-snug">
+                  {{ tt('Start with a private eligibility review', '从私密资格评估开始') }}
+                </p>
+                <p class="mt-1 text-3.5 leading-relaxed">
+                  {{ tt('This application helps us understand your health history, pregnancy experience, timeline, and preferences. There is no obligation to move forward.', '这份申请会帮助我们了解你的健康情况、怀孕经历、时间安排和偏好。提交申请不代表你必须继续。') }}
+                </p>
+                <p class="mt-2 text-3 text-[var(--yunda-bark)]/75">
+                  {{ tt('Your progress is saved automatically. You can return later if you need more time.', '进度会自动保存。如果需要更多时间，你可以稍后回来继续填写。') }}
+                </p>
+              </div>
+
               <!-- Step 1: 一、基本信息（首屏紧凑排版，便于落在背景图区域内） -->
               <div v-show="currentStep === 1" ref="step1Ref" class="scroll-mt-10 space-y-2 lg:space-y-2 sm:space-y-2">
                 <h2 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold sm:text-[22px] lg:text-[24px] lg:leading-snug" style="font-family: var(--font-text)">
                   {{ t.step1Title }}
                 </h2>
+                <p class="text-3.5 text-[var(--yunda-bark)]/80 leading-relaxed">
+                  {{ tt('First, tell us how to reach you and confirm a few basics. We use this information only to review your fit and guide the next step.', '首先，请告诉我们如何联系你，并确认几个基础信息。我们只会用这些信息评估你是否适合并指导下一步。') }}
+                </p>
                 <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 sm:gap-2 lg:gap-x-10 lg:gap-y-2">
                   <div data-field="full_name">
                     <FormInput v-model="form.general_info.full_name" compact :label="t.gcIntake.fullName" required />
@@ -1437,6 +1583,9 @@ function scrollToPageTop() {
                   {{ t.step13Title }}
                 </h2>
                 <div data-field="uploadPhotos" class="space-y-4">
+                  <p class="rounded-3 bg-[rgba(234,232,208,0.28)] p-4 text-4 text-[var(--yunda-bark)] leading-relaxed">
+                    {{ tt('Photos help our team prepare a complete profile if you move forward after eligibility review. They are reviewed privately by Yunda and are not sold or shared publicly.', '照片会帮助我们在你通过资格评估并决定继续后准备完整资料。照片由孕达团队私密审核，不会出售或公开分享。') }}
+                  </p>
                   <p class="font-medium">
                     {{ t.form.uploadPhotos }} <span class="text-red-500">*</span> ({{ t.form.uploadPhotosMinTip }})
                   </p>
@@ -1463,6 +1612,9 @@ function scrollToPageTop() {
                     <input ref="fileInputRef" type="file" multiple accept="image/*" class="hidden" @change="onPhotoChange">
                   </div>
                 </div>
+                <p class="text-4 text-[var(--yunda-bark)] leading-relaxed">
+                  {{ tt('Before submitting, please confirm that we may review your information and contact you about your application. This is a request for review, not a contract or commitment.', '提交前，请确认我们可以审核你的信息并就申请与你联系。这是资格评估申请，不是合同或承诺。') }}
+                </p>
                 <div data-field="finalConsent" class="rounded-3 bg-[rgba(234,232,208,0.2)] p-6">
                   <FormCheckbox
                     v-model="form.finalConsent"
@@ -1524,39 +1676,169 @@ function scrollToPageTop() {
 
     <AssociationSection variant="plain" class="!pb-0" />
 
-    <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-0 md:px-16 md:pb-16 md:pt-0">
-      <div class="mx-auto max-w-220 text-center">
-        <p
-          class="text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5"
-          style="font-family: var(--font-text)"
-        >
-          {{ t.landing.trustBlurb }}
-        </p>
-        <button
-          type="button"
-          class="yunda-type-button shadow-inner-white-soft mt-10 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
-          @click="scrollToPageTop"
-        >
-          {{ t.landing.ctaBecomeSurrogate }}
-        </button>
+    <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-8 md:px-16 md:pb-16 md:pt-12">
+      <div class="mx-auto max-w-320">
+        <div class="mx-auto max-w-230 text-center">
+          <p class="text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+            {{ tt('Becoming a surrogate is a serious decision. Yunda gives you clear compensation information, private eligibility review, and coordinated support before you make any commitment.', '成为代孕妈妈是一个重要决定。孕达会在你做出任何承诺前，为你提供清晰补偿信息、私密资格评估和全流程协调支持。') }}
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h2 class="mx-auto mb-12 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-14 md:text-[36px] md:whitespace-nowrap">
+            {{ t.landing.eligibilitySectionTitle }}
+          </h2>
+          <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+            <div class="w-full flex flex-col items-center text-center md:min-h-[25rem] md:max-w-lg md:justify-self-end">
+              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
+                {{ t.landing.ifYouAreHeading }}
+              </h3>
+              <ul
+                class="mt-5 inline-block list-disc pl-6 text-left text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
+                style="font-family: var(--font-text)"
+              >
+                <li v-for="(item, i) in t.landing.ifYouAreItems" :key="`if-${i}`">
+                  {{ item }}
+                </li>
+              </ul>
+              <NuxtLink
+                :to="localePath('/eligibility')"
+                class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition md:mt-auto hover:opacity-90"
+              >
+                {{ t.landing.learnMore }}
+              </NuxtLink>
+            </div>
+            <div class="w-full flex flex-col items-center text-center md:min-h-[25rem] md:max-w-lg md:justify-self-start">
+              <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
+                {{ t.landing.youWillReceiveHeading }}
+              </h3>
+              <ul
+                class="mt-5 inline-block list-disc pl-6 text-left text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
+                style="font-family: var(--font-text)"
+              >
+                <li v-for="(item, i) in t.landing.youWillReceiveItems" :key="`recv-${i}`">
+                  {{ item }}
+                </li>
+              </ul>
+              <NuxtLink
+                :to="localePath('/benefit')"
+                class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition md:mt-auto hover:opacity-90"
+              >
+                {{ t.landing.learnMore }}
+              </NuxtLink>
+            </div>
+          </div>
+
+          <h3 class="mt-16 text-center font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:mt-20 md:text-[24px]" style="font-family: var(--font-text)">
+            {{ t.landing.processTitle }}
+          </h3>
+          <div class="mt-8 flex justify-center">
+            <img
+              src="/images/be-surrogate/surrogacy-process-flowchart.jpg"
+              :alt="t.landing.processFlowchartAlt"
+              class="max-w-260 w-full object-contain lg:max-w-300 md:max-w-280"
+              width="1200"
+              height="700"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <ol class="sr-only" :aria-label="t.landing.processTitle">
+            <li v-for="(line, i) in t.landing.processSteps" :key="i">
+              {{ line }}
+            </li>
+          </ol>
+          <div class="mt-10 flex justify-center">
+            <button
+              type="button"
+              class="yunda-type-button shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
+              @click="scrollToPageTop"
+            >
+              {{ t.landing.processCta }}
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <p class="text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.16em]">
+              {{ tt('Protection and support', '保障与支持') }}
+            </p>
+            <h2 class="mt-3 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+              {{ tt('You should understand your protection before saying yes', '在同意前，你应该清楚自己的保障') }}
+            </h2>
+            <p class="mt-5 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+              {{ tt('Yunda coordinates the practical details that matter most to surrogate candidates: legal support, insurance review, escrow, screening, and communication.', '孕达会协调代孕妈妈最关心的实际事项：法律支持、保险审查、托管、筛查和沟通。') }}
+            </p>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div
+              v-for="pillar in v2ProtectionPillars"
+              :key="pillar.title"
+              class="border border-[var(--yunda-bark)]/12 rounded-3 bg-white/55 p-5"
+            >
+              <p class="text-4.5 text-[var(--yunda-bark)] font-bold">
+                {{ pillar.title }}
+              </p>
+              <p class="mt-3 text-4 text-[var(--yunda-bark)]/82 leading-relaxed">
+                {{ pillar.body }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-14 rounded-4 bg-[var(--yunda-bark)] px-5 py-8 text-[var(--yunda-petal)] md:px-10 md:py-10">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <p class="text-3.5 text-[var(--yunda-cream)]/75 font-bold uppercase tracking-[0.16em]">
+                {{ tt('After you apply', '提交申请后') }}
+              </p>
+              <h2 class="mt-3 font-display text-[30px] font-medium leading-[1.15] md:text-[38px]">
+                {{ tt('What happens after you submit the application', '提交申请后会发生什么') }}
+              </h2>
+            </div>
+            <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <li
+                v-for="(step, index) in v2AfterApplySteps"
+                :key="step"
+                class="rounded-3 bg-white/10 p-5"
+              >
+                <span class="text-3.5 text-[var(--yunda-cream)]/75 font-bold">0{{ index + 1 }}</span>
+                <p class="mt-3 text-4.5 leading-relaxed">
+                  {{ step }}
+                </p>
+              </li>
+            </ol>
+          </div>
+          <button
+            type="button"
+            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-petal)] px-8 py-3.5 text-4 text-[var(--yunda-bark)] tracking-[0.02em] uppercase transition hover:opacity-90"
+            @click="scrollToPageTop"
+          >
+            {{ tt('Start private review', '开始私密评估') }}
+          </button>
+        </div>
       </div>
     </section>
 
     <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-320">
         <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px]">
-          {{ t.landing.shortsTitle }}
+          {{ tt('Understand the details before you move forward', '继续前先了解关键细节') }}
         </h2>
         <p
           class="mx-auto mt-5 max-w-200 text-center text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5"
           style="font-family: var(--font-text)"
         >
-          {{ t.landing.shortsIntro }}
+          {{ tt('These short videos explain the practical topics most surrogate candidates ask about first: insurance, legal coordination, and escrow payment protection.', '这些短视频会说明代孕妈妈候选人最先关心的实际问题：保险、法律协调和托管付款保障。') }}
         </p>
         <div class="grid grid-cols-1 mt-12 gap-12 md:grid-cols-3 md:gap-8">
           <div class="flex flex-col items-center md:px-4">
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortInsurance }}
+            </p>
+            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+              {{ tt('What coverage review means and why it matters before medical steps begin.', '说明保险审查的含义，以及为什么它应在医疗步骤前明确。') }}
             </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
@@ -1573,6 +1855,9 @@ function scrollToPageTop() {
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortLegal }}
             </p>
+            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+              {{ tt('How legal coordination helps clarify rights, responsibilities, and decisions.', '说明法律协调如何帮助明确权利、责任和决策边界。') }}
+            </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
                 class="h-full w-full"
@@ -1587,6 +1872,9 @@ function scrollToPageTop() {
           <div class="flex flex-col items-center md:px-4">
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortEscrow }}
+            </p>
+            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+              {{ tt('How escrow helps protect compensation handling during the journey.', '说明托管账户如何在流程中保障补偿付款安排。') }}
             </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
               <iframe
@@ -1604,77 +1892,48 @@ function scrollToPageTop() {
     </section>
 
     <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
-      <div class="mx-auto max-w-280 lg:max-w-320">
-        <h2 class="mx-auto mb-12 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-14 md:text-[36px] md:whitespace-nowrap">
-          {{ t.landing.eligibilitySectionTitle }}
-        </h2>
-        <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
-          <div class="w-full md:max-w-lg md:justify-self-end">
-            <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
-              {{ t.landing.ifYouAreHeading }}
-            </h3>
-            <ul
-              class="mt-5 list-disc pl-6 text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
-              style="font-family: var(--font-text)"
-            >
-              <li v-for="(item, i) in t.landing.ifYouAreItems" :key="`if-${i}`">
-                {{ item }}
-              </li>
-            </ul>
-            <NuxtLink
-              :to="localePath('/eligibility')"
-              class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition hover:opacity-90"
-            >
-              {{ t.landing.learnMore }}
-            </NuxtLink>
-          </div>
-          <div class="w-full md:max-w-lg md:justify-self-start">
-            <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
-              {{ t.landing.youWillReceiveHeading }}
-            </h3>
-            <ul
-              class="mt-5 list-disc pl-6 text-4.5 text-[var(--yunda-bark)] space-y-3 md:text-5"
-              style="font-family: var(--font-text)"
-            >
-              <li v-for="(item, i) in t.landing.youWillReceiveItems" :key="`recv-${i}`">
-                {{ item }}
-              </li>
-            </ul>
-            <NuxtLink
-              :to="localePath('/benefit')"
-              class="mt-6 inline-flex rounded-2 bg-[var(--yunda-bark)] px-6 py-2.5 text-4 text-[var(--yunda-petal)] font-semibold transition hover:opacity-90"
-            >
-              {{ t.landing.learnMore }}
-            </NuxtLink>
-          </div>
+      <div class="mx-auto max-w-260">
+        <div class="mx-auto max-w-220 text-center">
+          <p class="text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.16em]">
+            {{ tt('Questions before applying', '申请前常见问题') }}
+          </p>
+          <h2 class="mt-3 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+            {{ tt('Get clear answers before sharing your application', '填写申请前，先获得清晰答案') }}
+          </h2>
+          <p class="mt-5 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+            {{ tt('The application starts a private review. These answers help clarify pay, privacy, commitment, and what happens next.', '提交申请会开启私密评估。以下内容帮助你先了解补偿、隐私、承诺和后续流程。') }}
+          </p>
         </div>
 
-        <h3 class="mt-16 text-center font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:mt-20 md:text-[24px]" style="font-family: var(--font-text)">
-          {{ t.landing.processTitle }}
-        </h3>
-        <div class="mt-8 flex justify-center">
-          <img
-            src="/images/be-surrogate/surrogacy-process-flowchart.jpg"
-            :alt="t.landing.processFlowchartAlt"
-            class="max-w-260 w-full object-contain lg:max-w-300 md:max-w-280"
-            width="1200"
-            height="700"
-            loading="lazy"
-            decoding="async"
+        <div class="mt-10 divide-y divide-[var(--yunda-bark)]/12 border-y border-[var(--yunda-bark)]/12">
+          <details
+            v-for="item in v2FaqItems"
+            :key="item.q"
+            class="group py-5"
           >
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-4.5 text-[var(--yunda-bark)] font-bold leading-snug md:text-5">
+              <span>{{ item.q }}</span>
+              <span class="mt-1 text-6 leading-none transition group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 max-w-220 text-4 text-[var(--yunda-bark)]/82 leading-relaxed md:text-4.5">
+              {{ item.a }}
+            </p>
+          </details>
         </div>
-        <ol class="sr-only" :aria-label="t.landing.processTitle">
-          <li v-for="(line, i) in t.landing.processSteps" :key="i">
-            {{ line }}
-          </li>
-        </ol>
-        <div class="mt-10 flex justify-center">
+
+        <div class="mt-12 rounded-4 bg-white/60 px-5 py-8 text-center shadow-[0_14px_34px_rgba(71,48,33,0.08)] md:px-10 md:py-10">
+          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+            {{ tt('Ready for a private eligibility review?', '准备开始私密资格评估了吗？') }}
+          </h2>
+          <p class="mx-auto mt-4 max-w-190 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+            {{ tt('Share your application with Yunda and our team will help you understand whether this journey may be a fit.', '向孕达提交申请，我们的团队会帮助你了解这段旅程是否可能适合你。') }}
+          </p>
           <button
             type="button"
-            class="yunda-type-button shadow-inner-white-soft inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
+            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
             @click="scrollToPageTop"
           >
-            {{ t.landing.processCta }}
+            {{ tt('Start my application', '开始我的申请') }}
           </button>
         </div>
       </div>
