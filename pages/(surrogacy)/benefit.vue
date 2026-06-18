@@ -7,6 +7,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明：`修改/2026-06-16/benefit页面改版/benefit页面优化.docx`
+ * 后续调整：`修改/2026-06-18/yunda benefit页面修改.docx`
  * 静态素材：`public/images/benefit/redesign/`
  */
 const PAGE_ASSETS = {
@@ -18,7 +19,6 @@ const PAGE_ASSETS = {
     '/images/benefit/redesign/hero-feature-03.jpg',
   ],
   overview: [
-    '/images/benefit/redesign/overview-01.png',
     '/images/benefit/redesign/overview-02.png',
     '/images/benefit/redesign/overview-03.png',
     '/images/benefit/redesign/overview-04.png',
@@ -29,6 +29,8 @@ const PAGE_ASSETS = {
     '/images/benefit/redesign/payment-step-03.png',
   ],
   benefits: [
+    '/images/benefit/redesign/overview-02.png',
+    '/images/benefit/redesign/overview-03.png',
     '/images/benefit/redesign/benefit-01.png',
     '/images/benefit/redesign/benefit-02.png',
     '/images/benefit/redesign/benefit-03.png',
@@ -85,10 +87,9 @@ const translations = {
       'When and how payments are made',
       'State-by-state pay comparisons and key FAQs',
     ],
-    overviewTitle: 'Compensation Overview',
+    overviewTitle: 'Surrogate Pay Overview: Surrogate Mother Pay Rate',
     overviewIntro: 'Surrogates are generously compensated for the time, commitment, and incredible gift they provide.',
     overviewCards: [
-      { title: 'Average Surrogate Pay', amount: '$61,000+', text: 'The average total compensation surrogates earn across the U.S.' },
       { title: 'Personalized Base Compensation', amount: '$61,000 – $70,000+', text: 'Base pay varies based on your experience, location, and the program you choose.' },
       { title: 'Monthly Allowance', amount: '$300+ /month', text: 'Non-reimbursable allowance for the duration of your pregnancy.' },
       { title: 'Estimated Benefits Total', amount: '$11,000', text: 'Total of stipends, allowances, and reimbursements beyond base compensation.' },
@@ -99,9 +100,11 @@ const translations = {
       { title: 'Reimbursements & Allowances', text: 'You’ll receive additional payments for expenses and monthly support to help make your journey easier.' },
       { title: 'Escrow Payment Management', text: 'All payments are securely managed through an escrow account for protection and peace of mind.' },
     ],
-    packageTitle: 'Surrogate Compensation Package',
+    packageTitle: 'Surrogate Compensation Package: Base Pay, Monthly Allowance & Common Benefits',
     packageIntro: 'Your compensation package includes the following benefits and support.',
     packageBenefits: [
+      { title: 'Personalized Base Compensation', subtitle: 'Base Pay', amount: '$61,000 – $70,000+' },
+      { title: 'Monthly Allowance', subtitle: 'Throughout Pregnancy', amount: '$300+ /month' },
       { title: 'Embryo Transfer Stipend', subtitle: 'Per Transfer', amount: '$2,000' },
       { title: 'Signing Bonus', subtitle: 'Upon Contract Signing', amount: '$1,000' },
       { title: 'Injection Medication Stipend', subtitle: 'Per Cycle', amount: '$1,200' },
@@ -171,10 +174,9 @@ const translations = {
       '付款何时、如何发放',
       '各州补偿对比与常见问题',
     ],
-    overviewTitle: '补偿总览',
+    overviewTitle: '代孕报酬总览：代孕妈妈薪酬标准',
     overviewIntro: '代孕妈妈因其投入的时间、承诺与非凡的付出，将获得丰厚且结构清晰的补偿。',
     overviewCards: [
-      { title: '平均代孕补偿', amount: '$61,000+', text: '美国范围内代孕妈妈获得的平均总补偿。' },
       { title: '个性化基础补偿', amount: '$61,000 – $70,000+', text: '基础补偿因经验、所在地与所选项目而有所不同。' },
       { title: '月度津贴', amount: '$300+ /月', text: '孕期全程发放的非报销类津贴。' },
       { title: '福利预计总额', amount: '$11,000', text: '除基础补偿外的津贴、补贴与报销合计。' },
@@ -185,9 +187,11 @@ const translations = {
       { title: '报销与津贴', text: '你还会收到额外费用报销与月度支持，让旅程更从容。' },
       { title: '托管支付管理', text: '所有款项通过第三方托管账户安全管理，保障发放有序、安心可控。' },
     ],
-    packageTitle: '代孕补偿方案',
+    packageTitle: '代孕补偿方案：基础报酬、月度津贴与常见福利',
     packageIntro: '你的补偿方案包含以下福利与支持项目。',
     packageBenefits: [
+      { title: '个性化基础补偿', subtitle: '基础报酬', amount: '$61,000 – $70,000+' },
+      { title: '月度津贴', subtitle: '整个孕期', amount: '$300+ /月' },
       { title: '胚胎移植津贴', subtitle: '每次移植', amount: '$2,000' },
       { title: '签约奖金', subtitle: '合同签署后', amount: '$1,000' },
       { title: '注射用药津贴', subtitle: '每个周期', amount: '$1,200' },
@@ -426,7 +430,7 @@ useHead(() => ({
                 {{ c.overviewIntro }}
               </p>
 
-              <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4 lg:gap-5">
+              <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-5">
                 <article
                   v-for="(card, index) in c.overviewCards"
                   :key="`overview-${index}`"
@@ -502,12 +506,11 @@ useHead(() => ({
               {{ c.packageIntro }}
             </p>
 
-            <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-12 lg:gap-5">
+            <div class="mt-8 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-5">
               <article
                 v-for="(item, index) in c.packageBenefits"
                 :key="`benefit-${index}`"
-                class="benefit-package-card flex h-full flex-col items-center rounded-[20px] px-5 py-7 text-center sm:px-6 sm:py-8 lg:col-span-3"
-                :class="index === 4 ? 'lg:col-start-2' : ''"
+                class="benefit-package-card flex h-full flex-col items-center rounded-[20px] px-5 py-7 text-center sm:px-6 sm:py-8"
               >
                 <img
                   :src="PAGE_ASSETS.benefits[index]"
@@ -530,15 +533,14 @@ useHead(() => ({
         </div>
       </section>
 
-      <!-- 第四屏：对照 docx image6 -->
+      <!-- 第四屏：对照 docx image5 + image6 -->
       <section id="payment-timeline" class="benefit-section benefit-timeline-section w-full">
         <div class="benefit-section-inner mx-auto max-w-[1400px]">
-          <div class="benefit-timeline-panel overflow-hidden rounded-[24px] px-4 py-8 sm:px-6 sm:py-10 lg:rounded-[28px] lg:px-10 lg:py-12">
-            <!-- docx 第四屏无可见 H2，标题保留给 SEO / 读屏 -->
-            <h2 class="sr-only">
-              {{ c.timelineTitle }}
-            </h2>
+          <h2 class="benefit-section-title benefit-section-title--long mx-auto mb-8 max-w-4xl text-center lg:mb-10">
+            {{ c.timelineTitle }}
+          </h2>
 
+          <div class="benefit-timeline-panel overflow-hidden rounded-[24px] px-4 py-8 sm:px-6 sm:py-10 lg:rounded-[28px] lg:px-10 lg:py-12">
             <div class="benefit-timeline-track relative lg:mt-2">
               <div class="benefit-timeline-rail hidden lg:block" aria-hidden="true">
                 <div class="benefit-timeline-line" />
