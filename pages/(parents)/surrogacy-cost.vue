@@ -704,27 +704,27 @@ const faqItems = computed(() =>
         {
           question: '加州代孕要花多少钱？',
           answer:
-            '加州代孕费用取决于代孕补偿预期、保险细节以及法律/法院亲子关系流程（PBO）。最好的估算方式是从透明的费用拆分开始，再根据保险与医疗情景调整范围。',
+            '加州代孕费用通常由机构协调、代孕补偿、法律、保险、托管、IVF 诊所和个案医疗因素共同决定。正确比较费用时，应先看每个报价包含哪些范围，再根据保险、胚胎状态、诊所路径和孕期情况调整预算。',
         },
         {
           question: '美国代孕要花多少钱？',
           answer:
-            '美国代孕费用全国遵循相同的核心类别（机构费、补偿、法律、保险、津贴与“如适用”的医疗项）。不同州主要差在区间范围——尤其是保险与法院时间。',
+            '美国代孕费用通常包含机构服务、代孕补偿、法律协调、保险规划、托管管理、津贴和个案相关项目。不同州的主要差异在法律流程、保险可用性、当地补偿预期、法院时间和诊所安排，因此不能只看一个总价。',
         },
         {
           question: '代孕费用包含什么？',
           answer:
-            '通常包含代孕机构费用、信托/托管管理、筛查/行政支持、代孕补偿预算与津贴、法律协议支持、亲子关系（PBO）以及保险预算分配（视项目范围而定）。',
+            '代孕费用通常包含机构协调、代母招募与匹配、筛查支持、代孕补偿预算、津贴、法律协议协调、亲子关系步骤、保险审查和托管管理。具体是否包含 IVF、新生儿医疗或额外保险，必须看项目范围。',
         },
         {
           question: '代孕费用不包含什么？',
           answer:
-            '多数项目（含本页估算）不包含 IVF 诊所费用（取卵/胚胎创建/移植由诊所收取）以及新生儿出生后的医疗费用（NICU、儿科护理、疫苗等）。',
+            '很多代孕项目不包含 IVF 诊所费用和新生儿出生后的医疗费用。IVF 可能包括取卵、供卵、胚胎创建、PGT、冷冻、储存和移植；新生儿医疗可能包括 NICU、儿科护理和保险生效前后的账单。',
         },
         {
           question: '为什么代孕费用高？',
           answer:
-            '因为代孕包含医疗协调、法律保护、保险规划与代孕补偿，还要为双胎、剖宫产或并发症等真实风险做规划。因此“便宜”通常不是正确目标——清晰与可预期更重要。',
+            '代孕费用高，是因为它同时涉及医疗协调、代母补偿、法律保护、保险规划、托管管理和真实风险准备。双胎、剖宫产、卧床、保险排除或额外移植都可能影响总预算，因此透明范围比低价更重要。',
         },
         {
           question: '能用通俗的话解释代孕费用吗？',
@@ -734,12 +734,12 @@ const faqItems = computed(() =>
         {
           question: '代孕付款怎么进行？什么时候付？',
           answer:
-            '大多数家庭按里程碑分阶段支付。我们的结构是三次存入信托：$42,400（协议前期/预审通过后）、$66,850（法律文件生效后）、$33,500（心跳确认后）。',
+            '代孕付款通常按里程碑分阶段进入托管或信托账户，再根据协议支付给相关方。分期节点可能包括协议阶段、医学清关、法律文件生效、移植、验孕和心跳确认，具体金额以协议和个案预算为准。',
         },
         {
           question: 'IVF 是否包含？IVF + 代孕一共要多少钱？',
           answer:
-            'IVF 诊所费用通常分开。最准确的方法是做双层预算：(1) 代孕项目费用 + (2) IVF 诊所方案（移植、用药、PGT、储存）。',
+            'IVF 诊所费用通常与代孕项目费用分开。更准确的预算方式是拆成两层：代孕项目费用加 IVF 诊所方案费用，包括胚胎创建、用药、PGT、储存、移植次数和可能的供卵路径。',
         },
         {
           question: '含 IVF 的代孕费用要多少？',
@@ -749,34 +749,34 @@ const faqItems = computed(() =>
         {
           question: '有保险的代孕费用是多少？',
           answer:
-            '因保险资格、排除、免赔与自付上限不同而变化。我们在本估算中预算保险分配：$2,000（医疗保险专业审核与管理）+ $10,000（医疗）+ $600（人寿），按发生使用。',
+            '有保险并不代表没有代孕相关医疗费用。费用会因保险资格、排除条款、免赔额、自付上限、等待期和是否需要额外保单而变化。保险审查越早完成，越容易避免后期预算意外。',
         },
       ]
     : [
         {
           question: 'How much does surrogacy cost in California?',
           answer:
-            'Surrogacy cost in California varies based on surrogate compensation expectations, insurance details, and the legal/court parentage process (PBO). The best way to estimate is to start with a transparent surrogacy cost breakdown and then adjust ranges for insurance and medical scenarios.',
+            'Surrogacy cost in California depends on agency coordination, surrogate compensation, legal work, insurance review, escrow, IVF clinic fees, and case-specific medical factors. Intended parents should compare estimates by scope first, then adjust for insurance, embryo status, clinic pathway, and pregnancy scenarios.',
         },
         {
           question: 'How much does surrogacy cost in the U.S.?',
           answer:
-            'The cost of surrogacy in the U.S. follows the same core categories nationwide (agency fees, compensation, legal, insurance, allowances, and “if applicable” medical items). What changes by state is mostly ranges—especially insurance and court timing.',
+            'Surrogacy cost in the U.S. usually includes agency services, surrogate compensation, legal coordination, insurance planning, escrow administration, allowances, and case-dependent items. State-by-state differences often come from legal process, insurance availability, local compensation expectations, court timing, and clinic logistics.',
         },
         {
           question: 'What is included in surrogacy cost?',
           answer:
-            'Included program costs typically cover surrogacy agency fees, trust/escrow administration, screening/admin support, surrogate compensation budgeting and allowances, legal agreement support, court parentage (PBO), and insurance budgeting allocations—depending on your program scope.',
+            'Surrogacy cost may include agency coordination, surrogate recruitment and matching, screening support, surrogate compensation budgeting, allowances, legal agreement coordination, parentage steps, insurance review, and escrow administration. Whether IVF, newborn care, or extra insurance is included depends on the written scope.',
         },
         {
           question: 'What is not included in surrogacy cost?',
           answer:
-            'Most programs (including the package estimate on this page) do not include IVF clinic fees (retrieval/embryo creation/transfer billed by the clinic) or newborn medical care after birth (NICU, pediatric care, vaccinations).',
+            'Many surrogacy programs do not include IVF clinic fees or newborn medical care after birth. IVF costs can include retrieval, donor eggs, embryo creation, PGT, freezing, storage, and transfer; newborn care may include NICU, pediatric care, and insurance-related billing.',
         },
         {
           question: 'Why is surrogacy expensive?',
           answer:
-            'Because surrogacy combines medical coordination, legal protection, insurance planning, and surrogate compensation—plus real-world risk planning for scenarios like twins, C-section, or complications. That’s why “cheap” usually isn’t the right goal—clarity and predictability are.',
+            'Surrogacy is expensive because it combines medical coordination, surrogate compensation, legal protection, insurance planning, escrow administration, and risk planning. Twins, C-section, bed rest, insurance exclusions, or extra transfers can change the budget, so clarity matters more than the lowest headline number.',
         },
         {
           question: 'Can you explain surrogacy fees in plain English?',
@@ -786,12 +786,12 @@ const faqItems = computed(() =>
         {
           question: 'How do surrogacy payments work? When do I pay?',
           answer:
-            'Most intended parents pay in stages aligned with milestones. In our structure, deposits are made into a trust account in three steps: $42,400 (after agreement), $66,850 (after medical clearance), and $33,500 (after heartbeat confirmation).',
+            'Surrogacy payments are usually made in stages tied to milestones and held through a trust or escrow account. Deposits may be tied to agreement signing, medical clearance, legal clearance, transfer, pregnancy confirmation, and heartbeat confirmation, with exact amounts defined by the agreement.',
         },
         {
           question: 'Is IVF included? How much does IVF and surrogacy cost together?',
           answer:
-            'IVF clinic fees are typically separate. So when you ask “how much does IVF and surrogacy cost?” the most accurate approach is building a two-layer budget: (1) surrogacy program costs + (2) IVF clinic plan (transfers, meds, PGT, storage).',
+            'IVF clinic fees are typically separate from surrogacy program costs. To estimate IVF and surrogacy together, build a two-layer budget: surrogacy program costs plus clinic costs such as embryo creation, medications, PGT, storage, transfer attempts, and donor egg needs if applicable.',
         },
         {
           question: 'How much is surrogacy with IVF?',
@@ -801,7 +801,7 @@ const faqItems = computed(() =>
         {
           question: 'How much is surrogacy cost with insurance?',
           answer:
-            'Surrogacy cost with insurance varies because insurance plans differ in eligibility, exclusions, deductibles, and out-of-pocket maximums. In our package estimate, we budget an insurance allocation of $2,000 (Medical Insurance Professional Review and Management) + $10,000 (medical) + $600 (life insurance), used as costs occur.',
+            'Surrogacy cost with insurance varies because insurance plans differ in eligibility, exclusions, deductibles, waiting periods, and out-of-pocket maximums. Having insurance does not remove all costs; early review helps determine whether extra coverage or budget reserves may be needed.',
         },
       ],
 )
@@ -1071,6 +1071,17 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+
+      <SeoTrustNote
+        :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+        :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+        :note="locale === 'zh' ? '本页用于解释代孕费用类别、估算范围和付款规划。实际费用会因 IVF 诊所、保险、法律、医疗情况和个案安排而变化，最终预算应结合专业审查确认。' : 'This page explains surrogacy cost categories, estimate ranges, and payment planning. Actual costs vary by IVF clinic, insurance, legal, medical, and case-specific factors, and final budgets should be confirmed through professional review.'"
+        :sources="[
+          { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
+          { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
+          { label: locale === 'zh' ? '代孕补偿' : 'Surrogate compensation', href: localePath('/surrogate-compensation') },
+        ]"
+      />
 
       <section id="ca-vs-us" class="section-pad">
         <div class="content-container section-stack">

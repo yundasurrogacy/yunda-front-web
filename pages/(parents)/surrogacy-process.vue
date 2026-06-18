@@ -427,36 +427,36 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     faq: [
       {
         q: 'What is IVF surrogacy?',
-        answer: [{ type: 'text', text: 'IVF surrogacy (gestational surrogacy) means an embryo is created via IVF and transferred to a surrogate who is not genetically related to the baby.' }],
+        answer: [{ type: 'text', text: 'IVF surrogacy, also called gestational surrogacy, means an embryo is created through IVF and transferred to a gestational surrogate. The surrogate carries the pregnancy but is not genetically related to the baby.' }],
       },
       {
         q: 'How does IVF work with surrogacy?',
         answer: [
-          { type: 'text', text: 'IVF creates or uses an embryo, then the surrogate completes a transfer cycle. Key milestones: screening → legal clearance → transfer → pregnancy test. See the full ' },
+          { type: 'text', text: 'In a surrogacy journey, IVF creates or uses embryos before the surrogate completes a transfer cycle. The common sequence is embryo planning, surrogate screening, legal clearance, transfer, pregnancy test, heartbeat confirmation, and pregnancy monitoring. See the full ' },
           { type: 'link', text: 'surrogacy process', to: '/surrogacy-process' },
           { type: 'text', text: ' for the step-by-step view.' },
         ],
       },
       {
         q: 'Do intended parents need IVF for surrogacy?',
-        answer: [{ type: 'text', text: 'For gestational surrogacy, yes—an embryo is needed for transfer. You can use your own embryos or create embryos with IVF (with or without donor eggs).' }],
+        answer: [{ type: 'text', text: 'For gestational surrogacy, intended parents need embryos for transfer. Those embryos may already exist, or they may be created through IVF using intended parent eggs, donor eggs, intended parent sperm, or donor sperm depending on the family-building plan.' }],
       },
       {
         q: 'How do you choose an IVF clinic for surrogacy?',
         answer: [
-          { type: 'text', text: 'Compare: lab quality, donor-egg options, PGT-A availability, international support, scheduling speed, and fee transparency. Start with our ' },
+          { type: 'text', text: 'To choose an IVF clinic for surrogacy, compare lab quality, donor-egg options, PGT-A availability, communication style, international support, scheduling speed, and fee transparency. Surrogacy also requires a clinic that can coordinate clearly with the agency, legal team, and surrogate. Start with our ' },
           { type: 'link', text: 'partner IVF clinic list', to: '/partner-ivf-clinics' },
           { type: 'text', text: ' if you want vetted options.' },
         ],
       },
       {
         q: 'Who pays for what: IVF clinic vs agency vs legal/escrow?',
-        answer: [{ type: 'text', text: 'The IVF clinic bills medical care. Agency fees cover coordination and support. Legal + escrow handle contracts, parentage filings, and organized payments.' }],
+        answer: [{ type: 'text', text: 'The IVF clinic usually bills medical care, embryo creation, medications, testing, storage, and transfer. Agency fees cover coordination, matching, screening support, and case management. Legal and escrow costs cover contract coordination, parentage steps, organized payments, and payment documentation.' }],
       },
       {
         q: 'How much does IVF and surrogacy cost?',
         answer: [
-          { type: 'text', text: 'Costs vary, but it’s easiest to estimate by buckets: IVF clinic fees + surrogacy program fees + legal/escrow + insurance-related items. See our ' },
+          { type: 'text', text: 'IVF and surrogacy cost varies by clinic pathway, embryo status, surrogate compensation, legal work, insurance, and pregnancy-related scenarios. The clearest way to estimate is by buckets: IVF clinic fees, surrogacy program fees, legal and escrow, insurance, and case-dependent items. See our ' },
           { type: 'link', text: 'surrogacy cost breakdown', to: '/surrogacy-cost' },
           { type: 'text', text: ' to plan ranges clearly.' },
         ],
@@ -464,7 +464,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       {
         q: 'Does insurance cover surrogacy?',
         answer: [
-          { type: 'text', text: 'Usually, insurance may cover parts of pregnancy-related medical care, but it rarely covers agency fees or legal work. Coverage depends on the plan. Review ' },
+          { type: 'text', text: 'Insurance may cover parts of pregnancy-related medical care, but it usually does not cover agency fees, legal work, or all surrogacy-related costs. Coverage depends on the surrogate’s plan, exclusions, deductibles, and whether extra policies are needed. Review ' },
           { type: 'link', text: 'insurance planning guidance', to: '/surrogacy-protection-california' },
           { type: 'text', text: ' early.' },
         ],
@@ -472,17 +472,17 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       {
         q: 'What does surrogacy insurance typically cover—and how much is surrogacy insurance?',
         answer: [
-          { type: 'text', text: 'Typical coverage focuses on maternity care, complications, denial/claims support, life insurance, and newborn coverage planning. How much is surrogacy insurance depends on the surrogate’s existing plan and whether extra policies are needed.' },
+          { type: 'text', text: 'Surrogacy insurance planning usually reviews maternity coverage, exclusions, complications, claims support, life insurance, and newborn coverage timing. The cost depends on the surrogate’s existing policy, deductible, out-of-pocket maximum, exclusions, and whether a supplemental policy is required.' },
         ],
       },
       {
         q: 'What is escrow in surrogacy?',
-        answer: [{ type: 'text', text: 'Escrow is a neutral account used to pay approved items on schedule (compensation, reimbursements, insurance premiums), with clear records.' }],
+        answer: [{ type: 'text', text: 'Escrow in surrogacy is a neutral account used to hold funds and release approved payments according to the agreement. It helps organize surrogate compensation, reimbursements, insurance premiums, and other approved expenses with clearer records and timing.' }],
       },
       {
         q: 'What legal steps are required under California surrogacy laws?',
         answer: [
-          { type: 'text', text: 'Most cases follow: contract signed before transfer, then parentage steps (often via a pre-birth process) to establish legal parents at delivery. Learn more in ' },
+          { type: 'text', text: 'In California surrogacy, the typical legal path includes independent legal counsel, a surrogacy agreement signed before embryo transfer, and parentage steps that help establish the intended parents as legal parents around birth. Learn more in ' },
           { type: 'link', text: 'California surrogacy legal guidance', to: '/surrogacy-protection-california' },
           { type: 'text', text: '.' },
         ],
@@ -669,36 +669,36 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
     faq: [
       {
         q: '什么是 IVF 代孕？',
-        answer: [{ type: 'text', text: 'IVF 代孕（妊娠代孕）指通过 IVF 形成胚胎并移植给与宝宝无血缘关系的代孕妈妈。' }],
+        answer: [{ type: 'text', text: 'IVF 代孕，也叫妊娠代孕，指通过 IVF 创建胚胎并移植给妊娠代孕妈妈。代孕妈妈负责怀孕和分娩，但与宝宝没有遗传关系。' }],
       },
       {
         q: 'IVF 在代孕中怎么运作？',
         answer: [
-          { type: 'text', text: 'IVF 生成或使用胚胎，代孕妈妈完成移植周期。关键节点：体检 → 法律放行 → 移植 → 验孕。查看 ' },
+          { type: 'text', text: '代孕中的 IVF 会先创建或使用已有胚胎，然后由代孕妈妈完成移植周期。常见步骤包括胚胎规划、代母筛查、法律放行、移植、验孕、心跳确认和孕期监测。查看 ' },
           { type: 'link', text: '代孕流程', to: '/surrogacy-process' },
           { type: 'text', text: ' 了解完整步骤。' },
         ],
       },
       {
         q: '做代孕一定要 IVF 吗？',
-        answer: [{ type: 'text', text: '妊娠代孕需要胚胎才能移植。你可以用自有胚胎，或通过 IVF（可含供卵）来建库。' }],
+        answer: [{ type: 'text', text: '妊娠代孕需要胚胎才能移植。胚胎可以是已经创建好的，也可以通过 IVF 使用准父母卵子、供卵、准父母精子或供精创建，具体取决于家庭路径。' }],
       },
       {
         q: '如何选择代孕用的 IVF 诊所？',
         answer: [
-          { type: 'text', text: '对比：实验室质量、供卵选项、PGT-A、国际支持、排期速度、费用透明度。可先看我们的 ' },
+          { type: 'text', text: '选择代孕用 IVF 诊所时，应比较实验室质量、供卵选项、PGT-A、沟通方式、国际支持、排期速度和费用透明度。代孕还需要诊所能与机构、法律团队和代孕妈妈清晰协调。可先看我们的 ' },
           { type: 'link', text: '合作 IVF 诊所名单', to: '/partner-ivf-clinics' },
           { type: 'text', text: ' 获取 vetted 选项。' },
         ],
       },
       {
         q: 'IVF 诊所、机构、法律/托管谁承担哪些费用？',
-        answer: [{ type: 'text', text: 'IVF 诊所收取医疗费用；机构费覆盖协调与支持；法律+托管负责合同、亲子关系、按计划支付。' }],
+        answer: [{ type: 'text', text: 'IVF 诊所通常收取胚胎创建、用药、检测、储存和移植等医疗费用；机构费覆盖协调、匹配、筛查支持和个案管理；法律和托管费用覆盖合同协调、亲权步骤、付款组织和记录。' }],
       },
       {
         q: 'IVF 与代孕要花多少钱？',
         answer: [
-          { type: 'text', text: '可按模块估算：IVF 诊所费 + 代孕项目费 + 法律/托管 + 保险相关。查看 ' },
+          { type: 'text', text: 'IVF 与代孕总费用会因诊所路径、胚胎状态、代母补偿、法律、保险和孕期情况而变化。最清晰的估算方式是按模块拆分：IVF 诊所费、代孕项目费、法律与托管、保险和个案相关项目。查看 ' },
           { type: 'link', text: '代孕费用拆解', to: '/surrogacy-cost' },
           { type: 'text', text: ' 以便清晰规划区间。' },
         ],
@@ -706,7 +706,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       {
         q: '保险会覆盖代孕吗？',
         answer: [
-          { type: 'text', text: '通常保险可覆盖部分孕期医疗，但很少覆盖机构或法律费用，具体取决于计划。建议提前阅读 ' },
+          { type: 'text', text: '保险可能覆盖部分孕期医疗，但通常不覆盖机构费、法律费或全部代孕相关费用。是否覆盖取决于代孕妈妈保单、排除条款、免赔额和是否需要额外保单。建议提前阅读 ' },
           { type: 'link', text: '保险规划指南', to: '/surrogacy-protection-california' },
           { type: 'text', text: '。' },
         ],
@@ -714,17 +714,17 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       {
         q: '代孕保险一般覆盖什么？费用多少？',
         answer: [
-          { type: 'text', text: '典型覆盖：孕产护理、并发症、拒赔/理赔支持、人寿保险、新生儿保障规划。费用取决于代孕妈妈现有保单及是否需额外保单。' },
+          { type: 'text', text: '代孕保险规划通常审查孕产覆盖、排除条款、并发症、理赔支持、人寿保险和新生儿保障时间。费用取决于代孕妈妈现有保单、免赔额、自付上限、排除条款和是否需要补充保单。' },
         ],
       },
       {
         q: '代孕中的托管（Escrow）是什么？',
-        answer: [{ type: 'text', text: '托管是中立账户，按计划支付约定项目（补偿、报销、保险费），并保留清晰记录。' }],
+        answer: [{ type: 'text', text: '代孕托管是用于持有资金并按协议释放获批付款的中立账户。它帮助组织代孕补偿、报销、保险费和其他获批费用，并保留更清晰的付款记录和时间节点。' }],
       },
       {
         q: '加州代孕法律下需要哪些步骤？',
         answer: [
-          { type: 'text', text: '通常：移植前签合同，随后办理亲子关系（常见为预产前裁定）以在分娩时确立法定父母。详见 ' },
+          { type: 'text', text: '加州代孕常见法律路径包括双方独立法律顾问、胚胎移植前签署代孕协议，以及通过亲权步骤帮助准父母在孩子出生前后确立法定父母身份。详见 ' },
           { type: 'link', text: '加州代孕法律指南', to: '/surrogacy-protection-california' },
           { type: 'text', text: '。' },
         ],
@@ -934,6 +934,17 @@ useHead(() => ({
         </div>
       </section>
 
+      <SeoTrustNote
+        :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+        :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+        :note="locale === 'zh' ? '本页说明准父母代孕流程和常见时间线。实际时间会因诊所安排、筛查、法律文件、保险、胚胎情况和个案因素而变化。' : 'This page explains the intended parent surrogacy process and typical timeline. Actual timing varies by clinic scheduling, screening, legal documents, insurance, embryo status, and case-specific factors.'"
+        :sources="[
+          { label: locale === 'zh' ? '代孕费用' : 'Surrogacy cost', href: localePath('/surrogacy-cost') },
+          { label: locale === 'zh' ? '准父母申请' : 'Intended parent application', href: localePath('/be-parents') },
+          { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
+        ]"
+      />
+
       <!-- 第二屏：左改版 `第二屏.png` 整幅长图；右 8 步说明卡（对齐期望稿版式） -->
       <section class="relative isolate w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
         <div class="pointer-events-none absolute inset-0">
@@ -1054,6 +1065,9 @@ useHead(() => ({
           <h2 class="text-center text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
             {{ guidesTitle }}
           </h2>
+          <p class="mx-auto mt-5 max-w-4xl text-center text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
+            {{ locale === 'zh' ? '代孕流程中的费用、法律和时间线问题应一起规划。以下指南帮助准父母理解哪些决定会影响预算、文件、诊所安排和匹配节奏。' : 'Surrogacy cost, legal steps, and timeline questions should be planned together. These guides help intended parents understand which decisions affect budget, documents, clinic coordination, and matching pace.' }}
+          </p>
           <div class="grid mx-auto mt-12 max-w-6xl gap-6 lg:grid-cols-3 sm:grid-cols-2 lg:mt-14 lg:gap-8">
             <article
               v-for="card in helpfulGuides"
@@ -1132,6 +1146,9 @@ useHead(() => ({
           <h2 class="text-center text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px] sm:text-[32px]">
             {{ whyYundaTitle }}
           </h2>
+          <p class="mx-auto mt-5 max-w-4xl text-center text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
+            {{ locale === 'zh' ? '孕达通过匹配、IVF 协调、法律与托管时间线、保险审查和个案管理，把复杂流程拆成可执行步骤。' : 'Yunda turns a complex surrogacy process into coordinated steps across matching, IVF clinic communication, legal and escrow timing, insurance review, and case management.' }}
+          </p>
           <p class="sr-only">
             {{ whyIllustrationAlt }}
           </p>
@@ -1213,6 +1230,9 @@ useHead(() => ({
           <h2 class="text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[36px]">
             {{ faqTitle }}
           </h2>
+          <p class="mt-5 text-base text-[var(--yunda-bark)]/85 leading-[1.75] sm:text-[17px]" style="font-family: var(--font-text)">
+            {{ locale === 'zh' ? '这些回答总结准父母关于 IVF、诊所选择、费用、保险、托管和加州法律步骤的常见问题。具体安排仍应结合诊所、律师和保险审查确认。' : 'These answers summarize common intended parent questions about IVF, clinic selection, cost, insurance, escrow, and California legal steps. Specific decisions should still be confirmed with clinic, legal, and insurance professionals.' }}
+          </p>
           <div class="mt-8 space-y-3">
             <details
               v-for="(faq, index) in faqList"

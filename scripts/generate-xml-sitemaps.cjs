@@ -15,6 +15,20 @@ const HTML_SITEMAP_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.js
 const SEO_ROUTES_PATH = path.join(process.cwd(), 'data', 'seo-routes.json')
 
 const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).staticPages
+const EN_MACHINE_READABLE_FILES = [
+  '/services.md',
+  '/surrogacy-cost.md',
+  '/surrogate-compensation.md',
+  '/third-party-professionals.md',
+]
+const ZH_MACHINE_READABLE_FILES = [
+  '/zh/services.md',
+  '/zh/surrogacy-cost.md',
+  '/zh/surrogate-requirements.md',
+  '/zh/surrogate-compensation.md',
+  '/zh/surrogacy-protection-california.md',
+  '/zh/third-party-professionals.md',
+]
 
 function toZhPath(loc) {
   return loc === '/' ? '/zh' : `/zh${loc}`
@@ -195,6 +209,16 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
     changefreq: 'weekly',
     lastmod: nowIsoDate,
   }))
+  const machineReadableFiles = locale === 'zh' ? ZH_MACHINE_READABLE_FILES : EN_MACHINE_READABLE_FILES
+  machineReadableFiles.forEach((loc) => {
+    pageEntries.push({
+      loc,
+      priority: 0.4,
+      changefreq: 'weekly',
+      lastmod: nowIsoDate,
+      alternates: false,
+    })
+  })
   const blogLocaleEntries = blogEntries.map(blog => ({
     loc: localize(blog.loc),
     priority: 0.6,
@@ -208,10 +232,11 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
 }
 
 function createUrlNode(entry) {
+  const alternateLinks = entry.alternates === false ? [] : createAlternateLinks(entry.loc)
   const lines = [
     '  <url>',
     `    <loc>${escapeXml(toAbsoluteUrl(entry.loc))}</loc>`,
-    ...createAlternateLinks(entry.loc).map(alternate =>
+    ...alternateLinks.map(alternate =>
       `    <xhtml:link rel="alternate" hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}" />`,
     ),
     `    <lastmod>${escapeXml(entry.lastmod)}</lastmod>`,
