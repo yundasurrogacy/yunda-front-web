@@ -15,10 +15,17 @@ const HTML_SITEMAP_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.js
 const SEO_ROUTES_PATH = path.join(process.cwd(), 'data', 'seo-routes.json')
 
 const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).staticPages
-const MACHINE_READABLE_FILES = [
+const EN_MACHINE_READABLE_FILES = [
   '/services.md',
   '/surrogacy-cost.md',
   '/surrogate-compensation.md',
+]
+const ZH_MACHINE_READABLE_FILES = [
+  '/zh/services.md',
+  '/zh/surrogacy-cost.md',
+  '/zh/surrogate-requirements.md',
+  '/zh/surrogate-compensation.md',
+  '/zh/surrogacy-protection-california.md',
 ]
 
 function toZhPath(loc) {
@@ -200,17 +207,16 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
     changefreq: 'weekly',
     lastmod: nowIsoDate,
   }))
-  if (locale === 'en') {
-    MACHINE_READABLE_FILES.forEach((loc) => {
-      pageEntries.push({
-        loc,
-        priority: 0.4,
-        changefreq: 'weekly',
-        lastmod: nowIsoDate,
-        alternates: false,
-      })
+  const machineReadableFiles = locale === 'zh' ? ZH_MACHINE_READABLE_FILES : EN_MACHINE_READABLE_FILES
+  machineReadableFiles.forEach((loc) => {
+    pageEntries.push({
+      loc,
+      priority: 0.4,
+      changefreq: 'weekly',
+      lastmod: nowIsoDate,
+      alternates: false,
     })
-  }
+  })
   const blogLocaleEntries = blogEntries.map(blog => ({
     loc: localize(blog.loc),
     priority: 0.6,
