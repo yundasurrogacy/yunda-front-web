@@ -19,6 +19,7 @@ const EN_MACHINE_READABLE_FILES = [
   '/services.md',
   '/surrogacy-cost.md',
   '/surrogate-compensation.md',
+  '/third-party-professionals.md',
 ]
 const ZH_MACHINE_READABLE_FILES = [
   '/zh/services.md',
@@ -26,6 +27,7 @@ const ZH_MACHINE_READABLE_FILES = [
   '/zh/surrogate-requirements.md',
   '/zh/surrogate-compensation.md',
   '/zh/surrogacy-protection-california.md',
+  '/zh/third-party-professionals.md',
 ]
 
 function toZhPath(loc) {
