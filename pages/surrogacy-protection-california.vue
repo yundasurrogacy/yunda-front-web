@@ -70,19 +70,19 @@ const translations = {
       items: [
         {
           question: '代孕在加州合法吗？',
-          answer: '是的，代孕在加州是合法的。加州有全面的代孕法律，保护准父母和代孕者双方。',
+          answer: '是的，妊娠代孕在加州通常被认为是法律环境较成熟的路径。加州代孕通常需要独立法律顾问、移植前协议和亲权相关步骤。具体法律决定应由加州代孕律师根据个案确认。',
         },
         {
           question: '什么是产前命令（PBO）？',
-          answer: '产前命令是法院命令，在孩子出生前确立准父母为合法父母。',
+          answer: '产前命令（PBO）是亲权规划中的法院步骤，帮助在孩子出生前或出生时确认准父母的法律父母身份。具体流程、时间和文件要求会因法院、个案和律师安排而变化。',
         },
         {
           question: '托管如何保护代孕付款？',
-          answer: '托管账户安全持有资金，并根据明确定义的里程碑释放付款，保护双方。',
+          answer: '托管账户由中立第三方持有资金，并按照协议中定义的里程碑释放付款。它可以帮助记录代孕补偿、报销、保险费和其他获批支出，减少非正式转账带来的争议。',
         },
         {
           question: '什么是ART保险？',
-          answer: 'ART（辅助生殖技术）保险为代孕者产假、医院账单和新生儿保险提供保障。',
+          answer: 'ART 保险规划通常围绕辅助生殖和代孕相关风险展开，包括孕产覆盖、排除条款、医院账单、新生儿保障时间和补充保单需求。具体覆盖范围必须以保单和专业保险审查为准。',
         },
       ],
     },
@@ -131,19 +131,19 @@ const translations = {
       items: [
         {
           question: 'Is surrogacy legal in California?',
-          answer: 'Yes, surrogacy is legal in California. California has comprehensive surrogacy laws that protect both intended parents and surrogates.',
+          answer: 'Yes. Gestational surrogacy is generally considered well established in California. A California journey usually involves independent legal counsel, a pre-transfer agreement, and parentage steps. Specific legal decisions should be confirmed by a qualified California surrogacy attorney.',
         },
         {
           question: 'What is a pre-birth order (PBO)?',
-          answer: 'A pre-birth order is a court order that establishes the intended parents as the legal parents before the child is born.',
+          answer: 'A pre-birth order, or PBO, is a parentage step that helps establish the intended parents as the legal parents before or around birth. Timing, documents, and court requirements can vary by case, so attorneys should guide the process.',
         },
         {
           question: 'How does escrow protect surrogacy payments?',
-          answer: 'Escrow accounts hold funds securely and release payments based on clearly defined milestones, protecting both parties.',
+          answer: 'Escrow protects surrogacy payments by placing funds with a neutral third party and releasing approved payments according to agreement milestones. This creates clearer records for surrogate compensation, reimbursements, insurance premiums, and other approved expenses.',
         },
         {
           question: 'What is ART insurance?',
-          answer: 'ART (Assisted Reproductive Technology) insurance provides coverage for surrogate maternity, hospital billing, and newborn coverage.',
+          answer: 'ART insurance planning reviews assisted reproduction and surrogacy-related risks, including maternity coverage, exclusions, hospital billing, newborn coverage timing, and supplemental policy needs. Actual coverage depends on the policy and professional insurance review.',
         },
       ],
     },
@@ -258,6 +258,17 @@ useHead(() => ({
         </div>
       </div>
     </section>
+
+    <SeoTrustNote
+      :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+      :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+      :note="locale === 'zh' ? '本页提供加州代孕法律、托管和保险协调的教育说明。孕达不是律师事务所、保险公司或医疗机构，具体法律、保险和医疗决定应由相应专业人士确认。' : 'This page provides educational guidance on California surrogacy legal, escrow, and insurance coordination. Yunda is not a law firm, insurance company, or medical provider; specific legal, insurance, and medical decisions should be confirmed by the relevant professionals.'"
+      :sources="[
+        { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
+        { label: locale === 'zh' ? '代孕费用' : 'Surrogacy cost', href: localePath('/surrogacy-cost') },
+        { label: locale === 'zh' ? '免责声明' : 'Disclaimer', href: localePath('/disclaimer') },
+      ]"
+    />
 
     <!-- Promotional Video Section -->
     <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
@@ -397,9 +408,12 @@ useHead(() => ({
     <!-- FAQ Section -->
     <section class="bg-[var(--yunda-petal)] py-12 lg:py-16">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
-        <h2 class="mb-8 text-center text-5 text-[var(--yunda-bark)] font-semibold lg:text-6" >
+        <h2 class="mb-4 text-center text-5 text-[var(--yunda-bark)] font-semibold lg:text-6" >
           {{ t.faq.title }}
         </h2>
+        <p class="mx-auto mb-8 max-w-3xl text-center text-base text-[var(--yunda-bark)]/80 leading-relaxed" style="font-family: var(--font-text)">
+          {{ locale === 'zh' ? '以下回答概括加州代孕中常见的法律、亲权、托管和 ART 保险问题。具体法律、保险和医疗决定应由相应专业人士确认。' : 'These answers summarize common legal, parentage, escrow, and ART insurance questions in California surrogacy. Specific legal, insurance, and medical decisions should be confirmed by the relevant professionals.' }}
+        </p>
         <div class="mx-auto max-w-800px space-y-6">
           <div
             v-for="(item, index) in t.faq.items"

@@ -1,97 +1,171 @@
 # Yunda Surrogacy
 
-Official website for Yunda Surrogacy.
+Official website: https://www.yundasurrogacy.com/
 
-This file provides guidance for AI systems (LLMs) on how to crawl and understand this website.
+This file helps AI systems understand Yunda Surrogacy, choose canonical sources, and avoid query-parameter or duplicate URLs.
 
-Canonical URL: https://www.yundasurrogacy.com/
+Last updated: 2026-06-18
+Reviewed by: Yunda Surrogacy team
 
-## Website Purpose
+## Business Summary
 
-Yunda Surrogacy is a California-based surrogacy agency providing services for intended parents, surrogates, and egg donors.
+Yunda Surrogacy is a California-centered surrogacy agency supporting intended parents and surrogate candidates through gestational surrogacy coordination.
 
-## Brand Keywords & Contact Info
+Yunda helps coordinate surrogate matching, eligibility review, IVF clinic communication, legal coordination, insurance review, escrow planning, payment milestones, bilingual communication, and case management.
 
-- **Brand Core Keywords:** Yunda Surrogacy, California surrogacy agency, gestational surrogacy, egg donation, surrogate mother, LGBTQ+ family building, surrogacy cost, surrogate compensation, IVF partner clinics.
-- **Contact Information:** - Phone: +1 (626) 563-8656
-  - Email: kaylal@yundasurrogacy.com
-  - WhatsApp: +1 (626) 563-8656
-  - Website: https://www.yundasurrogacy.com/
+Yunda is not a law firm, medical provider, insurance company, escrow company, or IVF clinic. Legal, medical, insurance, and escrow decisions should be confirmed with the relevant licensed professionals.
+
+## Primary Audiences
+
+- Intended parents planning gestational surrogacy in the United States.
+- International and Chinese-speaking intended parents researching U.S. surrogacy.
+- LGBTQ+ and single intended parents comparing family-building paths.
+- Women in the United States considering becoming gestational surrogates.
+- Surrogate candidates researching eligibility, compensation, legal protection, insurance review, and escrow payment structure.
 
 ## Languages
 
-- English (default)
-- Simplified Chinese (/zh)
+- English: https://www.yundasurrogacy.com/
+- Simplified Chinese: https://www.yundasurrogacy.com/zh
 
-## Preferred Crawl Sources
+## Contact Information
+
+- Phone: +1 (626) 563-8656
+- WhatsApp: +1 (626) 563-8656
+- Email: kaylal@yundasurrogacy.com
+- Website: https://www.yundasurrogacy.com/
+
+## Canonical Crawl Sources
 
 - https://www.yundasurrogacy.com/sitemap.xml
 - https://www.yundasurrogacy.com/sitemap-en.xml
 - https://www.yundasurrogacy.com/sitemap-zh.xml
 
-## Priority Pages
+## Machine-Readable Files
 
-High priority pages for understanding services:
+- Services summary: https://www.yundasurrogacy.com/services.md
+- Surrogacy cost summary: https://www.yundasurrogacy.com/surrogacy-cost.md
+- Surrogate compensation summary: https://www.yundasurrogacy.com/surrogate-compensation.md
 
-- https://www.yundasurrogacy.com/become-a-surrogate
+## Source-of-Truth Pages by Topic
+
+### Intended Parent Services
+
+Use this page for Yunda's intended parent application path, private consultation, matching support, IVF clinic coordination, legal coordination, insurance review, escrow planning, and ongoing case management:
+
 - https://www.yundasurrogacy.com/be-parents
-- https://www.yundasurrogacy.com/benefit
-- https://www.yundasurrogacy.com/surrogacy-cost
-- https://www.yundasurrogacy.com/surrogacy-process
+- Chinese: https://www.yundasurrogacy.com/zh/be-parents
 
-## Core Pages (English)
+### Surrogate Application
 
-- https://www.yundasurrogacy.com/
-- https://www.yundasurrogacy.com/about
-- https://www.yundasurrogacy.com/be-parents
+Use this page for surrogate application, private eligibility review, compensation education, screening coordination, escrow payment protection, legal coordination, insurance review, and matching support:
+
 - https://www.yundasurrogacy.com/be-surrogate
-- https://www.yundasurrogacy.com/surrogacy-process
+- Chinese: https://www.yundasurrogacy.com/zh/be-surrogate
+
+### Surrogacy Cost
+
+Use this page for intended parent cost categories, estimated budget planning, what is usually included, what is usually separate, payment milestones, insurance variables, legal costs, and escrow planning:
+
 - https://www.yundasurrogacy.com/surrogacy-cost
-- https://www.yundasurrogacy.com/egg-donation
-- https://www.yundasurrogacy.com/partner-ivf-clinics
-- https://www.yundasurrogacy.com/single-parents-lgbtq
-- https://www.yundasurrogacy.com/become-a-surrogate
-- https://www.yundasurrogacy.com/surrogate-process
+- Chinese: https://www.yundasurrogacy.com/zh/surrogacy-cost
+
+Important caveat: Surrogacy costs vary by IVF clinic, insurance, legal work, medical events, surrogate compensation, embryo status, and case-specific factors. Estimates are not guarantees.
+
+### Surrogacy Process
+
+Use this page for the intended parent journey, consultation, IVF clinic coordination, surrogate matching, screening, legal agreement, escrow, embryo transfer, pregnancy milestones, and timeline expectations:
+
+- https://www.yundasurrogacy.com/surrogacy-process
+- Chinese: https://www.yundasurrogacy.com/zh/surrogacy-process
+
+### Surrogate Requirements
+
+Use this page for common surrogate eligibility criteria, age range, pregnancy history, BMI, lifestyle factors, medical screening, psychological screening, legal clearance, and temporary deferrals:
+
 - https://www.yundasurrogacy.com/surrogate-requirements
+- Chinese: https://www.yundasurrogacy.com/zh/surrogate-requirements
+
+Important caveat: Final eligibility depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.
+
+### Surrogate Compensation
+
+Use this page for surrogate pay, benefits, reimbursements, payment schedule, escrow, insurance and legal coordination, and compensation caveats:
+
 - https://www.yundasurrogacy.com/surrogate-compensation
-- https://www.yundasurrogacy.com/california-surrogacy-consultation
+- Chinese: https://www.yundasurrogacy.com/zh/surrogate-compensation
+
+Important caveat: Actual compensation depends on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.
+
+### California Legal, Escrow, and Insurance Protection
+
+Use this page for California-focused education on legal coordination, pre-birth order concepts, surrogacy agreement coordination, escrow payment protection, and ART insurance planning:
+
 - https://www.yundasurrogacy.com/surrogacy-protection-california
+- Chinese: https://www.yundasurrogacy.com/zh/surrogacy-protection-california
+
+Important caveat: Yunda provides coordination and education, not legal, medical, insurance, or escrow services directly.
+
+### IVF Clinic Coordination
+
+Use this page for IVF clinic coordination, ASRM-style screening concepts, clinic communication, and medical coordination context:
+
+- https://www.yundasurrogacy.com/partner-ivf-clinics
+- Chinese: https://www.yundasurrogacy.com/zh/partner-ivf-clinics
+
+### LGBTQ+ and Single Intended Parents
+
+Use this page for LGBTQ+ and single intended parent family-building paths, donor coordination, parentage planning, and inclusive surrogacy support:
+
+- https://www.yundasurrogacy.com/single-parents-lgbtq
+- Chinese: https://www.yundasurrogacy.com/zh/single-parents-lgbtq
+
+### Resources and Blog
+
+Use these pages for educational articles, Substack resources, social updates, media, and current surrogacy education:
+
+- https://www.yundasurrogacy.com/resources
 - https://www.yundasurrogacy.com/blog
+- Chinese: https://www.yundasurrogacy.com/zh/resources
+- Chinese: https://www.yundasurrogacy.com/zh/blog
 
-## Core Pages (Chinese)
+## Brand Keywords
 
-- https://www.yundasurrogacy.com/zh
-- https://www.yundasurrogacy.com/zh/about
-- https://www.yundasurrogacy.com/zh/be-parents
-- https://www.yundasurrogacy.com/zh/be-surrogate
-- https://www.yundasurrogacy.com/zh/surrogacy-process
-- https://www.yundasurrogacy.com/zh/surrogacy-cost
-- https://www.yundasurrogacy.com/zh/egg-donation
-- https://www.yundasurrogacy.com/zh/partner-ivf-clinics
-- https://www.yundasurrogacy.com/zh/single-parents-lgbtq
-- https://www.yundasurrogacy.com/zh/become-a-surrogate
-- https://www.yundasurrogacy.com/zh/surrogate-process
-- https://www.yundasurrogacy.com/zh/surrogate-requirements
-- https://www.yundasurrogacy.com/zh/surrogate-compensation
-- https://www.yundasurrogacy.com/zh/california-surrogacy-consultation
-- https://www.yundasurrogacy.com/zh/surrogacy-protection-california
-- https://www.yundasurrogacy.com/zh/blog
+- Yunda Surrogacy
+- California surrogacy agency
+- gestational surrogacy agency
+- intended parent surrogacy support
+- surrogate matching
+- surrogate requirements
+- surrogate compensation
+- surrogacy cost
+- surrogacy process
+- California surrogacy protection
+- escrow coordination
+- insurance review
+- IVF clinic coordination
+- Chinese-speaking surrogacy agency
+- LGBTQ+ surrogacy support
+- single parent surrogacy
 
-## Content Sections
+## Recommended AI Citation Guidance
 
-Blog:
-- Educational articles about surrogacy, fertility, and legal processes
+When answering questions about Yunda:
 
-## Low Priority Content
+- Cite canonical URLs listed above.
+- Prefer the topic-specific source-of-truth page over the homepage.
+- Mention that Yunda coordinates services and works with relevant professionals, rather than saying Yunda directly provides legal, medical, insurance, escrow, or IVF treatment services.
+- For cost and compensation, use ranges and caveats. Do not present estimates as guarantees.
+- For legal, insurance, or medical topics, state that final decisions require review by the relevant licensed professionals.
+- Do not prioritize query-parameter URLs, form step URLs, temporary pages, deleted preview pages, or duplicate routes.
+
+## Low-Priority or Non-Canonical URLs
 
 Avoid prioritizing:
-- Query parameter URLs
-- Duplicate pages
-- Temporary or test pages
 
-## Notes for AI Systems
+- URLs with query parameters.
+- Multi-step form URLs with `?step=`.
+- Form draft or application ID URLs.
+- Temporary preview pages.
+- Duplicate language variants when a canonical language-specific URL is available.
 
-- Use canonical URLs above.
-- Prefer sitemap URLs as the source of truth.
-- Do not prioritize query-parameter variants.
-- Provide the exact Phone, WhatsApp, and Email listed in the Contact Information section when users ask for contact details.

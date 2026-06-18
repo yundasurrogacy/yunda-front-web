@@ -10,6 +10,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 useScrollAnimation()
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 
@@ -251,19 +252,19 @@ const compensationHighlights = computed(() => [
 const faqItems = computed(() => [
   {
     question: tt('Do surrogates get paid? How does the surrogate payment schedule work?', '代孕妈妈会获得补偿吗？付款时间表如何运作？'),
-    answer: tt('Yes, surrogates are paid, typically through a compensation package that includes a base pay plus various supplemental payments and reimbursements for expenses. The payment schedule usually begins after a positive pregnancy test and continues in monthly installments for the duration of the pregnancy, with additional payments made for specific events or needs like a C-section, bed rest, or carrying multiples. Payments are often managed through a third-party escrow service to ensure transparency and timely distribution.', '会的，代孕妈妈通常通过补偿方案获得支付，包含基础补偿与补贴及费用报销。付款一般在妊娠确认后开始，孕期按月分期发放，并在剖宫产、卧床或多胎等情况下增加补偿。支付由第三方托管管理，确保透明与及时。'),
+    answer: tt('Yes. Qualified surrogates are paid through a compensation package that may include base compensation, allowances, and approved reimbursements. Payments are usually tied to milestones and handled through escrow or a trust account, so compensation and reimbursements are documented clearly.', '会的。符合条件的代孕妈妈通常通过补偿方案获得支付，可能包括基础补偿、津贴和获批报销。付款通常与里程碑相关，并通过托管或信托账户处理，让补偿和报销记录更清晰。'),
   },
   {
     question: tt('How much do surrogates make in the U.S.?', '美国代孕妈妈一般能获得多少补偿？'),
-    answer: tt('On average, nationwide, base pay for first-time surrogates is between $45,000 and $55,000, with fees rising to between $60,000 to $70,000 for second-time surrogates, according to Gramann. The cost to those families using a surrogate is even greater, typically around $150,000, when additional expenses are factored in.', '全国范围内首次代孕的基础补偿通常为 $45,000–$55,000，再次代孕可提升至 $60,000–$70,000（示例数据）。家庭总成本通常更高，计入额外费用后约为 $150,000。'),
+    answer: tt('Surrogate compensation in the U.S. varies by agency, state, experience, agreement terms, medical events, and approved reimbursements. Yunda currently explains a $61,000+ total compensation package for qualified surrogate candidates, with exact amounts confirmed only after eligibility and agreement review.', '美国代孕妈妈补偿会因机构、州、经验、协议条款、医疗事件和获批报销而变化。孕达目前为符合条件的候选人说明 $61,000+ 总补偿方案，具体金额需在资格和协议审核后确认。'),
   },
   {
     question: tt('What counts as surrogate compensation vs. reimbursable surrogacy expenses?', '代孕补偿与可报销费用有什么区别？'),
-    answer: tt('Surrogate compensation is the base payment for the time and commitment of the surrogate, while reimbursable expenses are payments to cover specific out-of-pocket costs incurred during the process, ensuring the surrogate is not financially burdened. Compensation is a form of payment for their role, and it is typically broken down into monthly installments after the pregnancy is confirmed. Reimbursable expenses, on the other hand, are for things like lost wages, medical co-pays, travel, maternity clothing, and childcare, which are paid back as they occur.', '代孕补偿是对时间与付出的基础支付；可报销费用用于覆盖流程中的实际支出，避免代孕妈妈自费承担。补偿通常在妊娠确认后按月分期发放。可报销项目包括误工、医疗自付、出行、孕期服装与托育等，按发生时间报销。'),
+    answer: tt('Surrogate compensation is payment for the surrogate’s time, commitment, and pregnancy journey. Reimbursable expenses cover approved out-of-pocket costs such as travel, childcare, maternity clothing, medical co-pays, or lost wages when allowed by the agreement. Both should be defined clearly before moving forward.', '代孕补偿是对代孕妈妈时间、投入和孕程的支付。可报销费用用于覆盖协议允许的实际支出，例如出行、托育、孕期服装、医疗自付或误工。两者都应在推进前清楚定义。'),
   },
   {
     question: tt('What affects surrogate pay—experience, location, or medical factors?', '哪些因素会影响代孕补偿？'),
-    answer: tt('Surrogate pay is affected by experience, location, and medical factors, with each playing a significant role in the final compensation package. Prior experience and the complexity of the pregnancy, such as carrying multiples, are major factors, while a surrogate\'s state of residence can influence pay due to local cost of living and demand. Medical circumstances, both foreseen and unforeseen, such as invasive procedures, bed rest, or complications, can lead to additional payments.', '补偿受经验、地区与医疗因素影响。既往经验与妊娠复杂度（如多胎）是重要因素；居住州的成本与需求也会影响补偿。医疗情况（如侵入性操作、卧床或并发症）可能触发额外支付。'),
+    answer: tt('Surrogate pay can be affected by prior surrogacy experience, state of residence, insurance, agreement terms, and pregnancy-related events such as twins, C-section, bed rest, or approved travel. Final compensation should always be confirmed in the written agreement and escrow schedule.', '代孕补偿可能受既往代孕经验、居住州、保险、协议条款，以及双胎、剖宫产、卧床或获批出行等孕期事件影响。最终补偿应以书面协议和托管付款时间表为准。'),
   },
 ])
 
@@ -435,6 +436,17 @@ const processIcons = [
       </nav>
     </section>
 
+    <SeoTrustNote
+      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :note="tt('This page explains common surrogate eligibility factors in plain language. Final approval depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.', '本页用清晰语言说明常见代孕妈妈资格因素。最终批准取决于产科病历、诊所医学清关、心理筛查、法律审核与项目要求。')"
+      :sources="[
+        { label: tt('Apply to be a surrogate', '申请成为代孕妈妈'), href: localePath('/be-surrogate') },
+        { label: tt('Surrogate compensation', '代孕补偿'), href: localePath('/surrogate-compensation') },
+        { label: tt('Screening and eligibility', '筛查与资格'), href: localePath('/screening') },
+      ]"
+    />
+
     <section id="intro" class="py-18 lg:py-24">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-10 shadow-black/10 shadow-lg">
@@ -447,9 +459,12 @@ const processIcons = [
 
     <section id="quick-eligibility" class="bg-[var(--yunda-petal)] py-18 lg:py-24">
       <div class="mx-auto max-w-280 px-5 lg:px-10">
-        <h2 class="mb-12 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
+        <h2 class="mb-4 animate-fade-in-up text-center text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
           {{ tt('Who We\'re Looking For: Surrogacy Requirements (Quick Eligibility)', '我们寻找的代孕妈妈：快速资格要求') }}
         </h2>
+        <p class="mx-auto mb-12 max-w-220 animate-fade-in-up text-center text-4.5 leading-relaxed" style="animation-delay: 150ms;">
+          {{ tt('Surrogate requirements usually start with age, pregnancy history, BMI, citizenship, lifestyle, and appointment readiness. These basics help identify whether a candidate may move forward to records review, screening, legal clearance, and matching.', '代孕妈妈资格通常从年龄、生育史、BMI、国籍、生活方式和就诊配合度开始。这些基础条件帮助判断候选人是否可能进入病历审核、筛查、法律清关与匹配。') }}
+        </p>
 
         <div class="grid gap-12 lg:grid-cols-[0.6fr,0.4fr] lg:items-start">
           <!-- Left Content -->
@@ -523,6 +538,9 @@ const processIcons = [
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Medical & Lifestyle Requirements for Gestational Surrogacy', '妊娠代孕的医疗与生活方式要求') }}
           </h2>
+          <p class="mx-auto mt-4 max-w-220 animate-fade-in-up text-4.5 leading-relaxed" style="animation-delay: 150ms;">
+            {{ tt('Medical and lifestyle review helps clinics decide whether gestational surrogacy is safe to consider. Records, pregnancy history, medication needs, nicotine or drug use, mental health readiness, and home support all matter before clearance.', '医疗与生活方式审核帮助诊所判断是否适合考虑妊娠代孕。病历、孕产史、用药需求、尼古丁或药物使用、心理准备和家庭支持都会影响清关。') }}
+          </p>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
         <div class="grid gap-8 lg:grid-cols-2">
@@ -571,6 +589,9 @@ const processIcons = [
           <h2 class="animate-fade-in-up text-7 text-white font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('What Can Disqualify You From Becoming a Surrogate', '哪些情况会导致无法成为代孕妈妈') }}
           </h2>
+          <p class="mx-auto mt-4 max-w-220 animate-fade-in-up text-4.5 text-white/86 leading-relaxed" style="animation-delay: 150ms;">
+            {{ tt('Some factors permanently stop approval, while others simply delay the process. Medical clearance, legal clearance, insurance review, and clinic rules determine whether a candidate can safely move forward.', '有些因素会导致无法批准，有些只是暂时延后流程。医学清关、法律清关、保险审查和诊所规则会共同决定候选人是否能安全推进。') }}
+          </p>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
 
@@ -609,6 +630,9 @@ const processIcons = [
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Screening & Clearance Steps: IVF Surrogacy Process', '筛查与清关步骤：IVF 代孕流程') }}
           </h2>
+          <p class="mx-auto mt-4 max-w-220 animate-fade-in-up text-4.5 leading-relaxed" style="animation-delay: 150ms;">
+            {{ tt('The IVF surrogacy process moves through records review, medical screening, psychological evaluation, legal clearance, medication preparation, embryo transfer, and pregnancy monitoring. Each step protects the surrogate, intended parents, and baby.', 'IVF 代孕流程包括病历审核、医学筛查、心理评估、法律清关、用药准备、胚胎移植和孕期监测。每一步都用于保护代孕妈妈、准父母和宝宝。') }}
+          </p>
           <div class="mx-auto mt-4 h-1 w-32 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
 
@@ -658,7 +682,7 @@ const processIcons = [
               {{ tt('Compensation & Support: Surrogate Pay, Escrow, and Benefits', '补偿与支持：代孕补偿、托管与福利') }}
             </h2>
             <p class="animate-fade-in-left text-4.5 leading-relaxed" style="animation-delay: 200ms;">
-              {{ tt('We ensure your journey is supported with clear compensation, secure escrow, and comprehensive benefits throughout the entire process.', '我们通过清晰补偿、安全托管与全面福利支持你的整个旅程。') }}
+              {{ tt('Surrogate pay should be clear before a candidate commits. Compensation, approved reimbursements, escrow timing, legal coordination, insurance review, and support benefits should be explained in writing before the journey moves forward.', '代孕补偿应在候选人承诺前讲清楚。补偿、获批报销、托管时间、法律协调、保险审查和支持福利都应在推进前以书面方式说明。') }}
             </p>
 
             <!-- Compensation Cards -->
@@ -713,6 +737,9 @@ const processIcons = [
           <h2 class="animate-fade-in-up text-7 font-semibold uppercase transition-all duration-500 hover:scale-105 lg:text-8" >
             {{ tt('Frequently Asked Questions', '常见问题') }}
           </h2>
+          <p class="mx-auto mt-4 max-w-220 animate-fade-in-up text-4.5 leading-relaxed" style="animation-delay: 150ms;">
+            {{ tt('These answers summarize the most common questions about surrogate requirements, compensation, reimbursable expenses, and payment timing. Final eligibility and payment terms still depend on screening, agreement review, and program requirements.', '以下回答总结代孕妈妈资格、补偿、可报销费用和付款时间的常见问题。最终资格和付款条款仍取决于筛查、协议审核和项目要求。') }}
+          </p>
           <div class="mx-auto mt-4 h-1 w-24 animate-fade-in-up rounded-full bg-[var(--primary-brown)]" style="animation-delay: 200ms;" />
         </div>
         <div class="space-y-6">

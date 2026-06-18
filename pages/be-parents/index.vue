@@ -285,57 +285,57 @@ const landingFaqItems = computed(() => [
   {
     question: tt('Do I need embryos before applying?', '申请前必须已经有胚胎吗？'),
     answer: tt(
-      'No. Some intended parents come to Yunda with embryos already created, while others are still choosing an IVF clinic or considering donor eggs. The application helps us understand where you are so we can guide the next step.',
-      '不必须。有些意向父母已经有胚胎，有些仍在选择 IVF 诊所或考虑供卵。申请表帮助我们了解你目前的阶段，以便给出下一步建议。',
+      'No. Intended parents can contact Yunda before or after embryos are created. Some families already have embryos, while others are still choosing an IVF clinic, considering donor eggs, or comparing timelines. The application helps us understand your current stage and recommend the next practical step.',
+      '不必须。准父母可以在已有胚胎前或已有胚胎后联系孕达。有些家庭已经有胚胎，有些仍在选择 IVF 诊所、考虑供卵或比较时间线。申请表帮助我们了解你当前阶段，并建议下一步。',
     ),
   },
   {
     question: tt('Can I apply if I am still choosing an IVF clinic?', '如果我还在选择 IVF 诊所，可以申请吗？'),
     answer: tt(
-      'Yes. We can help you understand how clinic selection, embryo creation, donor egg options, and transfer planning fit into the broader surrogacy process.',
-      '可以。我们可以帮助你理解诊所选择、胚胎创建、供卵选择和移植计划如何纳入整体代孕流程。',
+      'Yes. You can apply while you are still choosing an IVF clinic. Yunda can help you understand how clinic selection, embryo creation, donor egg options, transfer planning, legal timing, and surrogate matching fit together before you commit to a full journey.',
+      '可以。即使你仍在选择 IVF 诊所，也可以先提交申请。孕达可以帮助你理解诊所选择、胚胎创建、供卵选择、移植计划、法律时间节点和代母匹配如何衔接。',
     ),
   },
   {
     question: tt('How much does surrogacy usually cost?', '代孕通常需要多少钱？'),
     answer: tt(
-      'Total cost depends on your clinic, embryo status, surrogate match, legal path, insurance needs, escrow, and pregnancy-related expenses. Yunda provides cost education and planning support so you can understand likely cost categories before moving forward.',
-      '总费用取决于诊所、胚胎状态、代母匹配、法律路径、保险需求、托管和孕期相关费用。孕达提供费用教育与规划支持，帮助你在推进前理解主要费用类别。',
+      'Surrogacy cost depends on IVF clinic fees, embryo status, surrogate compensation, legal work, insurance review, escrow, and pregnancy-related expenses. Yunda helps intended parents compare cost categories and scope clearly, because a low headline number may not include the same services.',
+      '代孕费用取决于 IVF 诊所费用、胚胎状态、代母补偿、法律工作、保险审查、托管和孕期相关费用。孕达帮助准父母清晰比较费用类别和服务范围，因为较低的总价不一定包含同样内容。',
     ),
   },
   {
     question: tt('What happens after I submit the application?', '提交申请后会发生什么？'),
     answer: tt(
-      'Our team reviews your information privately and follows up with a personalized information package. If appropriate, we may also invite you to schedule a private consultation.',
-      '我们的团队会私密审阅你的信息，并发送个性化资料包。如适合，也可能邀请你预约私密咨询。',
+      'After you submit the application, Yunda reviews your information privately, identifies your current stage, and follows up with relevant guidance. If your situation is a fit for a consultation, the team may share a personalized information package and invite you to discuss next steps.',
+      '提交申请后，孕达会私密审阅你的信息，判断你当前所处阶段，并提供相关指导。如果适合进一步咨询，团队可能会发送个性化资料包，并邀请你沟通下一步。',
     ),
   },
   {
     question: tt('Will I be pressured to sign with Yunda?', '提交后会被催促签约吗？'),
     answer: tt(
-      'No. Submitting the application does not create a contract or obligation. It helps us understand your situation and provide guidance that fits your stage of the journey.',
-      '不会。提交申请不会形成合同或义务。它只是帮助我们了解你的情况，并提供适合你当前阶段的指导。',
+      'No. Submitting the intended parent application is not a contract and does not create an obligation. It starts a private review so you can understand your options, questions, likely timeline, and cost planning before making any commitment.',
+      '不会。提交准父母申请不是合同，也不会形成义务。它只是开启私密评估，帮助你在承诺前了解选择、问题、可能时间线和费用规划。',
     ),
   },
   {
     question: tt('Do you support international or Chinese-speaking intended parents?', '你们支持国际或中文意向父母吗？'),
     answer: tt(
-      'Yes. Yunda supports international and Chinese-speaking intended parents with bilingual English and Mandarin communication and cross-border journey coordination.',
-      '支持。孕达为国际和中文意向父母提供英文与中文双语沟通，以及跨境旅程协调。',
+      'Yes. Yunda supports international and Chinese-speaking intended parents with English and Mandarin communication, U.S. clinic coordination, timeline planning, travel-related context, and help understanding legal, insurance, escrow, and newborn-document steps.',
+      '支持。孕达为国际和中文准父母提供英文与中文沟通、美国诊所协调、时间线规划、旅行相关说明，并帮助理解法律、保险、托管和新生儿文件步骤。',
     ),
   },
   {
     question: tt('Do you support LGBTQ+ couples and single parents?', '你们支持 LGBTQ+ 伴侣和单身父母吗？'),
     answer: tt(
-      'Yes. Yunda supports LGBTQ+ couples, single parents, and intended parents from many family structures. We help coordinate the process with respect, clarity, and appropriate professional support.',
-      '支持。孕达支持 LGBTQ+ 伴侣、单身父母以及多种家庭结构的意向父母，并以尊重、清晰和合适的专业支持协调整个流程。',
+      'Yes. Yunda supports LGBTQ+ couples, single intended parents, and families with different paths to parenthood. Depending on your situation, coordination may include donor egg or donor sperm planning, IVF clinic communication, surrogate matching, and parentage planning with legal professionals.',
+      '支持。孕达支持 LGBTQ+ 伴侣、单身准父母以及不同家庭路径。根据你的情况，协调内容可能包括供卵或供精规划、IVF 诊所沟通、代母匹配，以及由法律专业人士参与的亲权规划。',
     ),
   },
   {
     question: tt('How are legal, insurance, and escrow steps handled?', '法律、保险和托管步骤如何处理？'),
     answer: tt(
-      'Yunda coordinates with qualified legal, insurance, escrow, and fertility professionals so intended parents understand key steps, timing, and responsibilities throughout the journey.',
-      '孕达会与合格的法律、保险、托管和生育专业人士协调，帮助意向父母理解关键步骤、时间节点与责任。',
+      'Yunda coordinates around legal, insurance, escrow, and fertility steps so intended parents understand timing and responsibilities. Licensed professionals handle legal, medical, insurance, and escrow decisions; Yunda helps keep communication, documents, and milestones organized.',
+      '孕达围绕法律、保险、托管和生育环节进行协调，帮助准父母理解时间节点与责任。法律、医疗、保险和托管决定由相应持证专业人士处理；孕达帮助沟通、文件和里程碑保持有序。',
     ),
   },
 ])
@@ -834,6 +834,17 @@ async function handleSubmit() {
       </div>
     </section>
 
+    <SeoTrustNote
+      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :note="tt('This page explains Yunda coordination services for intended parents. Medical, legal, insurance, and escrow decisions should be reviewed with the relevant licensed professionals before commitment.', '本页说明孕达为准父母提供的协调服务。医疗、法律、保险与托管决定应在承诺前由相应持证专业人士审阅。')"
+      :sources="[
+        { label: tt('Surrogacy cost guide', '代孕费用指南'), href: localePath('/surrogacy-cost') },
+        { label: tt('Surrogacy process', '代孕流程'), href: localePath('/surrogacy-process') },
+        { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
+      ]"
+    />
+
     <!-- Trust Bar -->
     <section class="bg-[color-mix(in_srgb,var(--yunda-sky)_26%,var(--yunda-petal))] px-5 py-10">
       <div class="mx-auto max-w-320">
@@ -859,6 +870,9 @@ async function handleSubmit() {
           <h2 class="font-display text-[34px] text-[var(--yunda-bark)] font-medium leading-[1.12] md:text-[48px]">
             {{ tt('Surrogacy Should Not Feel Like a Maze', '代孕不应该像一座迷宫') }}
           </h2>
+          <p class="mt-5 text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('A clear intended parent journey should explain matching, IVF coordination, legal timing, insurance review, escrow, cost planning, and case management before you commit.', '清晰的准父母代孕旅程应在承诺前说明匹配、IVF 协调、法律时间、保险审查、托管、费用规划和个案管理。') }}
+          </p>
         </div>
         <div class="space-y-5 text-[17px] text-[var(--yunda-bark)] leading-[1.8]">
           <p>
@@ -1026,6 +1040,9 @@ async function handleSubmit() {
           <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
             {{ tt('Clear Communication Matters When the Stakes Are This High', '在如此重要的决定中，清晰沟通很关键') }}
           </h2>
+          <p class="mt-5 text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('Intended parents need timely answers, transparent next steps, and coordinated communication between the agency, clinic, legal, insurance, and escrow teams. This reduces uncertainty during a high-stakes family-building process.', '准父母需要及时回答、透明下一步，以及机构、诊所、法律、保险和托管团队之间的协调沟通。这能减少高风险家庭建设过程中的不确定。') }}
+          </p>
           <div class="mt-8 grid gap-4">
             <blockquote v-for="item in parentTestimonials" :key="item.quote" class="rounded-2 border border-[var(--yunda-bark)]/10 bg-white/78 p-6">
               <p class="text-[var(--yunda-bark)] leading-[1.75]">
@@ -1523,6 +1540,9 @@ async function handleSubmit() {
           <h2 class="text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[44px]">
             {{ tt('Questions Intended Parents Often Ask Before Applying', '准父母申请前常见问题') }}
           </h2>
+          <p class="mx-auto mt-5 max-w-3xl text-center text-[17px] text-[var(--yunda-bark)] leading-[1.75]">
+            {{ tt('These answers summarize common intended parent questions about embryos, IVF clinics, cost, legal coordination, bilingual support, LGBTQ+ and single-parent paths, and what happens after applying.', '以下回答总结准父母常见问题，包括胚胎、IVF 诊所、费用、法律协调、双语支持、LGBTQ+ 与单身父母路径，以及提交申请后的流程。') }}
+          </p>
           <div class="mt-8 divide-y divide-[var(--yunda-bark)]/12 rounded-3 border border-[var(--yunda-bark)]/12 bg-white/78">
             <details v-for="item in landingFaqItems" :key="item.question" class="group p-5 md:p-6">
               <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] text-[var(--yunda-bark)] font-bold">

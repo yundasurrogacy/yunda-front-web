@@ -151,23 +151,23 @@ const v2AfterApplySteps = computed(() => [
 const v2FaqItems = computed(() => [
   {
     q: tt('How much can I earn as a surrogate with Yunda?', '通过孕达成为代孕妈妈可以获得多少补偿？'),
-    a: tt('Qualified surrogates may receive a $61,000+ total compensation package, including base compensation and support benefits. Exact amounts depend on eligibility, agreement terms, and approved allowances.', '符合条件的代孕妈妈可获得 $61,000+ 总补偿方案，包括基础补偿和支持福利。具体金额取决于资格、协议条款和经批准的补偿项目。'),
+    a: tt('Qualified surrogate candidates may receive a $61,000+ total compensation package through Yunda, including base compensation and support benefits. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '符合条件的代孕妈妈候选人可通过孕达获得 $61,000+ 总补偿方案，包括基础补偿和支持福利。具体金额取决于资格、协议条款、医疗事件、获批报销和项目要求。'),
   },
   {
     q: tt('Is submitting the application a commitment?', '提交申请是否代表已经承诺？'),
-    a: tt('No. Submitting the application only starts a private eligibility review. You can ask questions and decide whether to continue before any agreement is signed.', '不是。提交申请只是开始私密资格评估。在签署任何协议前，你都可以提问并决定是否继续。'),
+    a: tt('No. Submitting the surrogate application only starts a private eligibility review. It does not create a contract or obligation. You can ask questions, understand compensation and screening, and decide whether to continue before any agreement is signed.', '不是。提交代孕妈妈申请只是开始私密资格评估，不会形成合同或义务。在签署任何协议前，你可以提问、了解补偿和筛查流程，并决定是否继续。'),
   },
   {
     q: tt('Why do you ask detailed health and pregnancy questions?', '为什么需要填写详细健康和怀孕问题？'),
-    a: tt('These details help us understand whether surrogacy may be medically appropriate and what records or screening may be needed next.', '这些信息帮助我们判断代孕是否可能适合你，以及后续可能需要哪些病历或筛查。'),
+    a: tt('Detailed health and pregnancy questions help Yunda understand whether surrogacy may be medically appropriate to review further. Final eligibility still depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.', '详细健康和怀孕问题帮助孕达初步判断是否值得进一步评估代孕适合度。最终资格仍取决于产科病历、诊所医学清关、心理筛查、法律审核和项目要求。'),
   },
   {
     q: tt('Who sees my application information?', '谁会看到我的申请信息？'),
-    a: tt('Your information is reviewed privately by the Yunda team for eligibility and next-step coordination. It is not sold or shared publicly.', '你的信息由孕达团队用于资格评估和后续协调，不会出售或公开分享。'),
+    a: tt('Your application information is reviewed privately by the Yunda team for eligibility review and next-step coordination. It is not sold or shared publicly. If you continue, information may be used only as needed for screening, matching, legal, insurance, or medical coordination.', '你的申请信息由孕达团队私密审阅，用于资格评估和后续协调，不会出售或公开分享。如果你继续推进，信息只会在筛查、匹配、法律、保险或医疗协调需要时使用。'),
   },
   {
     q: tt('What happens after I apply?', '提交后会发生什么？'),
-    a: tt('The team reviews your application, contacts you for follow-up, and explains compensation, screening, legal coordination, insurance review, escrow, and matching if you may qualify.', '团队会审核你的申请，联系你进行后续沟通，并在你可能符合条件时说明补偿、筛查、法律协调、保险审查、托管和匹配流程。'),
+    a: tt('After you apply, Yunda privately reviews your eligibility details and contacts you for follow-up. If you may qualify, the team explains compensation, records review, screening, legal coordination, insurance review, escrow payment protection, and matching before you make a commitment.', '提交后，孕达会私密审核你的资格信息并联系你跟进。如果你可能符合条件，团队会在你做出承诺前说明补偿、病历审核、筛查、法律协调、保险审查、托管付款保障和匹配流程。'),
   },
 ])
 
@@ -1674,6 +1674,17 @@ function scrollToPageTop() {
       </div>
     </section>
 
+    <SeoTrustNote
+      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :note="tt('This page explains Yunda surrogate application support, compensation education, eligibility review, escrow coordination, insurance review, and matching support. Final eligibility depends on medical records, screening, legal review, and program requirements.', '本页说明孕达为代孕妈妈申请者提供的申请支持、补偿说明、资格评估、托管协调、保险审查与匹配支持。最终资格取决于病历、筛查、法律审核与项目要求。')"
+      :sources="[
+        { label: tt('Surrogate requirements', '代孕妈妈资格'), href: localePath('/surrogate-requirements') },
+        { label: tt('Surrogate compensation', '代孕补偿'), href: localePath('/surrogate-compensation') },
+        { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
+      ]"
+    />
+
     <AssociationSection variant="plain" class="!pb-0" />
 
     <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-8 md:px-16 md:pb-16 md:pt-12">
@@ -1685,9 +1696,12 @@ function scrollToPageTop() {
         </div>
 
         <div class="mt-12">
-          <h2 class="mx-auto mb-12 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:mb-14 md:text-[36px] md:whitespace-nowrap">
+          <h2 class="mx-auto mb-4 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px] md:whitespace-nowrap">
             {{ t.landing.eligibilitySectionTitle }}
           </h2>
+          <p class="mx-auto mb-12 max-w-220 text-center text-4.5 text-[var(--yunda-bark)] leading-relaxed md:mb-14 md:text-5" style="font-family: var(--font-text)">
+            {{ tt('Surrogate eligibility starts with clear basics: age, pregnancy history, BMI, citizenship or residency, lifestyle, and ability to attend appointments. These criteria help determine whether you may move to records review, screening, legal coordination, and matching.', '代孕妈妈资格从清晰基础开始：年龄、生育史、BMI、公民或永久居民身份、生活方式以及是否能配合就诊。这些条件帮助判断你是否可能进入病历审核、筛查、法律协调与匹配。') }}
+          </p>
           <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
             <div class="w-full flex flex-col items-center text-center md:min-h-[25rem] md:max-w-lg md:justify-self-end">
               <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold md:text-[24px]" style="font-family: var(--font-text)">
@@ -1796,6 +1810,9 @@ function scrollToPageTop() {
               <h2 class="mt-3 font-display text-[30px] font-medium leading-[1.15] md:text-[38px]">
                 {{ tt('What happens after you submit the application', '提交申请后会发生什么') }}
               </h2>
+              <p class="mt-4 text-4.5 text-[var(--yunda-petal)]/82 leading-relaxed">
+                {{ tt('After applying, Yunda reviews your information privately and explains next steps before any commitment. If you may qualify, the team walks you through records, screening, compensation, legal coordination, insurance review, escrow, and matching.', '提交后，孕达会私密审核你的信息，并在任何承诺前说明下一步。如果你可能符合条件，团队会解释病历、筛查、补偿、法律协调、保险审查、托管和匹配流程。') }}
+              </p>
             </div>
             <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <li
