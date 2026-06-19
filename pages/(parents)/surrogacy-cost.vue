@@ -1492,7 +1492,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="why-expensive" class="section-pad bg-[var(--yunda-petal)]">
+      <section id="why-expensive" class="section-pad cost-why-section bg-[var(--yunda-petal)]">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
             <h2 class="h2-text">
@@ -1707,25 +1707,26 @@ onUnmounted(() => {
 }
 
 .section-pad {
-  --cost-section-gap: 2.25rem;
-  padding-top: var(--cost-section-gap);
-  padding-bottom: 0;
+  --cost-section-pad-y: 1.75rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
 }
 
 @media (min-width: 768px) {
   .section-pad {
-    --cost-section-gap: 2.75rem;
+    --cost-section-pad-y: 2rem;
   }
 }
 
 @media (min-width: 1200px) {
   .section-pad {
-    --cost-section-gap: 3rem;
+    --cost-section-pad-y: 2.25rem;
   }
 }
 
 .cost-section-after-seo {
   padding-top: 2rem;
+  padding-bottom: var(--cost-section-pad-y);
 }
 
 @media (min-width: 768px) {
@@ -1741,7 +1742,7 @@ onUnmounted(() => {
 }
 
 .cost-section-last {
-  padding-bottom: var(--cost-section-gap);
+  padding-bottom: calc(var(--cost-section-pad-y) + 0.5rem);
 }
 
 .cost-seo-note-wrap :deep(> section) {
@@ -2254,7 +2255,7 @@ onUnmounted(() => {
   border: 1px solid rgba(169, 108, 66, 0.18);
   border-radius: 18px;
   background: #faf4ea;
-  padding: 1.25rem 1rem 1.1rem;
+  padding: 1.35rem 1rem 1.25rem;
   text-align: center;
   min-height: 100%;
 }
@@ -2278,10 +2279,53 @@ onUnmounted(() => {
 
 .cost-whats-not-section {
   background: #fff;
+  --cost-section-pad-y: 2rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
+}
+
+@media (min-width: 768px) {
+  .cost-whats-not-section {
+    --cost-section-pad-y: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-whats-not-section {
+    --cost-section-pad-y: 2.5rem;
+  }
+}
+
+.cost-whats-not-section .section-stack {
+  gap: 24px;
+}
+
+@media (min-width: 1200px) {
+  .cost-whats-not-section .section-stack {
+    gap: 28px;
+  }
 }
 
 .cost-payments-section {
   background: #faf4ea;
+}
+
+.cost-why-section {
+  --cost-section-pad-y: 2rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
+}
+
+@media (min-width: 768px) {
+  .cost-why-section {
+    --cost-section-pad-y: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-why-section {
+    --cost-section-pad-y: 2.5rem;
+  }
 }
 
 .cost-payments-intro {
