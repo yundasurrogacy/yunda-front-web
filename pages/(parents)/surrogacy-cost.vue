@@ -1778,6 +1778,43 @@ onUnmounted(() => {
     linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.92) 18%, rgba(255, 255, 255, 0.35) 52%, rgba(255, 255, 255, 0) 78%),
     url('/images/ip/cost/redesign/hero.jpg') center right / cover no-repeat;
   pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero-section {
+    padding-top: 1.5rem;
+    background-color: #fff;
+  }
+
+  .hero-section::after {
+    display: none;
+  }
+
+  .hero-grid {
+    gap: 1.5rem;
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cost-hero-total-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .cost-anchor-nav-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
