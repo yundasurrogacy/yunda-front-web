@@ -413,7 +413,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Surrogate Compensation', url: '/surrogate-compensation' },
   ],
   faqs: faqQuestions.value,
@@ -511,6 +511,27 @@ useHead(() => ({
         { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
       ]"
     />
+
+    <section class="mx-auto max-w-280 px-5 pt-10 lg:px-10 lg:pt-12">
+      <div class="rounded-6 border border-[var(--olive-green)]/35 bg-white/95 p-6 shadow-lg shadow-black/10 lg:p-8">
+        <div class="grid gap-6 lg:grid-cols-3">
+          <div>
+            <p class="small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
+              {{ tt('Authority Summary', '权威结论') }}
+            </p>
+            <h2 class="mt-2 h3-text">
+              {{ tt('Surrogate compensation is a package, not one number.', '代孕补偿不是一个数字，而是一整套方案。') }}
+            </h2>
+          </div>
+          <p class="body-text">
+            {{ tt('The most useful answer is the total package: base compensation, allowances, approved reimbursements, medical-event add-ons, and payment timing through escrow. Eligibility and agreement terms determine what is actually included.', '最有用的答案是看完整方案：基础补偿、津贴、获批报销、医疗事件附加项，以及通过托管发放的时间安排。最终包含哪些项目取决于资格和协议。') }}
+          </p>
+          <p class="body-text">
+            {{ tt('For Yunda, compensation should always be read together with surrogate requirements, insurance review, and escrow coordination. That keeps the page closer to a definitive answer and farther from a marketing-only explanation.', '对孕达来说，补偿必须和代孕资质、保险审查与托管协调一起看。这样页面更像权威答案，而不是单纯的营销说明。') }}
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="overview" class="py-18 lg:py-24">
       <div class="mx-auto max-w-260 px-5 lg:px-10">

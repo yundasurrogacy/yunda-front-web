@@ -79,7 +79,7 @@ const translations = {
     metaTitle: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
     metaDesc:
       'Surrogacy costs can vary widely, especially in California, depending on insurance, legal steps, medical factors, and surrogate compensation.',
-    breadcrumb: ['Resources', 'Intended Parents', 'Surrogacy Cost'],
+    breadcrumb: ['For Intended Parents', 'Surrogacy Cost'],
     hero: {
       title: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
       lead:
@@ -461,7 +461,7 @@ const translations = {
   zh: {
     metaTitle: '加州代孕费用：美国代孕要花多少钱？',
     metaDesc: '代孕费用会因保险、法律流程、医疗因素和代孕者补偿而变化，尤其在加州。',
-    breadcrumb: ['资源', '准父母', '代孕费用'],
+    breadcrumb: ['准父母指南', '代孕费用'],
     hero: {
       title: '加州代孕费用：美国代孕要花多少钱？',
       lead: '透明、全面的加州及全美代孕定价，让你更有信心、更清晰地规划预算。',
@@ -953,8 +953,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Resources' },
-    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Cost', url: pagePath },
   ],
   faqs: faqItems.value,
@@ -1197,6 +1196,27 @@ onUnmounted(() => {
           ]"
         />
       </div>
+
+      <section class="mx-auto max-w-280 px-5 pt-10 lg:px-10 lg:pt-12">
+        <div class="rounded-6 border border-[var(--olive-green)]/35 bg-white/95 p-6 shadow-lg shadow-black/10 lg:p-8">
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div>
+              <p class="small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
+                {{ locale === 'zh' ? '权威结论' : 'Authority Summary' }}
+              </p>
+              <h2 class="mt-2 h3-text">
+                {{ locale === 'zh' ? '代孕费用先看范围，再看总价。' : 'Start with scope, then compare total cost.' }}
+              </h2>
+            </div>
+            <p class="body-text">
+              {{ locale === 'zh' ? '加州代孕费用通常由机构协调、代孕妈妈补偿、法律、保险、托管、IVF 诊所与孕期变量共同决定。比较报价时，先看每个报价包含什么，再看总价。' : 'Surrogacy cost is usually driven by agency coordination, surrogate compensation, legal work, insurance, escrow, IVF clinic fees, and pregnancy-specific variables. When comparing quotes, start with what each quote includes, then look at the total.' }}
+            </p>
+            <p class="body-text">
+              {{ locale === 'zh' ? 'IVF 诊所费用和新生儿医疗通常不包含在机构费用内；保险排除、自付额、胚胎状态和多胎/剖宫产等情况都会让总预算变化。' : 'IVF clinic fees and newborn medical care are usually separate from the agency package; insurance exclusions, deductibles, embryo status, and twins or C-section scenarios can all change the final budget.' }}
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section id="ca-vs-us" class="section-pad cost-section-after-seo">
         <div class="content-container section-stack">

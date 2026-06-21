@@ -180,7 +180,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Become a Surrogate in California', url: '/become-surrogate-california' },
   ],
   faqs: faqs.value,

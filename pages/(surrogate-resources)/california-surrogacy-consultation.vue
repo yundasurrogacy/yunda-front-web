@@ -236,7 +236,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
-    { name: tt('Surrogate Resources', '代孕资源'), url: '/surrogate-requirements' },
+    { name: tt('For Surrogates', '代孕妈妈指南'), url: '/surrogates' },
     { name: tt('California Surrogacy Consultation', '加州代孕咨询'), url: '/california-surrogacy-consultation' },
   ],
   faqs: faqItems.value.map(item => ({

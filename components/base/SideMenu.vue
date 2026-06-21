@@ -15,14 +15,28 @@ const internalIsOpen = computed({
   set: value => emit('update:isOpen', value),
 })
 
-const surrogateResourceLinks = [
+const intendedParentLinks = [
+  { to: '/be-parents', label: 'menu.becomeAParent', emphasized: true },
+  { to: '/surrogacy-process', label: 'menu.surrogacyProcess' },
+  { to: '/surrogacy-cost', label: 'menu.surrogacyCosts' },
+  { to: '/egg-donation', label: 'menu.findYourEggDonor' },
+  { to: '/partner-ivf-clinics', label: 'menu.partnerIvfClinics' },
+  { to: '/single-parents-lgbtq', label: 'menu.lgbtqSingleParents' },
+  { to: '/surrogacy-protection-california', label: 'menu.resourceProtection' },
+]
+
+const surrogateLinks = [
+  { to: '/be-surrogate', label: 'menu.becomeASurrogates', emphasized: true },
+  { to: '/surrogate-requirements', label: 'menu.resourceRequirements' },
+  { to: '/surrogate-compensation', label: 'menu.resourceCompensation' },
+  { to: '/surrogate-process', label: 'menu.resourceJourney' },
+  { to: '/journey', label: 'menu.surrogacyJourneyOverview' },
+  { to: '/screening', label: 'menu.ourScreeningProcess' },
+  { to: '/benefit', label: 'menu.compensationBenefits' },
+  { to: '/referral', label: 'menu.surrogateReferralProgram' },
   { to: '/california-surrogacy-consultation', label: 'menu.resourceConsultation' },
   { to: '/become-a-surrogate', label: 'menu.resourceBecomeMother' },
   { to: '/become-surrogate-california', label: 'menu.resourceCalifornia' },
-  { to: '/surrogate-process', label: 'menu.resourceJourney' },
-  { to: '/surrogate-compensation', label: 'menu.resourceCompensation' },
-  { to: '/surrogate-requirements', label: 'menu.resourceRequirements' },
-  { to: '/surrogacy-protection-california', label: 'menu.resourceProtection' },
 ]
 
 // 切换菜单显示状态
@@ -71,108 +85,48 @@ function toggleMenu() {
             <div class="px-7 py-6 pt-16 md:hidden">
               <!-- FOR INTENDED PARENTS 分组 -->
               <div class="mb-8">
-                <h3
-                  class="mb-3 border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal"
-                >
-                  {{ $t("menu.forIntendedParents") }}
-                </h3>
-                <div class="space-y-3">
-                  <NuxtLink
-                    :to="localePath('/surrogacy-process')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.surrogacyProcess") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/surrogacy-cost')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.surrogacyCosts") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/egg-donation')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.findYourEggDonor") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/single-parents-lgbtq')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.lgbtqSingleParents") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/partner-ivf-clinics')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.partnerIvfClinics") }}
-                  </NuxtLink>
-                </div>
                 <NuxtLink
-                  :to="localePath('/be-parents')"
-                  class="mt-4 block text-sm text-[var(--yunda-bark)] font-normal underline transition-colors hover:text-[var(--yunda-maple)]"
+                  :to="localePath('/intended-parents')"
+                  class="mb-3 block border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal"
                   @click="toggleMenu"
                 >
-                  {{ $t("menu.becomeAParent") }}
+                  {{ $t("menu.forIntendedParents") }}
                 </NuxtLink>
+                <div class="space-y-3">
+                  <NuxtLink
+                    v-for="link in intendedParentLinks"
+                    :key="link.to"
+                    :to="localePath(link.to)"
+                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                    :class="link.emphasized ? 'underline' : ''"
+                    @click="toggleMenu"
+                  >
+                    {{ $t(link.label) }}
+                  </NuxtLink>
+                </div>
               </div>
 
               <!-- FOR SURROGATES 分组 -->
               <div class="mb-8">
-                <h3
-                  class="mb-3 border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal"
-                >
-                  {{ $t("menu.forSurrogates") }}
-                </h3>
-                <div class="space-y-3">
-                  <NuxtLink
-                    :to="localePath('/journey')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.surrogacyJourneyOverview") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/eligibility')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.eligibilityToBecomeASurrogate") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/screening')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.ourScreeningProcess") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/benefit')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.compensationBenefits") }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/referral')"
-                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                    @click="toggleMenu"
-                  >
-                    {{ $t("menu.surrogateReferralProgram") }}
-                  </NuxtLink>
-                </div>
                 <NuxtLink
-                  :to="localePath('/be-surrogate')"
-                  class="mt-4 block text-sm text-[var(--yunda-bark)] font-normal underline transition-colors hover:text-[var(--yunda-maple)]"
+                  :to="localePath('/surrogates')"
+                  class="mb-3 block border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal"
                   @click="toggleMenu"
                 >
-                  {{ $t("menu.becomeASurrogates") }}
+                  {{ $t("menu.forSurrogates") }}
                 </NuxtLink>
+                <div class="space-y-3">
+                  <NuxtLink
+                    v-for="link in surrogateLinks"
+                    :key="link.to"
+                    :to="localePath(link.to)"
+                    class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                    :class="link.emphasized ? 'underline' : ''"
+                    @click="toggleMenu"
+                  >
+                    {{ $t(link.label) }}
+                  </NuxtLink>
+                </div>
               </div>
 
               <!-- 其他菜单项 -->
@@ -182,24 +136,14 @@ function toggleMenu() {
                 <!-- <a href="#" class="block text-[var(--yunda-bark)] text-sm font-normal hover:opacity-75 transition-opacity">
                 {{ $t('menu.logIn') }}
               </a> -->
-                <div>
-                  <h3
-                    class="mb-3 border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal"
-                  >
-                    {{ $t("menu.surrogateResources") }}
-                  </h3>
-                  <div class="space-y-3">
-                    <NuxtLink
-                      v-for="link in surrogateResourceLinks"
-                      :key="link.to"
-                      :to="localePath(link.to)"
-                      class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                      @click="toggleMenu"
-                    >
-                      {{ $t(link.label) }}
-                    </NuxtLink>
-                  </div>
-                </div>
+                <NuxtLink
+                  :to="localePath('/resources')"
+                  prefetch
+                  class="mb-3 block border-b border-[var(--yunda-bark)] pb-2 text-base text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                  @click="toggleMenu"
+                >
+                  {{ $t("menu.resources") }}
+                </NuxtLink>
                 <NuxtLink
                   :to="localePath('/about')"
                   class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
@@ -219,14 +163,6 @@ function toggleMenu() {
                 >
                   {{ $t("menu.careers") }}
                 </a>
-                <NuxtLink
-                  :to="localePath('/resources')"
-                  prefetch
-                  class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                  @click="toggleMenu"
-                >
-                  {{ $t("menu.resources") }}
-                </NuxtLink>
                 <NuxtLink
                   :to="localePath('/blog')"
                   prefetch
@@ -277,53 +213,25 @@ function toggleMenu() {
                   <div class="grid grid-cols-2 gap-8">
                     <!-- 左列：分组标题 -->
                     <div>
-                      <h3 class="text-sm text-[var(--yunda-bark)] font-normal">
+                      <NuxtLink
+                        :to="localePath('/intended-parents')"
+                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                        @click="toggleMenu"
+                      >
                         {{ $t("menu.forIntendedParents") }}
-                      </h3>
+                      </NuxtLink>
                     </div>
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
                       <NuxtLink
-                        :to="localePath('/surrogacy-process')"
+                        v-for="link in intendedParentLinks"
+                        :key="link.to"
+                        :to="localePath(link.to)"
                         class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                        :class="link.emphasized ? 'underline' : ''"
                         @click="toggleMenu"
                       >
-                        {{ $t("menu.surrogacyProcess") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/surrogacy-cost')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.surrogacyCosts") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/egg-donation')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.findYourEggDonor") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/single-parents-lgbtq')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.lgbtqSingleParents") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/partner-ivf-clinics')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.partnerIvfClinics") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/be-parents')"
-                        class="mt-3 block text-sm text-[var(--yunda-bark)] font-normal underline transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.becomeAParent") }}
+                        {{ $t(link.label) }}
                       </NuxtLink>
                     </div>
                   </div>
@@ -336,74 +244,22 @@ function toggleMenu() {
                   <div class="grid grid-cols-2 gap-8">
                     <!-- 左列：分组标题 -->
                     <div>
-                      <h3 class="text-sm text-[var(--yunda-bark)] font-normal">
+                      <NuxtLink
+                        :to="localePath('/surrogates')"
+                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                        @click="toggleMenu"
+                      >
                         {{ $t("menu.forSurrogates") }}
-                      </h3>
+                      </NuxtLink>
                     </div>
                     <!-- 右列：菜单项 -->
                     <div class="space-y-2">
                       <NuxtLink
-                        :to="localePath('/journey')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.surrogacyJourneyOverview") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/eligibility')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.eligibilityToBecomeASurrogate") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/screening')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.ourScreeningProcess") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/benefit')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.compensationBenefits") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/referral')"
-                        class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.surrogateReferralProgram") }}
-                      </NuxtLink>
-                      <NuxtLink
-                        :to="localePath('/be-surrogate')"
-                        class="mt-3 block text-sm text-[var(--yunda-bark)] font-normal underline transition-colors hover:text-[var(--yunda-maple)]"
-                        @click="toggleMenu"
-                      >
-                        {{ $t("menu.becomeASurrogates") }}
-                      </NuxtLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Surrogate Resources -->
-              <div class="mb-8">
-                <div class="mb-4 border-t border-[var(--yunda-bark)] pt-4">
-                  <div class="grid grid-cols-2 gap-8">
-                    <div>
-                      <h3 class="text-sm text-[var(--yunda-bark)] font-normal">
-                        {{ $t("menu.surrogateResources") }}
-                      </h3>
-                    </div>
-                    <div class="space-y-2">
-                      <NuxtLink
-                        v-for="link in surrogateResourceLinks"
+                        v-for="link in surrogateLinks"
                         :key="link.to"
                         :to="localePath(link.to)"
                         class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                        :class="link.emphasized ? 'underline' : ''"
                         @click="toggleMenu"
                       >
                         {{ $t(link.label) }}
@@ -420,6 +276,14 @@ function toggleMenu() {
                 <!-- <a href="#" class="block text-[var(--yunda-bark)] text-sm font-normal hover:opacity-75 transition-opacity">
                   {{ $t('menu.logIn') }}
                 </a> -->
+                <NuxtLink
+                  :to="localePath('/resources')"
+                  prefetch
+                  class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
+                  @click="toggleMenu"
+                >
+                  {{ $t("menu.resources") }}
+                </NuxtLink>
                 <NuxtLink
                   :to="localePath('/about')"
                   class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
@@ -439,14 +303,6 @@ function toggleMenu() {
                 >
                   {{ $t("menu.careers") }}
                 </a>
-                <NuxtLink
-                  :to="localePath('/resources')"
-                  prefetch
-                  class="block text-sm text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)]"
-                  @click="toggleMenu"
-                >
-                  {{ $t("menu.resources") }}
-                </NuxtLink>
                 <NuxtLink
                   :to="localePath('/blog')"
                   prefetch

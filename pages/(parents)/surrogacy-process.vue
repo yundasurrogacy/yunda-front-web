@@ -800,7 +800,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Process', url: pagePath },
   ],
   faqs: schemaFaqs.value,

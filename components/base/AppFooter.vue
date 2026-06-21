@@ -32,6 +32,12 @@ const localePath = useLocalePath()
                 </h4>
                 <hr class="my-2 border-[var(--yunda-bark)]">
                 <NuxtLink
+                  :to="localePath('/intended-parents')"
+                  class="block text-3 text-[var(--yunda-bark)] font-semibold uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
+                >
+                  {{ $t('footer.sections.intendedParent') }}
+                </NuxtLink>
+                <NuxtLink
                   :to="localePath('/surrogacy-process')"
                   class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
                 >
@@ -75,6 +81,12 @@ const localePath = useLocalePath()
                 </h4>
                 <hr class="my-2 border-[var(--yunda-bark)]">
                 <NuxtLink
+                  :to="localePath('/surrogates')"
+                  class="block text-3 text-[var(--yunda-bark)] font-semibold uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
+                >
+                  {{ $t('footer.sections.surrogates') }}
+                </NuxtLink>
+                <NuxtLink
                   :to="localePath('/journey')"
                   class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
                 >
@@ -107,7 +119,7 @@ const localePath = useLocalePath()
               </div>
             </div>
 
-            <!-- Surrogate Resources -->
+            <!-- Surrogate Guide -->
             <div class="min-w-[220px] text-left space-y-2">
               <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
                 {{ $t('footer.sections.surrogateResources') }}

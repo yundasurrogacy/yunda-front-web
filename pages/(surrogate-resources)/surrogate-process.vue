@@ -276,7 +276,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Surrogate Process', url: '/surrogate-process' },
   ],
   faqs: faqItems.value,

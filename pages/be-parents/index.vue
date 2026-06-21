@@ -407,7 +407,8 @@ const parentCoreServicePageSchemas = computed(() => buildCoreServicePageSchemas(
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
-    { name: tt('For Intended Parents', '准父母'), url: '/be-parents' },
+    { name: tt('For Intended Parents', '准父母指南'), url: '/intended-parents' },
+    { name: tt('Become a Parent', '成为父母'), url: '/be-parents' },
   ],
   locale: locale.value,
 }))

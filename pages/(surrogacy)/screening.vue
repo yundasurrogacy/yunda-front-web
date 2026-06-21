@@ -395,7 +395,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Our Screening Process', url: pagePath },
   ],
   faqs: c.value.faqItems.map(item => ({

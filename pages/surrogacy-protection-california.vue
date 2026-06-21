@@ -192,7 +192,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Protection California', url: '/surrogacy-protection-california' },
   ],
   faqs: t.value.faq.items,

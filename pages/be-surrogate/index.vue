@@ -199,6 +199,7 @@ const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchem
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
+    { name: tt('For Surrogates', '代孕妈妈指南'), url: '/surrogates' },
     { name: tt('Apply to Be a Surrogate', '申请成为代孕妈妈'), url: '/be-surrogate' },
   ],
   faqs: v2FaqItems.value.map(item => ({

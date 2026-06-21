@@ -514,7 +514,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
-    { name: tt('Surrogate Resources', '代孕资源'), url: '/surrogate-requirements' },
+    { name: tt('For Surrogates', '代孕妈妈指南'), url: '/surrogates' },
     { name: tt('Become a Surrogate', '成为代孕妈妈'), url: '/become-a-surrogate' },
   ],
   locale: locale.value,
