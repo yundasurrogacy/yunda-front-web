@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
 
 const { locale } = useI18n()
@@ -23,70 +24,64 @@ const pageDescription = computed(() => tt(
 
 const guideLinks = computed(() => [
   {
-    title: tt('Start as a Surrogate', '开始申请成为代孕妈妈'),
+    title: tt('Start Your Application', '开始代孕申请'),
     description: tt('Begin the application path and learn what the first step looks like.', '了解申请入口和第一步需要准备什么。'),
     to: '/be-surrogate',
     tag: tt('Apply', '申请'),
   },
   {
-    title: tt('Surrogate Requirements', '代孕妈妈资格要求'),
+    title: tt('Check If You Qualify', '确认是否符合资格'),
     description: tt('Review age, health, pregnancy history, lifestyle, and screening requirements.', '查看年龄、健康、孕产史、生活方式和筛查要求。'),
     to: '/surrogate-requirements',
     tag: tt('Eligibility', '资格'),
   },
   {
-    title: tt('Surrogate Compensation', '代孕补偿'),
+    title: tt('See Pay & Benefits', '查看补偿与福利'),
     description: tt('Understand base pay, benefits, reimbursements, escrow timing, and protections.', '了解基础补偿、福利、报销、托管付款时间和保障。'),
-    to: '/surrogate-compensation',
-    tag: tt('Pay', '补偿'),
+    to: '/benefit',
+    tag: tt('Key Guide', '重点'),
   },
   {
-    title: tt('Surrogate Process', '代孕流程'),
-    description: tt('See the step-by-step journey from application and matching to pregnancy support.', '查看从申请、匹配到孕期支持的完整步骤。'),
-    to: '/surrogate-process',
-    tag: tt('Process', '流程'),
-  },
-  {
-    title: tt('Journey Overview', '旅程概览'),
+    title: tt('Understand the Journey', '了解代孕旅程'),
     description: tt('Get a practical overview of what the surrogate journey feels like day to day.', '了解代孕旅程中每个阶段的实际体验。'),
     to: '/journey',
     tag: tt('Journey', '旅程'),
   },
   {
-    title: tt('Screening Process', '筛查流程'),
+    title: tt('Prepare for Screening', '准备筛查流程'),
     description: tt('Learn how medical, psychological, background, and records review fit together.', '了解医疗、心理、背景和病历审核如何衔接。'),
     to: '/screening',
     tag: tt('Screening', '筛查'),
   },
   {
-    title: tt('Benefits and Support', '福利与支持'),
-    description: tt('See the support system around benefits, insurance, coordination, and care.', '查看福利、保险、协调和关怀支持体系。'),
-    to: '/benefit',
-    tag: tt('Support', '支持'),
+    title: tt('Review Payment & Escrow Details', '查看付款与托管说明'),
+    description: tt('Review payment schedules, escrow handling, reimbursements, and compensation details.', '查看付款时间、托管安排、报销项目和补偿细节。'),
+    to: '/surrogate-compensation',
+    tag: tt('Details', '细节'),
   },
   {
-    title: tt('Referral Program', '推荐计划'),
+    title: tt('Review Transfer & Legal Steps', '查看移植与法律步骤'),
+    description: tt('Review the detailed IVF transfer, legal agreement, and milestone coordination steps.', '查看 IVF 移植、法律协议和关键节点协调的详细说明。'),
+    to: '/surrogate-process',
+    tag: tt('Specialized', '专题'),
+  },
+  {
+    title: tt('Refer a Candidate', '推荐候选人'),
     description: tt('Learn how referrals work and how rewards are structured for qualified candidates.', '了解推荐流程以及合格候选人的奖励安排。'),
     to: '/referral',
     tag: tt('Referral', '推荐'),
   },
   {
-    title: tt('Become a Surrogate Guide', '成为代孕妈妈指南'),
+    title: tt('Prepare Before You Apply', '申请前准备'),
     description: tt('Read a broader guide for women considering becoming a surrogate.', '阅读适合正在考虑成为代孕妈妈的完整指南。'),
     to: '/become-a-surrogate',
     tag: tt('Guide', '指南'),
   },
   {
-    title: tt('California Surrogate Guide', '加州代孕妈妈指南'),
+    title: tt('Review California Requirements', '查看加州代孕妈妈要求'),
     description: tt('Understand California-specific surrogate expectations, process, and support.', '了解加州代孕妈妈相关的要求、流程与支持。'),
     to: '/become-surrogate-california',
     tag: tt('California', '加州'),
-  },
-  {
-    title: tt('California Consultation', '加州代孕咨询'),
-    description: tt('Explore consultation guidance for surrogates considering a California journey.', '查看面向加州代孕旅程的咨询说明。'),
-    to: '/california-surrogacy-consultation',
-    tag: tt('Consultation', '咨询'),
   },
 ])
 
@@ -96,6 +91,29 @@ const schemaItems = computed(() => guideLinks.value.map((item, index) => ({
   url: item.to,
   position: index + 1,
 })))
+
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/benefit',
+    title: tt('Surrogate Pay & Benefits', '代孕补偿与福利'),
+    description: tt('The primary compensation and benefits guide for women comparing whether surrogacy fits their family.', '适合正在判断代孕是否适合家庭安排的女性重点阅读。'),
+    image: '/images/benefit/redesign/hero.jpg',
+  },
+  {
+    to: '/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know',
+    title: tt('Surrogate Salary & Benefits Key Facts', '代孕妈妈薪酬与福利重点'),
+    description: tt('A high-performing article that answers common pay, benefit, and expectation questions.', '表现较好的文章，集中回答薪酬、福利和预期问题。'),
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761318068774-uvro4j.jpg',
+    date: tt('October 24, 2025', '2025年10月24日'),
+  },
+  {
+    to: '/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide',
+    title: tt('How to Become a Surrogate Step by Step', '如何成为代孕妈妈'),
+    description: tt('Helps candidates understand application, screening, matching, and journey stages before applying.', '帮助候选人了解申请、筛查、匹配和旅程阶段。'),
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761892210348-xt9x4m.JPEG',
+    date: tt('October 31, 2025', '2025年10月31日'),
+  },
+])
 
 const pageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value || undefined,
@@ -164,8 +182,8 @@ useHead(() => ({
                 <NuxtLink :to="localePath('/be-surrogate')" class="primary-action">
                   {{ tt('Start Application', '开始申请') }}
                 </NuxtLink>
-                <NuxtLink :to="localePath('/surrogate-compensation')" class="secondary-action">
-                  {{ tt('View Compensation', '查看补偿') }}
+                <NuxtLink :to="localePath('/benefit')" class="secondary-action">
+                  {{ tt('View Pay & Benefits', '查看补偿与福利') }}
                 </NuxtLink>
               </div>
             </div>
@@ -195,6 +213,12 @@ useHead(() => ({
           </NuxtLink>
         </div>
       </section>
+
+      <RelatedGuides
+        :title="tt('Next: Pay, Eligibility, and Application Prep', '下一步：补偿、资格与申请准备')"
+        :intro="tt('If you are considering becoming a surrogate, start with pay and benefits, then review eligibility and the application path before submitting your information.', '如果你正在考虑成为代孕妈妈，建议先了解补偿与福利，再确认资格要求和申请流程。')"
+        :links="relatedPerformanceLinks"
+      />
     </main>
     <AppFooter />
   </div>

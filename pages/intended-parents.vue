@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
 
 const { locale } = useI18n()
@@ -23,52 +24,81 @@ const pageDescription = computed(() => tt(
 
 const guideLinks = computed(() => [
   {
-    title: tt('Start as Intended Parents', '准父母开始咨询'),
+    title: tt('Start a Private Consultation', '开始私密咨询'),
     description: tt('Begin the parent intake path and share your family-building goals.', '进入准父母咨询入口，说明你的家庭建立目标。'),
     to: '/be-parents',
     tag: tt('Apply', '咨询'),
   },
   {
-    title: tt('Surrogacy Process', '代孕流程'),
+    title: tt('Understand the Full Process', '了解完整流程'),
     description: tt('Understand the journey from consultation and IVF coordination to matching, legal clearance, pregnancy, and birth.', '了解从咨询、IVF 协调、匹配、法律清关到孕期和出生的完整流程。'),
     to: '/surrogacy-process',
     tag: tt('Process', '流程'),
   },
   {
-    title: tt('Surrogacy Cost', '代孕费用'),
+    title: tt('Plan Your Surrogacy Budget', '规划代孕预算'),
     description: tt('Review agency fees, compensation, escrow, insurance, legal fees, and case-dependent costs.', '查看机构费、补偿、托管、保险、法律费用和个案浮动成本。'),
     to: '/surrogacy-cost',
     tag: tt('Cost', '费用'),
   },
   {
-    title: tt('Egg Donation', '捐卵服务'),
+    title: tt('Explore Egg Donation Options', '了解捐卵方案'),
     description: tt('Learn how egg donation can fit into an IVF and gestational surrogacy plan.', '了解捐卵如何衔接 IVF 与妊娠代孕计划。'),
     to: '/egg-donation',
     tag: tt('IVF', 'IVF'),
   },
   {
-    title: tt('Partner IVF Clinics', '合作 IVF 诊所'),
+    title: tt('Coordinate With IVF Clinics', '协调 IVF 诊所'),
     description: tt('Explore how clinic coordination, insurance planning, and timeline management work together.', '了解诊所协调、保险规划和时间线管理如何配合。'),
     to: '/partner-ivf-clinics',
     tag: tt('Clinics', '诊所'),
   },
   {
-    title: tt('LGBTQ+ and Single Parents', 'LGBTQ+ 与单身准父母'),
+    title: tt('Find Inclusive Family-Building Support', '获得包容性家庭建立支持'),
     description: tt('Review inclusive surrogacy support for single parents and LGBTQ+ intended parents.', '查看面向单身和 LGBTQ+ 准父母的包容性代孕支持。'),
     to: '/single-parents-lgbtq',
     tag: tt('Inclusive', '包容'),
   },
   {
-    title: tt('California Surrogacy Protection', '加州代孕保障'),
+    title: tt('Understand Legal, Insurance & Escrow Protection', '了解法律、保险与托管保障'),
     description: tt('Understand contracts, escrow, insurance, parentage, and coordinated protection in California.', '了解加州合同、托管、保险、亲权确认与协调保障。'),
     to: '/surrogacy-protection-california',
     tag: tt('Legal', '法律'),
+  },
+  {
+    title: tt('Get California Consultation Guidance', '获取加州咨询指导'),
+    description: tt('A consultation guide for Chinese-speaking intended parents planning a California surrogacy journey.', '面向计划加州代孕旅程的华人准父母咨询说明。'),
+    to: '/california-surrogacy-consultation',
+    tag: tt('California', '加州'),
   },
 ])
 
 const supportingLinks = computed(() => [
   { title: tt('Resources & Media', '资源与媒体'), to: '/resources' },
   { title: tt('Blog', '博客'), to: '/blog' },
+])
+
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family',
+    title: tt('How Much Is Surrogacy?', '美国代孕真实费用'),
+    description: tt('A high-intent cost guide for families comparing surrogacy budgets and next steps.', '适合正在比较代孕预算和下一步安排的准父母继续阅读。'),
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761881438525-s95lbq.webp',
+    date: tt('October 31, 2025', '2025年10月31日'),
+  },
+  {
+    to: '/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish',
+    title: tt('Surrogacy Timeline From Start to Finish', '代孕完整时间线'),
+    description: tt('Explains the main timeline stages from consultation through delivery planning.', '说明从咨询到分娩计划的主要时间线阶段。'),
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1770103968025-plr4cr.png',
+    date: tt('February 3, 2026', '2026年2月3日'),
+  },
+  {
+    to: '/surrogacy-protection-california',
+    title: tt('Legal, Insurance & Escrow Protection', '法律、保险与托管保障'),
+    description: tt('A core service guide for intended parents who want clearer protection before moving forward.', '适合希望先了解保障机制再推进的准父母。'),
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/surrogacy-protection-california/cover-1.png',
+  },
 ])
 
 const schemaItems = computed(() => guideLinks.value.map((item, index) => ({
@@ -187,6 +217,12 @@ useHead(() => ({
           </NuxtLink>
         </div>
       </section>
+
+      <RelatedGuides
+        :title="tt('Next: Cost, Timeline, and Protection Planning', '下一步：费用、时间线与保障规划')"
+        :intro="tt('For intended parents, the next decision usually depends on budget, timeline, legal protection, insurance, and clinic readiness. These guides help you compare those essentials before consultation.', '准父母的下一步通常取决于预算、时间线、法律保障、保险和诊所准备情况。以下内容可以帮助你在咨询前先做判断。')"
+        :links="relatedPerformanceLinks"
+      />
     </main>
     <AppFooter />
   </div>

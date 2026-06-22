@@ -4,6 +4,7 @@ import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -936,6 +937,35 @@ const faqItems = computed(() =>
         },
       ],
 )
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/blog/Average-Compensation-Surrogacy-Cost-in-California',
+    title: locale.value === 'zh' ? '加州平均补偿与代孕费用' : 'Average Compensation & Surrogacy Cost in California',
+    description: locale.value === 'zh'
+      ? 'GSC 高曝光博客，适合继续了解加州代孕预算、代母补偿和费用变量。'
+      : 'A high-impression GSC blog for California surrogacy budget, compensation, and cost variables.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761716620530-82fdj9.webp',
+    date: locale.value === 'zh' ? '2025年10月29日' : 'October 29, 2025',
+  },
+  {
+    to: '/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family',
+    title: locale.value === 'zh' ? '美国代孕真实费用' : 'How Much Is Surrogacy?',
+    description: locale.value === 'zh'
+      ? '围绕真实代孕成本、费用范围和家庭预算问题的高曝光内容。'
+      : 'High-impression content on real surrogacy costs, ranges, and family budget planning.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761881438525-s95lbq.webp',
+    date: locale.value === 'zh' ? '2025年10月31日' : 'October 31, 2025',
+  },
+  {
+    to: '/blog/How-Much-Does-Surrogacy-Cost-And-Pricing',
+    title: locale.value === 'zh' ? '代孕费用与定价说明' : 'Surrogacy Cost and Pricing',
+    description: locale.value === 'zh'
+      ? '补充说明代孕费用拆分、定价逻辑和常见预算问题。'
+      : 'A supporting guide for cost breakdowns, pricing logic, and common budget questions.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761892319234-7s7v5q.png',
+    date: locale.value === 'zh' ? '2025年10月31日' : 'October 31, 2025',
+  },
+])
 const pagePath = '/surrogacy-cost'
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
@@ -1117,6 +1147,12 @@ onUnmounted(() => {
 <template>
   <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/intended-parents', label: locale === 'zh' ? '准父母' : 'For Intended Parents' },
+        { label: locale === 'zh' ? '费用指南' : 'Cost Guide' },
+      ]"
+    />
 
     <main>
       <section id="top" class="hero-section">
@@ -1186,7 +1222,7 @@ onUnmounted(() => {
 
       <div class="cost-seo-note-wrap">
         <SeoTrustNote
-          :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+          :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
           :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
           :note="locale === 'zh' ? '本页用于解释代孕费用类别、估算范围和付款规划。实际费用会因 IVF 诊所、保险、法律、医疗情况和个案安排而变化，最终预算应结合专业审查确认。' : 'This page explains surrogacy cost categories, estimate ranges, and payment planning. Actual costs vary by IVF clinic, insurance, legal, medical, and case-specific factors, and final budgets should be confirmed through professional review.'"
           :sources="[
@@ -1673,6 +1709,11 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+      <RelatedGuides
+        :title="locale === 'zh' ? '继续了解代孕费用与预算' : 'Continue With Surrogacy Cost Planning'"
+        :intro="locale === 'zh' ? '如果你正在比较代孕费用，下面的内容可以帮助你进一步理解总预算、补偿项目和加州相关费用差异。' : 'If you are comparing surrogacy costs, these reads help clarify total budget, compensation items, and California cost differences.'"
+        :links="relatedPerformanceLinks"
+      />
     </main>
 
     <AppFooter />

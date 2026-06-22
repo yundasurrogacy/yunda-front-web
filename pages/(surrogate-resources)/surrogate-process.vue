@@ -277,7 +277,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   breadcrumbs: [
     { name: 'Home', url: '/' },
     { name: 'For Surrogates', url: '/surrogates' },
-    { name: 'Surrogate Process', url: '/surrogate-process' },
+    { name: 'Detailed Surrogate Guides', url: '/surrogates' },
+    { name: 'Transfer & Legal Steps', url: '/surrogate-process' },
   ],
   faqs: faqItems.value,
   itemList: {
@@ -599,6 +600,13 @@ function setActiveStep(stepId: number) {
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈补充指南' : 'Detailed Surrogate Guides' },
+        { label: locale === 'zh' ? '移植与法律步骤' : 'Transfer & Legal Steps' },
+      ]"
+    />
 
     <!-- Hero / Overview -->
     <section class="relative overflow-hidden bg-white py-24">

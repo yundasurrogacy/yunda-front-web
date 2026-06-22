@@ -1676,7 +1676,7 @@ function scrollToPageTop() {
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
       :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
       :note="tt('This page explains Yunda surrogate application support, compensation education, eligibility review, escrow coordination, insurance review, and matching support. Final eligibility depends on medical records, screening, legal review, and program requirements.', '本页说明孕达为代孕妈妈申请者提供的申请支持、补偿说明、资格评估、托管协调、保险审查与匹配支持。最终资格取决于病历、筛查、法律审核与项目要求。')"
       :sources="[

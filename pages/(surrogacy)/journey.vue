@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
@@ -576,6 +577,32 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const c = computed(() => ((locale.value || '').startsWith('zh') ? translations.zh : translations.en))
+const relatedGuides = computed(() => [
+  {
+    to: '/surrogate-process',
+    title: locale.value === 'zh' ? '移植与法律步骤' : 'Transfer & Legal Steps',
+    description: locale.value === 'zh'
+      ? '查看 IVF、法律、移植和孕期节点的更细分流程说明。'
+      : 'See a deeper breakdown of IVF, legal, transfer, and pregnancy milestones.',
+    image: '/images/california-surrogacy-process.jpg',
+  },
+  {
+    to: '/surrogate-requirements',
+    title: locale.value === 'zh' ? '代孕妈妈资格要求' : 'Surrogate Requirements',
+    description: locale.value === 'zh'
+      ? '确认年龄、妊娠史、健康、生活方式和筛查基础要求。'
+      : 'Confirm age, pregnancy history, health, lifestyle, and screening basics.',
+    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+  },
+  {
+    to: '/benefit',
+    title: locale.value === 'zh' ? '补偿与福利' : 'Compensation & Benefits',
+    description: locale.value === 'zh'
+      ? '了解基础补偿、津贴、付款时间和孕期支持如何安排。'
+      : 'Understand base compensation, allowances, payment timing, and support.',
+    image: '/images/benefit/redesign/hero.jpg',
+  },
+])
 const pagePath = '/journey'
 
 const stepsTimelineRows = computed(() => {
@@ -658,6 +685,12 @@ useHead(() => ({
 <template>
   <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { label: locale === 'zh' ? '旅程指南' : 'Journey Guide' },
+      ]"
+    />
     <main>
       <!-- 第一屏（对照 docx image1：左文案+勾选列表+双 CTA；右实景+「8 Guided Stages」角标） -->
       <section class="relative isolate w-full overflow-hidden bg-[var(--yunda-petal)] pb-14 pt-24 lg:pb-20 lg:pt-28">
@@ -992,6 +1025,12 @@ useHead(() => ({
           </div>
         </div>
       </section>
+
+      <RelatedGuides
+        :title="locale === 'zh' ? '继续了解旅程中的资格、补偿与法律步骤' : 'Continue With Requirements, Pay, and Legal Steps'"
+        :intro="locale === 'zh' ? '代孕旅程不只是一个流程，还包括资格确认、补偿节点、筛查、法律文件和移植安排。以下内容可以帮助你把关键步骤串起来。' : 'The surrogate journey includes eligibility, payment milestones, screening, legal agreements, and transfer planning. These guides connect the key steps.'"
+        :links="relatedGuides"
+      />
 
       <!-- 第七屏 CTA -->
       <section class="w-full bg-[var(--yunda-maple)] py-14 lg:py-20">

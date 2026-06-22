@@ -836,7 +836,7 @@ async function handleSubmit() {
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
       :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
       :note="tt('This page explains Yunda coordination services for intended parents. Medical, legal, insurance, and escrow decisions should be reviewed with the relevant licensed professionals before commitment.', '本页说明孕达为准父母提供的协调服务。医疗、法律、保险与托管决定应在承诺前由相应持证专业人士审阅。')"
       :sources="[

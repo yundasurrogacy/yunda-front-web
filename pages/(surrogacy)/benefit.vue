@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
@@ -240,6 +241,32 @@ const translations = {
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const relatedGuides = computed(() => [
+  {
+    to: '/surrogate-compensation',
+    title: locale.value === 'zh' ? '付款与托管说明' : 'Payment & Escrow Details',
+    description: locale.value === 'zh'
+      ? '查看补偿组成、里程碑付款、托管支付和可报销项目的补充说明。'
+      : 'Review compensation structure, milestone payments, escrow, and reimbursable items.',
+    image: '/images/landingpage2/Surrogate-Compensation.jpg',
+  },
+  {
+    to: '/surrogate-requirements',
+    title: locale.value === 'zh' ? '申请资格自查' : 'Application Eligibility Check',
+    description: locale.value === 'zh'
+      ? '先确认基础资格，再评估补偿方案和适合你的下一步。'
+      : 'Confirm baseline qualifications before reviewing compensation and next steps.',
+    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+  },
+  {
+    to: '/journey',
+    title: locale.value === 'zh' ? '代孕旅程' : 'Surrogate Journey',
+    description: locale.value === 'zh'
+      ? '了解从申请、筛查、匹配到分娩和产后支持的完整路径。'
+      : 'Understand the path from application and screening to matching, birth, and support.',
+    image: '/images/journey/redesign/hero-scene.png',
+  },
+])
 const pagePath = '/benefit'
 
 const schemaCompensationItems = computed(() => [
@@ -325,6 +352,12 @@ useHead(() => ({
 <template>
   <div class="benefit-page min-h-screen text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { label: locale === 'zh' ? '补偿与福利' : 'Pay & Benefits' },
+      ]"
+    />
 
     <main>
       <!-- 第一屏：对照 docx + 设计稿 -->
@@ -683,6 +716,12 @@ useHead(() => ({
           </div>
         </div>
       </section>
+
+      <RelatedGuides
+        :title="locale === 'zh' ? '继续确认补偿、资格与申请节奏' : 'Continue With Pay, Eligibility, and Application Timing'"
+        :intro="locale === 'zh' ? '了解福利与补偿后，建议继续确认自己是否符合基础资格、筛查会包含什么，以及申请后每个阶段如何推进。' : 'After reviewing pay and benefits, confirm basic eligibility, screening expectations, and how each application stage moves forward.'"
+        :links="relatedGuides"
+      />
 
       <!-- 第七屏：对照 docx image10 -->
       <section class="benefit-section benefit-cta-section benefit-section--last w-full">

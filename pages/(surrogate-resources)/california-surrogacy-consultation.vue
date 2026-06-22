@@ -236,8 +236,9 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
-    { name: tt('For Surrogates', '代孕妈妈指南'), url: '/surrogates' },
-    { name: tt('California Surrogacy Consultation', '加州代孕咨询'), url: '/california-surrogacy-consultation' },
+    { name: tt('For Intended Parents', '准父母'), url: '/intended-parents' },
+    { name: tt('Detailed Intended Parent Guides', '准父母补充指南'), url: '/intended-parents' },
+    { name: tt('California Consultation Guidance', '加州咨询指导'), url: '/california-surrogacy-consultation' },
   ],
   faqs: faqItems.value.map(item => ({
     question: item.q,
@@ -266,6 +267,12 @@ useHead(() => ({
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/intended-parents', label: locale === 'zh' ? '准父母' : 'For Intended Parents' },
+        { label: locale === 'zh' ? '加州咨询指导' : 'California Consultation Guidance' },
+      ]"
+    />
 
     <!-- Hero -->
     <section class="relative overflow-hidden from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-16 pt-20">

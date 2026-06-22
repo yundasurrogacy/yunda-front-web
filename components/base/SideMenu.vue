@@ -16,27 +16,22 @@ const internalIsOpen = computed({
 })
 
 const intendedParentLinks = [
-  { to: '/be-parents', label: 'menu.becomeAParent', emphasized: true },
-  { to: '/surrogacy-process', label: 'menu.surrogacyProcess' },
-  { to: '/surrogacy-cost', label: 'menu.surrogacyCosts' },
-  { to: '/egg-donation', label: 'menu.findYourEggDonor' },
-  { to: '/partner-ivf-clinics', label: 'menu.partnerIvfClinics' },
+  { to: '/be-parents', label: 'menu.startConsultation', emphasized: true },
+  { to: '/surrogacy-cost', label: 'menu.costGuide' },
+  { to: '/surrogacy-process', label: 'menu.processGuide' },
+  { to: '/surrogacy-protection-california', label: 'menu.legalInsuranceEscrow' },
+  { to: '/egg-donation', label: 'menu.eggDonationGuide' },
+  { to: '/partner-ivf-clinics', label: 'menu.ivfClinicPartners' },
   { to: '/single-parents-lgbtq', label: 'menu.lgbtqSingleParents' },
-  { to: '/surrogacy-protection-california', label: 'menu.resourceProtection' },
 ]
 
 const surrogateLinks = [
-  { to: '/be-surrogate', label: 'menu.becomeASurrogates', emphasized: true },
-  { to: '/surrogate-requirements', label: 'menu.resourceRequirements' },
-  { to: '/surrogate-compensation', label: 'menu.resourceCompensation' },
-  { to: '/surrogate-process', label: 'menu.resourceJourney' },
-  { to: '/journey', label: 'menu.surrogacyJourneyOverview' },
-  { to: '/screening', label: 'menu.ourScreeningProcess' },
-  { to: '/benefit', label: 'menu.compensationBenefits' },
-  { to: '/referral', label: 'menu.surrogateReferralProgram' },
-  { to: '/california-surrogacy-consultation', label: 'menu.resourceConsultation' },
-  { to: '/become-a-surrogate', label: 'menu.resourceBecomeMother' },
-  { to: '/become-surrogate-california', label: 'menu.resourceCalifornia' },
+  { to: '/be-surrogate', label: 'menu.applyAsSurrogate', emphasized: true },
+  { to: '/surrogate-requirements', label: 'menu.requirementsGuide' },
+  { to: '/journey', label: 'menu.surrogateProcessGuide' },
+  { to: '/benefit', label: 'menu.compensationGuide' },
+  { to: '/screening', label: 'menu.screeningGuide' },
+  { to: '/referral', label: 'menu.referralProgram' },
 ]
 
 // 切换菜单显示状态

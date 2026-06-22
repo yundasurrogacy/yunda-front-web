@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-04T04:34:11.843Z",
+  "generatedAt": "2026-06-22T05:35:58.993Z",
   "sections": {
     "en": [
       {
-        "title": "General",
+        "title": "Core Paths",
         "links": [
           {
             "href": "/",
@@ -11,112 +11,16 @@
           },
           {
             "href": "/about",
-            "label": "About"
+            "label": "About Yunda"
           },
-          {
-            "href": "/surrogacy-cost",
-            "label": "Surrogacy Cost"
-          },
-          {
-            "href": "/surrogacy-protection-california",
-            "label": "Surrogacy Protection California"
-          }
-        ]
-      },
-      {
-        "title": "Intended Parents",
-        "links": [
           {
             "href": "/be-parents",
-            "label": "Become a Parent"
-          },
-          {
-            "href": "/single-parents-lgbtq",
-            "label": "Single Parents LGBTQ"
-          },
-          {
-            "href": "/surrogacy-cost",
-            "label": "Surrogacy Cost"
-          },
-          {
-            "href": "/partner-ivf-clinics",
-            "label": "Partner IVF Clinics"
-          },
-          {
-            "href": "/surrogacy-process",
-            "label": "Surrogacy Process"
-          },
-          {
-            "href": "/egg-donation",
-            "label": "Egg Donation"
-          }
-        ]
-      },
-      {
-        "title": "Surrogacy Program",
-        "links": [
-          {
-            "href": "/be-surrogate",
-            "label": "Be a Surrogate"
+            "label": "Start Consultation"
           },
           {
             "href": "/be-surrogate",
-            "label": "Become a Surrogate"
+            "label": "Apply as a Surrogate"
           },
-          {
-            "href": "/benefit",
-            "label": "Benefit"
-          },
-          {
-            "href": "/screening",
-            "label": "Screening"
-          },
-          {
-            "href": "/eligibility",
-            "label": "Eligibility"
-          },
-          {
-            "href": "/referral",
-            "label": "Referral"
-          },
-          {
-            "href": "/journey",
-            "label": "Journey"
-          }
-        ]
-      },
-      {
-        "title": "Surrogate Resources",
-        "links": [
-          {
-            "href": "/surrogate-requirements",
-            "label": "Surrogate Requirements"
-          },
-          {
-            "href": "/surrogate-process",
-            "label": "Surrogate Process"
-          },
-          {
-            "href": "/become-a-surrogate",
-            "label": "Become a Surrogate"
-          },
-          {
-            "href": "/surrogate-compensation",
-            "label": "Surrogate Compensation"
-          },
-          {
-            "href": "/become-surrogate-california",
-            "label": "Become Surrogate California"
-          },
-          {
-            "href": "/california-surrogacy-consultation",
-            "label": "California Surrogacy Consultation"
-          }
-        ]
-      },
-      {
-        "title": "Legal",
-        "links": [
           {
             "href": "/privacy-policy",
             "label": "Privacy Policy"
@@ -132,11 +36,135 @@
         ]
       },
       {
-        "title": "Blog",
+        "title": "Intended Parents",
+        "links": [
+          {
+            "href": "/intended-parents",
+            "label": "Intended Parents Overview"
+          },
+          {
+            "href": "/be-parents",
+            "label": "Start Consultation"
+          },
+          {
+            "href": "/surrogacy-cost",
+            "label": "Cost Guide"
+          },
+          {
+            "href": "/surrogacy-process",
+            "label": "Process Guide"
+          },
+          {
+            "href": "/surrogacy-protection-california",
+            "label": "Legal, Insurance & Escrow"
+          },
+          {
+            "href": "/california-surrogacy-consultation",
+            "label": "California Consultation Guidance"
+          },
+          {
+            "href": "/egg-donation",
+            "label": "Egg Donation Guide"
+          },
+          {
+            "href": "/partner-ivf-clinics",
+            "label": "IVF Clinic Partners"
+          },
+          {
+            "href": "/single-parents-lgbtq",
+            "label": "LGBTQ+ & Single Parents"
+          }
+        ]
+      },
+      {
+        "title": "Surrogates",
+        "links": [
+          {
+            "href": "/surrogates",
+            "label": "Surrogate Overview"
+          },
+          {
+            "href": "/be-surrogate",
+            "label": "Apply as a Surrogate"
+          },
+          {
+            "href": "/surrogate-requirements",
+            "label": "Requirements"
+          },
+          {
+            "href": "/journey",
+            "label": "Journey Guide"
+          },
+          {
+            "href": "/benefit",
+            "label": "Compensation & Benefits"
+          },
+          {
+            "href": "/screening",
+            "label": "Screening"
+          },
+          {
+            "href": "/referral",
+            "label": "Referral Program"
+          }
+        ]
+      },
+      {
+        "title": "Detailed Surrogate Guides",
+        "links": [
+          {
+            "href": "/surrogate-process",
+            "label": "Transfer & Legal Steps"
+          },
+          {
+            "href": "/surrogate-compensation",
+            "label": "Payment & Escrow Details"
+          },
+          {
+            "href": "/become-a-surrogate",
+            "label": "Before You Apply"
+          },
+          {
+            "href": "/become-surrogate-california",
+            "label": "California Requirements"
+          },
+          {
+            "href": "/eligibility",
+            "label": "Quick Eligibility Check"
+          }
+        ]
+      },
+      {
+        "title": "Resources / Blog",
+        "links": [
+          {
+            "href": "/resources",
+            "label": "Resources & Media Center"
+          },
+          {
+            "href": "/blog",
+            "label": "Blog Index"
+          }
+        ]
+      },
+      {
+        "title": "Blog Articles",
         "links": [
           {
             "href": "/blog",
             "label": "Blog Index"
+          },
+          {
+            "href": "/blog/Is-Surrogacy-Legal-in-California-What-Surrogates-Should-Know-Before-Signing-a-Contract",
+            "label": "Is Surrogacy Legal in California? What Surrogates Should Know Before Signing a Contract"
+          },
+          {
+            "href": "/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+            "label": "Can You Become a Surrogate in California? Key Requirements Explained"
+          },
+          {
+            "href": "/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare",
+            "label": "Highest Paying Surrogacy Agencies in 2026: What to Compare"
           },
           {
             "href": "/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate",
@@ -423,13 +451,13 @@
             "label": "Surrogate Salary & Benefits 2025: Key Facts Every Surrogate Should Know"
           }
         ],
-        "note": "Posts fetched from API: 71 items.",
+        "note": "Posts fetched from API: 74 items.",
         "className": "section-blog"
       }
     ],
     "zh": [
       {
-        "title": "常规",
+        "title": "核心路径",
         "links": [
           {
             "href": "/zh",
@@ -437,112 +465,16 @@
           },
           {
             "href": "/zh/about",
-            "label": "关于我们"
+            "label": "关于孕达"
           },
-          {
-            "href": "/zh/surrogacy-cost",
-            "label": "代孕费用"
-          },
-          {
-            "href": "/zh/surrogacy-protection-california",
-            "label": "加州代孕保障"
-          }
-        ]
-      },
-      {
-        "title": "准父母",
-        "links": [
           {
             "href": "/zh/be-parents",
-            "label": "成为父母"
-          },
-          {
-            "href": "/zh/single-parents-lgbtq",
-            "label": "单亲与 LGBTQ 准父母"
-          },
-          {
-            "href": "/zh/surrogacy-cost",
-            "label": "代孕费用"
-          },
-          {
-            "href": "/zh/partner-ivf-clinics",
-            "label": "合作 IVF 诊所"
-          },
-          {
-            "href": "/zh/surrogacy-process",
-            "label": "代孕流程"
-          },
-          {
-            "href": "/zh/egg-donation",
-            "label": "捐卵"
-          }
-        ]
-      },
-      {
-        "title": "代孕项目",
-        "links": [
-          {
-            "href": "/zh/be-surrogate",
-            "label": "成为代孕妈妈"
+            "label": "预约咨询"
           },
           {
             "href": "/zh/be-surrogate",
-            "label": "成为代孕妈妈"
+            "label": "申请成为代孕妈妈"
           },
-          {
-            "href": "/zh/benefit",
-            "label": "福利"
-          },
-          {
-            "href": "/zh/screening",
-            "label": "筛选"
-          },
-          {
-            "href": "/zh/eligibility",
-            "label": "资格条件"
-          },
-          {
-            "href": "/zh/referral",
-            "label": "推荐计划"
-          },
-          {
-            "href": "/zh/journey",
-            "label": "代孕旅程"
-          }
-        ]
-      },
-      {
-        "title": "代孕资源",
-        "links": [
-          {
-            "href": "/zh/surrogate-requirements",
-            "label": "代孕要求"
-          },
-          {
-            "href": "/zh/surrogate-process",
-            "label": "代孕流程（妈妈端）"
-          },
-          {
-            "href": "/zh/become-a-surrogate",
-            "label": "成为代孕妈妈"
-          },
-          {
-            "href": "/zh/surrogate-compensation",
-            "label": "代孕补偿"
-          },
-          {
-            "href": "/zh/become-surrogate-california",
-            "label": "加州成为代孕妈妈"
-          },
-          {
-            "href": "/zh/california-surrogacy-consultation",
-            "label": "加州代孕咨询"
-          }
-        ]
-      },
-      {
-        "title": "法律",
-        "links": [
           {
             "href": "/zh/privacy-policy",
             "label": "隐私政策"
@@ -558,11 +490,135 @@
         ]
       },
       {
-        "title": "博客",
+        "title": "准父母",
+        "links": [
+          {
+            "href": "/zh/intended-parents",
+            "label": "准父母总览"
+          },
+          {
+            "href": "/zh/be-parents",
+            "label": "预约咨询"
+          },
+          {
+            "href": "/zh/surrogacy-cost",
+            "label": "费用指南"
+          },
+          {
+            "href": "/zh/surrogacy-process",
+            "label": "流程指南"
+          },
+          {
+            "href": "/zh/surrogacy-protection-california",
+            "label": "法律、保险与托管"
+          },
+          {
+            "href": "/zh/california-surrogacy-consultation",
+            "label": "加州咨询指导"
+          },
+          {
+            "href": "/zh/egg-donation",
+            "label": "卵子捐赠指南"
+          },
+          {
+            "href": "/zh/partner-ivf-clinics",
+            "label": "合作 IVF 诊所"
+          },
+          {
+            "href": "/zh/single-parents-lgbtq",
+            "label": "单身父母与 LGBTQ+ 准父母"
+          }
+        ]
+      },
+      {
+        "title": "代孕妈妈",
+        "links": [
+          {
+            "href": "/zh/surrogates",
+            "label": "代孕妈妈总览"
+          },
+          {
+            "href": "/zh/be-surrogate",
+            "label": "申请成为代孕妈妈"
+          },
+          {
+            "href": "/zh/surrogate-requirements",
+            "label": "资格要求"
+          },
+          {
+            "href": "/zh/journey",
+            "label": "旅程指南"
+          },
+          {
+            "href": "/zh/benefit",
+            "label": "补偿与福利"
+          },
+          {
+            "href": "/zh/screening",
+            "label": "筛查流程"
+          },
+          {
+            "href": "/zh/referral",
+            "label": "推荐计划"
+          }
+        ]
+      },
+      {
+        "title": "代孕妈妈补充指南",
+        "links": [
+          {
+            "href": "/zh/surrogate-process",
+            "label": "移植与法律步骤"
+          },
+          {
+            "href": "/zh/surrogate-compensation",
+            "label": "付款与托管说明"
+          },
+          {
+            "href": "/zh/become-a-surrogate",
+            "label": "申请前准备"
+          },
+          {
+            "href": "/zh/become-surrogate-california",
+            "label": "加州代孕妈妈要求"
+          },
+          {
+            "href": "/zh/eligibility",
+            "label": "快速资格自查"
+          }
+        ]
+      },
+      {
+        "title": "资源 / 博客",
+        "links": [
+          {
+            "href": "/zh/resources",
+            "label": "资源与媒体中心"
+          },
+          {
+            "href": "/zh/blog",
+            "label": "博客首页"
+          }
+        ]
+      },
+      {
+        "title": "博客文章",
         "links": [
           {
             "href": "/zh/blog",
             "label": "博客列表"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Legal-in-California-What-Surrogates-Should-Know-Before-Signing-a-Contract",
+            "label": "加州代孕合法吗？代孕妈妈签署合同前应该了解什么？"
+          },
+          {
+            "href": "/zh/blog/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+            "label": "在加州可以成为代孕妈妈吗？关键要求详解"
+          },
+          {
+            "href": "/zh/blog/Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare",
+            "label": "2026年支付数额最高的代孕机构：比较指南"
           },
           {
             "href": "/zh/blog/What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate",
@@ -849,7 +905,7 @@
             "label": "2025年代孕妈妈的薪酬和福利：每位代孕妈妈都应该了解的关键信息"
           }
         ],
-        "note": "从接口获取文章：71篇。",
+        "note": "从接口获取文章：74篇。",
         "className": "section-blog"
       }
     ]
