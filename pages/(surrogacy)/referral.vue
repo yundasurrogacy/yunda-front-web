@@ -50,7 +50,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogates', url: '/be-surrogate' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Surrogate Referral', url: pagePath },
   ],
   itemList: {

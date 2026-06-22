@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import VideoPlayer from '@/components/base/VideoPlayer.vue'
 import VideoPlayerWithCover from '@/components/base/VideoPlayerWithCover.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
@@ -174,6 +175,35 @@ const protectionTopics = computed(() => [
     description: t.value.module4.content,
   },
 ])
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/blog/Best-Surrogacy-Agencies-in-California-2026',
+    title: locale.value === 'zh' ? '2026 加州最佳代孕机构对比' : 'Best Surrogacy Agencies in California (2026)',
+    description: locale.value === 'zh'
+      ? 'GSC 高曝光内容，适合继续比较加州机构、费用、匹配和信任因素。'
+      : 'High-impression GSC content for comparing California agencies, cost, matching, and trust factors.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1767943885302-ntsmc8.png',
+    date: locale.value === 'zh' ? '2025年12月25日' : 'December 25, 2025',
+  },
+  {
+    to: '/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents',
+    title: locale.value === 'zh' ? '保护准父母的美国代孕法律地图' : '2026 Surrogacy Law Map',
+    description: locale.value === 'zh'
+      ? '补充了解不同州亲权、法律保护和流程差异。'
+      : 'A supporting guide to state-by-state parentage, legal protection, and process differences.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1779093074410-vy6xe3.jpeg',
+    date: locale.value === 'zh' ? '2026年5月18日' : 'May 18, 2026',
+  },
+  {
+    to: '/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained',
+    title: locale.value === 'zh' ? '加州 IVF 覆盖与代孕说明' : 'California IVF Coverage and Surrogacy',
+    description: locale.value === 'zh'
+      ? '补充理解加州 IVF、保险覆盖和代孕预算之间的关系。'
+      : 'A related read on California IVF coverage, insurance, and surrogacy budget planning.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1776044455487-9nsaw5.jpeg',
+    date: locale.value === 'zh' ? '2026年4月13日' : 'April 13, 2026',
+  },
+])
 
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
@@ -192,7 +222,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Protection California', url: '/surrogacy-protection-california' },
   ],
   faqs: t.value.faq.items,
@@ -229,6 +259,12 @@ useHead(() => ({
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/intended-parents', label: locale === 'zh' ? '准父母' : 'For Intended Parents' },
+        { label: locale === 'zh' ? '法律、保险与托管' : 'Legal, Insurance & Escrow' },
+      ]"
+    />
 
     <!-- Hero Section -->
     <section class="relative bg-[var(--yunda-bark)] py-16 lg:py-24">
@@ -260,7 +296,7 @@ useHead(() => ({
     </section>
 
     <SeoTrustNote
-      :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+      :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
       :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
       :note="locale === 'zh' ? '本页提供加州代孕法律、托管和保险协调的教育说明。孕达不是律师事务所、保险公司或医疗机构，具体法律、保险和医疗决定应由相应专业人士确认。' : 'This page provides educational guidance on California surrogacy legal, escrow, and insurance coordination. Yunda is not a law firm, insurance company, or medical provider; specific legal, insurance, and medical decisions should be confirmed by the relevant professionals.'"
       :sources="[
@@ -460,6 +496,12 @@ useHead(() => ({
         </div>
       </div>
     </section>
+
+    <RelatedGuides
+      :title="locale === 'zh' ? '继续了解加州法律、保险与诊所安排' : 'Continue With California Legal, Insurance, and Clinic Planning'"
+      :intro="locale === 'zh' ? '加州代孕保障通常会同时涉及法律文件、亲权安排、保险审查、托管账户和 IVF 诊所协调。以下内容适合继续深入。' : 'California surrogacy protection often involves contracts, parentage, insurance review, escrow, and IVF clinic coordination. These reads continue that planning path.'"
+      :links="relatedPerformanceLinks"
+    />
 
     <AppFooter />
   </div>

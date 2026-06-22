@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 // Vue composables are auto-imported in Nuxt 3
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -50,6 +51,26 @@ const sections = computed(() => [
 ])
 
 const activeSection = ref(sections.value[0].id)
+const relatedGuides = computed(() => [
+  {
+    to: '/journey',
+    title: tt('Surrogate Journey', '代孕妈妈旅程'),
+    description: tt('See what happens after eligibility, including screening, matching, transfer, pregnancy, and postpartum support.', '了解资格确认后的筛查、匹配、移植、孕期和产后支持。'),
+    image: '/images/journey/redesign/hero-scene.png',
+  },
+  {
+    to: '/benefit',
+    title: tt('Compensation & Benefits', '补偿与福利'),
+    description: tt('Understand pay structure, allowances, milestone payments, escrow, and practical support.', '了解补偿结构、津贴、里程碑付款、托管和实际支持。'),
+    image: '/images/benefit/redesign/hero.jpg',
+  },
+  {
+    to: '/screening',
+    title: tt('Screening Guide', '筛查指南'),
+    description: tt('Review medical, psychological, insurance, and background screening before moving forward.', '在推进前查看医学、心理、保险和背景筛查要求。'),
+    image: '/images/screening/redesign/hero.jpg',
+  },
+])
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
@@ -294,7 +315,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
+    { name: 'For Surrogates', url: '/surrogates' },
     { name: 'Surrogate Requirements', url: '/surrogate-requirements' },
   ],
   faqs: faqItems.value,
@@ -375,6 +396,12 @@ const processIcons = [
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { label: locale === 'zh' ? '资格要求' : 'Requirements' },
+      ]"
+    />
 
     <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
@@ -437,7 +464,7 @@ const processIcons = [
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
       :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
       :note="tt('This page explains common surrogate eligibility factors in plain language. Final approval depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.', '本页用清晰语言说明常见代孕妈妈资格因素。最终批准取决于产科病历、诊所医学清关、心理筛查、法律审核与项目要求。')"
       :sources="[
@@ -813,6 +840,12 @@ const processIcons = [
         </div>
       </div>
     </section>
+
+    <RelatedGuides
+      :title="tt('Next: Screening, Pay, and Application Readiness', '下一步：筛查、补偿与申请准备')"
+      :intro="tt('Once you understand the basic requirements, review screening expectations, compensation, and the application journey so you know what happens before and after you apply.', '了解基础资格后，建议继续查看筛查要求、补偿安排和申请旅程，明确申请前后会发生什么。')"
+      :links="relatedGuides"
+    />
 
     <AppFooter />
   </div>

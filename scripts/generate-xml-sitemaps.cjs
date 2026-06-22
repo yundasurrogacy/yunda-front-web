@@ -11,23 +11,49 @@ const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '200', 10)
 const OUTPUT_INDEX_PATH = path.join(process.cwd(), 'public', 'sitemap.xml')
 const OUTPUT_EN_PATH = path.join(process.cwd(), 'public', 'sitemap-en.xml')
 const OUTPUT_ZH_PATH = path.join(process.cwd(), 'public', 'sitemap-zh.xml')
+const OUTPUT_AI_PATH = path.join(process.cwd(), 'public', 'sitemap-ai.xml')
 const HTML_SITEMAP_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
 const SEO_ROUTES_PATH = path.join(process.cwd(), 'data', 'seo-routes.json')
 
 const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).staticPages
 const EN_MACHINE_READABLE_FILES = [
   '/services.md',
+  '/site-architecture.md',
   '/surrogacy-cost.md',
+  '/surrogacy-process.md',
+  '/california-surrogacy-consultation.md',
+  '/partner-ivf-clinics.md',
+  '/egg-donation.md',
+  '/single-parents-lgbtq.md',
+  '/surrogate-requirements.md',
+  '/surrogate-journey.md',
+  '/surrogate-screening.md',
+  '/surrogate-benefits.md',
   '/surrogate-compensation.md',
+  '/surrogacy-protection-california.md',
   '/third-party-professionals.md',
 ]
 const ZH_MACHINE_READABLE_FILES = [
   '/zh/services.md',
+  '/zh/site-architecture.md',
   '/zh/surrogacy-cost.md',
+  '/zh/surrogacy-process.md',
+  '/zh/california-surrogacy-consultation.md',
+  '/zh/partner-ivf-clinics.md',
+  '/zh/egg-donation.md',
+  '/zh/single-parents-lgbtq.md',
   '/zh/surrogate-requirements.md',
+  '/zh/surrogate-journey.md',
+  '/zh/surrogate-screening.md',
+  '/zh/surrogate-benefits.md',
   '/zh/surrogate-compensation.md',
   '/zh/surrogacy-protection-california.md',
   '/zh/third-party-professionals.md',
+]
+const AI_MACHINE_READABLE_FILES = [
+  '/llms.txt',
+  ...EN_MACHINE_READABLE_FILES,
+  ...ZH_MACHINE_READABLE_FILES,
 ]
 
 function toZhPath(loc) {
@@ -209,16 +235,6 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
     changefreq: 'weekly',
     lastmod: nowIsoDate,
   }))
-  const machineReadableFiles = locale === 'zh' ? ZH_MACHINE_READABLE_FILES : EN_MACHINE_READABLE_FILES
-  machineReadableFiles.forEach((loc) => {
-    pageEntries.push({
-      loc,
-      priority: 0.4,
-      changefreq: 'weekly',
-      lastmod: nowIsoDate,
-      alternates: false,
-    })
-  })
   const blogLocaleEntries = blogEntries.map(blog => ({
     loc: localize(blog.loc),
     priority: 0.6,
@@ -229,6 +245,16 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
     pages: uniqueByLoc(pageEntries),
     blog: uniqueByLoc(blogLocaleEntries),
   }
+}
+
+function buildAiEntries(nowIsoDate) {
+  return uniqueByLoc(AI_MACHINE_READABLE_FILES.map(loc => ({
+    loc,
+    priority: 0.4,
+    changefreq: 'weekly',
+    lastmod: nowIsoDate,
+    alternates: false,
+  })))
 }
 
 function createUrlNode(entry) {
@@ -261,6 +287,18 @@ function createUrlSetXml(localeEntries) {
   return `${xmlLines.join('\n')}\n`
 }
 
+function createAiUrlSetXml(aiEntries) {
+  const xmlLines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    '  <!-- AI and machine-readable files -->',
+    ...aiEntries.map(createUrlNode),
+    '</urlset>',
+  ]
+  return `${xmlLines.join('\n')}\n`
+}
+
 function createIndexXml() {
   const now = new Date().toISOString().slice(0, 10)
   const xmlLines = [
@@ -273,6 +311,10 @@ function createIndexXml() {
     '  </sitemap>',
     '  <sitemap>',
     `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-zh.xml'))}</loc>`,
+    `    <lastmod>${escapeXml(now)}</lastmod>`,
+    '  </sitemap>',
+    '  <sitemap>',
+    `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-ai.xml'))}</loc>`,
     `    <lastmod>${escapeXml(now)}</lastmod>`,
     '  </sitemap>',
     '</sitemapindex>',
@@ -297,15 +339,18 @@ async function run() {
 
   const enEntries = buildLocaleEntries('en', blogEntries, nowIsoDate)
   const zhEntries = buildLocaleEntries('zh', blogEntries, nowIsoDate)
+  const aiEntries = buildAiEntries(nowIsoDate)
 
   fs.writeFileSync(OUTPUT_EN_PATH, createUrlSetXml(enEntries), 'utf8')
   fs.writeFileSync(OUTPUT_ZH_PATH, createUrlSetXml(zhEntries), 'utf8')
+  fs.writeFileSync(OUTPUT_AI_PATH, createAiUrlSetXml(aiEntries), 'utf8')
   fs.writeFileSync(OUTPUT_INDEX_PATH, createIndexXml(), 'utf8')
 
   console.warn(`Sitemap XML generated:
 - ${OUTPUT_INDEX_PATH}
 - ${OUTPUT_EN_PATH}
-- ${OUTPUT_ZH_PATH}`)
+- ${OUTPUT_ZH_PATH}
+- ${OUTPUT_AI_PATH}`)
 }
 
 run().catch((error) => {

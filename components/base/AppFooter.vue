@@ -1,160 +1,75 @@
 <script setup>
 import MobileApplyCta from './MobileApplyCta.vue'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const localePath = useLocalePath()
+
+const footerGroups = computed(() => [
+  {
+    title: t('footer.sections.intendedParentsGuide'),
+    links: [
+      { to: '/intended-parents', label: t('footer.sections.overview') },
+      { to: '/be-parents', label: t('footer.sections.startConsultation') },
+      { to: '/surrogacy-cost', label: t('footer.sections.costGuide') },
+      { to: '/surrogacy-process', label: t('footer.sections.processGuide') },
+      { to: '/surrogacy-protection-california', label: t('footer.sections.legalInsuranceEscrow') },
+      { to: '/california-surrogacy-consultation', label: t('footer.sections.californiaConsultation') },
+      { to: '/egg-donation', label: t('footer.sections.eggDonationGuide') },
+      { to: '/partner-ivf-clinics', label: t('footer.sections.partnerClinics') },
+      { to: '/single-parents-lgbtq', label: t('footer.sections.singleParentsLgbtq') },
+    ],
+  },
+  {
+    title: t('footer.sections.surrogatePath'),
+    links: [
+      { to: '/surrogates', label: t('footer.sections.overview') },
+      { to: '/be-surrogate', label: t('footer.sections.applyAsSurrogate') },
+      { to: '/surrogate-requirements', label: t('footer.sections.requirements') },
+      { to: '/journey', label: t('footer.sections.journeyGuide') },
+      { to: '/benefit', label: t('footer.sections.compensationBenefits') },
+      { to: '/screening', label: t('footer.sections.screeningGuide') },
+      { to: '/referral', label: t('footer.sections.referralProgram') },
+    ],
+  },
+  {
+    title: t('footer.sections.surrogateSupportingGuides'),
+    links: [
+      { to: '/surrogate-process', label: t('footer.sections.surrogateProcess') },
+      { to: '/surrogate-compensation', label: t('footer.sections.surrogateCompensation') },
+      { to: '/become-a-surrogate', label: t('footer.sections.surrogateMother') },
+      { to: '/become-surrogate-california', label: t('footer.sections.surrogateCalifornia') },
+      { to: '/eligibility', label: t('footer.sections.eligibilityOverview') },
+    ],
+  },
+])
 </script>
 
 <template>
   <footer class="bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
     <div class="mx-auto max-w-300 md:max-w-full">
-      <!-- Logo -->
-      <div class="flex justify-start">
-        <picture>
-          <source srcset="/images/base/logo.webp" type="image/webp">
-          <img src="/images/base/logo.png" alt="Yunda Logo" class="w-80px" loading="lazy" decoding="async">
-        </picture>
-      </div>
-
       <!-- Footer Content -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between">
         <!-- Services Section (Mobile: Top, LG: Right side) -->
         <div class="order-1 mt-2 md:order-2 md:ml-auto md:mt-0 md:pl-12">
           <div class="footer-links">
-            <!-- Become a Parent -->
-            <div class="min-w-[220px] text-left space-y-2">
+            <div
+              v-for="group in footerGroups"
+              :key="group.title"
+              class="min-w-[220px] text-left space-y-2"
+            >
               <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
-                {{ $t('footer.sections.becomeAParent') }}
-              </h3>
-              <div class="space-y-1">
-                <h4 class="text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4">
-                  {{ $t('footer.sections.intendedParent') }}
-                </h4>
-                <hr class="my-2 border-[var(--yunda-bark)]">
-                <NuxtLink
-                  :to="localePath('/surrogacy-process')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.process') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogacy-cost')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogacyCost') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/egg-donation')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.eggDonors') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/single-parents-lgbtq')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.singleParentsLgbtq') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/partner-ivf-clinics')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.partnerClinics') }}
-                </NuxtLink>
-              </div>
-            </div>
-
-            <!-- Become a Surrogate -->
-            <div class="min-w-[220px] text-left space-y-2">
-              <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
-                {{ $t('footer.sections.becomeASurrogate') }}
-              </h3>
-              <div class="space-y-1">
-                <h4 class="text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4">
-                  {{ $t('footer.sections.surrogates') }}
-                </h4>
-                <hr class="my-2 border-[var(--yunda-bark)]">
-                <NuxtLink
-                  :to="localePath('/journey')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogacyJourney') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/eligibility')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.eligibility') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/screening')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.screening') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/benefit')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.benefits') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/referral')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateReferral') }}
-                </NuxtLink>
-              </div>
-            </div>
-
-            <!-- Surrogate Resources -->
-            <div class="min-w-[220px] text-left space-y-2">
-              <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
-                {{ $t('footer.sections.surrogateResources') }}
+                {{ group.title }}
               </h3>
               <div class="space-y-1">
                 <hr class="my-2 border-[var(--yunda-bark)]">
                 <NuxtLink
-                  :to="localePath('/california-surrogacy-consultation')"
+                  v-for="(link, index) in group.links"
+                  :key="link.to"
+                  :to="localePath(link.to)"
                   class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
+                  :class="index === 0 ? 'font-semibold' : ''"
                 >
-                  {{ $t('footer.sections.surrogateConsultation') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/become-a-surrogate')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateMother') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/become-surrogate-california')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateCalifornia') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogate-process')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateProcess') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogate-compensation')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateCompensation') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogate-requirements')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateRequirements') }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogacy-protection-california')"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                >
-                  {{ $t('footer.sections.surrogateProtection') }}
+                  {{ link.label }}
                 </NuxtLink>
               </div>
             </div>
@@ -163,6 +78,13 @@ const localePath = useLocalePath()
 
         <!-- Company Info (Mobile: Bottom, md: Left side) -->
         <div class="order-2 mt-12 md:order-1 md:mt-0 md:max-w-80 md:flex-shrink-0">
+          <div class="mb-6 flex justify-start">
+            <picture>
+              <source srcset="/images/base/logo.webp" type="image/webp">
+              <img src="/images/base/logo.png" alt="Yunda Logo" class="w-80px lg:h-[3.15rem] lg:object-contain lg:object-left" loading="lazy" decoding="async">
+            </picture>
+          </div>
+
           <!-- About Us Section -->
           <div class="mb-8 text-left text-3.5 md:text-4.5">
             <div class="mt-2 space-y-1">

@@ -323,8 +323,9 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogates', url: '/be-surrogate' },
-    { name: 'Eligibility', url: pagePath },
+    { name: 'For Surrogates', url: '/surrogates' },
+    { name: 'Detailed Surrogate Guides', url: '/surrogates' },
+    { name: 'Quick Eligibility Check', url: pagePath },
   ],
   faqs: c.value.h25FaqItems.map(item => ({
     question: item.q,
@@ -359,6 +360,13 @@ useHead(() => ({
 <template>
   <div>
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈补充指南' : 'Detailed Surrogate Guides' },
+        { label: locale === 'zh' ? '快速资格自查' : 'Quick Eligibility Check' },
+      ]"
+    />
     <main>
       <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b pb-10 pt-24 lg:pt-28">
         <div class="mx-auto max-w-[1760px] w-full px-6 lg:px-16">

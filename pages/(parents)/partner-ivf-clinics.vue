@@ -274,7 +274,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
-    { name: locale.value === 'zh' ? '准父母' : 'Intended Parents', url: '/be-parents' },
+    { name: locale.value === 'zh' ? '准父母指南' : 'For Intended Parents', url: '/intended-parents' },
     { name: locale.value === 'zh' ? '合作 IVF 诊所' : 'Partner IVF Clinics', url: '/partner-ivf-clinics' },
   ],
   faqs: c.value.faqs.map(faq => ({

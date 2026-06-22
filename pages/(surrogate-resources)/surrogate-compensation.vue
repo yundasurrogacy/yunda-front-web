@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 // Vue composables are auto-imported in Nuxt 3
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -413,8 +414,9 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
-    { name: 'Surrogate Compensation', url: '/surrogate-compensation' },
+    { name: 'For Surrogates', url: '/surrogates' },
+    { name: 'Detailed Surrogate Guides', url: '/surrogates' },
+    { name: 'Payment & Escrow Details', url: '/surrogate-compensation' },
   ],
   faqs: faqQuestions.value,
   itemList: {
@@ -428,6 +430,27 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
 }))
 
+const relatedGuides = computed(() => [
+  {
+    to: '/benefit',
+    title: tt('See Pay & Benefits', '查看补偿与福利'),
+    description: tt('Use the main compensation and benefits page to understand the full support package before applying.', '通过补偿与福利主页面了解完整支持方案，再决定是否申请。'),
+    image: '/images/benefit/redesign/hero.jpg',
+  },
+  {
+    to: '/surrogate-requirements',
+    title: tt('Check If You Qualify', '确认是否符合资格'),
+    description: tt('Review health, pregnancy history, lifestyle, and screening requirements for surrogate candidates.', '查看代孕妈妈候选人的健康、孕产史、生活方式和筛查要求。'),
+    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+  },
+  {
+    to: '/journey',
+    title: tt('Understand the Journey', '了解代孕旅程'),
+    description: tt('See how compensation milestones fit into application, screening, matching, pregnancy, and delivery.', '了解补偿节点如何衔接申请、筛查、匹配、孕期和分娩。'),
+    image: '/images/journey/redesign/hero-scene.png',
+  },
+])
+
 useHead(() => ({
   script: coreServicePageSchemas.value.map((schema, index) => ({
     key: `schema-surrogate-compensation-${index}`,
@@ -440,6 +463,13 @@ useHead(() => ({
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈补充指南' : 'Detailed Surrogate Guides' },
+        { label: locale === 'zh' ? '付款与托管说明' : 'Payment & Escrow Details' },
+      ]"
+    />
 
     <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-40">
@@ -502,7 +532,7 @@ useHead(() => ({
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 18, 2026', '最后更新：2026年6月18日')"
+      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
       :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
       :note="tt('This page explains surrogate compensation, benefits, payment timing, and escrow coordination. Actual compensation depends on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '本页说明代孕补偿、福利、付款时间与托管协调。实际补偿取决于资格、协议条款、医疗事件、获批报销与项目要求。')"
       :sources="[
@@ -511,6 +541,27 @@ useHead(() => ({
         { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
       ]"
     />
+
+    <section class="mx-auto max-w-280 px-5 pt-10 lg:px-10 lg:pt-12">
+      <div class="rounded-6 border border-[var(--olive-green)]/35 bg-white/95 p-6 shadow-lg shadow-black/10 lg:p-8">
+        <div class="grid gap-6 lg:grid-cols-3">
+          <div>
+            <p class="small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
+              {{ tt('Authority Summary', '权威结论') }}
+            </p>
+            <h2 class="mt-2 h3-text">
+              {{ tt('Surrogate compensation is a package, not one number.', '代孕补偿不是一个数字，而是一整套方案。') }}
+            </h2>
+          </div>
+          <p class="body-text">
+            {{ tt('The most useful answer is the total package: base compensation, allowances, approved reimbursements, medical-event add-ons, and payment timing through escrow. Eligibility and agreement terms determine what is actually included.', '最有用的答案是看完整方案：基础补偿、津贴、获批报销、医疗事件附加项，以及通过托管发放的时间安排。最终包含哪些项目取决于资格和协议。') }}
+          </p>
+          <p class="body-text">
+            {{ tt('For Yunda, compensation should always be read together with surrogate requirements, insurance review, and escrow coordination. That keeps the page closer to a definitive answer and farther from a marketing-only explanation.', '对孕达来说，补偿必须和代孕资质、保险审查与托管协调一起看。这样页面更像权威答案，而不是单纯的营销说明。') }}
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="overview" class="py-18 lg:py-24">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
@@ -956,6 +1007,12 @@ useHead(() => ({
         </div>
       </div>
     </section>
+
+    <RelatedGuides
+      :title="tt('Next: Benefits, Eligibility, and Journey Context', '下一步：福利总览、资格与旅程背景')"
+      :intro="tt('Payment details are easier to evaluate when you also understand the full benefits package, eligibility standards, and how compensation milestones fit into the journey.', '付款细节需要结合完整福利方案、资格要求和旅程节点一起理解，下面这些页面可以帮助你继续判断。')"
+      :links="relatedGuides"
+    />
 
     <section class="relative overflow-hidden bg-[var(--yunda-bark)] py-18 text-white">
       <div class="pointer-events-none absolute inset-0">

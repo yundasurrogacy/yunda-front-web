@@ -4,8 +4,38 @@ import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
+
+/**
+ * 改版说明：`修改/2026-06-18-2/cost页面改版/cost 页面改版.docx`
+ * 静态素材：`public/images/ip/cost/redesign/`
+ */
+const PAGE_ASSETS = {
+  hero: '/images/ip/cost/redesign/hero.jpg',
+  drivers: [
+    '/images/ip/cost/redesign/driver-01.png',
+    '/images/ip/cost/redesign/driver-02.png',
+    '/images/ip/cost/redesign/driver-03.png',
+    '/images/ip/cost/redesign/driver-04.png',
+  ],
+  breakdown: [
+    '/images/ip/cost/redesign/breakdown-01.png',
+    '/images/ip/cost/redesign/breakdown-02.png',
+    '/images/ip/cost/redesign/breakdown-03.png',
+    '/images/ip/cost/redesign/breakdown-04.png',
+    '/images/ip/cost/redesign/breakdown-05.png',
+  ],
+  trustShield: '/images/ip/cost/redesign/trust-shield.png',
+  trustCheck: '/images/ip/cost/redesign/trust-check.png',
+  notIncluded: [
+    '/images/ip/cost/redesign/not-included-01.png',
+    '/images/ip/cost/redesign/not-included-02.png',
+    '/images/ip/cost/redesign/not-included-03.png',
+    '/images/ip/cost/redesign/not-included-04.png',
+  ],
+} as const
 
 interface FixedCost {
   title: string
@@ -50,97 +80,120 @@ const translations = {
     metaTitle: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
     metaDesc:
       'Surrogacy costs can vary widely, especially in California, depending on insurance, legal steps, medical factors, and surrogate compensation.',
-    breadcrumb: ['Resources', 'Intended Parents', 'Surrogacy Cost'],
+    breadcrumb: ['For Intended Parents', 'Surrogacy Cost'],
     hero: {
       title: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
-      lead1:
-      'Surrogacy costs can vary widely—especially in California—depending on insurance, legal steps, medical factors, and surrogate compensation.',
-      lead2:
-      'This page gives you a clear surrogacy cost breakdown and surrogacy fees explained, including an estimated total of $142,750, so you know what is included in surrogacy cost, what’s not, and how to plan with confidence.',
-      primary: 'Get a Personalized Surrogacy Cost Estimate',
+      lead:
+        'Transparent, all-in surrogacy pricing in California and across the U.S. so you can plan with confidence and clarity.',
+      primary: 'Get a Personalized Cost Estimate',
       secondary: 'Become a Parent',
-      note1: 'Answer a few questions to estimate your costs in California or elsewhere in the U.S.',
-      note2:
-        'IVF clinic fees and newborn medical care are typically separate. Yunda is an independent agency and does not provide medical or legal services.',
+      totalLabel: 'Estimated Program Total',
+      totalAmount: '$142,750',
+      disclaimer: 'IVF clinic fees and newborn medical care are typically separate.',
     },
     anchors: [
-      { id: 'ca-vs-us', label: 'California vs U.S.' },
+      { id: 'top', label: 'Cost Overview' },
+      { id: 'ca-vs-us', label: 'What Changes the Cost' },
       { id: 'cost-breakdown', label: 'Cost Breakdown' },
-      { id: 'payments', label: 'Payments Timeline' },
-      { id: 'why-expensive', label: 'Why So Expensive?' },
+      { id: 'payments', label: 'Payment Timeline' },
+      { id: 'whats-not-included', label: 'What\'s Not Included' },
       { id: 'faq', label: 'FAQ' },
-      { id: 'estimate', label: 'Get Started' },
     ],
     ca: {
       title: 'Surrogacy Cost in California vs. the U.S.: What Changes the Cost?',
-      intro1:
-        'If you are wondering how much does surrogacy cost in California, I get it, California is one of the most common places intended parents choose, and it is also one of the states where surrogacy costs can feel the most confusing.',
-      intro2:
-        'The good news: the cost of surrogacy in the U.S. follows the same core categories nationwide. What changes is how much each category may range based on a few real-world factors.',
       drivers: [
         {
           id: 'legal',
-          title: 'Legal & Court Process (California parentage / PBO)',
-          image: '/images/ip/cost/surrogate-cost-1.jpg',
-          content: [
-            'California is generally a well-established state for surrogacy, and the legal path is often straightforward—but your surrogacy cost in California can still shift depending on your specific situation.',
-            'That’s why when we explain surrogacy fees, we separate legal work from court parentage steps, so you can see the cost clearly.',
-          ],
+          title: 'Legal & Court Process',
+          content:
+            'California is generally a well-established state for surrogacy, and the legal path is often straightforward—but your surrogacy cost in California can still shift depending on your specific situation. That’s why when we explain surrogacy fees, we separate legal work from court parentage steps.',
         },
         {
           id: 'compensation',
-          title: 'Surrogate Compensation & Local Cost Differences',
-          image: '/images/ip/cost/surrogate-cost-2.jpg',
-          content: [
+          title: 'Surrogate Compensation',
+          content:
             'A big part of surrogacy cost breakdown is surrogate compensation. In California (and some nearby markets), compensation expectations and cost-of-living can be higher than many other states—so the total cost of surrogacy may trend higher there.',
-          ],
         },
         {
           id: 'insurance',
-          title: 'Insurance: The #1 Reason California vs. U.S. Costs Feel Different',
-          image: '/images/ip/cost/surrogate-cost-3.jpg',
-          content: [
-            'When intended parents ask me how much does surrogacy cost in the U.S., insurance is usually the biggest wildcard. Even in California, coverage can vary a lot depending on the surrogate’s plan, exclusions, deductibles, and out-of-pocket maximums.',
-          ],
+          title: 'Insurance',
+          content:
+            'When intended parents ask me how much does surrogacy costs in the U.S., insurance is usually the biggest wildcard. Even in California, coverage can vary a lot depending on the surrogate’s plan, exclusions, deductibles, and out-of-pocket maximums.',
         },
         {
           id: 'medical',
-          title: 'Medical Variables (Single vs. Twins, C-section, Complications)',
-          image: '/images/ip/cost/surrogate-cost-4.png',
-          content: [
+          title: 'Medical Variables',
+          content:
             'No matter where you’re doing surrogacy, certain medical outcomes can change the cost. Twins, a C-section, or special medical needs can add to surrogacy expenses.',
-          ],
-        },
-      ],
-      quick: [
-        {
-          title: 'Typical cost drivers in California',
-          description: 'Focus on legal steps, compensation expectations, insurance structure, and medical variables.',
-        },
-        {
-          title: 'How to compare surrogacy prices fairly',
-          description:
-            'Compare the same scope: agency program costs vs. IVF clinic costs, and review allowances and reimbursements.',
-        },
-        {
-          title: 'Questions to ask before you commit',
-          description: 'Ask how legal work, insurance planning, and case-dependent items are budgeted and tracked.',
         },
       ],
     },
     breakdown: {
       title: 'Surrogacy Cost Breakdown: Surrogacy Fees Explained (California & U.S.)',
-      intro:
-        'When you Google “surrogacy cost” or “how much does surrogacy cost in California”, the numbers look all over the place. Here is a clear breakdown showing what’s predictable vs. case-dependent.',
-      scope:
-        'One of the biggest reasons people get confused comparing surrogacy price quotes is scope. This package estimate totals $142,750, but it does not include IVF clinic fees and does not include newborn medical care after birth. And just to keep things fair and transparent: this is an estimate—you are responsible for actual costs incurred during the journey, and any unused funds are reconciled and returned after final accounting.',
-      scopeLabel: 'Scope note',
+      totalLabel: 'Estimated Program Total',
+      totalAmount: '$142,750',
+      cards: [
+        {
+          title: 'Agency Service Fee',
+          amount: '$50,000',
+          description:
+            'Covers recruitment, screening, matching, case management, coordination, communication, and support throughout the surrogacy journey.',
+        },
+        {
+          title: 'Trust Account Management',
+          amount: '$2,000',
+          description:
+            'Covers the administration and tracking of trust funds, helping payments and reimbursements stay organized and transparent.',
+        },
+        {
+          title: 'Insurance Review & Coverage Setup',
+          amount: '$12,600',
+          description:
+            'Includes insurance review, coverage planning, life insurance allocation, and estimated health insurance premium support.',
+        },
+        {
+          title: 'Legal Fees',
+          amount: '$10,750',
+          description:
+            'Covers legal agreement drafting and review, attorney support, and parentage-related legal steps such as California PBO planning.',
+        },
+        {
+          title: 'Surrogate Compensation',
+          amount: '$61,000+',
+          description:
+            'Covers base surrogate compensation and related support. Final compensation may vary depending on match details and case circumstances.',
+        },
+      ],
       fixedTitle: 'Fixed Costs',
-      variableTitle: 'Variable (Case-Dependent) Costs',
-      includedLabel: 'Included',
-      notIncludedLabel: 'Not Included',
-      additionalTitle: 'Additional Costs (If Applicable) — why surrogacy can feel expensive',
-      donutTitle: 'Where costs usually go',
+      fixedIntro: 'These are the main costs included in the estimated program total:',
+      fixedList: [
+        'Agency service fee',
+        'Trust account management',
+        'Insurance review and coverage setup',
+        'Legal fees',
+        'Surrogate compensation',
+      ],
+      variableTitle: 'Case-Dependent Costs',
+      variableIntro: 'These costs vary depending on your unique journey and are usually paid as incurred:',
+      variableList: [
+        'Medical screening travel',
+        'Embryo transfer travel',
+        'Surrogate life insurance',
+        'Surrogate medical insurance premiums',
+        'Twins or multiples',
+        'C-section compensation',
+        'Mock cycle or cycle cancellation',
+        'Breast milk support',
+        'Miscarriage-related compensation',
+      ],
+      donutTitle: 'Where Costs Usually Go',
+      donutLegend: [
+        'Agency service fee: 39%',
+        'Surrogate compensation: 47%',
+        'Legal fees: 8%',
+        'Administrative support: 4%',
+        'Trust management: 2%',
+      ],
       fixed: [
         {
           title: '1) Surrogacy Agency Service fee',
@@ -237,28 +290,26 @@ const translations = {
         'IVF clinic fees are not included.',
         'Newborn medical care after birth is not included.',
       ],
-      donutLegend: [
-        'Agency service fee: 39%',
-        'Surrogate compensation: 47%',
-        'Legal fees: 8%',
-        'Administrative support: 4%',
-        'Trust management: 2%',
-      ],
     },
     payments: {
       title: 'Surrogacy Payments Timeline: When You Pay Each Cost (California & U.S.)',
       intro:
         'If you are asking how much do you pay for surrogacy, the timing matters just as much as the total. Here’s the clear timeline.',
       trustButton: 'How the trust account works',
-      trustTitle: 'How Trust Payments Protect You (No “surprise invoices”)',
-      trustCopy:
-        'Funds stay in a trust account and are used only for actual costs incurred. Reimbursable items are paid as they happen, and any unused funds are reconciled and returned after final accounting.',
-      notesTitle: 'Important Notes (So you can budget accurately)',
-      notes: [
-        'These payments cover the surrogacy program and the items above; IVF clinic fees are not included.',
-        'Newborn-related costs are not included (documentation/insurance premiums/NICU or pediatric care).',
-        'Insurance depends on timing and plan availability; if coverage cannot be purchased in time, reserved amounts may be used toward pregnancy-related costs as incurred.',
-        'A separate $20,000 reserve deposit may be required for reimbursable items (often funded as $10,000 + $10,000), with unused funds reconciled.',
+      trustTitle: 'How Trust Payments Protect You',
+      trustPoints: [
+        {
+          title: 'Funds Stay in a Trust Account',
+          text: 'Funds are held securely and released according to the approved surrogacy plan.',
+        },
+        {
+          title: 'Reimbursable Items Are Paid as Incurred',
+          text: 'Case-dependent expenses are documented and reimbursed according to program guidelines.',
+        },
+        {
+          title: 'Unused Funds Are Reconciled and Returned',
+          text: 'After final accounting, any remaining unused funds are reconciled and returned to you.',
+        },
       ],
       labels: {
         milestone: 'Milestone',
@@ -313,6 +364,29 @@ const translations = {
           ],
           note:
             'Base compensation is often paid out in equal monthly installments per the legal agreement (commonly across 10 months).',
+        },
+      ],
+    },
+    whatsNotIncluded: {
+      title: 'Important Notes — What’s Not Included',
+      intro:
+        'Some costs are separate from the surrogacy program estimate. Understanding these items upfront helps you compare quotes more accurately and plan your full budget with confidence.',
+      items: [
+        {
+          title: 'IVF Clinic Fees',
+          text: 'IVF clinic fees are not included. This may include IVF procedures, embryo creation, medications, monitoring, transfer-related clinic services, and other fertility clinic charges.',
+        },
+        {
+          title: 'Newborn Medical Care',
+          text: 'Newborn medical care is not included. Delivery hospital fees, pediatric care, NICU care, vaccinations, and newborn-related medical costs are typically separate.',
+        },
+        {
+          title: 'Insurance Timing',
+          text: 'Insurance availability, premium costs, and coverage details may change during the journey. Timing and plan availability can affect the final budget.',
+        },
+        {
+          title: 'Reserve Deposit',
+          text: 'Some cases may require an additional reserve deposit for reimbursable or unpredictable expenses. Any unused funds are reconciled after final accounting.',
         },
       ],
     },
@@ -388,81 +462,108 @@ const translations = {
   zh: {
     metaTitle: '加州代孕费用：美国代孕要花多少钱？',
     metaDesc: '代孕费用会因保险、法律流程、医疗因素和代孕者补偿而变化，尤其在加州。',
-    breadcrumb: ['资源', '准父母', '代孕费用'],
+    breadcrumb: ['准父母指南', '代孕费用'],
     hero: {
       title: '加州代孕费用：美国代孕要花多少钱？',
-      lead1: '代孕费用差异很大，尤其在加州，取决于保险、法律流程、医疗因素和代孕者补偿。',
-      lead2: '本页提供清晰的代孕费用拆分，让你了解哪些包含、哪些不含，并安心规划。',
-      primary: '获取个性化代孕费用估算',
+      lead: '透明、全面的加州及全美代孕定价，让你更有信心、更清晰地规划预算。',
+      primary: '获取个性化费用估算',
       secondary: '成为父母',
-      note1: '回答几个问题，估算你在加州或美国其他地区的费用。',
-      note2: 'IVF 诊所费用和新生儿医疗通常不含。Yunda 为独立机构，不提供医疗或法律服务。',
+      totalLabel: '项目预估总额',
+      totalAmount: '$142,750',
+      disclaimer: 'IVF 诊所费用和新生儿医疗通常单独计算。',
     },
     anchors: [
-      { id: 'ca-vs-us', label: '加州 vs 美国' },
+      { id: 'top', label: '费用总览' },
+      { id: 'ca-vs-us', label: '费用影响因素' },
       { id: 'cost-breakdown', label: '费用拆分' },
       { id: 'payments', label: '付款时间线' },
-      { id: 'why-expensive', label: '为何昂贵' },
+      { id: 'whats-not-included', label: '不包含项目' },
       { id: 'faq', label: '常见问题' },
-      { id: 'estimate', label: '开始' },
     ],
     ca: {
       title: '加州 vs 美国：哪些因素影响代孕费用？',
-      intro1: '如果你在想“加州代孕要花多少钱”，很常见也最困惑。',
-      intro2: '核心类别全美一致，变化的是各类别的费用区间。',
       drivers: [
         {
           id: 'legal',
-          title: '法律与法院流程（加州亲子关系/PBO）',
-          image: '/images/ip/cost/surrogate-cost-1.jpg',
-          content: [
-            '加州法律路径成熟，但费用仍会因县、市法院要求和法律团队策略而变化。',
-            '我们把合同法律工作与法院亲子关系步骤拆开，让你清楚看到费用构成。',
-          ],
+          title: '法律与法院流程',
+          content:
+            '加州代孕法律路径成熟，但费用仍会因你的具体情况而变化。因此我们拆分法律工作与法院亲子关系步骤，让费用构成更清晰。',
         },
         {
           id: 'compensation',
-          title: '代孕补偿与当地成本差异',
-          image: '/images/ip/cost/surrogate-cost-2.jpg',
-          content: [
-            '补偿是费用大头。加州及周边的补偿期望与生活成本更高，总成本可能更高。',
-          ],
+          title: '代孕补偿',
+          content:
+            '补偿是费用大头。加州及周边的补偿期望与生活成本更高，总成本可能高于其他州。',
         },
         {
           id: 'insurance',
-          title: '保险：导致加州与美国费用不同的头号因素',
-          image: '/images/ip/cost/surrogate-cost-3.jpg',
-          content: [
-            '保险是最大不确定性，覆盖/排除/免赔/自付上限差异大。',
-          ],
+          title: '保险',
+          content:
+            '保险通常是最大不确定性。即使在加州，覆盖范围、排除条款、免赔额和自付上限也会因代孕者计划而异。',
         },
         {
           id: 'medical',
-          title: '医疗变量（单胎/双胎、剖宫产、并发症）',
-          image: '/images/ip/cost/surrogate-cost-4.png',
-          content: [
-            '双胎、剖宫产或特殊医疗需求都会增加费用。',
-          ],
+          title: '医疗变量',
+          content:
+            '无论在何处进行代孕，双胎、剖宫产或特殊医疗需求都可能增加费用。',
         },
-      ],
-      quick: [
-        { title: '加州常见费用驱动', description: '法律、补偿期望、保险结构、医疗变量。' },
-        { title: '如何公平比较代孕价格', description: '比较同一范围：机构项目 vs IVF 诊所费用。' },
-        { title: '签约前要问的问题', description: '法律、保险、案例依赖项目如何预算与追踪。' },
       ],
     },
     breakdown: {
       title: '代孕费用拆分：费用说明（加州 & 美国）',
-      intro: '这是可预测 vs 案例依赖的拆分，方便公平比较并理解范围。',
-      scope:
-        '比较代孕报价时最容易混淆的是范围。本套餐估算不含 IVF 诊所费用与新生儿医疗。为保证透明：这只是估算，实际费用按发生承担，未使用资金在最终结算后退回。',
-      scopeLabel: '范围说明',
-      fixedTitle: '固定（更可预期）费用',
-      variableTitle: '可变（案例依赖）费用',
-      includedLabel: '包含',
-      notIncludedLabel: '不包含',
-      additionalTitle: '额外费用（如适用）— 代孕为何感觉昂贵',
+      totalLabel: '项目预估总额',
+      totalAmount: '$142,750',
+      cards: [
+        {
+          title: '机构服务费',
+          amount: '$50,000',
+          description: '涵盖招募、筛选、匹配、个案管理、协调、沟通及全程支持。',
+        },
+        {
+          title: '信托账户管理',
+          amount: '$2,000',
+          description: '涵盖信托资金的管理与追踪，让付款与报销更有序、更透明。',
+        },
+        {
+          title: '保险审查与保障设置',
+          amount: '$12,600',
+          description: '包含保险审查、保障规划、人寿保险配置及健康保险保费预估支持。',
+        },
+        {
+          title: '法律费用',
+          amount: '$10,750',
+          description: '涵盖法律协议起草与审核、律师支持及加州亲子关系等法律步骤。',
+        },
+        {
+          title: '代孕补偿',
+          amount: '$61,000+',
+          description: '涵盖基础代孕补偿及相关支持，最终金额因匹配与个案情况而异。',
+        },
+      ],
+      fixedTitle: '固定费用',
+      fixedIntro: '以下为项目预估总额中的主要费用：',
+      fixedList: [
+        '机构服务费',
+        '信托账户管理',
+        '保险审查与保障设置',
+        '法律费用',
+        '代孕补偿',
+      ],
+      variableTitle: '案例依赖费用',
+      variableIntro: '以下费用因旅程不同而变化，通常按实际发生支付：',
+      variableList: [
+        '医疗筛查差旅',
+        '胚胎移植差旅',
+        '代孕人寿保险',
+        '代孕医疗保险保费',
+        '双胎或多胎',
+        '剖宫产补偿',
+        '模拟周期或周期取消',
+        '母乳支持',
+        '流产相关补偿',
+      ],
       donutTitle: '费用通常的分布',
+      donutLegend: ['机构服务费：39%', '代孕补偿：47%', '法律费用：8%', '行政支持：4%', '信托管理：2%'],
       fixed: [
         {
           title: '1）代孕机构服务费',
@@ -552,19 +653,25 @@ const translations = {
         '不含 IVF 诊所费用。',
         '不含新生儿出生后的医疗费用。',
       ],
-      donutLegend: ['机构服务费：39%', '代孕补偿：47%', '法律费用：8%', '行政支持：4%', '信托管理：2%'],
     },
     payments: {
       title: '代孕付款时间线：每笔费用何时支付（加州 & 美国）',
       intro: '时间与总额同样重要：何时付、付多少、包含什么。',
       trustButton: '信托如何运作',
-      trustTitle: '信托如何保护你（无“惊喜账单”）',
-      trustCopy: '资金留在信托账户中，仅用于实际发生的费用。可报销项目按发生支付，未用资金在最终结算后退回。',
-      notesTitle: '重要说明（便于准确预算）',
-      notes: [
-        '这些付款覆盖代孕项目及上述事项；不包含 IVF 诊所费用。',
-        '不包含新生儿相关费用（文件/保费/NICU 或儿科护理）。',
-        '保险取决于时间与可购性；如无法及时购买，预留金额可按发生用于孕期相关费用。',
+      trustTitle: '信托付款如何保护你',
+      trustPoints: [
+        {
+          title: '资金存放在信托账户',
+          text: '资金安全托管，并按获批的代孕计划释放。',
+        },
+        {
+          title: '可报销项目按发生支付',
+          text: '案例依赖费用凭文件报销，并遵循项目指引。',
+        },
+        {
+          title: '未用资金结算后退回',
+          text: '最终结算后，剩余未用资金将核对并退回给你。',
+        },
       ],
       labels: {
         milestone: '里程碑',
@@ -617,6 +724,29 @@ const translations = {
             { text: '代孕医疗保险保费预留（按发生支付）' },
           ],
           note: '基础补偿通常按协议等额月付（常见为 10 个月）。',
+        },
+      ],
+    },
+    whatsNotIncluded: {
+      title: '重要说明 — 不包含项目',
+      intro:
+        '部分费用不在代孕项目估算范围内。提前了解这些项目，有助于更准确比较报价并规划完整预算。',
+      items: [
+        {
+          title: 'IVF 诊所费用',
+          text: '不含 IVF 诊所费用，可能包括取卵、胚胎创建、用药、监测、移植相关诊所服务及其他生育诊所收费。',
+        },
+        {
+          title: '新生儿医疗',
+          text: '不含新生儿医疗费用。分娩医院费、儿科护理、NICU、疫苗及新生儿相关医疗通常单独计算。',
+        },
+        {
+          title: '保险生效时间',
+          text: '保险可购性、保费与保障细节可能在旅程中变化，生效时间与计划可用性会影响最终预算。',
+        },
+        {
+          title: '预留存款',
+          text: '部分案例可能需要额外预留存款用于可报销或不可预测费用，未用资金在最终结算后退回。',
         },
       ],
     },
@@ -683,11 +813,11 @@ useHead(() => ({
 }))
 
 const anchors = computed(() => t.value.anchors)
-const activeAnchor = ref(anchors.value[0]?.id || 'ca-vs-us')
+const activeAnchor = ref(anchors.value[0]?.id || 'top')
 
 const driverCards = computed(() => t.value.ca.drivers)
 
-const quickCards = computed(() => t.value.ca.quick)
+const breakdownCards = computed(() => t.value.breakdown.cards)
 
 const fixedCosts = computed<FixedCost[]>(() => t.value.breakdown.fixed)
 
@@ -696,6 +826,8 @@ const variableCosts = computed<VariableCost[]>(() => t.value.breakdown.variable)
 const additionalCosts = computed(() => t.value.breakdown.additional)
 
 const paymentSteps = computed<PaymentStep[]>(() => t.value.payments.steps)
+const trustPoints = computed(() => t.value.payments.trustPoints)
+const notIncludedItems = computed(() => t.value.whatsNotIncluded.items)
 const reasons = computed(() => t.value.why.reasons)
 
 const faqItems = computed(() =>
@@ -805,6 +937,35 @@ const faqItems = computed(() =>
         },
       ],
 )
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/blog/Average-Compensation-Surrogacy-Cost-in-California',
+    title: locale.value === 'zh' ? '加州平均补偿与代孕费用' : 'Average Compensation & Surrogacy Cost in California',
+    description: locale.value === 'zh'
+      ? 'GSC 高曝光博客，适合继续了解加州代孕预算、代母补偿和费用变量。'
+      : 'A high-impression GSC blog for California surrogacy budget, compensation, and cost variables.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761716620530-82fdj9.webp',
+    date: locale.value === 'zh' ? '2025年10月29日' : 'October 29, 2025',
+  },
+  {
+    to: '/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family',
+    title: locale.value === 'zh' ? '美国代孕真实费用' : 'How Much Is Surrogacy?',
+    description: locale.value === 'zh'
+      ? '围绕真实代孕成本、费用范围和家庭预算问题的高曝光内容。'
+      : 'High-impression content on real surrogacy costs, ranges, and family budget planning.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761881438525-s95lbq.webp',
+    date: locale.value === 'zh' ? '2025年10月31日' : 'October 31, 2025',
+  },
+  {
+    to: '/blog/How-Much-Does-Surrogacy-Cost-And-Pricing',
+    title: locale.value === 'zh' ? '代孕费用与定价说明' : 'Surrogacy Cost and Pricing',
+    description: locale.value === 'zh'
+      ? '补充说明代孕费用拆分、定价逻辑和常见预算问题。'
+      : 'A supporting guide for cost breakdowns, pricing logic, and common budget questions.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761892319234-7s7v5q.png',
+    date: locale.value === 'zh' ? '2025年10月31日' : 'October 31, 2025',
+  },
+])
 const pagePath = '/surrogacy-cost'
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
@@ -822,8 +983,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Resources' },
-    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Cost', url: pagePath },
   ],
   faqs: faqItems.value,
@@ -987,6 +1147,12 @@ onUnmounted(() => {
 <template>
   <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/intended-parents', label: locale === 'zh' ? '准父母' : 'For Intended Parents' },
+        { label: locale === 'zh' ? '费用指南' : 'Cost Guide' },
+      ]"
+    />
 
     <main>
       <section id="top" class="hero-section">
@@ -994,74 +1160,56 @@ onUnmounted(() => {
           <div class="hero-grid">
             <div class="hero-left scroll-animate">
               <div class="space-y-4">
-                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-                  <ol class="breadcrumb-list">
-                    <li v-for="item in t.breadcrumb" :key="item">
-                      {{ item }}
-                    </li>
-                  </ol>
-                </nav>
                 <h1 class="h1-text">
                   {{ t.hero.title }}
                 </h1>
-                <div class="body-text space-y-3">
-                  <p>{{ t.hero.lead1 }}</p>
-                  <p>{{ t.hero.lead2 }}</p>
-                </div>
+                <p class="body-text max-w-xl">
+                  {{ t.hero.lead }}
+                </p>
               </div>
 
-              <div class="space-y-3">
-                <div class="cta-group">
-                  <NuxtLink
-                    :to="localePath('/be-parents')"
-                    class="btn-primary"
-                  >
-                    {{ t.hero.primary }}
-                  </NuxtLink>
-                  <NuxtLink
-                    :to="localePath('/be-parents')"
-                    class="btn-secondary"
-                  >
-                    {{ t.hero.secondary }}
-                  </NuxtLink>
-                </div>
-                <p class="small-text text-[var(--yunda-bark)]/80">
-                  {{ t.hero.note1 }}
-                </p>
-                <p class="micro-text text-[var(--yunda-bark)]/70">
-                  {{ t.hero.note2 }}
-                </p>
+              <div class="cta-group">
+                <NuxtLink
+                  :to="localePath('/be-parents')"
+                  class="btn-primary"
+                >
+                  {{ t.hero.primary }}
+                </NuxtLink>
+                <NuxtLink
+                  :to="localePath('/be-parents')"
+                  class="btn-secondary"
+                >
+                  {{ t.hero.secondary }}
+                </NuxtLink>
               </div>
             </div>
 
-            <!-- <div class="hero-right scroll-animate">
-              <aside class="card trust-card hero-trust-card">
-                <p class="mb-4 small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
-                  Trust, No Surprises
+            <div class="hero-right scroll-animate">
+              <aside class="cost-hero-total-card" aria-label="Estimated program total">
+                <p class="cost-hero-total-label">
+                  {{ t.hero.totalLabel }}
                 </p>
-                <ul class="space-y-3 body-text">
-                  <li v-for="item in trustHighlights" :key="item" class="trust-item">
-                    <span class="trust-check" aria-hidden="true">✓</span>
-                    <span>{{ item }}</span>
-                  </li>
-                </ul>
-                <p class="mt-4 small-text text-[var(--yunda-bark)]/80">
-                  You'll see each cost category explained clearly, so there are no surprises when you compare the total cost of surrogacy across California and other U.S. states.
+                <p class="cost-hero-total-amount">
+                  {{ t.hero.totalAmount }}
                 </p>
+                <div class="cost-hero-disclaimer">
+                  <span class="cost-hero-disclaimer-icon" aria-hidden="true">!</span>
+                  <p>{{ t.hero.disclaimer }}</p>
+                </div>
               </aside>
-            </div> -->
+            </div>
           </div>
         </div>
 
-        <div class="anchor-nav-wrapper border-y border-[var(--olive-green)]/30 bg-[var(--yunda-bark)]/90 backdrop-blur">
+        <div class="cost-anchor-nav-wrapper">
           <div class="content-container">
-            <nav class="anchor-nav" aria-label="On-page navigation">
+            <nav class="cost-anchor-nav" aria-label="On-page navigation">
               <button
                 v-for="anchor in anchors"
                 :key="anchor.id"
                 type="button"
-                class="anchor-pill"
-                :class="activeAnchor === anchor.id ? 'anchor-pill-active' : ''"
+                class="cost-anchor-pill"
+                :class="activeAnchor === anchor.id ? 'cost-anchor-pill-active' : ''"
                 :aria-current="activeAnchor === anchor.id ? 'page' : undefined"
                 @click="scrollToSection(anchor.id)"
               >
@@ -1072,184 +1220,152 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <SeoTrustNote
-        :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
-        :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
-        :note="locale === 'zh' ? '本页用于解释代孕费用类别、估算范围和付款规划。实际费用会因 IVF 诊所、保险、法律、医疗情况和个案安排而变化，最终预算应结合专业审查确认。' : 'This page explains surrogacy cost categories, estimate ranges, and payment planning. Actual costs vary by IVF clinic, insurance, legal, medical, and case-specific factors, and final budgets should be confirmed through professional review.'"
-        :sources="[
-          { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
-          { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
-          { label: locale === 'zh' ? '代孕补偿' : 'Surrogate compensation', href: localePath('/surrogate-compensation') },
-        ]"
-      />
+      <div class="cost-seo-note-wrap">
+        <SeoTrustNote
+          :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
+          :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+          :note="locale === 'zh' ? '本页用于解释代孕费用类别、估算范围和付款规划。实际费用会因 IVF 诊所、保险、法律、医疗情况和个案安排而变化，最终预算应结合专业审查确认。' : 'This page explains surrogacy cost categories, estimate ranges, and payment planning. Actual costs vary by IVF clinic, insurance, legal, medical, and case-specific factors, and final budgets should be confirmed through professional review.'"
+          :sources="[
+            { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
+            { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
+            { label: locale === 'zh' ? '代孕补偿' : 'Surrogate compensation', href: localePath('/surrogate-compensation') },
+          ]"
+        />
+      </div>
 
-      <section id="ca-vs-us" class="section-pad">
-        <div class="content-container section-stack">
-          <div class="intro-grid scroll-animate">
-            <div class="space-y-4">
-              <h2 class="h2-text">
-                {{ t.ca.title }}
+      <section class="mx-auto max-w-280 px-5 pt-10 lg:px-10 lg:pt-12">
+        <div class="rounded-6 border border-[var(--olive-green)]/35 bg-white/95 p-6 shadow-lg shadow-black/10 lg:p-8">
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div>
+              <p class="small-text font-semibold uppercase tracking-wide text-[var(--yunda-maple)]">
+                {{ locale === 'zh' ? '权威结论' : 'Authority Summary' }}
+              </p>
+              <h2 class="mt-2 h3-text">
+                {{ locale === 'zh' ? '代孕费用先看范围，再看总价。' : 'Start with scope, then compare total cost.' }}
               </h2>
-              <div class="body-text space-y-4">
-                <p>{{ t.ca.intro1 }}</p>
-                <p>{{ t.ca.intro2 }}</p>
-              </div>
             </div>
+            <p class="body-text">
+              {{ locale === 'zh' ? '加州代孕费用通常由机构协调、代孕妈妈补偿、法律、保险、托管、IVF 诊所与孕期变量共同决定。比较报价时，先看每个报价包含什么，再看总价。' : 'Surrogacy cost is usually driven by agency coordination, surrogate compensation, legal work, insurance, escrow, IVF clinic fees, and pregnancy-specific variables. When comparing quotes, start with what each quote includes, then look at the total.' }}
+            </p>
+            <p class="body-text">
+              {{ locale === 'zh' ? 'IVF 诊所费用和新生儿医疗通常不包含在机构费用内；保险排除、自付额、胚胎状态和多胎/剖宫产等情况都会让总预算变化。' : 'IVF clinic fees and newborn medical care are usually separate from the agency package; insurance exclusions, deductibles, embryo status, and twins or C-section scenarios can all change the final budget.' }}
+            </p>
           </div>
+        </div>
+      </section>
 
-          <div class="driver-grid scroll-animate">
+      <section id="ca-vs-us" class="section-pad cost-section-after-seo">
+        <div class="content-container section-stack">
+          <h2 class="h2-text cost-section-title-center scroll-animate">
+            {{ t.ca.title }}
+          </h2>
+
+          <div class="cost-driver-grid scroll-animate">
             <article
-              v-for="card in driverCards"
+              v-for="(card, index) in driverCards"
               :key="card.id"
-              class="driver-card"
+              class="cost-driver-card"
             >
-              <div
-                class="driver-blur-bg"
-                :style="{ backgroundImage: `url(${card.image})` }"
-                aria-hidden="true"
-              />
-              <div class="driver-blur-overlay" aria-hidden="true" />
-              <div class="driver-content">
+              <div class="cost-driver-icon-wrap" aria-hidden="true">
+                <img
+                  :src="PAGE_ASSETS.drivers[index]"
+                  alt=""
+                  class="cost-driver-icon"
+                  loading="lazy"
+                >
+              </div>
+              <div class="cost-driver-body">
                 <h3 class="h3-text font-semibold">
                   {{ card.title }}
                 </h3>
-                <div class="body-text mt-3 space-y-3">
-                  <p v-for="para in card.content" :key="para">
-                    {{ para }}
-                  </p>
-                </div>
+                <p class="body-text mt-3 text-[var(--yunda-bark)]/86">
+                  {{ card.content }}
+                </p>
               </div>
             </article>
-          </div>
-
-          <div class="scroll-animate grid gap-4 md:grid-cols-3 md:gap-6">
-            <div
-              v-for="card in quickCards"
-              :key="card.title"
-              class="card outline-card"
-            >
-              <p class="h3-text font-semibold">
-                {{ card.title }}
-              </p>
-              <p class="body-text mt-2">
-                {{ card.description }}
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
       <section id="cost-breakdown" class="section-pad cost-breakdown-section bg-[var(--yunda-petal)]">
         <div class="content-container section-stack">
-          <div class="scroll-animate space-y-4">
-            <h2 class="h2-text">
-              {{ t.breakdown.title }}
-            </h2>
-            <p class="body-text">
-              {{ t.breakdown.intro }}
-            </p>
+          <h2 class="h2-text cost-section-title-center scroll-animate">
+            {{ t.breakdown.title }}
+          </h2>
+
+          <div class="cost-breakdown-cards scroll-animate">
+            <article class="cost-breakdown-total-card">
+              <p class="cost-breakdown-total-label">
+                {{ t.breakdown.totalLabel }}
+              </p>
+              <p class="cost-breakdown-total-amount">
+                {{ t.breakdown.totalAmount }}
+              </p>
+            </article>
+
+            <article
+              v-for="(card, index) in breakdownCards"
+              :key="card.title"
+              class="cost-breakdown-item-card"
+            >
+              <div class="cost-breakdown-item-icon-wrap" aria-hidden="true">
+                <img
+                  :src="PAGE_ASSETS.breakdown[index]"
+                  alt=""
+                  class="cost-breakdown-item-icon"
+                  loading="lazy"
+                >
+              </div>
+              <h3 class="cost-breakdown-item-title">
+                {{ card.title }}
+              </h3>
+              <p class="cost-breakdown-item-desc">
+                {{ card.description }}
+              </p>
+              <p class="cost-breakdown-item-amount">
+                {{ card.amount }}
+              </p>
+            </article>
           </div>
 
-          <div class="scroll-animate card subtle-card">
-            <p class="small-text text-[var(--yunda-maple)] font-semibold tracking-wide uppercase">
-              {{ t.breakdown.scopeLabel }}
-            </p>
-            <p class="body-text mt-2">
-              {{ t.breakdown.scope }}
-            </p>
-          </div>
-
-          <div class="cost-breakdown-split">
-            <div class="card cost-table outline-card">
-              <div class="cost-table-column">
-                <div class="cost-table-header">
-                  <p class="h3-text font-semibold">
-                    {{ t.breakdown.fixedTitle }}
-                  </p>
-                </div>
-                <div class="cost-table-body">
-                  <article
-                    v-for="cost in fixedCosts"
-                    :key="cost.title"
-                    class="cost-line cost-line-compact"
-                  >
-                    <div class="cost-line-left">
-                      <div class="space-y-1">
-                        <p class="row-title">
-                          {{ cost.title }}
-                        </p>
-                        <p class="row-desc">
-                          {{ cost.description }}
-                        </p>
-                        <ul v-if="cost.subItems" class="row-sub">
-                          <li v-for="item in cost.subItems" :key="item">
-                            - {{ item }}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <span class="amount-badge amount-fixed">{{ cost.amount }}</span>
-                  </article>
-                </div>
-              </div>
-
-              <div class="cost-table-column">
-                <div class="cost-table-header cost-table-header-variable">
-                  <p class="h3-text font-semibold">
-                    {{ t.breakdown.variableTitle }}
-                  </p>
-                </div>
-                <div class="cost-table-body">
-                  <article
-                    v-for="cost in variableCosts"
-                    v-show="!showCaseOnly || cost.caseDependent"
-                    :key="cost.title"
-                    class="cost-line cost-line-compact"
-                  >
-                    <div class="cost-line-left">
-                      <div class="space-y-1">
-                        <p class="row-title">
-                          {{ cost.title }}
-                        </p>
-                        <p class="row-desc">
-                          {{ cost.description }}
-                        </p>
-                        <ul v-if="cost.bullets" class="row-sub">
-                          <li v-for="item in cost.bullets" :key="item">
-                            - {{ item }}
-                          </li>
-                        </ul>
-                        <p v-if="cost.note" class="row-desc">
-                          {{ cost.note }}
-                        </p>
-                      </div>
-                    </div>
-                    <span v-if="cost.amount" class="amount-badge amount-variable">{{ cost.amount }}</span>
-                  </article>
-                </div>
-
-                <details class="cost-table-expand">
-                  <summary class="h3-text font-semibold">
-                    {{ t.breakdown.additionalTitle || 'Additional Costs (If Applicable)' }}
-                  </summary>
-                  <ul class="body-text mt-3 space-y-2">
-                    <li v-for="item in additionalCosts" :key="item">
-                      - {{ item }}
-                    </li>
-                  </ul>
-                </details>
-              </div>
+          <div class="cost-breakdown-summary scroll-animate">
+            <div class="cost-breakdown-summary-col">
+              <h3 class="h3-text font-semibold">
+                {{ t.breakdown.fixedTitle }}
+              </h3>
+              <p class="body-text mt-2 text-[var(--yunda-bark)]/82">
+                {{ t.breakdown.fixedIntro }}
+              </p>
+              <ul class="cost-breakdown-list body-text mt-4">
+                <li v-for="item in t.breakdown.fixedList" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
 
-            <div class="card viz-card outline-card">
+            <div class="cost-breakdown-summary-col">
               <h3 class="h3-text font-semibold">
-                {{ t.breakdown.donutTitle || 'Where costs usually go' }}
+                {{ t.breakdown.variableTitle }}
               </h3>
-              <div class="viz-body">
+              <p class="body-text mt-2 text-[var(--yunda-bark)]/82">
+                {{ t.breakdown.variableIntro }}
+              </p>
+              <ul class="cost-breakdown-list body-text mt-4">
+                <li v-for="item in t.breakdown.variableList" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+
+            <div class="cost-breakdown-summary-col cost-breakdown-donut-col">
+              <h3 class="h3-text font-semibold">
+                {{ t.breakdown.donutTitle }}
+              </h3>
+              <div class="cost-breakdown-donut-wrap">
                 <div
                   class="chart-slot cost-donut"
                   role="img"
-                  aria-label="Cost share chart showing fixed, compensation, insurance, allowances, and embryo support allocations"
+                  :aria-label="t.breakdown.donutTitle"
                   style="--p1:39; --p2:47; --p3:8; --p4:4; --p5:2;"
                 />
                 <ul class="donut-legend">
@@ -1264,31 +1380,31 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="payments" class="section-pad">
+      <section id="payments" class="section-pad cost-payments-section">
         <div class="content-container section-stack">
-          <div class="scroll-animate space-y-4">
-            <h2 class="h2-text">
+          <div class="scroll-animate cost-payments-intro">
+            <h2 class="h2-text cost-section-title-center">
               {{ t.payments.title }}
             </h2>
-            <p class="body-text">
+            <p class="body-text mx-auto mt-4 max-w-3xl text-center text-[var(--yunda-bark)]/84">
               {{ t.payments.intro }}
             </p>
           </div>
 
           <div class="scroll-animate">
-            <div class="timeline-track">
+            <div class="cost-payments-timeline" role="tablist" aria-label="Payment timeline">
               <button
                 v-for="(step, index) in paymentSteps"
                 :key="step.id"
                 type="button"
+                role="tab"
                 class="timeline-step"
                 :class="selectedPaymentId === step.id ? 'timeline-step-active' : ''"
+                :aria-selected="selectedPaymentId === step.id"
                 @click="selectPayment(step.id)"
               >
                 <span class="timeline-step-index">{{ index + 1 }}</span>
-                <div class="timeline-step-text">
-                  <span class="timeline-step-label">{{ step.label }}</span>
-                </div>
+                <span class="timeline-step-label">{{ step.label }}</span>
               </button>
             </div>
           </div>
@@ -1299,15 +1415,16 @@ onUnmounted(() => {
               v-show="selectedPaymentId === payment.id"
               :id="payment.id"
               :key="payment.id"
-              class="card payment-block outline-card"
+              class="cost-payment-card"
+              role="tabpanel"
             >
               <div class="payment-block-header">
                 <span class="payment-index">{{ index + 1 }}</span>
                 <div class="payment-header-text">
-                  <p class="h3-text font-semibold">
+                  <p class="cost-payment-card-title">
                     {{ payment.title }}
                   </p>
-                  <p class="small-text text-[var(--yunda-bark)]/80">
+                  <p class="cost-payment-card-subtitle">
                     {{ payment.label }}
                   </p>
                 </div>
@@ -1355,39 +1472,83 @@ onUnmounted(() => {
               </div>
             </article>
           </div>
+        </div>
+      </section>
 
-          <div class="card subtle-card">
-            <div class="flex flex-wrap items-center justify-between gap-4">
-              <h3 class="h3-text font-semibold">
-                {{ t.payments.trustTitle || 'How Trust Payments Protect You (No \"surprise invoices\")' }}
-              </h3>
-              <button
-                type="button"
-                class="btn-tertiary"
-                @click="showTrustDrawer = true"
-              >
-                {{ t.payments.trustButton || 'How the trust account works' }}
-              </button>
+      <section id="whats-not-included" class="section-pad cost-whats-not-section">
+        <div class="content-container section-stack">
+          <div class="cost-trust-panel scroll-animate">
+            <div class="cost-trust-shield" aria-hidden="true">
+              <img :src="PAGE_ASSETS.trustShield" alt="" class="h-full w-full object-contain" loading="lazy">
             </div>
-            <p class="body-text mt-3">
-              {{ t.payments.trustCopy || 'Funds are held in a trust account and used only for actual costs incurred. If certain expenses never happen, they are reconciled and returned after final accounting.' }}
+            <div class="cost-trust-content">
+              <div class="cost-trust-header">
+                <h2 class="h2-text">
+                  {{ t.payments.trustTitle }}
+                </h2>
+                <button
+                  type="button"
+                  class="btn-tertiary hidden sm:inline-flex"
+                  @click="showTrustDrawer = true"
+                >
+                  {{ t.payments.trustButton }}
+                </button>
+              </div>
+              <div class="cost-trust-grid">
+                <article
+                  v-for="point in trustPoints"
+                  :key="point.title"
+                  class="cost-trust-point"
+                >
+                  <div class="cost-trust-point-icon" aria-hidden="true">
+                    <img :src="PAGE_ASSETS.trustCheck" alt="" class="h-full w-full object-contain" loading="lazy">
+                  </div>
+                  <h3 class="cost-trust-point-title">
+                    {{ point.title }}
+                  </h3>
+                  <p class="body-text mt-2 text-[var(--yunda-bark)]/84">
+                    {{ point.text }}
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-animate text-center">
+            <h2 class="h2-text">
+              {{ t.whatsNotIncluded.title }}
+            </h2>
+            <p class="body-text mx-auto mt-4 max-w-3xl text-[var(--yunda-bark)]/84">
+              {{ t.whatsNotIncluded.intro }}
             </p>
           </div>
 
-          <div class="card outline-card">
-            <h3 class="h3-text font-semibold">
-              {{ t.payments.notesTitle || 'Important Notes (So you can budget accurately)' }}
-            </h3>
-            <ul class="body-text mt-3 space-y-2">
-              <li v-for="note in t.payments.notes" :key="note">
-                - {{ note }}
-              </li>
-            </ul>
+          <div class="cost-not-included-grid scroll-animate">
+            <article
+              v-for="(item, index) in notIncludedItems"
+              :key="item.title"
+              class="cost-not-included-card"
+            >
+              <div class="cost-not-included-icon-wrap" aria-hidden="true">
+                <img
+                  :src="PAGE_ASSETS.notIncluded[index]"
+                  alt=""
+                  class="cost-not-included-icon"
+                  loading="lazy"
+                >
+              </div>
+              <h3 class="h3-text font-semibold">
+                {{ item.title }}
+              </h3>
+              <p class="body-text mt-3 text-[var(--yunda-bark)]/84">
+                {{ item.text }}
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="why-expensive" class="section-pad bg-[var(--yunda-petal)]">
+      <section id="why-expensive" class="section-pad cost-why-section bg-[var(--yunda-petal)]">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
             <h2 class="h2-text">
@@ -1433,7 +1594,7 @@ onUnmounted(() => {
                   {{ t.why.title }}
                 </p>
                 <p class="body-text mt-2">
-                  {{ t.hero.lead2 }}
+                  {{ t.hero.lead }}
                 </p>
                 <div class="cta-group">
                   <NuxtLink :to="localePath('/be-parents')" class="btn-primary">
@@ -1446,7 +1607,7 @@ onUnmounted(() => {
         </div>
       </section>
 
-      <section id="faq" class="section-pad">
+      <section id="faq" class="section-pad cost-section-last">
         <div class="content-container section-stack">
           <div class="scroll-animate space-y-4">
             <h2 class="h2-text">
@@ -1548,6 +1709,11 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+      <RelatedGuides
+        :title="locale === 'zh' ? '继续了解代孕费用与预算' : 'Continue With Surrogacy Cost Planning'"
+        :intro="locale === 'zh' ? '如果你正在比较代孕费用，下面的内容可以帮助你进一步理解总预算、补偿项目和加州相关费用差异。' : 'If you are comparing surrogacy costs, these reads help clarify total budget, compensation items, and California cost differences.'"
+        :links="relatedPerformanceLinks"
+      />
     </main>
 
     <AppFooter />
@@ -1602,63 +1768,131 @@ onUnmounted(() => {
 }
 
 .section-pad {
-  padding: 48px 0;
+  --cost-section-pad-y: 1.75rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
 }
 
 @media (min-width: 768px) {
   .section-pad {
-    padding: 64px 0;
+    --cost-section-pad-y: 2rem;
   }
 }
 
 @media (min-width: 1200px) {
   .section-pad {
-    padding: 80px 0;
+    --cost-section-pad-y: 2.25rem;
   }
+}
+
+.cost-section-after-seo {
+  padding-top: 2rem;
+  padding-bottom: var(--cost-section-pad-y);
+}
+
+@media (min-width: 768px) {
+  .cost-section-after-seo {
+    padding-top: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-section-after-seo {
+    padding-top: 2.5rem;
+  }
+}
+
+.cost-section-last {
+  padding-bottom: calc(var(--cost-section-pad-y) + 0.5rem);
+}
+
+.cost-seo-note-wrap :deep(> section) {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .section-stack {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 @media (min-width: 1200px) {
   .section-stack {
-    gap: 32px;
+    gap: 28px;
   }
 }
 
 .hero-section {
   position: relative;
-  padding: 64px 0 32px;
-  background-image:
-    linear-gradient(
-      110deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.88) 38%,
-      rgba(255, 255, 255, 0.6) 55%,
-      rgba(255, 255, 255, 0.12) 85%
-    ),
-    url('https://images.unsplash.com/photo-1504151932400-72d4384f04b3?auto=format&fit=crop&w=1800&q=80');
-  background-size: cover;
-  background-position: center right;
+  padding: 64px 0 0;
+  background-color: #fff;
   overflow: hidden;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 42%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.92) 18%, rgba(255, 255, 255, 0.35) 52%, rgba(255, 255, 255, 0) 78%),
+    url('/images/ip/cost/redesign/hero.jpg') center right / cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero-section {
+    padding-top: 1.5rem;
+    background-color: #fff;
+  }
+
+  .hero-section::after {
+    display: none;
+  }
+
+  .hero-grid {
+    gap: 1.5rem;
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cost-hero-total-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .cost-anchor-nav-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
   .hero-section {
-    padding: 72px 0 40px;
+    padding: 72px 0 0;
   }
 }
 
 @media (min-width: 1200px) {
   .hero-section {
-    padding: 80px 0 48px;
+    padding: 80px 0 0;
   }
 }
 
 .hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 32px;
   align-items: center;
@@ -1666,9 +1900,9 @@ onUnmounted(() => {
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: minmax(420px, 520px) minmax(0, 1fr);
-    gap: 24px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 40px;
+    align-items: center;
   }
 }
 
@@ -1680,20 +1914,686 @@ onUnmounted(() => {
 
 @media (min-width: 1024px) {
   .hero-left {
-    max-width: 520px;
+    max-width: 620px;
   }
 }
 
 .hero-right {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: center;
 }
 
 @media (min-width: 1024px) {
   .hero-right {
-    justify-self: stretch;
+    justify-content: flex-end;
   }
+}
+
+.cost-hero-total-card {
+  width: min(100%, 320px);
+  border-radius: 20px;
+  background: #d4ddd6;
+  padding: 1.75rem 1.5rem 1.25rem;
+  box-shadow: 0 16px 36px rgba(39, 31, 24, 0.12);
+}
+
+.cost-hero-total-label {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: rgba(39, 31, 24, 0.82);
+}
+
+.cost-hero-total-amount {
+  margin-top: 0.35rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--yunda-bark);
+}
+
+.cost-hero-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  border-radius: 14px;
+  background: #faf4ea;
+  padding: 0.85rem 0.9rem;
+}
+
+.cost-hero-disclaimer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: rgba(169, 108, 66, 0.18);
+  color: var(--yunda-maple);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.cost-hero-disclaimer p {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(39, 31, 24, 0.82);
+}
+
+.cost-anchor-nav-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  background: #c5c0a0;
+}
+
+.cost-anchor-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.85rem 0;
+  scrollbar-width: none;
+}
+
+.cost-anchor-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cost-anchor-pill {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  color: rgba(39, 31, 24, 0.88);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cost-anchor-pill:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.cost-anchor-pill-active {
+  background: #faf4ea;
+  color: var(--yunda-bark);
+  font-weight: 600;
+}
+
+.cost-section-title-center {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 52rem;
+}
+
+.cost-driver-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cost-driver-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.cost-driver-card {
+  display: flex;
+  gap: 1.15rem;
+  align-items: flex-start;
+  border: 1px solid rgba(169, 108, 66, 0.22);
+  border-radius: 18px;
+  background: #faf4ea;
+  padding: 1.35rem 1.2rem;
+}
+
+.cost-driver-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.25rem;
+  height: 5.25rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .cost-driver-icon-wrap {
+    width: 5.75rem;
+    height: 5.75rem;
+  }
+}
+
+.cost-driver-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cost-breakdown-cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .cost-breakdown-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+}
+
+.cost-breakdown-total-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  border-radius: 18px;
+  background: #d4ddd6;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.cost-breakdown-total-label {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: rgba(39, 31, 24, 0.82);
+}
+
+.cost-breakdown-total-amount {
+  margin-top: 0.35rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--yunda-bark);
+}
+
+.cost-breakdown-item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(169, 108, 66, 0.18);
+  border-radius: 18px;
+  background: #faf4ea;
+  padding: 1.5rem 1rem 1.15rem;
+  min-height: 100%;
+}
+
+.cost-breakdown-item-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .cost-breakdown-item-icon-wrap {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.cost-breakdown-item-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform: scale(1.42);
+}
+
+.cost-breakdown-item-title {
+  margin-top: 0.65rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--yunda-bark);
+}
+
+.cost-breakdown-item-desc {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: rgba(39, 31, 24, 0.78);
+  flex: 1;
+}
+
+.cost-breakdown-item-amount {
+  margin-top: 0.85rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--yunda-maple);
+}
+
+.cost-breakdown-summary {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid rgba(169, 108, 66, 0.18);
+  border-radius: 20px;
+  background: #faf4ea;
+  padding: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .cost-breakdown-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem;
+    align-items: stretch;
+  }
+
+  .cost-breakdown-donut-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cost-breakdown-donut-col .cost-breakdown-donut-wrap {
+    flex: 1;
+    align-items: center;
+  }
+}
+
+.cost-breakdown-list {
+  list-style: disc;
+  padding-left: 1.1rem;
+}
+
+.cost-breakdown-list li + li {
+  margin-top: 0.35rem;
+}
+
+.cost-breakdown-donut-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cost-breakdown-donut-col .cost-breakdown-donut-wrap {
+  margin-top: 0.85rem;
+}
+
+@media (min-width: 1024px) {
+  .cost-breakdown-donut-col .cost-breakdown-donut-wrap {
+    margin-top: 0.75rem;
+  }
+}
+
+.cost-breakdown-donut-wrap .chart-slot {
+  min-height: unset;
+  margin-top: 0;
+}
+
+.cost-breakdown-donut-wrap .cost-donut {
+  width: 10.5rem;
+  min-width: 10.5rem;
+  max-width: 10.5rem;
+  flex-shrink: 0;
+}
+
+.cost-breakdown-donut-wrap .donut-legend {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  gap: 0.45rem;
+}
+
+@media (min-width: 1024px) {
+  .cost-breakdown-donut-col .cost-breakdown-donut-wrap {
+    gap: 1.15rem;
+  }
+
+  .cost-breakdown-donut-wrap .cost-donut {
+    width: 12.5rem;
+    min-width: 12.5rem;
+    max-width: 12.5rem;
+  }
+
+  .cost-breakdown-donut-wrap .donut-legend {
+    font-size: 0.92rem;
+  }
+}
+
+.cost-trust-panel {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+  border-radius: 22px;
+  background: #e8e6d8;
+  padding: 1.5rem 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .cost-trust-panel {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+.cost-trust-shield {
+  width: 6rem;
+  height: 6rem;
+}
+
+@media (min-width: 900px) {
+  .cost-trust-shield {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+.cost-trust-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cost-trust-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .cost-trust-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.cost-trust-point-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.cost-trust-point-title {
+  margin-top: 0.65rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--yunda-bark);
+}
+
+.cost-not-included-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cost-not-included-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-not-included-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.cost-not-included-card {
+  border: 1px solid rgba(169, 108, 66, 0.18);
+  border-radius: 18px;
+  background: #faf4ea;
+  padding: 1.35rem 1rem 1.25rem;
+  text-align: center;
+  min-height: 100%;
+}
+
+.cost-not-included-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.75rem;
+  height: 4.75rem;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.cost-not-included-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cost-whats-not-section {
+  background: #fff;
+  --cost-section-pad-y: 2rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
+}
+
+@media (min-width: 768px) {
+  .cost-whats-not-section {
+    --cost-section-pad-y: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-whats-not-section {
+    --cost-section-pad-y: 2.5rem;
+  }
+}
+
+.cost-whats-not-section .section-stack {
+  gap: 24px;
+}
+
+@media (min-width: 1200px) {
+  .cost-whats-not-section .section-stack {
+    gap: 28px;
+  }
+}
+
+.cost-payments-section {
+  background: #faf4ea;
+}
+
+.cost-why-section {
+  --cost-section-pad-y: 2rem;
+  padding-top: var(--cost-section-pad-y);
+  padding-bottom: var(--cost-section-pad-y);
+}
+
+@media (min-width: 768px) {
+  .cost-why-section {
+    --cost-section-pad-y: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cost-why-section {
+    --cost-section-pad-y: 2.5rem;
+  }
+}
+
+.cost-payments-intro {
+  text-align: center;
+}
+
+.cost-payments-timeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.timeline-step {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-step::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.35rem;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid rgba(169, 108, 66, 0.42);
+}
+
+.timeline-step:last-child::after {
+  display: none;
+}
+
+.timeline-step:hover {
+  transform: translateY(-1px);
+}
+
+.timeline-step:focus-visible {
+  outline: 2px solid rgba(169, 108, 66, 0.3);
+  outline-offset: 2px;
+}
+
+.timeline-step-active .timeline-step-index {
+  background: var(--yunda-maple);
+  border-color: var(--yunda-maple);
+  box-shadow: 0 8px 18px rgba(169, 108, 66, 0.2);
+}
+
+.timeline-step:not(.timeline-step-active) .timeline-step-index {
+  background: rgba(169, 108, 66, 0.38);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.timeline-step:not(.timeline-step-active) .timeline-step-label {
+  color: rgba(39, 31, 24, 0.62);
+  font-weight: 600;
+}
+
+.timeline-step-index {
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 999px;
+  background: var(--yunda-maple);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  border: 2px solid rgba(169, 108, 66, 0.35);
+  box-shadow: 0 8px 18px rgba(169, 108, 66, 0.18);
+  flex-shrink: 0;
+}
+
+.timeline-step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-step-label {
+  font-size: 1rem;
+  color: var(--yunda-bark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.timeline-step-amount {
+  display: none;
+}
+
+.payment-blocks {
+  display: grid;
+  gap: 20px;
+}
+
+.cost-payment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-radius: 20px;
+  background: #fff;
+  padding: 1.35rem 1.15rem;
+  box-shadow: 0 14px 34px rgba(39, 31, 24, 0.1);
+}
+
+@media (min-width: 768px) {
+  .cost-payment-card {
+    padding: 1.6rem 1.5rem;
+  }
+}
+
+.cost-payment-card-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--yunda-bark);
+}
+
+@media (min-width: 768px) {
+  .cost-payment-card-title {
+    font-size: 1.25rem;
+  }
+}
+
+.cost-payment-card-subtitle {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: rgba(39, 31, 24, 0.62);
+}
+
+.payment-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 12px 28px rgba(39, 31, 24, 0.12);
+}
+
+.payment-block-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.payment-index {
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 12px;
+  background: var(--yunda-maple);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 18px rgba(169, 108, 66, 0.18);
+  flex-shrink: 0;
 }
 
 .breadcrumb-nav {
@@ -2623,53 +3523,6 @@ onUnmounted(() => {
   font-size: 0.85rem;
 }
 
-.timeline-step {
-  border: none;
-  border-radius: 1rem;
-  padding: 10px 8px;
-  text-align: left;
-  background: transparent;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.timeline-step::after {
-  content: '';
-  position: absolute;
-  right: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 12px solid rgba(169, 108, 66, 0.5);
-  opacity: 0.4;
-  transition: opacity 0.2s ease;
-}
-
-.timeline-step:hover {
-  transform: translateY(-1px);
-}
-
-.timeline-step:focus-visible {
-  outline: 2px solid rgba(169, 108, 66, 0.3);
-  outline-offset: 2px;
-}
-
-.timeline-step-active {
-  filter: drop-shadow(0 10px 22px rgba(169, 108, 66, 0.15));
-}
-
-.timeline-step-active::after {
-  opacity: 0.9;
-}
-
 .why-grid {
   display: grid;
   gap: 20px;
@@ -2773,82 +3626,6 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-.timeline-track {
-  display: grid;
-  gap: 12px;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .timeline-track {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
-}
-
-.timeline-step-index {
-  height: 44px;
-  width: 44px;
-  border-radius: 999px;
-  background: var(--yunda-maple);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  border: 2px solid rgba(169, 108, 66, 0.35);
-  box-shadow: 0 8px 18px rgba(169, 108, 66, 0.18);
-  flex-shrink: 0;
-}
-
-.timeline-step-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.timeline-step-label {
-  font-size: 1rem;
-  color: var(--yunda-bark);
-  font-weight: 700;
-}
-
-.timeline-step-amount {
-  display: none;
-}
-
-.payment-blocks {
-  display: grid;
-  gap: 20px;
-}
-
-.payment-block {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 12px 28px rgba(39, 31, 24, 0.12);
-}
-
-.payment-block-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.payment-index {
-  height: 44px;
-  width: 44px;
-  border-radius: 12px;
-  background: var(--yunda-maple);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 8px 18px rgba(169, 108, 66, 0.18);
-}
-
 .payment-header-text {
   display: flex;
   flex-direction: column;
@@ -2888,9 +3665,11 @@ onUnmounted(() => {
 }
 
 .cell-amount {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #aaa579;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--yunda-maple);
 }
 
 .cell-list {

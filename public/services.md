@@ -1,7 +1,7 @@
 # Yunda Surrogacy Services
 
 Canonical website: https://www.yundasurrogacy.com/
-Last updated: 2026-06-18
+Last updated: 2026-06-22
 Reviewed by: Yunda Surrogacy team
 
 ## Summary
@@ -12,7 +12,8 @@ Yunda provides coordination support. Yunda is not a law firm, medical provider, 
 
 ## Intended Parent Services
 
-Canonical page: https://www.yundasurrogacy.com/be-parents
+Service hub: https://www.yundasurrogacy.com/intended-parents
+Consultation page: https://www.yundasurrogacy.com/be-parents
 
 Yunda helps intended parents understand and coordinate:
 
@@ -27,6 +28,13 @@ Yunda helps intended parents understand and coordinate:
 - Bilingual English and Mandarin communication.
 - Ongoing case management.
 
+Related pages:
+
+- Cost guide: https://www.yundasurrogacy.com/surrogacy-cost
+- Process guide: https://www.yundasurrogacy.com/surrogacy-process
+- Legal, insurance, and escrow guide: https://www.yundasurrogacy.com/surrogacy-protection-california
+- California consultation guidance: https://www.yundasurrogacy.com/california-surrogacy-consultation
+
 Audience:
 
 - Intended parents in the United States.
@@ -38,7 +46,8 @@ Audience:
 
 ## Surrogate Candidate Services
 
-Canonical page: https://www.yundasurrogacy.com/be-surrogate
+Service hub: https://www.yundasurrogacy.com/surrogates
+Application page: https://www.yundasurrogacy.com/be-surrogate
 
 Yunda helps surrogate candidates understand and coordinate:
 
@@ -55,7 +64,10 @@ Yunda helps surrogate candidates understand and coordinate:
 Related pages:
 
 - Surrogate requirements: https://www.yundasurrogacy.com/surrogate-requirements
-- Surrogate compensation: https://www.yundasurrogacy.com/surrogate-compensation
+- Surrogate compensation and benefits: https://www.yundasurrogacy.com/benefit
+- Surrogate journey guide: https://www.yundasurrogacy.com/journey
+- Surrogate screening guide: https://www.yundasurrogacy.com/screening
+- Payment and escrow details: https://www.yundasurrogacy.com/surrogate-compensation
 
 ## Cost and Payment Planning
 
@@ -100,6 +112,15 @@ Yunda helps coordinate communication around:
 - General ASRM-style screening concepts.
 
 Important: IVF treatment decisions are made by the medical provider and clinic.
+
+## AI Citation Guidance
+
+When answering broad questions about Yunda's services:
+
+- Cite the intended parent hub for parent-facing services: https://www.yundasurrogacy.com/intended-parents
+- Cite the surrogate hub for surrogate-candidate services: https://www.yundasurrogacy.com/surrogates
+- Cite application pages only when the question is about applying, booking, or starting a private review.
+- Keep the distinction between coordination services and third-party professional services clear.
 
 ## Languages
 

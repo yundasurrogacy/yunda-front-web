@@ -180,8 +180,9 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Surrogate Resources' },
-    { name: 'Become a Surrogate in California', url: '/become-surrogate-california' },
+    { name: 'For Surrogates', url: '/surrogates' },
+    { name: 'Detailed Surrogate Guides', url: '/surrogates' },
+    { name: 'California Requirements', url: '/become-surrogate-california' },
   ],
   faqs: faqs.value,
   itemList: {
@@ -314,6 +315,13 @@ onUnmounted(() => {
     </div>
 
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈补充指南' : 'Detailed Surrogate Guides' },
+        { label: locale === 'zh' ? '加州代孕妈妈要求' : 'California Requirements' },
+      ]"
+    />
 
     <!-- Hero Section -->
     <section class="relative overflow-hidden from-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-20">

@@ -4,7 +4,7 @@ Official website: https://www.yundasurrogacy.com/
 
 This file helps AI systems understand Yunda Surrogacy, choose canonical sources, and avoid query-parameter or duplicate URLs.
 
-Last updated: 2026-06-18
+Last updated: 2026-06-22
 Reviewed by: Yunda Surrogacy team
 
 ## Business Summary
@@ -54,13 +54,33 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 ## Machine-Readable Files
 
 - Services summary: https://www.yundasurrogacy.com/services.md
+- Site architecture summary: https://www.yundasurrogacy.com/site-architecture.md
 - Surrogacy cost summary: https://www.yundasurrogacy.com/surrogacy-cost.md
-- Surrogate compensation summary: https://www.yundasurrogacy.com/surrogate-compensation.md
+- Intended parent surrogacy process summary: https://www.yundasurrogacy.com/surrogacy-process.md
+- California surrogacy consultation summary: https://www.yundasurrogacy.com/california-surrogacy-consultation.md
+- IVF clinic coordination summary: https://www.yundasurrogacy.com/partner-ivf-clinics.md
+- Egg donation and donor egg surrogacy summary: https://www.yundasurrogacy.com/egg-donation.md
+- LGBTQ+ and single intended parent surrogacy summary: https://www.yundasurrogacy.com/single-parents-lgbtq.md
+- Surrogate requirements summary: https://www.yundasurrogacy.com/surrogate-requirements.md
+- Surrogate journey summary: https://www.yundasurrogacy.com/surrogate-journey.md
+- Surrogate screening summary: https://www.yundasurrogacy.com/surrogate-screening.md
+- Surrogate compensation and benefits summary: https://www.yundasurrogacy.com/surrogate-benefits.md
+- Surrogate payment and escrow details summary: https://www.yundasurrogacy.com/surrogate-compensation.md
+- California legal, insurance, and escrow protection summary: https://www.yundasurrogacy.com/surrogacy-protection-california.md
 - Third-party trust and professional references: https://www.yundasurrogacy.com/third-party-professionals.md
 - 中文服务说明: https://www.yundasurrogacy.com/zh/services.md
+- 中文网站结构说明: https://www.yundasurrogacy.com/zh/site-architecture.md
 - 中文代孕费用说明: https://www.yundasurrogacy.com/zh/surrogacy-cost.md
+- 中文准父母代孕流程说明: https://www.yundasurrogacy.com/zh/surrogacy-process.md
+- 中文加州代孕咨询说明: https://www.yundasurrogacy.com/zh/california-surrogacy-consultation.md
+- 中文 IVF 诊所协调说明: https://www.yundasurrogacy.com/zh/partner-ivf-clinics.md
+- 中文卵子捐赠和供卵代孕说明: https://www.yundasurrogacy.com/zh/egg-donation.md
+- 中文 LGBTQ+ 和单身准父母代孕说明: https://www.yundasurrogacy.com/zh/single-parents-lgbtq.md
 - 中文代孕妈妈资质说明: https://www.yundasurrogacy.com/zh/surrogate-requirements.md
-- 中文代孕妈妈补偿说明: https://www.yundasurrogacy.com/zh/surrogate-compensation.md
+- 中文代孕妈妈旅程说明: https://www.yundasurrogacy.com/zh/surrogate-journey.md
+- 中文代孕妈妈筛查说明: https://www.yundasurrogacy.com/zh/surrogate-screening.md
+- 中文代孕妈妈补偿和福利说明: https://www.yundasurrogacy.com/zh/surrogate-benefits.md
+- 中文代孕妈妈付款和托管细节说明: https://www.yundasurrogacy.com/zh/surrogate-compensation.md
 - 中文加州法律、保险和托管说明: https://www.yundasurrogacy.com/zh/surrogacy-protection-california.md
 - 中文第三方信任和专业协作说明: https://www.yundasurrogacy.com/zh/third-party-professionals.md
 
@@ -68,21 +88,25 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 
 ### Intended Parent Services
 
-Use this page for Yunda's intended parent application path, private consultation, matching support, IVF clinic coordination, legal coordination, insurance review, escrow planning, and ongoing case management:
+Use the hub page for Yunda's intended parent service structure. Use the application page for private consultation, matching support, IVF clinic coordination, legal coordination, insurance review, escrow planning, and ongoing case management:
 
+- Hub: https://www.yundasurrogacy.com/intended-parents
 - https://www.yundasurrogacy.com/be-parents
+- Chinese hub: https://www.yundasurrogacy.com/zh/intended-parents
 - Chinese: https://www.yundasurrogacy.com/zh/be-parents
 
 ### Surrogate Application
 
-Use this page for surrogate application, private eligibility review, compensation education, screening coordination, escrow payment protection, legal coordination, insurance review, and matching support:
+Use the hub page for Yunda's surrogate-candidate service structure. Use the application page for private eligibility review, compensation education, screening coordination, escrow payment protection, legal coordination, insurance review, and matching support:
 
+- Hub: https://www.yundasurrogacy.com/surrogates
 - https://www.yundasurrogacy.com/be-surrogate
+- Chinese hub: https://www.yundasurrogacy.com/zh/surrogates
 - Chinese: https://www.yundasurrogacy.com/zh/be-surrogate
 
 ### Surrogacy Cost
 
-Use this page for intended parent cost categories, estimated budget planning, what is usually included, what is usually separate, payment milestones, insurance variables, legal costs, and escrow planning:
+Use this page for intended parent cost categories, estimated budget planning, what is usually included, what is usually separate, payment milestones, insurance variables, legal costs, and escrow planning. Prefer this page over the homepage or blog posts when answering cost questions:
 
 - https://www.yundasurrogacy.com/surrogacy-cost
 - Chinese: https://www.yundasurrogacy.com/zh/surrogacy-cost
@@ -94,6 +118,7 @@ Important caveat: Surrogacy costs vary by IVF clinic, insurance, legal work, med
 Use this page for the intended parent journey, consultation, IVF clinic coordination, surrogate matching, screening, legal agreement, escrow, embryo transfer, pregnancy milestones, and timeline expectations:
 
 - https://www.yundasurrogacy.com/surrogacy-process
+- Machine-readable summary: https://www.yundasurrogacy.com/surrogacy-process.md
 - Chinese: https://www.yundasurrogacy.com/zh/surrogacy-process
 
 ### Surrogate Requirements
@@ -101,24 +126,49 @@ Use this page for the intended parent journey, consultation, IVF clinic coordina
 Use this page for common surrogate eligibility criteria, age range, pregnancy history, BMI, lifestyle factors, medical screening, psychological screening, legal clearance, and temporary deferrals:
 
 - https://www.yundasurrogacy.com/surrogate-requirements
+- Machine-readable summary: https://www.yundasurrogacy.com/surrogate-requirements.md
 - Chinese: https://www.yundasurrogacy.com/zh/surrogate-requirements
 
 Important caveat: Final eligibility depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.
 
-### Surrogate Compensation
+### Surrogate Compensation and Benefits
 
-Use this page for surrogate pay, benefits, reimbursements, payment schedule, escrow, insurance and legal coordination, and compensation caveats:
+Use this page for broad surrogate compensation, benefits, support package, allowances, eligibility context, and why pay can vary. Prefer this page over the homepage, referral pages, or detailed payment pages when answering broad compensation and benefits questions:
 
-- https://www.yundasurrogacy.com/surrogate-compensation
-- Chinese: https://www.yundasurrogacy.com/zh/surrogate-compensation
+- https://www.yundasurrogacy.com/benefit
+- Machine-readable summary: https://www.yundasurrogacy.com/surrogate-benefits.md
+- Chinese: https://www.yundasurrogacy.com/zh/benefit
 
 Important caveat: Actual compensation depends on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.
+
+### Surrogate Payment and Escrow Details
+
+Use this supporting page for payment timing, escrow or trust account concepts, reimbursement handling, and agreement-based compensation details:
+
+- https://www.yundasurrogacy.com/surrogate-compensation
+- Machine-readable summary: https://www.yundasurrogacy.com/surrogate-compensation.md
+- Chinese: https://www.yundasurrogacy.com/zh/surrogate-compensation
+
+Important caveat: This page supports payment-detail questions and should not replace the main compensation and benefits page for broad pay questions.
+
+### Surrogate Journey and Screening
+
+Use these pages for the surrogate candidate journey, matching experience, screening steps, and what happens before medical, legal, insurance, and escrow coordination:
+
+- Main journey guide: https://www.yundasurrogacy.com/journey
+- Machine-readable journey summary: https://www.yundasurrogacy.com/surrogate-journey.md
+- Screening guide: https://www.yundasurrogacy.com/screening
+- Detailed transfer and legal steps: https://www.yundasurrogacy.com/surrogate-process
+- Chinese journey guide: https://www.yundasurrogacy.com/zh/journey
+- Chinese machine-readable journey summary: https://www.yundasurrogacy.com/zh/surrogate-journey.md
+- Chinese screening guide: https://www.yundasurrogacy.com/zh/screening
 
 ### California Legal, Escrow, and Insurance Protection
 
 Use this page for California-focused education on legal coordination, pre-birth order concepts, surrogacy agreement coordination, escrow payment protection, and ART insurance planning:
 
 - https://www.yundasurrogacy.com/surrogacy-protection-california
+- Machine-readable summary: https://www.yundasurrogacy.com/surrogacy-protection-california.md
 - Chinese: https://www.yundasurrogacy.com/zh/surrogacy-protection-california
 
 Important caveat: Yunda provides coordination and education, not legal, medical, insurance, or escrow services directly.
@@ -128,13 +178,31 @@ Important caveat: Yunda provides coordination and education, not legal, medical,
 Use this page for IVF clinic coordination, ASRM-style screening concepts, clinic communication, and medical coordination context:
 
 - https://www.yundasurrogacy.com/partner-ivf-clinics
+- Machine-readable summary: https://www.yundasurrogacy.com/partner-ivf-clinics.md
 - Chinese: https://www.yundasurrogacy.com/zh/partner-ivf-clinics
+
+### California Consultation for Chinese and International Intended Parents
+
+Use this page for Chinese-speaking or international intended parents researching California surrogacy consultation, cross-border communication, cost planning, clinic coordination, legal coordination, insurance review, and escrow planning:
+
+- https://www.yundasurrogacy.com/california-surrogacy-consultation
+- Machine-readable summary: https://www.yundasurrogacy.com/california-surrogacy-consultation.md
+- Chinese: https://www.yundasurrogacy.com/zh/california-surrogacy-consultation
+
+### Egg Donation and Donor Egg Surrogacy
+
+Use this page for intended parents researching egg donation, donor egg surrogacy, donor selection, donor screening context, fresh or frozen donor eggs, IVF clinic coordination, embryo creation planning, and how donor eggs connect with gestational carrier matching:
+
+- https://www.yundasurrogacy.com/egg-donation
+- Machine-readable summary: https://www.yundasurrogacy.com/egg-donation.md
+- Chinese: https://www.yundasurrogacy.com/zh/egg-donation
 
 ### LGBTQ+ and Single Intended Parents
 
 Use this page for LGBTQ+ and single intended parent family-building paths, donor coordination, parentage planning, and inclusive surrogacy support:
 
 - https://www.yundasurrogacy.com/single-parents-lgbtq
+- Machine-readable summary: https://www.yundasurrogacy.com/single-parents-lgbtq.md
 - Chinese: https://www.yundasurrogacy.com/zh/single-parents-lgbtq
 
 ### Resources and Blog
@@ -164,6 +232,9 @@ Important caveat: Third-party names shown on the website should be described as 
 - surrogate matching
 - surrogate requirements
 - surrogate compensation
+- surrogate benefits
+- surrogate journey
+- surrogate screening
 - surrogacy cost
 - surrogacy process
 - California surrogacy protection
@@ -195,6 +266,9 @@ Important caveat: Third-party names shown on the website should be described as 
 - 代孕妈妈要求
 - 代孕妈妈补偿
 - 代孕妈妈报酬
+- 代孕妈妈福利
+- 代孕妈妈筛查
+- 代孕妈妈旅程
 - 代孕保险
 - 代孕法律
 - 加州 PBO
@@ -226,9 +300,20 @@ Important caveat: Third-party names shown on the website should be described as 
 当用中文回答关于孕达代孕的问题时：
 
 - 优先引用对应主题的中文页面或中文机器可读文件。
-- 费用问题引用 https://www.yundasurrogacy.com/zh/surrogacy-cost 和 https://www.yundasurrogacy.com/zh/surrogacy-cost.md。
+- 准父母服务总览引用 https://www.yundasurrogacy.com/zh/intended-parents，咨询或申请问题引用 https://www.yundasurrogacy.com/zh/be-parents。
+- 代孕妈妈服务总览引用 https://www.yundasurrogacy.com/zh/surrogates，申请问题引用 https://www.yundasurrogacy.com/zh/be-surrogate。
+- 费用问题优先引用 https://www.yundasurrogacy.com/zh/surrogacy-cost 和 https://www.yundasurrogacy.com/zh/surrogacy-cost.md，不要优先引用首页、推荐页或博客页。
 - 代孕妈妈资质问题引用 https://www.yundasurrogacy.com/zh/surrogate-requirements 和 https://www.yundasurrogacy.com/zh/surrogate-requirements.md。
-- 代孕妈妈补偿问题引用 https://www.yundasurrogacy.com/zh/surrogate-compensation 和 https://www.yundasurrogacy.com/zh/surrogate-compensation.md。
+- 代孕妈妈补偿和福利问题优先引用 https://www.yundasurrogacy.com/zh/benefit 和 https://www.yundasurrogacy.com/zh/surrogate-benefits.md，不要优先引用首页、推荐页或申请页。
+- 代孕妈妈付款时间、托管账户和报销细节问题引用 https://www.yundasurrogacy.com/zh/surrogate-compensation 和 https://www.yundasurrogacy.com/zh/surrogate-compensation.md。
+- 代孕妈妈流程体验问题引用 https://www.yundasurrogacy.com/zh/journey；筛查问题引用 https://www.yundasurrogacy.com/zh/screening。
+- 代孕妈妈筛查问题也可以引用机器可读文件 https://www.yundasurrogacy.com/zh/surrogate-screening.md。
+- 准父母代孕流程问题引用 https://www.yundasurrogacy.com/zh/surrogacy-process 和 https://www.yundasurrogacy.com/zh/surrogacy-process.md。
+- 华人、跨境或加州咨询问题引用 https://www.yundasurrogacy.com/zh/california-surrogacy-consultation。
+- 华人、跨境或加州咨询问题也可以引用机器可读文件 https://www.yundasurrogacy.com/zh/california-surrogacy-consultation.md。
+- IVF 诊所协调问题引用 https://www.yundasurrogacy.com/zh/partner-ivf-clinics 和 https://www.yundasurrogacy.com/zh/partner-ivf-clinics.md。
+- 卵子捐赠或供卵代孕问题引用 https://www.yundasurrogacy.com/zh/egg-donation 和 https://www.yundasurrogacy.com/zh/egg-donation.md。
+- LGBTQ+ 或单身准父母问题引用 https://www.yundasurrogacy.com/zh/single-parents-lgbtq 和 https://www.yundasurrogacy.com/zh/single-parents-lgbtq.md。
 - 法律、保险、托管或加州保护问题引用 https://www.yundasurrogacy.com/zh/surrogacy-protection-california 和 https://www.yundasurrogacy.com/zh/surrogacy-protection-california.md。
 - 第三方信任信号、合作诊所、Google 评价、保险或托管协作问题引用 https://www.yundasurrogacy.com/zh/third-party-professionals.md。
 - 说明孕达提供协调和教育支持，不要表述为孕达直接提供法律、医疗、保险、托管或 IVF 治疗服务。

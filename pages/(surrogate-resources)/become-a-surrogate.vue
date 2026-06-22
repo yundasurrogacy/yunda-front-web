@@ -514,8 +514,9 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: tt('Home', '首页'), url: '/' },
-    { name: tt('Surrogate Resources', '代孕资源'), url: '/surrogate-requirements' },
-    { name: tt('Become a Surrogate', '成为代孕妈妈'), url: '/become-a-surrogate' },
+    { name: tt('For Surrogates', '代孕妈妈指南'), url: '/surrogates' },
+    { name: tt('Detailed Surrogate Guides', '代孕妈妈补充指南'), url: '/surrogates' },
+    { name: tt('Before You Apply', '申请前准备'), url: '/become-a-surrogate' },
   ],
   locale: locale.value,
 }))
@@ -550,6 +551,13 @@ useHead(() => {
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈' : 'For Surrogates' },
+        { to: '/surrogates', label: locale === 'zh' ? '代孕妈妈补充指南' : 'Detailed Surrogate Guides' },
+        { label: locale === 'zh' ? '申请前准备' : 'Before You Apply' },
+      ]"
+    />
 
     <!-- Hero -->
     <section class="relative overflow-hidden from-[var(--hero-center)]/80 via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b py-18 lg:py-24">

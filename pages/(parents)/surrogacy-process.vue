@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
@@ -768,6 +769,35 @@ const ctaBandPrimary = computed(() => t.value.ctaBandPrimary)
 const ctaBandSecondary = computed(() => t.value.ctaBandSecondary)
 const faqTitle = computed(() => t.value.faqTitle)
 const faqList = computed(() => t.value.faq)
+const relatedPerformanceLinks = computed(() => [
+  {
+    to: '/blog/How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish',
+    title: locale.value === 'zh' ? '代孕流程需要多久？' : 'How Long Does the Surrogacy Process Take?',
+    description: locale.value === 'zh'
+      ? '用时间线理解咨询、匹配、筛查、法律、移植和分娩阶段。'
+      : 'A timeline-focused guide to consultation, matching, screening, legal, transfer, and delivery stages.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1770103968025-plr4cr.png',
+    date: locale.value === 'zh' ? '2026年2月3日' : 'February 3, 2026',
+  },
+  {
+    to: '/blog/Gestational-Surrogacy-Process-2025:-Step-by-Step-Guide-with-Yunda',
+    title: locale.value === 'zh' ? '妊娠代孕流程分步指南' : 'Gestational Surrogacy Process Step by Step',
+    description: locale.value === 'zh'
+      ? '适合继续了解妊娠代孕如何从计划推进到孕期支持。'
+      : 'A useful next read for understanding how gestational surrogacy moves from planning to pregnancy support.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1761376774765-07bh52.jpg',
+    date: locale.value === 'zh' ? '2025年10月25日' : 'October 25, 2025',
+  },
+  {
+    to: '/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin',
+    title: locale.value === 'zh' ? '寻找代孕妈妈前要准备什么？' : 'What to Know Before Finding a Surrogate',
+    description: locale.value === 'zh'
+      ? '帮助准父母在正式匹配前整理胚胎、诊所、预算和时间预期。'
+      : 'Helps intended parents prepare embryo, clinic, budget, and timeline expectations before matching.',
+    image: 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/1765961702409-0jgwjk.webp',
+    date: locale.value === 'zh' ? '2025年12月17日' : 'December 17, 2025',
+  },
+])
 const pagePath = '/surrogacy-process'
 const schemaTitle = computed(() => heroTitle.value.replace(/\s*\|\s*Yunda(?: Surrogacy)?\s*$/i, '').trim())
 const schemaFaqs = computed(() =>
@@ -800,7 +830,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Surrogacy Process', url: pagePath },
   ],
   faqs: schemaFaqs.value,
@@ -828,6 +858,12 @@ useHead(() => ({
 <template>
   <div class="bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav
+      :items="[
+        { to: '/intended-parents', label: locale === 'zh' ? '准父母' : 'For Intended Parents' },
+        { label: locale === 'zh' ? '流程指南' : 'Process Guide' },
+      ]"
+    />
 
     <main>
       <!-- 第一屏（2026-06-05）：整屏虚化背景（右侧局部孕妈妈图）+ 左文案 / 右时间线；左栏下移、CTA 居中 -->
@@ -935,7 +971,7 @@ useHead(() => ({
       </section>
 
       <SeoTrustNote
-        :updated="locale === 'zh' ? '最后更新：2026年6月18日' : 'Last updated: June 18, 2026'"
+        :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
         :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
         :note="locale === 'zh' ? '本页说明准父母代孕流程和常见时间线。实际时间会因诊所安排、筛查、法律文件、保险、胚胎情况和个案因素而变化。' : 'This page explains the intended parent surrogacy process and typical timeline. Actual timing varies by clinic scheduling, screening, legal documents, insurance, embryo status, and case-specific factors.'"
         :sources="[
@@ -1260,6 +1296,12 @@ useHead(() => ({
           </div>
         </div>
       </section>
+
+      <RelatedGuides
+        :title="locale === 'zh' ? '继续了解代孕时间线与匹配准备' : 'Continue With Timeline and Matching Prep'"
+        :intro="locale === 'zh' ? '了解完整流程后，建议继续确认每个阶段大概需要多久、匹配前要准备什么，以及什么时候适合预约咨询。' : 'After reviewing the full process, continue with timing, matching preparation, and what to organize before booking a consultation.'"
+        :links="relatedPerformanceLinks"
+      />
     </main>
 
     <AppFooter />

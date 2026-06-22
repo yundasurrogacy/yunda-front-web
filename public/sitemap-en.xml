@@ -7,7 +7,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -16,25 +16,43 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/about" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/about" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/about" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/intended-parents</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/intended-parents" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/intended-parents" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/intended-parents" />
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/be-parents</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/be-parents" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/be-parents" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/be-parents" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/surrogates</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogates" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogates" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogates" />
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/be-surrogate</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/be-surrogate" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/be-surrogate" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/be-surrogate" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -43,7 +61,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-requirements" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-requirements" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-requirements" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -52,25 +70,25 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-process" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-process" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-process" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/surrogate-compensation</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogate-compensation" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogate-compensation" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogate-compensation" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/become-a-surrogate</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/become-a-surrogate" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/become-a-surrogate" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/become-a-surrogate" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -79,7 +97,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/become-surrogate-california" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/become-surrogate-california" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/become-surrogate-california" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -88,7 +106,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -97,7 +115,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/resources" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/resources" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/resources" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -106,7 +124,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/egg-donation" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/egg-donation" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/egg-donation" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -115,7 +133,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/partner-ivf-clinics" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/partner-ivf-clinics" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/partner-ivf-clinics" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -124,7 +142,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/single-parents-lgbtq" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/single-parents-lgbtq" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/single-parents-lgbtq" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -133,7 +151,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-cost" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-cost" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-cost" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -142,7 +160,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-process" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-process" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-process" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -151,7 +169,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/california-surrogacy-consultation" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/california-surrogacy-consultation" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/california-surrogacy-consultation" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -160,7 +178,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/surrogacy-protection-california" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/surrogacy-protection-california" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/surrogacy-protection-california" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -169,7 +187,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/benefit" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/benefit" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/benefit" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -178,16 +196,16 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/eligibility" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/eligibility" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/eligibility" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/journey</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/journey" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/journey" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/journey" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -196,7 +214,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/referral" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/referral" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/referral" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -205,7 +223,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/screening" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/screening" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/screening" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -214,7 +232,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/privacy-policy" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/privacy-policy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/privacy-policy" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -223,7 +241,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/terms-of-service" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/terms-of-service" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/terms-of-service" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -232,33 +250,9 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/disclaimer" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/disclaimer" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/disclaimer" />
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.yundasurrogacy.com/services.md</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.yundasurrogacy.com/surrogacy-cost.md</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.yundasurrogacy.com/surrogate-compensation.md</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.yundasurrogacy.com/third-party-professionals.md</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
   </url>
   <!-- Blog -->
   <url>

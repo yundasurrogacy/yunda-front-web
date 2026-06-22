@@ -349,7 +349,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
   breadcrumbs: [
     { name: 'Home', url: '/' },
-    { name: 'Intended Parents', url: '/be-parents' },
+    { name: 'For Intended Parents', url: '/intended-parents' },
     { name: 'Egg Donor Surrogacy', url: pagePath },
   ],
   faqs: c.value.s7Faqs.map(item => ({
