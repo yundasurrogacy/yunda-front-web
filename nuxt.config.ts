@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import process from 'node:process'
 import seoRoutes from './data/seo-routes.json'
 
 async function fetchBlogEntries() {
@@ -83,7 +84,6 @@ const prerenderRoutes = Array.from(new Set([
 ]))
 
 // 本地调试：网站端 3000，后台 3002；设置 API_PROXY_TARGET=http://localhost:3002 时代理到本地后台
-/* eslint-disable node/prefer-global/process -- Nuxt 中 process.env 为标准用法 */
 const apiProxyTarget = process.env.API_PROXY_TARGET || process.env.NUXT_PUBLIC_API_BASE || 'https://yunda-admin-system.yundasurrogacy.com'
 
 export default defineNuxtConfig({
@@ -232,6 +232,8 @@ export default defineNuxtConfig({
       siteUrl: 'https://www.yundasurrogacy.com',
       // 本地调试留空则用相对路径 /api（走 vite 代理）；生产需指向后台，未配置时默认 yunda-admin-system
       apiBase: process.env.NUXT_PUBLIC_API_BASE || (process.env.NODE_ENV === 'production' ? 'https://yunda-admin-system.yundasurrogacy.com' : ''),
+      // 临时隐藏 EN / 中文切换，并将 /zh 访问重定向到对应英文页；恢复时设置 NUXT_PUBLIC_HIDE_LANGUAGE_SWITCHER=false
+      hideLanguageSwitcher: process.env.NUXT_PUBLIC_HIDE_LANGUAGE_SWITCHER !== 'false',
     },
   },
 
