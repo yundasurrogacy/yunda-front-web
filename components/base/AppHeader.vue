@@ -6,9 +6,11 @@ const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
 const localePath = useLocalePath()
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
 const isMenuOpen = ref(false)
 const homePath = computed(() => localePath('/'))
 const isHomePage = computed(() => route.path === homePath.value)
+const showLanguageSwitcher = computed(() => !runtimeConfig.public.hideLanguageSwitcher)
 </script>
 
 <template>
@@ -41,9 +43,10 @@ const isHomePage = computed(() => route.path === homePath.value)
     </div>
 
     <!-- Language switcher: same EN / 中文 control on mobile and desktop -->
-    <nav class="app-header-lang flex shrink-0 items-center" aria-label="Language">
+    <nav v-if="showLanguageSwitcher" class="app-header-lang flex shrink-0 items-center" aria-label="Language">
       <LanguageSwitcher />
     </nav>
+    <div v-else class="h-10 w-10 shrink-0" aria-hidden="true" />
   </header>
 
   <!-- SideMenu Component -->
