@@ -53,8 +53,8 @@ const photos = ref<Photo[]>([
   })),
   {
     id: 'ourteam-surrogate-12',
-    url: '/images/home/surrogate-12.jpg',
-    thumbnail: '/images/home/surrogate-12.jpg',
+    url: '/images/home/surrogate-12.webp',
+    thumbnail: '/images/home/surrogate-12.webp',
     category: ['all', 'our-team'],
     alt: 'Team Highlight Surrogate 12',
   },

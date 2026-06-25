@@ -34,9 +34,9 @@ const defaultSlides: SurrogateGallerySlide[] = [
   { src: '/images/home/surrogate-8.png', alt: 'Surrogate mother outdoors' },
   { src: '/images/home/surrogate-9.png', alt: 'Surrogate mother taking a mirror selfie' },
   { src: '/images/home/surrogate-10.jpeg', alt: 'Surrogate mother holding baby' },
-  { src: '/images/home/surrogate-11.jpg', alt: 'Surrogate mother portrait' },
-  { src: '/images/home/surrogate-12.jpg', alt: 'Surrogate mother smiling' },
-  { src: '/images/home/surrogate-13.jpg', alt: 'Surrogate mother with family' },
+  { src: '/images/home/surrogate-11.webp', alt: 'Surrogate mother portrait' },
+  { src: '/images/home/surrogate-12.webp', alt: 'Surrogate mother smiling' },
+  { src: '/images/home/surrogate-13.webp', alt: 'Surrogate mother with family' },
 ]
 
 const slides = computed(() =>
@@ -191,7 +191,10 @@ onBeforeUnmount(() => {
                 :src="slide.src"
                 :alt="slide.alt"
                 class="h-full w-full object-cover"
+                width="640"
+                height="898"
                 loading="lazy"
+                decoding="async"
               >
             </div>
           </article>
