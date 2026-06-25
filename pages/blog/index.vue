@@ -12,8 +12,8 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
 const blogCopyEn = {
   meta: {
-    title: 'Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing',
-    description: 'Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.',
+    title: 'Surrogacy Blog | Yunda Surrogacy Knowledge Center',
+    description: 'Read Yunda Surrogacy guides on surrogacy process, costs, legal basics, medical topics, and real family-building stories.',
   },
   title: 'Blog',
   intro: 'This blog is your go-to resource for everything surrogacy-related. Whether you’re an intended parent considering your options or a potential surrogate seeking guidance, our articles offer expert insights, real experiences, and valuable resources to support you at every stage of your journey.',
@@ -185,7 +185,7 @@ function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+    .replace(/&#39;/g, '\'')
     .replace(/\s+/g, ' ')
     .trim()
 

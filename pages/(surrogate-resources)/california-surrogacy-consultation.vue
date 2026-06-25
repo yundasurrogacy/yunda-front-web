@@ -15,12 +15,12 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
 const pageTitle = computed(() => tt(
-  'California Surrogacy Consultation | Yunda Surrogacy USA | Transparent Pricing',
+  'California Surrogacy Consultation | Yunda USA',
   '加州代孕咨询｜Yunda Surrogacy 美国代孕机构｜费用明细透明',
 ))
 
 const pageDescription = computed(() => tt(
-  'California surrogacy consultation for Chinese families: surrogate matching, transparent fees, and timeline planning, with PBO parentage support. Submit the form to receive a pricing checklist.',
+  'California surrogacy consultation for Chinese families: matching, transparent fees, timeline planning, and PBO parentage support.',
   '面向华人家庭的加州代孕咨询：代母筛选匹配、费用明细与时间线透明；协同律师办理PBO亲权。提交表单获取报价清单。',
 ))
 

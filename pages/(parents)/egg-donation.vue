@@ -12,7 +12,7 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 
 const translations = {
   en: {
-    seoTitle: 'Egg Donor Surrogacy: Find Your Egg Donor for Surrogacy With Donor Eggs | Yunda',
+    seoTitle: 'Egg Donor Surrogacy & Donor Eggs | Yunda',
     seoDescription:
       'Egg donor surrogacy in the U.S.: donor screening, IVF embryo creation, PGT-A options, timeline, international logistics, and cost overview.',
     heroTitle: 'Egg Donor Surrogacy: Find Your Egg Donor for Surrogacy With Donor Eggs',

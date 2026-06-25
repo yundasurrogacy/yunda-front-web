@@ -17,7 +17,7 @@ const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 
 const pageTitle = computed(() =>
   tt(
-    'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate',
+    'Surrogate Requirements & Qualifications | Yunda',
     '代孕要求与资格：成为代孕妈妈',
   ),
 )

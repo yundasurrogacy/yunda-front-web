@@ -4,7 +4,7 @@
  */
 export const translations = {
   en: {
-    seoTitle: 'Apply to Become a Surrogate in California | Yunda Surrogacy',
+    seoTitle: 'Apply to Become a Surrogate in California | Yunda',
     seoDescription: 'Apply to become a surrogate in California through a clear, private step-by-step form. Share your details securely and start with support.',
     pageTitle: 'Surrogates Application (Step by Step)',
     validationRequired: 'Please complete all required fields in this section.',

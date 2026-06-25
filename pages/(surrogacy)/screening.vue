@@ -32,9 +32,9 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 
 const translations = {
   en: {
-    seoTitle: 'Surrogate Screening Process: What Happens After You Apply | Yunda Surrogacy',
+    seoTitle: 'Surrogate Screening Process After You Apply | Yunda',
     seoDescription:
-      'Learn what happens after you apply to become a surrogate, including medical screening, psychological evaluation, background check, and clinic clearance—with guidance designed to protect your health and confidence.',
+      'Learn what happens after you apply to become a surrogate: medical screening, psychological evaluation, background check, and clinic clearance.',
     heroTitle: 'Surrogate Screening Process: What Happens After You Apply',
     heroSubtitle:
       'Learn what to expect after your surrogate application, including medical screening, psychological evaluation, background check, and clinic clearance, with guidance designed to protect your health and confidence.',

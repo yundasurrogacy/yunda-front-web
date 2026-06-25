@@ -116,7 +116,7 @@ interface LocaleBlock {
 
 const translations: Record<'en' | 'zh', LocaleBlock> = {
   en: {
-    seoTitle: 'Surrogate Process Step by Step: From Application to Birth | Yunda Surrogacy',
+    seoTitle: 'Surrogate Process Step by Step | Yunda',
     seoDescription:
       'See how the surrogate journey works—from application and screening to matching, embryo transfer, pregnancy, delivery, and postpartum support.',
     heroTitle: 'The Surrogate Process Step by Step: From Application to Birth',

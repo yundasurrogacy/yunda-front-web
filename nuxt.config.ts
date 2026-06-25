@@ -245,9 +245,9 @@ export default defineNuxtConfig({
         // 只 preload 首屏关键字体
         {
           rel: 'preload',
-          href: '/fonts/Cormorant-Regular.ttf',
+          href: '/fonts/Cormorant-Regular.woff2',
           as: 'font',
-          type: 'font/ttf',
+          type: 'font/woff2',
           crossorigin: 'anonymous',
         },
         {
@@ -301,7 +301,7 @@ export default defineNuxtConfig({
       ],
       noscript: [
         // Facebook Meta Pixel noscript
-        { innerHTML: '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=795952583356142&ev=PageView&noscript=1" />' },
+        { innerHTML: '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=795952583356142&ev=PageView&noscript=1" alt="" aria-hidden="true" />' },
       ],
 
     },

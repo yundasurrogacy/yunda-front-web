@@ -189,7 +189,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
   en: {
     metaTitle: 'Surrogacy Process & Timeline for Intended Parents | Yunda Surrogacy',
     metaDesc:
-      'See the surrogacy process step by step for intended parents: consultation, IVF coordination, matching, screening, legal and escrow, transfer, pregnancy milestones, and delivery—with clear timelines.',
+      'See the surrogacy process for intended parents: consultation, IVF coordination, matching, screening, legal and escrow, transfer, pregnancy, and delivery.',
     heroTitle: 'Surrogacy Process & Timeline for Intended Parents: How Does Surrogacy Work?',
     heroSubtitle:
       'Learn how the surrogacy process works, from consultation and surrogate matching to IVF coordination, legal clearance, embryo transfer, pregnancy, and delivery.',

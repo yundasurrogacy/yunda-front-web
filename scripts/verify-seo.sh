@@ -41,7 +41,7 @@ echo "1. 验证英文页面 ($BASE_URL$EN_PAGE)"
 echo "="
 
 # 检查 HTML lang 属性
-check_item "HTML lang='en'" "curl -s $BASE_URL$EN_PAGE" 'lang="en"'
+check_item "HTML lang='en-US'" "curl -s $BASE_URL$EN_PAGE" 'lang="en-US"'
 
 # 检查 hreflang 标签
 check_item "hreflang en-US" "curl -s $BASE_URL$EN_PAGE" 'hreflang="en-US"'
@@ -57,7 +57,7 @@ echo "2. 验证中文页面 ($BASE_URL$ZH_PAGE)"
 echo "="
 
 # 检查 HTML lang 属性
-check_item "HTML lang='zh'" "curl -s $BASE_URL$ZH_PAGE" 'lang="zh"'
+check_item "HTML lang='zh-CN'" "curl -s $BASE_URL$ZH_PAGE" 'lang="zh-CN"'
 
 # 检查 hreflang 标签
 check_item "hreflang en-US" "curl -s $BASE_URL$ZH_PAGE" 'hreflang="en-US"'
@@ -75,8 +75,8 @@ echo "="
 # 检查 sitemap.xml
 check_item "Sitemap 可访问" "curl -s -o /dev/null -w '%{http_code}' $BASE_URL/sitemap.xml" "200"
 
-# 检查 sitemap 内容
-if curl -s "$BASE_URL/sitemap.xml" | grep -q "urlset"; then
+# 检查 sitemap 内容。Nuxt sitemap 可能输出 sitemapindex 或 urlset，二者都有效。
+if curl -s "$BASE_URL/sitemap.xml" | grep -Eq "sitemapindex|urlset"; then
     echo -e "检查: Sitemap 格式... ${GREEN}✓${NC}"
 else
     echo -e "检查: Sitemap 格式... ${RED}✗${NC}"

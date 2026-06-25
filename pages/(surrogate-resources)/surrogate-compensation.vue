@@ -17,7 +17,7 @@ const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 
 const pageTitle = computed(() =>
   tt(
-    'Surrogate Compensation in the U.S. | How Much Do Surrogates Get Paid?',
+    'Surrogate Compensation in the U.S. | Pay & Benefits',
     '美国代孕补偿 | 代孕妈妈能获得多少补偿？',
   ),
 )

@@ -39,7 +39,7 @@ const pageTitle = computed(() =>
 )
 const pageDescription = computed(() =>
   tt(
-    'Become a surrogate in Southern California with Yunda Surrogacy. Learn the surrogate process, basic requirements and pay, supported by IVF clinics in Los Angeles and San Diego.',
+    'Become a surrogate in Southern California with Yunda. Learn the process, requirements and pay, with IVF clinic support in Los Angeles and San Diego.',
     '了解南加州代孕妈妈流程、基本要求与补偿，Yunda 提供洛杉矶与圣地亚哥 IVF 诊所协作支持。',
   ),
 )
@@ -1009,7 +1009,10 @@ useHead(() => {
         </p>
         <div class="mt-8 flex animate-fade-in-up justify-center" style="animation-delay: 200ms;">
           <div class="image-placeholder max-w-160 w-full transition-all duration-500 hover:scale-105 hover:shadow-xl">
-            <img src="/images/landing-page1/Yunda-Local-Care.jpg" :alt="tt('Why Yunda', '为什么选择 Yunda')">
+            <picture class="block h-full w-full">
+              <source srcset="/images/landing-page1/Yunda-Local-Care.webp" type="image/webp">
+              <img src="/images/landing-page1/Yunda-Local-Care.jpg" :alt="tt('Why Yunda', '为什么选择 Yunda')">
+            </picture>
           </div>
         </div>
         <div class="grid mt-10 gap-8 lg:grid-cols-2">
