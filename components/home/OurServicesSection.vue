@@ -68,12 +68,15 @@ useScrollAnimation()
         <!-- 代孕母：大屏左图右文；小屏上图下文 -->
         <div class="scroll-animate scroll-animate-delay-200 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)]">
-            <img
-              src="/images/home/surrogacy-process-for-surrogates.jpg"
-              :alt="t('home.parentsSurrogatesSection.surrogateSubtitle')"
-              class="h-full w-full object-contain"
-              loading="lazy"
-            >
+            <picture class="block h-full w-full">
+              <source srcset="/images/home/surrogacy-process-for-surrogates-840.webp" type="image/webp">
+              <img
+                src="/images/home/surrogacy-process-for-surrogates.jpg"
+                :alt="t('home.parentsSurrogatesSection.surrogateSubtitle')"
+                class="h-full w-full object-contain"
+                loading="lazy"
+              >
+            </picture>
           </div>
           <div class="space-y-6">
             <div>

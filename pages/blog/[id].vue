@@ -17,8 +17,8 @@ const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-a
 
 const blogCopyEn = {
   meta: {
-    title: 'Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing',
-    description: 'Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.',
+    title: 'Surrogacy Blog | Yunda Surrogacy Knowledge Center',
+    description: 'Read Yunda Surrogacy guides on surrogacy process, costs, legal basics, medical topics, and real family-building stories.',
   },
   categories: {
     all: 'All',
@@ -263,6 +263,8 @@ function sanitizeBlogHtml(html: string): string {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<h1\b/gi, '<h2')
+    .replace(/<\/h1>/gi, '</h2>')
     .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
     .replace(/\s(?:href|src)\s*=\s*(['"])\s*javascript:[\s\S]*?\1/gi, '')
 }
@@ -295,7 +297,7 @@ function decodeHtmlEntities(value: string): string {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+    .replace(/&#39;/g, '\'')
     .replace(/&rsquo;/g, '’')
     .replace(/&lsquo;/g, '‘')
     .replace(/&rdquo;/g, '”')
@@ -400,9 +402,9 @@ function extractImagesFromHtml(html: string): string[] {
 }
 
 function extractHeadingsFromHtml(html: string): string[] {
-  return uniqueValues([...html.matchAll(/<h([2-4])\b[^>]*>([\s\S]*?)<\/h\1>/gi)]
-    .map(match => htmlToPlainText(match[2]))
-    .filter(heading => heading.length >= 3 && !/^(faq|常见问题|问答)$/i.test(heading))
+  return uniqueValues([...html.matchAll(/<h[2-4]\b[^>]*>([\s\S]*?)<\/h[2-4]>/gi)]
+    .map(match => htmlToPlainText(match[1]))
+    .filter(heading => heading.length >= 3 && !/^(?:faq|常见问题|问答)$/i.test(heading))
     .slice(0, 8))
 }
 
@@ -412,8 +414,8 @@ function isFaqHeading(text: string): boolean {
 
 function looksLikeQuestion(text: string): boolean {
   return /[?？]$/.test(text)
-    || /^(do|does|did|can|could|is|are|was|were|will|would|should|what|when|where|why|how)\b/i.test(text)
-    || /^(什么|如何|怎么|为什么|是否|能否|可以|需要|多久|多少)/.test(text)
+    || /^(?:do|does|did|can|could|is|are|was|were|will|would|should|what|when|where|why|how)\b/i.test(text)
+    || /^(?:什么|如何|怎么|为什么|是否|能否|可以|需要|多久|多少)/.test(text)
 }
 
 function extractFaqsFromHtml(html: string): ExtractedFAQ[] {
@@ -536,6 +538,14 @@ function goBack() {
   router.push(localePath('/blog'))
 }
 
+const currentBlogUrl = computed(() => {
+  if (!blog.value)
+    return `${resolvedSiteUrl.value}${localePath('/blog')}`
+
+  const blogPath = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
+  return `${resolvedSiteUrl.value}${localePath(blogPath)}`
+})
+
 const blogPostingSchema = computed(() => {
   if (!blog.value)
     return null
@@ -576,14 +586,6 @@ const blogPostingSchema = computed(() => {
     websiteId,
     includeContext: false,
   })
-})
-
-const currentBlogUrl = computed(() => {
-  if (!blog.value)
-    return `${resolvedSiteUrl.value}${localePath('/blog')}`
-
-  const blogPath = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
-  return `${resolvedSiteUrl.value}${localePath(blogPath)}`
 })
 
 const currentBlogTitle = computed(() => buildLocalizedBlogTitle(blog.value))

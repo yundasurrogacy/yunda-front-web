@@ -5,6 +5,12 @@ export default withNuxt(antfu(
   {
     unocss: true,
     formatters: true,
+    ignores: [
+      'docs/**',
+      '**/*.md',
+      '.seo-audit-output/**',
+      '.seo-cache/**',
+    ],
   },
   {
     rules: {

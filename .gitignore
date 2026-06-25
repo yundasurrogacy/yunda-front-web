@@ -18,6 +18,7 @@ logs
 .fleet
 .idea
 .agents/
+.seo-cache/
 
 # Local env files
 .env

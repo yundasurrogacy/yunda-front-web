@@ -18,7 +18,7 @@ const pageTitle = computed(() =>
 )
 const pageDescription = computed(() =>
   tt(
-    'Learn the surrogacy process step by step—from screening and legal contracts to IVF, pregnancy and birth. This guide explains how surrogacy works for intended parents and surrogate mothers in California and across the United States.',
+    'Learn the surrogacy process step by step: screening, legal contracts, IVF, pregnancy, and birth for intended parents and surrogates.',
     '了解代孕流程的每一步——从筛查与法律合同到 IVF、妊娠与分娩。本指南说明代孕在加州及全美如何为意向父母与代孕妈妈运作。',
   ),
 )

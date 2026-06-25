@@ -445,7 +445,7 @@ useHead(() => {
       {
         name: 'description',
         content: tt(
-          'Start your surrogacy journey with private guidance from Yunda Surrogacy. We support intended parents with matching, IVF clinic coordination, legal steps, insurance review, escrow, and bilingual care.',
+          'Start your surrogacy journey with private guidance from Yunda: matching, IVF clinic coordination, legal steps, insurance, escrow, and bilingual care.',
           '通过孕达代孕开启你的代孕旅程。我们为准父母提供匹配、IVF 诊所协调、法律步骤、保险审查、托管和双语支持。',
         ),
       },

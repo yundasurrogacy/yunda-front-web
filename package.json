@@ -47,7 +47,8 @@
     "lint": "eslint .",
     "format": "eslint --fix .",
     "sitemap:xml": "node scripts/generate-xml-sitemaps.cjs",
-    "sitemap:html": "node scripts/generate-html-sitemap.cjs"
+    "sitemap:html": "node scripts/generate-html-sitemap.cjs",
+    "indexnow:submit": "node scripts/submit-indexnow.cjs"
   },
   "dependencies": {
     "@formatjs/intl-locale": "^4.2.11",

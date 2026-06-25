@@ -77,7 +77,7 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 
 const translations = {
   en: {
-    metaTitle: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
+    metaTitle: 'Surrogacy Cost in California & the U.S. | Yunda',
     metaDesc:
       'Surrogacy costs can vary widely, especially in California, depending on insurance, legal steps, medical factors, and surrogate compensation.',
     breadcrumb: ['For Intended Parents', 'Surrogacy Cost'],
@@ -3050,7 +3050,10 @@ onUnmounted(() => {
 .footer-cta-image {
   border-radius: 16px;
   min-height: 200px;
-  background: url('/images/ip/How-Surrogacy-Agreements.jpg') center/cover no-repeat;
+  background: image-set(
+    url('/images/ip/How-Surrogacy-Agreements.webp') type('image/webp'),
+    url('/images/ip/How-Surrogacy-Agreements.jpg') type('image/jpeg')
+  ) center/cover no-repeat;
   border: 1px solid rgba(39, 31, 24, 0.1);
   background-size: cover;
   background-position: center;
@@ -3604,7 +3607,11 @@ onUnmounted(() => {
   border-radius: 16px;
   overflow: hidden;
   background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)), url('/images/ip/surrogacy-expensive.jpeg');
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)),
+    image-set(
+      url('/images/ip/surrogacy-expensive.webp') type('image/webp'),
+      url('/images/ip/surrogacy-expensive.jpeg') type('image/jpeg')
+    );
   background-size: cover;
   background-position: center;
   box-shadow: 0 12px 28px rgba(39, 31, 24, 0.12);

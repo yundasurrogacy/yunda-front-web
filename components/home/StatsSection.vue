@@ -15,15 +15,18 @@ const partners = [
 <template>
   <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <img
-        class="h-full w-full object-cover object-center"
-        src="/images/home/home-redesign/why-choose-advantages-bg.png"
-        :alt="$t('home.statsSection.chooseUsTitle')"
-        width="1920"
-        height="1080"
-        loading="lazy"
-        decoding="async"
-      >
+      <picture class="block h-full w-full">
+        <source srcset="/images/home/home-redesign/why-choose-advantages-bg.webp" type="image/webp">
+        <img
+          class="h-full w-full object-cover object-center"
+          src="/images/home/home-redesign/why-choose-advantages-bg.png"
+          :alt="$t('home.statsSection.chooseUsTitle')"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        >
+      </picture>
       <div class="absolute inset-0 bg-[rgba(255,252,248,0.78)] backdrop-blur-[2px]" />
     </div>
 

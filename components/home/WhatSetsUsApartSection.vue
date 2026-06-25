@@ -42,12 +42,15 @@ function toggleFeature(index) {
         <div class="md:flex md:items-start md:gap-14">
           <div class="md:w-[420px] md:shrink-0 lg:w-[480px] xl:w-[520px]">
             <div class="aspect-square w-full overflow-hidden rounded-[28px]">
-              <img
-                src="/images/home/yunda-what-sets-us.jpeg"
-                :alt="$t('home.whatSetsUsApartSection.imageAlt')"
-                class="h-full w-full object-cover"
-                loading="lazy"
-              >
+              <picture class="block h-full w-full">
+                <source srcset="/images/home/yunda-what-sets-us.webp" type="image/webp">
+                <img
+                  src="/images/home/yunda-what-sets-us.jpeg"
+                  :alt="$t('home.whatSetsUsApartSection.imageAlt')"
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                >
+              </picture>
             </div>
           </div>
 
