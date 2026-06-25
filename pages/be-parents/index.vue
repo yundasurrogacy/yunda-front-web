@@ -140,10 +140,10 @@ const heroProofPoints = computed(() => [
 
 const trustLogos = [
   { name: 'ASRM', logo: '/images/asrm-logo.svg' },
-  { name: 'ART Risk', logo: '/images/ART-Risk-LOGO-NEW.png' },
-  { name: 'SeedTrust', logo: '/images/SeedTrust-Logo-Stacked.png', class: 'scale-115' },
-  { name: 'MHB', logo: '/images/mhb-logo-transparent.png' },
-  { name: 'RESOLVE', logo: '/images/resolve-logo.png', class: 'scale-110' },
+  { name: 'ART Risk', logo: '/images/ART-Risk-LOGO-NEW.webp' },
+  { name: 'SeedTrust', logo: '/images/SeedTrust-Logo-Stacked.webp', class: 'scale-115' },
+  { name: 'MHB', logo: '/images/mhb-logo-transparent.webp' },
+  { name: 'RESOLVE', logo: '/images/resolve-logo.webp', class: 'scale-110' },
 ]
 
 const intendedParentAudiences = computed(() => [

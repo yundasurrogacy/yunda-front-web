@@ -65,6 +65,11 @@ const legacyRedirectPaths = new Set([
   '/zh/sitemap.html',
   '/be-surrogate-v2',
   '/zh/be-surrogate-v2',
+  '/about）',
+  '/about%EF%BC%89',
+  '/how-much-do-surrogates-make.html',
+  '/for-surrogates.html',
+  '/parents.html',
 ])
 
 // 生成英文路由（默认语言，无前缀）
@@ -170,6 +175,36 @@ export default defineNuxtConfig({
         statusCode: 301,
       },
     },
+    '/about）': {
+      redirect: {
+        to: '/about',
+        statusCode: 301,
+      },
+    },
+    '/about%EF%BC%89': {
+      redirect: {
+        to: '/about',
+        statusCode: 301,
+      },
+    },
+    '/how-much-do-surrogates-make.html': {
+      redirect: {
+        to: '/surrogate-compensation',
+        statusCode: 301,
+      },
+    },
+    '/for-surrogates.html': {
+      redirect: {
+        to: '/be-surrogate',
+        statusCode: 301,
+      },
+    },
+    '/parents.html': {
+      redirect: {
+        to: '/intended-parents',
+        statusCode: 301,
+      },
+    },
     '/become-surrogate': {
       redirect: {
         to: '/become-a-surrogate',
@@ -265,16 +300,17 @@ export default defineNuxtConfig({
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [
-        {
-          'src': 'https://analytics.ahrefs.com/analytics.js',
-          'data-key': '+XByroCnWa6wxoZnMUVpYg',
-          'async': true,
-        },
         // 延迟加载第三方脚本，避免阻塞渲染；使用 requestIdleCallback 延后到浏览器空闲时加载，
         // 避免 GTM/GA 的 ccm/collect 等请求挂起时导致地址栏持续转圈
         {
           innerHTML: `window.addEventListener('load', function() {
               function loadAnalytics() {
+                // Ahrefs Analytics
+                var ahrefsScript = document.createElement('script');
+                ahrefsScript.async = true;
+                ahrefsScript.src = 'https://analytics.ahrefs.com/analytics.js';
+                ahrefsScript.setAttribute('data-key', '+XByroCnWa6wxoZnMUVpYg');
+                document.head.appendChild(ahrefsScript);
                 // Google Tag Manager
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6MHCNTV');
                 // Google Analytics + Google Ads
@@ -291,9 +327,9 @@ export default defineNuxtConfig({
                 };
               }
               if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadAnalytics, { timeout: 2000 });
+                requestIdleCallback(loadAnalytics, { timeout: 4000 });
               } else {
-                setTimeout(loadAnalytics, 500);
+                setTimeout(loadAnalytics, 2000);
               }
             });`,
           defer: true,

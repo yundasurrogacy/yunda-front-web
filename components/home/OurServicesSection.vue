@@ -57,10 +57,13 @@ useScrollAnimation()
           </div>
           <div class="order-1 mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:order-2">
             <img
-              src="/images/home/surrogacy-costs-for-intended-parents.jpg"
+              src="/images/home/surrogacy-costs-for-intended-parents.webp"
               :alt="t('home.costSection.title2')"
               class="h-full w-full object-contain"
+              width="420"
+              height="560"
               loading="lazy"
+              decoding="async"
             >
           </div>
         </div>
@@ -71,10 +74,13 @@ useScrollAnimation()
             <picture class="block h-full w-full">
               <source srcset="/images/home/surrogacy-process-for-surrogates-840.webp" type="image/webp">
               <img
-                src="/images/home/surrogacy-process-for-surrogates.jpg"
+                src="/images/home/surrogacy-process-for-surrogates-840.webp"
                 :alt="t('home.parentsSurrogatesSection.surrogateSubtitle')"
                 class="h-full w-full object-contain"
+                width="840"
+                height="1120"
                 loading="lazy"
+                decoding="async"
               >
             </picture>
           </div>

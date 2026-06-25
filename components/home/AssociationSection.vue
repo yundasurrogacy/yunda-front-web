@@ -10,11 +10,11 @@ useScrollAnimation()
 
 // 合作伙伴/协会 logo 数据
 const partners = [
-  { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null },
-  { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.png', url: null },
-  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.png', url: null, logoClass: 'scale-120' },
-  { name: 'MHB', logo: '/images/mhb-logo-transparent.png', url: null },
-  { name: 'RESOLVE', logo: '/images/resolve-logo.png', url: null, logoClass: 'scale-110' },
+  { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null, width: 300, height: 120 },
+  { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.webp', url: null, width: 694, height: 206 },
+  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.webp', url: null, width: 2000, height: 1139, logoClass: 'scale-120' },
+  { name: 'MHB', logo: '/images/mhb-logo-transparent.webp', url: null, width: 230, height: 113 },
+  { name: 'RESOLVE', logo: '/images/resolve-logo.webp', url: null, width: 600, height: 600, logoClass: 'scale-110' },
 ]
 </script>
 
@@ -45,7 +45,10 @@ const partners = [
               :alt="partner.name"
               class="h-full w-auto object-contain"
               :class="partner.logoClass"
+              :width="partner.width"
+              :height="partner.height"
               loading="lazy"
+              decoding="async"
             >
           </a>
           <div
@@ -57,7 +60,10 @@ const partners = [
               :alt="partner.name"
               class="h-full w-auto object-contain"
               :class="partner.logoClass"
+              :width="partner.width"
+              :height="partner.height"
               loading="lazy"
+              decoding="async"
             >
           </div>
         </template>

@@ -1,18 +1,6 @@
 {
   "routes": [
     {
-      "src": "/about\\)",
-      "status": 410
-    },
-    {
-      "src": "/about）",
-      "status": 410
-    },
-    {
-      "src": "/about%EF%BC%89",
-      "status": 410
-    },
-    {
       "src": "/be-surrogate/success",
       "status": 410
     },
@@ -22,6 +10,31 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/about）",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about%EF%BC%89",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/how-much-do-surrogates-make.html",
+      "destination": "/surrogate-compensation",
+      "permanent": true
+    },
+    {
+      "source": "/for-surrogates.html",
+      "destination": "/be-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/parents.html",
+      "destination": "/intended-parents",
+      "permanent": true
+    },
     {
       "source": "/become-surrogate",
       "destination": "/become-a-surrogate",
