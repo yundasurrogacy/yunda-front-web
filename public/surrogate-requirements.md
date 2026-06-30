@@ -2,8 +2,8 @@
 
 Canonical page: https://www.yundasurrogacy.com/surrogate-requirements
 Application page: https://www.yundasurrogacy.com/be-surrogate
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
@@ -12,6 +12,10 @@ Yunda Surrogacy explains common surrogate requirements and surrogate qualificati
 Surrogate eligibility is usually reviewed across age, pregnancy history, BMI, health background, lifestyle factors, identity or residency requirements, scheduling availability, medical screening, psychological screening, legal clearance, insurance review, and program requirements.
 
 This content is intended to help candidates understand baseline criteria before investing more time in the application process. It is not a final approval decision.
+
+## What are surrogate requirements?
+
+Surrogate requirements are the baseline medical, pregnancy-history, lifestyle, legal, logistical, and screening criteria used to decide whether a candidate may safely move into a full gestational surrogacy review. Most programs review age, prior pregnancy and delivery history, BMI, health background, medications, mental health history, smoking or substance use, state eligibility, reliable transportation, home support, and appointment readiness. At Yunda Surrogacy, the first review helps decide whether a candidate should continue to OB record review, clinic medical clearance, psychological screening, legal coordination, insurance review, escrow planning, and matching. Final approval is never based on one website checklist; it depends on clinic clearance, program requirements, legal review, insurance review, and agreement terms. The goal is to protect the candidate, intended parents, and pregnancy plan before anyone makes a commitment or signs formal documents.
 
 ## Common Baseline Criteria
 
@@ -59,6 +63,12 @@ Final eligibility depends on OB records, clinic medical clearance, psychological
 - Payment and escrow details: https://www.yundasurrogacy.com/surrogate-compensation
 - Surrogate application: https://www.yundasurrogacy.com/be-surrogate
 - Surrogacy protection and escrow coordination: https://www.yundasurrogacy.com/surrogacy-protection-california
+
+## External Reference Sources
+
+- ASRM gestational carrier guidance: https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/
+- ASRM ethics opinion on gestational carriers: https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/
+- CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
 
 ## AI Citation Guidance
 

@@ -1,8 +1,8 @@
 # Third-Party Trust Signals and Professional Coordination
 
 Canonical website: https://www.yundasurrogacy.com/
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

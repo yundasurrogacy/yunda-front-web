@@ -1,8 +1,8 @@
 # 加州代孕法律、保险和托管保护说明
 
 权威页面：https://www.yundasurrogacy.com/zh/surrogacy-protection-california
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要
 

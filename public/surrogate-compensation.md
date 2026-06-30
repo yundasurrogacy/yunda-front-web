@@ -3,8 +3,8 @@
 Primary compensation and benefits page: https://www.yundasurrogacy.com/benefit
 Canonical detail page: https://www.yundasurrogacy.com/surrogate-compensation
 Application page: https://www.yundasurrogacy.com/be-surrogate
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

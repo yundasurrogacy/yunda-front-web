@@ -5,8 +5,8 @@ Intended parent hub: https://www.yundasurrogacy.com/intended-parents
 Consultation page: https://www.yundasurrogacy.com/be-parents
 Cost guide: https://www.yundasurrogacy.com/surrogacy-cost
 Legal, insurance, and escrow guide: https://www.yundasurrogacy.com/surrogacy-protection-california
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

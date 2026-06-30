@@ -4,8 +4,8 @@ Canonical page: https://www.yundasurrogacy.com/egg-donation
 Intended parent hub: https://www.yundasurrogacy.com/intended-parents
 IVF clinic coordination: https://www.yundasurrogacy.com/partner-ivf-clinics
 Process guide: https://www.yundasurrogacy.com/surrogacy-process
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

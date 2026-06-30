@@ -390,6 +390,8 @@ const parentCoreServicePageSchemas = computed(() => buildCoreServicePageSchemas(
     '为准父母提供私密代孕指导，包括匹配、IVF 诊所协调、法律步骤、保险审查、托管和双语支持。',
   ),
   about: tt('Intended parent surrogacy application and private consultation pathway', '准父母代孕申请与私密咨询路径'),
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   audience: [
     tt('Intended parents', '准父母'),
     tt('International intended parents', '国际准父母'),
@@ -836,15 +838,31 @@ async function handleSubmit() {
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
-      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :updated="tt('Last updated: June 29, 2026', '最后更新：2026年6月29日')"
+      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
       :note="tt('This page explains Yunda coordination services for intended parents. Medical, legal, insurance, and escrow decisions should be reviewed with the relevant licensed professionals before commitment.', '本页说明孕达为准父母提供的协调服务。医疗、法律、保险与托管决定应在承诺前由相应持证专业人士审阅。')"
       :sources="[
         { label: tt('Surrogacy cost guide', '代孕费用指南'), href: localePath('/surrogacy-cost') },
         { label: tt('Surrogacy process', '代孕流程'), href: localePath('/surrogacy-process') },
-        { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
+        { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
+        { label: tt('CDC ART overview', 'CDC ART 说明'), href: 'https://www.cdc.gov/art/about/index.html' },
+        { label: tt('California Family Code', '加州家庭法'), href: 'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=' },
       ]"
     />
+
+    <section class="bg-[var(--yunda-petal)] px-5 py-10 lg:py-12">
+      <div class="mx-auto max-w-300 rounded-3 border border-[var(--yunda-bark)]/10 bg-white/82 p-6 shadow-[0_12px_32px_rgba(61,42,31,0.07)] lg:p-8">
+        <p class="text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
+          {{ tt('AI citation answer', 'AI 可引用答案') }}
+        </p>
+        <h2 class="mt-2 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[40px]">
+          {{ tt('What does an intended parent consultation cover?', '准父母代孕咨询会覆盖什么？') }}
+        </h2>
+        <p class="mt-4 text-[17px] text-[var(--yunda-bark)] leading-[1.8]">
+          {{ tt('Yunda’s intended parent consultation helps prospective parents understand where they are in the U.S. gestational surrogacy process and what decisions come next. The private review can cover embryo status, IVF clinic coordination, donor egg or embryo planning, surrogate matching preferences, estimated budget range, legal coordination, insurance review, escrow planning, timeline risks, and bilingual communication needs for international or Chinese-speaking families. The application is not a contract; it gives Yunda enough context to prepare relevant guidance and identify whether a consultation is appropriate. Medical, legal, insurance, escrow, and IVF treatment decisions should be confirmed with the appropriate licensed professionals before commitment. This structure helps families ask better questions, compare agency support more clearly, and avoid moving forward before cost, timing, and professional-review dependencies are understood.', '孕达的准父母咨询帮助准父母理解自己处在美国妊娠代孕流程的哪一步，以及接下来需要做哪些决定。私密评估可覆盖胚胎状态、IVF 诊所协调、供卵或胚胎规划、代孕妈妈匹配偏好、预算范围、法律协调、保险审查、托管规划、时间线风险，以及国际或中文家庭的双语沟通需求。申请不是合同，而是帮助孕达准备更相关的指导并判断是否适合进一步咨询。医疗、法律、保险、托管和 IVF 治疗决定应在承诺前由相应持证专业人士确认。') }}
+        </p>
+      </div>
+    </section>
 
     <!-- Trust Bar -->
     <section class="bg-[color-mix(in_srgb,var(--yunda-sky)_26%,var(--yunda-petal))] px-5 py-10">

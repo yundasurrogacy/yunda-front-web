@@ -4,8 +4,8 @@
 准父母服务总览：https://www.yundasurrogacy.com/zh/intended-parents
 流程指南：https://www.yundasurrogacy.com/zh/surrogacy-process
 第三方信任文件：https://www.yundasurrogacy.com/zh/third-party-professionals.md
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要
 

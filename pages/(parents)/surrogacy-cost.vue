@@ -975,6 +975,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   about: 'Gestational surrogacy cost planning and cost breakdown',
   audience: 'Intended parents',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   service: {
     name: 'Gestational Surrogacy Cost Planning Support',
     serviceType: 'Gestational surrogacy cost planning',
@@ -1222,13 +1224,14 @@ onUnmounted(() => {
 
       <div class="cost-seo-note-wrap">
         <SeoTrustNote
-          :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
-          :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+          :updated="locale === 'zh' ? '最后更新：2026年6月29日' : 'Last updated: June 29, 2026'"
+          :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
           :note="locale === 'zh' ? '本页用于解释代孕费用类别、估算范围和付款规划。实际费用会因 IVF 诊所、保险、法律、医疗情况和个案安排而变化，最终预算应结合专业审查确认。' : 'This page explains surrogacy cost categories, estimate ranges, and payment planning. Actual costs vary by IVF clinic, insurance, legal, medical, and case-specific factors, and final budgets should be confirmed through professional review.'"
           :sources="[
             { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
             { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
-            { label: locale === 'zh' ? '代孕补偿' : 'Surrogate compensation', href: localePath('/surrogate-compensation') },
+            { label: locale === 'zh' ? 'CDC ART 说明' : 'CDC ART overview', href: 'https://www.cdc.gov/art/about/index.html' },
+            { label: locale === 'zh' ? '加州家庭法' : 'California Family Code', href: 'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=' },
           ]"
         />
       </div>
@@ -1244,11 +1247,8 @@ onUnmounted(() => {
                 {{ locale === 'zh' ? '代孕费用先看范围，再看总价。' : 'Start with scope, then compare total cost.' }}
               </h2>
             </div>
-            <p class="body-text">
-              {{ locale === 'zh' ? '加州代孕费用通常由机构协调、代孕妈妈补偿、法律、保险、托管、IVF 诊所与孕期变量共同决定。比较报价时，先看每个报价包含什么，再看总价。' : 'Surrogacy cost is usually driven by agency coordination, surrogate compensation, legal work, insurance, escrow, IVF clinic fees, and pregnancy-specific variables. When comparing quotes, start with what each quote includes, then look at the total.' }}
-            </p>
-            <p class="body-text">
-              {{ locale === 'zh' ? 'IVF 诊所费用和新生儿医疗通常不包含在机构费用内；保险排除、自付额、胚胎状态和多胎/剖宫产等情况都会让总预算变化。' : 'IVF clinic fees and newborn medical care are usually separate from the agency package; insurance exclusions, deductibles, embryo status, and twins or C-section scenarios can all change the final budget.' }}
+            <p class="body-text lg:col-span-2">
+              {{ locale === 'zh' ? '加州和美国代孕费用通常由机构协调、代孕妈妈补偿、筛查、法律协调、保险审查、托管或信托账户、IVF 诊所费用、获批报销以及个案医疗或孕期变量共同组成。比较报价时，应先看服务范围，再看总价；IVF 诊所费用、胚胎创建、供卵、新生儿医疗、额外保险、旅行、双胎、剖宫产、卧床或额外移植都可能改变最终预算。孕达的公开费用内容用于帮助准父母做规划，不是保证报价。' : 'A surrogacy cost estimate usually combines agency coordination, surrogate compensation, screening support, legal coordination, insurance review, escrow or trust account administration, IVF clinic expenses, approved reimbursements, and case-dependent medical or pregnancy costs. Compare the scope first, then the total number. IVF clinic fees, embryo creation, donor egg services, newborn medical care, extra insurance, travel, twins, C-section, bed rest, or additional transfers may change the final budget. Yunda uses public cost content for planning guidance, not as a guaranteed quote. The safest comparison asks what is included, what is separate, when funds are due, and which professional must confirm each item.' }}
             </p>
           </div>
         </div>

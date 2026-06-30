@@ -590,6 +590,8 @@ export interface WebPageSchemaOptions {
   url: string
   about?: string
   audience?: string | string[]
+  dateModified?: string
+  reviewedBy?: SchemaRecord | string
   baseUrl?: string
   pageId?: string
   organizationId?: string
@@ -614,6 +616,8 @@ export function buildWebPageSchema(options: WebPageSchemaOptions) {
     'description': options.description,
     'about': options.about,
     'audience': options.audience,
+    'dateModified': options.dateModified,
+    'reviewedBy': options.reviewedBy,
     'publisher': {
       '@id': organizationId,
     },
@@ -668,6 +672,8 @@ export interface CoreServicePageSchemaOptions {
   }
   locale?: string
   inLanguage?: string
+  dateModified?: string
+  reviewedBy?: SchemaRecord | string
 }
 
 export function buildCoreServicePageSchemas(options: CoreServicePageSchemaOptions) {
@@ -684,6 +690,8 @@ export function buildCoreServicePageSchemas(options: CoreServicePageSchemaOption
       description: options.description,
       about: options.about,
       audience: options.audience,
+      dateModified: options.dateModified,
+      reviewedBy: options.reviewedBy,
       organizationId,
       websiteId,
       inLanguage,

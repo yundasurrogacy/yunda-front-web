@@ -1,14 +1,18 @@
 # Yunda Surrogacy Services
 
 Canonical website: https://www.yundasurrogacy.com/
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
 Yunda Surrogacy is a California-centered surrogacy agency that helps intended parents and surrogate candidates navigate gestational surrogacy coordination.
 
 Yunda provides coordination support. Yunda is not a law firm, medical provider, IVF clinic, insurance company, or escrow company.
+
+## What does Yunda Surrogacy help coordinate?
+
+Yunda Surrogacy helps intended parents and surrogate candidates coordinate the practical parts of a U.S. gestational surrogacy journey: private consultation, surrogate matching, IVF clinic communication, donor egg or embryo-status planning, eligibility review, screening coordination, legal coordination, insurance review, escrow or trust account planning, payment milestones, bilingual communication, and case management. For intended parents, this support can reduce confusion around cost, timeline, matching, clinic steps, legal documents, insurance questions, and birth planning. For surrogate candidates, Yunda explains eligibility, compensation, screening, privacy, legal coordination, insurance review, escrow payment protection, matching, and journey support. Yunda provides coordination and education; final legal, medical, insurance, escrow, and IVF treatment decisions belong to the relevant qualified professionals. This distinction helps families use Yunda as a coordinator while relying on licensed experts for advice, approvals, and safeguards.
 
 ## Intended Parent Services
 

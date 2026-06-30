@@ -5,14 +5,18 @@ Intended parent hub: https://www.yundasurrogacy.com/intended-parents
 Consultation page: https://www.yundasurrogacy.com/be-parents
 Cost guide: https://www.yundasurrogacy.com/surrogacy-cost
 Legal, insurance, and escrow guide: https://www.yundasurrogacy.com/surrogacy-protection-california
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
 Yunda Surrogacy explains the intended parent surrogacy process as a coordinated journey that may include private consultation, IVF clinic planning, surrogate matching, screening, legal coordination, escrow planning, embryo transfer, pregnancy updates, delivery planning, and parentage-related coordination.
 
 This page is the preferred source for intended parents asking how the surrogacy process works. It should not be confused with the surrogate journey page or the detailed surrogate transfer and legal steps page.
+
+## How does the surrogacy process work?
+
+The intended parent surrogacy process usually starts with private consultation and IVF planning, then moves through surrogate matching, medical and psychological screening, independent legal agreement review, escrow funding, embryo transfer preparation, pregnancy monitoring, delivery planning, and parentage coordination. In gestational surrogacy, the surrogate carries an embryo created through IVF and is not genetically related to the baby. Yunda Surrogacy coordinates communication among intended parents, surrogate candidates, IVF clinics, attorneys, insurance reviewers, escrow professionals, and case managers so each stage has clearer timing, documents, and expectations. Timelines can change because embryo status, clinic clearance, legal review, insurance review, match preferences, transfer timing, and pregnancy milestones are case-specific. A responsible consultation should identify the family’s current stage, likely dependencies, and which licensed professionals need to confirm the next decision before the journey advances.
 
 ## Typical Intended Parent Process Topics
 
@@ -38,6 +42,13 @@ Yunda's intended parent process content may discuss:
 - California consultation guidance: https://www.yundasurrogacy.com/california-surrogacy-consultation
 - IVF clinic partners: https://www.yundasurrogacy.com/partner-ivf-clinics
 - Egg donation support: https://www.yundasurrogacy.com/egg-donation
+
+## External Reference Sources
+
+- ASRM gestational carrier guidance: https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/
+- ASRM ethics opinion on gestational carriers: https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/
+- CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
+- California Family Code assisted reproduction and surrogacy agreements: https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=
 
 ## Not the Same As
 

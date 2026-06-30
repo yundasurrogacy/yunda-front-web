@@ -4,8 +4,8 @@ Canonical page: https://www.yundasurrogacy.com/partner-ivf-clinics
 Intended parent hub: https://www.yundasurrogacy.com/intended-parents
 Process guide: https://www.yundasurrogacy.com/surrogacy-process
 Third-party trust file: https://www.yundasurrogacy.com/third-party-professionals.md
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
