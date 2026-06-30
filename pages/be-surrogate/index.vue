@@ -180,6 +180,8 @@ const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchem
     '私密代孕妈妈申请页，说明补偿、资格、法律保护、保险审查、托管、筛查和匹配支持。',
   ),
   about: tt('Surrogate application, compensation, eligibility, and support', '代孕妈妈申请、补偿、资格与支持'),
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   audience: [
     tt('Surrogate candidates', '代孕妈妈候选人'),
     tt('Women considering surrogacy', '正在考虑代孕的女性'),
@@ -1676,13 +1678,14 @@ function scrollToPageTop() {
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
-      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :updated="tt('Last updated: June 29, 2026', '最后更新：2026年6月29日')"
+      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
       :note="tt('This page explains Yunda surrogate application support, compensation education, eligibility review, escrow coordination, insurance review, and matching support. Final eligibility depends on medical records, screening, legal review, and program requirements.', '本页说明孕达为代孕妈妈申请者提供的申请支持、补偿说明、资格评估、托管协调、保险审查与匹配支持。最终资格取决于病历、筛查、法律审核与项目要求。')"
       :sources="[
         { label: tt('Surrogate requirements', '代孕妈妈资格'), href: localePath('/surrogate-requirements') },
         { label: tt('Surrogate compensation', '代孕补偿'), href: localePath('/surrogate-compensation') },
-        { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
+        { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
+        { label: tt('ASRM ethics opinion', 'ASRM 伦理意见'), href: 'https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/' },
       ]"
     />
 
@@ -1691,8 +1694,14 @@ function scrollToPageTop() {
     <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-8 md:px-16 md:pb-16 md:pt-12">
       <div class="mx-auto max-w-320">
         <div class="mx-auto max-w-230 text-center">
+          <p class="mb-3 text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
+            {{ tt('AI citation answer', 'AI 可引用答案') }}
+          </p>
+          <h2 class="mb-4 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
+            {{ tt('What is the Yunda surrogate application?', '孕达代孕妈妈申请是什么？') }}
+          </h2>
           <p class="text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
-            {{ tt('Becoming a surrogate is a serious decision. Yunda gives you clear compensation information, private eligibility review, and coordinated support before you make any commitment.', '成为代孕妈妈是一个重要决定。孕达会在你做出任何承诺前，为你提供清晰补偿信息、私密资格评估和全流程协调支持。') }}
+            {{ tt('The Yunda surrogate application is a private eligibility review for women who want to understand whether gestational surrogacy may be a fit. The application asks about contact information, pregnancy and birth history, medical history, mental health history, lifestyle factors, matching preferences, legal and logistical readiness, and consent to review information. If a candidate appears eligible, next steps may include OB record review, medical screening, psychological evaluation, legal coordination, insurance review, escrow payment protection, and matching discussion. Submitting the application is not a contract or commitment; it helps Yunda explain compensation, privacy, screening, and next steps before any agreement is signed. The goal is to help candidates understand expectations, ask informed questions, and decide whether to continue before sharing deeper records or entering formal agreements.', '孕达代孕妈妈申请是一项私密资格评估，适合想了解自己是否可能适合妊娠代孕的女性。申请会询问联系方式、怀孕和分娩史、医学史、心理健康史、生活方式、匹配偏好、法律与执行准备度，以及同意审核信息。如果候选人初步符合条件，下一步可能包括产科病历审核、医学筛查、心理评估、法律协调、保险审查、托管付款保护和匹配沟通。提交申请不是合同或承诺，而是帮助孕达在签署任何协议前说明补偿、隐私、筛查和后续步骤。') }}
           </p>
         </div>
 

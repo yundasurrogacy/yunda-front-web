@@ -35,6 +35,22 @@ useHead(() => ({
       name: 'description',
       content: pageDescription.value,
     },
+    {
+      property: 'og:title',
+      content: pageTitle.value,
+    },
+    {
+      property: 'og:description',
+      content: pageDescription.value,
+    },
+    {
+      name: 'twitter:title',
+      content: pageTitle.value,
+    },
+    {
+      name: 'twitter:description',
+      content: pageDescription.value,
+    },
   ],
 }))
 const runtimeConfig = useRuntimeConfig()
@@ -303,6 +319,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   path: '/surrogate-requirements',
   name: 'Surrogate Requirements & Surrogacy Qualifications: Become a Surrogate',
   description: pageDescription.value,
+  dateModified: '2026-06-30',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   about: 'Gestational carrier requirements and surrogate qualifications',
   audience: 'Potential gestational carriers / surrogate applicants',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
@@ -464,21 +482,25 @@ const processIcons = [
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
-      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :updated="tt('Last updated: June 30, 2026', '最后更新：2026年6月30日')"
+      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
       :note="tt('This page explains common surrogate eligibility factors in plain language. Final approval depends on OB records, clinic medical clearance, psychological screening, legal review, and program requirements.', '本页用清晰语言说明常见代孕妈妈资格因素。最终批准取决于产科病历、诊所医学清关、心理筛查、法律审核与项目要求。')"
       :sources="[
         { label: tt('Apply to be a surrogate', '申请成为代孕妈妈'), href: localePath('/be-surrogate') },
         { label: tt('Surrogate compensation', '代孕补偿'), href: localePath('/surrogate-compensation') },
         { label: tt('Screening and eligibility', '筛查与资格'), href: localePath('/screening') },
+        { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
       ]"
     />
 
     <section id="intro" class="py-18 lg:py-24">
       <div class="mx-auto max-w-260 px-5 lg:px-10">
         <div class="border border-[var(--olive-green)]/40 rounded-6 bg-white/95 p-10 shadow-black/10 shadow-lg">
+          <h2 class="mb-5 text-6 font-semibold uppercase lg:text-7">
+            {{ tt('What are surrogate requirements?', '代孕妈妈要求是什么？') }}
+          </h2>
           <p class="text-5 leading-relaxed">
-            {{ tt('Thinking about gestational surrogacy and ready to become a surrogate? This page explains the core surrogacy requirements in plain language. You’ll see the surrogate qualifications doctors and coordinators check, plus the steps to apply as a surrogate mother. If you meet these surrogate requirements, you can be a surrogate with confidence and start your journey today.', '想了解妊娠代孕并准备成为代孕妈妈？本页用清晰语言解释核心要求。你将看到医生与协调员审核的资格，以及申请成为代孕妈妈的步骤。若满足条件，就能自信开启旅程。') }}
+            {{ tt('Surrogate requirements are the medical, pregnancy-history, lifestyle, legal, and readiness criteria used to decide whether someone may safely move forward as a gestational carrier candidate. Yunda Surrogacy reviews age, prior full-term birth history, BMI, health background, medication needs, nicotine or substance use, state logistics, transportation, home support, and availability for appointments before a candidate advances to records review. If the first review looks suitable, the next steps usually include OB record collection, clinic medical screening, psychological evaluation, legal clearance, insurance review, escrow/payment planning, matching, cycle preparation, embryo transfer, and pregnancy monitoring. Meeting the basic requirements does not guarantee approval, because final eligibility depends on clinic clearance, licensed professional review, legal documents, insurance details, and case-specific program requirements. This page explains the common qualifications in plain language so candidates can understand what is reviewed before applying.', '代孕妈妈要求是用于判断候选人是否适合安全进入妊娠代孕审核的医疗、孕产史、生活方式、法律和准备度标准。孕达会先审核年龄、既往足月分娩史、BMI、健康背景、用药、尼古丁或药物使用、州执行条件、交通、家庭支持和就诊配合度。若初步审核合适，后续通常包括产科病历收集、诊所医学筛查、心理评估、法律清关、保险审核、托管与付款规划、匹配、周期准备、胚胎移植和孕期监测。满足基础要求不代表最终批准，最终资格仍取决于诊所清关、持证专业人士审核、法律文件、保险细节和个案要求。') }}
           </p>
         </div>
       </div>

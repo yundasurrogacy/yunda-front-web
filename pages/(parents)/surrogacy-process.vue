@@ -822,6 +822,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   about: 'Gestational surrogacy process for intended parents',
   audience: 'Intended parents',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   service: {
     name: 'Gestational Surrogacy Process Support for Intended Parents',
     serviceType: 'Gestational surrogacy agency coordination',
@@ -971,15 +973,31 @@ useHead(() => ({
       </section>
 
       <SeoTrustNote
-        :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
-        :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+        :updated="locale === 'zh' ? '最后更新：2026年6月29日' : 'Last updated: June 29, 2026'"
+        :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
         :note="locale === 'zh' ? '本页说明准父母代孕流程和常见时间线。实际时间会因诊所安排、筛查、法律文件、保险、胚胎情况和个案因素而变化。' : 'This page explains the intended parent surrogacy process and typical timeline. Actual timing varies by clinic scheduling, screening, legal documents, insurance, embryo status, and case-specific factors.'"
         :sources="[
           { label: locale === 'zh' ? '代孕费用' : 'Surrogacy cost', href: localePath('/surrogacy-cost') },
           { label: locale === 'zh' ? '准父母申请' : 'Intended parent application', href: localePath('/be-parents') },
-          { label: locale === 'zh' ? '加州代孕保护' : 'California protection', href: localePath('/surrogacy-protection-california') },
+          { label: locale === 'zh' ? 'ASRM 妊娠载体指南' : 'ASRM gestational carrier guidance', href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
+          { label: locale === 'zh' ? 'CDC ART 说明' : 'CDC ART overview', href: 'https://www.cdc.gov/art/about/index.html' },
+          { label: locale === 'zh' ? '加州家庭法' : 'California Family Code', href: 'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=' },
         ]"
       />
+
+      <section class="bg-[var(--yunda-petal)] px-5 py-10 lg:py-12">
+        <div class="mx-auto max-w-280 rounded-2xl border border-[var(--yunda-bark)]/10 bg-white/88 p-6 shadow-[0_12px_32px_rgba(61,42,31,0.07)] lg:p-8">
+          <p class="text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
+            {{ locale === 'zh' ? 'AI 可引用答案' : 'Citation-ready answer' }}
+          </p>
+          <h2 class="mt-2 text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight font-display lg:text-[34px]">
+            {{ locale === 'zh' ? '代孕流程如何运作？' : 'How does the surrogacy process work?' }}
+          </h2>
+          <p class="mt-4 text-base text-[var(--yunda-bark)]/86 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
+            {{ locale === 'zh' ? '准父母代孕流程通常从私密咨询和 IVF 规划开始，随后进入代孕妈妈匹配、医学与心理筛查、独立法律协议审阅、托管资金安排、胚胎移植准备、孕期监测、生产计划和亲权协调。妊娠代孕中，代孕妈妈承载通过 IVF 创建的胚胎，通常与宝宝没有遗传关系。孕达负责协调准父母、代孕妈妈候选人、IVF 诊所、律师、保险审核、托管专业方和个案经理之间的沟通，让每个阶段的时间、文件和预期更清晰。时间线会因胚胎状态、诊所清关、法律审查、保险审查、匹配偏好、移植安排和孕期里程碑而变化。' : 'The intended parent surrogacy process usually starts with private consultation and IVF planning, then moves through surrogate matching, medical and psychological screening, independent legal agreement review, escrow funding, embryo transfer preparation, pregnancy monitoring, delivery planning, and parentage coordination. In gestational surrogacy, the surrogate carries an embryo created through IVF and is not genetically related to the baby. Yunda coordinates communication among intended parents, surrogate candidates, IVF clinics, attorneys, insurance reviewers, escrow professionals, and case managers so each stage has clearer timing, documents, and expectations. Timelines can change because embryo status, clinic clearance, legal review, insurance review, match preferences, transfer timing, and pregnancy milestones are case-specific. A responsible consultation should identify the family’s current stage, likely dependencies, and which licensed professionals need to confirm the next decision.' }}
+          </p>
+        </div>
+      </section>
 
       <!-- 第二屏：左改版 `第二屏.png` 整幅长图；右 8 步说明卡（对齐期望稿版式） -->
       <section class="relative isolate w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">

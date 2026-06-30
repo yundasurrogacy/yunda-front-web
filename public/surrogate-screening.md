@@ -5,8 +5,8 @@ Surrogate hub: https://www.yundasurrogacy.com/surrogates
 Application page: https://www.yundasurrogacy.com/be-surrogate
 Requirements page: https://www.yundasurrogacy.com/surrogate-requirements
 Journey guide: https://www.yundasurrogacy.com/journey
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

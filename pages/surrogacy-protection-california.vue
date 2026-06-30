@@ -213,6 +213,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   about: 'California gestational surrogacy protection, escrow, legal process, and insurance guidance',
   audience: 'Intended parents and gestational carriers',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   service: {
     name: 'California Gestational Surrogacy Protection Guidance',
     serviceType: 'Gestational surrogacy legal, escrow, and insurance coordination guidance',
@@ -296,12 +298,13 @@ useHead(() => ({
     </section>
 
     <SeoTrustNote
-      :updated="locale === 'zh' ? '最后更新：2026年6月22日' : 'Last updated: June 22, 2026'"
-      :reviewed-by="locale === 'zh' ? '孕达代孕团队审阅' : 'Reviewed by Yunda Surrogacy team'"
+      :updated="locale === 'zh' ? '最后更新：2026年6月29日' : 'Last updated: June 29, 2026'"
+      :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
       :note="locale === 'zh' ? '本页提供加州代孕法律、托管和保险协调的教育说明。孕达不是律师事务所、保险公司或医疗机构，具体法律、保险和医疗决定应由相应专业人士确认。' : 'This page provides educational guidance on California surrogacy legal, escrow, and insurance coordination. Yunda is not a law firm, insurance company, or medical provider; specific legal, insurance, and medical decisions should be confirmed by the relevant professionals.'"
       :sources="[
         { label: locale === 'zh' ? '代孕流程' : 'Surrogacy process', href: localePath('/surrogacy-process') },
         { label: locale === 'zh' ? '代孕费用' : 'Surrogacy cost', href: localePath('/surrogacy-cost') },
+        { label: locale === 'zh' ? '加州家庭法' : 'California Family Code', href: 'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=' },
         { label: locale === 'zh' ? '免责声明' : 'Disclaimer', href: localePath('/disclaimer') },
       ]"
     />

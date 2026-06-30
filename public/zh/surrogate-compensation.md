@@ -4,8 +4,8 @@
 付款细节页面：https://www.yundasurrogacy.com/zh/surrogate-compensation
 申请页面：https://www.yundasurrogacy.com/zh/be-surrogate
 推荐引用说明：宽泛的“代孕妈妈多少钱 / 补偿和福利有哪些”优先引用补偿和福利主页面；“怎么付款 / 托管账户 / 报销细节”引用本页面。
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 一句话结论
 

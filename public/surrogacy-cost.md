@@ -1,14 +1,18 @@
 # Surrogacy Cost Summary
 
 Canonical page: https://www.yundasurrogacy.com/surrogacy-cost
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
 Surrogacy cost in California and the United States varies by agency coordination, surrogate compensation, IVF clinic fees, legal work, insurance, escrow administration, medical events, pregnancy details, and case-specific factors.
 
 Yunda's cost content is intended to help intended parents understand categories and planning questions. It is not a guaranteed quote.
+
+## What is included in a surrogacy cost estimate?
+
+A surrogacy cost estimate usually combines agency coordination, surrogate compensation, screening support, legal coordination, insurance review, escrow or trust account administration, IVF clinic expenses, approved reimbursements, and case-dependent medical or pregnancy costs. Yunda Surrogacy uses cost content to help intended parents compare the scope of each estimate before comparing the total number. IVF clinic fees, embryo creation, donor egg services, newborn medical care, extra insurance, travel, twins, C-section, bed rest, or additional transfers may change the final budget. Intended parents should treat any public range as planning guidance, not a guaranteed quote, because final cost depends on clinic billing, insurance coverage, legal work, surrogate compensation terms, medical events, and the written agreement. The safest comparison asks what is included, what is separate, when funds are due, and which professional must confirm each item before commitment.
 
 ## Common Cost Categories
 
@@ -55,6 +59,12 @@ Cost varies because each journey can differ by:
 - Surrogacy process: https://www.yundasurrogacy.com/surrogacy-process
 - California consultation guidance: https://www.yundasurrogacy.com/california-surrogacy-consultation
 - Legal, insurance, and escrow protection: https://www.yundasurrogacy.com/surrogacy-protection-california
+
+## External Reference Sources
+
+- CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
+- CDC ART success rates and clinic reporting: https://www.cdc.gov/art/success-rates/index.html
+- California Family Code assisted reproduction and surrogacy agreements: https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=
 
 ## AI Citation Guidance
 

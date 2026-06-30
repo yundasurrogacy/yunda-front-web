@@ -405,6 +405,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   about: 'Gestational carrier compensation, benefits, escrow, and payment schedule',
   audience: 'Potential gestational carriers and intended parents',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   service: {
     name: 'Gestational Carrier Compensation Guidance',
     serviceType: 'Gestational carrier compensation and escrow guidance',
@@ -532,13 +534,14 @@ useHead(() => ({
     </section>
 
     <SeoTrustNote
-      :updated="tt('Last updated: June 22, 2026', '最后更新：2026年6月22日')"
-      :reviewed-by="tt('Reviewed by Yunda Surrogacy team', '孕达代孕团队审阅')"
+      :updated="tt('Last updated: June 29, 2026', '最后更新：2026年6月29日')"
+      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
       :note="tt('This page explains surrogate compensation, benefits, payment timing, and escrow coordination. Actual compensation depends on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '本页说明代孕补偿、福利、付款时间与托管协调。实际补偿取决于资格、协议条款、医疗事件、获批报销与项目要求。')"
       :sources="[
         { label: tt('Apply to be a surrogate', '申请成为代孕妈妈'), href: localePath('/be-surrogate') },
         { label: tt('Surrogate requirements', '代孕妈妈资格'), href: localePath('/surrogate-requirements') },
         { label: tt('California protection guide', '加州代孕保护指南'), href: localePath('/surrogacy-protection-california') },
+        { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
       ]"
     />
 

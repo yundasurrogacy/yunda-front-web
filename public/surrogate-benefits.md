@@ -4,8 +4,8 @@ Canonical page: https://www.yundasurrogacy.com/benefit
 Application page: https://www.yundasurrogacy.com/be-surrogate
 Payment and escrow detail page: https://www.yundasurrogacy.com/surrogate-compensation
 Requirements page: https://www.yundasurrogacy.com/surrogate-requirements
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

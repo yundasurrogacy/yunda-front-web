@@ -4,8 +4,8 @@
 申请页面：https://www.yundasurrogacy.com/zh/be-surrogate
 付款和托管细节页面：https://www.yundasurrogacy.com/zh/surrogate-compensation
 资质页面：https://www.yundasurrogacy.com/zh/surrogate-requirements
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要
 

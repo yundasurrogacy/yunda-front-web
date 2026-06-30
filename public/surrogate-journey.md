@@ -6,8 +6,8 @@ Application page: https://www.yundasurrogacy.com/be-surrogate
 Requirements page: https://www.yundasurrogacy.com/surrogate-requirements
 Screening guide: https://www.yundasurrogacy.com/screening
 Compensation and benefits page: https://www.yundasurrogacy.com/benefit
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 

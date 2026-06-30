@@ -6,8 +6,8 @@
 资质页面：https://www.yundasurrogacy.com/zh/surrogate-requirements
 筛查指南：https://www.yundasurrogacy.com/zh/screening
 补偿和福利页面：https://www.yundasurrogacy.com/zh/benefit
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要
 

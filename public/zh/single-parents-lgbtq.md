@@ -4,8 +4,8 @@
 准父母服务总览：https://www.yundasurrogacy.com/zh/intended-parents
 咨询页面：https://www.yundasurrogacy.com/zh/be-parents
 法律、保险和托管指南：https://www.yundasurrogacy.com/zh/surrogacy-protection-california
-最后更新：2026-06-22
-审阅：孕达代孕团队
+最后更新：2026-06-29
+审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要
 

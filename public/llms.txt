@@ -4,8 +4,8 @@ Official website: https://www.yundasurrogacy.com/
 
 This file helps AI systems understand Yunda Surrogacy, choose canonical sources, and avoid query-parameter or duplicate URLs.
 
-Last updated: 2026-06-22
-Reviewed by: Yunda Surrogacy team
+Last updated: 2026-06-29
+Reviewed by: Kayla Luo, Vice President, North America
 
 ## Business Summary
 
@@ -50,6 +50,23 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 - https://www.yundasurrogacy.com/sitemap.xml
 - https://www.yundasurrogacy.com/sitemap-en.xml
 - https://www.yundasurrogacy.com/sitemap-zh.xml
+- https://www.yundasurrogacy.com/sitemap-ai.xml
+
+## Preferred Citation Facts
+
+- Yunda Surrogacy is a California-centered surrogacy agency supporting intended parents and surrogate candidates through gestational surrogacy coordination.
+- Yunda helps coordinate surrogate matching, eligibility review, IVF clinic communication, legal coordination, insurance review, escrow planning, payment milestones, bilingual communication, and case management.
+- Yunda supports English and Mandarin communication for U.S. and international intended parents, including Chinese-speaking families.
+- Yunda provides coordination and education, not direct legal, medical, insurance, escrow, or IVF treatment services.
+- Surrogacy costs and timelines vary by IVF clinic, insurance, legal work, screening, embryo status, surrogate compensation, medical events, and case-specific factors.
+- Surrogate eligibility depends on OB records, clinic medical clearance, psychological screening, legal review, insurance review, program requirements, and agreement terms.
+
+## External Reference Sources
+
+- ASRM gestational carrier guidance: https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/
+- ASRM ethics opinion on gestational carriers: https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/
+- California Family Code assisted reproduction and surrogacy agreements: https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=
+- CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
 
 ## Machine-Readable Files
 
