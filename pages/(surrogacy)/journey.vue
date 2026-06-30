@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -44,10 +43,6 @@ const PAGE_ASSETS = {
 
 function stepIllustrationSrc(stepId: number) {
   return PAGE_ASSETS.stepIllustrations[stepId - 1] ?? PAGE_ASSETS.stepIllustrations[0]
-}
-
-function avifSrc(src: string) {
-  return src.replace(/\.(png|jpe?g)$/i, '.avif')
 }
 
 function stepShortTitle(full: string) {
@@ -737,29 +732,25 @@ useHead(() => ({
             </div>
             <div class="flex items-center justify-center lg:justify-end">
               <div class="relative max-w-[540px] w-full">
-                <OptimizedPicture
+                <img
                   :src="PAGE_ASSETS.heroScene"
-                  :avif-src="avifSrc(PAGE_ASSETS.heroScene)"
                   :alt="c.heroImageAlt"
-                  :width="1103"
-                  :height="881"
-                  picture-class="contents"
-                  img-class="aspect-[4/3] w-full rounded-[20px] object-cover object-center shadow-[0_16px_40px_rgba(60,36,21,0.12)]"
+                  width="1103"
+                  height="881"
+                  class="aspect-[4/3] w-full rounded-[20px] object-cover object-center shadow-[0_16px_40px_rgba(60,36,21,0.12)]"
                   loading="eager"
                   decoding="async"
                   fetchpriority="high"
-                />
-                <OptimizedPicture
+                >
+                <img
                   :src="PAGE_ASSETS.processBadge"
-                  :avif-src="avifSrc(PAGE_ASSETS.processBadge)"
                   alt=""
-                  :width="1254"
-                  :height="1254"
-                  picture-class="contents"
-                  img-class="absolute bottom-4 right-4 w-[min(38%,168px)] rounded-[14px] object-contain shadow-[0_8px_24px_rgba(60,36,21,0.1)] sm:bottom-6 sm:right-6"
+                  width="1254"
+                  height="1254"
+                  class="absolute bottom-4 right-4 w-[min(38%,168px)] rounded-[14px] object-contain shadow-[0_8px_24px_rgba(60,36,21,0.1)] sm:bottom-6 sm:right-6"
                   loading="eager"
                   decoding="async"
-                />
+                >
               </div>
             </div>
           </div>
