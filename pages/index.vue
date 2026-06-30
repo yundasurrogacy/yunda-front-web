@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { buildHowToSchema, buildProfessionalServiceSchema } from '~/utils/schema'
+import { buildItemListSchema, buildProfessionalServiceSchema, buildVideoObjectSchema } from '~/utils/schema'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
 import BlogNewsSection from '../components/home/BlogNewsSection.vue'
@@ -63,12 +63,26 @@ const professionalServiceSchema = computed(() => buildProfessionalServiceSchema(
   ],
 }))
 
-const howToSchema = computed(() => buildHowToSchema({
+const journeyItemListSchema = computed(() => buildItemListSchema({
   name: `${t('home.journeySection.title1')} ${t('home.journeySection.title2')}`,
   description: t('home.journeySection.description'),
-  steps: journeySteps.value,
+  items: journeySteps.value.map((step, index) => ({
+    position: index + 1,
+    name: step.title,
+    description: step.text,
+    url: '/',
+  })),
   baseUrl: siteUrl.value || undefined,
+  locale: locale.value,
+}))
+
+const introductionVideoSchema = computed(() => buildVideoObjectSchema({
+  name: 'Yunda Surrogacy Introduction',
+  description: 'An introductory video about Yunda Surrogacy, family-building support, and surrogacy coordination for intended parents and surrogates.',
+  thumbnailUrl: '/images/home/index-bg.webp',
+  embedUrl: 'https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1',
   url: '/',
+  baseUrl: siteUrl.value || undefined,
   locale: locale.value,
 }))
 
@@ -121,11 +135,18 @@ useHead(() => {
       children: JSON.stringify(professionalServiceSchema.value),
     })
   }
-  if (howToSchema.value) {
+  if (journeyItemListSchema.value) {
     scripts.push({
-      key: 'schema-home-howto',
+      key: 'schema-home-journey-item-list',
       type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
+      children: JSON.stringify(journeyItemListSchema.value),
+    })
+  }
+  if (introductionVideoSchema.value) {
+    scripts.push({
+      key: 'schema-home-introduction-video',
+      type: 'application/ld+json',
+      children: JSON.stringify(introductionVideoSchema.value),
     })
   }
   return scripts.length ? { script: scripts } : {}

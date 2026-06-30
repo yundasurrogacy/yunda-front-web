@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import { buildHowToSchema } from '~/utils/schema'
+import { buildItemListSchema } from '~/utils/schema'
 
 const { t, locale } = useI18n()
 const router = useRouter()
@@ -42,26 +42,27 @@ const questions = [
   'surrogacy.application.qualificationQuestions.education',
 ]
 
-const howToSchema = computed(() => buildHowToSchema({
+const qualificationItemListSchema = computed(() => buildItemListSchema({
   name: t('surrogacy.application.title'),
   description: t('surrogacy.application.welcomeMessage') || 'Quick surrogate qualification checklist',
-  steps: questions.map((key, index) => ({
-    title: `${t(key)}?`,
-    text: index === 4
+  items: questions.map((key, index) => ({
+    position: index + 1,
+    name: `${t(key)}?`,
+    description: index === 4
       ? 'Complete education requirement check and move to the next step'
       : 'Answer Yes/No to confirm eligibility and continue to the next question',
+    url: '/surrogate-qualification',
   })),
   baseUrl: siteUrl.value || undefined,
-  url: '/surrogate-qualification',
   locale: locale.value,
 }))
 
 useHead(() => ({
   script: [
     {
-      key: 'schema-surrogate-qualification-howto',
+      key: 'schema-surrogate-qualification-item-list',
       type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
+      children: JSON.stringify(qualificationItemListSchema.value),
     },
   ],
 }))

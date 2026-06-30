@@ -6,7 +6,7 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import VideoPlayer from '@/components/base/VideoPlayer.vue'
 import VideoPlayerWithCover from '@/components/base/VideoPlayerWithCover.vue'
-import { buildCoreServicePageSchemas } from '~/utils/schema'
+import { buildCoreServicePageSchemas, buildVideoObjectSchema } from '~/utils/schema'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -175,6 +175,33 @@ const protectionTopics = computed(() => [
     description: t.value.module4.content,
   },
 ])
+
+const protectionVideos = computed(() => [
+  {
+    name: t.value.module1.title,
+    description: t.value.module1.content,
+    contentUrl: videoResources.video1,
+    thumbnailUrl: videoResources.cover1,
+  },
+  {
+    name: t.value.module2.title,
+    description: t.value.module2.content,
+    contentUrl: videoResources.video2,
+    thumbnailUrl: videoResources.cover2,
+  },
+  {
+    name: t.value.module3.title,
+    description: t.value.module3.content,
+    contentUrl: videoResources.video3,
+    thumbnailUrl: videoResources.cover3,
+  },
+  {
+    name: t.value.module4.title,
+    description: t.value.module4.content,
+    contentUrl: videoResources.video4,
+    thumbnailUrl: videoResources.cover4,
+  },
+])
 const relatedPerformanceLinks = computed(() => [
   {
     to: '/blog/Best-Surrogacy-Agencies-in-California-2026',
@@ -239,6 +266,14 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   },
 }))
 
+const videoObjectSchemas = computed(() => protectionVideos.value.map(video => buildVideoObjectSchema({
+  ...video,
+  uploadDate: '2026-06-29',
+  url: '/surrogacy-protection-california',
+  baseUrl: siteUrl.value || undefined,
+  inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
+})))
+
 useHead({
   title: t.value.meta.title,
   meta: [
@@ -250,11 +285,18 @@ useHead({
 })
 
 useHead(() => ({
-  script: coreServicePageSchemas.value.map((schema, index) => ({
-    key: `schema-surrogacy-protection-california-${index}`,
-    type: 'application/ld+json',
-    children: JSON.stringify(schema),
-  })),
+  script: [
+    ...coreServicePageSchemas.value.map((schema, index) => ({
+      key: `schema-surrogacy-protection-california-${index}`,
+      type: 'application/ld+json',
+      children: JSON.stringify(schema),
+    })),
+    ...videoObjectSchemas.value.map((schema, index) => ({
+      key: `schema-surrogacy-protection-video-${index}`,
+      type: 'application/ld+json',
+      children: JSON.stringify(schema),
+    })),
+  ],
 }))
 </script>
 

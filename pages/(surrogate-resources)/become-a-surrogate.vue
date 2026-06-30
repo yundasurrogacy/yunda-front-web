@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
-import { buildCoreServicePageSchemas, buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas, buildFAQPageSchema, buildItemListSchema } from '~/utils/schema'
 
 useScrollAnimation()
 
@@ -462,9 +462,11 @@ function blockToText(block: Block) {
   return block.text
 }
 
-const journeySchemaSteps = computed(() => journeySteps.value.map(step => ({
-  title: step.title,
-  text: step.details.join(' '),
+const journeySchemaSteps = computed(() => journeySteps.value.map((step, index) => ({
+  position: index + 1,
+  name: step.title,
+  description: step.details.join(' '),
+  url: '/become-a-surrogate',
 })))
 
 const requirementFaqs = computed(() => requirementDropdowns.value.map(section => ({
@@ -472,12 +474,11 @@ const requirementFaqs = computed(() => requirementDropdowns.value.map(section =>
   answer: section.blocks.map(block => blockToText(block)).join(' '),
 })))
 
-const howToSchema = computed(() => buildHowToSchema({
+const journeyItemListSchema = computed(() => buildItemListSchema({
   name: pageTitle.value,
   description: journeyIntro.value,
-  steps: journeySchemaSteps.value,
+  items: journeySchemaSteps.value,
   baseUrl: siteUrl.value || undefined,
-  url: '/become-a-surrogate',
   locale: locale.value,
 }))
 
@@ -530,11 +531,11 @@ useHead(() => {
       children: JSON.stringify(schema),
     })
   })
-  if (howToSchema.value) {
+  if (journeyItemListSchema.value) {
     scripts.push({
-      key: 'schema-become-surrogate-howto',
+      key: 'schema-become-surrogate-journey-item-list',
       type: 'application/ld+json',
-      children: JSON.stringify(howToSchema.value),
+      children: JSON.stringify(journeyItemListSchema.value),
     })
   }
   if (faqSchema.value) {

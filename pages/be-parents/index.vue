@@ -12,7 +12,7 @@ import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
 import { useApi } from '~/composables/useApi'
 import { getAllCountries, getPhoneCodeByCountry, getStatesByCountry } from '~/data/countries-states'
-import { buildCoreServicePageSchemas, buildFAQPageSchema, buildHowToSchema } from '~/utils/schema'
+import { buildCoreServicePageSchemas, buildFAQPageSchema, buildItemListSchema } from '~/utils/schema'
 
 const form = reactive({
   // 基本信息 - 保留用于fullLegalName合并
@@ -340,7 +340,7 @@ const landingFaqItems = computed(() => [
   },
 ])
 
-const parentHowToSteps = computed(() => [
+const parentApplicationSteps = computed(() => [
   {
     title: t('parent.application.sections.basicInfo'),
     text: t('parent.application.welcome.message1'),
@@ -363,12 +363,16 @@ const parentFaqItems = computed(() => [
   ...landingFaqItems.value,
 ])
 
-const parentHowToSchema = computed(() => buildHowToSchema({
+const parentApplicationItemListSchema = computed(() => buildItemListSchema({
   name: t('parent.application.pageTitle'),
   description: t('parent.application.welcome.message1'),
-  steps: parentHowToSteps.value,
+  items: parentApplicationSteps.value.map((step, index) => ({
+    position: index + 1,
+    name: step.title,
+    description: step.text,
+    url: '/be-parents',
+  })),
   baseUrl: siteUrl.value || undefined,
-  url: '/be-parents',
   locale: locale.value,
 }))
 
@@ -424,11 +428,11 @@ useHead(() => {
       children: JSON.stringify(schema),
     })
   })
-  if (parentHowToSchema.value) {
+  if (parentApplicationItemListSchema.value) {
     scripts.push({
-      key: 'schema-parent-howto',
+      key: 'schema-parent-application-item-list',
       type: 'application/ld+json',
-      children: JSON.stringify(parentHowToSchema.value),
+      children: JSON.stringify(parentApplicationItemListSchema.value),
     })
   }
   if (parentFaqSchema.value) {
