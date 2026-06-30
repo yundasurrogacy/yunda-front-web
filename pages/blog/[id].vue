@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildFAQPageSchema, buildWebPageSchema } from '~/utils/schema'
+import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -35,6 +35,9 @@ const blogCopyEn = {
   },
   authorDefault: 'Yunda Team',
   tagsTitle: 'Related Tags',
+  quickAnswersTitle: 'Quick answers',
+  reviewedByLabel: 'Reviewed by',
+  lastUpdatedLabel: 'Updated',
   loading: 'Loading...',
   backToList: 'Back to Blog List',
   detailNoContent: 'No content available',
@@ -60,6 +63,9 @@ const blogCopyZh = {
   },
   authorDefault: '孕达团队',
   tagsTitle: '相关标签',
+  quickAnswersTitle: '快速答案',
+  reviewedByLabel: '审阅人',
+  lastUpdatedLabel: '更新于',
   loading: '加载中...',
   backToList: '返回博客列表',
   detailNoContent: '暂无内容',
@@ -286,6 +292,7 @@ interface StructuredBlogContent {
   summary: string
   wordCount: number
   images: string[]
+  citations: string[]
   headings: string[]
   faqs: ExtractedFAQ[]
 }
@@ -401,6 +408,14 @@ function extractImagesFromHtml(html: string): string[] {
     .filter(src => /^https?:\/\//i.test(src)))
 }
 
+function extractExternalLinksFromHtml(html: string): string[] {
+  return uniqueValues([...html.matchAll(/<a\b([^>]*)>/gi)]
+    .map(match => getHtmlAttribute(match[1], 'href'))
+    .filter(href => /^https?:\/\//i.test(href))
+    .filter(href => !href.includes('yundasurrogacy.com'))
+    .slice(0, 10))
+}
+
 function extractHeadingsFromHtml(html: string): string[] {
   return uniqueValues([...html.matchAll(/<h[2-4]\b[^>]*>([\s\S]*?)<\/h[2-4]>/gi)]
     .map(match => htmlToPlainText(match[1]))
@@ -480,6 +495,7 @@ function extractStructuredBlogContent(html: string): StructuredBlogContent {
     summary: truncateText(bodyText, 155),
     wordCount: words.length,
     images: extractImagesFromHtml(html),
+    citations: extractExternalLinksFromHtml(html),
     headings: extractHeadingsFromHtml(html),
     faqs: extractFaqsFromHtml(html),
   }
@@ -488,6 +504,22 @@ function extractStructuredBlogContent(html: string): StructuredBlogContent {
 const structuredBlogContent = computed(() =>
   extractStructuredBlogContent(renderedBlogContent.value),
 )
+
+const citableFaqs = computed(() =>
+  structuredBlogContent.value.faqs
+    .filter(faq => faq.question && faq.answer.length >= 40)
+    .slice(0, 4),
+)
+
+const blogReviewer = computed(() => ({
+  '@type': 'Person',
+  '@id': `${resolvedSiteUrl.value}/about#kayla-luo`,
+  'name': 'Kayla Luo',
+  'url': `${resolvedSiteUrl.value}${localePath('/about')}`,
+  'worksFor': {
+    '@id': `${resolvedSiteUrl.value}/#organization`,
+  },
+}))
 
 // 提取纯文本摘要（去除HTML标签）
 function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
@@ -573,6 +605,8 @@ const blogPostingSchema = computed(() => {
     authorType: authorName === blogCopy.value.authorDefault ? 'Organization' : 'Person',
     datePublished: blog.value.created_at,
     dateModified: blog.value.updated_at,
+    reviewedBy: blogReviewer.value,
+    citation: structuredBlogContent.value.citations,
     keywords: uniqueValues([
       ...(blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : []),
       ...structuredBlogContent.value.headings.slice(0, 4),
@@ -633,19 +667,6 @@ const blogStructuredData = computed(() => {
     blogPostingSchema.value,
     breadcrumbSchema,
   ]
-
-  if (structuredBlogContent.value.faqs.length >= 2) {
-    const faqSchema = buildFAQPageSchema({
-      baseUrl,
-      url: localePath(blogPath),
-      name: `${buildLocalizedBlogTitle(blog.value)} FAQ`,
-      description: buildLocalizedBlogDescription(blog.value, 155),
-      faqs: structuredBlogContent.value.faqs,
-      locale: locale.value,
-    })
-    const { '@context': _faqContext, ...faqNode } = faqSchema
-    graphNodes.push(faqNode)
-  }
 
   return {
     '@context': 'https://schema.org',
@@ -817,6 +838,18 @@ useHead(() => (blogStructuredData.value
                 </svg>
                 <span>{{ blog.created_at ? formatDate(blog.created_at) : '' }}</span>
               </div>
+              <div v-if="blog.updated_at" class="flex items-center">
+                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101A7.002 7.002 0 0116.601 7.76a1 1 0 11-1.602 1.198A5.002 5.002 0 006 7H5a1 1 0 010-2h1.22A1 1 0 014 4V3a1 1 0 011-1zm.399 8.24a1 1 0 011.602-1.198A5.002 5.002 0 0015 11h-1a1 1 0 110-2h3a1 1 0 011 1v3a1 1 0 11-2 0v-1.101A7.002 7.002 0 014.399 10.24z" clip-rule="evenodd" />
+                </svg>
+                <span>{{ blogCopy.lastUpdatedLabel }} {{ formatDate(blog.updated_at) }}</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 4.708a1 1 0 00-1.414-1.414L9 11.586 7.707 10.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>{{ blogCopy.reviewedByLabel }} Kayla Luo</span>
+              </div>
             </div>
           </div>
 
@@ -832,6 +865,30 @@ useHead(() => (blogStructuredData.value
                 {{ blogCopy.detailNoContent }}
               </div>
             </div>
+
+            <section
+              v-if="citableFaqs.length"
+              class="mt-10 border border-[var(--yunda-bark)]/12 rounded-xl bg-[var(--yunda-petal)]/55 p-5 md:p-6"
+              aria-labelledby="blog-quick-answers"
+            >
+              <h2 id="blog-quick-answers" class="mb-5 font-display text-2xl text-[var(--yunda-bark)] font-medium leading-tight">
+                {{ blogCopy.quickAnswersTitle }}
+              </h2>
+              <div class="space-y-5">
+                <article
+                  v-for="faq in citableFaqs"
+                  :key="faq.question"
+                  class="border-l-3 border-[var(--yunda-maple)] pl-4"
+                >
+                  <h3 class="text-base text-[var(--yunda-bark)] font-semibold leading-snug md:text-lg">
+                    {{ faq.question }}
+                  </h3>
+                  <p class="mt-2 text-sm text-[var(--yunda-bark)]/85 leading-7 md:text-base">
+                    {{ faq.answer }}
+                  </p>
+                </article>
+              </div>
+            </section>
 
             <!-- 标签区域 -->
             <div

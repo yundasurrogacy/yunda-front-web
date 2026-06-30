@@ -313,6 +313,8 @@ export interface BlogPostingSchemaOptions {
   keywords?: string[]
   category?: string
   wordCount?: number
+  citation?: string[]
+  reviewedBy?: SchemaRecord | string
   articleId?: string
   pageId?: string
   blogId?: string
@@ -368,6 +370,18 @@ export function buildBlogPostingSchema(options: BlogPostingSchemaOptions) {
     },
     'datePublished': options.datePublished,
     'dateModified': options.dateModified || options.datePublished,
+    'reviewedBy': typeof options.reviewedBy === 'string'
+      ? {
+          '@type': 'Person',
+          'name': options.reviewedBy,
+        }
+      : options.reviewedBy,
+    'citation': options.citation?.length
+      ? options.citation.map(url => ({
+          '@type': 'CreativeWork',
+          'url': url,
+        }))
+      : undefined,
     'keywords': options.keywords?.length ? options.keywords.join(', ') : undefined,
     'articleSection': options.category,
     'wordCount': options.wordCount,
@@ -747,40 +761,74 @@ export function buildCoreServicePageSchemas(options: CoreServicePageSchemaOption
   return schemas
 }
 
-export interface HowToStep {
-  title: string
-  text?: string
-  url?: string
-}
-
-export interface HowToSchemaOptions {
+export interface VideoObjectSchemaOptions {
   name: string
   description?: string
-  steps: HowToStep[]
-  totalTime?: string
-  locale?: string
-  baseUrl?: string
+  thumbnailUrl?: string | string[]
+  uploadDate?: string
+  contentUrl?: string
+  embedUrl?: string
+  duration?: string
   url?: string
+  baseUrl?: string
+  publisherId?: string
+  locale?: string
+  inLanguage?: string
 }
 
-export function buildHowToSchema(options: HowToSchemaOptions) {
+export function buildVideoObjectSchema(options: VideoObjectSchemaOptions) {
   const baseUrl = options.baseUrl || DEFAULT_BASE_URL
-  const inLanguage = options.locale === 'zh' ? 'zh-CN' : 'en-US'
+  const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
+  const thumbnailUrls = Array.isArray(options.thumbnailUrl)
+    ? options.thumbnailUrl
+    : (options.thumbnailUrl ? [options.thumbnailUrl] : undefined)
 
   return cleanSchema({
     '@context': 'https://schema.org',
-    '@type': 'HowTo',
+    '@type': 'VideoObject',
     'name': options.name,
     'description': options.description,
-    'totalTime': options.totalTime,
-    'inLanguage': inLanguage,
+    'thumbnailUrl': thumbnailUrls?.map(url => resolveUrl(baseUrl, url)),
+    'uploadDate': options.uploadDate,
+    'contentUrl': options.contentUrl ? resolveUrl(baseUrl, options.contentUrl) : undefined,
+    'embedUrl': options.embedUrl ? resolveUrl(baseUrl, options.embedUrl) : undefined,
+    'duration': options.duration,
     'url': options.url ? resolveLocalizedUrl(baseUrl, options.url, inLanguage) : undefined,
-    'step': options.steps.map((step, index) => cleanSchema({
-      '@type': 'HowToStep',
-      'position': index + 1,
-      'name': step.title,
-      'text': step.text,
-      'url': step.url ? resolveLocalizedUrl(baseUrl, step.url, inLanguage) : undefined,
-    })),
+    'publisher': {
+      '@id': options.publisherId || `${baseUrl}/#organization`,
+    },
+    'inLanguage': inLanguage,
+  })
+}
+
+export interface ProfilePageSchemaOptions {
+  name: string
+  description?: string
+  url: string
+  person: SchemaRecord
+  baseUrl?: string
+  locale?: string
+  inLanguage?: string
+  pageId?: string
+  organizationId?: string
+}
+
+export function buildProfilePageSchema(options: ProfilePageSchemaOptions) {
+  const baseUrl = options.baseUrl || DEFAULT_BASE_URL
+  const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
+  const pageUrl = resolveLocalizedUrl(baseUrl, options.url, inLanguage)
+
+  return cleanSchema({
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': options.pageId || `${pageUrl}#profile`,
+    'name': options.name,
+    'url': pageUrl,
+    'description': options.description,
+    'mainEntity': options.person,
+    'publisher': {
+      '@id': options.organizationId || `${baseUrl}/#organization`,
+    },
+    'inLanguage': inLanguage,
   })
 }

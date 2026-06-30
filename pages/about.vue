@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBreadcrumbListSchema, buildWebPageSchema } from '~/utils/schema'
+import { buildBreadcrumbListSchema, buildProfilePageSchema, buildWebPageSchema } from '~/utils/schema'
 import AboutCareerSection from '../components/about/CareerSection.vue'
 import AboutHeroSection from '../components/about/HeroSection.vue'
 import PhotoGallerySection from '../components/about/PhotoGallerySection.vue'
@@ -90,6 +90,17 @@ const founderSchema = computed(() => {
   }
 })
 
+const founderProfileSchema = computed(() => buildProfilePageSchema({
+  baseUrl: siteUrl.value || undefined,
+  url: '/about',
+  name: teamMembers.value[0]?.title
+    ? `${teamMembers.value[0].title} Profile`
+    : 'Kayla Luo Profile',
+  description: teamMembers.value[0]?.text,
+  person: founderSchema.value,
+  locale: locale.value,
+}))
+
 useHead(() => ({
   script: [
     {
@@ -106,6 +117,11 @@ useHead(() => ({
       key: 'schema-about-founder',
       type: 'application/ld+json',
       children: JSON.stringify(founderSchema.value),
+    },
+    {
+      key: 'schema-about-founder-profile',
+      type: 'application/ld+json',
+      children: JSON.stringify(founderProfileSchema.value),
     },
   ],
 }))
