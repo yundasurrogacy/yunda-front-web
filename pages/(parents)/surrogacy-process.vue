@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -40,6 +41,10 @@ const PAGE_ASSETS = {
 
 function stepIllustrationSrc(stepId: number) {
   return PAGE_ASSETS.stepIllustrations[stepId - 1] ?? PAGE_ASSETS.stepIllustrations[0]
+}
+
+function avifSrc(src: string) {
+  return src.replace(/\.(png|jpe?g)$/i, '.avif')
 }
 
 function guideIconSrc(icon: 'cost' | 'legal' | 'timeline') {
@@ -871,11 +876,17 @@ useHead(() => ({
       <!-- 第一屏（2026-06-05）：整屏虚化背景（右侧局部孕妈妈图）+ 左文案 / 右时间线；左栏下移、CTA 居中 -->
       <section class="relative isolate w-full overflow-hidden bg-white pb-16 pt-12 lg:min-h-[min(88vh,820px)] lg:pb-24 lg:pt-14">
         <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-          <img
+          <OptimizedPicture
             :src="PAGE_ASSETS.heroScene"
+            :avif-src="avifSrc(PAGE_ASSETS.heroScene)"
             alt=""
-            class="absolute inset-0 h-full w-full scale-[1.08] object-cover object-[82%_38%] blur-[8px] lg:object-[88%_42%] lg:blur-[10px]"
-          >
+            :width="1024"
+            :height="1536"
+            picture-class="contents"
+            img-class="absolute inset-0 h-full w-full scale-[1.08] object-cover object-[82%_38%] blur-[8px] lg:object-[88%_42%] lg:blur-[10px]"
+            loading="eager"
+            fetchpriority="high"
+          />
           <div
             class="absolute inset-0"
             style="background: linear-gradient(105deg, #ffffff 0%, #ffffff 34%, rgba(255,255,255,0.97) 48%, rgba(255,255,255,0.82) 58%, rgba(255,255,255,0.45) 72%, rgba(255,255,255,0.12) 86%, transparent 100%)"
@@ -1026,15 +1037,17 @@ useHead(() => ({
               class="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(220px,0.38fr)_minmax(0,1fr)] lg:items-start lg:gap-8 xl:gap-12"
             >
               <div class="overflow-hidden border border-[#dcd6cc] rounded-2xl bg-[#faf9f6] p-3 shadow-[0_8px_28px_rgba(64,84,120,0.05)] sm:p-4">
-                <img
+                <OptimizedPicture
                   :src="stepIllustrationSrc(step.id)"
+                  :avif-src="avifSrc(stepIllustrationSrc(step.id))"
                   :alt="`${stepsInfographicAlt} — ${step.cardTitle}`"
-                  class="mx-auto block max-w-[420px] w-full select-none object-contain lg:max-w-none"
-                  width="640"
-                  height="400"
+                  :width="1536"
+                  :height="1024"
                   loading="lazy"
                   decoding="async"
-                >
+                  picture-class="contents"
+                  img-class="mx-auto block max-w-[420px] w-full select-none object-contain lg:max-w-none"
+                />
               </div>
 
               <article
@@ -1253,22 +1266,30 @@ useHead(() => ({
             </div>
             <div class="relative min-h-[280px] overflow-hidden lg:min-h-[360px]">
               <!-- 底层：右侧完整清晰；左侧由虚化层 + 白渐变与文案衔接 -->
-              <img
+              <OptimizedPicture
                 :src="PAGE_ASSETS.ctaBandPhoto"
+                :avif-src="avifSrc(PAGE_ASSETS.ctaBandPhoto)"
                 alt=""
-                class="cta-band-photo-base h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
+                :width="2000"
+                :height="921"
+                picture-class="contents"
+                img-class="cta-band-photo-base h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
                 loading="lazy"
                 decoding="async"
-              >
+              />
               <!-- 虚化仅在左侧，向右渐隐至清晰 -->
-              <img
+              <OptimizedPicture
                 :src="PAGE_ASSETS.ctaBandPhoto"
+                :avif-src="avifSrc(PAGE_ASSETS.ctaBandPhoto)"
                 alt=""
                 aria-hidden="true"
-                class="cta-band-photo-blur pointer-events-none h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
+                :width="2000"
+                :height="921"
+                picture-class="contents"
+                img-class="cta-band-photo-blur pointer-events-none h-full w-full scale-[1.06] object-cover object-[58%_center] lg:absolute lg:inset-0 lg:min-h-full"
                 loading="lazy"
                 decoding="async"
-              >
+              />
               <div
                 aria-hidden="true"
                 class="cta-band-photo-fade pointer-events-none absolute inset-0"

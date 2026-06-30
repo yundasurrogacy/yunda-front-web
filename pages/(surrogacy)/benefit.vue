@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import RelatedGuides from '@/components/base/RelatedGuides.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
@@ -62,6 +63,10 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+function avifSrc(src: string) {
+  return src.replace(/\.(png|jpe?g)$/i, '.avif')
+}
 
 const translations = {
   en: {
@@ -408,14 +413,18 @@ useHead(() => ({
 
             <div class="benefit-hero-visual relative min-h-[360px] sm:min-h-[420px] lg:min-h-[500px]">
               <div aria-hidden="true" class="benefit-hero-arch pointer-events-none absolute inset-y-0 right-0 w-[88%] max-w-[520px]" />
-              <img
+              <OptimizedPicture
                 :src="PAGE_ASSETS.hero"
+                :avif-src="avifSrc(PAGE_ASSETS.hero)"
                 :alt="c.heroTitle"
-                class="benefit-hero-photo relative z-[1] ml-auto h-full w-[92%] max-w-[540px] object-cover object-[center_28%] sm:w-[88%]"
+                :width="896"
+                :height="1082"
+                picture-class="contents"
+                img-class="benefit-hero-photo relative z-[1] ml-auto h-full w-[92%] max-w-[540px] object-cover object-[center_28%] sm:w-[88%]"
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
-              >
+              />
               <div class="benefit-hero-pay-card absolute bottom-4 right-2 z-[2] sm:bottom-6 sm:right-4">
                 <p class="benefit-hero-pay-label">
                   {{ c.heroPayLabelLine1 }}<br>{{ c.heroPayLabelLine2 }}
@@ -745,21 +754,28 @@ useHead(() => ({
               </div>
 
               <div class="benefit-cta-visual relative min-h-[260px] overflow-hidden sm:min-h-[300px] lg:min-h-[360px]">
-                <img
+                <OptimizedPicture
                   :src="PAGE_ASSETS.cta"
+                  :avif-src="avifSrc(PAGE_ASSETS.cta)"
                   :alt="c.ctaTitle"
-                  class="benefit-cta-photo-base absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
+                  :width="1166"
+                  :height="912"
+                  picture-class="contents"
+                  img-class="benefit-cta-photo-base absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
                   loading="lazy"
                   decoding="async"
-                >
-                <img
+                />
+                <OptimizedPicture
                   :src="PAGE_ASSETS.cta"
+                  :avif-src="avifSrc(PAGE_ASSETS.cta)"
                   alt=""
-                  aria-hidden="true"
-                  class="benefit-cta-photo-blur pointer-events-none absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
+                  :width="1166"
+                  :height="912"
+                  picture-class="contents"
+                  img-class="benefit-cta-photo-blur pointer-events-none absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
                   loading="lazy"
                   decoding="async"
-                >
+                />
                 <div aria-hidden="true" class="benefit-cta-photo-fade pointer-events-none absolute inset-0" />
               </div>
             </div>

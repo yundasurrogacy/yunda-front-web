@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBlogListSchema } from '~/utils/schema'
+import { buildBlogListSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
+import SeoTrustNote from '../../components/base/SeoTrustNote.vue'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
+const dateModified = '2026-06-30'
+const reviewerId = computed(() => `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo`)
 const blogCopyEn = {
   meta: {
     title: 'Surrogacy Blog | Yunda Surrogacy Knowledge Center',
@@ -17,6 +20,22 @@ const blogCopyEn = {
   },
   title: 'Blog',
   intro: 'This blog is your go-to resource for everything surrogacy-related. Whether you’re an intended parent considering your options or a potential surrogate seeking guidance, our articles offer expert insights, real experiences, and valuable resources to support you at every stage of your journey.',
+  directAnswerTitle: 'How to use the Yunda Surrogacy blog',
+  directAnswer: 'The Yunda Surrogacy blog is an education library for intended parents, surrogate candidates, and families comparing U.S. surrogacy options. Use it to research common questions about process, cost, eligibility, screening, compensation, legal coordination, insurance review, IVF, donor eggs, LGBTQ+ and single-parent paths, and emotional support. Blog posts are designed to help readers understand vocabulary, compare next steps, and prepare better consultation questions. They are not legal, medical, insurance, escrow, or financial advice; high-stakes decisions should be confirmed with the relevant qualified professional and the matching Yunda service guide.',
+  trustCards: [
+    {
+      title: 'Start with intent',
+      body: 'Use categories to separate surrogate, intended parent, process, legal, medical, emotional, and brand topics before reading deeper.',
+    },
+    {
+      title: 'Check freshness',
+      body: 'For fast-changing legal, insurance, and medical topics, read the post date and look for reviewed-by and source context inside the article.',
+    },
+    {
+      title: 'Move from article to action',
+      body: 'When a post matches your situation, continue to the related service page or contact the team for case-specific guidance.',
+    },
+  ],
   search: {
     title: 'Blog Search',
     placeholder: 'Search',
@@ -68,6 +87,22 @@ const blogCopyZh = {
   },
   title: '博客',
   intro: '这里汇集代孕相关的专业资讯、真实经验与实用资源，帮助准父母和潜在代孕妈妈在每个阶段都能更清楚地了解流程、选择和注意事项。',
+  directAnswerTitle: '如何使用孕达代孕博客',
+  directAnswer: '孕达代孕博客是面向准父母、代孕候选人和正在比较美国代孕方案家庭的教育资料库。你可以用它研究流程、费用、资格、筛查、补偿、法律协调、保险审核、IVF、捐卵、LGBTQ+ 与单身父母路径以及情绪支持等常见问题。博客文章用于帮助读者理解术语、比较下一步，并为咨询准备更具体的问题。它们不是法律、医疗、保险、托管或财务建议；高风险决定应由对应合格专业人士确认，并结合孕达相关服务专题页继续阅读。',
+  trustCards: [
+    {
+      title: '先按意图筛选',
+      body: '通过分类区分代孕妈妈、准父母、流程、法律、医学、情绪和品牌主题，再进入深度阅读。',
+    },
+    {
+      title: '注意更新时间',
+      body: '法律、保险和医学主题变化较快，阅读时应查看发布日期，并留意文章中的审阅人与来源说明。',
+    },
+    {
+      title: '从文章进入行动',
+      body: '当文章与你的情况相关时，继续阅读对应服务页，或联系团队确认个案化下一步。',
+    },
+  ],
   search: {
     title: '博客搜索',
     placeholder: '搜索',
@@ -614,17 +649,38 @@ const blogListSchema = computed(() => {
   })
 })
 
-useHead(() => (blogListSchema.value
-  ? {
-      script: [
-        {
-          key: 'schema-blog-list',
-          type: 'application/ld+json',
-          children: JSON.stringify(blogListSchema.value),
-        },
-      ],
-    }
-  : {}))
+const blogPageSchema = computed(() => buildWebPageSchema({
+  baseUrl: siteUrl.value || undefined,
+  url: '/blog',
+  name: blogCopy.value.meta.title,
+  description: blogCopy.value.meta.description,
+  about: blogCopy.value.directAnswer,
+  audience: locale.value === 'zh'
+    ? ['准父母', '代孕妈妈', '代孕资讯读者']
+    : ['Intended parents', 'Surrogate candidates', 'Surrogacy information readers'],
+  dateModified,
+  reviewedBy: { '@id': reviewerId.value },
+  locale: locale.value,
+}))
+
+useHead(() => ({
+  script: [
+    {
+      key: 'schema-blog-page',
+      type: 'application/ld+json',
+      children: JSON.stringify(blogPageSchema.value),
+    },
+    ...(blogListSchema.value
+      ? [
+          {
+            key: 'schema-blog-list',
+            type: 'application/ld+json',
+            children: JSON.stringify(blogListSchema.value),
+          },
+        ]
+      : []),
+  ],
+}))
 
 // 清除筛选
 function clearFilters() {
@@ -705,6 +761,47 @@ function formatDateShort(dateString: string) {
           <p class="max-w-[1200px] text-base text-[var(--yunda-bark)] font-bold leading-[1.65] md:text-lg" style="font-family: var(--font-text)">
             {{ blogCopy.intro }}
           </p>
+        </div>
+
+        <div class="mt-8 rounded-[18px] border border-[var(--yunda-bark)]/10 bg-white/78 p-5 shadow-[0_12px_30px_rgba(55,40,25,0.06)] lg:p-7">
+          <p class="mb-3 text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.16em]">
+            {{ locale === 'zh' ? '直接答案' : 'Direct answer' }}
+          </p>
+          <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-[1.12] lg:text-[36px]">
+            {{ blogCopy.directAnswerTitle }}
+          </h2>
+          <p class="mt-4 max-w-5xl text-base text-[var(--yunda-bark)]/82 leading-[1.75]" style="font-family: var(--font-text)">
+            {{ blogCopy.directAnswer }}
+          </p>
+        </div>
+
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <article
+            v-for="item in blogCopy.trustCards"
+            :key="item.title"
+            class="rounded-[16px] border border-[var(--yunda-bark)]/10 bg-white/72 p-5 shadow-[0_8px_24px_rgba(55,40,25,0.05)]"
+          >
+            <h3 class="font-display text-[22px] text-[var(--yunda-bark)] font-semibold leading-snug">
+              {{ item.title }}
+            </h3>
+            <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.75]" style="font-family: var(--font-text)">
+              {{ item.body }}
+            </p>
+          </article>
+        </div>
+
+        <div class="mt-8">
+          <SeoTrustNote
+            :updated="locale === 'zh' ? '最后更新：2026年6月30日' : 'Last updated: June 30, 2026'"
+            :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
+            :note="locale === 'zh' ? '博客内容用于教育和准备咨询问题。涉及法律、医疗、保险、托管或 IVF 决定时，请阅读对应专题页并咨询合格专业人士。' : 'Blog content is for education and consultation preparation. For legal, medical, insurance, escrow, or IVF decisions, read the relevant topic guide and consult qualified professionals.'"
+            :sources="[
+              { label: locale === 'zh' ? '准父母指南' : 'Intended parent hub', href: localePath('/intended-parents') },
+              { label: locale === 'zh' ? '代孕妈妈指南' : 'Surrogate hub', href: localePath('/surrogates') },
+              { label: locale === 'zh' ? '关于团队' : 'About Yunda', href: localePath('/about') },
+              { label: locale === 'zh' ? '免责声明' : 'Disclaimer', href: localePath('/disclaimer') },
+            ]"
+          />
         </div>
 
         <div class="mt-16 grid grid-cols-1 gap-8 lg:mt-20 lg:grid-cols-[4fr_1fr] lg:items-start xl:grid-cols-[5fr_1fr]">

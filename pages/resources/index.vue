@@ -9,6 +9,8 @@ import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
+import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
 import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
 import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/resources-substack-posts'
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
@@ -16,6 +18,11 @@ import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } fr
 const PAGE_ASSETS = {
   hero: '/images/resources-media/hero.webp',
 } as const
+
+const AVIF_IMAGE_BY_PATH: Record<string, string> = {
+  '/images/resources-media/ig-events-01.jpg': '/images/resources-media/ig-events-01.avif',
+  '/images/resources-media/ig-events-02.jpg': '/images/resources-media/ig-events-02.avif',
+}
 
 const SUBSTACK_HOME = 'https://yundasurrogacy.substack.com/'
 const INSTAGRAM_HOME = 'https://www.instagram.com/yunda_surrogacy_/'
@@ -213,6 +220,8 @@ function mergeInstagramCards(baseCards: IgPostCard[]): IgPostCard[] {
 const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const dateModified = '2026-06-30'
+const reviewerId = computed(() => `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo`)
 
 const surrogateUpdateCards = computed(() => mergeInstagramCards(SURROGATE_UPDATES_BASE))
 const eventPostCards = computed(() => mergeInstagramCards(EVENT_POSTS_BASE))
@@ -223,9 +232,32 @@ function formatIgCount(value: number | null) {
 
   return value.toLocaleString(locale.value === 'zh' ? 'zh-CN' : 'en-US')
 }
+
+function getAvifImage(src: string) {
+  return AVIF_IMAGE_BY_PATH[src]
+}
+
 const localePath = useLocalePath()
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const resourcesDirectAnswer = computed(() => locale.value === 'zh'
+  ? '孕达资源与媒体中心把代孕教育内容、Substack 深度说明、代孕妈妈动态、活动资讯和联系入口集中在同一页面。它适合正在比较美国代孕流程、费用、资格、筛查、法律保障、保险、捐卵和跨境沟通的准父母，也适合正在了解代孕申请、补偿与支持的潜在代孕妈妈。博客和 Substack 内容用于解释常见问题；社媒动态用于展示团队活动和旅程片段；高风险决定仍应回到对应专题页面，并由法律、医疗、保险、托管或 IVF 专业人士确认。'
+  : 'Yunda\'s Resources & Media Center brings together surrogacy education, Substack explainers, surrogate journey updates, event coverage, and ways to contact the team. It is for intended parents comparing U.S. surrogacy process, cost, eligibility, screening, legal protection, insurance, egg donation, and cross-border communication, as well as potential surrogates learning about application, compensation, and support. Blog and Substack content explain common questions; social updates show team activity and journey moments; high-stakes decisions should still be reviewed on the relevant service pages and confirmed by legal, medical, insurance, escrow, or IVF professionals.')
+
+const resourceUseCards = computed(() => [
+  {
+    title: locale.value === 'zh' ? '按问题找指南' : 'Find guides by question',
+    body: locale.value === 'zh' ? '如果你想了解流程、费用、资格、法律或保险，先从博客和专题页面进入，再用咨询确认个案细节。' : 'If the question is process, cost, eligibility, legal, or insurance, start with the blog and service guides, then confirm case-specific details in consultation.',
+  },
+  {
+    title: locale.value === 'zh' ? '按旅程看动态' : 'Follow journey context',
+    body: locale.value === 'zh' ? '代孕妈妈动态和活动内容帮助你看到团队文化和社区参与，但它们不是医学或法律结论。' : 'Surrogate updates and event content show team culture and community participation, but they are not medical or legal conclusions.',
+  },
+  {
+    title: locale.value === 'zh' ? '按风险回到专题页' : 'Return to core pages for risk',
+    body: locale.value === 'zh' ? '涉及费用、合同、亲权、保险或筛查时，应阅读对应核心页面和来源说明。' : 'For cost, contracts, parentage, insurance, or screening, use the relevant core page and its source note.',
+  },
+])
 
 const substackCards = computed<SubstackCard[]>(() =>
   c.value.substackPosts.map(post => ({
@@ -301,10 +333,12 @@ const resourcesPageSchema = computed(() => buildWebPageSchema({
   url: '/resources',
   name: c.value.metaTitle,
   description: c.value.metaDescription,
-  about: c.value.heroTitle,
+  about: resourcesDirectAnswer.value,
   audience: locale.value === 'zh'
     ? ['准父母', '代孕妈妈', '代孕资讯读者']
     : ['Intended parents', 'Surrogates', 'Surrogacy information readers'],
+  dateModified,
+  reviewedBy: { '@id': reviewerId.value },
   locale: locale.value,
 }))
 
@@ -349,14 +383,17 @@ useHead(() => ({
       <!-- 第一屏：左 Sage 底 + 标题；右侧宝宝图渐变融入（非左右对半分栏） -->
       <section class="w-full bg-white">
         <div class="resources-hero relative isolate min-h-[min(52vw,320px)] w-full overflow-hidden bg-[var(--yunda-sky)] sm:min-h-[300px] lg:min-h-[360px] xl:min-h-[400px]">
-          <img
+          <OptimizedPicture
             :src="PAGE_ASSETS.hero"
             alt=""
             aria-hidden="true"
-            class="resources-hero-photo pointer-events-none absolute inset-0 h-full w-full object-cover object-[72%_42%] sm:object-[78%_40%] lg:object-[right_center]"
+            picture-class="resources-hero-photo pointer-events-none absolute inset-0 block h-full w-full"
+            img-class="h-full w-full object-cover object-[72%_42%] sm:object-[78%_40%] lg:object-[right_center]"
+            width="736"
+            height="1104"
             loading="eager"
             fetchpriority="high"
-          >
+          />
           <div
             aria-hidden="true"
             class="resources-hero-fade pointer-events-none absolute inset-0"
@@ -383,6 +420,48 @@ useHead(() => ({
             {{ item.label }}
           </a>
         </nav>
+      </section>
+
+      <SeoTrustNote
+        :updated="locale === 'zh' ? '最后更新：2026年6月30日' : 'Last updated: June 30, 2026'"
+        :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
+        :note="locale === 'zh' ? '本页汇总代孕教育、媒体与社交动态，用于帮助用户找到下一篇指南。涉及法律、医疗、保险、托管或 IVF 决定时，请以对应专题页和持证专业人士确认为准。' : 'This page collects surrogacy education, media, and social updates to help visitors find the next guide. Legal, medical, insurance, escrow, or IVF decisions should be confirmed through the relevant topic page and qualified professionals.'"
+        :sources="[
+          { label: locale === 'zh' ? '代孕博客' : 'Surrogacy blog', href: localePath('/blog') },
+          { label: locale === 'zh' ? '关于团队' : 'About Yunda', href: localePath('/about') },
+          { label: locale === 'zh' ? '准父母指南' : 'Intended parent hub', href: localePath('/intended-parents') },
+          { label: locale === 'zh' ? '代孕妈妈指南' : 'Surrogate hub', href: localePath('/surrogates') },
+        ]"
+      />
+
+      <section class="w-full bg-[var(--yunda-petal)] py-12 lg:py-16">
+        <div class="mx-auto max-w-[1320px] px-6 lg:px-10">
+          <div class="rounded-[18px] border border-[var(--yunda-bark)]/10 bg-white/78 p-6 shadow-[0_12px_32px_rgba(55,40,25,0.06)] lg:p-8">
+            <p class="text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.16em]">
+              {{ locale === 'zh' ? '直接答案' : 'Direct answer' }}
+            </p>
+            <h2 class="mt-3 font-display text-[30px] font-semibold leading-[1.12] lg:text-[38px]">
+              {{ locale === 'zh' ? '这个资源中心应该怎么用？' : 'How should visitors use this resource center?' }}
+            </h2>
+            <p class="mt-5 max-w-5xl text-base text-[var(--yunda-bark)]/82 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
+              {{ resourcesDirectAnswer }}
+            </p>
+          </div>
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <article
+              v-for="item in resourceUseCards"
+              :key="item.title"
+              class="rounded-[16px] border border-[var(--yunda-bark)]/10 bg-white/72 p-5 shadow-[0_8px_24px_rgba(55,40,25,0.05)]"
+            >
+              <h3 class="font-display text-[22px] font-semibold leading-snug">
+                {{ item.title }}
+              </h3>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.75]" style="font-family: var(--font-text)">
+                {{ item.body }}
+              </p>
+            </article>
+          </div>
+        </div>
       </section>
 
       <!-- Surrogacy Blog：与首页 BlogNewsSection 一致（含分类筛选） -->
@@ -462,13 +541,17 @@ useHead(() => ({
                 class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
                 :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
-                <img
+                <OptimizedPicture
                   :src="post.image"
+                  :avif-src="getAvifImage(post.image)"
                   :alt="post.alt"
-                  class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+                  picture-class="block"
+                  img-class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+                  width="1080"
+                  height="1350"
                   loading="lazy"
                   decoding="async"
-                >
+                />
                 <div
                   class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
                   style="font-family: var(--font-text)"
@@ -506,13 +589,17 @@ useHead(() => ({
                 class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
                 :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
-                <img
+                <OptimizedPicture
                   :src="post.image"
+                  :avif-src="getAvifImage(post.image)"
                   :alt="post.alt"
-                  class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+                  picture-class="block"
+                  img-class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+                  width="1080"
+                  height="1350"
                   loading="lazy"
                   decoding="async"
-                >
+                />
                 <div
                   class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
                   style="font-family: var(--font-text)"
