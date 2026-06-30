@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue'
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 const introVideo = ref<HTMLVideoElement | null>(null)
 const heroSection = ref<HTMLElement | ComponentPublicInstance | null>(null)
@@ -38,6 +38,7 @@ function handlePause() {
 function resumeVideo() {
   if (!introVideo.value)
     return
+  introVideo.value.muted = isMuted.value
   introVideo.value.play().catch(() => {
     isPlaying.value = false
   })
@@ -84,11 +85,14 @@ onMounted(() => {
   videoReady.value = true
   window.addEventListener('resize', updateDeviceState)
 
-  if (introVideo.value) {
-    introVideo.value.muted = isMuted.value
-    isPlaying.value = !introVideo.value.paused
-  }
-  setupVisibilityObserver()
+  nextTick(() => {
+    if (introVideo.value) {
+      introVideo.value.muted = isMuted.value
+      introVideo.value.load()
+      resumeVideo()
+    }
+    setupVisibilityObserver()
+  })
 })
 
 onBeforeUnmount(() => {
@@ -106,6 +110,20 @@ watch(isMuted, (value) => {
       isMuted.value = true
     })
   }
+})
+
+watch(videoSource, () => {
+  if (!videoReady.value) {
+    return
+  }
+  nextTick(() => {
+    if (!introVideo.value) {
+      return
+    }
+    introVideo.value.muted = isMuted.value
+    introVideo.value.load()
+    resumeVideo()
+  })
 })
 
 function toggleMute() {
