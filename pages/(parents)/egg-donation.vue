@@ -3,12 +3,25 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+const avifImageByPath: Record<string, string> = {
+  '/images/ip/egg/Egg-Donor.png': '/images/ip/egg/Egg-Donor.avif',
+  '/images/ip/egg/IVF-With-Donor-Eggs.png': '/images/ip/egg/IVF-With-Donor-Eggs.avif',
+  '/images/ip/egg/Egg-Donor-for-Surrogacy-1.png': '/images/ip/egg/Egg-Donor-for-Surrogacy-1.avif',
+  '/images/ip/egg/Egg-Donor-for-Surrogacy-2.png': '/images/ip/egg/Egg-Donor-for-Surrogacy-2.avif',
+  '/images/ip/egg/Surrogacy-Journey-3.png': '/images/ip/egg/Surrogacy-Journey-3.avif',
+  '/images/ip/egg/Surrogacy-Journey-4.png': '/images/ip/egg/Surrogacy-Journey-4.avif',
+}
+
+function getAvifImage(src: string) {
+  return avifImageByPath[src]
+}
 
 const translations = {
   en: {
@@ -574,13 +587,17 @@ useHead(() => ({
                 </div>
 
                 <div class="relative overflow-hidden border border-[var(--yunda-maple)]/25 rounded-[26px] bg-white/80 shadow-[0_20px_52px_rgba(64,84,120,0.12)]">
-                  <img
+                  <OptimizedPicture
                     :src="step.img"
+                    :avif-src="getAvifImage(step.img)"
                     :alt="step.imgAlt"
-                    class="h-full w-full object-cover"
+                    :width="idx === 0 ? 1864 : 1616"
+                    :height="idx === 0 ? 1208 : 1056"
+                    picture-class="contents"
+                    img-class="h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"
-                  >
+                  />
                 </div>
               </div>
             </div>
@@ -641,13 +658,17 @@ useHead(() => ({
                   </ul>
 
                   <div class="relative overflow-hidden border border-[var(--yunda-maple)]/24 rounded-[18px] bg-white/90 shadow-[0_16px_44px_rgba(169,108,66,0.16)] lg:place-self-center">
-                    <img
+                    <OptimizedPicture
                       :src="card.img"
+                      :avif-src="getAvifImage(card.img)"
                       :alt="card.imgAlt"
-                      class="h-full w-full object-cover"
+                      :width="idx === 0 ? 2178 : 2746"
+                      :height="idx === 0 ? 1188 : 1256"
+                      picture-class="contents"
+                      img-class="h-full w-full object-cover"
                       loading="lazy"
                       decoding="async"
-                    >
+                    />
                     <div class="absolute inset-0 from-black/8 via-transparent to-transparent bg-gradient-to-t" />
                   </div>
                 </div>
@@ -723,13 +744,17 @@ useHead(() => ({
                 :key="photo.src"
                 class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-[18px] bg-white/90 shadow-[0_14px_40px_rgba(64,84,120,0.12)] transition-transform duration-300 ease-out hover:shadow-[0_20px_48px_rgba(39,31,24,0.14)] hover:-translate-y-1"
               >
-                <img
+                <OptimizedPicture
                   :src="photo.src"
+                  :avif-src="getAvifImage(photo.src)"
                   :alt="photo.alt"
-                  class="h-full w-full object-cover"
+                  :width="photo.src.includes('Surrogacy-Journey-3') ? 832 : photo.src.includes('Surrogacy-Journey-4') ? 1056 : undefined"
+                  :height="photo.src.includes('Surrogacy-Journey-3') ? 1248 : photo.src.includes('Surrogacy-Journey-4') ? 992 : undefined"
+                  picture-class="contents"
+                  img-class="h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
-                >
+                />
               </div>
             </div>
           </div>

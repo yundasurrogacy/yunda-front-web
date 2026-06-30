@@ -15,7 +15,7 @@ onMounted(() => {
   >
     <div class="container mx-auto w-full md:max-w-300">
       <!-- Kayla Luo -->
-      <div class="team-member mb-16 flex flex-col gap-8 py-4 lg:flex-row lg:items-center">
+      <div id="kayla-luo" class="team-member mb-16 flex flex-col gap-8 py-4 lg:flex-row lg:items-center">
         <!-- 移动端标题在图片上方 -->
         <div class="text-center lg:hidden">
           <h2 class="mb-2 font-display text-[30px] text-[var(--yunda-bark)] font-medium lg:text-[38px]">
@@ -28,10 +28,13 @@ onMounted(() => {
 
         <div class="slide-left w-full flex flex-shrink-0 justify-center lg:w-[215px]">
           <picture class="block h-60 w-40 overflow-hidden rounded-lg lg:h-72 lg:w-48">
+            <source srcset="/images/base/kayla-luo.avif" type="image/avif">
             <source srcset="/images/base/kayla-luo.webp" type="image/webp">
             <img
               src="/images/base/kayla-luo.png" alt="Kayla Luo"
               class="h-full w-full object-cover"
+              width="3024"
+              height="4032"
               loading="lazy"
               decoding="async"
             >

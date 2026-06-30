@@ -3,12 +3,19 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
+
+const avifImageByPath: Record<string, string> = {
+  '/images/ip/Legal-for-Surrogacy.png': '/images/ip/Legal-for-Surrogacy.avif',
+  '/images/ip/surrogacy-insurance.png': '/images/ip/surrogacy-insurance.avif',
+  '/images/surrogacy/i-s-3.png': '/images/surrogacy/i-s-3.avif',
+}
 
 const asrmPhotos = [
   'https://qiniu-resources.weweknow.com/yundasurrogacy-1/about-us/asrm-1.jpg',
@@ -370,16 +377,18 @@ useHead(() => ({
 
               <div class="flex items-center justify-center">
                 <div class="max-w-[520px] w-full overflow-hidden border border-white/70 rounded-[28px] bg-white/85 shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
-                  <picture>
-                    <source srcset="/images/ip/Legal-for-Surrogacy.png" type="image/png">
-                    <img
-                      src="/images/ip/Legal-for-Surrogacy.png"
-                      :alt="c.heroImgAlt"
-                      class="h-[320px] w-full object-cover lg:h-[380px]"
-                      loading="lazy"
-                      decoding="async"
-                    >
-                  </picture>
+                  <OptimizedPicture
+                    src="/images/ip/Legal-for-Surrogacy.png"
+                    :avif-src="avifImageByPath['/images/ip/Legal-for-Surrogacy.png']"
+                    :alt="c.heroImgAlt"
+                    :width="855"
+                    :height="998"
+                    picture-class="contents"
+                    img-class="h-[320px] w-full object-cover lg:h-[380px]"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
                 </div>
               </div>
             </div>
@@ -563,16 +572,17 @@ useHead(() => ({
 
               <div class="flex items-start justify-center">
                 <div class="max-w-[520px] w-full overflow-hidden border border-[var(--yunda-maple)]/20 rounded-[28px] bg-[var(--yunda-petal)] shadow-[0_22px_52px_rgba(64,84,120,0.12)]">
-                  <picture>
-                    <source srcset="/images/ip/surrogacy-insurance.png" type="image/png">
-                    <img
-                      src="/images/ip/surrogacy-insurance.png"
-                      :alt="c.illustrationAlt"
-                      class="h-full w-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    >
-                  </picture>
+                  <OptimizedPicture
+                    src="/images/ip/surrogacy-insurance.png"
+                    :avif-src="avifImageByPath['/images/ip/surrogacy-insurance.png']"
+                    :alt="c.illustrationAlt"
+                    :width="1280"
+                    :height="853"
+                    picture-class="contents"
+                    img-class="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
             </div>
@@ -591,10 +601,17 @@ useHead(() => ({
           <div class="mx-auto max-w-[1480px] border border-[var(--yunda-maple)]/18 rounded-[28px] bg-white/92 p-8 shadow-[0_22px_64px_rgba(64,84,120,0.10)] backdrop-blur-xl lg:p-12">
             <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div class="flex items-start gap-4">
-                <picture class="hidden h-16 w-16 overflow-hidden border border-[var(--yunda-maple)]/25 rounded-full bg-[var(--yunda-petal)] shadow-[0_10px_28px_rgba(64,84,120,0.12)] lg:block">
-                  <source srcset="/images/surrogacy/i-s-3.png" type="image/png">
-                  <img src="/images/surrogacy/i-s-3.png" alt="Insurance coverage illustration" class="h-full w-full object-cover">
-                </picture>
+                <OptimizedPicture
+                  src="/images/surrogacy/i-s-3.png"
+                  :avif-src="avifImageByPath['/images/surrogacy/i-s-3.png']"
+                  alt="Insurance coverage illustration"
+                  :width="1464"
+                  :height="900"
+                  picture-class="hidden h-16 w-16 overflow-hidden border border-[var(--yunda-maple)]/25 rounded-full bg-[var(--yunda-petal)] shadow-[0_10px_28px_rgba(64,84,120,0.12)] lg:block"
+                  img-class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div>
                   <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
                     {{ c.s4Title }}

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import RelatedGuides from '@/components/base/RelatedGuides.vue'
+import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
 
 const { locale } = useI18n()
@@ -21,6 +22,35 @@ const pageDescription = computed(() => tt(
   'Explore Yunda Surrogacy resources for surrogates, including requirements, compensation, screening, journey steps, protection, and application guidance.',
   '了解 Yunda Surrogacy 为代孕妈妈准备的资格、补偿、筛查、流程、保障与申请指南。',
 ))
+
+const dateModified = '2026-06-30'
+const reviewerId = computed(() => `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo`)
+
+const directAnswer = computed(() => tt(
+  'Yunda\'s surrogate hub helps women decide whether to explore gestational surrogacy by organizing the questions that matter most before applying: basic eligibility, pay and benefits, screening, legal protection, insurance review, escrow payment timing, matching, embryo transfer, pregnancy support, and referral options. The hub is educational and does not replace medical, legal, psychological, or insurance review. A candidate can use it to understand what Yunda reviews first, what licensed professionals confirm later, and which guide to read before submitting an application or referring someone they care about.',
+  '孕达代孕妈妈 Hub 帮助女性在申请前判断是否适合继续了解妊娠代孕，集中整理最重要的问题：基础资格、补偿与福利、筛查、法律保护、保险审核、托管付款时间、匹配、胚胎移植、孕期支持和推荐方式。本 Hub 属于教育内容，不替代医疗、法律、心理或保险审核。候选人可以用它了解孕达先看哪些条件、后续由哪些持证专业人士确认，以及在提交申请或推荐朋友前应该先阅读哪篇指南。',
+))
+
+const decisionSteps = computed(() => [
+  {
+    title: tt('1. Check fit before forms', '1. 填表前先判断适配度'),
+    body: tt('Start with age, pregnancy history, health background, lifestyle, appointment availability, transportation, and support at home.', '先看年龄、孕产史、健康背景、生活方式、就诊配合度、交通和家庭支持。'),
+  },
+  {
+    title: tt('2. Review pay with protections', '2. 把补偿和保障一起看'),
+    body: tt('Compensation matters, but candidates should also review escrow timing, insurance review, legal counsel, reimbursements, and what happens at each milestone.', '补偿很重要，但也要同时了解托管付款时间、保险审核、法律顾问、报销项目和每个节点会发生什么。'),
+  },
+  {
+    title: tt('3. Understand who confirms what', '3. 分清谁来确认什么'),
+    body: tt('Yunda can coordinate and explain the journey; clinics, psychologists, attorneys, and insurance professionals confirm approval, documents, and safeguards.', '孕达负责协调和说明流程；诊所、心理专家、律师和保险专业人士负责确认批准、文件和保障。'),
+  },
+])
+
+const trustPoints = computed(() => [
+  tt('Clear candidate-first language that avoids treating surrogates as a transaction.', '使用尊重候选人的语言，避免把代孕妈妈交易化。'),
+  tt('Visible links to eligibility, screening, compensation, journey, and legal/transfer details.', '清晰链接到资格、筛查、补偿、旅程以及法律/移植细节。'),
+  tt('Trust note clarifies that final approval depends on professional review, not website copy.', '信任说明明确最终批准取决于专业审核，而不是网页文案。'),
+])
 
 const guideLinks = computed(() => [
   {
@@ -120,8 +150,10 @@ const pageSchema = computed(() => buildWebPageSchema({
   url: '/surrogates',
   name: pageTitle.value,
   description: pageDescription.value,
-  about: tt('Surrogate education hub and internal guide for Yunda Surrogacy.', 'Yunda Surrogacy 代孕妈妈教育中心与内部指南入口。'),
+  about: directAnswer.value,
   audience: tt('Surrogates', '代孕妈妈'),
+  dateModified,
+  reviewedBy: { '@id': reviewerId.value },
   locale: locale.value,
 }))
 
@@ -192,6 +224,28 @@ useHead(() => ({
         </div>
       </section>
 
+      <SeoTrustNote
+        :updated="tt('Last updated: June 30, 2026', '最后更新：2026年6月30日')"
+        :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
+        :note="tt('This hub explains surrogate eligibility, pay, screening, and support in plain language. Final approval depends on OB records, clinic medical clearance, psychological screening, legal review, insurance review, and program requirements.', '本 Hub 用清晰语言说明代孕妈妈资格、补偿、筛查和支持。最终批准取决于产科病历、诊所医学清关、心理筛查、法律审核、保险审核和项目要求。')"
+        :sources="[
+          { label: tt('Requirements', '资格要求'), href: localePath('/surrogate-requirements') },
+          { label: tt('Pay and benefits', '补偿与福利'), href: localePath('/benefit') },
+          { label: tt('Screening guide', '筛查指南'), href: localePath('/screening') },
+          { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
+        ]"
+      />
+
+      <section class="hub-shell answer-section">
+        <div class="answer-card">
+          <p class="eyebrow">
+            {{ tt('Direct answer', '直接答案') }}
+          </p>
+          <h2>{{ tt('How should surrogate candidates use this hub?', '代孕候选人应该如何使用这个 Hub？') }}</h2>
+          <p>{{ directAnswer }}</p>
+        </div>
+      </section>
+
       <section class="hub-shell hub-section">
         <div class="section-heading">
           <p class="eyebrow">
@@ -211,6 +265,26 @@ useHead(() => ({
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
           </NuxtLink>
+        </div>
+      </section>
+
+      <section class="hub-shell decision-section">
+        <div class="section-heading">
+          <p class="eyebrow">
+            {{ tt('Decision path', '决策路径') }}
+          </p>
+          <h2>{{ tt('Use the hub to lower uncertainty before applying', '申请前先用这个 Hub 降低不确定性') }}</h2>
+        </div>
+        <div class="decision-grid">
+          <article v-for="item in decisionSteps" :key="item.title" class="decision-card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </article>
+        </div>
+        <div class="trust-strip" aria-label="Trust signals">
+          <p v-for="point in trustPoints" :key="point">
+            {{ point }}
+          </p>
         </div>
       </section>
 
@@ -321,7 +395,37 @@ h1 {
 }
 
 .hub-section {
-  padding: 72px 0 88px;
+  padding: 56px 0 72px;
+}
+
+.answer-section {
+  padding: 48px 0 12px;
+}
+
+.answer-card,
+.decision-card,
+.trust-strip {
+  border: 1px solid rgba(39, 31, 24, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 30px rgba(39, 31, 24, 0.06);
+}
+
+.answer-card {
+  padding: 28px;
+}
+
+.answer-card h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.answer-card p:last-child {
+  max-width: 880px;
+  margin: 16px 0 0;
+  font-size: 1.04rem;
+  line-height: 1.75;
+  color: rgba(39, 31, 24, 0.82);
 }
 
 .section-heading {
@@ -378,9 +482,51 @@ h1 {
   color: rgba(39, 31, 24, 0.78);
 }
 
+.decision-section {
+  padding: 0 0 72px;
+}
+
+.decision-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.decision-card {
+  padding: 22px;
+}
+
+.decision-card h3 {
+  margin: 0;
+  font-size: 1.28rem;
+}
+
+.decision-card p {
+  margin: 10px 0 0;
+  line-height: 1.7;
+  color: rgba(39, 31, 24, 0.78);
+}
+
+.trust-strip {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.trust-strip p {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
 @media (min-width: 768px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .decision-grid,
+  .trust-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

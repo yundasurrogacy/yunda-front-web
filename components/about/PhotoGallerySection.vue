@@ -247,7 +247,10 @@ watch(activeCategory, () => {
               :src="photo.thumbnail || photo.url"
               :alt="photo.alt"
               class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              width="1200"
+              height="1200"
               loading="lazy"
+              decoding="async"
             >
             <!-- 悬停遮罩 -->
             <div class="absolute inset-0 from-black/40 via-transparent to-transparent bg-gradient-to-t opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -310,6 +313,9 @@ watch(activeCategory, () => {
               :src="carouselPhotos[currentIndex]?.url"
               :alt="carouselPhotos[currentIndex]?.alt"
               class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl"
+              width="1200"
+              height="1200"
+              decoding="async"
             >
           </div>
 

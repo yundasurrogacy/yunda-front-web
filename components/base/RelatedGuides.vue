@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import OptimizedPicture from './OptimizedPicture.vue'
+
 interface RelatedGuideLink {
   to: string
   title: string
@@ -16,6 +18,11 @@ defineProps<{
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const avifImageByPath: Record<string, string> = {
+  '/images/benefit/redesign/hero.jpg': '/images/benefit/redesign/hero.avif',
+  '/images/california-surrogacy-process.jpg': '/images/california-surrogacy-process.avif',
+  '/images/landingpage3/Surrogate-Requirements.jpg': '/images/landingpage3/Surrogate-Requirements.avif',
+}
 
 function isBlogLink(link: RelatedGuideLink) {
   return link.to.startsWith('/blog/')
@@ -51,6 +58,10 @@ function getImage(link: RelatedGuideLink) {
   return '/images/blog-hero.jpg'
 }
 
+function getAvifImage(link: RelatedGuideLink) {
+  return avifImageByPath[getImage(link)]
+}
+
 function getDate(link: RelatedGuideLink) {
   if (link.date)
     return link.date
@@ -79,13 +90,17 @@ function getDate(link: RelatedGuideLink) {
         >
           <article class="flex h-full w-full flex-col">
             <div class="h-[220px] overflow-hidden bg-[var(--yunda-petal)] md:h-[190px] lg:h-[220px]">
-              <img
+              <OptimizedPicture
                 :src="getImage(link)"
+                :avif-src="getAvifImage(link)"
                 :alt="link.title"
-                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                :width="1200"
+                :height="800"
+                picture-class="contents"
+                img-class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
-              >
+              />
             </div>
             <div class="flex flex-1 flex-col px-6 py-6 lg:px-7 lg:py-7">
               <div class="mb-4 flex flex-wrap items-center gap-3">
