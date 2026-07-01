@@ -136,7 +136,7 @@ function toggleMute() {
         :muted="isMuted"
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         poster="/videos/video-default-poster.webp"
         @loadedmetadata="resumeVideo"
         @canplay="resumeVideo"
@@ -209,28 +209,14 @@ function toggleMute() {
 .video-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%;
+  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 767px) {
   .video-wrapper {
-    padding-bottom: 177.78%;
+    aspect-ratio: 9 / 15.2;
+    max-height: calc(100svh - 80px);
   }
-}
-
-.poster-fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-}
-
-.poster-fallback img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .video-element {
