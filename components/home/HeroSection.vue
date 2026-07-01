@@ -130,17 +130,19 @@ function toggleMute() {
         :key="videoSource"
         ref="introVideo"
         class="video-element"
+        :src="videoSource"
+        aria-label="Yunda Surrogacy homepage introduction video"
         autoplay
-        muted
+        :muted="isMuted"
         loop
         playsinline
         preload="auto"
         poster="/videos/video-default-poster.webp"
+        @loadedmetadata="resumeVideo"
+        @canplay="resumeVideo"
         @play="handlePlay"
         @pause="handlePause"
-      >
-        <source :src="videoSource" type="video/mp4">
-      </video>
+      />
       <button
         v-if="!isPlaying"
         type="button"
