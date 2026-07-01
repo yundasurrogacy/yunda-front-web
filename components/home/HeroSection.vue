@@ -6,7 +6,6 @@ const introVideo = ref<HTMLVideoElement | null>(null)
 const heroSection = ref<HTMLElement | ComponentPublicInstance | null>(null)
 const isMuted = ref(true)
 const isMobile = ref(false)
-const videoReady = ref(false)
 const isPlaying = ref(false)
 let visibilityObserver: IntersectionObserver | null = null
 
@@ -14,9 +13,6 @@ const DESKTOP_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1
 const MOBILE_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_mobile.mp4'
 
 const videoSource = computed(() => {
-  if (!videoReady.value) {
-    return ''
-  }
   return isMobile.value ? MOBILE_VIDEO_SRC : DESKTOP_VIDEO_SRC
 })
 
@@ -68,7 +64,7 @@ function setupVisibilityObserver() {
   visibilityObserver?.disconnect()
   visibilityObserver = new IntersectionObserver((entries) => {
     const entry = entries[0]
-    if (!entry || !videoReady.value)
+    if (!entry)
       return
     if (entry.isIntersecting)
       resumeVideo()
@@ -82,7 +78,6 @@ function setupVisibilityObserver() {
 
 onMounted(() => {
   updateDeviceState()
-  videoReady.value = true
   window.addEventListener('resize', updateDeviceState)
 
   nextTick(() => {
@@ -101,7 +96,7 @@ onBeforeUnmount(() => {
 })
 
 watch(isMuted, (value) => {
-  if (!introVideo.value || !videoReady.value) {
+  if (!introVideo.value) {
     return
   }
   introVideo.value.muted = value
@@ -113,9 +108,6 @@ watch(isMuted, (value) => {
 })
 
 watch(videoSource, () => {
-  if (!videoReady.value) {
-    return
-  }
   nextTick(() => {
     if (!introVideo.value) {
       return
@@ -134,19 +126,15 @@ function toggleMute() {
 <template>
   <section ref="heroSection" class="hero-section">
     <div class="video-wrapper">
-      <div v-if="!videoReady" class="poster-fallback">
-        <img src="/videos/video-default-poster.webp" alt="Hero Poster">
-      </div>
       <video
-        v-else
         :key="videoSource"
         ref="introVideo"
         class="video-element"
         autoplay
-        :muted="isMuted"
+        muted
         loop
         playsinline
-        preload="metadata"
+        preload="auto"
         poster="/videos/video-default-poster.webp"
         @play="handlePlay"
         @pause="handlePause"
@@ -154,7 +142,7 @@ function toggleMute() {
         <source :src="videoSource" type="video/mp4">
       </video>
       <button
-        v-if="videoReady && !isPlaying"
+        v-if="!isPlaying"
         type="button"
         class="play-toggle"
         aria-label="播放视频"

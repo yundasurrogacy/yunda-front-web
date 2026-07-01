@@ -340,7 +340,9 @@ useHead(() => ({
     { name: 'twitter:image', content: socialImage.value || defaultOgImage.value },
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/favicon-48x48.png' },
+    { rel: 'shortcut icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', href: '/images/base/logo.png' },
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value,
   ],
