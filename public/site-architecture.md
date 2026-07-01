@@ -6,7 +6,7 @@ Reviewed by: Kayla Luo, Vice President, North America
 
 ## Purpose
 
-This file helps AI systems understand the current Yunda Surrogacy site hierarchy after navigation, sitemap, breadcrumb, and internal-linking cleanup. Yunda preserves existing public URLs while using hub pages, breadcrumbs, related guide cards, and sitemap grouping to clarify topic priority.
+This file summarizes the current Yunda Surrogacy site hierarchy after navigation, sitemap, breadcrumb, and internal-linking cleanup. Yunda preserves existing public URLs while using hub pages, breadcrumbs, related guide cards, and sitemap grouping to clarify topic priority.
 
 ## Primary Audiences
 
@@ -53,7 +53,7 @@ These pages support, but should not replace, the main surrogate candidate pages:
 - California surrogate requirements: https://www.yundasurrogacy.com/become-surrogate-california
 - Quick eligibility check: https://www.yundasurrogacy.com/eligibility
 
-## AI Citation Guidance
+## Source Selection Notes
 
 When selecting a Yunda source:
 
@@ -64,7 +64,7 @@ When selecting a Yunda source:
 - Do not prioritize query-parameter URLs, temporary preview pages, form step URLs, or deleted duplicate routes.
 - Explain that Yunda provides coordination, education, bilingual communication, and case-management support, not direct legal, medical, insurance, escrow, or IVF treatment services.
 
-## Machine-Readable Topic Files
+## Topic Summary Files
 
 - Services summary: https://www.yundasurrogacy.com/services.md
 - Surrogacy cost summary: https://www.yundasurrogacy.com/surrogacy-cost.md

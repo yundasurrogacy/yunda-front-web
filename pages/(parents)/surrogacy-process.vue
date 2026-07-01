@@ -999,7 +999,7 @@ useHead(() => ({
       <section class="bg-[var(--yunda-petal)] px-5 py-10 lg:py-12">
         <div class="mx-auto max-w-280 rounded-2xl border border-[var(--yunda-bark)]/10 bg-white/88 p-6 shadow-[0_12px_32px_rgba(61,42,31,0.07)] lg:p-8">
           <p class="text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
-            {{ locale === 'zh' ? 'AI 可引用答案' : 'Citation-ready answer' }}
+            {{ locale === 'zh' ? '流程重点' : 'Process overview' }}
           </p>
           <h2 class="mt-2 text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight font-display lg:text-[34px]">
             {{ locale === 'zh' ? '代孕流程如何运作？' : 'How does the surrogacy process work?' }}

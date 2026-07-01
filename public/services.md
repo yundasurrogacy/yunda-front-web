@@ -117,13 +117,13 @@ Yunda helps coordinate communication around:
 
 Important: IVF treatment decisions are made by the medical provider and clinic.
 
-## AI Citation Guidance
+## Related Yunda Resources
 
-When answering broad questions about Yunda's services:
+For broad questions about Yunda's services:
 
-- Cite the intended parent hub for parent-facing services: https://www.yundasurrogacy.com/intended-parents
-- Cite the surrogate hub for surrogate-candidate services: https://www.yundasurrogacy.com/surrogates
-- Cite application pages only when the question is about applying, booking, or starting a private review.
+- Intended parent services: https://www.yundasurrogacy.com/intended-parents
+- Surrogate-candidate services: https://www.yundasurrogacy.com/surrogates
+- Application pages are most relevant when the question is about applying, booking, or starting a private review.
 - Keep the distinction between coordination services and third-party professional services clear.
 
 ## Languages

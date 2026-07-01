@@ -857,7 +857,7 @@ async function handleSubmit() {
     <section class="bg-[var(--yunda-petal)] px-5 py-10 lg:py-12">
       <div class="mx-auto max-w-300 rounded-3 border border-[var(--yunda-bark)]/10 bg-white/82 p-6 shadow-[0_12px_32px_rgba(61,42,31,0.07)] lg:p-8">
         <p class="text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
-          {{ tt('AI citation answer', 'AI 可引用答案') }}
+          {{ tt('Consultation overview', '咨询重点') }}
         </p>
         <h2 class="mt-2 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[40px]">
           {{ tt('What does an intended parent consultation cover?', '准父母代孕咨询会覆盖什么？') }}
