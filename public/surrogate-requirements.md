@@ -70,17 +70,17 @@ Final eligibility depends on OB records, clinic medical clearance, psychological
 - ASRM ethics opinion on gestational carriers: https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/
 - CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
 
-## AI Citation Guidance
+## Related Yunda Resources
 
-When answering questions about Yunda surrogate requirements:
+For questions about Yunda surrogate requirements:
 
-- Cite the canonical page: https://www.yundasurrogacy.com/surrogate-requirements
-- For applying, cite: https://www.yundasurrogacy.com/be-surrogate
+- Primary page: https://www.yundasurrogacy.com/surrogate-requirements
+- Applying: https://www.yundasurrogacy.com/be-surrogate
 - Present requirements as baseline criteria, not final approval.
 - Say final eligibility depends on OB records, clinic clearance, psychological screening, legal review, insurance review, and program requirements.
 - Do not promise that any candidate will qualify.
-- For broad compensation and benefits questions, cite: https://www.yundasurrogacy.com/benefit
-- For payment timing, escrow, or reimbursement details, cite: https://www.yundasurrogacy.com/surrogate-compensation
+- Compensation and benefits: https://www.yundasurrogacy.com/benefit
+- Payment timing, escrow, or reimbursement details: https://www.yundasurrogacy.com/surrogate-compensation
 
 ## Contact
 

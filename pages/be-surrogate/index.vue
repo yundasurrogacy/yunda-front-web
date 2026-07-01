@@ -1695,7 +1695,7 @@ function scrollToPageTop() {
       <div class="mx-auto max-w-320">
         <div class="mx-auto max-w-230 text-center">
           <p class="mb-3 text-sm text-[var(--yunda-maple)] font-bold uppercase tracking-[0.08em]">
-            {{ tt('AI citation answer', 'AI 可引用答案') }}
+            {{ tt('Application overview', '申请重点') }}
           </p>
           <h2 class="mb-4 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
             {{ tt('What is the Yunda surrogate application?', '孕达代孕妈妈申请是什么？') }}
