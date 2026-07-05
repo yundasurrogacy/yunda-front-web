@@ -537,6 +537,7 @@ export interface FAQPageSchemaOptions {
   faqs: FAQItem[]
   baseUrl?: string
   url?: string
+  faqPageId?: string
   locale?: string
   inLanguage?: string
 }
@@ -545,10 +546,12 @@ export function buildFAQPageSchema(options: FAQPageSchemaOptions) {
   const baseUrl = options.baseUrl || DEFAULT_BASE_URL
   const faqs = normalizeFAQItems(options.faqs)
   const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
+  const pageUrl = resolveLocalizedUrl(baseUrl, options.url || '/', inLanguage)
 
   return cleanSchema({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': options.faqPageId || `${pageUrl}#faq`,
     'name': options.name,
     'description': options.description,
     'mainEntity': faqs.map(item => cleanSchema({
@@ -560,7 +563,7 @@ export function buildFAQPageSchema(options: FAQPageSchemaOptions) {
       },
     })),
     'inLanguage': inLanguage,
-    'url': resolveLocalizedUrl(baseUrl, options.url || '/', inLanguage),
+    'url': pageUrl,
   })
 }
 
@@ -604,6 +607,7 @@ export interface WebPageSchemaOptions {
   url: string
   about?: string
   audience?: string | string[]
+  mainEntity?: SchemaRecord
   dateModified?: string
   reviewedBy?: SchemaRecord | string
   baseUrl?: string
@@ -630,6 +634,7 @@ export function buildWebPageSchema(options: WebPageSchemaOptions) {
     'description': options.description,
     'about': options.about,
     'audience': options.audience,
+    'mainEntity': options.mainEntity,
     'dateModified': options.dateModified,
     'reviewedBy': options.reviewedBy,
     'publisher': {
