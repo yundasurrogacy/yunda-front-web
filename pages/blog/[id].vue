@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import { computed } from 'vue'
+﻿<script setup lang="ts">
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildWebPageSchema } from '~/utils/schema'
+import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildFAQPageSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -38,6 +38,11 @@ const blogCopyEn = {
   quickAnswersTitle: 'Quick answers',
   reviewedByLabel: 'Reviewed by',
   lastUpdatedLabel: 'Updated',
+  relatedPostsEyebrow: 'Keep reading',
+  relatedPostsTitle: 'Related Posts',
+  relatedPostsIntro: 'Continue with related Yunda guides that answer nearby questions and help you compare next steps.',
+  readRelatedPost: 'Read article',
+  backToTop: 'Back to top',
   loading: 'Loading...',
   backToList: 'Back to Blog List',
   detailNoContent: 'No content available',
@@ -66,6 +71,11 @@ const blogCopyZh = {
   quickAnswersTitle: '快速答案',
   reviewedByLabel: '审阅人',
   lastUpdatedLabel: '更新于',
+  relatedPostsEyebrow: '继续阅读',
+  relatedPostsTitle: '相关文章',
+  relatedPostsIntro: '继续阅读孕达相关指南，了解相近问题并比较下一步选择。',
+  readRelatedPost: '阅读文章',
+  backToTop: '返回顶部',
   loading: '加载中...',
   backToList: '返回博客列表',
   detailNoContent: '暂无内容',
@@ -73,8 +83,8 @@ const blogCopyZh = {
 
 const blogCopy = computed(() => (locale.value === 'zh' ? blogCopyZh : blogCopyEn))
 const ctaCopy = computed(() => ({
-  parent: locale.value === 'zh' ? '开启您的育儿之旅' : 'Become a Intended Parent',
-  surrogate: locale.value === 'zh' ? '开启代孕之旅' : 'Become a Surrogate',
+  parent: locale.value === 'zh' ? '准父母提交询盘' : 'Intended Parent Inquiry',
+  surrogate: locale.value === 'zh' ? '代孕妈妈提交询盘' : 'Surrogate Candidate Inquiry',
 }))
 
 function getUiCategoryLabel(key: keyof typeof blogCopyEn.categories | string) {
@@ -91,6 +101,10 @@ interface Blog {
   content?: string
   en_title?: string
   en_content?: string
+  seo_title?: string
+  seo_description?: string
+  en_seo_title?: string
+  en_seo_description?: string
   excerpt?: string
   en_excerpt?: string
   meta_description?: string
@@ -103,6 +117,17 @@ interface Blog {
   updated_at: string
 }
 
+interface BlogListResponse {
+  blogs: Blog[]
+  pagination?: {
+    currentPage?: number
+    totalPages?: number
+    totalCount?: number
+    limit?: number
+    hasNextPage?: boolean
+  }
+}
+
 const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
 const blogCacheKey = computed(() => `blog-${route.params.id}-${blogApiLang.value}`)
 const blogApiUrl = computed(() => {
@@ -110,13 +135,13 @@ const blogApiUrl = computed(() => {
   return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}`
 })
 
-// 获取博客详情数据，支持缓存和预加载
-// 首先尝试通过route_id查询，如果失败则通过id查询
+// 鑾峰彇鍗氬璇︽儏鏁版嵁锛屾敮鎸佺紦瀛樺拰棰勫姞杞?
+// 棣栧厛灏濊瘯閫氳繃route_id鏌ヨ锛屽鏋滃け璐ュ垯閫氳繃id鏌ヨ
 const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
   key: blogCacheKey.value,
-  server: true, // 保持服务端渲染以支持 SEO
+  server: true, // 淇濇寔鏈嶅姟绔覆鏌撲互鏀寔 SEO
   default: () => null,
-  // 添加客户端缓存，10分钟内不重复请求
+  // 娣诲姞瀹㈡埛绔紦瀛橈紝10鍒嗛挓鍐呬笉閲嶅璇锋眰
   getCachedData: (key) => {
     const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     if (payloadData) {
@@ -128,20 +153,20 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
       if (cached) {
         try {
           const { data, timestamp } = JSON.parse(cached)
-          // 10分钟缓存
+          // 10鍒嗛挓缂撳瓨
           if (Date.now() - timestamp < 10 * 60 * 1000) {
             return data
           }
         }
         catch {
-          // 忽略缓存解析错误
+          // 蹇界暐缂撳瓨瑙ｆ瀽閿欒
         }
       }
     }
     return undefined
   },
   onResponse({ response }) {
-    // 缓存响应数据
+    // 缂撳瓨鍝嶅簲鏁版嵁
     if (import.meta.client && response._data) {
       try {
         sessionStorage.setItem(blogCacheKey.value, JSON.stringify({
@@ -150,7 +175,7 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
         }))
       }
       catch {
-        // 忽略存储错误
+        // 蹇界暐瀛樺偍閿欒
       }
     }
   },
@@ -158,7 +183,7 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
     if (data && typeof data === 'object' && 'id' in data && 'title' in data) {
       return data as Blog
     }
-    // 如果通过route_id查询失败，尝试通过id查询
+    // 濡傛灉閫氳繃route_id鏌ヨ澶辫触锛屽皾璇曢€氳繃id鏌ヨ
     try {
       const fallbackResponse = await $fetch(`${apiBase.value}/api/blog?id=${encodeURIComponent(String(route.params.id))}&lang=${blogApiLang.value}`)
       if (fallbackResponse && typeof fallbackResponse === 'object' && 'id' in fallbackResponse && 'title' in fallbackResponse) {
@@ -172,7 +197,23 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
   },
 })
 
-// 分类选项配置
+const relatedPostsCacheKey = computed(() => `related-posts-${route.params.id}-${blogApiLang.value}-${blog.value?.category || 'all'}`)
+const relatedPostsQuery = computed(() => ({
+  page: 1,
+  limit: 8,
+  lang: blogApiLang.value,
+  ...(blog.value?.category ? { category: blog.value.category } : {}),
+}))
+
+const { data: relatedPostsData } = await useFetch<BlogListResponse>(computed(() => `${apiBase.value}/api/blog`), {
+  key: relatedPostsCacheKey.value,
+  query: relatedPostsQuery,
+  server: true,
+  default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),
+  transform: (data: any) => data,
+})
+
+// 鍒嗙被閫夐」閰嶇疆
 const categoryOptions = [
   { key: 'categoryRelatedToSurrogate', value: '代孕妈妈相关' },
   { key: 'categoryRelatedToParents', value: '准父母相关' },
@@ -185,33 +226,32 @@ const categoryOptions = [
   { key: 'categoryRelatedToSuccess', value: '成功案例相关' },
   { key: 'categoryRelatedToPsychology', value: '心理情绪相关' },
 ]
-
-// 根据当前语言获取博客标题
+// 鏍规嵁褰撳墠璇█鑾峰彇鍗氬鏍囬
 function getBlogTitle(blogData: Blog | null): string {
   if (!blogData)
     return ''
 
   if (locale.value === 'zh') {
-    // 中文时：优先中文，再是英文
+    // 涓枃鏃讹細浼樺厛涓枃锛屽啀鏄嫳鏂?
     return blogData.title || blogData.en_title || ''
   }
   else {
-    // 英文时：优先英文，再是中文
+    // 鑻辨枃鏃讹細浼樺厛鑻辨枃锛屽啀鏄腑鏂?
     return blogData.en_title || blogData.title || ''
   }
 }
 
-// 根据当前语言获取博客内容
+// 鏍规嵁褰撳墠璇█鑾峰彇鍗氬鍐呭
 function getBlogContent(blogData: Blog | null): string {
   if (!blogData)
     return ''
 
   if (locale.value === 'zh') {
-    // 中文时：优先中文，再是英文
+    // 涓枃鏃讹細浼樺厛涓枃锛屽啀鏄嫳鏂?
     return blogData.content || blogData.en_content || ''
   }
   else {
-    // 英文时：优先英文，再是中文
+    // 鑻辨枃鏃讹細浼樺厛鑻辨枃锛屽啀鏄腑鏂?
     return blogData.en_content || blogData.content || ''
   }
 }
@@ -262,28 +302,95 @@ function ensureImagePerformanceAttrs(attrs: string): string {
   ].reduce((nextAttrs, [name, value]) => ensureAttribute(nextAttrs, name, value), attrs)
 }
 
+function sanitizeInlineSpacingStyles(html: string): string {
+  return html.replace(/\sstyle\s*=\s*(['"])([\s\S]*?)\1/gi, (_match, quote, style) => {
+    const cleanStyle = String(style)
+      .split(';')
+      .map(rule => rule.trim())
+      .filter(Boolean)
+      .filter((rule) => {
+        const prop = rule.split(':')[0]?.trim().toLowerCase()
+        return prop && !/^(?:margin(?:-.+)?|padding(?:-.+)?|height|min-height|max-height|line-height)$/.test(prop)
+      })
+      .join('; ')
+
+    return cleanStyle ? ` style=${quote}${cleanStyle}${quote}` : ''
+  })
+}
+
 function sanitizeBlogHtml(html: string): string {
   if (!html)
     return ''
 
-  return html
+  return sanitizeInlineSpacingStyles(html)
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<(?:iframe|object|embed|link|meta)\b[\s\S]*?<\/(?:iframe|object|embed|link|meta)>/gi, '')
+    .replace(/<(?:iframe|object|embed|link|meta)\b[^>]*>/gi, '')
     .replace(/<h1\b/gi, '<h2')
     .replace(/<\/h1>/gi, '</h2>')
     .replace(/\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
     .replace(/\s(?:href|src)\s*=\s*(['"])\s*javascript:[\s\S]*?\1/gi, '')
 }
 
+function slugifyHeading(text: string, index: number): string {
+  const slug = decodeHtmlEntities(text)
+    .toLowerCase()
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[^\p{L}\p{N}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 72)
+
+  return slug || `section-${index + 1}`
+}
+
+function getExistingId(attrs: string): string {
+  return getHtmlAttribute(attrs, 'id')
+}
+
+function addHeadingIdsToHtml(html: string): string {
+  const usedIds = new Set<string>()
+  let headingIndex = 0
+
+  return html.replace(/<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi, (match, level: string, attrs: string, innerHtml: string) => {
+    const existingId = getExistingId(attrs)
+    if (existingId) {
+      usedIds.add(existingId)
+      return match
+    }
+
+    const headingText = htmlToPlainText(innerHtml)
+    const baseId = slugifyHeading(headingText, headingIndex)
+    let nextId = baseId
+    let suffix = 2
+
+    while (usedIds.has(nextId)) {
+      nextId = `${baseId}-${suffix}`
+      suffix += 1
+    }
+
+    usedIds.add(nextId)
+    headingIndex += 1
+
+    return `<h${level}${attrs} id="${escapeHtmlAttribute(nextId)}">${innerHtml}</h${level}>`
+  })
+}
+
 const renderedBlogContent = computed(() =>
   blog.value
-    ? addMissingImageAlt(sanitizeBlogHtml(getBlogContent(blog.value)), getBlogTitle(blog.value))
+    ? addMissingImageAlt(addHeadingIdsToHtml(sanitizeBlogHtml(getBlogContent(blog.value))), getBlogTitle(blog.value))
     : '',
 )
 
 interface ExtractedFAQ {
   question: string
   answer: string
+}
+
+interface BlogTocItem {
+  id: string
+  text: string
+  level: number
 }
 
 interface StructuredBlogContent {
@@ -305,14 +412,13 @@ function decodeHtmlEntities(value: string): string {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, '\'')
-    .replace(/&rsquo;/g, '’')
-    .replace(/&lsquo;/g, '‘')
-    .replace(/&rdquo;/g, '”')
-    .replace(/&ldquo;/g, '“')
-    .replace(/&mdash;/g, '—')
-    .replace(/&ndash;/g, '–')
+    .replace(/&rsquo;/g, '\u2019')
+    .replace(/&lsquo;/g, '\u2018')
+    .replace(/&rdquo;/g, '\u201D')
+    .replace(/&ldquo;/g, '\u201C')
+    .replace(/&mdash;/g, '\u2014')
+    .replace(/&ndash;/g, '\u2013')
 }
-
 function htmlToPlainText(html: string): string {
   if (!html)
     return ''
@@ -351,18 +457,45 @@ function buildLocalizedBlogTitle(blogData: Blog | null): string {
   return title
 }
 
+function getBlogSeoTitle(blogData: Blog | null): string {
+  if (!blogData)
+    return ''
+
+  if (locale.value === 'zh') {
+    return blogData.seo_title
+      || blogData.en_seo_title
+      || ''
+  }
+
+  return blogData.en_seo_title
+    || blogData.seo_title
+    || ''
+}
+
+function buildLocalizedSeoTitle(blogData: Blog | null): string {
+  const seoTitle = getBlogSeoTitle(blogData).trim()
+  if (seoTitle)
+    return seoTitle
+
+  return buildLocalizedBlogTitle(blogData)
+}
+
 function getBlogMetaSource(blogData: Blog | null): string {
   if (!blogData)
     return ''
 
   if (locale.value === 'zh') {
-    return blogData.meta_description
+    return blogData.seo_description
+      || blogData.en_seo_description
+      || blogData.meta_description
       || blogData.excerpt
       || htmlToPlainText(blogData.content || '')
       || ''
   }
 
-  return blogData.en_meta_description
+  return blogData.en_seo_description
+    || blogData.seo_description
+    || blogData.en_meta_description
     || blogData.en_excerpt
     || htmlToPlainText(blogData.en_content || '')
     || blogData.meta_description
@@ -421,6 +554,22 @@ function extractHeadingsFromHtml(html: string): string[] {
     .map(match => htmlToPlainText(match[1]))
     .filter(heading => heading.length >= 3 && !/^(?:faq|常见问题|问答)$/i.test(heading))
     .slice(0, 8))
+}
+
+function extractTocItemsFromHtml(html: string): BlogTocItem[] {
+  return [...html.matchAll(/<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi)]
+    .map((match, index) => {
+      const text = htmlToPlainText(match[3])
+      const id = getExistingId(match[2]) || slugifyHeading(text, index)
+
+      return {
+        id,
+        text,
+        level: Number(match[1]),
+      }
+    })
+    .filter(item => item.id && item.text.length >= 3)
+    .slice(0, 14)
 }
 
 function isFaqHeading(text: string): boolean {
@@ -511,6 +660,136 @@ const citableFaqs = computed(() =>
     .slice(0, 4),
 )
 
+const blogTocItems = computed(() => extractTocItemsFromHtml(renderedBlogContent.value))
+
+const blogTags = computed(() =>
+  blog.value?.tags
+    ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean)
+    : [],
+)
+
+function getBlogDetailPath(blogData: Blog): string {
+  const path = blogData.route_id ? `/blog/${blogData.route_id}` : `/blog/${blogData.id}`
+  return localePath(path)
+}
+
+function isCurrentBlogPost(blogData: Blog): boolean {
+  if (!blog.value)
+    return false
+
+  return blogData.id === blog.value.id
+    || (!!blogData.route_id && blogData.route_id === blog.value.route_id)
+    || String(blogData.route_id || blogData.id) === String(route.params.id)
+}
+
+const relatedPosts = computed(() =>
+  (relatedPostsData.value?.blogs || [])
+    .filter(post => !isCurrentBlogPost(post))
+    .map(post => ({
+      id: post.id,
+      title: getBlogTitle(post),
+      excerpt: getBlogExcerpt(post, 120),
+      categoryLabel: getCategoryName(post.category),
+      coverImgUrl: post.cover_img_url,
+      date: formatDate(post.created_at || post.updated_at),
+      detailPath: getBlogDetailPath(post),
+    }))
+    .filter(post => post.title && post.detailPath)
+    .slice(0, 3),
+)
+
+const readingTimeLabel = computed(() => {
+  const minutes = Math.max(1, Math.ceil(structuredBlogContent.value.wordCount / (locale.value === 'zh' ? 420 : 220)))
+  return `${minutes} min read`
+})
+
+const quickAnswerText = computed(() => {
+  if (!blog.value)
+    return ''
+
+  const source = getBlogMetaSource(blog.value) || structuredBlogContent.value.bodyText
+  return truncateText(source, locale.value === 'zh' ? 180 : 420)
+})
+
+const conversionCopy = computed(() => ({
+  breadcrumbHome: 'Home',
+  breadcrumbBlog: 'Blog',
+  quickAnswerEyebrow: 'Quick Answer',
+  keyTakeawaysEyebrow: 'Questions this guide helps answer',
+  tocTitle: 'In this guide',
+  ctaTitle: 'Have questions about your case?',
+  ctaBody: 'Choose the inquiry path that matches your current journey.',
+  ctaButton: 'Intended Parent Inquiry',
+  ctaSecondary: 'Surrogate Candidate Inquiry',
+  relatedTitle: 'Related guides',
+  trustTitle: 'Why readers contact Yunda',
+  finalCtaTitle: 'Ready to send your inquiry?',
+  finalCtaBody: 'Use this guide to prepare better questions, then submit the intended parent or surrogate candidate inquiry form so Yunda can understand your situation and follow up with the right next step.',
+  reviewedTitle: 'Reviewed for Yunda readers',
+  reviewedBody: 'Yunda reviews educational content so intended parents and surrogate candidates can prepare clearer consultation questions.',
+  noToc: 'Sections will appear when the article uses headings.',
+}))
+
+const relatedGuideLinks = computed(() => [
+  { to: localePath('/surrogacy-process'), label: 'Surrogacy Process' },
+  { to: localePath('/surrogacy-cost'), label: 'Surrogacy Cost' },
+  { to: localePath('/surrogate-requirements'), label: 'Surrogate Requirements' },
+  { to: localePath('/california-surrogacy-consultation'), label: 'California Consultation' },
+])
+
+const trustPoints = computed(() => [
+  'Bilingual guidance for international families',
+  'Process, screening, legal, and insurance coordination',
+  'Consultation focused on your current stage',
+])
+
+const sideRailRef = ref<HTMLElement | null>(null)
+const sideRailStickyTop = ref('6rem')
+let sideRailResizeObserver: ResizeObserver | null = null
+
+function updateSideRailStickyTop() {
+  if (!import.meta.client)
+    return
+
+  const rail = sideRailRef.value
+  if (!rail || window.innerWidth < 1024) {
+    sideRailStickyTop.value = '6rem'
+    return
+  }
+
+  const bottomGap = 32
+  const preferredTop = 96
+  const railHeight = rail.offsetHeight
+  const computedTop = window.innerHeight - railHeight - bottomGap
+
+  sideRailStickyTop.value = `${Math.round(Math.min(preferredTop, computedTop))}px`
+}
+
+onMounted(() => {
+  nextTick(updateSideRailStickyTop)
+  window.addEventListener('resize', updateSideRailStickyTop)
+
+  if (sideRailRef.value && 'ResizeObserver' in window) {
+    sideRailResizeObserver = new ResizeObserver(() => updateSideRailStickyTop())
+    sideRailResizeObserver.observe(sideRailRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (!import.meta.client)
+    return
+
+  window.removeEventListener('resize', updateSideRailStickyTop)
+  sideRailResizeObserver?.disconnect()
+  sideRailResizeObserver = null
+})
+
+watch(
+  () => [blogTocItems.value.length, citableFaqs.value.length, relatedGuideLinks.value.length],
+  () => nextTick(updateSideRailStickyTop),
+  { flush: 'post' },
+)
+
 const blogReviewer = computed(() => ({
   '@type': 'Person',
   '@id': `${resolvedSiteUrl.value}/about#kayla-luo`,
@@ -521,34 +800,34 @@ const blogReviewer = computed(() => ({
   },
 }))
 
-// 提取纯文本摘要（去除HTML标签）
+// 鎻愬彇绾枃鏈憳瑕侊紙鍘婚櫎HTML鏍囩锛?
 function getBlogExcerpt(blogData: Blog | null, maxLength: number = 155): string {
   const content = blogData === blog.value
     ? structuredBlogContent.value.bodyText
     : getBlogMetaSource(blogData) || htmlToPlainText(getBlogContent(blogData))
 
-  // 截取指定长度
+  // 鎴彇鎸囧畾闀垮害
   return content ? truncateText(content, maxLength) : buildLocalizedBlogDescription(blogData, maxLength)
 }
-// 根据当前语言获取分类名称
+// 鏍规嵁褰撳墠璇█鑾峰彇鍒嗙被鍚嶇О
 function getCategoryName(categoryValue: string): string {
-  // 根据中文分类值找到对应的翻译key
+  // 鏍规嵁涓枃鍒嗙被鍊兼壘鍒板搴旂殑缈昏瘧key
   const categoryOption = categoryOptions.find(option => option.value === categoryValue)
   if (categoryOption) {
-    // 使用i18n翻译
+    // 浣跨敤i18n缈昏瘧
     return getUiCategoryLabel(categoryOption.key)
   }
-  // 如果找不到对应的翻译，直接返回原值
+  // 濡傛灉鎵句笉鍒板搴旂殑缈昏瘧锛岀洿鎺ヨ繑鍥炲師鍊?
   return categoryValue
 }
 
-// 格式化日期
+// 鏍煎紡鍖栨棩鏈?
 function formatDate(dateString: string) {
   if (!dateString)
     return ''
   const date = new Date(dateString)
 
-  // 根据当前语言选择日期格式
+  // 鏍规嵁褰撳墠璇█閫夋嫨鏃ユ湡鏍煎紡
   if (locale.value === 'en') {
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
@@ -565,9 +844,19 @@ function formatDate(dateString: string) {
   }
 }
 
-// 返回博客列表
+// 杩斿洖鍗氬鍒楄〃
 function goBack() {
   router.push(localePath('/blog'))
+}
+
+function scrollToTop() {
+  if (!import.meta.client)
+    return
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 
 const currentBlogUrl = computed(() => {
@@ -622,7 +911,7 @@ const blogPostingSchema = computed(() => {
   })
 })
 
-const currentBlogTitle = computed(() => buildLocalizedBlogTitle(blog.value))
+const currentBlogTitle = computed(() => buildLocalizedSeoTitle(blog.value))
 const currentBlogDescription = computed(() =>
   buildLocalizedBlogDescription(blog.value, 155),
 )
@@ -659,14 +948,34 @@ const blogStructuredData = computed(() => {
     audience: locale.value === 'zh'
       ? ['准父母', '代孕妈妈', '代孕资讯读者']
       : ['Intended parents', 'Surrogates', 'Surrogacy information readers'],
+    mainEntity: {
+      '@id': `${pageUrl}#article`,
+    },
+    dateModified: blog.value.updated_at,
+    reviewedBy: blogReviewer.value,
     locale: locale.value,
   })
   const { '@context': _webpageContext, ...webpageNode } = webpageSchema
+  const faqSchema = citableFaqs.value.length
+    ? buildFAQPageSchema({
+        baseUrl,
+        url: localePath(blogPath),
+        faqPageId: `${pageUrl}#faq`,
+        name: `${buildLocalizedBlogTitle(blog.value)} FAQ`,
+        description: buildLocalizedBlogDescription(blog.value, 155),
+        faqs: citableFaqs.value,
+        locale: locale.value,
+      })
+    : null
+  const { '@context': _faqContext, ...faqNode } = faqSchema || {}
   const graphNodes = [
     webpageNode,
     blogPostingSchema.value,
     breadcrumbSchema,
   ]
+
+  if (faqSchema)
+    graphNodes.push(faqNode)
 
   return {
     '@context': 'https://schema.org',
@@ -674,7 +983,7 @@ const blogStructuredData = computed(() => {
   }
 })
 
-// SEO 配置
+// SEO 閰嶇疆
 useHead(() => ({
   title: currentBlogTitle.value,
   meta: [
@@ -759,9 +1068,9 @@ useHead(() => (blogStructuredData.value
   <div>
     <AppHeader />
 
-    <!-- 博客详情页面主体 -->
-    <div class="min-h-screen bg-[var(--yunda-petal)] pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
-      <!-- 加载状态 -->
+    <!-- 鍗氬璇︽儏椤甸潰涓讳綋 -->
+    <div class="blog-page-shell min-h-screen bg-white pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+      <!-- 鍔犺浇鐘舵€?-->
       <div v-if="loading" class="flex items-center justify-center py-24">
         <div class="inline-block size-12 animate-spin border-4 border-[var(--yunda-bark)] border-b-transparent rounded-full" />
         <p class="ml-4 text-lg text-[var(--yunda-bark)]/75">
@@ -769,7 +1078,7 @@ useHead(() => (blogStructuredData.value
         </p>
       </div>
 
-      <!-- 错误状态 -->
+      <!-- 閿欒鐘舵€?-->
       <div v-else-if="error" class="py-24 text-center">
         <div class="text-lg text-red-500">
           {{ error }}
@@ -782,177 +1091,357 @@ useHead(() => (blogStructuredData.value
         </button>
       </div>
 
-      <!-- 博客详情内容 -->
-      <div v-else-if="blog" class="mx-auto max-w-4xl px-4 py-6">
-        <!-- 返回按钮 -->
-        <button
-          class="mb-6 flex items-center text-sm text-[var(--yunda-bark)] font-semibold transition-colors hover:text-[var(--yunda-maple)]" style="font-family: var(--font-text)"
-          @click="goBack"
-        >
-          <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          {{ blogCopy.backToList }}
-        </button>
+      <!-- 鍗氬璇︽儏鍐呭 -->
+      <div v-else-if="blog" class="blog-detail-shell mx-auto w-full max-w-[1440px] px-4 py-6 lg:px-8 lg:py-10">
+        <nav class="mb-5 flex flex-wrap items-center gap-2 text-sm text-[var(--yunda-bark)]/65" aria-label="Breadcrumb">
+          <NuxtLink :to="localePath('/')" class="transition hover:text-[var(--yunda-maple)]">
+            {{ conversionCopy.breadcrumbHome }}
+          </NuxtLink>
+          <span>/</span>
+          <NuxtLink :to="localePath('/blog')" class="transition hover:text-[var(--yunda-maple)]">
+            {{ conversionCopy.breadcrumbBlog }}
+          </NuxtLink>
+          <span>/</span>
+          <span class="min-w-0 flex-1 truncate text-[var(--yunda-bark)]/80">{{ getBlogTitle(blog) }}</span>
+        </nav>
 
-        <!-- 博客内容卡片 -->
-        <article class="overflow-hidden rounded-2xl bg-white shadow-xl">
-          <!-- 封面图片 -->
+        <header class="mb-8">
           <div
             v-if="blog.cover_img_url"
-            class="aspect-[2/1] w-full overflow-hidden"
+            class="mb-6 aspect-[16/8.5] max-h-[520px] w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]"
           >
             <img
               :src="blog.cover_img_url"
               :alt="getBlogTitle(blog)"
               class="size-full object-cover"
-              width="896"
-              height="448"
-              sizes="(min-width: 1024px) 896px, 100vw"
+              width="1200"
+              height="638"
+              sizes="(min-width: 1440px) 1376px, 100vw"
               loading="eager"
               fetchpriority="high"
               decoding="async"
             >
           </div>
 
-          <!-- 文章头部 -->
-          <div class="from-[#A9A67D]/5 to-[#8B9A7D]/5 bg-gradient-to-r p-6">
-            <div class="mb-4">
-              <span class="inline-flex items-center rounded-full bg-[var(--yunda-petal)] px-4 py-1.5 text-xs text-[var(--yunda-maple)] font-bold shadow-sm lg:text-[13px]" style="font-family: var(--font-text)">
+          <div class="max-w-4xl">
+            <div class="mb-4 flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center border border-[var(--yunda-maple)]/25 rounded-full bg-[var(--yunda-petal)] px-3 py-1.5 text-xs text-[var(--yunda-maple)] font-bold shadow-sm">
                 {{ getCategoryName(blog.category) }}
               </span>
+              <span class="inline-flex items-center gap-1.5 border border-[var(--yunda-bark)]/8 rounded-full bg-[var(--yunda-petal)]/50 px-3 py-1.5 text-xs text-[var(--yunda-bark)]/70 font-semibold">
+                <Icon name="lucide:clock-3" class="h-3.5 w-3.5" />
+                {{ readingTimeLabel }}
+              </span>
+              <span v-if="blog.updated_at" class="inline-flex items-center gap-1.5 border border-[var(--yunda-bark)]/8 rounded-full bg-[var(--yunda-petal)]/50 px-3 py-1.5 text-xs text-[var(--yunda-bark)]/70 font-semibold">
+                <Icon name="lucide:refresh-cw" class="h-3.5 w-3.5" />
+                {{ blogCopy.lastUpdatedLabel }} {{ formatDate(blog.updated_at) }}
+              </span>
             </div>
-            <h1 class="mb-4 yunda-type-blog-article-h1">
+
+            <h1 class="yunda-type-blog-article-h1 max-w-4xl text-balance">
               {{ getBlogTitle(blog) }}
             </h1>
-            <div class="yunda-type-blog-meta flex flex-wrap items-center gap-4">
-              <div class="flex items-center">
-                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                </svg>
-                <span class="font-medium">{{ blog.reference_author || blogCopy.authorDefault }}</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                </svg>
-                <span>{{ blog.created_at ? formatDate(blog.created_at) : '' }}</span>
-              </div>
-              <div v-if="blog.updated_at" class="flex items-center">
-                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101A7.002 7.002 0 0116.601 7.76a1 1 0 11-1.602 1.198A5.002 5.002 0 006 7H5a1 1 0 010-2h1.22A1 1 0 014 4V3a1 1 0 011-1zm.399 8.24a1 1 0 011.602-1.198A5.002 5.002 0 0015 11h-1a1 1 0 110-2h3a1 1 0 011 1v3a1 1 0 11-2 0v-1.101A7.002 7.002 0 014.399 10.24z" clip-rule="evenodd" />
-                </svg>
-                <span>{{ blogCopy.lastUpdatedLabel }} {{ formatDate(blog.updated_at) }}</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 4.708a1 1 0 00-1.414-1.414L9 11.586 7.707 10.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>{{ blogCopy.reviewedByLabel }} Kayla Luo</span>
-              </div>
+
+            <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-[var(--yunda-bark)]/72">
+              <span class="inline-flex items-center gap-2">
+                <Icon name="lucide:user-round" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                {{ blog.reference_author || blogCopy.authorDefault }}
+              </span>
+              <span v-if="blog.created_at" class="inline-flex items-center gap-2">
+                <Icon name="lucide:calendar-days" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                {{ formatDate(blog.created_at) }}
+              </span>
+              <span class="inline-flex items-center gap-2">
+                <Icon name="lucide:shield-check" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                {{ blogCopy.reviewedByLabel }} Kayla Luo
+              </span>
             </div>
           </div>
+        </header>
 
-          <!-- 文章内容 -->
-          <div class="p-6 md:p-8">
-            <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
-              <div
-                v-if="renderedBlogContent"
-                class="min-w-0 whitespace-pre-wrap text-[var(--yunda-bark)] leading-[1.8]" style="font-family: var(--font-text)"
-                v-html="renderedBlogContent"
-              />
-              <div v-else class="text-[var(--yunda-bark)]/60">
-                {{ blogCopy.detailNoContent }}
-              </div>
-            </div>
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,860px)_360px] lg:items-stretch xl:gap-10">
+          <article id="article" class="min-w-0">
+            <section
+              v-if="quickAnswerText"
+              class="brand-card quick-answer-card mb-6 border rounded-[8px] p-5 shadow-[0_14px_36px_rgba(65,45,30,0.07)] md:p-6"
+            >
+              <p class="mb-3 text-xs text-[var(--yunda-maple)] font-bold uppercase tracking-[0.14em]">
+                {{ conversionCopy.quickAnswerEyebrow }}
+              </p>
+              <p class="text-base text-[var(--yunda-bark)] leading-8 md:text-lg">
+                {{ quickAnswerText }}
+              </p>
+            </section>
 
             <section
               v-if="citableFaqs.length"
-              class="mt-10 border border-[var(--yunda-bark)]/12 rounded-xl bg-[var(--yunda-petal)]/55 p-5 md:p-6"
-              aria-labelledby="blog-quick-answers"
+              class="brand-card key-questions-card mb-6 border rounded-[8px] p-5 md:p-6"
+              aria-labelledby="blog-key-questions"
             >
-              <h2 id="blog-quick-answers" class="mb-5 font-display text-2xl text-[var(--yunda-bark)] font-medium leading-tight">
-                {{ blogCopy.quickAnswersTitle }}
+              <h2 id="blog-key-questions" class="module-heading mb-4 font-display text-2xl text-[var(--yunda-bark)] font-medium leading-tight">
+                {{ conversionCopy.keyTakeawaysEyebrow }}
               </h2>
-              <div class="space-y-5">
+              <div class="space-y-4">
                 <article
                   v-for="faq in citableFaqs"
                   :key="faq.question"
                   class="border-l-3 border-[var(--yunda-maple)] pl-4"
                 >
-                  <h3 class="text-base text-[var(--yunda-bark)] font-semibold leading-snug md:text-lg">
+                  <h3 class="text-base text-[var(--yunda-bark)] font-semibold leading-snug">
                     {{ faq.question }}
                   </h3>
-                  <p class="mt-2 text-sm text-[var(--yunda-bark)]/85 leading-7 md:text-base">
+                  <p class="mt-1.5 text-sm text-[var(--yunda-bark)]/78 leading-7">
                     {{ faq.answer }}
                   </p>
                 </article>
               </div>
             </section>
 
-            <!-- 标签区域 -->
-            <div
-              v-if="blog.tags"
-              class="mt-12 border-t border-[var(--yunda-bark)]/15 pt-8"
-            >
-              <div class="mb-4 flex items-center">
-                <svg class="mr-2 size-5 text-[var(--yunda-bark)]/50" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                </svg>
-                <h4 class="text-sm text-[var(--yunda-bark)] font-medium">
-                  {{ blogCopy.tagsTitle }}
-                </h4>
+            <div class="article-surface rounded-[8px] bg-white px-5 py-6 shadow-[0_18px_48px_rgba(65,45,30,0.08)] md:px-8 md:py-8">
+              <div class="max-w-none overflow-x-auto prose prose-gray prose-lg">
+                <div
+                  v-if="renderedBlogContent"
+                  class="blog-rich-content min-w-0 text-[var(--yunda-bark)] leading-[1.8]" style="font-family: var(--font-text)"
+                  v-html="renderedBlogContent"
+                />
+                <div v-else class="text-[var(--yunda-bark)]/60">
+                  {{ blogCopy.detailNoContent }}
+                </div>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="tag in blog.tags.split('|')"
-                  :key="tag"
-                  class="inline-flex items-center border border-[var(--yunda-bark)]/15 rounded-full bg-white px-3 py-1.5 text-xs text-[var(--yunda-bark)] font-medium shadow-sm transition-all duration-200 hover:border-[var(--yunda-bark)]/25 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)]"
-                >
-                  {{ tag }}
-                </span>
+
+              <section class="mt-10 rounded-[8px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] md:p-7">
+                <p class="font-display text-2xl font-medium leading-tight">
+                  {{ conversionCopy.finalCtaTitle }}
+                </p>
+                <p class="mt-3 text-sm text-[var(--yunda-petal)]/82 leading-7 md:text-base">
+                  {{ conversionCopy.finalCtaBody }}
+                </p>
+                <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+                  <NuxtLink
+                    :to="localePath('/be-parents')"
+                    class="yunda-type-button inline-flex items-center justify-center gap-2 rounded-[8px] bg-[var(--yunda-petal)] px-5 py-3 text-center text-[var(--yunda-bark)] transition hover:opacity-90"
+                  >
+                    <Icon name="lucide:users" class="h-4 w-4" />
+                    {{ conversionCopy.ctaButton }}
+                  </NuxtLink>
+                  <NuxtLink
+                    :to="localePath('/be-surrogate')"
+                    class="yunda-type-button inline-flex items-center justify-center gap-2 rounded-[8px] border border-[var(--yunda-petal)]/35 px-5 py-3 text-center text-[var(--yunda-petal)] transition hover:bg-white/10"
+                  >
+                    <Icon name="lucide:heart-handshake" class="h-4 w-4" />
+                    {{ conversionCopy.ctaSecondary }}
+                  </NuxtLink>
+                </div>
+              </section>
+
+              <section class="reviewed-card mt-8 border rounded-[8px] p-5">
+                <div class="flex gap-4">
+                  <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--yunda-petal)] text-[var(--yunda-maple)] shadow-sm">
+                    <Icon name="lucide:badge-check" class="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h2 class="text-lg text-[var(--yunda-bark)] font-semibold leading-tight">
+                      {{ conversionCopy.reviewedTitle }}
+                    </h2>
+                    <p class="mt-2 text-sm text-[var(--yunda-bark)]/75 leading-7">
+                      {{ conversionCopy.reviewedBody }}
+                    </p>
+                    <p class="mt-3 text-sm text-[var(--yunda-bark)] font-semibold">
+                      Kayla Luo · {{ blogCopy.reviewedByLabel }}
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <div
+                v-if="blogTags.length"
+                class="mt-8 border-t border-[var(--yunda-bark)]/12 pt-6"
+              >
+                <div class="mb-4 flex items-center gap-2 text-sm text-[var(--yunda-bark)] font-semibold">
+                  <Icon name="lucide:tags" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                  {{ blogCopy.tagsTitle }}
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in blogTags"
+                    :key="tag"
+                    class="inline-flex items-center border border-[var(--yunda-maple)]/22 rounded-full bg-[var(--yunda-petal)]/65 px-3 py-1.5 text-xs text-[var(--yunda-bark)] font-medium"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
               </div>
             </div>
 
-            <!-- 返回按钮 -->
-            <div class="mt-12 border-t border-[var(--yunda-bark)]/15 pt-8">
+            <section
+              v-if="relatedPosts.length"
+              class="related-posts-section mt-8 rounded-[8px] bg-white p-5 shadow-[0_18px_48px_rgba(65,45,30,0.08)] md:p-6"
+              aria-labelledby="related-posts-title"
+            >
+              <div class="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p class="mb-2 text-xs text-[var(--yunda-maple)] font-bold uppercase tracking-[0.14em]">
+                    {{ blogCopy.relatedPostsEyebrow }}
+                  </p>
+                  <h2 id="related-posts-title" class="font-display text-2xl text-[var(--yunda-bark)] font-medium leading-tight md:text-3xl">
+                    {{ blogCopy.relatedPostsTitle }}
+                  </h2>
+                </div>
+                <p class="max-w-xl text-sm text-[var(--yunda-bark)]/72 leading-6">
+                  {{ blogCopy.relatedPostsIntro }}
+                </p>
+              </div>
+
+              <div class="grid gap-4 md:grid-cols-3">
+                <article
+                  v-for="post in relatedPosts"
+                  :key="post.id"
+                  class="group min-w-0 overflow-hidden border border-[var(--yunda-maple)]/18 rounded-[8px] bg-white shadow-[0_10px_26px_rgba(65,45,30,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(65,45,30,0.10)]"
+                >
+                  <NuxtLink :to="post.detailPath" class="flex h-full flex-col">
+                    <div class="aspect-[16/10] overflow-hidden bg-[var(--yunda-petal)]">
+                      <img
+                        v-if="post.coverImgUrl"
+                        :src="post.coverImgUrl"
+                        :alt="post.title"
+                        class="size-full object-cover transition duration-300 group-hover:scale-105"
+                        width="420"
+                        height="263"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    </div>
+                    <div class="flex flex-1 flex-col p-4">
+                      <div class="mb-3 flex flex-wrap items-center gap-2 text-xs">
+                        <span class="inline-flex items-center border border-[var(--yunda-maple)]/22 rounded-full bg-[var(--yunda-petal)]/70 px-2.5 py-1 text-[var(--yunda-maple)] font-bold">
+                          {{ post.categoryLabel }}
+                        </span>
+                        <span v-if="post.date" class="text-[var(--yunda-bark)]/55 font-semibold">
+                          {{ post.date }}
+                        </span>
+                      </div>
+                      <h3 class="line-clamp-2 text-lg text-[var(--yunda-bark)] font-semibold leading-snug transition group-hover:text-[var(--yunda-maple)]">
+                        {{ post.title }}
+                      </h3>
+                      <p class="mt-3 line-clamp-3 text-sm text-[var(--yunda-bark)]/74 leading-6">
+                        {{ post.excerpt }}
+                      </p>
+                      <div class="mt-auto pt-4 text-sm text-[var(--yunda-maple)] font-bold">
+                        {{ blogCopy.readRelatedPost }}
+                      </div>
+                    </div>
+                  </NuxtLink>
+                </article>
+              </div>
+            </section>
+
+            <button
+              class="yunda-type-button mt-8 inline-flex items-center gap-2 rounded-[8px] bg-white px-5 py-3 text-[var(--yunda-bark)] shadow-sm transition hover:text-[var(--yunda-maple)]"
+              @click="goBack"
+            >
+              <Icon name="lucide:arrow-left" class="h-4 w-4" />
+              {{ blogCopy.backToList }}
+            </button>
+          </article>
+
+          <aside class="relative hidden self-stretch lg:block">
+            <div
+              ref="sideRailRef"
+              class="blog-side-rail sticky space-y-4"
+              :style="{ top: sideRailStickyTop }"
+            >
+              <section class="side-card rounded-[8px] border bg-white p-5 shadow-[0_14px_36px_rgba(65,45,30,0.07)]">
+                <h2 class="mb-4 flex items-center gap-2 text-sm text-[var(--yunda-bark)] font-bold uppercase tracking-[0.12em]">
+                  <Icon name="lucide:list" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                  {{ conversionCopy.tocTitle }}
+                </h2>
+                <nav v-if="blogTocItems.length" class="space-y-2" aria-label="Table of contents">
+                  <a
+                    v-for="item in blogTocItems"
+                    :key="item.id"
+                    :href="`#${item.id}`"
+                    class="block border-l-2 border-transparent py-1 text-sm text-[var(--yunda-bark)]/70 leading-5 transition hover:border-[var(--yunda-maple)] hover:pl-2 hover:text-[var(--yunda-bark)]"
+                    :class="item.level === 3 ? 'ml-3' : ''"
+                  >
+                    {{ item.text }}
+                  </a>
+                </nav>
+                <p v-else class="text-sm text-[var(--yunda-bark)]/58 leading-6">
+                  {{ conversionCopy.noToc }}
+                </p>
+              </section>
+
+              <section class="rounded-[8px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] shadow-[0_18px_42px_rgba(65,45,30,0.18)]">
+                <h2 class="font-display text-2xl font-medium leading-tight">
+                  {{ conversionCopy.ctaTitle }}
+                </h2>
+                <p class="mt-3 text-sm text-[var(--yunda-petal)]/78 leading-6">
+                  {{ conversionCopy.ctaBody }}
+                </p>
+                <NuxtLink
+                  :to="localePath('/be-parents')"
+                  class="yunda-type-button mt-5 inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-[var(--yunda-petal)] px-4 py-3 text-center text-[var(--yunda-bark)] transition hover:opacity-90"
+                >
+                  <Icon name="lucide:users" class="h-4 w-4" />
+                  {{ conversionCopy.ctaButton }}
+                </NuxtLink>
+                <NuxtLink
+                  :to="localePath('/be-surrogate')"
+                  class="yunda-type-button mt-3 inline-flex w-full items-center justify-center gap-2 rounded-[8px] border border-[var(--yunda-petal)]/35 px-4 py-3 text-center text-[var(--yunda-petal)] transition hover:bg-white/10"
+                >
+                  <Icon name="lucide:heart-handshake" class="h-4 w-4" />
+                  {{ conversionCopy.ctaSecondary }}
+                </NuxtLink>
+              </section>
+
+              <section class="side-card rounded-[8px] border bg-white p-5">
+                <h2 class="mb-4 flex items-center gap-2 text-sm text-[var(--yunda-bark)] font-bold uppercase tracking-[0.12em]">
+                  <Icon name="lucide:book-open" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                  {{ conversionCopy.relatedTitle }}
+                </h2>
+                <div class="space-y-2">
+                  <NuxtLink
+                    v-for="guide in relatedGuideLinks"
+                    :key="guide.to"
+                    :to="guide.to"
+                    class="flex items-center justify-between gap-3 rounded-[8px] px-3 py-2 text-sm text-[var(--yunda-bark)]/75 transition hover:bg-[var(--yunda-petal)] hover:text-[var(--yunda-bark)]"
+                  >
+                    <span>{{ guide.label }}</span>
+                    <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5 shrink-0" />
+                  </NuxtLink>
+                </div>
+              </section>
+
+              <section class="side-card trust-side-card rounded-[8px] border bg-white p-5">
+                <h2 class="mb-4 flex items-center gap-2 text-sm text-[var(--yunda-bark)] font-bold uppercase tracking-[0.12em]">
+                  <Icon name="lucide:shield-check" class="h-4 w-4 text-[var(--yunda-maple)]" />
+                  {{ conversionCopy.trustTitle }}
+                </h2>
+                <ul class="space-y-3">
+                  <li v-for="point in trustPoints" :key="point" class="flex gap-2 text-sm text-[var(--yunda-bark)]/78 leading-6">
+                    <Icon name="lucide:check" class="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--yunda-maple)]" />
+                    <span>{{ point }}</span>
+                  </li>
+                </ul>
+              </section>
+
               <button
-                class="yunda-type-button flex items-center rounded-lg bg-[var(--yunda-bark)] px-6 py-3 text-[var(--yunda-petal)] transition-opacity hover:opacity-95"
-                @click="goBack"
+                type="button"
+                class="yunda-type-button group flex w-full items-center justify-center gap-2 border border-[var(--yunda-maple)]/28 rounded-[8px] bg-white px-4 py-3 text-sm text-[var(--yunda-bark)] font-semibold shadow-[0_10px_24px_rgba(65,45,30,0.06)] transition hover:border-[var(--yunda-maple)]/45 hover:bg-[var(--yunda-petal)] hover:text-[var(--yunda-maple)]"
+                @click="scrollToTop"
               >
-                <svg class="mr-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                {{ blogCopy.backToList }}
+                <Icon name="lucide:arrow-up" class="h-4 w-4 transition group-hover:-translate-y-0.5" />
+                {{ blogCopy.backToTop }}
               </button>
             </div>
-          </div>
-        </article>
+          </aside>
+        </div>
       </div>
 
-      <!-- Desktop Bottom CTA -->
-      <section class="hidden px-4 pb-12 md:block">
-        <div class="mx-auto max-w-4xl">
-          <div class="grid grid-cols-2 gap-4">
-            <NuxtLink
-              :to="localePath('/be-parents')"
-              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[var(--yunda-bark)] px-6 py-4 text-center text-[var(--yunda-petal)] tracking-[0.02em] transition hover:opacity-90"
-            >
-              {{ ctaCopy.parent }}
-            </NuxtLink>
-            <NuxtLink
-              :to="localePath('/be-surrogate')"
-              class="yunda-type-button inline-flex items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--yunda-harvest)_70%,var(--yunda-petal)_30%)] px-6 py-4 text-center text-[var(--yunda-bark)] tracking-[0.02em] transition hover:opacity-95"
-            >
-              {{ ctaCopy.surrogate }}
-            </NuxtLink>
-          </div>
-        </div>
-      </section>
     </div>
 
     <!-- Mobile Fixed Bottom CTA -->
-    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--yunda-bark)]/15 bg-[var(--yunda-petal)] pb-[env(safe-area-inset-bottom)] md:hidden">
+    <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--yunda-bark)]/15 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
       <div class="grid grid-cols-2 gap-px bg-[var(--yunda-bark)]/10">
         <NuxtLink
           :to="localePath('/be-parents')"
@@ -976,22 +1465,118 @@ useHead(() => (blogStructuredData.value
 </template>
 
 <style scoped>
-/* 文章内容样式优化 */
+/* 鏂囩珷鍐呭鏍峰紡浼樺寲 */
 .prose {
   max-width: none;
 }
 
-.prose p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-  font-family: var(--font-text);
-  font-size: 1rem;
+.blog-page-shell {
+  overflow-x: clip;
+}
+
+.article-surface {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--yunda-maple) 14%, transparent);
+}
+
+.blog-detail-shell {
+  overflow-wrap: anywhere;
+}
+
+.brand-card,
+.side-card,
+.reviewed-card {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--yunda-maple) 26%, transparent);
+}
+
+.brand-card::before,
+.side-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yunda-maple), color-mix(in srgb, var(--yunda-harvest) 70%, var(--yunda-petal)));
+  content: "";
+}
+
+.quick-answer-card {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--yunda-petal) 58%, white), white 82%);
+}
+
+.key-questions-card,
+.reviewed-card,
+.trust-side-card {
+  background: color-mix(in srgb, var(--yunda-petal) 34%, white);
+}
+
+.module-heading {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.module-heading::before {
+  position: absolute;
+  top: 0.16em;
+  bottom: 0.12em;
+  left: 0;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--yunda-maple);
+  content: "";
+}
+
+.blog-detail-shell :deep(.yunda-type-blog-article-h1) {
+  position: relative;
+  padding-bottom: 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0;
   color: var(--yunda-bark);
 }
 
+.blog-detail-shell :deep(.yunda-type-blog-article-h1)::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: min(9rem, 42%);
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--yunda-maple), color-mix(in srgb, var(--yunda-harvest) 70%, white));
+  content: "";
+}
+
+:deep(.blog-rich-content) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+:deep(.blog-rich-content h2[id]),
+:deep(.blog-rich-content h3[id]) {
+  scroll-margin-top: 7rem;
+}
+
+:deep(.prose p) {
+  margin-bottom: 1.35rem;
+  line-height: 1.76;
+  font-family: var(--font-text);
+  font-size: 1.04rem;
+  font-weight: 400;
+  color: var(--yunda-bark);
+}
+
+:deep(.prose p:empty),
+:deep(.prose p:has(> br:only-child)) {
+  display: none;
+}
+
 @media (min-width: 1024px) {
-  .prose p {
-    font-size: 1.125rem;
+  :deep(.prose p) {
+    font-size: 1.1rem;
   }
 }
 
@@ -1000,7 +1585,7 @@ useHead(() => (blogStructuredData.value
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--yunda-bark);
   line-height: 1.15;
 }
@@ -1018,52 +1603,160 @@ useHead(() => (blogStructuredData.value
 }
 
 :deep(.prose h1) {
-  font-size: 2.25rem;
+  font-size: 2.35rem;
 }
 
 :deep(.prose h2) {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 5px solid var(--yunda-maple);
   font-size: 1.75rem;
 }
 
 @media (min-width: 1024px) {
   :deep(.prose h2) {
-    font-size: 2.125rem;
+    font-size: 2rem;
   }
 }
 
 :deep(.prose h3) {
-  font-size: 1.25rem;
+  position: relative;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--yunda-bark) 86%, var(--yunda-maple));
+}
+
+:deep(.prose h3)::before {
+  position: absolute;
+  top: 0.58em;
+  left: 0;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--yunda-maple);
+  content: "";
 }
 
 @media (min-width: 1024px) {
   :deep(.prose h3) {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 }
 
-.prose ul,
-.prose ol {
+:deep(.prose ul),
+:deep(.prose ol) {
   margin: 1.5rem 0;
   padding-left: 2rem;
 }
 
-.prose li {
+:deep(.prose li) {
   margin-bottom: 0.75rem;
   line-height: 1.6;
 }
 
-.prose strong {
+:deep(.prose li > p) {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+:deep(.prose li > p + p) {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+:deep(.prose strong) {
   font-weight: 600;
   color: var(--yunda-bark);
 }
 
-.prose em {
+:deep(.prose em) {
   font-style: italic;
   color: color-mix(in srgb, var(--yunda-bark) 75%, transparent);
 }
 
-:deep(.prose a) {
+:deep(.prose blockquote) {
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--yunda-maple);
+  background: color-mix(in srgb, var(--yunda-petal) 72%, white);
   color: var(--yunda-bark);
+  font-family: var(--font-text);
+}
+
+:deep(.prose table) {
+  width: 100%;
+  min-width: 640px;
+  margin: 1.75rem 0;
+  border-collapse: collapse;
+  border: 1px solid color-mix(in srgb, var(--yunda-bark) 18%, transparent);
+  font-family: var(--font-text);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+:deep(.prose th),
+:deep(.prose td) {
+  border: 1px solid color-mix(in srgb, var(--yunda-bark) 16%, transparent);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+:deep(.prose th) {
+  background: color-mix(in srgb, var(--yunda-maple) 12%, var(--yunda-petal));
+  font-weight: 700;
+  color: var(--yunda-bark);
+}
+
+:deep(.prose tr:nth-child(even) td) {
+  background: color-mix(in srgb, var(--yunda-petal) 70%, transparent);
+}
+
+:deep(.prose caption),
+:deep(.prose figcaption) {
+  margin-top: 0.75rem;
+  color: color-mix(in srgb, var(--yunda-bark) 65%, transparent);
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+:deep(.prose figure) {
+  margin: 1.75rem 0;
+}
+
+:deep(.prose pre) {
+  margin: 1.75rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--yunda-bark) 6%, white);
+  white-space: pre-wrap;
+}
+
+:deep(.prose code) {
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--yunda-bark) 7%, white);
+  font-size: 0.9em;
+}
+
+:deep(.prose pre code) {
+  padding: 0;
+  background: transparent;
+}
+
+:deep(.prose hr) {
+  margin: 2.25rem 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+}
+
+:deep(.prose a) {
+  color: color-mix(in srgb, var(--yunda-maple) 72%, var(--yunda-bark));
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 600;
