@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { buildBlogListSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
@@ -19,7 +19,6 @@ const blogCopyEn = {
     description: 'Read Yunda Surrogacy guides on surrogacy process, costs, legal basics, medical topics, and real family-building stories.',
   },
   title: 'Blog',
-  intro: 'This blog is your go-to resource for everything surrogacy-related. Whether you’re an intended parent considering your options or a potential surrogate seeking guidance, our articles offer expert insights, real experiences, and valuable resources to support you at every stage of your journey.',
   directAnswerTitle: 'How to use the Yunda Surrogacy blog',
   directAnswer: 'The Yunda Surrogacy blog is an education library for intended parents, surrogate candidates, and families comparing U.S. surrogacy options. Use it to research common questions about process, cost, eligibility, screening, compensation, legal coordination, insurance review, IVF, donor eggs, LGBTQ+ and single-parent paths, and emotional support. Blog posts are designed to help readers understand vocabulary, compare next steps, and prepare better consultation questions. They are not legal, medical, insurance, escrow, or financial advice; high-stakes decisions should be confirmed with the relevant qualified professional and the matching Yunda service guide.',
   trustCards: [
@@ -86,7 +85,6 @@ const blogCopyZh = {
     description: '孕达代孕知识博客，分享专业的代孕资讯、成功案例、医学知识、法律法规等，帮助准父母和代孕妈妈了解更多代孕相关信息。',
   },
   title: '博客',
-  intro: '这里汇集代孕相关的专业资讯、真实经验与实用资源，帮助准父母和潜在代孕妈妈在每个阶段都能更清楚地了解流程、选择和注意事项。',
   directAnswerTitle: '如何使用孕达代孕博客',
   directAnswer: '孕达代孕博客是面向准父母、代孕候选人和正在比较美国代孕方案家庭的教育资料库。你可以用它研究流程、费用、资格、筛查、补偿、法律协调、保险审核、IVF、捐卵、LGBTQ+ 与单身父母路径以及情绪支持等常见问题。博客文章用于帮助读者理解术语、比较下一步，并为咨询准备更具体的问题。它们不是法律、医疗、保险、托管或财务建议；高风险决定应由对应合格专业人士确认，并结合孕达相关服务专题页继续阅读。',
   trustCards: [
@@ -720,6 +718,10 @@ onBeforeUnmount(() => {
     clearTimeout(searchDebounceTimer)
 })
 
+onMounted(() => {
+  refreshBlogData()
+})
+
 // 格式化短日期
 function formatDateShort(dateString: string) {
   if (!dateString)
@@ -758,9 +760,6 @@ function formatDateShort(dateString: string) {
           <h1 class="mb-5 text-[48px] text-[var(--yunda-bark)] font-extrabold leading-none tracking-normal md:text-[56px]" style="font-family: var(--font-text)">
             {{ blogCopy.title }}
           </h1>
-          <p class="max-w-[1200px] text-base text-[var(--yunda-bark)] font-bold leading-[1.65] md:text-lg" style="font-family: var(--font-text)">
-            {{ blogCopy.intro }}
-          </p>
         </div>
 
         <div class="mt-8 rounded-[18px] border border-[var(--yunda-bark)]/10 bg-white/78 p-5 shadow-[0_12px_30px_rgba(55,40,25,0.06)] lg:p-7">

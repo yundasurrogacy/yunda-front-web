@@ -14,6 +14,7 @@ const nuxtApp = useNuxtApp()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const resolvedSiteUrl = computed(() => siteUrl.value || 'https://www.yundasurrogacy.com')
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
+const fallbackBlogImage = '/images/blog-hero.jpg'
 
 const blogCopyEn = {
   meta: {
@@ -196,6 +197,34 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
     return null
   },
 })
+
+async function refreshBlogFromApi() {
+  if (!import.meta.client)
+    return
+
+  try {
+    const routeId = encodeURIComponent(String(route.params.id))
+    const refreshed = await $fetch<Blog | null>(`${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}`, {
+      cache: 'no-store',
+    })
+
+    if (refreshed && typeof refreshed === 'object' && 'id' in refreshed)
+      blog.value = refreshed
+  }
+  catch (routeError) {
+    try {
+      const refreshed = await $fetch<Blog | null>(`${apiBase.value}/api/blog?id=${encodeURIComponent(String(route.params.id))}&lang=${blogApiLang.value}`, {
+        cache: 'no-store',
+      })
+
+      if (refreshed && typeof refreshed === 'object' && 'id' in refreshed)
+        blog.value = refreshed
+    }
+    catch (idError) {
+      console.error('Fresh blog refresh failed:', routeError, idError)
+    }
+  }
+}
 
 const relatedPostsCacheKey = computed(() => `related-posts-${route.params.id}-${blogApiLang.value}-${blog.value?.category || 'all'}`)
 const relatedPostsQuery = computed(() => ({
@@ -707,8 +736,7 @@ const quickAnswerText = computed(() => {
   if (!blog.value)
     return ''
 
-  const source = getBlogMetaSource(blog.value) || structuredBlogContent.value.bodyText
-  return truncateText(source, locale.value === 'zh' ? 180 : 420)
+  return buildLocalizedBlogDescription(blog.value, 155)
 })
 
 const conversionCopy = computed(() => ({
@@ -730,12 +758,30 @@ const conversionCopy = computed(() => ({
   noToc: 'Sections will appear when the article uses headings.',
 }))
 
-const relatedGuideLinks = computed(() => [
-  { to: localePath('/surrogacy-process'), label: 'Surrogacy Process' },
-  { to: localePath('/surrogacy-cost'), label: 'Surrogacy Cost' },
-  { to: localePath('/surrogate-requirements'), label: 'Surrogate Requirements' },
-  { to: localePath('/california-surrogacy-consultation'), label: 'California Consultation' },
-])
+const isParentFocusedBlog = computed(() => {
+  const category = blog.value?.category || ''
+  const tags = blogTags.value.join('|')
+
+  return /parent|intended|准父母/i.test(`${category}|${tags}`)
+})
+
+const relatedGuideLinks = computed(() => {
+  if (isParentFocusedBlog.value) {
+    return [
+      { to: localePath('/intended-parents'), label: locale.value === 'zh' ? '准父母指南' : 'Intended Parent Guide' },
+      { to: localePath('/surrogacy-process'), label: locale.value === 'zh' ? '准父母代孕流程' : 'Intended Parent Process' },
+      { to: localePath('/surrogacy-cost'), label: locale.value === 'zh' ? '代孕费用指南' : 'Surrogacy Cost Guide' },
+      { to: localePath('/be-parents'), label: locale.value === 'zh' ? '准父母提交询盘' : 'Intended Parent Inquiry' },
+    ]
+  }
+
+  return [
+    { to: localePath('/surrogates'), label: locale.value === 'zh' ? '代孕妈妈指南' : 'Surrogate Guide' },
+    { to: localePath('/surrogate-process'), label: locale.value === 'zh' ? '代孕妈妈流程' : 'Surrogate Process' },
+    { to: localePath('/surrogate-compensation'), label: locale.value === 'zh' ? '代孕妈妈费用与补偿' : 'Surrogate Compensation' },
+    { to: localePath('/surrogate-requirements'), label: locale.value === 'zh' ? '代孕妈妈要求' : 'Surrogate Requirements' },
+  ]
+})
 
 const trustPoints = computed(() => [
   'Bilingual guidance for international families',
@@ -766,6 +812,7 @@ function updateSideRailStickyTop() {
 }
 
 onMounted(() => {
+  refreshBlogFromApi().finally(() => nextTick(updateSideRailStickyTop))
   nextTick(updateSideRailStickyTop)
   window.addEventListener('resize', updateSideRailStickyTop)
 
@@ -886,7 +933,7 @@ const blogPostingSchema = computed(() => {
     title: buildLocalizedBlogTitle(blog.value),
     description: buildLocalizedBlogDescription(blog.value, 155),
     articleBody: structuredBlogContent.value.articleBody,
-    image: uniqueValues([blog.value.cover_img_url, ...structuredBlogContent.value.images]).slice(0, 6),
+    image: uniqueValues([currentBlogImage.value, ...structuredBlogContent.value.images]).slice(0, 6),
     url: localizedBlogUrl,
     baseUrl,
     locale: locale.value,
@@ -915,7 +962,8 @@ const currentBlogTitle = computed(() => buildLocalizedSeoTitle(blog.value))
 const currentBlogDescription = computed(() =>
   buildLocalizedBlogDescription(blog.value, 155),
 )
-const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}/images/home/index-bg.webp`)
+const currentBlogHeroImage = computed(() => blog.value?.cover_img_url || fallbackBlogImage)
+const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}${fallbackBlogImage}`)
 
 const blogStructuredData = computed(() => {
   if (!blog.value || !blogPostingSchema.value)
@@ -1106,12 +1154,9 @@ useHead(() => (blogStructuredData.value
         </nav>
 
         <header class="mb-8">
-          <div
-            v-if="blog.cover_img_url"
-            class="mb-6 aspect-[16/8.5] max-h-[520px] w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]"
-          >
+          <div class="mb-6 aspect-[16/8.5] max-h-[520px] w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]">
             <img
-              :src="blog.cover_img_url"
+              :src="currentBlogHeroImage"
               :alt="getBlogTitle(blog)"
               class="size-full object-cover"
               width="1200"
