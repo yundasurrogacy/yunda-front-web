@@ -99,13 +99,13 @@ const socialMetaByPath: Record<string, SocialMeta> = {
   '/partner-ivf-clinics': {
     title: {
       en: 'IVF Clinic Coordination for Surrogacy | Yunda',
-      zh: '代孕 IVF 诊所协调｜孕达代孕',
+      zh: '代孕 IVF 诊所协调与合作诊所｜孕达代孕',
     },
     description: {
-      en: 'Learn how IVF clinic coordination, insurance review, psychological screening, and legal timing fit into a gestational surrogacy journey.',
-      zh: '了解 IVF 诊所协调、保险审核、心理筛查和法律时间线如何衔接妊娠代孕旅程。',
+      en: 'Already have an IVF clinic—or need help evaluating one? See how Yunda coordinates clinic records, surrogate screening, legal clearance, and transfer timing.',
+      zh: '已有 IVF 诊所，或仍在选择诊所？了解孕达如何衔接诊所资料、代孕妈妈筛查、法律放行与移植排期。',
     },
-    image: '/images/ip/Legal-for-Surrogacy.png',
+    image: '/images/ip/ivf-clinic-coordination-surrogacy-og.jpg',
   },
   '/single-parents-lgbtq': {
     title: {
