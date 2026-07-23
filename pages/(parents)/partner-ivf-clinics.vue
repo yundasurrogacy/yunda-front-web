@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import type { ResourcesInstagramResponse } from '~/server/utils/resources-instagram-types'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
 import BreadcrumbNav from '@/components/base/BreadcrumbNav.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
+import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
@@ -14,7 +17,27 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 const dateModified = '2026-07-23'
 const reviewerId = computed(() => `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo`)
 
-const clinicReferences = ['EFC', 'SCRC', 'Pinnacle', 'Harvest', '香港宝德', 'Gen5', 'Incinta']
+interface SurrogateUpdateCard {
+  id: string
+  url: string
+  image: string
+  likes: number | null
+  comments: number | null
+}
+
+const surrogateUpdatesBase: SurrogateUpdateCard[] = RESOURCES_INSTAGRAM_POSTS
+  .filter(post => post.section === 'updates')
+  .map(post => ({
+    id: post.id,
+    url: post.url,
+    image: post.fallbackImage,
+    likes: post.fallbackLikes,
+    comments: post.fallbackComments,
+  }))
+
+const { data: instagramFeed } = useFetch<ResourcesInstagramResponse>('/api/resources/instagram', {
+  lazy: true,
+})
 
 const translations = {
   en: {
@@ -55,12 +78,30 @@ const translations = {
         ],
       },
     ],
-    clinicsEyebrow: 'Clinic references',
-    clinicsTitle: 'IVF Clinic References in Yunda’s Coordination Work',
+    clinicsEyebrow: 'Clinic collaboration',
+    clinicsTitle: 'How Yunda Works With IVF Clinics',
     clinicsIntro:
-      'Yunda materials currently reference the clinic names below. The right fit depends on your location, embryo or donor plan, medical needs, timing, and each clinic’s current acceptance criteria.',
+      'Whether you bring an existing IVF clinic or are still evaluating your options, Yunda helps organize the non-medical work around the clinic’s requirements. The clinic remains responsible for medical review, treatment, and clinical decisions.',
+    clinicSupport: [
+      {
+        title: 'Prepare records for clinic review',
+        body: 'We organize available case records, confirm requested documents, and coordinate secure handoffs so the clinic can complete its own review.',
+      },
+      {
+        title: 'Coordinate screenings and appointments',
+        body: 'We help align scheduling, local monitoring, travel, and record delivery according to the clinic’s current protocol.',
+      },
+      {
+        title: 'Keep time-sensitive communication moving',
+        body: 'We follow open questions and milestone updates across intended parents, the surrogate, the clinic, and independent professionals.',
+      },
+      {
+        title: 'Support the transfer handoff',
+        body: 'We track non-medical readiness, legal-clearance communication, logistics, and outstanding confirmations while the clinic directs medical care.',
+      },
+    ],
     clinicsBoundary:
-      'Inclusion here is not a ranking, medical recommendation, outcome claim, or guarantee of availability. Each clinic confirms its own services, requirements, fees, and acceptance.',
+      'Yunda does not publish or imply a clinic ranking on this page. Each clinic confirms its own availability, services, requirements, fees, medical decisions, and reported outcomes.',
     rolesTitle: 'Who Decides What?',
     rolesIntro:
       'Clear ownership helps prevent medical, legal, and case-management decisions from being confused or delayed.',
@@ -113,8 +154,6 @@ const translations = {
       },
     ],
     checklistTitle: 'Questions to Ask an IVF Clinic About Surrogacy',
-    checklistIntro:
-      'Use the same questions with every clinic. Written answers make it easier to compare workflow and avoid relying on one headline number.',
     checklist: [
       'How often does the clinic work with gestational carriers and third-party reproduction?',
       'What records and screening does the clinic require before it will review a carrier?',
@@ -129,6 +168,10 @@ const translations = {
       'CDC publishes clinic-specific and national ART data, and SART provides patient-facing success-rate tools. Patient populations, treatment methods, egg or embryo sources, and reporting definitions differ, so published rates do not predict one person’s outcome. Ask the clinic to explain which data applies to your plan.',
     cdcLink: 'Review CDC ART data',
     sartLink: 'Review SART success-rate guidance',
+    updatesTitle: 'Surrogates Updates',
+    updatesIntro:
+      'Follow our surrogates through checkups, appointments, and special milestones as each journey moves forward.',
+    igViewPost: 'View on Instagram',
     internationalTitle: 'International or Donor-Assisted Journey?',
     internationalBody:
       'Ask early about time-zone communication, translated records, embryo or donor-tissue transport, local monitoring, travel, and who can receive clinical instructions.',
@@ -217,10 +260,28 @@ const translations = {
         ],
       },
     ],
-    clinicsEyebrow: '诊所参考',
-    clinicsTitle: '孕达协调工作中的 IVF 诊所参考',
-    clinicsIntro: '孕达现有资料中展示以下诊所名称。适合的诊所取决于地点、胚胎或供体方案、医学需求、时间安排以及诊所当时的接收标准。',
-    clinicsBoundary: '列于本页不代表排名、医疗建议、结果承诺或保证接收。各诊所会自行确认服务、要求、费用与接收情况。',
+    clinicsEyebrow: '诊所协作',
+    clinicsTitle: '孕达如何与 IVF 诊所协作',
+    clinicsIntro: '无论你已有 IVF 诊所，还是仍在比较选择，孕达都会围绕诊所要求协调非医疗工作。医学审核、治疗和临床决定仍由诊所负责。',
+    clinicSupport: [
+      {
+        title: '准备诊所审核资料',
+        body: '我们整理现有个案资料、确认诊所要求的文件，并协调安全交接，由诊所完成独立审核。',
+      },
+      {
+        title: '协调筛查与预约',
+        body: '根据诊所现行流程，协助衔接排期、当地监测、出行与资料传递。',
+      },
+      {
+        title: '推进时效性沟通',
+        body: '跟进准父母、代孕妈妈、诊所与独立专业方之间的待确认问题和关键节点。',
+      },
+      {
+        title: '支持移植前交接',
+        body: '跟进非医疗准备、法律放行沟通、后勤及未完成确认事项；医疗照护仍由诊所负责。',
+      },
+    ],
+    clinicsBoundary: '本页不发布或暗示任何诊所排名。诊所会自行确认接收情况、服务、要求、费用、医疗决定与公开结果。',
     rolesTitle: '谁负责哪些决定？',
     rolesIntro: '明确职责，有助于避免医疗、法律与个案管理决定混淆或延误。',
     roles: [
@@ -259,7 +320,6 @@ const translations = {
       },
     ],
     checklistTitle: '向 IVF 诊所询问的代孕问题',
-    checklistIntro: '向每家诊所提出同一组问题。书面回复更便于比较流程，也能避免只依赖一个成功率数字。',
     checklist: [
       '诊所处理妊娠代孕和第三方生殖个案的频率如何？',
       '审核代孕妈妈前需要哪些资料和筛查？',
@@ -274,6 +334,9 @@ const translations = {
       'CDC 提供美国诊所级与全国 ART 数据，SART 提供面向患者的成功率工具。患者构成、治疗方法、卵子或胚胎来源和统计口径不同，因此公开数据不能预测个人结果。请让诊所说明哪些数据与你的方案相关。',
     cdcLink: '查看 CDC ART 数据',
     sartLink: '查看 SART 成功率说明',
+    updatesTitle: '代孕妈妈动态',
+    updatesIntro: '跟随代孕妈妈的产检、预约与重要里程碑，了解每一段旅程的进展。',
+    igViewPost: '在 Instagram 查看',
     internationalTitle: '国际家庭或需要供卵？',
     internationalBody: '尽早确认跨时区沟通、翻译资料、胚胎或供体组织运输、当地监测、出行安排，以及谁可以接收临床指示。',
     internationalLinkPrefix: '若仍需供卵或建胚，请在诊所交接前查看我们的',
@@ -326,6 +389,31 @@ const translations = {
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+
+const surrogateUpdateCards = computed(() => {
+  const livePosts = instagramFeed.value?.updates ?? []
+
+  return surrogateUpdatesBase.map((card, index) => {
+    const live = livePosts.find(item => item.id === card.id)
+
+    return {
+      ...card,
+      url: live?.url || card.url,
+      likes: live?.likes ?? card.likes,
+      comments: live?.comments ?? card.comments,
+      alt: locale.value === 'zh'
+        ? `孕达代孕妈妈旅程动态 ${index + 1}`
+        : `Yunda surrogate journey update ${index + 1}`,
+    }
+  })
+})
+
+function formatIgCount(value: number | null) {
+  if (value == null)
+    return '—'
+
+  return value.toLocaleString(locale.value === 'zh' ? 'zh-CN' : 'en-US')
+}
 
 function trackCtaClick(buttonText: string, ctaLocation: 'hero_primary' | 'hero_secondary' | 'final') {
   if (!import.meta.client)
@@ -511,15 +599,20 @@ useHead(() => ({
             {{ c.clinicsIntro }}
           </p>
 
-          <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" :aria-label="c.clinicsTitle">
-            <li
-              v-for="clinic in clinicReferences"
-              :key="clinic"
-              class="min-h-20 flex items-center justify-center border border-[var(--yunda-maple)]/18 rounded-[18px] bg-[var(--yunda-petal)] px-5 py-4 text-center font-display text-[24px] font-semibold shadow-[0_10px_24px_rgba(61,42,31,0.05)]"
+          <div class="mt-8 grid gap-4 md:grid-cols-2">
+            <article
+              v-for="item in c.clinicSupport"
+              :key="item.title"
+              class="border border-[var(--yunda-maple)]/14 rounded-[20px] bg-[var(--yunda-petal)] p-6 shadow-[0_10px_24px_rgba(61,42,31,0.05)]"
             >
-              {{ clinic }}
-            </li>
-          </ul>
+              <h3 class="font-display text-[23px] font-semibold leading-tight">
+                {{ item.title }}
+              </h3>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/76 leading-[1.75] lg:text-base" style="font-family: var(--font-text)">
+                {{ item.body }}
+              </p>
+            </article>
+          </div>
 
           <p class="mt-6 border border-[var(--yunda-bark)]/10 rounded-[16px] bg-white/78 px-5 py-4 text-sm text-[var(--yunda-bark)]/72 leading-[1.75]" style="font-family: var(--font-text)">
             {{ c.clinicsBoundary }}
@@ -600,9 +693,6 @@ useHead(() => ({
               <h2 class="font-display text-[32px] font-semibold leading-tight lg:text-[44px]">
                 {{ c.checklistTitle }}
               </h2>
-              <p class="mt-4 text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-[18px]" style="font-family: var(--font-text)">
-                {{ c.checklistIntro }}
-              </p>
               <ol class="mt-7 space-y-3">
                 <li
                   v-for="(item, index) in c.checklist"
@@ -643,6 +733,55 @@ useHead(() => ({
                 </a>
               </div>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full bg-[color-mix(in_srgb,var(--yunda-petal)_90%,var(--yunda-sky)_10%)] py-14 lg:py-20">
+        <div id="surrogates-updates" class="mx-auto max-w-[1240px] scroll-mt-28 px-6 lg:px-10">
+          <h2 class="font-display text-[30px] font-semibold leading-[1.12] lg:text-[36px]">
+            {{ c.updatesTitle }}
+          </h2>
+          <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
+            {{ c.updatesIntro }}
+          </p>
+          <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+            <a
+              v-for="post in surrogateUpdateCards"
+              :key="post.id"
+              :href="post.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
+              :aria-label="`${c.igViewPost}: ${post.alt}`"
+            >
+              <OptimizedPicture
+                :src="post.image"
+                :alt="post.alt"
+                picture-class="block"
+                img-class="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.02]"
+                width="1080"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+              <div
+                class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
+                style="font-family: var(--font-text)"
+              >
+                <div class="flex items-center gap-3 font-semibold">
+                  <span class="inline-flex items-center gap-1.5">
+                    <Icon name="radix-icons:heart-filled" class="h-3.5 w-3.5 shrink-0" />
+                    {{ formatIgCount(post.likes) }}
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <Icon name="radix-icons:chat-bubble" class="h-3.5 w-3.5 shrink-0" />
+                    {{ formatIgCount(post.comments) }}
+                  </span>
+                </div>
+                <span class="font-semibold opacity-90">{{ c.igViewPost }}</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
