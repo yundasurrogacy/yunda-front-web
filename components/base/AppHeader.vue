@@ -6,11 +6,11 @@ const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
 const localePath = useLocalePath()
 const route = useRoute()
-const runtimeConfig = useRuntimeConfig()
 const isMenuOpen = ref(false)
 const homePath = computed(() => localePath('/'))
 const isHomePage = computed(() => route.path === homePath.value)
-const showLanguageSwitcher = computed(() => !runtimeConfig.public.hideLanguageSwitcher)
+// 只隐藏默认英文首页的中文入口；/zh 及所有中英文内页继续显示语言切换。
+const showLanguageSwitcher = computed(() => route.path !== '/')
 </script>
 
 <template>
