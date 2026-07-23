@@ -3,398 +3,449 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import BreadcrumbNav from '@/components/base/BreadcrumbNav.vue'
 import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
+import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
-const avifImageByPath: Record<string, string> = {
-  '/images/ip/egg/Egg-Donor.png': '/images/ip/egg/Egg-Donor.avif',
-  '/images/ip/egg/IVF-With-Donor-Eggs.png': '/images/ip/egg/IVF-With-Donor-Eggs.avif',
-  '/images/ip/egg/Egg-Donor-for-Surrogacy-1.png': '/images/ip/egg/Egg-Donor-for-Surrogacy-1.avif',
-  '/images/ip/egg/Egg-Donor-for-Surrogacy-2.png': '/images/ip/egg/Egg-Donor-for-Surrogacy-2.avif',
-  '/images/ip/egg/Surrogacy-Journey-3.png': '/images/ip/egg/Surrogacy-Journey-3.avif',
-  '/images/ip/egg/Surrogacy-Journey-4.png': '/images/ip/egg/Surrogacy-Journey-4.avif',
-}
-
-function getAvifImage(src: string) {
-  return avifImageByPath[src]
-}
+const pagePath = '/egg-donation'
 
 const translations = {
   en: {
-    seoTitle: 'Egg Donor Surrogacy & Donor Eggs | Yunda',
+    seoTitle: 'Egg Donor Surrogacy Guide for Intended Parents | Yunda',
     seoDescription:
-      'Egg donor surrogacy in the U.S.: donor screening, IVF embryo creation, PGT-A options, timeline, international logistics, and cost overview.',
-    heroTitle: 'Egg Donor Surrogacy: Find Your Egg Donor for Surrogacy With Donor Eggs',
+      'Understand egg donor surrogacy, screening, fresh vs. frozen eggs, IVF coordination, costs, timelines, and next steps for intended parents across the U.S.',
+    breadcrumbParent: 'For Intended Parents',
+    breadcrumbCurrent: 'Egg Donor Surrogacy',
+    heroEyebrow: 'Donor egg planning + gestational surrogacy',
+    heroTitle: 'Egg Donor Surrogacy: A Guide for Intended Parents',
     heroLead:
-      'Choosing egg donor surrogacy is a meaningful decision. It’s also a practical one: you want clear answers, steady timing, and a plan you can trust.',
+      'Egg donor surrogacy combines two separate parts of family building: donor eggs are used to create embryos through IVF, and a gestational surrogate carries the pregnancy. The egg donor and surrogate are different people.',
     heroBody:
-      'We support surrogacy with egg donation from donor screening and selection through IVF and embryo creation. If you’re considering PGT-A, weighing fresh vs frozen donor eggs, or planning as an international intended parent, we help you understand the options without pressure. We also provide a simple cost overview and guide you to a deeper cost page when you’re ready.',
-    ctaPrimary: 'Learn More',
-    ctaSecondary: 'Talk to a coordinator',
-    heroImgAlt: 'Intended parents exploring egg donor surrogacy options together',
-    s2Title: 'Surrogacy With Donor Eggs: When Do You Need an Egg Donor?',
-    s2Body1:
-      'You may need surrogacy with donor egg when using your own eggs isn’t possible, or doesn’t feel like the best path. This can be due to age-related fertility changes, low ovarian reserve, poor egg quality, repeated IVF failure, or certain genetic concerns. Some intended parents also choose donor eggs to reduce medical uncertainty and keep the timeline steadier.',
-    s2Body2:
-      'If you’re unsure, we look at your history, your clinic’s advice, and your goals. Then we help you decide whether donor eggs are needed now, or if another option makes more sense.',
-    s2Checklist: [
-      'Clinic-led guidance on donor vs own eggs',
-      'Steadier timelines and clear next steps',
-      'Support for genetics, PGT-A, and travel',
-    ],
-    s2CardTitle: 'Egg Donation Surrogacy 101',
-    s2CardSub: 'Quick readiness checklist',
-    s3Title: 'Our Streamlined Egg Donor + IVF Process (From Donor Match to Embryo Creation)',
-    s3Steps: [
+      'Yunda helps intended parents organize the handoffs between donor resources, IVF clinics, embryo planning, surrogate matching, legal coordination, insurance review, and cross-border logistics. Medical decisions and donor eligibility determinations stay with the responsible clinics and qualified professionals.',
+    heroPrimary: 'Discuss Your Donor Egg Plan',
+    heroSecondary: 'See IVF Clinic Coordination',
+    heroAlt: 'Illustration of an egg during fertilization',
+    roleTitle: 'When Donor Eggs May Be Part of Your Surrogacy Plan',
+    roleBody1:
+      'An IVF physician may discuss donor eggs when using an intended parent’s eggs is not possible, is not preferred, or is unlikely to fit the medical plan. Donor eggs may also be part of the path for single fathers, two-dad families, and other intended parents who need an egg source to create embryos.',
+    roleBody2:
+      'The decision is personal and medical. Your physician evaluates the clinical factors. Yunda helps you prepare questions, understand which provider owns each decision, and coordinate the plan after your clinic gives guidance.',
+    roleCardTitle: 'Who owns each decision?',
+    roles: [
       {
-        title: 'Step 1 — Donor Match + Screening ',
-        body1:
-          'Our egg donor and surrogacy solutions start with a clear donor match. We learn what matters to you—health history, traits, timeline, and how open you want the donor relationship to be. Then we coordinate screening and clinic requirements, so the plan is aligned before you spend time and money.',
-        body2:
-          'This step keeps the journey steady. You’re not guessing what comes next. You’re choosing with care, and building a foundation that supports embryo creation.',
+        title: 'IVF clinic',
+        body: 'Evaluates the medical plan, explains clinic acceptance requirements, creates embryos, and advises on embryo testing and transfer.',
+      },
+      {
+        title: 'Donor program or egg bank',
+        body: 'Provides donor information and manages its donor process, records, and availability.',
+      },
+      {
+        title: 'Genetic counselor and attorney',
+        body: 'Explain genetic findings, identity and contact expectations, consent, and legal implications when needed.',
+      },
+      {
+        title: 'Yunda',
+        body: 'Coordinates communication, timing, documents, surrogate matching, and the broader surrogacy journey.',
+      },
+    ],
+    processTitle: 'How Donor Egg Surrogacy Moves From Planning to Transfer',
+    processIntro:
+      'The exact order depends on your clinic, embryo status, donor path, and legal plan. These four stages show the handoffs most intended parents need to coordinate.',
+    processLink: 'See the full surrogacy process',
+    processSteps: [
+      {
+        label: 'Step 1',
+        title: 'Define the family-building plan',
+        body: 'Start with your family goals, existing embryos or records, preferred clinic, donor needs, timeline, location, and questions about future family size. This gives the clinic and coordination team the same starting point.',
         img: '/images/ip/egg/Egg-Donor.png',
-        imgAlt: 'Egg donor match and screening conversation',
+        avif: '/images/ip/egg/Egg-Donor.avif',
+        alt: 'Embryologist reviewing an embryo image in a fertility laboratory',
+        width: 1864,
+        height: 1208,
       },
       {
-        title: 'Step 2 — IVF With Donor Eggs ',
-        body1:
-          'With the donor approved, we move into IVF with donor eggs and surrogacy. The donor completes stimulation and retrieval. Eggs are fertilized, embryos develop in the lab, and your clinic reviews quality and next steps.',
-        body2:
-          'If you choose embryo testing, options like PGT-A can be discussed with your doctor. After that, embryos are frozen and ready for the next stage with a gestational carrier. We keep milestones clear and communication calm, so the process feels organized and respectful.',
+        label: 'Step 2',
+        title: 'Choose a donor path and complete screening',
+        body: 'Compare a known donor, fresh donor cycle, or frozen donor eggs with your clinic. The clinic and donor program confirm required medical records, infectious-disease testing, genetic review, counseling, and other case-specific steps.',
+      },
+      {
+        label: 'Step 3',
+        title: 'Create and review embryos with your IVF clinic',
+        body: 'The IVF clinic manages fertilization, embryo culture, freezing, and any discussion of PGT-A or other testing. Outcomes vary by donor, sperm source, laboratory, and treatment plan, so the clinic—not an agency—should explain expected ranges and next decisions.',
         img: '/images/ip/egg/IVF-With-Donor-Eggs.png',
-        imgAlt: 'IVF lab team preparing donor egg embryos',
+        avif: '/images/ip/egg/IVF-With-Donor-Eggs.avif',
+        alt: 'Laboratory staff reviewing embryo-monitoring equipment',
+        width: 1616,
+        height: 1056,
+      },
+      {
+        label: 'Step 4',
+        title: 'Align embryos, surrogate matching, and transfer readiness',
+        body: 'Once the clinic confirms the embryo plan, Yunda coordinates the handoff to gestational-carrier matching and the wider process. Medical clearance, legal agreements, insurance review, escrow planning, and transfer scheduling must be completed in the order required for your case.',
       },
     ],
-    s4Title: 'How to Choose an Egg Donor for Surrogacy (Screening & Selection Criteria)',
-    s4Blocks: [
+    selectionTitle: 'How Intended Parents Can Compare Egg Donor Options',
+    selectionIntro:
+      'A donor profile is only one part of the decision. Medical records, professional review, identity expectations, clinic fit, timing, and legal documents all matter.',
+    selectionCards: [
       {
-        title: 'Choosing an Egg Donor for Surrogacy—What to Look For',
-        body1:
-          'When choosing an egg donor for surrogacy, start with the basics that protect your future child: health history, clear medical records, and clinic requirements. Many families also consider genetic screening and any known inherited risks.',
-        body2:
-          'Then think about the relationship style. Some prefer anonymous donation. Others want open contact or ID-release later. There isn’t one “best” choice—only what feels steady for your family.',
+        title: 'Start with medical and genetic review',
+        body: 'Look beyond a profile photo or a short biography. Ask the clinic and donor program which health records, family history, infectious-disease testing, and genetic screening are available and who will interpret them. If a finding needs explanation, request a qualified genetic counselor or physician.',
         bullets: [
-          'Health history + clinic requirements first',
-          'Genetic screening and inherited risk review',
-          'Choose anonymous, open, or ID-release later',
+          'Clinic eligibility and required records',
+          'Personal and family medical history',
+          'Infectious-disease screening and testing',
+          'Genetic screening and counseling needs',
         ],
-        tag: 'Start with safety, then fit',
         img: '/images/ip/egg/Egg-Donor-for-Surrogacy-1.png',
-        imgAlt: 'Intended parent considering egg donor profiles',
+        avif: '/images/ip/egg/Egg-Donor-for-Surrogacy-1.avif',
+        alt: 'Laboratory technician processing a blood sample',
+        width: 2178,
+        height: 1188,
       },
       {
-        title: 'Egg Donor Screening Process—How We Help You Decide',
-        body1:
-          'A careful egg donor screening process often includes medical history review, infectious disease testing, genetic screening, and a psychological evaluation. Your IVF clinic may add extra steps based on your situation.',
-        body2:
-          'We help you read results, compare donors, and stay aligned with your clinic—so decisions feel clear, not rushed.',
+        title: 'Clarify identity, contact, and practical fit',
+        body: 'Discuss whether the program describes the arrangement as known, identity-release, or another contact model. Policies and laws can change what information is available later, so review expectations with the donor program and attorney. Then compare availability, location, scheduling, travel, and whether the plan fits your clinic.',
         bullets: [
-          'Medical + infectious disease screening',
-          'Genetic screening where appropriate',
-          'Psychological evaluation and clinic alignment',
+          'Future identity and contact expectations',
+          'Donor location and clinic compatibility',
+          'Fresh-cycle timing or frozen-egg availability',
+          'Legal documents, consent, and record access',
         ],
-        tag: 'Clear review, calm decisions',
         img: '/images/ip/egg/Egg-Donor-for-Surrogacy-2.png',
-        imgAlt: 'Team reviewing egg donor screening checklist',
+        avif: '/images/ip/egg/Egg-Donor-for-Surrogacy-2.avif',
+        alt: 'Cryogenic storage equipment in a fertility laboratory',
+        width: 2746,
+        height: 1256,
       },
     ],
-    s5Title: 'Fresh vs. Frozen Donor Eggs: Which Option Is Right for Your Surrogacy Journey?',
-    s5Cards: [
+    comparisonTitle: 'Fresh vs. Frozen Donor Eggs for Surrogacy',
+    comparisonIntro:
+      'Neither option is automatically right for every family. Your clinic’s experience, donor availability, desired family size, sperm plan, budget, and timing all matter. Use this table to prepare for a physician conversation—not to choose treatment on your own.',
+    comparisonFactor: 'Factor',
+    comparisonFresh: 'Fresh donor cycle',
+    comparisonFrozen: 'Frozen donor eggs',
+    comparisonRows: [
       {
-        title: 'Fresh Donor Eggs—A Planned Cycle With More Custom Control',
-        body1:
-          'With surrogacy with donor eggs, fresh donor eggs usually mean syncing a donor’s cycle with your IVF clinic’s schedule. This can feel more “made-to-measure,” especially if your doctor wants a specific approach.',
-        body2:
-          'The tradeoff is timing. A fresh cycle often takes more coordination, and changes can happen if schedules shift. If you value a tailored plan and don’t mind a longer runway, fresh may fit your journey.',
-        bullets: ['Clinic-synced cycle for tailored plans', 'More coordination and schedule sensitivity', 'Good when doctor prefers a custom protocol'],
-        img: '/images/home/p-3.webp',
-        imgAlt: 'Intended parents discussing fresh egg plan',
+        factor: 'Availability',
+        fresh: 'Depends on matching, screening, and scheduling a donor.',
+        frozen: 'A cohort may already be stored and available through an egg bank.',
       },
       {
-        title: 'Frozen Donor Eggs—Faster Start, Clearer Timing, Less Coordination',
-        body1:
-          'For many families doing surrogacy with donor eggs, frozen eggs offer a simpler start. Eggs are already retrieved and stored, so you can move toward fertilization and embryo creation sooner.',
-        body2:
-          'When comparing fresh vs frozen donor eggs, frozen often brings more predictability in timing and less coordination across calendars. The best choice depends on your clinic’s guidance, your timeline, and what feels most steady for your family.',
-        bullets: ['No need to sync cycles; faster start', 'Predictable timing and fewer moving parts', 'Helpful for tighter timelines or travel'],
-        img: '/images/ip/Gay-Surrogacy.jpg',
-        imgAlt: 'Embryology team preparing frozen donor eggs',
-      },
-    ],
-    s5Gallery: [
-      { src: '/images/ip/egg/Surrogacy-Journey-1.jpg', alt: 'Family consultation about egg donation' },
-      { src: '/images/ip/egg/Surrogacy-Journey-2.jpg', alt: 'Clinic team reviewing embryos' },
-      { src: '/images/ip/egg/Surrogacy-Journey-3.png', alt: 'Intended parents planning timeline' },
-      { src: '/images/ip/egg/Surrogacy-Journey-4.png', alt: 'Embryology lab equipment' },
-    ],
-    s7Title: 'Egg Donor Surrogacy FAQ (Embryos, PGT-A, Timeline, Costs, Logistics)',
-    s7Faqs: [
-      {
-        q: 'Whose eggs are used in egg donation surrogacy?',
-        a: 'In egg donation surrogacy, eggs come from an intended parent or an egg donor. The surrogate carries the pregnancy but isn’t the egg source.',
+        factor: 'Coordination',
+        fresh: 'Requires stimulation, monitoring, retrieval, and clinic scheduling.',
+        frozen: 'Avoids coordinating a new retrieval cycle, but shipping and thaw planning may apply.',
       },
       {
-        q: 'Is the surrogate the biological mother in egg donor surrogacy?',
-        a: 'No. In egg donor surrogacy, the surrogate is a gestational carrier. The embryo is created via IVF using donor eggs (or intended parent eggs).',
+        factor: 'Number of eggs',
+        fresh: 'Retrieval yield is not known in advance and varies by cycle.',
+        frozen: 'The purchased or allocated cohort size is usually known before use.',
       },
       {
-        q: 'When do you need surrogacy with donor eggs?',
-        a: 'You may choose surrogacy with donor eggs if using your own eggs isn’t possible or preferred—medical history, age, or IVF setbacks are common reasons.',
+        factor: 'Family-building plan',
+        fresh: 'May provide more eggs from one retrieval, but no embryo outcome is guaranteed.',
+        frozen: 'Cohort size may be smaller; ask how this fits one-child or sibling goals.',
       },
       {
-        q: 'How many embryos can you get from donor eggs?',
-        a: 'It varies by donor, lab, and fertilization outcomes. Your clinic can estimate a realistic range based on egg number and lab results.',
+        factor: 'Cost variables',
+        fresh: 'Donor compensation, travel, medication, monitoring, retrieval, program, lab, and legal costs may apply.',
+        frozen: 'Cohort, egg-bank, shipping, storage, thaw, fertilization, lab, and legal costs may apply.',
       },
       {
-        q: 'What is PGT-A and should we test donor-egg embryos?',
-        a: 'PGT-A checks embryo chromosome patterns. Some families use it to support selection and planning. Your doctor can advise if it fits your goals.',
-      },
-      {
-        q: 'What is the donor egg surrogacy timeline?',
-        a: 'Often: donor match → screening → IVF/embryo creation → legal/insurance → transfer cycle. Timing depends most on matching and clinic schedules.',
-      },
-      {
-        q: 'Fresh vs frozen donor eggs for surrogacy with egg donation—what’s the difference?',
-        a: 'Fresh can be more customized but needs more coordination. Frozen often starts faster and feels more predictable. Clinic guidance matters.',
-      },
-      {
-        q: 'What impacts the cost of surrogacy on donor egg?',
-        a: 'Key drivers: donor route (fresh/frozen), IVF/meds, testing, surrogate support, legal, insurance review, escrow, and agency coordination.',
-      },
-      {
-        q: 'Do international parents need to be in the U.S for surrogacy with egg donation?',
-        a: 'Not always. Many steps can be remote. Travel may only be needed for a few key moments, depending on clinic and legal plan.',
-      },
-      {
-        q: 'How does embryo logistics work if embryos are created abroad?',
-        a: 'It depends on where transfer happens. Secure, compliant transport can be arranged through qualified partners, with proper timing and paperwork.',
+        factor: 'Questions for the clinic',
+        fresh: 'Ask about expected retrieval range, cancellation policy, coordination, and total cycle costs.',
+        frozen: 'Ask about thaw experience, cohort terms, shipping, fertilization method, and clinic-specific outcomes.',
       },
     ],
+    clinicLink: 'Review IVF clinic coordination',
+    costLink: 'See the surrogacy cost guide',
+    planningTitle: 'What Can Change the Timeline and Budget',
+    planningBody:
+      'There is no single donor egg surrogacy timeline or fixed total price. The plan changes with donor availability, screening, clinic schedules, embryo creation, legal work, insurance review, escrow funding, surrogate matching, transfer readiness, travel, and whether another cycle is needed.',
+    planningCards: [
+      {
+        title: 'Embryo status',
+        body: 'Existing embryos create a different starting point from a family that still needs a donor and IVF clinic.',
+      },
+      {
+        title: 'Donor path',
+        body: 'A known donor, fresh cycle, or frozen cohort has different screening, scheduling, document, and cost dependencies.',
+      },
+      {
+        title: 'Clinic and surrogate timing',
+        body: 'Embryo readiness and gestational-carrier matching can overlap in some cases, but the clinic, agency, and attorneys should approve the sequence.',
+      },
+      {
+        title: 'International logistics',
+        body: 'Travel, document review, embryo shipping, local law, and clinic requirements may add lead time. Use qualified shipping, clinic, and legal professionals.',
+      },
+    ],
+    inclusiveLink: 'Explore LGBTQ+ and single-parent family-building paths',
+    checklistTitle: 'What to Prepare Before Your First Conversation',
+    checklistIntro:
+      'You do not need a finished plan. Bring what you know so the next questions can be organized around your clinic, donor path, embryos, location, and budget.',
+    checklistItems: [
+      'Your current clinic, physician, and embryo status, if any',
+      'Whether you are considering a known donor, fresh donor, or frozen eggs',
+      'Relevant records your clinic has asked you to collect',
+      'Your family-size goals and any sibling planning questions',
+      'Preferred timing, donor location, and travel constraints',
+      'Questions about identity release, future contact, and record access',
+      'A working budget for donor, IVF, legal, insurance, escrow, travel, and surrogacy costs',
+      'The countries or states involved in embryo creation, transfer, pregnancy, and birth',
+    ],
+    checklistCta:
+      'We can help you organize the next questions and connect the donor-egg plan to the broader surrogacy journey.',
+    trustUpdated: 'Last updated: July 23, 2026',
+    trustReviewed: 'Reviewed by Kayla Luo, Vice President, North America',
+    trustNote:
+      'Reviewed for Yunda’s coordination scope. Yunda provides education and coordination; it does not provide IVF treatment, donor medical approval, genetic counseling, legal advice, insurance advice, or escrow services.',
+    sourceFdaOverview: 'U.S. FDA: Reproductive tissue donation',
+    sourceFdaTesting: 'U.S. FDA: Donor testing requirements',
+    sourceSart: 'SART: Fresh or frozen donor eggs',
+    faqTitle: 'Egg Donor Surrogacy FAQ',
+    faqs: [
+      {
+        q: 'What is egg donor surrogacy?',
+        a: 'Egg donor surrogacy uses an egg donor’s eggs to create embryos through IVF. A separate gestational surrogate carries the pregnancy and does not provide the egg.',
+      },
+      {
+        q: 'Who decides whether donor eggs are medically appropriate?',
+        a: 'A reproductive endocrinologist or IVF physician should evaluate the medical plan. Yunda can help intended parents prepare questions and coordinate next steps after the clinic provides guidance.',
+      },
+      {
+        q: 'Who screens an egg donor?',
+        a: 'The responsible clinic, donor program, egg bank, laboratory, and other qualified professionals handle the screening and donor-eligibility steps required for the case. FDA rules cover communicable-disease screening and testing for donated reproductive tissue, while clinics may require additional medical, genetic, and psychosocial evaluation.',
+      },
+      {
+        q: 'Is a fresh donor cycle better than frozen donor eggs?',
+        a: 'Not for every family. Fresh and frozen paths differ in availability, coordination, cohort size, cost structure, and clinic procedures. Ask your clinic to compare the options using its laboratory experience and your family-building goals.',
+      },
+      {
+        q: 'How many embryos will donor eggs create?',
+        a: 'No agency can promise an embryo number. Results vary with the eggs, sperm source, laboratory, fertilization, embryo development, and any testing. Your IVF clinic should explain a case-specific expected range and the limits of that estimate.',
+      },
+      {
+        q: 'How much does donor egg surrogacy cost?',
+        a: 'The total may include donor-program or egg-bank fees, donor compensation where applicable, medication, monitoring, retrieval, laboratory work, shipping or storage, legal work, IVF treatment, surrogate-related costs, insurance review, escrow, travel, and agency coordination. Request an itemized plan that separates donor and IVF costs from the broader surrogacy budget.',
+      },
+      {
+        q: 'Can international intended parents complete parts of the process remotely?',
+        a: 'Many planning and coordination steps may be handled remotely, but travel, clinic, shipping, legal, and document requirements depend on the countries, states, providers, and treatment plan involved. Confirm the route with the clinic, attorney, and qualified transport professionals before moving reproductive tissue.',
+      },
+      {
+        q: 'Should we choose a donor before matching with a surrogate?',
+        a: 'Many families create embryos before final surrogate matching, while some coordination steps can overlap. The right order depends on clinic requirements, embryo status, agency process, legal preparation, and timing. Yunda can help align those handoffs without replacing professional approval.',
+      },
+    ],
+    finalTitle: 'Connect Your Donor Egg Plan to the Full Surrogacy Journey',
+    finalBody:
+      'Tell us where you are now—choosing a clinic, comparing donor paths, creating embryos, or preparing for surrogate matching. We will help you organize the right next questions.',
+    finalCta: 'Discuss Your Donor Egg Plan',
   },
   zh: {
-    seoTitle: '卵子捐赠代孕：寻找卵子捐赠者，实现捐赠卵子代孕 | 孕达代孕',
-    seoDescription: '美国捐卵代孕：供体筛查、IVF 胚胎培育、PGT-A 选项、时间线、国际物流与费用概览。',
-    heroTitle: '卵子捐赠代孕：寻找卵子捐赠者，实现捐赠卵子代孕',
-    heroLead: '选择捐卵代孕既有意义也务实：你希望答案清晰、节奏稳定、方案可信。',
+    seoTitle: '捐卵代孕指南：准父母的供卵与 IVF 规划｜孕达',
+    seoDescription: '了解捐卵代孕、供体筛查、新鲜与冷冻卵子、IVF 协调、费用、时间线及美国准父母的下一步规划。',
+    breadcrumbParent: '准父母',
+    breadcrumbCurrent: '捐卵代孕',
+    heroEyebrow: '供卵规划 + 妊娠代孕',
+    heroTitle: '捐卵代孕：准父母完整规划指南',
+    heroLead:
+      '捐卵代孕包含两个彼此独立的环节：通过 IVF 使用捐赠卵子建立胚胎，再由妊娠代孕妈妈怀孕。卵子捐赠者和代孕妈妈不是同一个人。',
     heroBody:
-      '我们支持捐卵代孕，从供体筛查和选择到体外与胚胎培育。如果你考虑 PGT-A、权衡新鲜与冷冻供卵，或作为国际意向父母进行规划，我们帮你无压力地看懂选项；同时提供简明的费用概览，并在你准备好时引导至更详细的费用页面。',
-    ctaPrimary: '了解更多',
-    ctaSecondary: '与顾问沟通',
-    heroImgAlt: '准父母了解捐卵代孕方案的画面',
-    s2Title: '捐卵代孕：什么时候需要卵子捐赠者？',
-    s2Body1:
-      '当自有卵子不可行，或不再是最佳路径时，可能需要捐卵代孕。常见原因包括：年龄相关的生育力变化、卵巢储备低、卵子质量欠佳、反复 IVF 失败，或特定遗传风险。有些家庭也会选择供卵以降低医学不确定性、让时间线更可控。',
-    s2Body2:
-      '如果仍在犹豫，我们会结合你的既往经历、诊所建议与目标，帮助判断此刻是否需要供卵，或是否有更合适的方案。',
-    s2Checklist: ['诊所视角下的自卵 vs 供卵评估', '更稳的时间线与下一步计划', '遗传、PGT-A 与跨境就医支持'],
-    s2CardTitle: '捐卵代孕 101',
-    s2CardSub: '快速自检清单',
-    s3Title: '捐卵 + IVF 精简流程（从匹配到胚胎建立）',
-    s3Steps: [
+      '孕达帮助准父母衔接供卵资源、IVF 诊所、胚胎规划、代孕妈妈匹配、法律协调、保险审查和跨境安排。医疗决策与供体资格认定由负责的诊所和合格专业人士完成。',
+    heroPrimary: '沟通你的供卵计划',
+    heroSecondary: '查看 IVF 诊所协调',
+    heroAlt: '卵子受精过程示意图',
+    roleTitle: '供卵何时可能成为代孕计划的一部分',
+    roleBody1:
+      '当使用准父母自身卵子不可行、不符合个人选择或可能不适合医疗方案时，IVF 医生可能会与家庭讨论供卵。单身父亲、男同性伴侣及其他需要卵子来源建立胚胎的准父母，也可能把供卵纳入路径。',
+    roleBody2:
+      '这是个人与医疗层面的决定。医生负责评估临床因素；孕达帮助你整理问题、明确各专业方的职责，并在诊所给出意见后协调后续计划。',
+    roleCardTitle: '每项决定由谁负责？',
+    roles: [
+      { title: 'IVF 诊所', body: '评估医疗方案、说明诊所接收要求、建立胚胎，并就胚胎检测和移植提供医疗意见。' },
+      { title: '供卵项目或卵子库', body: '提供供体信息，并管理自身的供体流程、记录和可用情况。' },
+      { title: '遗传咨询师与律师', body: '在需要时解释遗传发现、身份与联系预期、知情同意及法律影响。' },
+      { title: '孕达', body: '协调沟通、时间、文件、代孕妈妈匹配及更完整的代孕旅程。' },
+    ],
+    processTitle: '捐卵代孕如何从规划走到移植',
+    processIntro: '具体顺序取决于诊所、胚胎状态、供卵路径与法律方案。以下四个阶段展示准父母通常需要协调的交接点。',
+    processLink: '查看完整代孕流程',
+    processSteps: [
       {
-        title: '步骤 1 — 捐卵人匹配与筛查（先把地基打牢）',
-        body1:
-          '我们的捐卵与代孕服务先从清晰的供卵人匹配开始。我们了解你看重的健康史、特质、时间线以及对捐卵关系开放度的偏好，然后协调筛查与诊所要求，让计划在投入时间与费用前就先对齐。',
-        body2: '这一环节让旅程更稳，不用猜下一步。你在有序地选择，也在为胚胎建立打下扎实基础。',
+        label: '步骤 1',
+        title: '明确家庭建立方案',
+        body: '先梳理家庭目标、现有胚胎或记录、首选诊所、供卵需求、时间、所在地和未来子女数量规划，让诊所与协调团队从同一信息起点开始。',
         img: '/images/ip/egg/Egg-Donor.png',
-        imgAlt: '捐卵匹配与筛查沟通',
+        avif: '/images/ip/egg/Egg-Donor.avif',
+        alt: '胚胎实验室人员查看胚胎影像',
+        width: 1864,
+        height: 1208,
       },
       {
-        title: '步骤 2 — 供卵 IVF（从取卵到胚胎培养）',
-        body1:
-          '供卵人获批后，进入供卵 IVF + 代孕阶段。供卵人完成促排与取卵，卵子受精，胚胎在实验室发育，诊所评估质量并给出下一步。',
-        body2:
-          '若选择胚胎检测，可与医生讨论如 PGT-A 等方案。之后胚胎冷冻，为后续代孕妈妈移植做好准备。我们保持里程碑清晰、沟通平稳，让流程有序且尊重每位参与者。',
+        label: '步骤 2',
+        title: '选择供卵路径并完成筛查',
+        body: '与诊所比较已知供体、新鲜供卵周期或冷冻卵子。诊所与供卵项目确认所需病历、传染病检测、遗传审核、咨询及其他个案步骤。',
+      },
+      {
+        label: '步骤 3',
+        title: '由 IVF 诊所建立并评估胚胎',
+        body: 'IVF 诊所负责受精、胚胎培养、冷冻，以及 PGT-A 或其他检测的讨论。结果会受到供体、精子来源、实验室和治疗方案影响，应由诊所而非机构说明预期范围和下一步。',
         img: '/images/ip/egg/IVF-With-Donor-Eggs.png',
-        imgAlt: '实验室准备捐卵胚胎',
+        avif: '/images/ip/egg/IVF-With-Donor-Eggs.avif',
+        alt: '实验室人员查看胚胎监测设备',
+        width: 1616,
+        height: 1056,
+      },
+      {
+        label: '步骤 4',
+        title: '衔接胚胎、匹配与移植准备',
+        body: '诊所确认胚胎方案后，孕达协调进入妊娠代孕妈妈匹配和后续流程。医疗清关、法律协议、保险审查、托管规划与移植排期须按个案要求完成。',
       },
     ],
-    s4Title: '如何为代孕选择卵子捐赠者（筛查与甄选要点）',
-    s4Blocks: [
+    selectionTitle: '准父母如何比较卵子捐赠方案',
+    selectionIntro: '供体资料只是决定的一部分。医疗记录、专业审核、身份预期、诊所适配、时间和法律文件都需要一起考虑。',
+    selectionCards: [
       {
-        title: '选择捐卵人需要关注什么',
-        body1:
-          '挑选代孕的捐卵人，先看能保护未来宝宝的基础：健康史、完整的医疗记录，以及诊所要求。很多家庭也会考虑遗传筛查和已知的家族风险。',
-        body2:
-          '接着考虑关系形式：有的希望匿名捐卵，有的倾向开放或日后可联系。不存在唯一的“最佳”模式，稳定、适合你的家庭才是关键。',
-        bullets: ['先确保健康史与诊所要求', '关注遗传筛查与家族风险', '匿名、开放或日后可联系，由你选择'],
-        tag: '先安全，再匹配合适度',
+        title: '先看医疗与遗传审核',
+        body: '不要只看照片或简短介绍。向诊所和供卵项目确认可获得哪些健康记录、家族史、传染病检测和遗传筛查，以及由谁解读。若发现需要说明，应请合格遗传咨询师或医生参与。',
+        bullets: ['诊所接收要求与所需记录', '个人与家族病史', '传染病筛查和检测', '遗传筛查与咨询需求'],
         img: '/images/ip/egg/Egg-Donor-for-Surrogacy-1.png',
-        imgAlt: '准父母查看捐卵资料',
+        avif: '/images/ip/egg/Egg-Donor-for-Surrogacy-1.avif',
+        alt: '实验室技术人员处理血液样本',
+        width: 2178,
+        height: 1188,
       },
       {
-        title: '捐卵筛查流程：我们如何帮你决策',
-        body1:
-          '严谨的捐卵筛查通常包括病史审核、传染病检测、遗传筛查以及心理评估。你的 IVF 诊所可能会根据具体情况增加项目。',
-        body2: '我们帮助你读懂结果、对比捐卵人，并与诊所保持一致，让决策清晰且不被催促。',
-        bullets: ['病史 + 传染病检测', '必要的遗传筛查', '心理评估并与诊所流程对齐'],
-        tag: '清晰解读，沉稳决策',
+        title: '明确身份、联系与实际适配',
+        body: '确认项目如何描述已知、可披露身份或其他联系模式。政策和法律可能影响未来可获得的信息，因此应与供卵项目及律师确认预期，再比较可用情况、所在地、排期、旅行及诊所适配。',
+        bullets: ['未来身份与联系预期', '供体所在地与诊所适配', '新鲜周期排期或冷冻卵子可用性', '法律文件、同意与记录获取'],
         img: '/images/ip/egg/Egg-Donor-for-Surrogacy-2.png',
-        imgAlt: '团队核对捐卵筛查清单',
+        avif: '/images/ip/egg/Egg-Donor-for-Surrogacy-2.avif',
+        alt: '生殖实验室中的低温储存设备',
+        width: 2746,
+        height: 1256,
       },
     ],
-    s5Title: '新鲜 vs 冷冻捐卵：哪种更适合你的代孕旅程？',
-    s5Cards: [
-      {
-        title: '新鲜捐卵：同步排期，更可定制',
-        body1:
-          '在捐卵代孕中，新鲜供卵通常需要将捐卵人的周期与 IVF 诊所排期同步，更像“量身定制”，尤其在医生有特定方案时。',
-        body2:
-          '代价是时间与协调：排期更长、变动更多。如果你看重定制方案且接受更长准备期，新鲜供卵可能更适合。',
-        bullets: ['与诊所同步周期，方案可定制', '协调与排期更敏感', '适合医生建议定制方案的情况'],
-        img: '/images/home/p-3.webp',
-        imgAlt: '准父母商讨新鲜捐卵计划',
-      },
-      {
-        title: '冷冻捐卵：更快启动，时间更可控',
-        body1:
-          '对很多家庭而言，冷冻捐卵让启动更简单：卵子已取出并存储，可更快进入受精与胚胎培养。',
-        body2:
-          '比较新鲜与冷冻捐卵时，冷冻通常带来更可预测的时间和更少的跨日程协调。最终选择取决于诊所建议、你的时间线，以及让你最安心的节奏。',
-        bullets: ['无需同步周期，启动更快', '时间可预测、协调更少', '适合时间紧或需跨境行程的家庭'],
-        img: '/images/ip/Gay-Surrogacy.jpg',
-        imgAlt: '实验室团队准备冷冻供卵胚胎',
-      },
+    comparisonTitle: '捐卵代孕中的新鲜卵子与冷冻卵子',
+    comparisonIntro:
+      '没有一种方案对所有家庭都更好。诊所经验、供体可用性、家庭规模目标、精子方案、预算与时间都会影响选择。请把本表用于准备医生沟通，而不是自行决定治疗。',
+    comparisonFactor: '比较因素',
+    comparisonFresh: '新鲜供卵周期',
+    comparisonFrozen: '冷冻捐赠卵子',
+    comparisonRows: [
+      { factor: '可用性', fresh: '取决于供体匹配、筛查和排期。', frozen: '卵子库可能已有储存并可用的卵子批次。' },
+      { factor: '协调', fresh: '需要促排、监测、取卵及诊所排期。', frozen: '无需安排新的取卵周期，但可能涉及运输与解冻计划。' },
+      { factor: '卵子数量', fresh: '取卵数量无法提前确定，并会因周期而异。', frozen: '购买或分配的批次大小通常在使用前已知。' },
+      { factor: '家庭规模规划', fresh: '一次取卵可能获得更多卵子，但不保证胚胎结果。', frozen: '批次数量可能较少，应询问是否符合单胎或同胞规划。' },
+      { factor: '费用变量', fresh: '可能涉及供体补偿、旅行、药物、监测、取卵、项目、实验室和法律费用。', frozen: '可能涉及批次、卵子库、运输、储存、解冻、受精、实验室和法律费用。' },
+      { factor: '向诊所提问', fresh: '询问预计取卵范围、取消政策、协调方式和周期总费用。', frozen: '询问解冻经验、批次条款、运输、受精方式和诊所个案结果。' },
     ],
-    s5Gallery: [
-      { src: '/images/ip/egg/Surrogacy-Journey-1.jpg', alt: '家庭咨询捐卵方案' },
-      { src: '/images/ip/egg/Surrogacy-Journey-2.jpg', alt: '诊所团队查看胚胎' },
-      { src: '/images/ip/egg/Surrogacy-Journey-3.png', alt: '准父母规划时间线' },
-      { src: '/images/ip/egg/Surrogacy-Journey-4.png', alt: '胚胎实验室设备' },
+    clinicLink: '查看 IVF 诊所协调',
+    costLink: '查看代孕费用指南',
+    planningTitle: '哪些因素会改变时间线与预算',
+    planningBody:
+      '捐卵代孕没有统一时间线或固定总价。供体可用性、筛查、诊所排期、胚胎建立、法律工作、保险审查、托管入金、代孕妈妈匹配、移植准备、旅行以及是否需要额外周期都会影响计划。',
+    planningCards: [
+      { title: '胚胎状态', body: '已有胚胎的起点，与仍需寻找供体和 IVF 诊所的家庭不同。' },
+      { title: '供卵路径', body: '已知供体、新鲜周期或冷冻批次各有不同的筛查、排期、文件和费用依赖。' },
+      { title: '诊所与匹配时间', body: '胚胎准备与代孕妈妈匹配有时可以重叠，但顺序应由诊所、机构与律师共同确认。' },
+      { title: '跨境安排', body: '旅行、文件审核、胚胎运输、当地法律与诊所要求可能增加时间，应使用合格运输、诊所与法律专业方。' },
     ],
-    s7Title: '捐卵代孕常见问答（胚胎、PGT-A、时间线、费用、物流）',
-    s7Faqs: [
-      {
-        q: '捐卵代孕使用谁的卵子？',
-        a: '可使用意向父母的卵子或捐卵人的卵子。代孕妈妈只负责妊娠，不提供卵子。',
-      },
-      {
-        q: '捐卵代孕中，代孕妈妈是生物学母亲吗？',
-        a: '不是。代孕妈妈是妊娠代孕者，胚胎来自捐卵人或意向母亲，经 IVF 形成。',
-      },
-      {
-        q: '什么时候需要捐卵代孕？',
-        a: '当自卵不可行或不优先时可能选择捐卵代孕，常见原因有病史、年龄、IVF 受挫等。',
-      },
-      {
-        q: '捐卵一般能得到多少胚胎？',
-        a: '取决于捐卵人、实验室及受精结果。诊所可根据卵子数量与培养结果给出合理预估。',
-      },
-      {
-        q: '什么是 PGT-A？捐卵胚胎需要做吗？',
-        a: 'PGT-A 检测胚胎染色体。部分家庭用它来辅助选择与计划，是否适合请听取医生建议。',
-      },
-      {
-        q: '捐卵代孕的时间线如何？',
-        a: '通常：匹配捐卵人 → 筛查 → IVF/胚胎建立 → 法律/保险 → 移植周期。时间主要看匹配与诊所排期。',
-      },
-      {
-        q: '捐卵代孕中，新鲜与冷冻供卵有何区别？',
-        a: '新鲜更可定制但需更多协调；冷冻启动更快、节奏更可预期。听从诊所建议最重要。',
-      },
-      {
-        q: '影响捐卵代孕费用的因素有哪些？',
-        a: '关键驱动：新鲜/冷冻路线、IVF/用药、检测、代孕支持、法律、保险审核、托管、机构协调等。',
-      },
-      {
-        q: '国际家庭需要到美国完成捐卵代孕吗？',
-        a: '不一定，很多步骤可远程。是否需出行取决于诊所与法律方案，通常只在少数关键节点需要到场。',
-      },
-      {
-        q: '如果胚胎在海外建立，如何安排运输？',
-        a: '取决于移植地点，可由合规合作方安排安全运输，确保时效和文书符合要求。',
-      },
+    inclusiveLink: '查看 LGBTQ+ 与单身准父母路径',
+    checklistTitle: '首次沟通前可以准备什么',
+    checklistIntro: '你不需要先拥有完整方案。带上已知信息，我们可以围绕诊所、供卵路径、胚胎、地区和预算整理下一步问题。',
+    checklistItems: [
+      '现有诊所、医生与胚胎状态（如有）',
+      '是否考虑已知供体、新鲜供卵或冷冻卵子',
+      '诊所要求收集的相关记录',
+      '家庭规模目标和同胞规划问题',
+      '期望时间、供体地区和旅行限制',
+      '关于身份披露、未来联系和记录获取的问题',
+      '供卵、IVF、法律、保险、托管、旅行和代孕的初步预算',
+      '胚胎建立、移植、孕期和出生涉及的国家或州',
     ],
+    checklistCta: '我们可以帮你整理下一步问题，并把供卵计划接入更完整的代孕旅程。',
+    trustUpdated: '最后更新：2026年7月23日',
+    trustReviewed: 'Kayla Luo（北美区副总裁）审阅',
+    trustNote:
+      '本页按孕达协调服务范围审阅。孕达提供教育与协调，不提供 IVF 治疗、供体医疗批准、遗传咨询、法律建议、保险建议或托管服务。',
+    sourceFdaOverview: '美国 FDA：生殖组织捐赠',
+    sourceFdaTesting: '美国 FDA：供体检测要求',
+    sourceSart: 'SART：新鲜或冷冻捐赠卵子',
+    faqTitle: '捐卵代孕常见问题',
+    faqs: [
+      { q: '什么是捐卵代孕？', a: '捐卵代孕使用卵子捐赠者的卵子，通过 IVF 建立胚胎，再由独立的妊娠代孕妈妈怀孕；代孕妈妈不提供卵子。' },
+      { q: '谁来判断供卵是否适合医疗方案？', a: '应由生殖内分泌医生或 IVF 医生评估医疗方案。诊所给出意见后，孕达可以帮助准父母整理问题并协调下一步。' },
+      { q: '谁负责筛查卵子捐赠者？', a: '负责的诊所、供卵项目、卵子库、实验室及其他合格专业人士完成个案所需的筛查与供体资格步骤。FDA 规则涵盖捐赠生殖组织的传染病筛查与检测，诊所还可能要求额外医疗、遗传及心理社会评估。' },
+      { q: '新鲜供卵一定比冷冻卵子好吗？', a: '并非对所有家庭如此。两种路径在可用性、协调、批次数量、费用结构和诊所流程上不同，应让诊所结合其实验室经验和你的家庭目标进行比较。' },
+      { q: '捐赠卵子能建立多少胚胎？', a: '任何机构都不能保证胚胎数量。结果会受卵子、精子来源、实验室、受精、胚胎发育和检测影响。IVF 诊所应说明个案预期范围及其局限。' },
+      { q: '捐卵代孕需要多少费用？', a: '总费用可能包括供卵项目或卵子库、适用的供体补偿、药物、监测、取卵、实验室、运输或储存、法律、IVF、代孕相关费用、保险审查、托管、旅行和机构协调。建议把供卵/IVF 与更完整代孕预算分开列项。' },
+      { q: '国际准父母可以远程完成部分流程吗？', a: '很多规划和协调可以远程进行，但旅行、诊所、运输、法律和文件要求取决于涉及的国家、州、专业方与治疗方案。移动生殖组织前应由诊所、律师和合格运输专业方确认路线。' },
+      { q: '应该先选供体还是先匹配代孕妈妈？', a: '很多家庭会在最终匹配前建立胚胎，部分协调也可能重叠。正确顺序取决于诊所要求、胚胎状态、机构流程、法律准备和时间。孕达可帮助衔接，但不能替代专业批准。' },
+    ],
+    finalTitle: '把供卵计划接入完整代孕旅程',
+    finalBody: '告诉我们你目前在哪一步——选择诊所、比较供卵路径、建立胚胎或准备匹配。我们会帮助你整理正确的下一步问题。',
+    finalCta: '沟通你的供卵计划',
   },
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
-const pagePath = '/egg-donation'
-const schemaProcessItems = computed(() => [
-  {
-    position: 1,
-    name: 'Donor Match + Screening',
-    description: c.value.s3Steps[0]?.body1,
-    url: pagePath,
-  },
-  {
-    position: 2,
-    name: 'IVF With Donor Eggs',
-    description: c.value.s3Steps[1]?.body1,
-    url: pagePath,
-  },
-  {
-    position: 3,
-    name: 'Choosing an Egg Donor for Surrogacy',
-    description: c.value.s4Blocks[0]?.body1,
-    url: pagePath,
-  },
-  {
-    position: 4,
-    name: 'Egg Donor Screening Process',
-    description: c.value.s4Blocks[1]?.body1,
-    url: pagePath,
-  },
-  {
-    position: 5,
-    name: 'Fresh vs. Frozen Donor Eggs Planning',
-    description: c.value.s5Title,
-    url: pagePath,
-  },
+
+const breadcrumbItems = computed(() => [
+  { label: c.value.breadcrumbParent, to: '/intended-parents' },
+  { label: c.value.breadcrumbCurrent },
 ])
+
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
   path: pagePath,
   name: c.value.heroTitle,
   description: c.value.seoDescription,
-  about: 'Egg donor gestational surrogacy and donor egg surrogacy process',
+  about: 'Egg donor gestational surrogacy and donor egg planning for intended parents',
   audience: 'Intended parents',
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
-    name: 'Egg Donor Gestational Surrogacy Coordination',
-    serviceType: 'Egg donor gestational surrogacy support',
+    name: locale.value === 'zh' ? '供卵妊娠代孕协调' : 'Egg Donor Gestational Surrogacy Coordination',
+    serviceType: locale.value === 'zh' ? '供卵代孕协调支持' : 'Egg donor gestational surrogacy coordination',
     audience: ['Intended parents', 'LGBTQ intended parents', 'single parents'],
-    description: 'Coordination support for intended parents using donor eggs in a gestational surrogacy journey, including egg donor selection, donor screening, IVF clinic coordination, embryo creation, PGT-A discussion, fresh or frozen donor egg planning, and gestational carrier matching support.',
+    description: c.value.heroBody,
   },
   breadcrumbs: [
-    { name: 'Home', url: '/' },
-    { name: 'For Intended Parents', url: '/intended-parents' },
-    { name: 'Egg Donor Surrogacy', url: pagePath },
+    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
+    { name: c.value.breadcrumbParent, url: '/intended-parents' },
+    { name: c.value.breadcrumbCurrent, url: pagePath },
   ],
-  faqs: c.value.s7Faqs.map(item => ({
-    question: item.q,
-    answer: item.a,
-  })),
   itemList: {
-    name: 'Egg Donor and IVF Process',
-    description: c.value.s3Title,
-    items: schemaProcessItems.value,
+    name: c.value.processTitle,
+    description: c.value.processIntro,
+    items: c.value.processSteps.map((step, index) => ({
+      position: index + 1,
+      name: step.title,
+      description: step.body,
+      url: pagePath,
+    })),
   },
 }))
 
 useHead(() => ({
   title: c.value.seoTitle,
   meta: [
-    {
-      name: 'description',
-      content: c.value.seoDescription,
-    },
-    {
-      property: 'og:title',
-      content: c.value.seoTitle,
-    },
-    {
-      property: 'og:description',
-      content: c.value.seoDescription,
-    },
+    { name: 'description', content: c.value.seoDescription },
+    { property: 'og:title', content: c.value.seoTitle },
+    { property: 'og:description', content: c.value.seoDescription },
+    { property: 'og:image', content: `${siteUrl.value}/images/ip/egg/egg-donor-surrogacy-guide-og.jpg` },
+    { name: 'twitter:title', content: c.value.seoTitle },
+    { name: 'twitter:description', content: c.value.seoDescription },
+    { name: 'twitter:image', content: `${siteUrl.value}/images/ip/egg/egg-donor-surrogacy-guide-og.jpg` },
   ],
-}))
-
-useHead(() => ({
   script: coreServicePageSchemas.value.map((schema, index) => ({
     key: `schema-egg-donation-${index}`,
     type: 'application/ld+json',
@@ -406,395 +457,364 @@ useHead(() => ({
 <template>
   <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
+    <BreadcrumbNav :items="breadcrumbItems" />
 
     <main>
-      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-[#fff3e5] to-[var(--yunda-petal)] bg-gradient-to-b">
+      <section class="relative overflow-hidden from-[var(--yunda-petal)] via-[#fff7ef] to-white bg-gradient-to-br">
         <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-18%] h-[340px] w-[360px] rounded-full bg-white/60 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-14%] h-[380px] w-[420px] rounded-full bg-[var(--yunda-petal)]/70 blur-3xl" />
-          <div class="absolute bottom-[-22%] left-[-20%] h-[420px] w-[520px] rounded-[58%] bg-white/55 blur-3xl" />
-          <div class="absolute bottom-[-24%] right-[-18%] h-[420px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/60 blur-3xl" />
+          <div class="absolute left-[-12%] top-[-25%] h-100 w-100 rounded-full bg-white/75 blur-3xl" />
+          <div class="absolute right-[-12%] top-[-10%] h-120 w-120 rounded-full bg-[var(--yunda-sky)]/18 blur-3xl" />
         </div>
-
-        <div class="relative mx-auto max-w-[1760px] w-full px-6 py-14 lg:px-14 lg:py-20">
-          <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
-            <div class="space-y-6">
-              <h1 class="font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
-                {{ c.heroTitle }}
-              </h1>
-
-              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                {{ c.heroLead }}
-              </p>
-              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                {{ c.heroBody }}
-              </p>
-
-              <div class="flex flex-wrap gap-4">
-                <NuxtLink
-                  :to="localePath('/be-parents')"
-                  class="inline-flex items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-6 py-3 text-sm text-[var(--yunda-petal)] font-semibold shadow-[0_16px_30px_rgba(169,108,66,0.26)] transition-transform duration-200 hover:-translate-y-0.5"
-                  style="font-family: var(--font-text)"
-                >
-                  {{ c.ctaPrimary }}
-                </NuxtLink>
-                <NuxtLink
-                  :to="localePath('/surrogacy-cost')"
-                  class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/30 rounded-[12px] bg-white/85 px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
-                  style="font-family: var(--font-text)"
-                >
-                  {{ c.ctaSecondary }}
-                </NuxtLink>
-              </div>
+        <div class="relative grid mx-auto max-w-320 gap-10 px-6 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:px-10 lg:py-20">
+          <div>
+            <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.18em] uppercase">
+              {{ c.heroEyebrow }}
+            </p>
+            <h1 class="mt-4 text-10.5 text-[var(--yunda-bark)] font-semibold leading-[1.08] font-display lg:text-14">
+              {{ c.heroTitle }}
+            </h1>
+            <p class="mt-6 text-lg text-[var(--yunda-bark)]/88 font-medium leading-[1.75]">
+              {{ c.heroLead }}
+            </p>
+            <p class="mt-4 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.heroBody }}
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <NuxtLink
+                :to="localePath('/be-parents')"
+                class="inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-6 py-3.5 text-sm text-white font-bold shadow-[0_16px_34px_rgba(61,42,31,0.2)] transition hover:-translate-y-0.5"
+              >
+                {{ c.heroPrimary }}
+              </NuxtLink>
+              <NuxtLink
+                :to="localePath('/partner-ivf-clinics')"
+                class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/35 rounded-3 bg-white/80 px-6 py-3.5 text-sm text-[var(--yunda-bark)] font-bold transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5"
+              >
+                {{ c.heroSecondary }}
+              </NuxtLink>
             </div>
+          </div>
 
-            <div class="relative">
-              <div class="relative isolate overflow-hidden border border-[var(--yunda-maple)]/35 rounded-[32px] shadow-[0_26px_70px_rgba(169,108,66,0.20)]">
-                <div class="absolute inset-0 from-[#f9d9b7] via-[#eab07d] to-[#d88556] bg-gradient-to-r" />
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.36),transparent_42%),radial-gradient(circle_at_80%_24%,rgba(255,255,255,0.26),transparent_38%)]" />
-
-                <div class="relative aspect-[1002/600] w-full">
-                  <div class="group absolute inset-0 flex items-stretch gap-4 px-6 py-6 lg:px-8">
-                    <div class="flex-1 overflow-hidden border border-white/55 rounded-[24px] bg-white/45 shadow-[0_18px_40px_rgba(39,31,24,0.18)] backdrop-blur-md transition-transform duration-300 ease-out will-change-transform group-hover:shadow-[0_24px_52px_rgba(39,31,24,0.20)] group-hover:-translate-y-1">
-                      <picture>
-                        <source srcset="/images/ip/egg/egg-donation.jpg" type="image/jpeg">
-                        <img
-                          src="/images/ip/egg/egg-donation.jpg"
-                          :alt="c.heroImgAlt"
-                          class="h-full w-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      </picture>
-                    </div>
-                    <div class="flex-1 overflow-hidden border border-white/55 rounded-[24px] bg-white/45 shadow-[0_18px_40px_rgba(39,31,24,0.18)] backdrop-blur-md transition-transform duration-300 ease-out will-change-transform group-hover:shadow-[0_24px_52px_rgba(39,31,24,0.20)] group-hover:-translate-y-1">
-                      <picture>
-                        <source srcset="/images/ip/egg/Egg-Donor-Surrogacy-2.jpg" type="image/jpeg">
-                        <img
-                          src="/images/ip/egg/Egg-Donor-Surrogacy-2.jpg"
-                          :alt="c.heroImgAlt"
-                          class="h-full w-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      </picture>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-7 bg-white shadow-[0_28px_70px_rgba(61,42,31,0.16)]">
+            <OptimizedPicture
+              src="/images/ip/egg/Egg-Donor-Surrogacy-2.jpg"
+              avif-src="/images/ip/egg/egg-donor-surrogacy-hero-800.avif 800w, /images/ip/egg/egg-donor-surrogacy-hero-1600.avif 1600w"
+              :alt="c.heroAlt"
+              width="1600"
+              height="1142"
+              sizes="(max-width: 1024px) 100vw, 48vw"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              picture-class="contents"
+              img-class="aspect-[1600/1142] h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-20%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[400px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[480px] rounded-[55%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-16%] h-[420px] w-[500px] rounded-[58%] bg-[var(--yunda-petal)]/55 blur-3xl" />
-        </div>
-
-        <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
-          <div class="grid mx-auto max-w-[1480px] gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
-            <div class="space-y-5">
-              <h2 class="font-display text-[30px] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-                {{ c.s2Title }}
-              </h2>
-              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                {{ c.s2Body1 }}
-              </p>
-              <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                {{ c.s2Body2 }}
-              </p>
-            </div>
-
-            <div class="relative flex justify-center">
-              <div class="relative aspect-square max-w-[420px] w-full overflow-hidden border border-[var(--yunda-maple)]/25 rounded-[28px] bg-white/85 p-7 shadow-[0_24px_60px_rgba(169,108,66,0.18)] backdrop-blur-md">
-                <div class="absolute inset-0 from-[#ffe6c9] via-[#f9d3a8] to-[#e9a36d] bg-gradient-to-br opacity-70" />
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(255,255,255,0.7),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.45),transparent_40%)]" />
-                <div class="relative h-full flex flex-col justify-between rounded-[18px] bg-white/78 p-6 shadow-[0_12px_28px_rgba(39,31,24,0.10)]">
-                  <div class="space-y-3">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-4 py-1.5 text-base text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
-                      <span class="h-7 w-7 inline-flex items-center justify-center rounded-full bg-[var(--yunda-maple)] text-lg text-white">✶</span>
-                      <span>{{ c.s2CardTitle }}</span>
-                    </div>
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ c.s2CardSub }}
-                    </h3>
-                  </div>
-
-                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2 lg:text-lg" style="font-family: var(--font-text)">
-                    <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                      <span>{{ c.s2Checklist[0] }}</span>
-                    </li>
-                    <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                      <span>{{ c.s2Checklist[1] }}</span>
-                    </li>
-                    <li class="flex gap-2">
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                      <span>{{ c.s2Checklist[2] }}</span>
-                    </li>
-                  </ul>
-
-                  <div class="mt-2 inline-flex items-center gap-2 text-base text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)" />
-                </div>
+      <section class="px-6 py-16 lg:px-10 lg:py-22">
+        <div class="grid mx-auto max-w-320 gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
+          <div>
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.roleTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/80 leading-[1.85] lg:text-lg">
+              {{ c.roleBody1 }}
+            </p>
+            <p class="mt-4 text-base text-[var(--yunda-bark)]/80 leading-[1.85] lg:text-lg">
+              {{ c.roleBody2 }}
+            </p>
+          </div>
+          <div class="border border-[var(--yunda-maple)]/20 rounded-6 bg-white/88 p-6 shadow-[0_18px_50px_rgba(61,42,31,0.08)] lg:p-8">
+            <h3 class="text-xl font-bold">
+              {{ c.roleCardTitle }}
+            </h3>
+            <dl class="mt-5 divide-y divide-[var(--yunda-bark)]/10">
+              <div v-for="role in c.roles" :key="role.title" class="grid gap-1 py-4 sm:grid-cols-[10rem_1fr] sm:gap-4">
+                <dt class="text-[var(--yunda-maple)] font-bold">
+                  {{ role.title }}
+                </dt>
+                <dd class="text-sm text-[var(--yunda-bark)]/76 leading-7">
+                  {{ role.body }}
+                </dd>
               </div>
-            </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-22%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-20%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/55 blur-3xl" />
-          <div class="absolute bottom-[-22%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
-        </div>
-
-        <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
-          <div class="mx-auto max-w-[1480px] space-y-12">
-            <div class="text-center space-y-3">
-              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-                {{ c.s3Title }}
-              </h2>
-            </div>
-
-            <div class="space-y-12">
-              <div
-                v-for="(step, idx) in c.s3Steps"
-                :key="step.title"
-                class="grid gap-8 lg:grid-cols-2 lg:items-center"
-                :class="idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''"
-              >
-                <div class="space-y-4">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
-                    <span class="h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                    <span>{{ step.title }}</span>
-                  </div>
-                  <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                    {{ step.title }}
-                  </h3>
-                  <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                    {{ step.body1 }}
-                  </p>
-                  <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                    {{ step.body2 }}
-                  </p>
-                </div>
-
-                <div class="relative overflow-hidden border border-[var(--yunda-maple)]/25 rounded-[26px] bg-white/80 shadow-[0_20px_52px_rgba(64,84,120,0.12)]">
-                  <OptimizedPicture
-                    :src="step.img"
-                    :avif-src="getAvifImage(step.img)"
-                    :alt="step.imgAlt"
-                    :width="idx === 0 ? 1864 : 1616"
-                    :height="idx === 0 ? 1208 : 1056"
-                    picture-class="contents"
-                    img-class="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
-            </div>
+      <section class="bg-white/70 px-6 py-16 lg:px-10 lg:py-22">
+        <div class="mx-auto max-w-320">
+          <div class="max-w-4xl">
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.processTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.processIntro }}
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-18%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
-        </div>
-
-        <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
-          <div class="mx-auto max-w-[1480px] space-y-10">
-            <div class="text-center space-y-3">
-              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-                {{ c.s4Title }}
-              </h2>
-            </div>
-
-            <div class="grid gap-6 lg:grid-cols-2">
-              <div
-                v-for="(card, idx) in c.s4Blocks"
-                :key="card.title"
-                class="relative overflow-hidden border border-[var(--yunda-maple)]/28 rounded-[22px] bg-white/88 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md"
-                :class="idx === 0 ? 'from-[#fff7ee] via-white to-[#fdf0df] bg-gradient-to-br' : 'from-[#fff4e6] via-white to-[#faead8] bg-gradient-to-br'"
-              >
-                <div class="flex items-start gap-3">
-                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)]/10 text-lg text-[var(--yunda-maple)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-text)">
-                    {{ idx + 1 }}
-                  </div>
-                  <div class="space-y-2">
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ card.title }}
-                    </h3>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ card.body1 }}
-                    </p>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ card.body2 }}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="grid mt-4 gap-3 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:gap-4">
-                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2" style="font-family: var(--font-text)">
-                    <li
-                      v-for="b in card.bullets"
-                      :key="b"
-                      class="flex gap-2"
-                    >
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                      <span>{{ b }}</span>
-                    </li>
-                  </ul>
-
-                  <div class="relative overflow-hidden border border-[var(--yunda-maple)]/24 rounded-[18px] bg-white/90 shadow-[0_16px_44px_rgba(169,108,66,0.16)] lg:place-self-center">
-                    <OptimizedPicture
-                      :src="card.img"
-                      :avif-src="getAvifImage(card.img)"
-                      :alt="card.imgAlt"
-                      :width="idx === 0 ? 2178 : 2746"
-                      :height="idx === 0 ? 1188 : 1256"
-                      picture-class="contents"
-                      img-class="h-full w-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="absolute inset-0 from-black/8 via-transparent to-transparent bg-gradient-to-t" />
-                  </div>
-                </div>
-
-                <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--yunda-maple)]/10 px-3 py-1 text-xs text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
-                  <span class="h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                  <span>{{ card.tag }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-20%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-18%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
-        </div>
-
-        <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
-          <div class="mx-auto max-w-[1480px] space-y-12">
-            <div class="text-center space-y-3">
-              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-                {{ c.s5Title }}
-              </h2>
-            </div>
-
-            <div class="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-              <div
-                v-for="(card, idx) in c.s5Cards"
-                :key="card.title"
-                class="relative flex flex-col gap-4 overflow-hidden border border-[var(--yunda-maple)]/28 rounded-[22px] bg-white/90 p-6 shadow-[0_18px_50px_rgba(64,84,120,0.12)] backdrop-blur-md transition-transform duration-300 ease-out hover:shadow-[0_24px_54px_rgba(39,31,24,0.16)] hover:-translate-y-1"
-                :class="idx === 0 ? 'from-[#fff7ee] via-white to-[#fdf0df] bg-gradient-to-br' : 'from-[#fff4e6] via-white to-[#faead8] bg-gradient-to-br'"
-              >
-                <div class="flex items-start gap-3">
-                  <div class="mt-1 h-8 w-8 flex shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)]/10 text-lg text-[var(--yunda-maple)] shadow-[0_10px_24px_rgba(169,108,66,0.20)]" style="font-family: var(--font-text)">
-                    {{ idx + 1 }}
-                  </div>
-                  <div class="space-y-2">
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ card.title }}
-                    </h3>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ card.body1 }}
-                    </p>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ card.body2 }}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="grid gap-3 lg:grid-cols-1 lg:items-center lg:gap-4">
-                  <ul class="text-base text-[var(--yunda-bark)]/90 leading-relaxed space-y-2" style="font-family: var(--font-text)">
-                    <li
-                      v-for="b in card.bullets"
-                      :key="b"
-                      class="flex gap-2"
-                    >
-                      <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                      <span>{{ b }}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid gap-4 lg:grid-cols-4 md:grid-cols-2">
-              <div
-                v-for="photo in c.s5Gallery"
-                :key="photo.src"
-                class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-[18px] bg-white/90 shadow-[0_14px_40px_rgba(64,84,120,0.12)] transition-transform duration-300 ease-out hover:shadow-[0_20px_48px_rgba(39,31,24,0.14)] hover:-translate-y-1"
-              >
-                <OptimizedPicture
-                  :src="photo.src"
-                  :avif-src="getAvifImage(photo.src)"
-                  :alt="photo.alt"
-                  :width="photo.src.includes('Surrogacy-Journey-3') ? 832 : photo.src.includes('Surrogacy-Journey-4') ? 1056 : undefined"
-                  :height="photo.src.includes('Surrogacy-Journey-3') ? 1248 : photo.src.includes('Surrogacy-Journey-4') ? 992 : undefined"
-                  picture-class="contents"
-                  img-class="h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="relative w-full overflow-hidden bg-[var(--yunda-petal)]">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-18%] h-[320px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-16%] h-[360px] w-[420px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-18%] left-[-16%] h-[420px] w-[500px] rounded-[58%] bg-white/50 blur-3xl" />
-          <div class="absolute bottom-[-20%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/55 blur-3xl" />
-        </div>
-
-        <div class="relative mx-auto max-w-[1960px] w-full px-6 py-16 lg:px-14 lg:py-24">
-          <div class="mx-auto max-w-[1480px] space-y-8">
-            <div class="text-center space-y-3">
-              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-                {{ c.s7Title }}
-              </h2>
-            </div>
-
-            <div class="grid gap-4 lg:grid-cols-2">
-              <details
-                v-for="faq in c.s7Faqs"
-                :key="faq.q"
-                class="group border border-[var(--yunda-maple)]/22 rounded-[16px] bg-white/88 px-4 py-3 shadow-[0_12px_32px_rgba(64,84,120,0.10)] transition-all hover:border-[var(--yunda-maple)]/35 hover:shadow-[0_16px_38px_rgba(64,84,120,0.12)] hover:-translate-y-0.5"
-              >
-                <summary class="flex cursor-pointer list-none items-start gap-2 text-left">
-                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold transition-colors duration-200 lg:text-xl group-open:text-[var(--yunda-maple)]" >
-                    {{ faq.q }}
-                  </span>
-                </summary>
-                <p class="mt-2 pl-6 text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ faq.a }}
+          <div class="grid mt-10 gap-5 lg:grid-cols-2">
+            <article
+              v-for="step in c.processSteps"
+              :key="step.title"
+              class="overflow-hidden border border-[var(--yunda-bark)]/10 rounded-6 bg-white shadow-[0_14px_40px_rgba(61,42,31,0.06)]"
+            >
+              <OptimizedPicture
+                v-if="step.img"
+                :src="step.img"
+                :avif-src="step.avif"
+                :alt="step.alt"
+                :width="step.width"
+                :height="step.height"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                decoding="async"
+                picture-class="contents"
+                img-class="aspect-[16/9] w-full object-cover"
+              />
+              <div class="p-6 lg:p-7">
+                <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.16em] uppercase">
+                  {{ step.label }}
                 </p>
-              </details>
-            </div>
+                <h3 class="mt-2 text-xl font-bold leading-snug lg:text-2xl">
+                  {{ step.title }}
+                </h3>
+                <p class="mt-3 text-base text-[var(--yunda-bark)]/76 leading-[1.75]">
+                  {{ step.body }}
+                </p>
+              </div>
+            </article>
           </div>
+          <NuxtLink
+            :to="localePath('/surrogacy-process')"
+            class="mt-7 inline-flex text-sm text-[var(--yunda-maple)] font-bold underline underline-offset-4"
+          >
+            {{ c.processLink }} →
+          </NuxtLink>
+        </div>
+      </section>
+
+      <section class="px-6 py-16 lg:px-10 lg:py-22">
+        <div class="mx-auto max-w-320">
+          <div class="max-w-4xl">
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.selectionTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.selectionIntro }}
+            </p>
+          </div>
+          <div class="grid mt-10 gap-6 lg:grid-cols-2">
+            <article
+              v-for="card in c.selectionCards"
+              :key="card.title"
+              class="overflow-hidden border border-[var(--yunda-maple)]/18 rounded-6 bg-white shadow-[0_18px_50px_rgba(61,42,31,0.07)]"
+            >
+              <OptimizedPicture
+                :src="card.img"
+                :avif-src="card.avif"
+                :alt="card.alt"
+                :width="card.width"
+                :height="card.height"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                decoding="async"
+                picture-class="contents"
+                img-class="aspect-[16/9] w-full object-cover"
+              />
+              <div class="p-6 lg:p-8">
+                <h3 class="text-xl font-bold leading-snug lg:text-2xl">
+                  {{ card.title }}
+                </h3>
+                <p class="mt-4 text-base text-[var(--yunda-bark)]/76 leading-[1.75]">
+                  {{ card.body }}
+                </p>
+                <ul class="grid mt-5 gap-3">
+                  <li v-for="item in card.bullets" :key="item" class="flex gap-3 text-sm text-[var(--yunda-bark)]/82 leading-6">
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--yunda-maple)]" aria-hidden="true" />
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--yunda-bark)] px-6 py-16 text-white lg:px-10 lg:py-22">
+        <div class="mx-auto max-w-320">
+          <div class="max-w-4xl">
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.comparisonTitle }}
+            </h2>
+            <p class="mt-5 text-base text-white/74 leading-[1.8] lg:text-lg">
+              {{ c.comparisonIntro }}
+            </p>
+          </div>
+          <div class="mt-10 overflow-x-auto rounded-5 bg-white text-[var(--yunda-bark)] shadow-[0_22px_60px_rgba(0,0,0,0.22)]">
+            <table class="min-w-205 w-full border-collapse text-left">
+              <thead class="bg-[var(--yunda-petal)]">
+                <tr>
+                  <th scope="col" class="w-1/5 px-5 py-4 text-sm font-extrabold">
+                    {{ c.comparisonFactor }}
+                  </th>
+                  <th scope="col" class="w-2/5 px-5 py-4 text-sm font-extrabold">
+                    {{ c.comparisonFresh }}
+                  </th>
+                  <th scope="col" class="w-2/5 px-5 py-4 text-sm font-extrabold">
+                    {{ c.comparisonFrozen }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in c.comparisonRows" :key="row.factor" class="border-t border-[var(--yunda-bark)]/10 align-top">
+                  <th scope="row" class="px-5 py-4 text-sm text-[var(--yunda-maple)] font-bold">
+                    {{ row.factor }}
+                  </th>
+                  <td class="px-5 py-4 text-sm text-[var(--yunda-bark)]/76 leading-6">
+                    {{ row.fresh }}
+                  </td>
+                  <td class="px-5 py-4 text-sm text-[var(--yunda-bark)]/76 leading-6">
+                    {{ row.frozen }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+            <NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-sm text-white font-bold underline underline-offset-4">
+              {{ c.clinicLink }} →
+            </NuxtLink>
+            <NuxtLink :to="localePath('/surrogacy-cost')" class="text-sm text-white font-bold underline underline-offset-4">
+              {{ c.costLink }} →
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 py-16 lg:px-10 lg:py-22">
+        <div class="mx-auto max-w-320">
+          <div class="max-w-4xl">
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.planningTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+              {{ c.planningBody }}
+            </p>
+          </div>
+          <div class="grid mt-9 gap-4 md:grid-cols-2">
+            <article
+              v-for="card in c.planningCards"
+              :key="card.title"
+              class="border border-[var(--yunda-bark)]/10 rounded-5 bg-white/78 p-6"
+            >
+              <h3 class="text-lg font-bold">
+                {{ card.title }}
+              </h3>
+              <p class="mt-2 text-sm text-[var(--yunda-bark)]/74 leading-7">
+                {{ card.body }}
+              </p>
+            </article>
+          </div>
+          <NuxtLink
+            :to="localePath('/single-parents-lgbtq')"
+            class="mt-6 inline-flex text-sm text-[var(--yunda-maple)] font-bold underline underline-offset-4"
+          >
+            {{ c.inclusiveLink }} →
+          </NuxtLink>
+        </div>
+      </section>
+
+      <section class="bg-white/70 px-6 py-16 lg:px-10 lg:py-22">
+        <div class="grid mx-auto max-w-320 gap-8 lg:grid-cols-[1fr_0.82fr]">
+          <div>
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.checklistTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.checklistIntro }}
+            </p>
+            <ul class="grid mt-7 gap-3 sm:grid-cols-2">
+              <li v-for="item in c.checklistItems" :key="item" class="flex gap-3 rounded-4 bg-[var(--yunda-petal)]/75 p-4 text-sm leading-6">
+                <span class="mt-0.5 text-[var(--yunda-maple)] font-black" aria-hidden="true">✓</span>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+          <aside class="self-start border border-[var(--yunda-maple)]/20 rounded-6 bg-[var(--yunda-petal)] p-7 shadow-[0_18px_50px_rgba(61,42,31,0.08)] lg:sticky lg:top-24">
+            <p class="text-lg font-bold leading-relaxed">
+              {{ c.checklistCta }}
+            </p>
+            <NuxtLink
+              :to="localePath('/be-parents')"
+              class="mt-6 w-full inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-6 py-3.5 text-sm text-white font-bold"
+            >
+              {{ c.heroPrimary }}
+            </NuxtLink>
+          </aside>
+        </div>
+      </section>
+
+      <SeoTrustNote
+        :updated="c.trustUpdated"
+        :reviewed-by="c.trustReviewed"
+        :note="c.trustNote"
+        :sources="[
+          {
+            label: c.sourceFdaOverview,
+            href: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/what-you-should-know-reproductive-tissue-donation',
+          },
+          {
+            label: c.sourceFdaTesting,
+            href: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/testing-donors-human-cells-tissues-and-cellular-and-tissue-based-products-hctp-specific-requirements',
+          },
+          {
+            label: c.sourceSart,
+            href: 'https://www.sart.org/patients/fyi-videos/donor-eggs-fresh-or-frozen/',
+          },
+        ]"
+      />
+
+      <section class="px-6 py-16 lg:px-10 lg:py-22">
+        <div class="mx-auto max-w-320">
+          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+            {{ c.faqTitle }}
+          </h2>
+          <div class="grid mt-9 gap-4 lg:grid-cols-2">
+            <details
+              v-for="faq in c.faqs"
+              :key="faq.q"
+              class="group border border-[var(--yunda-bark)]/10 rounded-4 bg-white px-5 py-4 shadow-[0_10px_30px_rgba(61,42,31,0.05)]"
+            >
+              <summary class="cursor-pointer list-none text-base font-bold leading-7">
+                <span class="flex items-start justify-between gap-4">
+                  <span>{{ faq.q }}</span>
+                  <span class="text-[var(--yunda-maple)] transition group-open:rotate-45" aria-hidden="true">+</span>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/74 leading-7">
+                {{ faq.a }}
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="from-[#f6d7b8] via-[var(--yunda-petal)] to-[#dce9ef] bg-gradient-to-r px-6 py-16 lg:px-10 lg:py-20">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+            {{ c.finalTitle }}
+          </h2>
+          <p class="mx-auto mt-5 max-w-3xl text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+            {{ c.finalBody }}
+          </p>
+          <NuxtLink
+            :to="localePath('/be-parents')"
+            class="mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-7 py-4 text-sm text-white font-bold shadow-[0_16px_34px_rgba(61,42,31,0.2)]"
+          >
+            {{ c.finalCta }}
+          </NuxtLink>
         </div>
       </section>
     </main>

@@ -87,14 +87,14 @@ const socialMetaByPath: Record<string, SocialMeta> = {
   },
   '/egg-donation': {
     title: {
-      en: 'Egg Donor Surrogacy & Donor Egg IVF | Yunda',
-      zh: '捐卵代孕与捐赠卵子 IVF｜孕达',
+      en: 'Egg Donor Surrogacy Guide for Intended Parents | Yunda',
+      zh: '捐卵代孕指南：准父母的供卵与 IVF 规划｜孕达',
     },
     description: {
-      en: 'Learn how donor eggs fit into IVF and gestational surrogacy planning for intended parents, including fresh, frozen, known, and agency donor paths.',
-      zh: '了解捐赠卵子如何衔接 IVF 与妊娠代孕，包括鲜卵、冻卵、已知捐赠者和机构捐赠路径。',
+      en: 'Understand egg donor surrogacy, screening, fresh vs. frozen eggs, IVF coordination, costs, timelines, and next steps for intended parents across the U.S.',
+      zh: '了解捐卵代孕、供体筛查、新鲜与冷冻卵子、IVF 协调、费用、时间线及美国准父母的下一步规划。',
     },
-    image: '/images/ip/egg/egg-donation.jpg',
+    image: '/images/ip/egg/egg-donor-surrogacy-guide-og.jpg',
   },
   '/partner-ivf-clinics': {
     title: {
