@@ -1,8 +1,5 @@
 <script setup>
 const { locale, setLocale } = useI18n()
-const runtimeConfig = useRuntimeConfig()
-
-const showLanguageSwitcher = computed(() => !runtimeConfig.public.hideLanguageSwitcher)
 
 // 确保响应式更新
 const currentLocale = computed(() => locale.value)
@@ -10,7 +7,6 @@ const currentLocale = computed(() => locale.value)
 
 <template>
   <div
-    v-if="showLanguageSwitcher"
     class="flex items-center gap-1.5 px-2 py-1 text-base text-[#271F18] md:gap-2 md:px-2.5 md:py-1.5 md:text-lg"
   >
     <button

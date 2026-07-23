@@ -267,8 +267,6 @@ export default defineNuxtConfig({
       siteUrl: 'https://www.yundasurrogacy.com',
       // 本地调试留空则用相对路径 /api（走 vite 代理）；生产需指向后台，未配置时默认 yunda-admin-system
       apiBase: process.env.NUXT_PUBLIC_API_BASE || (process.env.NODE_ENV === 'production' ? 'https://yunda-admin-system.yundasurrogacy.com' : ''),
-      // 临时隐藏 EN / 中文切换，并将 /zh 访问重定向到对应英文页；恢复时设置 NUXT_PUBLIC_HIDE_LANGUAGE_SWITCHER=false
-      hideLanguageSwitcher: process.env.NUXT_PUBLIC_HIDE_LANGUAGE_SWITCHER !== 'false',
     },
   },
 
