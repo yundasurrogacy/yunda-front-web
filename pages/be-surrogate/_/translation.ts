@@ -42,6 +42,8 @@ export const translations = {
       uploadPhotosMinTip: 'At least 2 photos are required',
       uploadPhotosTip: 'Click or drag images here to upload (minimum 2)',
       uploadPhotosMaxTip: 'Maximum 10 photos allowed.',
+      uploadPhotosUploading: 'Uploading photos…',
+      uploadPhotosFailed: 'Photo upload failed. Please try again.',
       finalConsent: {
         text: 'I consent to sharing my personal and sensitive information with Yunda Surrogacy, and receiving future communication via text, email, phone, or post according to the Privacy Policy.',
         disclaimer: 'Your information will be kept strictly confidential and will not be shared or sold to any third parties.',
@@ -347,6 +349,8 @@ export const translations = {
       uploadPhotosMinTip: '至少需要 2 张照片',
       uploadPhotosTip: '点击或拖拽图片到此处上传（至少2张）',
       uploadPhotosMaxTip: '最多上传10张照片。',
+      uploadPhotosUploading: '照片上传中…',
+      uploadPhotosFailed: '照片上传失败，请重试。',
       finalConsent: {
         text: '我同意提交本人的个人信息，并接受孕达通过邮件、短信、电话或邮寄形式发送的服务更新和信息。我已知悉隐私政策，并了解我可以随时选择退出订阅。',
         disclaimer: '您的所有信息将被严格保密，不会被出售或提供给任何第三方。',

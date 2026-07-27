@@ -293,24 +293,41 @@ async function uploadImages(files: File[]): Promise<string[]> {
   return results.map(r => r.url).filter(Boolean)
 }
 
-async function onPhotoChange(e: Event) {
-  const files = (e.target as HTMLInputElement)?.files
-  if (!files || files.length === 0)
+async function addPhotos(files: File[]) {
+  if (uploadingPhotos.value || form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS)
     return
-  if (form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS)
+
+  const remain = MAX_UPLOAD_PHOTOS - form.uploadPhotos.length
+  const imageFiles = files
+    .filter(file => file.type.startsWith('image/'))
+    .slice(0, remain)
+  if (imageFiles.length === 0)
     return
+
+  validationError.value = ''
   uploadingPhotos.value = true
   try {
-    const urls = await uploadImages(Array.from(files))
-    const remain = MAX_UPLOAD_PHOTOS - form.uploadPhotos.length
-    form.uploadPhotos.push(...urls.slice(0, remain))
+    const urls = await uploadImages(imageFiles)
+    form.uploadPhotos.push(...urls)
+  }
+  catch (error) {
+    console.error('Photo upload failed:', error)
+    validationError.value = t.value.form.uploadPhotosFailed
   }
   finally {
     uploadingPhotos.value = false
-    nextTick(() => {
-      if (fileInputRef.value)
-        fileInputRef.value.value = ''
-    })
+  }
+}
+
+async function onPhotoChange(e: Event) {
+  const input = e.target as HTMLInputElement
+  const files = input.files
+  try {
+    if (files?.length)
+      await addPhotos(Array.from(files))
+  }
+  finally {
+    input.value = ''
   }
 }
 
@@ -318,18 +335,7 @@ async function handleDrop(e: DragEvent) {
   const files = e.dataTransfer?.files
   if (!files || files.length === 0)
     return
-  const imageFiles = Array.from(files).filter(f => f.type.startsWith('image/'))
-  if (imageFiles.length === 0 || form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS)
-    return
-  uploadingPhotos.value = true
-  try {
-    const urls = await uploadImages(imageFiles)
-    const remain = MAX_UPLOAD_PHOTOS - form.uploadPhotos.length
-    form.uploadPhotos.push(...urls.slice(0, remain))
-  }
-  finally {
-    uploadingPhotos.value = false
-  }
+  await addPhotos(Array.from(files))
 }
 
 function removePhoto(idx: number) {
@@ -1602,12 +1608,13 @@ function scrollToPageTop() {
                   </div>
                   <div
                     class="flex flex-col cursor-pointer items-center justify-center border-2 rounded-4 border-dashed py-10 transition"
-                    :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--yunda-bark)] hover:bg-[rgba(234,232,208,0.25)]'"
+                    :class="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS || uploadingPhotos ? 'border-gray-300 cursor-not-allowed bg-gray-50' : 'border-[var(--yunda-bark)] hover:bg-[rgba(234,232,208,0.25)]'"
                     @dragover.prevent
                     @drop.prevent="handleDrop"
-                    @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && fileInputRef?.click()"
+                    @click="form.uploadPhotos.length < MAX_UPLOAD_PHOTOS && !uploadingPhotos && fileInputRef?.click()"
                   >
                     <span v-if="form.uploadPhotos.length >= MAX_UPLOAD_PHOTOS" class="text-gray-500">{{ t.form.uploadPhotosMaxTip }}</span>
+                    <span v-else-if="uploadingPhotos" class="text-gray-500">{{ t.form.uploadPhotosUploading }}</span>
                     <template v-else>
                       <span class="mb-2 block text-6 text-[var(--yunda-bark)]">+</span>
                       <span class="text-5 text-gray-600">{{ t.form.uploadPhotosTip }}</span>
