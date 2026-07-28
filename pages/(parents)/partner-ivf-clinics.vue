@@ -52,7 +52,7 @@ const translations = {
       'Already have embryos or an IVF team? Yunda connects clinic requirements with surrogate screening, legal clearance, and the transfer plan. Still choosing a clinic? We help you prepare the right questions and understand how each clinic works with gestational carriers—while licensed fertility specialists make every medical decision.',
     ctaPrimary: 'Plan My Clinic Coordination',
     ctaSecondary: 'See the Coordination Steps',
-    heroImgAlt: 'Two people discussing a surrogacy care plan during a clinic consultation',
+    heroImgAlt: 'Yunda team members visiting HRC Fertility with a client',
     pathsTitle: 'Start From Where You Are',
     pathsIntro:
       'You do not need to restart your fertility plan to begin a surrogacy conversation. We first document what is already in place, then identify the handoffs that still need owners.',
@@ -235,7 +235,7 @@ const translations = {
       '已有胚胎或 IVF 团队？孕达会衔接诊所要求、代孕妈妈筛查、法律放行与移植计划。仍在选择诊所？我们帮助你整理关键问题，了解各诊所如何处理妊娠代孕个案；所有医疗决定仍由持牌生殖专家作出。',
     ctaPrimary: '规划我的诊所协调',
     ctaSecondary: '查看协调步骤',
-    heroImgAlt: '两人在诊所咨询中讨论代孕与 IVF 协调计划',
+    heroImgAlt: '孕达团队陪同客户到访 HRC Fertility',
     pathsTitle: '从你现在的阶段开始',
     pathsIntro: '开始代孕咨询，并不意味着要推翻已有的生育计划。我们会先梳理已完成事项，再确认后续交接由谁负责。',
     paths: [
@@ -525,20 +525,20 @@ useHead(() => ({
             <div class="overflow-hidden border border-white/80 rounded-[28px] bg-white/80 shadow-[0_24px_60px_rgba(64,84,120,0.12)]">
               <picture class="contents">
                 <source
-                  srcset="/images/ip/ivf-clinic-coordination-consultation-640.avif 640w, /images/ip/ivf-clinic-coordination-consultation-1280.avif 1280w"
+                  srcset="/images/replacements/2026-07-28/partner-ivf-clinics-hero-640.avif 640w, /images/replacements/2026-07-28/partner-ivf-clinics-hero-1280.avif 1280w"
                   sizes="(max-width: 1024px) 100vw, 520px"
                   type="image/avif"
                 >
                 <source
-                  srcset="/images/ip/ivf-clinic-coordination-consultation-640.webp 640w, /images/ip/ivf-clinic-coordination-consultation-1280.webp 1280w"
+                  srcset="/images/replacements/2026-07-28/partner-ivf-clinics-hero-640.webp 640w, /images/replacements/2026-07-28/partner-ivf-clinics-hero-1280.webp 1280w"
                   sizes="(max-width: 1024px) 100vw, 520px"
                   type="image/webp"
                 >
                 <img
-                  src="/images/ip/ivf-clinic-coordination-consultation.jpg"
+                  src="/images/replacements/2026-07-28/partner-ivf-clinics-hero.jpg"
                   :alt="c.heroImgAlt"
                   width="1280"
-                  height="853"
+                  height="1280"
                   sizes="(max-width: 1024px) 100vw, 520px"
                   class="h-[340px] w-full object-cover lg:h-[430px]"
                   loading="eager"

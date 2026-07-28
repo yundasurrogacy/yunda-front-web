@@ -624,8 +624,8 @@ const processIcons = [
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <img
-          src="/images/landingpage3/IVF-Surrogacy-Process.jpg"
-          :alt="tt('IVF Surrogacy Process', 'IVF 代孕流程')"
+          src="/images/replacements/2026-07-28/surrogate-requirements-support-1.jpg"
+          :alt="tt('Yunda Surrogacy client support area', '孕达代孕客户支持空间')"
           class="h-full w-full object-cover"
         >
         <div class="absolute inset-0 bg-[var(--yunda-bark)]/80" />
@@ -768,8 +768,8 @@ const processIcons = [
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/landingpage3/Compensation-Support.jpg"
-                  :alt="tt('Compensation & Support', '补偿与支持')"
+                  src="/images/replacements/2026-07-28/surrogate-requirements-support-2.jpg"
+                  :alt="tt('Yunda Surrogacy office entrance', '孕达代孕办公室入口')"
                   class="h-auto w-full object-cover"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />

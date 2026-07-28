@@ -365,7 +365,7 @@ onUnmounted(() => {
             <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-br p-8 shadow-2xl">
               <div class="aspect-square flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
                 <div class="text-center">
-                  <img src="/images/california-surrogate-mother.jpg" :alt="tt('California Surrogate Mother', '加州代孕妈妈')">
+                  <img src="/images/replacements/2026-07-28/become-surrogate-california-hero.jpg" :alt="tt('Yunda supporting a client at a California fertility clinic', '孕达在加州生殖诊所陪伴客户')">
                 </div>
               </div>
             </div>
@@ -681,7 +681,7 @@ onUnmounted(() => {
         <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
           <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
-              <img src="/images/Compensation-Benefits.jpg" :alt="tt('California Surrogacy Compensation & Benefits', '加州代孕补偿与福利')">
+              <img src="/images/replacements/2026-07-28/become-surrogate-california-community-1.jpg" :alt="tt('Surrogacy community conference in California', '加州代孕社区会议现场')">
             </div>
           </div>
         </div>
@@ -902,7 +902,7 @@ onUnmounted(() => {
         <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
           <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
-              <img src="/images/Legal-Medical-Emotional-Care.jpg" :alt="tt('California Surrogacy Legal, Medical & Emotional Care', '加州代孕法律、医疗与情感支持')" class="h-full w-full object-cover">
+              <img src="/images/replacements/2026-07-28/become-surrogate-california-community-2.jpg" :alt="tt('Surrogacy organizations at a California community event', '加州代孕社区活动中的相关机构')" class="h-full w-full object-cover">
             </div>
           </div>
         </div>
