@@ -13,7 +13,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
  * 静态素材：`public/images/pages/benefit/`
  */
 const PAGE_ASSETS = {
-  hero: '/images/pages/benefit/hero.jpg',
+  hero: '/images/pages/benefit/hero-community-support.jpg',
   cta: '/images/pages/benefit/cta.jpg',
   heroFeatures: [
     '/images/pages/benefit/hero-feature-01.jpg',

@@ -203,10 +203,10 @@ useHead(() => ({
             <div class="grid gap-4 lg:grid-cols-2">
               <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
                 <picture>
-                  <source srcset="/images/pages/single-parents-lgbtq/hero.jpg" type="image/jpeg">
+                  <source srcset="/images/pages/single-parents-lgbtq/event-panel.avif" type="image/avif">
                   <img
-                    src="/images/pages/single-parents-lgbtq/hero.jpg"
-                    alt="LGBTQ intended parents celebrating together"
+                    src="/images/pages/single-parents-lgbtq/event-panel.jpg"
+                    alt="Panel discussion at a family-building community event"
                     class="h-[320px] w-full object-cover lg:h-[420px]"
                     loading="lazy"
                     decoding="async"
@@ -216,10 +216,10 @@ useHead(() => ({
 
               <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
                 <picture>
-                  <source srcset="/images/pages/single-parents-lgbtq/family-story.jpg" type="image/jpeg">
+                  <source srcset="/images/pages/single-parents-lgbtq/event-networking.avif" type="image/avif">
                   <img
-                    src="/images/pages/single-parents-lgbtq/family-story.jpg"
-                    alt="LGBTQ intended parents celebrating together"
+                    src="/images/pages/single-parents-lgbtq/event-networking.jpg"
+                    alt="Attendees connecting at a family-building community event"
                     class="h-[320px] w-full object-cover lg:h-[420px]"
                     loading="lazy"
                     decoding="async"
@@ -274,10 +274,10 @@ useHead(() => ({
           <div class="grid gap-8 lg:grid-cols-2">
             <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
               <picture>
-                <source srcset="/images/pages/single-parents-lgbtq/family-story.jpg" type="image/jpeg">
+                <source srcset="/images/pages/single-parents-lgbtq/families-out-loud-banner.avif" type="image/avif">
                 <img
-                  src="/images/pages/single-parents-lgbtq/family-story.jpg"
-                  alt="Gay couple walking together during their surrogacy journey"
+                  src="/images/pages/single-parents-lgbtq/families-out-loud-banner.jpg"
+                  alt="Families Out Loud community event banner"
                   class="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
@@ -304,10 +304,10 @@ useHead(() => ({
 
             <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
               <picture>
-                <source srcset="/images/pages/single-parents-lgbtq/lgbtq-family.jpg" type="image/jpeg">
+                <source srcset="/images/pages/single-parents-lgbtq/families-out-loud-materials.avif" type="image/avif">
                 <img
-                  src="/images/pages/single-parents-lgbtq/lgbtq-family.jpg"
-                  alt="Lesbian couple smiling together during surrogacy planning"
+                  src="/images/pages/single-parents-lgbtq/families-out-loud-materials.jpg"
+                  alt="Families Out Loud family-building resources"
                   class="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
@@ -467,10 +467,10 @@ useHead(() => ({
             <div class="grid h-full items-stretch gap-6 p-6 lg:grid-cols-[1.05fr_1fr] lg:p-10">
               <div class="relative h-full overflow-hidden rounded-[20px]">
                 <picture>
-                  <source srcset="/images/pages/single-parents-lgbtq/inclusive-support.webp" type="image/webp">
+                  <source srcset="/images/pages/single-parents-lgbtq/event-exhibitors.avif" type="image/avif">
                   <img
-                    src="/images/pages/single-parents-lgbtq/inclusive-support.webp"
-                    alt="LGBTQ intended parents sharing a moment"
+                    src="/images/pages/single-parents-lgbtq/event-exhibitors.jpg"
+                    alt="Exhibitors supporting families at a community event"
                     class="h-full w-full rounded-[20px] object-cover"
                     loading="lazy"
                     decoding="async"

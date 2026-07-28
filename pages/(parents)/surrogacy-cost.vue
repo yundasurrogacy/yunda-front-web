@@ -13,7 +13,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
  * 静态素材：`public/images/pages/surrogacy-cost/`
  */
 const PAGE_ASSETS = {
-  hero: '/images/pages/surrogacy-cost/hero.jpg',
+  hero: '/images/pages/surrogacy-cost/hero-conference.jpg',
   drivers: [
     '/images/pages/surrogacy-cost/driver-01.png',
     '/images/pages/surrogacy-cost/driver-02.png',
@@ -1837,7 +1837,10 @@ onUnmounted(() => {
   height: 100%;
   background:
     linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.92) 18%, rgba(255, 255, 255, 0.35) 52%, rgba(255, 255, 255, 0) 78%),
-    url('/images/pages/surrogacy-cost/hero.jpg') center right / cover no-repeat;
+    image-set(
+      url('/images/pages/surrogacy-cost/hero-conference.avif') type('image/avif'),
+      url('/images/pages/surrogacy-cost/hero-conference.jpg') type('image/jpeg')
+    ) center right / cover no-repeat;
   pointer-events: none;
   z-index: 0;
 }
@@ -3609,8 +3612,8 @@ onUnmounted(() => {
   background-image:
     linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)),
     image-set(
-      url('/images/pages/surrogacy-cost/cost-planning.webp') type('image/webp'),
-      url('/images/pages/surrogacy-cost/cost-planning.jpeg') type('image/jpeg')
+      url('/images/pages/surrogacy-cost/cost-planning-conference.avif') type('image/avif'),
+      url('/images/pages/surrogacy-cost/cost-planning-conference.jpg') type('image/jpeg')
     );
   background-size: cover;
   background-position: center;

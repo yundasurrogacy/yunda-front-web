@@ -29,7 +29,7 @@ const translations = {
       'Yunda helps intended parents organize the handoffs between donor resources, IVF clinics, embryo planning, surrogate matching, legal coordination, insurance review, and cross-border logistics. Medical decisions and donor eligibility determinations stay with the responsible clinics and qualified professionals.',
     heroPrimary: 'Discuss Your Donor Egg Plan',
     heroSecondary: 'See IVF Clinic Coordination',
-    heroAlt: 'Illustration of an egg during fertilization',
+    heroAlt: 'Surrogate smiling while holding a positive pregnancy test',
     roleTitle: 'When Donor Eggs May Be Part of Your Surrogacy Plan',
     roleBody1:
       'An IVF physician may discuss donor eggs when using an intended parent’s eggs is not possible, is not preferred, or is unlikely to fit the medical plan. Donor eggs may also be part of the path for single fathers, two-dad families, and other intended parents who need an egg source to create embryos.',
@@ -63,11 +63,11 @@ const translations = {
         label: 'Step 1',
         title: 'Define the family-building plan',
         body: 'Start with your family goals, existing embryos or records, preferred clinic, donor needs, timeline, location, and questions about future family size. This gives the clinic and coordination team the same starting point.',
-        img: '/images/pages/egg-donation/egg-donor.png',
-        avif: '/images/pages/egg-donation/egg-donor.avif',
-        alt: 'Embryologist reviewing an embryo image in a fertility laboratory',
-        width: 1864,
-        height: 1208,
+        img: '/images/pages/egg-donation/positive-pregnancy-tests.jpg',
+        avif: '/images/pages/egg-donation/positive-pregnancy-tests.avif',
+        alt: 'Two positive pregnancy tests after fertility treatment',
+        width: 1080,
+        height: 948,
       },
       {
         label: 'Step 2',
@@ -78,11 +78,11 @@ const translations = {
         label: 'Step 3',
         title: 'Create and review embryos with your IVF clinic',
         body: 'The IVF clinic manages fertilization, embryo culture, freezing, and any discussion of PGT-A or other testing. Outcomes vary by donor, sperm source, laboratory, and treatment plan, so the clinic—not an agency—should explain expected ranges and next decisions.',
-        img: '/images/pages/egg-donation/ivf-with-donor-eggs.png',
-        avif: '/images/pages/egg-donation/ivf-with-donor-eggs.avif',
-        alt: 'Laboratory staff reviewing embryo-monitoring equipment',
-        width: 1616,
-        height: 1056,
+        img: '/images/pages/egg-donation/early-ultrasound.jpg',
+        avif: '/images/pages/egg-donation/early-ultrasound.avif',
+        alt: 'Early ultrasound images from a pregnancy journey',
+        width: 1080,
+        height: 1920,
       },
       {
         label: 'Step 4',
@@ -103,11 +103,11 @@ const translations = {
           'Infectious-disease screening and testing',
           'Genetic screening and counseling needs',
         ],
-        img: '/images/pages/egg-donation/donor-screening.png',
-        avif: '/images/pages/egg-donation/donor-screening.avif',
-        alt: 'Laboratory technician processing a blood sample',
-        width: 2178,
-        height: 1188,
+        img: '/images/pages/egg-donation/fertility-medication.jpg',
+        avif: '/images/pages/egg-donation/fertility-medication.avif',
+        alt: 'Surrogate holding fertility medication',
+        width: 1080,
+        height: 1920,
       },
       {
         title: 'Clarify identity, contact, and practical fit',
@@ -118,11 +118,11 @@ const translations = {
           'Fresh-cycle timing or frozen-egg availability',
           'Legal documents, consent, and record access',
         ],
-        img: '/images/pages/egg-donation/donor-matching.png',
-        avif: '/images/pages/egg-donation/donor-matching.avif',
-        alt: 'Cryogenic storage equipment in a fertility laboratory',
-        width: 2746,
-        height: 1256,
+        img: '/images/pages/egg-donation/embryo-monitor.jpg',
+        avif: '/images/pages/egg-donation/embryo-monitor.avif',
+        alt: 'Embryo image displayed on a fertility laboratory monitor',
+        width: 1265,
+        height: 905,
       },
     ],
     comparisonTitle: 'Fresh vs. Frozen Donor Eggs for Surrogacy',
@@ -262,7 +262,7 @@ const translations = {
       '孕达帮助准父母衔接供卵资源、IVF 诊所、胚胎规划、代孕妈妈匹配、法律协调、保险审查和跨境安排。医疗决策与供体资格认定由负责的诊所和合格专业人士完成。',
     heroPrimary: '沟通你的供卵计划',
     heroSecondary: '查看 IVF 诊所协调',
-    heroAlt: '卵子受精过程示意图',
+    heroAlt: '代孕妈妈手持阳性验孕棒微笑',
     roleTitle: '供卵何时可能成为代孕计划的一部分',
     roleBody1:
       '当使用准父母自身卵子不可行、不符合个人选择或可能不适合医疗方案时，IVF 医生可能会与家庭讨论供卵。单身父亲、男同性伴侣及其他需要卵子来源建立胚胎的准父母，也可能把供卵纳入路径。',
@@ -283,11 +283,11 @@ const translations = {
         label: '步骤 1',
         title: '明确家庭建立方案',
         body: '先梳理家庭目标、现有胚胎或记录、首选诊所、供卵需求、时间、所在地和未来子女数量规划，让诊所与协调团队从同一信息起点开始。',
-        img: '/images/pages/egg-donation/egg-donor.png',
-        avif: '/images/pages/egg-donation/egg-donor.avif',
-        alt: '胚胎实验室人员查看胚胎影像',
-        width: 1864,
-        height: 1208,
+        img: '/images/pages/egg-donation/positive-pregnancy-tests.jpg',
+        avif: '/images/pages/egg-donation/positive-pregnancy-tests.avif',
+        alt: '辅助生殖治疗后的两支阳性验孕棒',
+        width: 1080,
+        height: 948,
       },
       {
         label: '步骤 2',
@@ -298,11 +298,11 @@ const translations = {
         label: '步骤 3',
         title: '由 IVF 诊所建立并评估胚胎',
         body: 'IVF 诊所负责受精、胚胎培养、冷冻，以及 PGT-A 或其他检测的讨论。结果会受到供体、精子来源、实验室和治疗方案影响，应由诊所而非机构说明预期范围和下一步。',
-        img: '/images/pages/egg-donation/ivf-with-donor-eggs.png',
-        avif: '/images/pages/egg-donation/ivf-with-donor-eggs.avif',
-        alt: '实验室人员查看胚胎监测设备',
-        width: 1616,
-        height: 1056,
+        img: '/images/pages/egg-donation/early-ultrasound.jpg',
+        avif: '/images/pages/egg-donation/early-ultrasound.avif',
+        alt: '妊娠早期超声影像',
+        width: 1080,
+        height: 1920,
       },
       {
         label: '步骤 4',
@@ -317,21 +317,21 @@ const translations = {
         title: '先看医疗与遗传审核',
         body: '不要只看照片或简短介绍。向诊所和供卵项目确认可获得哪些健康记录、家族史、传染病检测和遗传筛查，以及由谁解读。若发现需要说明，应请合格遗传咨询师或医生参与。',
         bullets: ['诊所接收要求与所需记录', '个人与家族病史', '传染病筛查和检测', '遗传筛查与咨询需求'],
-        img: '/images/pages/egg-donation/donor-screening.png',
-        avif: '/images/pages/egg-donation/donor-screening.avif',
-        alt: '实验室技术人员处理血液样本',
-        width: 2178,
-        height: 1188,
+        img: '/images/pages/egg-donation/fertility-medication.jpg',
+        avif: '/images/pages/egg-donation/fertility-medication.avif',
+        alt: '代孕妈妈手持生殖治疗药物',
+        width: 1080,
+        height: 1920,
       },
       {
         title: '明确身份、联系与实际适配',
         body: '确认项目如何描述已知、可披露身份或其他联系模式。政策和法律可能影响未来可获得的信息，因此应与供卵项目及律师确认预期，再比较可用情况、所在地、排期、旅行及诊所适配。',
         bullets: ['未来身份与联系预期', '供体所在地与诊所适配', '新鲜周期排期或冷冻卵子可用性', '法律文件、同意与记录获取'],
-        img: '/images/pages/egg-donation/donor-matching.png',
-        avif: '/images/pages/egg-donation/donor-matching.avif',
-        alt: '生殖实验室中的低温储存设备',
-        width: 2746,
-        height: 1256,
+        img: '/images/pages/egg-donation/embryo-monitor.jpg',
+        avif: '/images/pages/egg-donation/embryo-monitor.avif',
+        alt: '生殖实验室显示器上的胚胎影像',
+        width: 1265,
+        height: 905,
       },
     ],
     comparisonTitle: '捐卵代孕中的新鲜卵子与冷冻卵子',
@@ -497,11 +497,11 @@ useHead(() => ({
 
           <div class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-7 bg-white shadow-[0_28px_70px_rgba(61,42,31,0.16)]">
             <OptimizedPicture
-              src="/images/pages/egg-donation/hero.jpg"
-              avif-src="/images/pages/egg-donation/hero-800.avif 800w, /images/pages/egg-donation/hero-1600.avif 1600w"
+              src="/images/pages/egg-donation/surrogate-pregnancy-test.jpg"
+              avif-src="/images/pages/egg-donation/surrogate-pregnancy-test.avif"
               :alt="c.heroAlt"
-              width="1600"
-              height="1142"
+              width="941"
+              height="1436"
               sizes="(max-width: 1024px) 100vw, 48vw"
               loading="eager"
               decoding="async"
