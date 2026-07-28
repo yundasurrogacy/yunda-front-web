@@ -671,8 +671,8 @@ useHead(() => ({
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/landingpage2/Surrogate-Compensation-Factors.jpg"
-                  :alt="tt('Surrogate Compensation Factors', '代孕补偿因素')"
+                  src="/images/replacements/2026-07-28/surrogate-compensation-interview-1.jpg"
+                  :alt="tt('Yunda discussing surrogate compensation and support', '孕达讲解代孕补偿与支持')"
                   class="h-auto w-full object-cover"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
@@ -860,8 +860,8 @@ useHead(() => ({
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/landingpage2/Surrogacy-Requirements.jpg"
-                  :alt="tt('Surrogate Surrogacy Requirements', '代孕要求')"
+                  src="/images/replacements/2026-07-28/surrogate-compensation-interview-2.jpg"
+                  :alt="tt('Client sharing her experience with Yunda', '客户分享与孕达合作的经历')"
                   class="h-auto w-full object-cover"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />

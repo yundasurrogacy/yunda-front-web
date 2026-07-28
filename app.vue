@@ -105,7 +105,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Already have an IVF clinic—or need help evaluating one? See how Yunda coordinates clinic records, surrogate screening, legal clearance, and transfer timing.',
       zh: '已有 IVF 诊所，或仍在选择诊所？了解孕达如何衔接诊所资料、代孕妈妈筛查、法律放行与移植排期。',
     },
-    image: '/images/ip/ivf-clinic-coordination-surrogacy-og.jpg',
+    image: '/images/replacements/2026-07-28/partner-ivf-clinics-hero.jpg',
   },
   '/single-parents-lgbtq': {
     title: {
@@ -160,7 +160,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Follow the surrogate journey from application and screening to matching, legal clearance, embryo transfer, pregnancy monitoring, birth, and postpartum support.',
       zh: '了解代孕妈妈旅程：从申请、筛查到匹配、法律清关、胚胎移植、孕期监测、分娩和产后支持。',
     },
-    image: '/images/journey/redesign/hero-scene.png',
+    image: '/images/replacements/2026-07-28/surrogate-journey-hero.jpg',
   },
   '/benefit': {
     title: {

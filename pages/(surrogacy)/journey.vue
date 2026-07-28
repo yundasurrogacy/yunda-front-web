@@ -11,7 +11,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
  * 静态文件：`public/images/journey/redesign/`。
  */
 const PAGE_ASSETS = {
-  heroScene: '/images/journey/redesign/hero-scene.png',
+  heroScene: '/images/replacements/2026-07-28/surrogate-journey-hero.jpg',
   processBadge: '/images/journey/redesign/screen-02-badge.png',
   stepIllustrations: [
     // 透明底 160px，源：journey页面改版/第三屏/ (1)~(8).png
@@ -124,7 +124,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       'See how the surrogate journey works—from application and screening to matching, embryo transfer, pregnancy, delivery, and postpartum support.',
     primaryCta: 'Surrogate Application',
     secondaryCta: 'View Process Steps',
-    heroImageAlt: 'Pregnant surrogate journey support scene',
+    heroImageAlt: 'Yunda Surrogacy office lounge and client welcome area',
     onPageItems: [
       'How the journey begins and what happens first',
       'What to expect during screening and matching',
@@ -351,7 +351,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       '我们将说明代孕妈妈旅程如何运作——从申请与筛查到匹配、胚胎移植、孕期、分娩与产后支持。',
     primaryCta: '代孕申请',
     secondaryCta: '查看流程步骤',
-    heroImageAlt: '代孕旅程支持场景照片',
+    heroImageAlt: '孕达代孕办公室休息区与客户接待空间',
     onPageItems: [
       '旅程如何开始，以及第一步是什么',
       '筛查与匹配阶段通常会经历什么',

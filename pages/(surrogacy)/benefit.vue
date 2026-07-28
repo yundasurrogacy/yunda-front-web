@@ -14,7 +14,7 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
  */
 const PAGE_ASSETS = {
   hero: '/images/benefit/redesign/hero.jpg',
-  cta: '/images/benefit/redesign/cta.jpg',
+  cta: '/images/replacements/2026-07-28/surrogate-benefits-cta.jpg',
   heroFeatures: [
     '/images/benefit/redesign/hero-feature-01.jpg',
     '/images/benefit/redesign/hero-feature-02.jpg',
@@ -758,8 +758,8 @@ useHead(() => ({
                   :src="PAGE_ASSETS.cta"
                   :avif-src="avifSrc(PAGE_ASSETS.cta)"
                   :alt="c.ctaTitle"
-                  :width="1166"
-                  :height="912"
+                  :width="1068"
+                  :height="601"
                   picture-class="contents"
                   img-class="benefit-cta-photo-base absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
                   loading="lazy"
@@ -769,8 +769,8 @@ useHead(() => ({
                   :src="PAGE_ASSETS.cta"
                   :avif-src="avifSrc(PAGE_ASSETS.cta)"
                   alt=""
-                  :width="1166"
-                  :height="912"
+                  :width="1068"
+                  :height="601"
                   picture-class="contents"
                   img-class="benefit-cta-photo-blur pointer-events-none absolute inset-0 h-full w-full scale-[1.06] object-cover object-[58%_center]"
                   loading="lazy"
