@@ -10,52 +10,52 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 /**
  * 改版说明：`修改/2026-06-16/benefit页面改版/benefit页面优化.docx`
  * 后续调整：`修改/2026-06-18/yunda benefit页面修改.docx`
- * 静态素材：`public/images/benefit/redesign/`
+ * 静态素材：`public/images/pages/benefit/`
  */
 const PAGE_ASSETS = {
-  hero: '/images/benefit/redesign/hero.jpg',
-  cta: '/images/replacements/2026-07-28/surrogate-benefits-cta.jpg',
+  hero: '/images/pages/benefit/hero.jpg',
+  cta: '/images/pages/benefit/cta.jpg',
   heroFeatures: [
-    '/images/benefit/redesign/hero-feature-01.jpg',
-    '/images/benefit/redesign/hero-feature-02.jpg',
-    '/images/benefit/redesign/hero-feature-03.jpg',
+    '/images/pages/benefit/hero-feature-01.jpg',
+    '/images/pages/benefit/hero-feature-02.jpg',
+    '/images/pages/benefit/hero-feature-03.jpg',
   ],
   overview: [
-    '/images/benefit/redesign/overview-02.png',
-    '/images/benefit/redesign/overview-03.png',
-    '/images/benefit/redesign/overview-04.png',
+    '/images/pages/benefit/overview-02.png',
+    '/images/pages/benefit/overview-03.png',
+    '/images/pages/benefit/overview-04.png',
   ],
   paymentSteps: [
-    '/images/benefit/redesign/payment-step-01.png',
-    '/images/benefit/redesign/payment-step-02.png',
-    '/images/benefit/redesign/payment-step-03.png',
+    '/images/pages/benefit/payment-step-01.png',
+    '/images/pages/benefit/payment-step-02.png',
+    '/images/pages/benefit/payment-step-03.png',
   ],
   benefits: [
-    '/images/benefit/redesign/overview-02.png',
-    '/images/benefit/redesign/overview-03.png',
-    '/images/benefit/redesign/benefit-01.png',
-    '/images/benefit/redesign/benefit-02.png',
-    '/images/benefit/redesign/benefit-03.png',
-    '/images/benefit/redesign/benefit-04.png',
-    '/images/benefit/redesign/benefit-05.png',
-    '/images/benefit/redesign/benefit-06.png',
-    '/images/benefit/redesign/benefit-07.png',
+    '/images/pages/benefit/overview-02.png',
+    '/images/pages/benefit/overview-03.png',
+    '/images/pages/benefit/benefit-01.png',
+    '/images/pages/benefit/benefit-02.png',
+    '/images/pages/benefit/benefit-03.png',
+    '/images/pages/benefit/benefit-04.png',
+    '/images/pages/benefit/benefit-05.png',
+    '/images/pages/benefit/benefit-06.png',
+    '/images/pages/benefit/benefit-07.png',
   ],
   timeline: [
-    '/images/benefit/redesign/timeline-01.png',
-    '/images/benefit/redesign/timeline-02.png',
-    '/images/benefit/redesign/timeline-03.png',
-    '/images/benefit/redesign/timeline-04.png',
-    '/images/benefit/redesign/timeline-05.png',
-    '/images/benefit/redesign/timeline-06.png',
-    '/images/benefit/redesign/timeline-07.png',
+    '/images/pages/benefit/timeline-01.png',
+    '/images/pages/benefit/timeline-02.png',
+    '/images/pages/benefit/timeline-03.png',
+    '/images/pages/benefit/timeline-04.png',
+    '/images/pages/benefit/timeline-05.png',
+    '/images/pages/benefit/timeline-06.png',
+    '/images/pages/benefit/timeline-07.png',
   ],
   states: [
-    '/images/benefit/redesign/state-01.png',
-    '/images/benefit/redesign/state-02.png',
-    '/images/benefit/redesign/state-03.png',
-    '/images/benefit/redesign/state-04.png',
-    '/images/benefit/redesign/state-05.png',
+    '/images/pages/benefit/state-01.png',
+    '/images/pages/benefit/state-02.png',
+    '/images/pages/benefit/state-03.png',
+    '/images/pages/benefit/state-04.png',
+    '/images/pages/benefit/state-05.png',
   ],
 } as const
 
@@ -253,7 +253,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '查看补偿组成、里程碑付款、托管支付和可报销项目的补充说明。'
       : 'Review compensation structure, milestone payments, escrow, and reimbursable items.',
-    image: '/images/landingpage2/Surrogate-Compensation.jpg',
+    image: '/images/pages/surrogate-compensation/hero.jpg',
   },
   {
     to: '/surrogate-requirements',
@@ -261,7 +261,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '先确认基础资格，再评估补偿方案和适合你的下一步。'
       : 'Confirm baseline qualifications before reviewing compensation and next steps.',
-    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+    image: '/images/pages/surrogate-requirements/requirements-overview.jpg',
   },
   {
     to: '/journey',
@@ -269,7 +269,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '了解从申请、筛查、匹配到分娩和产后支持的完整路径。'
       : 'Understand the path from application and screening to matching, birth, and support.',
-    image: '/images/journey/redesign/hero-scene.png',
+    image: '/images/pages/journey/hero.jpg',
   },
 ])
 const pagePath = '/benefit'

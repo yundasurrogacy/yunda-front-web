@@ -28,10 +28,10 @@ onMounted(() => {
 
         <div class="slide-left w-full flex flex-shrink-0 justify-center lg:w-[215px]">
           <picture class="block h-60 w-40 overflow-hidden rounded-lg lg:h-72 lg:w-48">
-            <source srcset="/images/base/kayla-luo.avif" type="image/avif">
-            <source srcset="/images/base/kayla-luo.webp" type="image/webp">
+            <source srcset="/images/pages/about/kayla-luo.avif" type="image/avif">
+            <source srcset="/images/pages/about/kayla-luo.webp" type="image/webp">
             <img
-              src="/images/base/kayla-luo.png" alt="Kayla Luo"
+              src="/images/pages/about/kayla-luo.png" alt="Kayla Luo"
               class="h-full w-full object-cover"
               width="3024"
               height="4032"

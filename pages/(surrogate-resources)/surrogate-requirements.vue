@@ -72,19 +72,19 @@ const relatedGuides = computed(() => [
     to: '/journey',
     title: tt('Surrogate Journey', '代孕妈妈旅程'),
     description: tt('See what happens after eligibility, including screening, matching, transfer, pregnancy, and postpartum support.', '了解资格确认后的筛查、匹配、移植、孕期和产后支持。'),
-    image: '/images/journey/redesign/hero-scene.png',
+    image: '/images/pages/journey/hero.jpg',
   },
   {
     to: '/benefit',
     title: tt('Compensation & Benefits', '补偿与福利'),
     description: tt('Understand pay structure, allowances, milestone payments, escrow, and practical support.', '了解补偿结构、津贴、里程碑付款、托管和实际支持。'),
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   {
     to: '/screening',
     title: tt('Screening Guide', '筛查指南'),
     description: tt('Review medical, psychological, insurance, and background screening before moving forward.', '在推进前查看医学、心理、保险和背景筛查要求。'),
-    image: '/images/screening/redesign/hero.jpg',
+    image: '/images/pages/screening/hero.jpg',
   },
 ])
 
@@ -453,7 +453,7 @@ const processIcons = [
           </div>
           <div class="flex justify-center">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landingpage3/Surrogate-Requirements.jpg" :alt="tt('Surrogate Requirements', '代孕要求')">
+              <img src="/images/pages/surrogate-requirements/requirements-overview.jpg" :alt="tt('Surrogate Requirements', '代孕要求')">
             </div>
           </div>
         </div>
@@ -569,9 +569,13 @@ const processIcons = [
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/landingpage3/Surrogacy-Requirements.jpg"
-                  :alt="tt('Surrogacy Requirements', '代孕要求')"
+                  src="/images/pages/surrogate-requirements/yunda-office-1080.jpg"
+                  srcset="/images/pages/surrogate-requirements/yunda-office-720.jpg 720w, /images/pages/surrogate-requirements/yunda-office-1080.jpg 1080w"
+                  sizes="(min-width: 1024px) 40vw, calc(100vw - 40px)"
+                  :alt="tt('Yunda Surrogacy office', 'Yunda Surrogacy 办公室')"
                   class="h-auto w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 >
                 <div class="absolute inset-0 from-black/20 to-transparent bg-gradient-to-t" />
               </div>
@@ -624,7 +628,7 @@ const processIcons = [
       <!-- Background Image -->
       <div class="absolute inset-0 z-0">
         <img
-          src="/images/replacements/2026-07-28/surrogate-requirements-support-1.jpg"
+          src="/images/pages/surrogate-requirements/support-1.jpg"
           :alt="tt('Yunda Surrogacy client support area', '孕达代孕客户支持空间')"
           class="h-full w-full object-cover"
         >
@@ -768,7 +772,7 @@ const processIcons = [
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/replacements/2026-07-28/surrogate-requirements-support-2.jpg"
+                  src="/images/pages/surrogate-requirements/support-2.jpg"
                   :alt="tt('Yunda Surrogacy office entrance', '孕达代孕办公室入口')"
                   class="h-auto w-full object-cover"
                 >

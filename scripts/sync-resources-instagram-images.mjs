@@ -10,17 +10,17 @@ import { fileURLToPath } from 'node:url'
 import { pipeline } from 'node:stream/promises'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const outDir = join(root, 'public/images/resources-media')
+const outDir = join(root, 'public/images/pages/resources')
 
 const posts = [
-  ['ig-updates-01.jpg', 'DYdqwe7FCMw'],
-  ['ig-updates-02.jpg', 'DYDslbgH5nG'],
-  ['ig-updates-03.jpg', 'DX61gSODn4H'],
-  ['ig-updates-04.jpg', 'DWz-B57ASED'],
-  ['ig-events-01.jpg', 'DYWFOI5lGRC'],
-  ['ig-events-02.jpg', 'DXrY2MCDDtR'],
-  ['ig-events-03.jpg', 'DXYIj9BgTZo'],
-  ['ig-events-04.jpg', 'DWpqnN4Ex3v'],
+  ['instagram-update-01.jpg', 'DYdqwe7FCMw'],
+  ['instagram-update-02.jpg', 'DYDslbgH5nG'],
+  ['instagram-update-03.jpg', 'DX61gSODn4H'],
+  ['instagram-update-04.jpg', 'DWz-B57ASED'],
+  ['instagram-event-01.jpg', 'DYWFOI5lGRC'],
+  ['instagram-event-02.jpg', 'DXrY2MCDDtR'],
+  ['instagram-event-03.jpg', 'DXYIj9BgTZo'],
+  ['instagram-event-04.jpg', 'DWpqnN4Ex3v'],
 ]
 
 await mkdir(outDir, { recursive: true })

@@ -16,12 +16,12 @@ import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/reso
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
 
 const PAGE_ASSETS = {
-  hero: '/images/resources-media/hero.webp',
+  hero: '/images/pages/resources/hero.webp',
 } as const
 
 const AVIF_IMAGE_BY_PATH: Record<string, string> = {
-  '/images/resources-media/ig-events-01.jpg': '/images/resources-media/ig-events-01.avif',
-  '/images/resources-media/ig-events-02.jpg': '/images/resources-media/ig-events-02.avif',
+  '/images/pages/resources/instagram-event-01.jpg': '/images/pages/resources/instagram-event-01.avif',
+  '/images/pages/resources/instagram-event-02.jpg': '/images/pages/resources/instagram-event-02.avif',
 }
 
 const SUBSTACK_HOME = 'https://yundasurrogacy.substack.com/'

@@ -9,34 +9,34 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明与素材：`修改/2026-06-05/process页面修改.docx`（含各屏参考图）。
- * 静态文件统一放在 `public/images/process/redesign/`。
+ * 静态文件统一放在 `public/images/pages/surrogacy-process/`。
  */
 const PAGE_ASSETS = {
   /** 同改版目录 `第一屏.png` */
-  heroScene: '/images/process/redesign/hero-scene.png',
+  heroScene: '/images/pages/surrogacy-process/hero.png',
   /** 改版 `第二屏 (1–8).png`：每步单独插画，与右侧说明卡一一对应 */
   stepIllustrations: [
-    '/images/process/redesign/screen-02-step-01.png',
-    '/images/process/redesign/screen-02-step-02.png',
-    '/images/process/redesign/screen-02-step-03.png',
-    '/images/process/redesign/screen-02-step-04.png',
-    '/images/process/redesign/screen-02-step-05.png',
-    '/images/process/redesign/screen-02-step-06.png',
-    '/images/process/redesign/screen-02-step-07.png',
-    '/images/process/redesign/screen-02-step-08.png',
+    '/images/pages/surrogacy-process/step-01.png',
+    '/images/pages/surrogacy-process/step-02.png',
+    '/images/pages/surrogacy-process/step-03.png',
+    '/images/pages/surrogacy-process/step-04.png',
+    '/images/pages/surrogacy-process/step-05.png',
+    '/images/pages/surrogacy-process/step-06.png',
+    '/images/pages/surrogacy-process/step-07.png',
+    '/images/pages/surrogacy-process/step-08.png',
   ],
   guideIcons: {
-    cost: '/images/process/redesign/screen-03-guide-1.png',
-    legal: '/images/process/redesign/screen-03-guide-2.png',
-    timeline: '/images/process/redesign/screen-03-guide-3.png',
+    cost: '/images/pages/surrogacy-process/guide-cost.png',
+    legal: '/images/pages/surrogacy-process/guide-legal.png',
+    timeline: '/images/pages/surrogacy-process/guide-timeline.png',
   },
   changeIcons: {
-    people: '/images/process/redesign/screen-04-icon-people.png',
-    calendar: '/images/process/redesign/screen-04-icon-calendar.png',
-    legal: '/images/process/redesign/screen-04-icon-legal.png',
+    people: '/images/pages/surrogacy-process/factor-people.png',
+    calendar: '/images/pages/surrogacy-process/factor-calendar.png',
+    legal: '/images/pages/surrogacy-process/factor-legal.png',
   },
   /** 改版 `第六屏.png`（CTA 条右侧主图，叠轻度虚化） */
-  ctaBandPhoto: '/images/process/redesign/screen-06-cta.png',
+  ctaBandPhoto: '/images/pages/surrogacy-process/cta.png',
 } as const
 
 function stepIllustrationSrc(stepId: number) {

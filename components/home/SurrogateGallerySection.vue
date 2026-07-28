@@ -25,18 +25,14 @@ const subheading = computed(() => props.subtitle ?? t('home.surrogateGallerySect
 useScrollAnimation()
 
 const defaultSlides: SurrogateGallerySlide[] = [
-  { src: '/images/home/surrogate-1.jpeg', alt: 'Surrogate mother with newborn in hospital' },
-  { src: '/images/home/surrogate-3.png', alt: 'Surrogate mother in delivery room' },
-  { src: '/images/home/surrogate-4.png', alt: 'Expectant surrogate mother mirror selfie' },
-  { src: '/images/home/surrogate-5.png', alt: 'Surrogate mother taking a mirror selfie' },
-  { src: '/images/home/surrogate-6.png', alt: 'Surrogate mother outdoors' },
-  { src: '/images/home/surrogate-7.png', alt: 'Surrogate mother taking a mirror selfie' },
-  { src: '/images/home/surrogate-8.png', alt: 'Surrogate mother outdoors' },
-  { src: '/images/home/surrogate-9.png', alt: 'Surrogate mother taking a mirror selfie' },
-  { src: '/images/home/surrogate-10.jpeg', alt: 'Surrogate mother holding baby' },
-  { src: '/images/home/surrogate-11.webp', alt: 'Surrogate mother portrait' },
-  { src: '/images/home/surrogate-12.webp', alt: 'Surrogate mother smiling' },
-  { src: '/images/home/surrogate-13.webp', alt: 'Surrogate mother with family' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-01.jpg', alt: 'Yunda surrogate receiving support during her journey' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-02.jpg', alt: 'Yunda team supporting a surrogate at a fertility clinic' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-03.jpg', alt: 'Surrogate preparing for a fertility clinic appointment' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-04.jpg', alt: 'Yunda team meeting a surrogate at GenPrime Fertility' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-05.jpg', alt: 'Yunda team supporting a surrogate and her partner' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-06.jpg', alt: 'Yunda team meeting surrogates at HRC Fertility' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-07.jpg', alt: 'Yunda team supporting a surrogate at Ember Fertility Center' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-08.jpg', alt: 'Yunda team meeting intended parents at a fertility clinic' },
 ]
 
 const slides = computed(() =>

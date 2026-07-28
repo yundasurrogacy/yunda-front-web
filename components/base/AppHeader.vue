@@ -17,7 +17,7 @@ const isHomePage = computed(() => route.path === homePath.value)
   <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
     <!-- Left Menu Button (always visible) -->
     <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
-      <img src="/images/base/left_icon.svg" alt="Menu" class="h-10 w-10">
+      <img src="/images/shared/ui/menu.svg" alt="Menu" class="h-10 w-10">
     </button>
 
     <!-- Logo -->
@@ -26,15 +26,15 @@ const isHomePage = computed(() => route.path === homePath.value)
         <NuxtLink :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
           <span class="sr-only">Yunda Surrogacy</span>
           <picture>
-            <source srcset="/images/base/logo.webp" type="image/webp">
-            <img src="/images/base/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+            <source srcset="/images/shared/brand/logo.webp" type="image/webp">
+            <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
           </picture>
         </NuxtLink>
       </h1>
       <NuxtLink v-else :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
         <picture>
-          <source srcset="/images/base/logo.webp" type="image/webp">
-          <img src="/images/base/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+          <source srcset="/images/shared/brand/logo.webp" type="image/webp">
+          <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
         </picture>
       </NuxtLink>
     </div>

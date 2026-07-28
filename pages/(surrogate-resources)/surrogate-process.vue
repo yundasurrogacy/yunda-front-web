@@ -628,7 +628,7 @@ function setActiveStep(stepId: number) {
           <div class="relative">
             <div class="overflow-hidden rounded-3xl bg-[var(--yunda-petal)] p-3 shadow-2xl">
               <img
-                src="/images/california-surrogacy-process.jpg"
+                src="/images/pages/surrogate-process/hero.jpg"
                 :alt="tt('Surrogacy journey in California', '加州代孕旅程')"
                 class="h-full w-full rounded-2xl object-cover"
               >

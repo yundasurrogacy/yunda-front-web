@@ -415,7 +415,7 @@ useHead(() => ({
               <div class="flex items-center justify-center lg:justify-end">
                 <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)] lg:max-w-[640px]">
                   <img
-                    src="/images/gc/gc-pic/eligibility-banner.png"
+                    src="/images/pages/eligibility/hero.png"
                     :alt="c.heroImageAlt"
                     width="640"
                     height="420"
@@ -587,7 +587,7 @@ useHead(() => ({
               <div class="grid content-start gap-4 lg:pl-2">
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/gc/gc-pic/Surrogate-mother-qualifications-1.png"
+                    src="/images/pages/eligibility/qualification-01.png"
                     :alt="c.h23ImageAlt1"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
@@ -596,7 +596,7 @@ useHead(() => ({
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/replacements/2026-07-28/surrogate-eligibility-pregnancy-test.jpg"
+                    src="/images/pages/eligibility/pregnancy-test.jpg"
                     :alt="c.h23ImageAlt2"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
@@ -641,7 +641,7 @@ useHead(() => ({
               <div class="grid content-start gap-4 lg:pl-2">
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/gc/gc-pic/Surrogate-mother-qualifications-3.png"
+                    src="/images/pages/eligibility/qualification-02.png"
                     :alt="c.h24ImageAlt1"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
@@ -650,7 +650,7 @@ useHead(() => ({
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/replacements/2026-07-28/surrogate-eligibility-ultrasound.jpg"
+                    src="/images/pages/eligibility/ultrasound.jpg"
                     :alt="c.h24ImageAlt2"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"

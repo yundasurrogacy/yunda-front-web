@@ -8,11 +8,11 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 /**
  * 改版说明与素材：`修改/2026-06-05-2/Screening页面改版/`
  * 细节调整：`修改/2026-06-11/Screening页面细节调整.docx`
- * 静态文件：`public/images/screening/redesign/`
+ * 静态文件：`public/images/pages/screening/`
  */
 /** 仅第一屏人物图为实拍素材；screen-05~07 为配色/排版稿，非页面插图 */
 const PAGE_ASSETS = {
-  hero: '/images/screening/redesign/hero.jpg',
+  hero: '/images/pages/screening/hero.jpg',
 } as const
 
 interface AfterApplyCard {

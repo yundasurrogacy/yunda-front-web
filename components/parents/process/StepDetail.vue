@@ -34,8 +34,8 @@ const stepData = computed(() => {
         : []),
     ],
     description: t(`parentsProcess.surrogacyProcess.step${props.stepNumber}.description`),
-    imageWebp: `/images/process/i-${props.stepNumber}.webp`,
-    imagePng: `/images/process/i-${props.stepNumber}.png`,
+    imageWebp: `/images/pages/intended-parents/steps/step-${props.stepNumber}.webp`,
+    imagePng: `/images/pages/intended-parents/steps/step-${props.stepNumber}.png`,
   }
 })
 </script>

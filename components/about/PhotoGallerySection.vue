@@ -16,14 +16,14 @@ interface Photo {
 }
 
 // 照片数据 - 使用本地处理后的图片
-const baseUrl = '/images/about-us'
+const baseUrl = '/images/pages/about'
 
 const photos = ref<Photo[]>([
   // Our Team 照片 (1-4)
   ...Array.from({ length: 4 }, (_, i) => ({
     id: `ourteam-${i + 1}`,
-    url: `${baseUrl}/our-team/ourteam-${i + 1}.jpg`,
-    thumbnail: `${baseUrl}/our-team/ourteam-${i + 1}.jpg`,
+    url: `${baseUrl}/team/team-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/team/team-${i + 1}.jpg`,
     category: ['all', 'our-team'] as PhotoCategory[],
     alt: `Our Team ${i + 1}`,
   })),
@@ -46,15 +46,15 @@ const photos = ref<Photo[]>([
   // MHB 照片 (1-6)
   ...Array.from({ length: 6 }, (_, i) => ({
     id: `mhb-${i + 1}`,
-    url: `/images/about-us/mhb/mhb-${i + 1}.jpg`,
-    thumbnail: `/images/about-us/mhb/mhb-${i + 1}.jpg`,
+    url: `/images/pages/about/mhb/mhb-${i + 1}.jpg`,
+    thumbnail: `/images/pages/about/mhb/mhb-${i + 1}.jpg`,
     category: ['all', 'mhb'] as PhotoCategory[],
     alt: `MHB Event ${i + 1}`,
   })),
   {
     id: 'ourteam-surrogate-12',
-    url: '/images/home/surrogate-12.webp',
-    thumbnail: '/images/home/surrogate-12.webp',
+    url: '/images/pages/home/surrogate-gallery-12.webp',
+    thumbnail: '/images/pages/home/surrogate-gallery-12.webp',
     category: ['all', 'our-team'],
     alt: 'Team Highlight Surrogate 12',
   },

@@ -16,8 +16,8 @@ useScrollAnimation()
         <!-- Care Item 1 -->
         <div class="scroll-animate scroll-animate-delay-100 flex flex-col items-center text-center">
           <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
-            <source srcset="/images/home/p-2.webp" type="image/webp">
-            <img src="/images/home/p-2.png" alt="Case Coordinator" class="h-full w-full object-cover">
+            <source srcset="/images/pages/home/case-coordinator.webp" type="image/webp">
+            <img src="/images/pages/home/case-coordinator.png" alt="Case Coordinator" class="h-full w-full object-cover">
           </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item1') }}
@@ -27,8 +27,8 @@ useScrollAnimation()
         <!-- Care Item 2 -->
         <div class="scroll-animate scroll-animate-delay-200 flex flex-col items-center text-center">
           <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
-            <source srcset="/images/home/p-3.webp" type="image/webp">
-            <img src="/images/home/p-3.png" alt="Nutrition & Counseling" class="h-full w-full object-cover">
+            <source srcset="/images/pages/home/nutrition-counseling.webp" type="image/webp">
+            <img src="/images/pages/home/nutrition-counseling.png" alt="Nutrition & Counseling" class="h-full w-full object-cover">
           </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item2') }}
@@ -38,8 +38,8 @@ useScrollAnimation()
         <!-- Care Item 3 -->
         <div class="scroll-animate scroll-animate-delay-300 flex flex-col items-center text-center">
           <picture class="mb-5 h-59 w-59 overflow-hidden rounded-full">
-            <source srcset="/images/home/p-4.webp" type="image/webp">
-            <img src="/images/home/p-4.png" alt="Daily Check-in" class="h-full w-full object-cover">
+            <source srcset="/images/pages/home/daily-check-in.webp" type="image/webp">
+            <img src="/images/pages/home/daily-check-in.png" alt="Daily Check-in" class="h-full w-full object-cover">
           </picture>
           <h3>
             {{ $t('home.surrogateCareSection.item3') }}
