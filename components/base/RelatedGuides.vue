@@ -19,9 +19,9 @@ defineProps<{
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const avifImageByPath: Record<string, string> = {
-  '/images/benefit/redesign/hero.jpg': '/images/benefit/redesign/hero.avif',
-  '/images/california-surrogacy-process.jpg': '/images/california-surrogacy-process.avif',
-  '/images/landingpage3/Surrogate-Requirements.jpg': '/images/landingpage3/Surrogate-Requirements.avif',
+  '/images/pages/benefit/hero.jpg': '/images/pages/benefit/hero.avif',
+  '/images/pages/surrogate-process/hero.jpg': '/images/pages/surrogate-process/hero.avif',
+  '/images/pages/surrogate-requirements/requirements-overview.jpg': '/images/pages/surrogate-requirements/requirements-overview.avif',
 }
 
 function isBlogLink(link: RelatedGuideLink) {
@@ -55,7 +55,7 @@ function getCategory(link: RelatedGuideLink) {
 function getImage(link: RelatedGuideLink) {
   if (link.image)
     return link.image
-  return '/images/blog-hero.jpg'
+  return '/images/pages/blog/fallback-hero.jpg'
 }
 
 function getAvifImage(link: RelatedGuideLink) {

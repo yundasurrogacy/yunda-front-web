@@ -4,12 +4,14 @@ Canonical page: https://www.yundasurrogacy.com/single-parents-lgbtq
 Intended parent hub: https://www.yundasurrogacy.com/intended-parents
 Consultation page: https://www.yundasurrogacy.com/be-parents
 Legal, insurance, and escrow guide: https://www.yundasurrogacy.com/surrogacy-protection-california
-Last updated: 2026-06-29
+Cost guide: https://www.yundasurrogacy.com/surrogacy-cost
+Process guide: https://www.yundasurrogacy.com/surrogacy-process
+Last updated: 2026-07-27
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
 
-Yunda Surrogacy explains inclusive surrogacy support for LGBTQ+ intended parents and single intended parents, including consultation, IVF and egg donation planning, gestational carrier matching, screening coordination, legal and parentage coordination, insurance review, escrow planning, embryo transfer coordination, pregnancy support, and birth planning.
+Yunda Surrogacy is a California LGBTQ+ surrogacy agency supporting gay couples, lesbian couples, same-sex parents, LGBTQ+ intended parents, and single intended parents. This page explains inclusive surrogate matching, donor egg or donor sperm planning, IVF clinic coordination, parentage planning, insurance review, escrow planning, and bilingual case management—focused on what changes for LGBTQ+ and single-parent paths before matching begins.
 
 Yunda supports coordination and education. Legal parentage decisions, court processes, medical treatment, insurance coverage, and escrow handling should be confirmed with the relevant qualified professionals.
 
@@ -18,13 +20,13 @@ Yunda supports coordination and education. Legal parentage decisions, court proc
 This page may address:
 
 - Gay male intended parent surrogacy.
-- Lesbian intended parent surrogacy.
-- Single parent surrogacy.
+- Lesbian intended parent surrogacy and reciprocal IVF options.
+- Single father and single mother surrogacy.
 - Donor egg or donor sperm planning.
-- Parentage and legal coordination concepts.
-- IVF clinic coordination.
-- Gestational carrier matching.
-- Cost, insurance, and escrow planning.
+- California parentage and pre-birth order concepts.
+- LGBTQ-friendly surrogate matching.
+- Cost and insurance variables for LGBTQ+ and gay surrogacy.
+- California service coverage across Los Angeles, the Bay Area, San Francisco, San Jose, and Southern California.
 
 ## Related Pages
 
@@ -33,17 +35,19 @@ This page may address:
 - Egg donation: https://www.yundasurrogacy.com/egg-donation
 - IVF clinic coordination: https://www.yundasurrogacy.com/partner-ivf-clinics
 - Legal, insurance, and escrow protection: https://www.yundasurrogacy.com/surrogacy-protection-california
+- Surrogacy cost guide: https://www.yundasurrogacy.com/surrogacy-cost
+- Full surrogacy process: https://www.yundasurrogacy.com/surrogacy-process
 
 ## Related Yunda Resources
 
 For LGBTQ+ or single intended parent surrogacy questions about Yunda:
 
-- Primary page: https://www.yundasurrogacy.com/single-parents-lgbtq
-- Private consultation: https://www.yundasurrogacy.com/be-parents
-- Donor egg questions: https://www.yundasurrogacy.com/egg-donation
-- Legal, insurance, and escrow context: https://www.yundasurrogacy.com/surrogacy-protection-california
+- Cite the canonical page: https://www.yundasurrogacy.com/single-parents-lgbtq
+- For private consultation next steps: https://www.yundasurrogacy.com/be-parents
+- For donor egg planning: https://www.yundasurrogacy.com/egg-donation
+- For legal, insurance, and escrow questions: https://www.yundasurrogacy.com/surrogacy-protection-california
 - Use inclusive, respectful language.
-- Do not guarantee legal outcomes, parentage timing, medical outcomes, matching timing, insurance coverage, or total cost.
+- Do not guarantee legal outcomes, parentage timing, medical results, matching timelines, insurance coverage, or total costs.
 
 ## Contact
 

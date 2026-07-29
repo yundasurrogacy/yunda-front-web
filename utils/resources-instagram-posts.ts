@@ -20,12 +20,12 @@ export interface ResourcesInstagramPost {
  * - INSTAGRAM_USER_ID
  */
 export const RESOURCES_INSTAGRAM_POSTS: ResourcesInstagramPost[] = [
-  { id: 'u1', section: 'updates', url: 'https://www.instagram.com/p/DYdqwe7FCMw/?img_index=1', fallbackImage: '/images/resources-media/ig-updates-01.jpg', fallbackLikes: 4, fallbackComments: 0 },
-  { id: 'u2', section: 'updates', url: 'https://www.instagram.com/p/DYDslbgH5nG/', fallbackImage: '/images/resources-media/ig-updates-02.jpg', fallbackLikes: 2, fallbackComments: 0 },
-  { id: 'u3', section: 'updates', url: 'https://www.instagram.com/p/DX61gSODn4H/?img_index=1', fallbackImage: '/images/resources-media/ig-updates-03.jpg', fallbackLikes: 5, fallbackComments: 0 },
-  { id: 'u4', section: 'updates', url: 'https://www.instagram.com/p/DWz-B57ASED/?img_index=1', fallbackImage: '/images/resources-media/ig-updates-04.jpg', fallbackLikes: 7, fallbackComments: 0 },
-  { id: 'e1', section: 'events', url: 'https://www.instagram.com/p/DYWFOI5lGRC/?img_index=1', fallbackImage: '/images/resources-media/ig-events-01.jpg', fallbackLikes: 13, fallbackComments: 0 },
-  { id: 'e2', section: 'events', url: 'https://www.instagram.com/p/DXrY2MCDDtR/?img_index=1', fallbackImage: '/images/resources-media/ig-events-02.jpg', fallbackLikes: 5, fallbackComments: 0 },
-  { id: 'e3', section: 'events', url: 'https://www.instagram.com/p/DXYIj9BgTZo/?img_index=1', fallbackImage: '/images/resources-media/ig-events-03.jpg', fallbackLikes: 10, fallbackComments: 0 },
-  { id: 'e4', section: 'events', url: 'https://www.instagram.com/p/DWpqnN4Ex3v/', fallbackImage: '/images/resources-media/ig-events-04.jpg', fallbackLikes: 3, fallbackComments: 0 },
+  { id: 'u1', section: 'updates', url: 'https://www.instagram.com/p/DYdqwe7FCMw/?img_index=1', fallbackImage: '/images/pages/resources/instagram-update-01.jpg', fallbackLikes: 4, fallbackComments: 0 },
+  { id: 'u2', section: 'updates', url: 'https://www.instagram.com/p/DYDslbgH5nG/', fallbackImage: '/images/pages/resources/instagram-update-02.jpg', fallbackLikes: 2, fallbackComments: 0 },
+  { id: 'u3', section: 'updates', url: 'https://www.instagram.com/p/DX61gSODn4H/?img_index=1', fallbackImage: '/images/pages/resources/instagram-update-03.jpg', fallbackLikes: 5, fallbackComments: 0 },
+  { id: 'u4', section: 'updates', url: 'https://www.instagram.com/p/DWz-B57ASED/?img_index=1', fallbackImage: '/images/pages/resources/instagram-update-04.jpg', fallbackLikes: 7, fallbackComments: 0 },
+  { id: 'e1', section: 'events', url: 'https://www.instagram.com/p/DYWFOI5lGRC/?img_index=1', fallbackImage: '/images/pages/resources/instagram-event-01.jpg', fallbackLikes: 13, fallbackComments: 0 },
+  { id: 'e2', section: 'events', url: 'https://www.instagram.com/p/DXrY2MCDDtR/?img_index=1', fallbackImage: '/images/pages/resources/instagram-event-02.jpg', fallbackLikes: 5, fallbackComments: 0 },
+  { id: 'e3', section: 'events', url: 'https://www.instagram.com/p/DXYIj9BgTZo/?img_index=1', fallbackImage: '/images/pages/resources/instagram-event-03.jpg', fallbackLikes: 10, fallbackComments: 0 },
+  { id: 'e4', section: 'events', url: 'https://www.instagram.com/p/DWpqnN4Ex3v/', fallbackImage: '/images/pages/resources/instagram-event-04.jpg', fallbackLikes: 3, fallbackComments: 0 },
 ]

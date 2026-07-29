@@ -8,21 +8,21 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明与素材：`修改/2026-05-27/journey页面改版`（含 docx）。
- * 静态文件：`public/images/journey/redesign/`。
+ * 静态文件：`public/images/pages/journey/`。
  */
 const PAGE_ASSETS = {
-  heroScene: '/images/replacements/2026-07-28/surrogate-journey-hero.jpg',
-  processBadge: '/images/journey/redesign/screen-02-badge.png',
+  heroScene: '/images/pages/journey/hero.jpg',
+  processBadge: '/images/pages/journey/process-badge.png',
   stepIllustrations: [
     // 透明底 160px，源：journey页面改版/第三屏/ (1)~(8).png
-    '/images/journey/redesign/screen-03-step-01.png',
-    '/images/journey/redesign/screen-03-step-02.png',
-    '/images/journey/redesign/screen-03-step-03.png',
-    '/images/journey/redesign/screen-03-step-04.png',
-    '/images/journey/redesign/screen-03-step-05.png',
-    '/images/journey/redesign/screen-03-step-06.png',
-    '/images/journey/redesign/screen-03-step-07.png',
-    '/images/journey/redesign/screen-03-step-08.png',
+    '/images/pages/journey/step-01.png',
+    '/images/pages/journey/step-02.png',
+    '/images/pages/journey/step-03.png',
+    '/images/pages/journey/step-04.png',
+    '/images/pages/journey/step-05.png',
+    '/images/pages/journey/step-06.png',
+    '/images/pages/journey/step-07.png',
+    '/images/pages/journey/step-08.png',
   ],
   /**
    * 第四屏线稿（透明底 128px，源：journey页面改版/第四屏/）
@@ -30,14 +30,14 @@ const PAGE_ASSETS = {
    * - traditional ← …09_15_41 AM (3).png 子宫
    * - takeaway    ← …09_15_40 AM (1).png 灯泡
    */
-  dnaGestational: '/images/journey/redesign/screen-04-gestational.png',
-  dnaTraditional: '/images/journey/redesign/screen-04-traditional.png',
-  dnaTakeaway: '/images/journey/redesign/screen-04-takeaway.png',
+  dnaGestational: '/images/pages/journey/gestational-surrogacy.png',
+  dnaTraditional: '/images/pages/journey/traditional-surrogacy.png',
+  dnaTakeaway: '/images/pages/journey/dna-takeaway.png',
   supportIcons: [
-    '/images/journey/redesign/screen-05-support-1.png',
-    '/images/journey/redesign/screen-05-support-2.png',
-    '/images/journey/redesign/screen-05-support-3.png',
-    '/images/journey/redesign/screen-05-support-4.png',
+    '/images/pages/journey/support-1.png',
+    '/images/pages/journey/support-2.png',
+    '/images/pages/journey/support-3.png',
+    '/images/pages/journey/support-4.png',
   ],
 } as const
 
@@ -584,7 +584,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '查看 IVF、法律、移植和孕期节点的更细分流程说明。'
       : 'See a deeper breakdown of IVF, legal, transfer, and pregnancy milestones.',
-    image: '/images/california-surrogacy-process.jpg',
+    image: '/images/pages/surrogate-process/hero.jpg',
   },
   {
     to: '/surrogate-requirements',
@@ -592,7 +592,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '确认年龄、妊娠史、健康、生活方式和筛查基础要求。'
       : 'Confirm age, pregnancy history, health, lifestyle, and screening basics.',
-    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+    image: '/images/pages/surrogate-requirements/requirements-overview.jpg',
   },
   {
     to: '/benefit',
@@ -600,7 +600,7 @@ const relatedGuides = computed(() => [
     description: locale.value === 'zh'
       ? '了解基础补偿、津贴、付款时间和孕期支持如何安排。'
       : 'Understand base compensation, allowances, payment timing, and support.',
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
 ])
 const pagePath = '/journey'

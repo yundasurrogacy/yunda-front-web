@@ -43,9 +43,9 @@ function toggleFeature(index) {
           <div class="md:w-[420px] md:shrink-0 lg:w-[480px] xl:w-[520px]">
             <div class="aspect-square w-full overflow-hidden rounded-[28px]">
               <picture class="block h-full w-full">
-                <source srcset="/images/home/yunda-what-sets-us.webp" type="image/webp">
+                <source srcset="/images/pages/home/what-sets-us-apart.webp" type="image/webp">
                 <img
-                  src="/images/home/yunda-what-sets-us.jpeg"
+                  src="/images/pages/home/what-sets-us-apart.jpeg"
                   :alt="$t('home.whatSetsUsApartSection.imageAlt')"
                   class="h-full w-full object-cover"
                   loading="lazy"

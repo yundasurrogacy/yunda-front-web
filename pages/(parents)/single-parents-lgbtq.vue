@@ -1,174 +1,620 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
+import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
+
+/**
+ * 改版说明与素材：`修改/2026-07-27/:single-parents-lgbtq 页面修改/`
+ * 静态文件统一放在 `public/images/ip/redesign/`。
+ */
+const PAGE_ASSETS = {
+  hero: '/images/ip/redesign/hero.png',
+  heroBullets: [
+    '/images/ip/redesign/s1-1.png',
+    '/images/ip/redesign/s1-2.png',
+    '/images/ip/redesign/s1-3.png',
+    '/images/ip/redesign/s1-4.png',
+  ],
+  trust: [
+    '/images/ip/redesign/s2-1.png',
+    '/images/ip/redesign/s2-2.png',
+    '/images/ip/redesign/s2-3.png',
+  ],
+  audience: [
+    '/images/ip/redesign/s3-1.png',
+    '/images/ip/redesign/s3-2.png',
+    '/images/ip/redesign/s3-3.png',
+    '/images/ip/redesign/s3-4.png',
+  ],
+  serviceArea: '/images/ip/redesign/s5-1.png',
+  serviceMap: '/images/ip/redesign/s5-map.png',
+  matching: [
+    '/images/ip/redesign/s7-1.png',
+    '/images/ip/redesign/s7-2.png',
+    '/images/ip/redesign/s7-3.png',
+  ],
+}
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
-
-const isZh = computed(() => (locale.value || '').startsWith('zh'))
-const tt = (en: string, zh: string) => (isZh.value ? zh : en)
-
-const heroTitle = computed(() =>
-  tt(
-    'Gay & Lesbian Surrogacy in California: LGBTQ-Friendly Surrogacy Agency for Intended Parents',
-    '加州同志友好的代孕机构：为男同性恋与女同性恋准父母提供代孕服务',
-  ),
-)
-const heroDescription = computed(() =>
-  tt(
-    'A California-based surrogacy team that supports gay and lesbian intended parents with inclusive matching, legal guidance, and clinic coordination—keeping every step transparent and welcoming.',
-    '来自加州的代孕团队，面向男同志与女同志准父母，提供包容的匹配、法律指导和诊所协调，让每一步都透明且安心。',
-  ),
-)
-const seoTitle = computed(() =>
-  tt('IVF, Insurance & Legal for Surrogacy in California -Yunda Surrogacy', '加州代孕：试管婴儿、保险与法律指南 -孕达代孕'),
-)
-const seoDescription = computed(() =>
-  tt(
-    'Learn about IVF and insurance coverage support for surrogacy in California with Yunda Surrogacy. Trusted guidance for intended parents at every step.',
-    '了解云达代孕在加州提供的 IVF、保险覆盖及支持，为意向父母的每一步提供可信赖的指导。',
-  ),
-)
-
-const heroHighlights = computed(() => [
-  tt('Inclusive matching with surrogates who welcome LGBTQ+ parents', '匹配欢迎 LGBTQ+ 家庭的代孕妈妈'),
-  tt('California parentage milestones and legal steps handled with care', '细致处理加州亲权确立的关键法律步骤'),
-  tt('Clinic, insurance, and donor coordination with bilingual support', '诊所、保险与捐赠者协调，提供双语支持'),
-])
-
-const stepStrip = computed(() => [
-  {
-    label: tt('Initial Consult', '初步咨询'),
-    sub: tt('Quiet first conversation', '安静私密地沟通需求'),
-    gradient: 'linear-gradient(135deg, #a96c42, #c58355)',
-  },
-  {
-    label: tt('IVF & Egg Donation', 'IVF 与供卵'),
-    sub: tt('Create embryos', '创建胚胎'),
-    gradient: 'linear-gradient(135deg, #c58355, #d3936a)',
-  },
-  {
-    label: tt('Match & Screening', '匹配与筛查'),
-    sub: tt('Qualified surrogate', '合格的代孕妈妈'),
-    gradient: 'linear-gradient(135deg, #d3936a, #dfb07f)',
-  },
-  {
-    label: tt('Legal & Safeguards', '法律与保障'),
-    sub: tt('Contracts & insurance', '合同与保险'),
-    gradient: 'linear-gradient(135deg, #dfb07f, #e8c59d)',
-  },
-  {
-    label: tt('Transfer & Support', '移植与支持'),
-    sub: tt('Embryo transfer', '胚胎移植'),
-    gradient: 'linear-gradient(135deg, #e8c59d, #f0d7b8)',
-  },
-  {
-    label: tt('Birth & Parentage', '出生与亲权'),
-    sub: tt('Bringing baby home', '迎接宝宝回家'),
-    gradient: 'linear-gradient(135deg, #f0d7b8, #fbf0da)',
-  },
-])
-const lgbtqFaqItems = computed(() => [
-  {
-    question: tt('1) How to start gay surrogacy in California?', '1）如何在加州开始同志代孕？'),
-    answer: tt('Start with a consult. We confirm what you already have (embryos or not) and map the next steps—clinic, donor, matching, legal, and timing.', '从咨询开始。我们确认你已有的准备（是否有胚胎），并规划下一步——诊所、供卵/供精、匹配、法律与时间表。'),
-  },
-  {
-    question: tt('2) How does gay surrogacy work, step by step?', '2）同志代孕的流程是怎样的？'),
-    answer: tt('Plan → create/review embryos → match and screening → legal/insurance/escrow → transfer → pregnancy support → birth + parentage paperwork.', '规划 → 创建/审核胚胎 → 匹配与筛查 → 法律/保险/资金托管 → 移植 → 孕期支持 → 分娩与亲权文件。'),
-  },
-  {
-    question: tt('3) Is gay surrogacy legal in the U.S. and in California?', '3）同志代孕在美国、加州合法吗？'),
-    answer: tt('It depends on the state. California is widely chosen for supportive same-sex surrogacy laws and clearer parentage pathways.', '因州而异。加州因对同性代孕友好、亲权路径清晰而被广泛选择。'),
-  },
-  {
-    question: tt('4) What is a PBO (pre-birth order) for gay parents?', '4）什么是同性父母的 PBO（预出生令）？'),
-    answer: tt('A pre-birth order helps confirm parentage before delivery. It often makes the hospital process and paperwork smoother.', '预出生令在分娩前确认亲权，通常能让医院流程与文件处理更顺畅。'),
-  },
-  {
-    question: tt('5) Can both dads be on the birth certificate in California?', '5）在加州，两位爸爸都能上出生证吗？'),
-    answer: tt('Often yes, with the right legal plan and documentation. We coordinate with California counsel to keep the process clear.', '通常可以，只要法律方案与文件齐备。我们会与加州律师合作，确保流程清晰。'),
-  },
-  {
-    question: tt('6) Can both moms be on the birth certificate for lesbian surrogacy?', '6）女同志代孕，两位妈妈都能上出生证吗？'),
-    answer: tt('Often yes. California parentage steps (commonly including a pre-birth order) help recognize both moms.', '通常可以。加州的亲权流程（常含预出生令）可帮助同时确认两位妈妈。'),
-  },
-  {
-    question: tt('7) How much does surrogacy for gay couples cost?', '7）同志家庭代孕要花多少钱？'),
-    answer: tt('It varies by medical pathway. Biggest drivers: IVF/donor needs, surrogate support, legal fees, insurance review, escrow, and agency coordination.', '取决于医疗路径。主要驱动包括 IVF/供卵需求、代孕支持、法律费用、保险审核、资金托管及机构协调。'),
-  },
-  {
-    question: tt('8) What are the main cost components in gay surrogacy?', '8）同志代孕的主要费用构成是什么？'),
-    answer: tt('Medical (IVF/testing/transfer), surrogate-related costs, legal + parentage, insurance/escrow, and agency support.', '医疗（IVF/检测/移植）、代孕相关费用、法律与亲权、保险/托管，以及机构支持。'),
-  },
-  {
-    question: tt('9) How do gay couples choose an egg donor, and where does IVF fit?', '9）同志伴侣如何选择供卵者？IVF 在哪里介入？'),
-    answer: tt('Many gay men surrogacy journeys use an egg donor and IVF to create embryos, then move to matching and transfer.', '许多同志家庭会用供卵和 IVF 创建胚胎，然后进入匹配与移植阶段。'),
-  },
-  {
-    question: tt('10) International parents: how do we bring a baby home after surrogacy?', '10）国际家庭：代孕后如何把宝宝带回国？'),
-    answer: tt('Plan early for documents and travel timing after birth. Requirements vary by country, so timelines should be prepared in advance.', '请提前准备出生后的文件与行程，各国要求不同，时间线需预先规划。'),
-  },
-])
 const pagePath = '/single-parents-lgbtq'
-const schemaStepItems = computed(() =>
-  stepStrip.value.map((step, index) => ({
-    position: index + 1,
-    name: step.label,
-    description: step.sub,
-    url: pagePath,
+
+const translations = {
+  en: {
+    seoTitle: 'California LGBTQ+ & Gay Surrogacy Agency | Yunda',
+    seoDescription:
+      'LGBTQ-friendly California surrogacy agency support for gay couples, same-sex parents, lesbian couples, and single intended parents, including donor planning, surrogate matching, insurance review, and parentage coordination.',
+    heroEyebrow: 'California LGBTQ+ surrogacy agency · Gay, same-sex and single parent support',
+    heroTitle: 'California LGBTQ+, Gay & Same-Sex Surrogacy Support',
+    heroBody:
+      'Yunda supports gay couples, lesbian couples, same-sex parents, LGBTQ+ intended parents, and single intended parents with inclusive surrogate matching, donor egg or donor sperm planning, IVF clinic coordination, parentage planning, insurance review, escrow planning, and bilingual case management. If you are comparing California gay surrogacy, a LGBTQ+ surrogacy agency in Los Angeles, or single parent surrogacy in the U.S., this page explains what changes for your path and what to plan before matching begins.',
+    heroBullets: [
+      'LGBTQ-friendly surrogate matching for gay, lesbian, same-sex and single intended parents',
+      'Donor egg, donor sperm, embryo and IVF clinic coordination',
+      'California parentage planning coordinated with qualified legal professionals',
+      'Insurance review, escrow planning and bilingual case management',
+    ],
+    heroPrimary: 'Plan My Private Consultation',
+    heroSecondary: 'Review Parentage Planning',
+    heroAlt: 'Pride flag with wooden parent figures and a model of pregnancy, representing LGBTQ+ family building through surrogacy',
+    navAria: 'On-page sections',
+    navItems: [
+      { id: 'overview', label: 'Overview' },
+      { id: 'who-this-is-for', label: 'Who This Is For' },
+      { id: 'what-changes', label: 'What Changes' },
+      { id: 'service-area', label: 'Service Area' },
+      { id: 'planning-path', label: 'Planning Path' },
+      { id: 'matching', label: 'Matching' },
+      { id: 'cost-insurance', label: 'Cost & Insurance' },
+      { id: 'guides', label: 'Guides' },
+      { id: 'faq', label: 'FAQ' },
+    ],
+    trustCards: [
+      {
+        title: 'Reviewed by',
+        body: 'Kayla Luo, Vice President, North America',
+      },
+      {
+        title: "Yunda's role",
+        body: 'Yunda provides education, coordination, bilingual communication and case-management support for intended parents. Legal, medical, insurance, escrow and IVF treatment decisions should be confirmed with the relevant qualified professionals.',
+      },
+      {
+        title: 'Best for',
+        body: 'Gay couples, lesbian couples, same-sex parents, LGBTQ+ intended parents, single fathers, single mothers and international intended parents comparing U.S. surrogacy options.',
+      },
+    ],
+    audienceTitle: 'Who This LGBTQ+ and Single Parent Surrogacy Page Is For',
+    audienceIntro:
+      'This page is a family-structure guide, not a duplicate of the full surrogacy process. Use it to understand the planning decisions that are more common for gay surrogacy, same-sex surrogacy, lesbian surrogacy and single parent surrogacy in California.',
+    audienceCards: [
+      {
+        title: 'Gay Dads and Male Couples',
+        body: 'For gay surrogacy in California, many families need donor egg planning, embryo creation, surrogate matching, legal parentage coordination, insurance review and a birth plan that supports both dads from the start. Yunda helps organize these moving parts so your first steps feel clear rather than scattered.',
+      },
+      {
+        title: 'Lesbian Couples and Two-Mom Families',
+        body: "Lesbian surrogacy can involve reciprocal IVF, one partner's eggs, donor sperm, donor eggs, existing embryos or a gestational surrogate. We help you compare what belongs with the IVF clinic, what belongs with donor planning, and what should be clarified before matching.",
+      },
+      {
+        title: 'Single Fathers',
+        body: 'Single father surrogacy often includes donor egg selection, IVF clinic planning, parentage coordination, insurance review and travel or document planning if you live outside the United States. The goal is to understand the path before you commit to a clinic, donor or surrogate match.',
+      },
+      {
+        title: 'Single Mothers and Solo Intended Parents',
+        body: 'Single parent surrogacy may include embryo review, donor sperm planning, medical coordination, insurance review and a clear support plan for pregnancy updates and birth. Yunda helps single intended parents understand what to prepare and which professionals should be involved.',
+      },
+    ],
+    changesTitle: 'What Changes When Your Path Is LGBTQ+ or Single Parent Surrogacy?',
+    changesIntro:
+      'The medical, legal and emotional questions are often more specific: donor genetics, who is listed as a parent, how matching conversations should happen, what insurance review is needed, and what documents must be ready before birth. Yunda keeps these decisions organized while your legal, medical, insurance and escrow professionals handle the decisions within their fields.',
+    changesSections: [
+      {
+        title: 'Donor and Embryo Planning Comes Earlier',
+        body: "Gay couples, single fathers and some same-sex parents often need donor egg planning before matching can move forward. Lesbian couples may compare reciprocal IVF, donor sperm, one partner's eggs, donor eggs or existing embryos. Yunda helps coordinate the conversation between intended parents, donor resources and IVF clinics so the medical plan and matching plan stay aligned.",
+        links: [
+          { label: 'donor egg planning', to: '/egg-donation' },
+          { label: 'IVF clinic coordination', to: '/partner-ivf-clinics' },
+        ],
+      },
+      {
+        title: 'Parentage Planning Is Not an Afterthought',
+        body: 'Questions like "Can both dads be on the birth certificate in California?", "Can both moms be recognized?", or "Can a single intended parent establish parentage?" should be discussed early with qualified legal professionals. Yunda coordinates timing, documents, insurance review and escrow planning around that legal work so parentage planning is not left until the end.',
+        links: [
+          { label: 'parentage and protection planning', to: '/surrogacy-protection-california' },
+        ],
+      },
+      {
+        title: 'Matching Needs Shared Values and Clear Boundaries',
+        body: 'Same-sex surrogacy and single parent surrogacy require matching conversations that feel respectful from the beginning. Before a match moves forward, it helps to discuss communication style, privacy, milestone updates, hospital expectations, relationship boundaries and the kind of support the surrogate will receive during pregnancy.',
+        links: [
+          { label: 'surrogate matching process', to: '/surrogacy-process' },
+        ],
+      },
+    ],
+    serviceTitle: 'California LGBTQ+ Surrogacy Support Across Los Angeles, the Bay Area and Beyond',
+    serviceBody:
+      'Yunda works with intended parents comparing LGBTQ+ surrogacy agency options in California, including families searching for gay surrogacy in Los Angeles, same-sex surrogacy agency support in Los Angeles, Bay Area gay surrogacy, San Francisco gay surrogacy, San Jose gay surrogacy and Southern California surrogacy for gay parents. The specific clinic, legal and insurance pathway depends on your embryos, donor needs, surrogate match, residence, and where the professional teams are located.',
+    serviceNote:
+      'This page is not a separate city page for Los Angeles, San Francisco or San Jose. It is a California-focused LGBTQ+ and single parent surrogacy guide.',
+    serviceMapAlt: 'California map highlighting San Francisco, San Jose, Los Angeles and San Diego',
+    pathTitle: 'A Practical Planning Path Before Matching Begins',
+    pathIntroBefore: "For the full step-by-step surrogacy process, use Yunda's ",
+    pathIntroLink: 'process guide',
+    pathIntroAfter:
+      '. Here, the focus is the LGBTQ+ and single parent planning path that helps your team prepare before contracts, embryo transfer and birth.',
+    pathSteps: [
+      {
+        label: 'Step 1',
+        title: 'Private Consultation',
+        body: 'We start by understanding your family structure, where you live, whether you already have embryos, whether donor eggs or donor sperm may be needed, and what questions feel most urgent.',
+      },
+      {
+        label: 'Step 2',
+        title: 'Donor, IVF and Embryo Review',
+        body: 'If your plan includes donor eggs, donor sperm, reciprocal IVF or existing embryos, we help coordinate next questions with donor resources and IVF clinics before matching begins.',
+      },
+      {
+        label: 'Step 3',
+        title: 'Inclusive Surrogate Matching',
+        body: 'We discuss values, communication preferences, privacy, medical screening, psychological screening and the relationship you hope to have with your surrogate.',
+      },
+      {
+        label: 'Step 4',
+        title: 'Legal, Insurance and Escrow Coordination',
+        body: 'Before transfer, your team should understand contracts, parentage planning, insurance review, escrow timing and the professional steps that reduce avoidable risk.',
+      },
+      {
+        label: 'Step 5',
+        title: 'Pregnancy, Birth and Travel Planning',
+        body: 'As the journey moves forward, we help organize pregnancy communication, hospital preferences, birth paperwork and travel or cross-border documents when needed.',
+      },
+    ],
+    matchingTitle: 'LGBTQ-Friendly Matching Should Feel Respectful From Day One',
+    matchingBody:
+      'A strong match is not only about availability. It is about medical qualification, emotional readiness, shared expectations and a surrogate who understands and welcomes your family structure. For gay couples, same-sex parents and single intended parents, matching should create confidence rather than pressure.',
+    matchingPoints: [
+      {
+        title: 'Communication and Privacy Are Planned Early',
+        body: 'We discuss update frequency, decision-making moments, privacy preferences, relationship boundaries and what kind of birth experience would feel calm for everyone involved.',
+      },
+      {
+        title: 'Screening Protects Both Intended Parents and Surrogate',
+        body: 'Medical review, clinic clearance, psychological screening, insurance review and legal coordination reduce surprises before transfer and help the relationship stay clear.',
+      },
+      {
+        title: 'Support Continues After the Match',
+        body: 'A match is not the end of coordination. Yunda helps organize pregnancy updates, milestone communication, birth planning and respectful support for both intended parents and the surrogate.',
+      },
+    ],
+    costTitle: 'Cost and Insurance Variables for LGBTQ+ and Gay Surrogacy',
+    costBody:
+      'This section does not replace the full cost guide. It explains why the budget for gay surrogacy, lesbian surrogacy, same-sex surrogacy or single parent surrogacy may shift based on donor, IVF, legal, insurance, escrow and travel needs. For searches like affordable gay surrogacy or low cost gay surrogacy, the safer question is not "What is the lowest price?" but "Which costs are predictable, which are variable, and which professional reviews are needed before money is committed?"',
+    costVariablesTitle: 'Cost Variables',
+    costVariables: [
+      'Whether you already have embryos or need IVF first',
+      'Whether donor eggs, donor sperm or reciprocal IVF are part of the plan',
+      'Surrogate compensation, reimbursements, insurance review and maternity support',
+      'Legal parentage work, contracts, escrow setup and birth documentation',
+      'International travel, translation and document timing when applicable',
+    ],
+    costNoteTitle: 'Insurance Note',
+    costInsuranceNote:
+      'Gay surrogate insurance questions should be reviewed early. Insurance review may affect budget planning, surrogate match readiness and pre-transfer timing. Yunda coordinates insurance review context, while coverage decisions should be confirmed with qualified insurance professionals.',
+    costCta: 'See Full Cost Breakdown',
+    guidesTitle: 'Use the Right Yunda Guide for the Next Question',
+    guidesIntro:
+      'To keep this page focused, detailed process, cost, legal, IVF and donor questions live on their own source-of-truth pages.',
+    guides: [
+      {
+        to: '/surrogacy-cost',
+        title: 'Surrogacy Cost Guide',
+        description:
+          'Use this for full cost ranges, agency coordination fees, surrogate-related costs, legal fees, insurance, escrow and third-party expenses.',
+      },
+      {
+        to: '/surrogacy-protection-california',
+        title: 'California Protection Guide',
+        description:
+          'Use this for legal coordination, insurance review, escrow planning, contracts, parentage concepts and risk-reduction context.',
+      },
+      {
+        to: '/surrogacy-process',
+        title: 'Full Surrogacy Process',
+        description:
+          'Use this for the complete intended parent journey from consultation through birth planning.',
+      },
+    ],
+    faqTitle: 'LGBTQ+ and Single Parent Surrogacy FAQ',
+    faqIntro:
+      'Short answers for intended parents comparing California gay surrogacy, LGBTQ+ surrogacy agencies, same-sex surrogacy in Los Angeles, parentage planning, insurance review, cost and international next steps.',
+    faqs: [
+      {
+        q: 'Can LGBTQ+ couples pursue surrogacy in California?',
+        a: 'Yes. California is widely chosen by LGBTQ+ intended parents because it has supportive parentage pathways and experienced professionals in third-party reproduction. The exact legal steps depend on your family structure, embryos, residence and timing, so Yunda coordinates with qualified legal professionals rather than treating website content as legal advice.',
+      },
+      {
+        q: 'Can a single parent pursue surrogacy?',
+        a: 'Yes. Many single intended parents explore gestational surrogacy. The plan may include donor eggs or donor sperm, IVF clinic coordination, parentage planning, insurance review and a clear support plan for pregnancy and birth.',
+      },
+      {
+        q: 'How does gay surrogacy work for two dads?',
+        a: 'Gay surrogacy for two dads often includes donor egg planning, IVF to create embryos, surrogate matching, medical and psychological screening, legal and insurance coordination, embryo transfer, pregnancy support and parentage paperwork.',
+      },
+      {
+        q: 'Do lesbian couples need a surrogate or reciprocal IVF?',
+        a: "It depends on medical goals, embryo plans, who will provide eggs, who can or wants to carry, and clinic guidance. Some couples use reciprocal IVF; others use a gestational surrogate with one partner's eggs, donor eggs or existing embryos.",
+      },
+      {
+        q: 'Can both dads or both moms be on the birth certificate in California?',
+        a: 'In many California surrogacy arrangements, parentage planning can support both intended parents being recognized. The exact path depends on documents, timing and legal review, so this should be planned early with counsel.',
+      },
+      {
+        q: 'What is a pre-birth order for LGBTQ+ or single intended parents?',
+        a: 'A pre-birth order is a legal process used in some surrogacy cases to help confirm intended parentage before delivery. It can make hospital paperwork and birth documentation smoother when handled by qualified legal professionals.',
+      },
+      {
+        q: 'How much does LGBTQ+ or gay surrogacy cost in California?',
+        a: "Costs vary by IVF needs, donor eggs or donor sperm, surrogate-related costs, legal work, insurance review, escrow, travel and agency coordination. Yunda's cost guide should be used for the detailed budget breakdown.",
+      },
+      {
+        q: 'What should I know about gay surrogate insurance?',
+        a: 'Insurance review should happen before transfer planning is finalized. Coverage questions may affect the budget, surrogate match readiness and timing. Yunda can coordinate insurance review context, while coverage decisions should be confirmed with qualified insurance professionals.',
+      },
+      {
+        q: 'Do international LGBTQ+ or single intended parents need extra planning?',
+        a: 'Often yes. International families should plan early for travel timing, translation, birth documents, passport or citizenship questions and communication across time zones. Requirements vary by country.',
+      },
+      {
+        q: 'Does Yunda support same-sex surrogacy in Los Angeles, the Bay Area and San Francisco?',
+        a: 'Yunda supports intended parents comparing California LGBTQ+ and same-sex surrogacy options, including families researching Los Angeles, the Bay Area, San Francisco, San Jose and Southern California. Your exact path depends on your clinic, legal team, insurance review, surrogate match and personal timeline.',
+      },
+    ],
+    finalTitle: 'Ready to Understand Your Family-Building Path?',
+    finalBody:
+      'Tell us whether you are a gay couple, lesbian couple, same-sex parent, single intended parent or international family. Yunda will help you map the right next questions before you commit to a clinic, donor, surrogate match or legal timeline.',
+    finalCta: 'Schedule a Private Consultation',
+  },
+  zh: {
+    seoTitle: '加州 LGBTQ+ 与同性伴侣代孕机构｜孕达',
+    seoDescription:
+      '面向男同志、女同志、同性伴侣、LGBTQ+ 与单身准父母的加州代孕机构支持，涵盖供卵/供精规划、代孕妈妈匹配、保险审核、亲权协调和私密咨询。',
+    heroEyebrow: '加州 LGBTQ+ 代孕机构 · 男同志、同性伴侣与单身父母支持',
+    heroTitle: '加州 LGBTQ+、男同志与同性伴侣代孕支持',
+    heroBody:
+      '孕达为男同志伴侣、女同志伴侣、同性伴侣、LGBTQ+ 准父母和单身准父母提供包容的代孕妈妈匹配、供卵或供精规划、IVF 诊所协调、亲权规划、保险审核、资金托管规划和双语个案管理。如果你正在比较加州男同志代孕、洛杉矶 LGBTQ+ 代孕机构，或美国单身父母代孕路径，本页会说明你的成家路径有哪些不同，以及匹配开始前需要提前准备什么。',
+    heroBullets: [
+      '面向男同志、女同志、同性伴侣、LGBTQ+ 与单身准父母的包容性代孕妈妈匹配',
+      '供卵、供精、胚胎与 IVF 诊所协调',
+      '与合格法律专业人士协作的加州亲权规划',
+      '保险审核、资金托管规划与双语个案管理',
+    ],
+    heroPrimary: '预约私密路径咨询',
+    heroSecondary: '查看亲权规划',
+    heroAlt: '彩虹旗上的准父母木制人偶与妊娠模型，象征 LGBTQ+ 家庭通过代孕成家',
+    navAria: '本页章节导航',
+    navItems: [
+      { id: 'overview', label: '概览' },
+      { id: 'who-this-is-for', label: '适合谁' },
+      { id: 'what-changes', label: '路径差异' },
+      { id: 'service-area', label: '服务地区' },
+      { id: 'planning-path', label: '规划路径' },
+      { id: 'matching', label: '匹配' },
+      { id: 'cost-insurance', label: '费用与保险' },
+      { id: 'guides', label: '指南' },
+      { id: 'faq', label: '常见问题' },
+    ],
+    trustCards: [
+      {
+        title: '审核人',
+        body: 'Kayla Luo，北美副总裁',
+      },
+      {
+        title: '孕达的角色',
+        body: '孕达为准父母提供教育、协调、双语沟通与个案管理支持。法律、医疗、保险、托管和 IVF 治疗相关决定，应由对应合格专业人士确认。',
+      },
+      {
+        title: '适合人群',
+        body: '正在比较美国代孕方案的男同志伴侣、女同志伴侣、同性伴侣、LGBTQ+ 准父母、单身爸爸、单身妈妈和国际准父母。',
+      },
+    ],
+    audienceTitle: '这个 LGBTQ+ 与单身父母代孕页面适合谁',
+    audienceIntro:
+      '本页是按家庭结构整理的路径指南，不重复完整代孕流程。你可以用它了解加州男同志代孕、同性伴侣代孕、女同志代孕和单身父母代孕中更常见的规划决策。',
+    audienceCards: [
+      {
+        title: '男同志伴侣与两位爸爸',
+        body: '加州男同志代孕通常涉及供卵规划、胚胎创建、代孕妈妈匹配、亲权协调、保险审核，以及从一开始就支持两位爸爸的分娩计划。孕达帮助你梳理这些环节，让第一步更清楚，而不是被零散信息淹没。',
+      },
+      {
+        title: '女同志伴侣与两位妈妈',
+        body: '女同志代孕可能涉及互惠 IVF、一方卵子、供精、供卵、已有胚胎或妊娠代孕妈妈。我们会帮助你们比较哪些问题应由 IVF 诊所处理，哪些属于捐赠者规划，以及匹配开始前应先确认什么。',
+      },
+      {
+        title: '单身爸爸',
+        body: '单身爸爸代孕通常包括供卵选择、IVF 诊所规划、亲权协调、保险审核；若居住在美国以外，还可能涉及旅行和文件规划。重点是在正式确定诊所、捐赠者或代孕妈妈匹配前，先理解整体路径。',
+      },
+      {
+        title: '单身妈妈与单身准父母',
+        body: '单身父母代孕可能包括胚胎审核、供精规划、医疗协调、保险审核，以及孕期沟通和分娩阶段的支持计划。孕达帮助单身准父母理解需要准备什么，以及哪些专业人士应参与其中。',
+      },
+    ],
+    changesTitle: 'LGBTQ+ 或单身父母代孕路径有什么不同？',
+    changesIntro:
+      '这类路径中的医疗、法律和情绪问题往往更具体：捐赠者遗传关系、谁被确认为父母、匹配沟通如何进行、需要怎样的保险审核，以及分娩前哪些文件必须准备好。孕达帮助你把这些决策有序推进，同时由法律、医疗、保险和托管专业人士处理各自领域内的决定。',
+    changesSections: [
+      {
+        title: '供卵、供精与胚胎规划更早介入',
+        body: '男同志伴侣、单身爸爸和部分同性伴侣通常需要在匹配前先处理供卵规划。女同志伴侣可能需要比较互惠 IVF、供精、一方卵子、供卵或已有胚胎。孕达帮助准父母、捐赠者资源和 IVF 诊所之间保持沟通，让医疗方案和匹配方案保持一致。',
+        links: [
+          { label: '供卵规划', to: '/egg-donation' },
+          { label: 'IVF 诊所协调', to: '/partner-ivf-clinics' },
+        ],
+      },
+      {
+        title: '亲权规划不能等到最后',
+        body: '“在加州，两位爸爸能否都写入出生证？”“两位妈妈能否同时获得确认？”“单身准父母能否确立亲权？”这类问题应尽早与合格法律专业人士讨论。孕达围绕法律工作协调时间、文件、保险审核和资金托管规划，避免亲权问题被留到最后。',
+        links: [
+          { label: '亲权与保障规划', to: '/surrogacy-protection-california' },
+        ],
+      },
+      {
+        title: '匹配需要价值观一致与清晰边界',
+        body: '同性伴侣代孕和单身父母代孕都需要从一开始就保持尊重的匹配沟通。在匹配推进前，建议先讨论沟通方式、隐私、关键节点更新、医院期待、关系边界，以及代孕妈妈在孕期会获得怎样的支持。',
+        links: [
+          { label: '代孕妈妈匹配流程', to: '/surrogacy-process' },
+        ],
+      },
+    ],
+    serviceTitle: '覆盖洛杉矶、湾区及更多地区的加州 LGBTQ+ 代孕支持',
+    serviceBody:
+      '孕达支持正在比较加州 LGBTQ+ 代孕机构的准父母，包括搜索洛杉矶男同志代孕、洛杉矶同性伴侣代孕机构、湾区男同志代孕、旧金山男同志代孕、圣何塞男同志代孕，以及南加州男同志准父母代孕支持的家庭。具体诊所、法律和保险路径，会根据你的胚胎情况、捐赠者需求、代孕妈妈匹配、居住地和专业团队所在地而不同。',
+    serviceNote:
+      '本页不是洛杉矶、旧金山或圣何塞的独立城市页，而是聚焦加州 LGBTQ+ 与单身父母代孕路径的指南页。',
+    serviceMapAlt: '加州地图，标出旧金山、圣何塞、洛杉矶与圣迭戈',
+    pathTitle: '匹配开始前的实际规划路径',
+    pathIntroBefore: '完整的代孕流程请查看孕达',
+    pathIntroLink: '流程指南',
+    pathIntroAfter:
+      '。本页重点是 LGBTQ+ 与单身准父母在合同、胚胎移植和分娩前需要完成的路径规划。',
+    pathSteps: [
+      {
+        label: '步骤 1',
+        title: '私密咨询',
+        body: '我们会先了解你的家庭结构、所在地区、是否已有胚胎、是否可能需要供卵或供精，以及你当前最急需弄清的问题。',
+      },
+      {
+        label: '步骤 2',
+        title: '捐赠者、IVF 与胚胎审核',
+        body: '如果方案涉及供卵、供精、互惠 IVF 或已有胚胎，我们会在匹配开始前协助你与捐赠者资源和 IVF 诊所梳理下一步问题。',
+      },
+      {
+        label: '步骤 3',
+        title: '包容性代孕妈妈匹配',
+        body: '我们会讨论价值观、沟通偏好、隐私、医学筛查、心理筛查，以及你希望与代孕妈妈建立怎样的关系。',
+      },
+      {
+        label: '步骤 4',
+        title: '法律、保险与托管协调',
+        body: '移植前，团队应清楚合同、亲权规划、保险审核、托管时间，以及有助于降低可避免风险的专业步骤。',
+      },
+      {
+        label: '步骤 5',
+        title: '孕期、分娩与旅行规划',
+        body: '旅程推进后，我们会协助组织孕期沟通、医院偏好、出生文件，以及需要时的旅行或跨境文件。',
+      },
+    ],
+    matchingTitle: 'LGBTQ 友好的匹配应从第一天起保持尊重',
+    matchingBody:
+      '好的匹配不只是“有人选”。它还关乎医学资格、心理准备、共同期待，以及一位理解并欢迎你家庭结构的代孕妈妈。对男同志伴侣、同性准父母和单身准父母来说，匹配应带来确定感，而不是压力。',
+    matchingPoints: [
+      {
+        title: '尽早规划沟通与隐私',
+        body: '我们会讨论更新频率、决策节点、隐私偏好、关系边界，以及怎样的分娩体验能让所有参与者都更安心。',
+      },
+      {
+        title: '筛查同时保护准父母与代孕妈妈',
+        body: '医学审核、诊所放行、心理筛查、保险审核和法律协调能减少移植前的意外，也让双方关系保持清晰。',
+      },
+      {
+        title: '匹配后支持仍会继续',
+        body: '匹配并不是协调工作的终点。孕达会协助组织孕期更新、关键节点沟通、分娩规划，并为准父母和代孕妈妈提供互相尊重的支持。',
+      },
+    ],
+    costTitle: 'LGBTQ+ 与男同志代孕的费用和保险变量',
+    costBody:
+      '本区块不替代完整费用指南，而是说明为什么男同志代孕、女同志代孕、同性伴侣代孕或单身父母代孕的预算会因捐赠者、IVF、法律、保险、托管和旅行需求而变化。对于 “affordable gay surrogacy” 或 “low cost gay surrogacy” 这类搜索，更稳妥的问题不是“最低价是多少”，而是“哪些费用可预估，哪些费用会变化，在付款前需要完成哪些专业审核”。',
+    costVariablesTitle: '费用变量',
+    costVariables: [
+      '是否已有胚胎，还是需要先进行 IVF',
+      '方案是否涉及供卵、供精或互惠 IVF',
+      '代孕妈妈补偿、报销、保险审核与孕期支持',
+      '亲权法律工作、合同、托管账户与出生文件',
+      '适用时的国际旅行、翻译和文件时间安排',
+    ],
+    costNoteTitle: '保险提示',
+    costInsuranceNote:
+      '男同志代孕相关保险问题应尽早审核。保险审核可能影响预算规划、代孕妈妈匹配准备和移植前时间线。孕达协调保险审核相关信息，具体覆盖范围应由合格保险专业人士确认。',
+    costCta: '查看完整费用拆解',
+    guidesTitle: '根据下一个问题选择正确的孕达指南',
+    guidesIntro:
+      '为了让本页保持聚焦，详细流程、费用、法律、IVF 和供卵问题分别由对应主页面承接。',
+    guides: [
+      {
+        to: '/surrogacy-cost',
+        title: '代孕费用指南',
+        description: '查看完整费用区间、机构协调费、代孕妈妈相关费用、法律费用、保险、托管和第三方费用。',
+      },
+      {
+        to: '/surrogacy-protection-california',
+        title: '加州保障指南',
+        description: '了解法律协调、保险审核、资金托管、合同、亲权概念和风险控制背景。',
+      },
+      {
+        to: '/surrogacy-process',
+        title: '完整代孕流程',
+        description: '用于了解从咨询到分娩规划的完整准父母代孕旅程。',
+      },
+    ],
+    faqTitle: 'LGBTQ+ 与单身父母代孕常见问题',
+    faqIntro:
+      '为正在比较加州男同志代孕、LGBTQ+ 代孕机构、洛杉矶同性伴侣代孕、亲权规划、保险审核、费用和国际家庭下一步的准父母提供简明回答。',
+    faqs: [
+      {
+        q: 'LGBTQ+ 伴侣可以在加州通过代孕成为父母吗？',
+        a: '可以。加州因亲权路径相对友好、第三方辅助生殖专业资源成熟，而常被 LGBTQ+ 准父母选择。具体法律步骤取决于家庭结构、胚胎、居住地和时间线，因此孕达会协调合格法律专业人士，网站内容不作为法律建议。',
+      },
+      {
+        q: '单身准父母可以通过代孕成为父母吗？',
+        a: '可以。许多单身准父母会选择妊娠代孕。方案可能包括供卵或供精、IVF 诊所协调、亲权规划、保险审核，以及孕期和分娩阶段的支持计划。',
+      },
+      {
+        q: '两位爸爸的男同志代孕通常怎么进行？',
+        a: '两位爸爸的男同志代孕通常包括供卵规划、通过 IVF 创建胚胎、代孕妈妈匹配、医学与心理筛查、法律和保险协调、胚胎移植、孕期支持及亲权文件。',
+      },
+      {
+        q: '女同志伴侣需要代孕还是互惠 IVF？',
+        a: '这取决于医疗目标、胚胎方案、谁提供卵子、谁能或愿意怀孕，以及诊所建议。有些伴侣选择互惠 IVF，也有家庭使用一方卵子、供卵或已有胚胎，并通过妊娠代孕完成。',
+      },
+      {
+        q: '在加州，两位爸爸或两位妈妈都能写入出生证吗？',
+        a: '在许多加州代孕安排中，亲权规划可支持两位准父母同时获得确认。具体路径取决于文件、时间和法律审核，因此应尽早与律师规划。',
+      },
+      {
+        q: 'LGBTQ+ 或单身准父母的预出生令是什么？',
+        a: '预出生令是在部分代孕个案中用于分娩前确认准父母亲权的法律程序。由合格法律专业人士处理时，它可帮助医院文件和出生文件更顺畅。',
+      },
+      {
+        q: '加州 LGBTQ+ 或男同志代孕费用是多少？',
+        a: '费用会因 IVF 需求、供卵或供精、代孕妈妈相关费用、法律工作、保险审核、托管、旅行和机构协调而不同。详细预算请查看孕达费用指南。',
+      },
+      {
+        q: '男同志代孕保险需要注意什么？',
+        a: '保险审核应在移植规划最终确定前完成。保险覆盖问题可能影响预算、代孕妈妈匹配准备和时间线。孕达可协调保险审核相关信息，具体覆盖范围应由合格保险专业人士确认。',
+      },
+      {
+        q: '国际 LGBTQ+ 或单身准父母需要额外规划吗？',
+        a: '通常需要。国际家庭应提前规划旅行时间、翻译、出生文件、护照或国籍问题，以及跨时区沟通。不同国家要求不同。',
+      },
+      {
+        q: '孕达是否支持洛杉矶、湾区和旧金山的同性伴侣代孕？',
+        a: '孕达支持正在比较加州 LGBTQ+ 与同性伴侣代孕方案的准父母，包括研究洛杉矶、湾区、旧金山、圣何塞和南加州相关路径的家庭。你的具体路径取决于诊所、法律团队、保险审核、代孕妈妈匹配和个人时间线。',
+      },
+    ],
+    finalTitle: '准备好了解你的成家路径了吗？',
+    finalBody:
+      '告诉我们你是男同志伴侣、女同志伴侣、同性准父母、单身准父母还是国际家庭。孕达会在你正式确定诊所、捐赠者、代孕妈妈匹配或法律时间线前，帮助你梳理下一步该问的问题。',
+    finalCta: '预约私密咨询',
+  },
+}
+
+const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+
+const relatedGuides = computed(() => c.value.guides)
+const trustCards = computed(() => c.value.trustCards)
+const sectionNav = computed(() => c.value.navItems)
+const activeSection = ref(sectionNav.value[0]?.id || 'overview')
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el)
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+function handleSectionScroll() {
+  const offset = window.matchMedia('(min-width: 768px)').matches ? 170 : 150
+  const positions = sectionNav.value.map((item) => {
+    const element = document.getElementById(item.id)
+    if (!element)
+      return { id: item.id, distance: Number.POSITIVE_INFINITY }
+    return { id: item.id, distance: Math.abs(element.getBoundingClientRect().top - offset) }
+  })
+  activeSection.value = positions.reduce((prev, current) =>
+    current.distance < prev.distance ? current : prev,
+  ).id
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleSectionScroll, { passive: true })
+  handleSectionScroll()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleSectionScroll)
+})
+
+const faqItems = computed(() =>
+  c.value.faqs.map(item => ({
+    question: item.q,
+    answer: item.a,
   })),
 )
+
 const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   baseUrl: siteUrl.value || undefined,
   path: pagePath,
-  name: heroTitle.value,
-  description: seoDescription.value,
-  about: 'LGBTQ-friendly gestational surrogacy agency support in California',
-  audience: ['LGBTQ intended parents', 'gay couples', 'lesbian couples', 'single parents'],
+  name: c.value.heroTitle,
+  description: c.value.seoDescription,
+  dateModified: '2026-07-27',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
+  about: 'LGBTQ-friendly and single parent gestational surrogacy support in California',
+  audience: [
+    'LGBTQ intended parents',
+    'gay couples',
+    'lesbian couples',
+    'same-sex parents',
+    'single parents',
+  ],
   inLanguage: locale.value === 'zh' ? 'zh-CN' : 'en-US',
   service: {
-    name: 'LGBTQ Gestational Surrogacy Support in California',
-    serviceType: 'LGBTQ-friendly gestational surrogacy agency services',
-    audience: ['LGBTQ intended parents', 'gay couples', 'lesbian couples', 'single parents'],
-    description: 'Inclusive gestational surrogacy coordination for gay and lesbian intended parents, including first consultation, IVF and egg donation planning, gestational carrier matching, medical screening, legal and parentage coordination, insurance and escrow planning, embryo transfer, pregnancy support, and birth planning.',
+    name: locale.value === 'zh'
+      ? '加州 LGBTQ+ 与单身父母妊娠代孕协调'
+      : 'California LGBTQ+ and Single Parent Gestational Surrogacy Coordination',
+    serviceType: locale.value === 'zh'
+      ? 'LGBTQ+ 与单身父母友好的妊娠代孕机构服务'
+      : 'LGBTQ-friendly gestational surrogacy agency services',
+    audience: [
+      'LGBTQ intended parents',
+      'gay couples',
+      'lesbian couples',
+      'same-sex parents',
+      'single parents',
+    ],
+    description: c.value.heroBody,
   },
   breadcrumbs: [
-    { name: 'Home', url: '/' },
-    { name: 'For Intended Parents', url: '/intended-parents' },
-    { name: 'Single Parents & LGBTQ+', url: pagePath },
+    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
+    { name: locale.value === 'zh' ? '为准父母' : 'For Intended Parents', url: '/intended-parents' },
+    { name: locale.value === 'zh' ? 'LGBTQ+ 与单身父母' : 'LGBTQ+ & Single Parents', url: pagePath },
   ],
-  faqs: lgbtqFaqItems.value,
+  faqs: faqItems.value,
   itemList: {
-    name: '6-step LGBTQ surrogacy process',
-    description: heroDescription.value,
-    items: schemaStepItems.value,
+    name: c.value.pathTitle,
+    description: `${c.value.pathIntroBefore}${c.value.pathIntroLink}${c.value.pathIntroAfter}`,
+    items: c.value.pathSteps.map((step, index) => ({
+      position: index + 1,
+      name: step.title,
+      description: step.body,
+      url: pagePath,
+    })),
   },
 }))
 
-const visibleSteps = ref(1)
-
-function showNextStep() {
-  if (visibleSteps.value < stepStrip.value.length)
-    visibleSteps.value += 1
-}
-
-useHead({
-  title: seoTitle,
-  meta: [
-    {
-      name: 'description',
-      content: seoDescription,
-    },
-  ],
-})
-
 useHead(() => ({
+  title: c.value.seoTitle,
+  meta: [
+    { name: 'description', content: c.value.seoDescription },
+    { property: 'og:title', content: c.value.seoTitle },
+    { property: 'og:description', content: c.value.seoDescription },
+    { property: 'og:image', content: `${siteUrl.value}${PAGE_ASSETS.hero}` },
+    { name: 'twitter:title', content: c.value.seoTitle },
+    { name: 'twitter:description', content: c.value.seoDescription },
+    { name: 'twitter:image', content: `${siteUrl.value}${PAGE_ASSETS.hero}` },
+  ],
   script: coreServicePageSchemas.value.map((schema, index) => ({
     key: `schema-single-parents-lgbtq-${index}`,
     type: 'application/ld+json',
@@ -182,643 +628,466 @@ useHead(() => ({
     <AppHeader />
 
     <main>
-      <section class="relative w-full overflow-hidden from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-b">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-18%] top-[-18%] h-[360px] w-[360px] rounded-full bg-white/55 blur-3xl" />
-          <div class="absolute right-[-16%] top-[-12%] h-[500px] w-[500px] rounded-full bg-[var(--yunda-petal)]/65 blur-3xl" />
-          <div class="absolute bottom-[-26%] left-[-20%] h-[420px] w-[520px] rounded-[58%] bg-white/60 blur-3xl" />
-          <div class="absolute bottom-[-24%] right-[-18%] h-[440px] w-[520px] rounded-[60%] bg-[var(--yunda-petal)]/60 blur-3xl" />
+      <!-- Section 1: Hero — 全幅背景 + 文案整体水平居中（对齐改版稿第一屏） -->
+      <section class="relative isolate flex w-full min-h-[min(88vh,820px)] items-center overflow-hidden bg-[var(--yunda-petal)] py-12 lg:py-14">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+          <OptimizedPicture
+            :src="PAGE_ASSETS.hero"
+            :alt="c.heroAlt"
+            width="1768"
+            height="890"
+            picture-class="contents"
+            img-class="absolute inset-0 h-full w-full scale-[1.02] object-cover object-center"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <!-- 轻遮罩：保留彩虹旗层次，同时保证居中深色文字可读 -->
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(180deg, rgba(251,240,218,0.72) 0%, rgba(251,240,218,0.52) 45%, rgba(251,240,218,0.58) 100%)"
+          />
         </div>
 
-        <div class="relative mx-auto max-w-full w-[1960px] pb-18 pt-28 lg:pb-24 lg:pt-32">
-          <div class="w-full flex flex-col gap-6 lg:gap-8">
-            <div class="w-fit inline-flex items-center border border-[var(--yunda-maple)]/30 rounded-full bg-[var(--yunda-petal)] px-4 py-2 text-sm text-[var(--yunda-maple)] font-semibold" style="font-family: var(--font-text)">
-              {{ tt('LGBTQ+ intended parents · California surrogacy', 'LGBTQ+ 准父母 · 加州代孕') }}
-            </div>
+        <div class="relative z-10 mx-auto flex w-full max-w-[880px] flex-col items-center px-6 text-center lg:px-8">
+          <h1 class="max-w-[820px] font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-[1.12] sm:text-[38px] lg:text-[46px]">
+            {{ c.heroTitle }}
+          </h1>
+          <p class="mt-4 max-w-[720px] text-[14px] text-[var(--yunda-bark)]/88 leading-[1.7] sm:text-[15px] lg:text-[16px]">
+            {{ c.heroBody }}
+          </p>
 
-            <h1 class="font-display text-[38px] font-semibold leading-[1.1] sm:text-[42px] lg:text-[50px]">
-              {{ heroTitle }}
-            </h1>
-
-            <div class="grid gap-4 lg:grid-cols-2">
-              <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
-                <picture>
-                  <source srcset="/images/ip/Gay-Lesbia-Surrogacy.jpg" type="image/jpeg">
-                  <img
-                    src="/images/ip/Gay-Lesbia-Surrogacy.jpg"
-                    alt="LGBTQ intended parents celebrating together"
-                    class="h-[320px] w-full object-cover lg:h-[420px]"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </div>
-
-              <div class="relative overflow-hidden border border-white/70 rounded-[28px] bg-white/80 shadow-[0_22px_60px_rgba(64,84,120,0.10)]">
-                <picture>
-                  <source srcset="/images/ip/Gay-Surrogacy.jpg" type="image/jpeg">
-                  <img
-                    src="/images/ip/Gay-Surrogacy.jpg"
-                    alt="LGBTQ intended parents celebrating together"
-                    class="h-[320px] w-full object-cover lg:h-[420px]"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </div>
-            </div>
-
-            <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-              {{ heroDescription }}
-            </p>
-
-            <div class="grid gap-3 text-base text-[var(--yunda-bark)] lg:grid-cols-3 lg:gap-4" style="font-family: var(--font-text)">
-              <div
-                v-for="highlight in heroHighlights"
-                :key="highlight"
-                class="flex items-start gap-3 border border-[var(--yunda-maple)]/25 rounded-[16px] bg-[var(--yunda-petal)]/80 px-4 py-3 shadow-[0_12px_30px_rgba(64,84,120,0.08)]"
-              >
-                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-[var(--yunda-maple)]" />
-                <span class="leading-[1.75]">{{ highlight }}</span>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-4">
-              <NuxtLink
-                :to="localePath('/be-parents')"
-                class="inline-flex items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-6 py-3 text-sm text-[var(--yunda-petal)] font-semibold shadow-[0_18px_32px_rgba(169,108,66,0.30)] transition-transform duration-200 hover:-translate-y-0.5"
-                style="font-family: var(--font-text)"
-              >
-                {{ tt('Talk to a coordinator', '与顾问沟通') }}
-              </NuxtLink>
-              <NuxtLink
-                :to="localePath('/surrogacy-cost')"
-                class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/30 rounded-[12px] bg-white/80 px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold shadow-[0_14px_26px_rgba(39,31,24,0.08)] transition-transform duration-200 hover:-translate-y-0.5"
-                style="font-family: var(--font-text)"
-              >
-                {{ tt('See California costs', '查看加州费用') }}
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-full bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-full w-[1960px] space-y-10">
-          <div class="space-y-4">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-              {{ tt('LGBTQ Surrogacy: Who We Help (Gay Couples & Lesbian Couples)', 'LGBTQ 代孕：我们支持的家庭（男同/女同）') }}
-            </h2>
-          </div>
-
-          <div class="grid gap-8 lg:grid-cols-2">
-            <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
-              <picture>
-                <source srcset="/images/ip/Gay-Surrogacy.jpg" type="image/jpeg">
-                <img
-                  src="/images/ip/Gay-Surrogacy.jpg"
-                  alt="Gay couple walking together during their surrogacy journey"
-                  class="absolute inset-0 h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </picture>
-              <div class="absolute inset-0 from-white/82 via-white/76 to-white/62 bg-gradient-to-r" />
-              <div class="relative max-w-3xl p-8 space-y-4 lg:p-10">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Surrogacy for Gay Couples — A Clear Path to Fatherhood', '男同志代孕：清晰而安心的成家路径') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/90 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('If you’re considering ', '如果你们作为两位爸爸正在考虑') }}
-                  <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('lgbt surrogacy', 'LGBTQ 代孕') }}
-                  </NuxtLink>
-                  {{ tt(' as two dads, you deserve a plan that feels steady and protected. Many intended parents come to us for ', '，你们值得拥有稳妥且被保护的方案。许多准父母来找我们做') }}
-                  <NuxtLink :to="localePath('/be-parents')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('surrogacy for gay couples', '男同志代孕') }}
-                  </NuxtLink>
-                  {{ tt(' because they want guidance without pressure.', '，因为他们希望获得不带压力的专业指引。') }}
-                </p>
-              </div>
-            </article>
-
-            <article class="relative min-h-[420px] overflow-hidden border border-white/70 rounded-[32px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
-              <picture>
-                <source srcset="/images/ip/LGBTQ-Surrogacy.jpg" type="image/jpeg">
-                <img
-                  src="/images/ip/LGBTQ-Surrogacy.jpg"
-                  alt="Lesbian couple smiling together during surrogacy planning"
-                  class="absolute inset-0 h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </picture>
-              <div class="absolute inset-0 from-white/82 via-white/76 to-white/62 bg-gradient-to-r" />
-              <div class="relative max-w-3xl p-8 space-y-4 lg:p-10">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Lesbian Surrogacy—Support for Two Moms, From Planning to Parenthood', '女同志代孕：陪伴两位妈妈，从规划到为人父母') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/90 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('Lesbian surrogacy can look different for every couple. Some families use one partner’s eggs. Some explore ', '女同志代孕在不同家庭会有不同组合：有的使用一方卵子，有的考虑') }}
-                  <NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('reciprocal IVF', '互惠 IVF') }}
-                  </NuxtLink>
-                  {{ tt('. Others choose ', '，也有家庭选择') }}
-                  <NuxtLink :to="localePath('/egg-donation')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('donor eggs', '供卵') }}
-                  </NuxtLink>
-                  {{ tt('. We guide you through options with care, so the choice feels right for your family.', '。我们会细致讲解每个方案，帮助你们找到最合适的道路。') }}
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-full bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-full w-[1960px] space-y-10">
-          <div class="space-y-3">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-              {{ tt('How Does Gay Surrogacy Work? (Step-by-Step Process)', '男同志代孕怎么进行？（分步骤讲解）') }}
-            </h2>
-            <p class="text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-              {{ tt('A calm, step-by-step path for lgbt surrogacy in California—covering surrogacy for gay couples from first consult to bringing baby home.', '在加州，按部就班、平稳推进的男同志代孕路线——从首次咨询到把宝宝接回家的每一步。') }}
-            </p>
-          </div>
-
-          <div class="overflow-hidden border border-white/70 rounded-[28px] shadow-[0_24px_60px_rgba(64,84,120,0.10)]">
-            <div class="grid grid-cols-2 w-full text-white lg:grid-cols-6 md:grid-cols-3">
-              <div
-                v-for="(step, index) in stepStrip"
-                :key="step.label"
-                class="relative h-full min-h-[120px] flex flex-col justify-center gap-2 p-5"
-                :style="{ background: step.gradient }"
-              >
-                <span class="text-base text-white/95 font-semibold tracking-wide uppercase" >{{ index + 1 }}.</span>
-                <span class="text-[22px] font-semibold leading-snug" >{{ step.label }}</span>
-                <span class="text-base text-white/95 leading-snug" style="font-family: var(--font-text)">{{ step.sub }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid gap-10 lg:grid-cols-2">
-            <div class="space-y-6">
-              <div v-if="visibleSteps >= 1" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 1 — How to Start Gay Surrogacy (Your First Conversation)', '步骤 1 — 如何开始男同志代孕（第一次沟通）') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('If you’re wondering how does gay surrogacy work, start with a quiet consult. We learn what you have—embryos, an IVF clinic, or neither—and what you still need. Like many Native teachings, we don’t rush big choices. We listen first, then build a clear plan for ', '如果你想弄清男同志代孕如何展开，可以先进行一次私密的咨询。我们会了解你们现有的条件——有无胚胎、是否已有 IVF 诊所——以及缺少什么。像许多文化的教导一样，大事不急于一时。我们先倾听，再为') }}
-                  <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('surrogacy for gay couples', '男同志代孕') }}
-                  </NuxtLink>
-                  {{ tt(' in California.', '在加州制定清晰的计划。') }}
-                </p>
-              </div>
-
-              <div v-if="visibleSteps >= 2" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 2 — Create Embryos With IVF (Often With an Egg Donor)', '步骤 2 — IVF 创建胚胎（常伴随供卵）') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('For many families, gay men surrogacy includes IVF and an egg donor. If you already have embryos, we plan the next steps. If not, we guide donor selection and clinic coordination for IVF and surrogacy for gay couples—see our ', '许多同志家庭会在代孕中使用 IVF 与供卵；已有胚胎则直接规划下一步；若没有，我们协助选卵与诊所协调——可查看我们的') }}
-                  <NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('partner IVF clinics', '合作 IVF 诊所') }}
-                  </NuxtLink>
-                  {{ tt(' and ', ' 以及 ') }}
-                  <NuxtLink :to="localePath('/egg-donation')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('egg donation', '供卵') }}
-                  </NuxtLink>
-                  {{ tt(' resources.', ' 资源。') }}
-                </p>
-              </div>
-
-              <div v-if="visibleSteps >= 3" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 3 — Match With a Surrogate and Complete Screening', '步骤 3 — 匹配代孕妈妈并完成筛查') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('Matching is about trust, not speed. We help you meet a surrogate who is medically qualified and emotionally ready. Screening usually includes medical review, clinic clearance, and psychological evaluation. These steps to gay surrogacy protect everyone—and prevent delays later.', '匹配重在信任而非速度。我们协助找到医学合格、心理准备好的代孕妈妈。筛查通常包括病历审核、诊所放行、心理评估，这些环节保护所有人并减少后期延误。') }}
-                </p>
-              </div>
-            </div>
-
-            <div class="space-y-6">
-              <div v-if="visibleSteps >= 4" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 4 — Legal, Insurance, and Financial Safeguards (Before Transfer)', '步骤 4 — 法律、保险与资金保障（移植前）') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('Before transfer, the foundation must be solid: contracts, insurance review, and a secure financial setup (often escrow). California is chosen for strong protections, including options like a', '移植前要先筑牢地基：合同、保险审核与安全资金托管。加州因强力保护被广泛选择，例如可办理') }}
-                  <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                    {{ tt('pre birth order for gay parents', '同性父母的预出生令') }}
-                  </NuxtLink>
-                  {{ tt('. This step brings clarity and peace of mind.', '，让流程更清晰安心。') }}
-                </p>
-              </div>
-
-              <div v-if="visibleSteps >= 5" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 5 — Embryo Transfer, Pregnancy, and Ongoing Support', '步骤 5 — 胚胎移植、孕期与持续支持') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('After legal and medical clearance, the surrogate begins her cycle and the embryo transfer is scheduled. Pregnancy is confirmed by blood test soon after (your clinic sets exact timing). We support steady communication and a realistic gay surrogacy timeline, so the journey feels calm and respectful.', '完成法律与医学放行后，代孕妈妈开始用药并安排移植，随后通过验血确认怀孕（时间由诊所制定）。我们保持沟通与真实可行的时间表，让旅程平稳、互相尊重。') }}
-                </p>
-              </div>
-
-              <div v-if="visibleSteps >= 6" class="space-y-3">
-                <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                  {{ tt('Step 6 — Birth, Parentage, and Bringing Baby Home', '步骤 6 — 分娩、亲权与接宝宝回家') }}
-                </h3>
-                <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                  {{ tt('As birth nears, we confirm the hospital plan and parentage paperwork. Many ask, “can both dads be on the birth certificate?” With the right documents, that’s the goal we work toward. For international parents, we plan travel paperwork early—so bringing your baby home is smoother.', '接近分娩时，我们确认医院计划与亲权文件。许多家庭关心“能否把两位爸爸都写在出生证上？”只要文件齐备，我们就以此为目标。国际家庭则提前规划旅行与文件，让回家更顺畅。') }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="visibleSteps < stepStrip.length" class="flex justify-start">
-            <button
-              type="button"
-              class="inline-flex items-center justify-center rounded-[12px] bg-[var(--yunda-bark)] px-5 py-3 text-sm text-[var(--yunda-petal)] font-semibold shadow-[0_14px_28px_rgba(169,108,66,0.28)] transition-transform duration-200 hover:-translate-y-0.5"
-              style="font-family: var(--font-text)"
-              @click="showNextStep"
+          <!-- 列表块整体居中；白线黑底图标已裁切放大，直接展示 -->
+          <ul class="mt-6 w-fit max-w-[640px] space-y-3 text-left">
+            <li
+              v-for="(bullet, index) in c.heroBullets"
+              :key="bullet"
+              class="flex items-start gap-3"
             >
-              {{ tt('Show next step', '展开下一步') }}
-            </button>
+              <img
+                :src="`${PAGE_ASSETS.heroBullets[index]}?v=22`"
+                alt=""
+                width="40"
+                height="40"
+                class="mt-0.5 h-10 w-10 shrink-0 rounded-[9px] object-contain shadow-[0_6px_16px_rgba(61,42,31,0.18)]"
+                loading="eager"
+                decoding="async"
+              >
+              <span class="pt-1.5 text-[14px] text-[var(--yunda-bark)]/90 leading-[1.55] lg:text-[15px]">{{ bullet }}</span>
+            </li>
+          </ul>
+
+          <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <NuxtLink
+              :to="localePath('/be-parents')"
+              class="inline-flex items-center justify-center rounded-full bg-[var(--yunda-bark)] px-7 py-3.5 text-sm text-white font-bold shadow-[0_16px_34px_rgba(61,42,31,0.2)] transition hover:-translate-y-0.5"
+            >
+              {{ c.heroPrimary }}
+            </NuxtLink>
+            <NuxtLink
+              :to="localePath('/surrogacy-protection-california')"
+              class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/45 rounded-full bg-white/75 px-7 py-3.5 text-sm text-[var(--yunda-maple)] font-bold backdrop-blur-[2px] transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5"
+            >
+              {{ c.heroSecondary }}
+            </NuxtLink>
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="rainbow-bar mb-6" aria-hidden="true" />
-        <div class="mx-auto max-w-full w-[1960px] space-y-8">
-          <div class="space-y-3">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-              {{ tt('LGBTQ-Friendly Matching: How We Support You and Your Surrogate', '同志友好的匹配：如何支持您与代孕妈妈') }}
-            </h2>
-            <p class="text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-              {{ tt('Matching for lgbtq surrogacy should feel respectful and calm—from your first conversation to birth planning in California.', 'LGBTQ 代孕匹配应当尊重且平和——从首次沟通到加州的分娩规划。') }}
-            </p>
-          </div>
-
-          <div class="relative h-[600px] overflow-hidden border border-white/70 rounded-[26px] bg-white/95 shadow-[0_24px_60px_rgba(64,84,120,0.12)]">
-            <div class="absolute inset-x-0 top-0 h-3 from-[#e8612f] via-[#3c7bbf] via-[#5bb260] via-[#7849af] via-[#f6b52e] to-[#e8612f] bg-gradient-to-r" />
-            <div class="grid h-full items-stretch gap-6 p-6 lg:grid-cols-[1.05fr_1fr] lg:p-10">
-              <div class="relative h-full overflow-hidden rounded-[20px]">
-                <picture>
-                  <source srcset="/images/ip/LGBTQ-Friendly.webp" type="image/webp">
-                  <img
-                    src="/images/ip/LGBTQ-Friendly.webp"
-                    alt="LGBTQ intended parents sharing a moment"
-                    class="h-full w-full rounded-[20px] object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-                <div class="pointer-events-none absolute inset-0 rounded-[20px] from-white/18 via-white/8 to-white/4 bg-gradient-to-r" />
+      <!-- Section 2: Trust strip — 文档样式为整块圆角 + 三列竖分割 -->
+      <section id="overview" class="scroll-mt-40 bg-[color-mix(in_srgb,var(--yunda-sky)_12%,var(--yunda-petal)_88%)] px-6 py-10 lg:px-10 lg:py-12">
+        <div class="mx-auto max-w-320 border border-[var(--yunda-maple)]/28 rounded-[22px] bg-[color-mix(in_srgb,var(--yunda-petal)_90%,white_10%)] shadow-[0_10px_28px_rgba(61,42,31,0.07)]">
+          <div class="grid divide-y divide-[var(--yunda-maple)]/24 md:grid-cols-3 md:divide-y-0">
+            <article
+              v-for="(item, index) in trustCards"
+              :key="item.title"
+              class="relative flex gap-4 px-6 py-6 lg:px-7"
+            >
+              <span
+                v-if="index < trustCards.length - 1"
+                aria-hidden="true"
+                class="absolute right-0 top-6 hidden h-[calc(100%-3rem)] w-px bg-[var(--yunda-maple)]/24 md:block"
+              />
+              <img
+                :src="`${PAGE_ASSETS.trust[index]}?v=4`"
+                alt=""
+                width="50"
+                height="50"
+                class="mt-0.5 h-12.5 w-12.5 shrink-0 object-contain"
+                loading="lazy"
+                decoding="async"
+              >
+              <div>
+                <h3 class="text-sm text-[var(--yunda-bark)] font-display font-semibold leading-tight lg:text-base">
+                  {{ item.title }}
+                </h3>
+                <p class="mt-2 text-sm text-[var(--yunda-bark)]/82 leading-[1.72]">
+                  {{ item.body }}
+                </p>
               </div>
-
-              <div class="grid gap-4 md:grid-cols-1">
-                <div class="flex items-start gap-4 border border-[var(--yunda-maple)]/25 rounded-[18px] bg-[var(--yunda-petal)]/90 p-4 shadow-[0_12px_28px_rgba(64,84,120,0.10)]">
-                  <div
-                    class="h-14 w-14 flex shrink-0 items-center justify-center rounded-full shadow-[0_6px_16px_rgba(0,0,0,0.12)]"
-                    style="background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e8eeea 55%, #d2d8ce 100%);"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="var(--yunda-bark)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 12.5 8.5 8l3.5 3.5L15.5 8 20 12.5" />
-                      <path d="M4 16.5 7 13.5" />
-                      <path d="M9.5 16.5 12 14" />
-                      <path d="M14.5 16.5 17 14" />
-                    </svg>
-                  </div>
-                  <div class="space-y-2">
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ tt('Matching That Honors Your Story (LGBTQ-Friendly From Day One)', '匹配尊重你的故事（从第一天起就友好）') }}
-                    </h3>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ tt('In', '在') }}
-                      <NuxtLink :to="localePath('/surrogacy-process')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                        {{ tt('lgbtq surrogacy', 'LGBTQ 代孕') }}
-                      </NuxtLink>
-                      {{ tt(', matching should feel steady and respectful. We learn what matters to you—privacy, communication style, and the relationship you want with your surrogate.', '中，匹配应当稳妥、尊重。我们会了解你重视的隐私、沟通方式，以及你希望与代孕妈妈的关系。') }}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4 border border-[var(--yunda-maple)]/25 rounded-[18px] bg-[var(--yunda-petal)]/90 p-4 shadow-[0_12px_28px_rgba(64,84,120,0.10)]">
-                  <div
-                    class="h-14 w-14 flex shrink-0 items-center justify-center rounded-full shadow-[0_6px_16px_rgba(0,0,0,0.12)]"
-                    style="background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e8eeea 55%, #d2d8ce 100%);"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="var(--yunda-bark)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="5" y="3" width="14" height="14" rx="2" />
-                      <path d="M9 7h6" />
-                      <path d="M9 10h3" />
-                      <path d="M9 14h6" />
-                      <path d="M8 21h8" />
-                    </svg>
-                  </div>
-                  <div class="space-y-2">
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ tt('Screening and Support That Protects You and Your Surrogate', '筛查与支持，守护你和代孕妈妈') }}
-                    </h3>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ tt('A strong match includes medical and emotional readiness. We coordinate record review, clinic requirements, and psychological screening, so the journey stays healthy for everyone. This support matters in the gay surrogacy process—fewer surprises, more stability—plus ongoing check-ins and guidance for your surrogate.', '好的匹配需要医学与情感上的准备。我们协调病历审核、诊所要求和心理筛查，让旅程对所有人都健康可控。这些支持让同志代孕更少意外、更稳妥，并为代孕妈妈提供持续关怀与指导。') }}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4 border border-[var(--yunda-maple)]/25 rounded-[18px] bg-[var(--yunda-petal)]/90 p-4 shadow-[0_12px_28px_rgba(64,84,120,0.10)]">
-                  <div
-                    class="h-14 w-14 flex shrink-0 items-center justify-center rounded-full shadow-[0_6px_16px_rgba(0,0,0,0.12)]"
-                    style="background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e8eeea 55%, #d2d8ce 100%);"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="var(--yunda-bark)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 4h9l3 3v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" />
-                      <path d="M14 4v3h4" />
-                      <path d="M8 12h8" />
-                      <path d="M8 16h5" />
-                    </svg>
-                  </div>
-                  <div class="space-y-2">
-                    <h3 class="font-sans text-[20px] text-[var(--yunda-bark)] font-bold leading-snug sm:text-[22px] lg:text-[24px]" style="font-family: var(--font-text)">
-                      {{ tt('Clear Communication, Boundaries, and a Calm Birth Plan', '清晰沟通、健康边界与安心的分娩计划') }}
-                    </h3>
-                    <p class="text-base text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-                      {{ tt('We set communication rhythms—updates, milestones, decision-making—that feel natural. Healthy boundaries keep the relationship respectful. As birth nears, we coordinate with your care team and legal team; many families prepare a', '我们设定自然的沟通节奏——更新、里程碑与决策方式。健康的边界让关系更尊重。临近分娩时，我们会与医疗与法律团队协作；许多家庭会提前准备') }}
-                      <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                        {{ tt('pre birth order for same sex couples', '同性家庭的预出生令') }}
-                      </NuxtLink>
-                      {{ tt('so the hospital experience is smoother.', '，让住院体验更顺畅。') }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="w-full bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-full w-[1960px] space-y-10">
-          <div class="space-y-3">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-              {{ tt('Gay Surrogacy Costs: What Impacts the Cost for Gay Couples?', '同志代孕费用：哪些因素影响预算？') }}
-            </h2>
-            <p class="text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-              {{ tt('A quick view of the main drivers of gay surrogacy cost California families ask about—and where a typical budget goes.', '快速了解加州同志家庭最关心的代孕费用驱动因素，以及预算通常花在哪些部分。') }}
-            </p>
+      <!-- 目录条起止包住第3–10屏：离开 FAQ 后不再吸顶遮挡 Final CTA -->
+      <div class="relative">
+        <nav
+          class="sticky top-20 z-40 border-b border-[var(--yunda-bark)]/10 bg-[#c5c0a0] md:top-25"
+          :aria-label="c.navAria"
+        >
+          <div class="mx-auto max-w-320 overflow-x-auto px-4 lg:px-10">
+            <div class="flex min-w-max gap-2 py-3">
+              <button
+                v-for="item in sectionNav"
+                :key="item.id"
+                type="button"
+                class="shrink-0 rounded-full px-4 py-2 text-sm whitespace-nowrap transition"
+                :class="activeSection === item.id
+                  ? 'bg-[var(--yunda-petal)] text-[var(--yunda-bark)] font-semibold shadow-[0_6px_16px_rgba(61,42,31,0.1)]'
+                  : 'bg-[color-mix(in_srgb,#b5af8c_70%,white_30%)] text-[var(--yunda-bark)]/88 hover:bg-[var(--yunda-petal)]/70'"
+                :aria-current="activeSection === item.id ? 'true' : undefined"
+                @click="scrollToSection(item.id)"
+              >
+                {{ item.label }}
+              </button>
+            </div>
           </div>
+        </nav>
 
-          <div class="grid items-stretch gap-6 lg:grid-cols-[1.1fr_1.1fr_0.8fr]">
-            <div class="relative h-full border border-white/70 rounded-[18px] bg-white/92 shadow-[0_16px_40px_rgba(64,84,120,0.12)]">
-              <div class="absolute inset-x-0 top-0 h-[10px] rounded-t-[18px] from-[#7366b9] via-[#8c7dd6] to-[#a99aeb] bg-gradient-to-r" />
-              <div
-                class="relative mt-[10px] h-full rounded-b-[18px] from-[#7366b9] via-[#8c7dd6] to-[#a99aeb] bg-gradient-to-r p-[1px]"
-              >
-                <div class="h-full rounded-[14px] bg-white p-5">
-                  <div class="flex items-center gap-3">
-                    <div class="h-12 w-12 flex shrink-0 items-center justify-center rounded-full bg-white shadow-[0_8px_18px_rgba(115,102,185,0.25)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="#6b5aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect x="4" y="4" width="16" height="16" rx="2" />
-                        <path d="M4 10h16" />
-                        <path d="M10 14h4" />
-                      </svg>
-                    </div>
-                    <h3 class="font-sans text-[18px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                      {{ tt('Medical & IVF Choices', '医疗与 IVF 选择') }}
-                    </h3>
-                  </div>
-                  <ul class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] space-y-2 lg:text-lg" style="font-family: var(--font-text)">
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#6b5aa8]">✓</span>
-                      <span>{{ tt('If you already have embryos, costs are often lower than starting from zero.', '若已有胚胎，费用通常低于从零开始。') }}</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#6b5aa8]">✓</span>
-                      <span>{{ tt('Needing an egg donor or extra IVF cycles can raise the', '需要供卵或额外 IVF 周期会提高') }}
-                        <NuxtLink :to="localePath('/surrogacy-cost')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                          {{ tt('gay surrogacy cost', '同志代孕成本') }}
-                        </NuxtLink>
-                        {{ tt('range.', '区间。') }}</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#6b5aa8]">✓</span>
-                      <span>{{ tt('Medications, testing, and clinic timelines also shape the budget.', '用药、检查与诊所排期也会影响预算。') }}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <!-- Section 3: Audience — 文档样式：米色卡片 + 金色细边框 + 左图标右文案 -->
+        <section id="who-this-is-for" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="mx-auto max-w-4xl text-center">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                {{ c.audienceTitle }}
+              </h2>
+              <p class="mt-4 text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+                {{ c.audienceIntro }}
+              </p>
             </div>
-
-            <div class="relative h-full border border-white/70 rounded-[18px] bg-white/92 shadow-[0_16px_40px_rgba(64,84,120,0.12)]">
-              <div class="absolute inset-x-0 top-0 h-[10px] rounded-t-[18px] from-[#c77836] via-[#d89050] to-[#ebb16f] bg-gradient-to-r" />
-              <div
-                class="relative mt-[10px] h-full rounded-b-[18px] from-[#c77836] via-[#d89050] to-[#ebb16f] bg-gradient-to-r p-[1px]"
+            <div class="mt-10 grid gap-5 md:grid-cols-2 lg:gap-6">
+              <article
+                v-for="(card, index) in c.audienceCards"
+                :key="card.title"
+                class="flex items-center gap-5 border border-[var(--yunda-maple)]/35 rounded-[14px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] px-5 py-6 lg:gap-6 lg:px-7"
               >
-                <div class="h-full rounded-[14px] bg-white p-5">
-                  <div class="flex items-center gap-3">
-                    <div class="h-12 w-12 flex shrink-0 items-center justify-center rounded-full bg-white shadow-[0_8px_18px_rgba(199,120,54,0.25)]">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="#c77836" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M8 13h4" />
-                        <path d="M8 9h8" />
-                        <path d="M8 17h6" />
-                      </svg>
-                    </div>
-                    <h3 class="font-sans text-[18px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                      {{ tt('Risk + Timeline Variables', '风险与时间线变量') }}
-                    </h3>
-                  </div>
-                  <ul class="mt-4 text-base text-[var(--yunda-bark)]/85 leading-[1.75] space-y-2 lg:text-lg" style="font-family: var(--font-text)">
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#c77836]">•</span>
-                      <span>{{ tt('Insurance coverage, surrogate eligibility, and how quickly you match can shift the budget.', '保险覆盖、代孕妈妈资格，以及匹配速度都会改变预算。') }}</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#c77836]">•</span>
-                      <span>{{ tt('A longer timeline may increase coordination and support costs.', '时间线越长，协调与支持成本可能上升。') }}</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <span class="text-[#c77836]">•</span>
-                      <span>{{ tt('We plan for these variables early so you don’t get surprised.', '我们提前规划这些变量，减少意外。') }}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative h-full overflow-hidden border border-[var(--yunda-maple)]/18 rounded-[18px] bg-white shadow-[0_18px_44px_rgba(64,84,120,0.16)]">
-              <div class="absolute inset-x-0 top-0 h-10 bg-[var(--yunda-petal)]">
-                <div class="absolute left-4 top-1/2 h-3 w-14 rounded-full bg-[var(--yunda-petal)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] -translate-y-1/2" />
-                <div class="absolute right-4 top-1/2 h-3 w-14 rounded-full bg-[var(--yunda-petal)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] -translate-y-1/2" />
-              </div>
-              <div class="relative mt-10 h-full bg-[radial-gradient(circle_at_20%_15%,#faf7f2_0%,#ffffff_45%,#f7f1e6_100%)]">
-                <div class="absolute inset-x-0 top-0 h-[6px] bg-[length:24px_12px] bg-[radial-gradient(circle_at_0_0,#e8eeea_6px,transparent_6px),radial-gradient(circle_at_100%_0,#e8eeea_6px,transparent_6px)] bg-repeat-x" />
-                <div class="pointer-events-none absolute inset-x-4 top-0 h-full border-l border-[var(--yunda-maple)]/20 border-dashed" />
-                <div class="relative h-full px-5 pb-6 pt-4">
-                  <div class="mb-4 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <span class="h-10 w-10 inline-flex items-center justify-center rounded-full bg-[var(--yunda-petal)] text-[var(--yunda-bark)] font-semibold shadow-[0_6px_14px_rgba(0,0,0,0.12)]" >Bill</span>
-                      <h3 class="font-sans text-[18px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-[20px]" style="font-family: var(--font-text)">
-                        {{ tt('Cost Breakdown Overview', '费用构成总览') }}
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="text-base text-[var(--yunda-bark)]/90 leading-[1.75] space-y-2 lg:text-lg" style="font-family: var(--font-text)">
-                    <div class="flex items-start gap-2">
-                      <span class="text-[var(--yunda-maple)]">✓</span>
-                      <span>{{ tt('Medical: IVF/clinic fees, testing, medications, embryo transfer', '医疗：IVF/诊所费用、检测、用药、胚胎移植') }}
-                        (<NuxtLink :to="localePath('/partner-ivf-clinics')" class="text-[var(--yunda-maple)] underline underline-offset-4">
-                          {{ tt('partner IVF clinics', '合作 IVF 诊所') }}
-                        </NuxtLink>)</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                      <span class="text-[var(--yunda-maple)]">✓</span>
-                      <span>{{ tt('Surrogate: compensation, reimbursements, maternity support', '代孕：补偿、报销、孕期支持') }}</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                      <span class="text-[var(--yunda-maple)]">✓</span>
-                      <span>{{ tt('Legal & parentage: contracts and protections for both dads', '法律与亲权：合同及保护双亲的步骤') }}</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                      <span class="text-[var(--yunda-maple)]">✓</span>
-                      <span>{{ tt('Insurance & escrow: policy review and secure fund management', '保险与托管：保单审核与资金安全管理') }}</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                      <span class="text-[var(--yunda-maple)]">✓</span>
-                      <span>{{ tt('Agency coordination: matching, case management, ongoing support', '机构协调：匹配、案管与持续支持') }}</span>
-                    </div>
-                  </div>
-                  <p class="mt-4 text-sm text-[var(--yunda-bark)]/70">
-                    {{ tt('This is a high-level view of surrogacy costs for same sex couples—your exact plan may vary.', '以上为同性家庭代孕费用的概览，具体方案以实际为准。') }}
+                <img
+                  :src="`${PAGE_ASSETS.audience[index]}?v=4`"
+                  alt=""
+                  width="64"
+                  height="64"
+                  class="h-16 w-16 shrink-0 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <div>
+                  <h3 class="text-xl text-[var(--yunda-bark)] font-bold leading-snug">
+                    {{ card.title }}
+                  </h3>
+                  <p class="mt-2 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.7] lg:text-base">
+                    {{ card.body }}
                   </p>
                 </div>
-                <div class="absolute inset-x-0 bottom-0 h-4 from-[var(--yunda-petal)] via-white to-[var(--yunda-petal)] bg-gradient-to-r" />
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: What Changes — 文档样式：左标题+简介，右灰绿手风琴面板 -->
+        <section id="what-changes" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+              <div>
+                <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                  {{ c.changesTitle }}
+                </h2>
+                <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.85] lg:text-base">
+                  {{ c.changesIntro }}
+                </p>
+              </div>
+              <div class="rounded-[6px] bg-[#c3cdc5] px-6 py-8 lg:px-8 lg:py-10">
+                <details
+                  v-for="(section, index) in c.changesSections"
+                  :key="section.title"
+                  class="group border-b border-[var(--yunda-bark)]/45"
+                  :class="index === 0 ? 'border-t' : ''"
+                >
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5">
+                    <h3 class="font-display text-[17px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-lg">
+                      {{ section.title }}
+                    </h3>
+                    <span class="shrink-0 text-xl text-[var(--yunda-bark)] leading-none">
+                      <span class="group-open:hidden">+</span>
+                      <span class="hidden group-open:inline">−</span>
+                    </span>
+                  </summary>
+                  <div class="pb-4">
+                    <p class="text-[13.5px] text-[var(--yunda-bark)]/85 leading-[1.8] lg:text-sm">
+                      {{ section.body }}
+                    </p>
+                    <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                      <NuxtLink
+                        v-for="link in section.links"
+                        :key="link.to"
+                        :to="localePath(link.to)"
+                        class="text-[13px] text-[var(--yunda-bark)] font-semibold underline underline-offset-4"
+                      >
+                        {{ link.label }}
+                      </NuxtLink>
+                    </div>
+                  </div>
+                </details>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="w-full bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-full w-[1960px] space-y-8">
-          <div class="space-y-2">
-            <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] sm:text-[32px] lg:text-[36px]">
-              {{ tt('Gay & Lesbian Surrogacy FAQ', '同志代孕常见问题') }}
-            </h2>
-            <p class="text-base text-[var(--yunda-bark)]/80 leading-[1.75] lg:text-[18px]" style="font-family: var(--font-text)">
-              {{ tt('Process, legal, costs, and international parent FAQs.', '流程、法律、费用与国际家庭的常见问题。') }}
-            </p>
+        <!-- Section 5: Service Area — 左文案 + 右加州地图（对齐改版稿） -->
+        <section id="service-area" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+              <div>
+                <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[36px]">
+                  {{ c.serviceTitle }}
+                </h2>
+                <p class="mt-4 text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+                  {{ c.serviceBody }}
+                </p>
+                <!-- Note：文档为灰绿底提示条 + 橙色定位图标，图标与文字垂直居中 -->
+                <div class="mt-6 flex items-center gap-4 rounded-[12px] bg-[#c3cdc5] px-5 py-4">
+                  <img
+                    :src="`${PAGE_ASSETS.serviceArea}?v=4`"
+                    alt=""
+                    width="36"
+                    height="36"
+                    class="h-9 w-9 shrink-0 object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                  <p class="text-sm text-[var(--yunda-bark)]/90 font-semibold leading-[1.7] lg:text-[15px]">
+                    {{ c.serviceNote }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="ml-auto w-full max-w-[500px] lg:pl-4">
+                <img
+                  :src="`${PAGE_ASSETS.serviceMap}?v=1`"
+                  :alt="c.serviceMapAlt"
+                  width="430"
+                  height="454"
+                  class="h-auto w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="relative overflow-hidden border border-white/70 rounded-[16px] bg-white/92 p-4 shadow-[0_14px_34px_rgba(64,84,120,0.12)]">
-            <div class="absolute inset-x-0 top-0 h-2 from-[#e8612f] via-[#3c7bbf] via-[#5bb260] via-[#7849af] via-[#f6b52e] to-[#e8612f] bg-gradient-to-r" />
-            <div class="grid gap-4 pt-2">
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('1) How to start gay surrogacy in California?', '1）如何在加州开始同志代孕？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Start with a consult. We confirm what you already have (embryos or not) and map the next steps—clinic, donor, matching, legal, and timing.', '从咨询开始。我们确认你已有的准备（是否有胚胎），并规划下一步——诊所、供卵/供精、匹配、法律与时间表。') }}
+        <!-- Section 6: Planning Path — H2 + Intro + Step 1–5 -->
+        <section id="planning-path" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="mx-auto max-w-3xl text-center">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                {{ c.pathTitle }}
+              </h2>
+              <p class="mt-4 text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+                {{ c.pathIntroBefore }}<NuxtLink
+                  :to="localePath('/surrogacy-process')"
+                  class="text-[var(--yunda-maple)] font-semibold underline underline-offset-4"
+                >{{ c.pathIntroLink }}</NuxtLink>{{ c.pathIntroAfter }}
+              </p>
+            </div>
+            <!-- 文档样式：数字圆徽章与标题同排，米色卡片 + 金色细边框 -->
+            <ol class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-5 lg:gap-5">
+              <li
+                v-for="(step, index) in c.pathSteps"
+                :key="step.title"
+                class="border border-[var(--yunda-maple)]/35 rounded-[16px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] p-5"
+              >
+                <div class="flex items-start gap-3">
+                  <span class="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#5c5a3f] text-sm text-[var(--yunda-petal)] font-bold">
+                    {{ index + 1 }}
+                  </span>
+                  <h3 class="text-[15px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-base">
+                    {{ step.title }}
+                  </h3>
+                </div>
+                <p class="mt-3 text-sm text-[var(--yunda-bark)]/80 leading-[1.7]">
+                  {{ step.body }}
                 </p>
-              </details>
+              </li>
+            </ol>
+          </div>
+        </section>
 
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('2) How does gay surrogacy work, step by step?', '2）同志代孕的流程是怎样的？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Plan → create/review embryos → match and screening → legal/insurance/escrow → transfer → pregnancy support → birth + parentage paperwork.', '规划 → 创建/审核胚胎 → 匹配与筛查 → 法律/保险/资金托管 → 移植 → 孕期支持 → 分娩与亲权文件。') }}
+        <!-- Section 7: Matching — 文档样式：三张横向通栏灰绿卡片纵向堆叠 -->
+        <section id="matching" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="mx-auto max-w-4xl text-center">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                {{ c.matchingTitle }}
+              </h2>
+              <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.85] lg:text-base">
+                {{ c.matchingBody }}
+              </p>
+            </div>
+            <div class="mt-10 space-y-5">
+              <article
+                v-for="(point, index) in c.matchingPoints"
+                :key="point.title"
+                class="rounded-[14px] bg-[#c3cdc5] px-6 py-6 lg:px-8"
+              >
+                <img
+                  :src="`${PAGE_ASSETS.matching[index]}?v=4`"
+                  alt=""
+                  width="40"
+                  height="40"
+                  class="h-10 w-10 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <h3 class="mt-3 text-base text-[var(--yunda-bark)] font-bold leading-snug lg:text-[17px]">
+                  {{ point.title }}
+                </h3>
+                <p class="mt-2 text-sm text-[var(--yunda-bark)]/85 leading-[1.75] lg:text-[15px]">
+                  {{ point.body }}
                 </p>
-              </details>
+              </article>
+            </div>
+          </div>
+        </section>
 
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('3) Is gay surrogacy legal in the U.S. and in California?', '3）同志代孕在美国、加州合法吗？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('It depends on the state. California is widely chosen for supportive same-sex surrogacy laws and clearer parentage pathways.', '因州而异。加州因对同性代孕友好、亲权路径清晰而被广泛选择。') }}
+        <!-- Section 8: Cost — Left title/body/CTA + Cost Variables card + Insurance Note card -->
+        <section id="cost-insurance" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="grid items-start gap-8 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-10">
+              <div>
+                <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-[1.25] lg:text-[34px]">
+                  {{ c.costTitle }}
+                </h2>
+                <p class="mt-5 text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.85] lg:text-base">
+                  {{ c.costBody }}
                 </p>
-              </details>
-
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('4) What is a PBO (pre-birth order) for gay parents?', '4）什么是同性父母的 PBO（预出生令）？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('A pre-birth order helps confirm parentage before delivery. It often makes the hospital process and paperwork smoother.', '预出生令在分娩前确认亲权，通常能让医院流程与文件处理更顺畅。') }}
+                <NuxtLink
+                  :to="localePath('/surrogacy-cost')"
+                  class="mt-8 inline-flex items-center justify-center rounded-[10px] bg-[var(--yunda-maple)] px-6 py-3 text-sm text-white font-bold shadow-[0_12px_26px_rgba(200,110,45,0.24)] transition hover:-translate-y-0.5"
+                >
+                  {{ c.costCta }}
+                </NuxtLink>
+              </div>
+              <div class="border border-[var(--yunda-maple)]/35 rounded-[14px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] p-6 lg:p-7">
+                <h3 class="font-display text-lg text-[var(--yunda-bark)] font-semibold">
+                  {{ c.costVariablesTitle }}
+                </h3>
+                <ul class="mt-4 space-y-3">
+                  <li
+                    v-for="item in c.costVariables"
+                    :key="item"
+                    class="flex items-start gap-2.5 text-[14px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.6]"
+                  >
+                    <svg class="mt-0.75 h-3.5 w-3.5 shrink-0 text-[var(--yunda-maple)]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M2.5 8.5l3.5 3.5 7.5-8" />
+                    </svg>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="border border-[var(--yunda-maple)]/35 rounded-[14px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] p-6 lg:p-7">
+                <div class="flex items-center gap-2.5">
+                  <svg class="h-6 w-6 shrink-0 text-[var(--yunda-maple)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="3" width="16" height="18" rx="2.5" />
+                    <path d="M8 8h8M8 12h4" />
+                    <path d="M12.5 17l2 2 3.5-3.5" />
+                  </svg>
+                  <h3 class="font-display text-lg text-[var(--yunda-bark)] font-semibold">
+                    {{ c.costNoteTitle }}
+                  </h3>
+                </div>
+                <p class="mt-4 text-[14px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.85]">
+                  {{ c.costInsuranceNote }}
                 </p>
-              </details>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('5) Can both dads be on the birth certificate in California?', '5）在加州，两位爸爸都能上出生证吗？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Often yes, with the right legal plan and documentation. We coordinate with California counsel to keep the process clear.', '通常可以，只要法律方案与文件齐备。我们会与加州律师合作，确保流程清晰。') }}
+        <!-- Section 9: Related Guides — H2 + Intro + 3 guide cards -->
+        <section id="guides" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="mx-auto max-w-4xl text-center">
+              <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                {{ c.guidesTitle }}
+              </h2>
+              <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.8] lg:text-base">
+                {{ c.guidesIntro }}
+              </p>
+            </div>
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+              <NuxtLink
+                v-for="guide in relatedGuides"
+                :key="guide.to"
+                :to="localePath(guide.to)"
+                class="block border border-[var(--yunda-maple)]/35 rounded-[14px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] p-6 text-left transition hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(61,42,31,0.12)] lg:p-7"
+              >
+                <h3 class="font-display text-lg text-[var(--yunda-bark)] font-semibold">
+                  {{ guide.title }}
+                </h3>
+                <p class="mt-3 text-[14px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.8]">
+                  {{ guide.description }}
                 </p>
-              </details>
+              </NuxtLink>
+            </div>
+          </div>
+        </section>
 
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('6) Can both moms be on the birth certificate for lesbian surrogacy?', '6）女同志代孕，两位妈妈都能上出生证吗？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
+        <!-- Section 10: FAQ -->
+        <section id="faq" class="scroll-mt-40 w-full bg-white py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[34px]">
+              {{ c.faqTitle }}
+            </h2>
+            <p class="mt-4 max-w-4xl text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.8] lg:text-base">
+              {{ c.faqIntro }}
+            </p>
+            <div class="mt-8 space-y-3.5">
+              <details
+                v-for="item in c.faqs"
+                :key="item.q"
+                class="group"
+              >
+                <summary class="flex cursor-pointer items-center justify-between gap-4 list-none rounded-[10px] bg-[#c3cdc5] px-5 py-4 lg:px-6">
+                  <span class="text-[15px] text-[var(--yunda-bark)] font-bold leading-snug lg:text-base">{{ item.q }}</span>
+                  <svg class="h-4 w-4 shrink-0 text-[var(--yunda-bark)] transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 6l5 5 5-5" />
+                  </svg>
                 </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Often yes. California parentage steps (commonly including a pre-birth order) help recognize both moms.', '通常可以。加州的亲权流程（常含预出生令）可帮助同时确认两位妈妈。') }}
-                </p>
-              </details>
-
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('7) How much does surrogacy for gay couples cost?', '7）同志家庭代孕要花多少钱？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('It varies by medical pathway. Biggest drivers: IVF/donor needs, surrogate support, legal fees, insurance review, escrow, and agency coordination.', '取决于医疗路径。主要驱动包括 IVF/供卵需求、代孕支持、法律费用、保险审核、资金托管及机构协调。') }}
-                </p>
-              </details>
-
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover-border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('8) What are the main cost components in gay surrogacy?', '8）同志代孕的主要费用构成是什么？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Medical (IVF/testing/transfer), surrogate-related costs, legal + parentage, insurance/escrow, and agency support.', '医疗（IVF/检测/移植）、代孕相关费用、法律与亲权、保险/托管，以及机构支持。') }}
-                </p>
-              </details>
-
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('9) How do gay couples choose an egg donor, and where does IVF fit?', '9）同志伴侣如何选择供卵者？IVF 在哪里介入？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Many gay men surrogacy journeys use an egg donor and IVF to create embryos, then move to matching and transfer.', '许多同志家庭会用供卵和 IVF 创建胚胎，然后进入匹配与移植阶段。') }}
-                </p>
-              </details>
-
-              <details class="group border border-[var(--yunda-maple)]/15 rounded-[12px] bg-[var(--yunda-petal)]/70 px-4 py-3 transition-colors hover:border-[var(--yunda-maple)]/30">
-                <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
-                  <span class="text-lg text-[var(--yunda-bark)] font-semibold" >{{ tt('10) International parents: how do we bring a baby home after surrogacy?', '10）国际家庭：代孕后如何把宝宝带回国？') }}</span>
-                  <span class="text-[var(--yunda-maple)] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p class="mt-2 text-base text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
-                  {{ tt('Plan early for documents and travel timing after birth. Requirements vary by country, so timelines should be prepared in advance.', '请提前准备出生后的文件与行程，各国要求不同，时间线需预先规划。') }}
+                <p class="mt-2.5 rounded-[10px] bg-[color-mix(in_srgb,var(--yunda-petal)_82%,#f6ddba_18%)] px-5 py-4 text-[14px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.85] lg:px-6 lg:text-[15px]">
+                  {{ item.a }}
                 </p>
               </details>
             </div>
           </div>
+        </section>
+      </div>
+
+      <!-- Section 11: Final CTA -->
+      <section class="w-full bg-white px-6 py-14 lg:px-10 lg:py-16">
+        <div class="mx-auto max-w-320 bg-[#3a2318] px-6 py-12 text-center lg:px-12 lg:py-14">
+          <h2 class="font-display text-[26px] text-white font-semibold leading-tight lg:text-[32px]">
+            {{ c.finalTitle }}
+          </h2>
+          <p class="mx-auto mt-5 max-w-3xl text-[14px] text-white/90 font-semibold leading-[1.9] lg:text-[15px]">
+            {{ c.finalBody }}
+          </p>
+          <NuxtLink
+            :to="localePath('/be-parents')"
+            class="mt-8 inline-flex items-center justify-center rounded-[8px] bg-[var(--yunda-maple)] px-6 py-3 text-sm text-white font-bold transition hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(0,0,0,0.3)]"
+          >
+            {{ c.finalCta }}
+          </NuxtLink>
         </div>
       </section>
     </main>

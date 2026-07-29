@@ -627,11 +627,19 @@ function setActiveStep(stepId: number) {
           </div>
           <div class="relative">
             <div class="overflow-hidden rounded-3xl bg-[var(--yunda-petal)] p-3 shadow-2xl">
-              <img
-                src="/images/california-surrogacy-process.jpg"
-                :alt="tt('Surrogacy journey in California', '加州代孕旅程')"
-                class="h-full w-full rounded-2xl object-cover"
-              >
+              <picture>
+                <source srcset="/images/pages/surrogate-process/hero.avif" type="image/avif">
+                <img
+                  src="/images/pages/surrogate-process/hero.jpg"
+                  :alt="tt('Yunda Surrogacy community event in California', '孕达在加州代孕社区活动现场')"
+                  width="1920"
+                  height="1056"
+                  class="h-full w-full rounded-2xl object-cover"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                >
+              </picture>
             </div>
             <div class="absolute hidden w-[240px] border border-white/70 rounded-2xl bg-white/90 p-6 text-sm text-[var(--primary-brown)] leading-relaxed shadow-lg backdrop-blur -bottom-8 -right-6 md:block">
               {{ tt('A shared plan reduces stress. A shared plan builds trust.', '共享计划减轻压力，建立信任。') }}

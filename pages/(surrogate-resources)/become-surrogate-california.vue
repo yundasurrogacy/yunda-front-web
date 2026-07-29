@@ -365,7 +365,7 @@ onUnmounted(() => {
             <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-br p-8 shadow-2xl">
               <div class="aspect-square flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
                 <div class="text-center">
-                  <img src="/images/replacements/2026-07-28/become-surrogate-california-hero.jpg" :alt="tt('Yunda supporting a client at a California fertility clinic', '孕达在加州生殖诊所陪伴客户')">
+                  <img src="/images/pages/become-surrogate-california/hero.jpg" :alt="tt('Yunda supporting a client at a California fertility clinic', '孕达在加州生殖诊所陪伴客户')">
                 </div>
               </div>
             </div>
@@ -441,7 +441,15 @@ onUnmounted(() => {
         <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
           <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
-              <img src="/images/california-surrogacy-process.jpg" :alt="tt('California Surrogacy Mother', '加州代孕妈妈')">
+              <img
+                src="/images/pages/become-surrogate-california/yunda-community-event-1920.jpg"
+                srcset="/images/pages/become-surrogate-california/yunda-community-event-960.jpg 960w, /images/pages/become-surrogate-california/yunda-community-event-1920.jpg 1920w"
+                sizes="(min-width: 1280px) 1120px, calc(100vw - 96px)"
+                :alt="tt('Yunda Surrogacy community event', 'Yunda Surrogacy 社群活动')"
+                class="h-auto w-full rounded-lg object-cover"
+                loading="lazy"
+                decoding="async"
+              >
             </div>
           </div>
         </div>
@@ -681,7 +689,7 @@ onUnmounted(() => {
         <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
           <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
-              <img src="/images/replacements/2026-07-28/become-surrogate-california-community-1.jpg" :alt="tt('Surrogacy community conference in California', '加州代孕社区会议现场')">
+              <img src="/images/pages/become-surrogate-california/community-1.jpg" :alt="tt('Surrogacy community conference in California', '加州代孕社区会议现场')">
             </div>
           </div>
         </div>
@@ -902,7 +910,7 @@ onUnmounted(() => {
         <div class="rounded-2xl from-[var(--yunda-petal)] to-[var(--yunda-bark)] bg-gradient-to-r p-8 shadow-lg">
           <div class="aspect-video flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-xl border-dashed bg-white">
             <div class="text-center">
-              <img src="/images/replacements/2026-07-28/become-surrogate-california-community-2.jpg" :alt="tt('Surrogacy organizations at a California community event', '加州代孕社区活动中的相关机构')" class="h-full w-full object-cover">
+              <img src="/images/pages/become-surrogate-california/community-2.jpg" :alt="tt('Surrogacy organizations at a California community event', '加州代孕社区活动中的相关机构')" class="h-full w-full object-cover">
             </div>
           </div>
         </div>

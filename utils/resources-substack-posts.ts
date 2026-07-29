@@ -15,19 +15,19 @@ export const RESOURCES_SUBSTACK_POSTS: ResourcesSubstackPost[] = [
     id: 's1',
     kind: 'article',
     url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-common-questions',
-    fallbackImage: '/images/resources-media/substack-01.jpg',
+    fallbackImage: '/images/pages/resources/substack-01.jpg',
   },
   {
     id: 's2',
     kind: 'article',
     url: 'https://yundasurrogacy.substack.com/p/yunda-surrogate-101-what-does-it',
-    fallbackImage: '/images/resources-media/substack-02.jpg',
+    fallbackImage: '/images/pages/resources/substack-02.jpg',
   },
   {
     id: 's3',
     kind: 'channel',
     url: SUBSTACK_HOME,
-    fallbackImage: '/images/resources-media/substack-channel.jpg',
+    fallbackImage: '/images/pages/resources/substack-channel.jpg',
   },
 ]
 
@@ -35,7 +35,7 @@ export const RESOURCES_SUBSTACK_POSTS: ResourcesSubstackPost[] = [
 export const RESOURCES_SUBSTACK_FEED_FALLBACK: SubstackFeedData = {
   channelTitle: 'Yunda\'s Substack',
   channelUrl: SUBSTACK_HOME.replace(/\/$/, ''),
-  channelImage: '/images/resources-media/substack-channel.jpg',
+  channelImage: '/images/pages/resources/substack-channel.jpg',
   posts: RESOURCES_SUBSTACK_POSTS
     .filter(post => post.kind === 'article')
     .map(post => ({
@@ -56,5 +56,5 @@ export function getSubstackFallbackImage(postUrl: string) {
   const matched = RESOURCES_SUBSTACK_POSTS.find(
     post => normalizeSubstackPostUrl(post.url) === normalized,
   )
-  return matched?.fallbackImage ?? '/images/resources-media/substack-card.png'
+  return matched?.fallbackImage ?? '/images/pages/resources/substack-card.png'
 }

@@ -437,19 +437,19 @@ const relatedGuides = computed(() => [
     to: '/benefit',
     title: tt('See Pay & Benefits', '查看补偿与福利'),
     description: tt('Use the main compensation and benefits page to understand the full support package before applying.', '通过补偿与福利主页面了解完整支持方案，再决定是否申请。'),
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   {
     to: '/surrogate-requirements',
     title: tt('Check If You Qualify', '确认是否符合资格'),
     description: tt('Review health, pregnancy history, lifestyle, and screening requirements for surrogate candidates.', '查看代孕妈妈候选人的健康、孕产史、生活方式和筛查要求。'),
-    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+    image: '/images/pages/surrogate-requirements/requirements-overview.jpg',
   },
   {
     to: '/journey',
     title: tt('Understand the Journey', '了解代孕旅程'),
     description: tt('See how compensation milestones fit into application, screening, matching, pregnancy, and delivery.', '了解补偿节点如何衔接申请、筛查、匹配、孕期和分娩。'),
-    image: '/images/journey/redesign/hero-scene.png',
+    image: '/images/pages/journey/hero.jpg',
   },
 ])
 
@@ -505,7 +505,7 @@ useHead(() => ({
           </div>
           <div class="rounded-6 bg-white/70 p-8 text-center shadow-black/10 shadow-xl backdrop-blur">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/landingpage2/Surrogate-Compensation.jpg" :alt="tt('Surrogate Compensation', '代孕补偿')">
+              <img src="/images/pages/surrogate-compensation/hero.jpg" :alt="tt('Surrogate Compensation', '代孕补偿')">
             </div>
           </div>
         </div>
@@ -671,7 +671,7 @@ useHead(() => ({
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/replacements/2026-07-28/surrogate-compensation-interview-1.jpg"
+                  src="/images/pages/surrogate-compensation/interview-1.jpg"
                   :alt="tt('Yunda discussing surrogate compensation and support', '孕达讲解代孕补偿与支持')"
                   class="h-auto w-full object-cover"
                 >
@@ -860,7 +860,7 @@ useHead(() => ({
               <div class="absolute inset-0 rounded-8 from-[var(--primary-brown)]/20 to-[var(--olive-green)]/20 bg-gradient-to-br blur-xl" />
               <div class="hover:shadow-3xl relative overflow-hidden rounded-8 shadow-2xl transition-all duration-500 hover:scale-105">
                 <img
-                  src="/images/replacements/2026-07-28/surrogate-compensation-interview-2.jpg"
+                  src="/images/pages/surrogate-compensation/interview-2.jpg"
                   :alt="tt('Client sharing her experience with Yunda', '客户分享与孕达合作的经历')"
                   class="h-auto w-full object-cover"
                 >

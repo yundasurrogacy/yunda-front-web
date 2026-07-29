@@ -14,7 +14,7 @@ const nuxtApp = useNuxtApp()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const resolvedSiteUrl = computed(() => siteUrl.value || 'https://www.yundasurrogacy.com')
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
-const fallbackBlogImage = '/images/blog-hero.jpg'
+const fallbackBlogImage = '/images/pages/blog/fallback-hero.jpg'
 
 const blogCopyEn = {
   meta: {

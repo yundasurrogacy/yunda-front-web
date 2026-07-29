@@ -320,7 +320,7 @@ useHead(() => ({
           </div>
           <div class="rounded-6 bg-white/90 p-6 shadow-xl backdrop-blur">
             <div class="aspect-video w-full overflow-hidden rounded-4 bg-[var(--yunda-petal)]">
-              <img src="/images/replacements/2026-07-28/california-surrogacy-consultation-hero.jpg" :alt="tt('Yunda supporting a client at a California fertility clinic', '孕达在加州生殖诊所陪伴客户')" class="h-full w-full object-cover">
+              <img src="/images/pages/california-surrogacy-consultation/hero.jpg" :alt="tt('Yunda supporting a client at a California fertility clinic', '孕达在加州生殖诊所陪伴客户')" class="h-full w-full object-cover">
             </div>
           </div>
         </div>

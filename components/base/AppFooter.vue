@@ -80,8 +80,8 @@ const footerGroups = computed(() => [
         <div class="order-2 mt-12 md:order-1 md:mt-0 md:max-w-80 md:flex-shrink-0">
           <div class="mb-6 flex justify-start">
             <picture>
-              <source srcset="/images/base/logo.webp" type="image/webp">
-              <img src="/images/base/logo.png" alt="Yunda Logo" class="w-80px lg:h-[3.15rem] lg:object-contain lg:object-left" loading="lazy" decoding="async">
+              <source srcset="/images/shared/brand/logo.webp" type="image/webp">
+              <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-80px lg:h-[3.15rem] lg:object-contain lg:object-left" loading="lazy" decoding="async">
             </picture>
           </div>
 
@@ -160,8 +160,8 @@ const footerGroups = computed(() => [
               </a>
               <div class="mt-2 flex items-center">
                 <picture>
-                  <source srcset="/images/home/whatsapp.webp" type="image/webp">
-                  <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
+                  <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
+                  <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
                 </picture>
               </div>
             </div>
@@ -174,8 +174,8 @@ const footerGroups = computed(() => [
               </p>
               <div class="mt-2 flex items-center">
                 <picture>
-                  <source srcset="/images/home/wx.webp" type="image/webp">
-                  <img src="/images/home/wx.png" alt="微信二维码" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
+                  <source srcset="/images/shared/contact/wechat.webp" type="image/webp">
+                  <img src="/images/shared/contact/wechat.png" alt="微信二维码" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
                 </picture>
               </div>
             </div>

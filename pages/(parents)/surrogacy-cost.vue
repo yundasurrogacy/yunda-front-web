@@ -10,30 +10,30 @@ import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 /**
  * 改版说明：`修改/2026-06-18-2/cost页面改版/cost 页面改版.docx`
- * 静态素材：`public/images/ip/cost/redesign/`
+ * 静态素材：`public/images/pages/surrogacy-cost/`
  */
 const PAGE_ASSETS = {
-  hero: '/images/ip/cost/redesign/hero.jpg',
+  hero: '/images/pages/surrogacy-cost/hero-conference.jpg',
   drivers: [
-    '/images/ip/cost/redesign/driver-01.png',
-    '/images/ip/cost/redesign/driver-02.png',
-    '/images/ip/cost/redesign/driver-03.png',
-    '/images/ip/cost/redesign/driver-04.png',
+    '/images/pages/surrogacy-cost/driver-01.png',
+    '/images/pages/surrogacy-cost/driver-02.png',
+    '/images/pages/surrogacy-cost/driver-03.png',
+    '/images/pages/surrogacy-cost/driver-04.png',
   ],
   breakdown: [
-    '/images/ip/cost/redesign/breakdown-01.png',
-    '/images/ip/cost/redesign/breakdown-02.png',
-    '/images/ip/cost/redesign/breakdown-03.png',
-    '/images/ip/cost/redesign/breakdown-04.png',
-    '/images/ip/cost/redesign/breakdown-05.png',
+    '/images/pages/surrogacy-cost/breakdown-01.png',
+    '/images/pages/surrogacy-cost/breakdown-02.png',
+    '/images/pages/surrogacy-cost/breakdown-03.png',
+    '/images/pages/surrogacy-cost/breakdown-04.png',
+    '/images/pages/surrogacy-cost/breakdown-05.png',
   ],
-  trustShield: '/images/ip/cost/redesign/trust-shield.png',
-  trustCheck: '/images/ip/cost/redesign/trust-check.png',
+  trustShield: '/images/pages/surrogacy-cost/trust-shield.png',
+  trustCheck: '/images/pages/surrogacy-cost/trust-check.png',
   notIncluded: [
-    '/images/ip/cost/redesign/not-included-01.png',
-    '/images/ip/cost/redesign/not-included-02.png',
-    '/images/ip/cost/redesign/not-included-03.png',
-    '/images/ip/cost/redesign/not-included-04.png',
+    '/images/pages/surrogacy-cost/not-included-01.png',
+    '/images/pages/surrogacy-cost/not-included-02.png',
+    '/images/pages/surrogacy-cost/not-included-03.png',
+    '/images/pages/surrogacy-cost/not-included-04.png',
   ],
 } as const
 
@@ -1837,7 +1837,10 @@ onUnmounted(() => {
   height: 100%;
   background:
     linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.92) 18%, rgba(255, 255, 255, 0.35) 52%, rgba(255, 255, 255, 0) 78%),
-    url('/images/ip/cost/redesign/hero.jpg') center right / cover no-repeat;
+    image-set(
+      url('/images/pages/surrogacy-cost/hero-conference.avif') type('image/avif'),
+      url('/images/pages/surrogacy-cost/hero-conference.jpg') type('image/jpeg')
+    ) center right / cover no-repeat;
   pointer-events: none;
   z-index: 0;
 }
@@ -3051,8 +3054,8 @@ onUnmounted(() => {
   border-radius: 16px;
   min-height: 200px;
   background: image-set(
-    url('/images/ip/How-Surrogacy-Agreements.webp') type('image/webp'),
-    url('/images/ip/How-Surrogacy-Agreements.jpg') type('image/jpeg')
+    url('/images/pages/surrogacy-cost/surrogacy-agreement.webp') type('image/webp'),
+    url('/images/pages/surrogacy-cost/surrogacy-agreement.jpg') type('image/jpeg')
   ) center/cover no-repeat;
   border: 1px solid rgba(39, 31, 24, 0.1);
   background-size: cover;
@@ -3609,8 +3612,8 @@ onUnmounted(() => {
   background-image:
     linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35)),
     image-set(
-      url('/images/ip/surrogacy-expensive.webp') type('image/webp'),
-      url('/images/ip/surrogacy-expensive.jpeg') type('image/jpeg')
+      url('/images/pages/surrogacy-cost/cost-planning-conference.avif') type('image/avif'),
+      url('/images/pages/surrogacy-cost/cost-planning-conference.jpg') type('image/jpeg')
     );
   background-size: cover;
   background-position: center;

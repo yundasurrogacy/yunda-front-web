@@ -103,16 +103,16 @@ const computedBMI = computed(() => calculatedBMI(form))
 
 /** GC 申请页图集：素材包 10 张（含新增 2 张） */
 const beSurrogateGallerySlides = [
-  { src: '/images/be-surrogate/gallery-1.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-2.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-4.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-6.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-9.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-10.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-3.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-5.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-7.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-8.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-1.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-2.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-4.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-6.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-9.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-10.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-3.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-5.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-7.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/be-surrogate/gallery/gallery-8.webp', alt: 'Yunda surrogate' },
 ]
 
 const v2HeroTrustChips = computed(() => [
@@ -821,7 +821,7 @@ function scrollToPageTop() {
       <div class="relative min-h-[min(82svh,780px)] w-full lg:min-h-[min(94svh,1080px)]">
         <img
           class="pointer-events-none absolute inset-0 block h-full max-w-none w-full object-cover object-center"
-          src="/images/be-surrogate/hero.jpg"
+          src="/images/pages/be-surrogate/hero.jpg"
           :alt="t.landing.heroImageAlt"
           width="1920"
           height="1080"
@@ -1765,7 +1765,7 @@ function scrollToPageTop() {
           </h3>
           <div class="mt-8 flex justify-center">
             <img
-              src="/images/be-surrogate/surrogacy-process-flowchart.jpg"
+              src="/images/pages/be-surrogate/process-flowchart.jpg"
               :alt="t.landing.processFlowchartAlt"
               class="max-w-260 w-full object-contain lg:max-w-300 md:max-w-280"
               width="1200"

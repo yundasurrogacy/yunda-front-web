@@ -189,12 +189,12 @@ function toggleMenu() {
                 </div>
                 <div class="mt-2 flex items-center">
                   <picture v-if="locale === 'en'" class="h-28 w-28 overflow-hidden border border-[var(--yunda-bark)]/15 rounded shadow">
-                    <source srcset="/images/home/whatsapp.webp" type="image/webp">
-                    <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                    <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
+                    <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
                   </picture>
                   <picture v-else class="h-28 w-28 overflow-hidden border border-[var(--yunda-bark)]/15 rounded shadow">
-                    <source srcset="/images/home/wx.webp" type="image/webp">
-                    <img src="/images/home/wx.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                    <source srcset="/images/shared/contact/wechat.webp" type="image/webp">
+                    <img src="/images/shared/contact/wechat.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
                   </picture>
                 </div>
               </div>
@@ -323,8 +323,8 @@ function toggleMenu() {
                   <a :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`" target="_blank" rel="noopener noreferrer" class="text-[var(--yunda-bark)] underline hover:text-[var(--yunda-maple)]">{{ $t('footer.whatsappNumber') }}</a>
                   <div class="mt-2 flex items-center">
                     <picture class="h-28 w-28 overflow-hidden border border-[var(--yunda-bark)]/15 rounded shadow">
-                      <source srcset="/images/home/whatsapp.webp" type="image/webp">
-                      <img src="/images/home/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                      <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
+                      <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-full w-full object-cover" loading="lazy" decoding="async">
                     </picture>
                   </div>
                 </div>
@@ -332,8 +332,8 @@ function toggleMenu() {
                   <span class="font-semibold">{{ $t("menu.wechat") }}</span> {{ $t('footer.wechatId') }}
                   <div class="mt-2 flex items-center">
                     <picture class="h-28 w-28 overflow-hidden border border-[var(--yunda-bark)]/15 rounded shadow">
-                      <source srcset="/images/home/wx.webp" type="image/webp">
-                      <img src="/images/home/wx.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                      <source srcset="/images/shared/contact/wechat.webp" type="image/webp">
+                      <img src="/images/shared/contact/wechat.png" alt="微信二维码" class="h-full w-full object-cover" loading="lazy" decoding="async">
                     </picture>
                   </div>
                 </div>

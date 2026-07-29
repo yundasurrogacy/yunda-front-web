@@ -21,8 +21,8 @@ useScrollAnimation()
         <!-- Image and Advisor -->
         <div class="scroll-animate scroll-animate-delay-200 flex flex-shrink-0 flex-col items-center">
           <picture class="h-75 w-75 overflow-hidden rounded-lg">
-            <source srcset="/images/home/p-1.webp" type="image/webp">
-            <img src="/images/home/p-1.png" alt="Legal Expert" class="h-full w-full object-cover">
+            <source srcset="/images/pages/home/legal-expert.webp" type="image/webp">
+            <img src="/images/pages/home/legal-expert.png" alt="Legal Expert" class="h-full w-full object-cover">
           </picture>
           <p class="mt-4 text-center text-4 text-[var(--yunda-bark)] font-normal md:text-4.5">
             {{ $t('home.legalExpertiseSection.advisor') }}

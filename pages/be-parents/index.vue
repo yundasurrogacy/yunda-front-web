@@ -139,11 +139,11 @@ const heroProofPoints = computed(() => [
 ])
 
 const trustLogos = [
-  { name: 'ASRM', logo: '/images/asrm-logo.svg' },
-  { name: 'ART Risk', logo: '/images/ART-Risk-LOGO-NEW.webp' },
-  { name: 'SeedTrust', logo: '/images/SeedTrust-Logo-Stacked.webp', class: 'scale-115' },
-  { name: 'MHB', logo: '/images/mhb-logo-transparent.webp' },
-  { name: 'RESOLVE', logo: '/images/resolve-logo.webp', class: 'scale-110' },
+  { name: 'ASRM', logo: '/images/shared/associations/asrm.svg' },
+  { name: 'ART Risk', logo: '/images/shared/associations/art-risk.webp' },
+  { name: 'SeedTrust', logo: '/images/shared/associations/seedtrust.webp', class: 'scale-115' },
+  { name: 'MHB', logo: '/images/shared/associations/men-having-babies.webp' },
+  { name: 'RESOLVE', logo: '/images/shared/associations/resolve.webp', class: 'scale-110' },
 ]
 
 const intendedParentAudiences = computed(() => [
@@ -790,7 +790,7 @@ async function handleSubmit() {
     <section class="relative w-full max-w-full overflow-hidden bg-[var(--yunda-bark)]">
       <div class="absolute inset-0 opacity-24" aria-hidden="true">
         <img
-          src="/images/ip/gynecologist-offering-couple.jpg"
+          src="/images/pages/be-parents/hero.jpg"
           :alt="tt('Private surrogacy guidance for intended parents', '为准父母提供私密代孕指导')"
           class="h-full w-full object-cover object-center"
           width="1600"
@@ -1025,7 +1025,7 @@ async function handleSubmit() {
       <!-- Specialized Support -->
       <section class="grid gap-6 py-8 lg:grid-cols-2 lg:py-14">
         <article class="overflow-hidden rounded-3 bg-white shadow-[0_16px_40px_rgba(60,36,21,0.08)]">
-          <img src="/images/ip/driverCards-3.jpeg" :alt="tt('International intended parent support', '国际准父母支持')" class="h-56 w-full object-cover" loading="lazy">
+          <img src="/images/pages/be-parents/international-support.jpeg" :alt="tt('International intended parent support', '国际准父母支持')" class="h-56 w-full object-cover" loading="lazy">
           <div class="p-6 md:p-8">
             <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15]">
               {{ tt('Support for International and Chinese-Speaking Intended Parents', '支持国际与中文准父母') }}
@@ -1041,7 +1041,7 @@ async function handleSubmit() {
         </article>
 
         <article class="overflow-hidden rounded-3 bg-white shadow-[0_16px_40px_rgba(60,36,21,0.08)]">
-          <img src="/images/ip/LGBTQ-Friendly.webp" :alt="tt('Inclusive surrogacy support', '包容性代孕支持')" class="h-56 w-full object-cover" loading="lazy">
+          <img src="/images/pages/single-parents-lgbtq/inclusive-support.webp" :alt="tt('Inclusive surrogacy support', '包容性代孕支持')" class="h-56 w-full object-cover" loading="lazy">
           <div class="p-6 md:p-8">
             <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15]">
               {{ tt('Inclusive Surrogacy Support for LGBTQ+ and Single Intended Parents', '支持 LGBTQ+ 与单身准父母') }}
@@ -1078,7 +1078,7 @@ async function handleSubmit() {
           </div>
         </div>
         <article class="rounded-3 bg-[var(--yunda-bark)] p-6 text-[var(--yunda-petal)] md:p-8">
-          <img src="/images/base/kayla-luo.webp" :alt="tt('Kayla Luo, Yunda Surrogacy', 'Kayla Luo，孕达代孕')" class="mb-6 h-28 w-28 rounded-full object-cover ring-4 ring-[var(--yunda-petal)]/18" loading="lazy">
+          <img src="/images/pages/about/kayla-luo.webp" :alt="tt('Kayla Luo, Yunda Surrogacy', 'Kayla Luo，孕达代孕')" class="mb-6 h-28 w-28 rounded-full object-cover ring-4 ring-[var(--yunda-petal)]/18" loading="lazy">
           <h2 class="font-display text-[30px] font-medium leading-[1.15]">
             {{ tt('Guidance From a Team That Understands the Journey', '来自真正理解这段旅程的团队') }}
           </h2>

@@ -127,7 +127,7 @@ const relatedPerformanceLinks = computed(() => [
     to: '/benefit',
     title: tt('Surrogate Pay & Benefits', '代孕补偿与福利'),
     description: tt('The primary compensation and benefits guide for women comparing whether surrogacy fits their family.', '适合正在判断代孕是否适合家庭安排的女性重点阅读。'),
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   {
     to: '/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know',

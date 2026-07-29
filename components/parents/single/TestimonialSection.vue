@@ -15,9 +15,9 @@ onMounted(() => {
       <!-- Image Section -->
       <div class="slide-left mb-8 md:mb-0 md:w-1/2">
         <picture class="block w-full overflow-hidden">
-          <source srcset="/images/process/i-7.webp" type="image/webp">
+          <source srcset="/images/pages/intended-parents/steps/step-7.webp" type="image/webp">
           <img
-            src="/images/process/i-7.png"
+            src="/images/pages/intended-parents/steps/step-7.png"
             alt="Happy two-dad family"
             class="w-full object-cover"
             loading="lazy"

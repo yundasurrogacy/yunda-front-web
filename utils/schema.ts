@@ -3,7 +3,7 @@ const DEFAULT_BASE_URL = 'https://www.yundasurrogacy.com'
 const DEFAULT_BRAND_DESCRIPTION = 'Yunda Surrogacy is a professional surrogacy agency supporting intended parents and surrogates through personalized matching, coordinated care, and trusted fertility, legal, and insurance partnerships.'
 const DEFAULT_PHONE = '+1-626-563-8656'
 const DEFAULT_EMAIL = 'kaylal@yundasurrogacy.com'
-const DEFAULT_LOGO_PATH = '/images/base/logo.png'
+const DEFAULT_LOGO_PATH = '/images/shared/brand/logo.png'
 const DEFAULT_SERVICE_TYPE = 'Surrogacy agency services'
 
 const DEFAULT_SOCIAL_LINKS = [

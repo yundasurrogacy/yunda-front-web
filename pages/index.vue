@@ -79,7 +79,7 @@ const journeyItemListSchema = computed(() => buildItemListSchema({
 const introductionVideoSchema = computed(() => buildVideoObjectSchema({
   name: 'Yunda Surrogacy Introduction',
   description: 'An introductory video about Yunda Surrogacy, family-building support, and surrogacy coordination for intended parents and surrogates.',
-  thumbnailUrl: '/images/home/index-bg.webp',
+  thumbnailUrl: '/images/pages/home/hero.webp',
   embedUrl: 'https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1',
   url: '/',
   baseUrl: siteUrl.value || undefined,
@@ -87,16 +87,14 @@ const introductionVideoSchema = computed(() => buildVideoObjectSchema({
 }))
 
 const homeSurrogateSlides = [
-  { src: '/images/be-surrogate/gallery-1.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-2.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-4.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-6.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-9.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-10.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-3.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-5.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-7.webp', alt: 'Yunda surrogate' },
-  { src: '/images/be-surrogate/gallery-8.webp', alt: 'Yunda surrogate' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-01.jpg', alt: 'Yunda surrogate receiving support during her journey' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-02.jpg', alt: 'Yunda team supporting a surrogate at a fertility clinic' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-03.jpg', alt: 'Surrogate preparing for a fertility clinic appointment' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-04.jpg', alt: 'Yunda team meeting a surrogate at GenPrime Fertility' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-05.jpg', alt: 'Yunda team supporting a surrogate and her partner' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-06.jpg', alt: 'Yunda team meeting surrogates at HRC Fertility' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-07.jpg', alt: 'Yunda team supporting a surrogate at Ember Fertility Center' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-08.jpg', alt: 'Yunda team meeting intended parents at a fertility clinic' },
 ]
 
 // SEO 配置

@@ -4,11 +4,11 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 const partners = [
-  { name: 'ASRM', logo: '/images/asrm-logo.svg', url: null, width: 300, height: 120 },
-  { name: 'ATR', logo: '/images/ART-Risk-LOGO-NEW.webp', url: null, width: 694, height: 206 },
-  { name: 'SEEDSTrust', logo: '/images/SeedTrust-Logo-Stacked.webp', url: null, width: 2000, height: 1139, logoClass: 'scale-120' },
-  { name: 'MHB', logo: '/images/mhb-logo-transparent.webp', url: null, width: 230, height: 113 },
-  { name: 'RESOLVE', logo: '/images/resolve-logo.webp', url: null, width: 600, height: 600, logoClass: 'scale-110' },
+  { name: 'ASRM', logo: '/images/shared/associations/asrm.svg', url: null, width: 300, height: 120 },
+  { name: 'ATR', logo: '/images/shared/associations/art-risk.webp', url: null, width: 694, height: 206 },
+  { name: 'SEEDSTrust', logo: '/images/shared/associations/seedtrust.webp', url: null, width: 2000, height: 1139, logoClass: 'scale-120' },
+  { name: 'MHB', logo: '/images/shared/associations/men-having-babies.webp', url: null, width: 230, height: 113 },
+  { name: 'RESOLVE', logo: '/images/shared/associations/resolve.webp', url: null, width: 600, height: 600, logoClass: 'scale-110' },
 ]
 </script>
 
@@ -16,10 +16,10 @@ const partners = [
   <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
       <picture class="block h-full w-full">
-        <source srcset="/images/home/home-redesign/why-choose-advantages-bg.webp" type="image/webp">
+        <source srcset="/images/pages/home/stats-background.webp" type="image/webp">
         <img
           class="h-full w-full object-cover object-center"
-          src="/images/home/home-redesign/why-choose-advantages-bg.webp"
+          src="/images/pages/home/stats-background.webp"
           :alt="$t('home.statsSection.chooseUsTitle')"
           width="1920"
           height="1080"

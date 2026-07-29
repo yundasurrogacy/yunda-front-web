@@ -36,7 +36,7 @@ function toggleFaq(index: number) {
               {{ $t(`parentsSingle.faqSection.items.${faq.id}.question`) }}
             </h3>
             <img
-              src="/images/base/arrow.svg"
+              src="/images/shared/ui/faq-arrow.svg"
               alt="Toggle FAQ"
               class="h-4 w-4 flex-shrink-0 transform transition-transform duration-300 lg:h-5 lg:w-5"
               :class="expandedFaq === index ? 'rotate-90' : 'rotate-0'"

@@ -28,7 +28,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Yunda supports intended parents and surrogates with matching, IVF coordination, legal steps, insurance review, escrow planning, and bilingual care.',
       zh: '孕达为准父母和代孕妈妈提供匹配、IVF 协调、法律步骤、保险审核、托管规划和双语支持。',
     },
-    image: '/images/home/index-bg.webp',
+    image: '/images/pages/home/hero.webp',
   },
   '/intended-parents': {
     title: {
@@ -39,7 +39,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Explore Yunda guides for intended parents, including consultation, cost, process, legal protection, egg donation, IVF coordination, and LGBTQ support.',
       zh: '查看孕达准父母指南，了解咨询、费用、流程、法律保障、捐卵、IVF 协调和 LGBTQ 支持。',
     },
-    image: '/images/home/index-bg.webp',
+    image: '/images/pages/home/hero.webp',
   },
   '/be-parents': {
     title: {
@@ -50,7 +50,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Start with private surrogacy guidance for matching, IVF clinic coordination, legal steps, insurance, escrow, and bilingual support.',
       zh: '通过私密代孕咨询了解匹配、IVF 诊所协调、法律步骤、保险、托管和双语支持。',
     },
-    image: '/images/ip/gynecologist-offering-couple.jpg',
+    image: '/images/pages/be-parents/hero.jpg',
   },
   '/surrogacy-cost': {
     title: {
@@ -61,7 +61,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Understand surrogacy cost categories, including surrogate compensation, agency coordination, IVF clinic fees, legal work, insurance, and escrow.',
       zh: '了解代孕费用组成，包括代孕补偿、机构协调、IVF 诊所费用、法律、保险和托管。',
     },
-    image: '/images/ip/cost/surrogate-cost-4.png',
+    image: '/images/pages/surrogacy-cost/summary-card.png',
   },
   '/surrogacy-process': {
     title: {
@@ -72,7 +72,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'See how the intended parent surrogacy process works, from consultation and IVF planning to matching, legal clearance, transfer, pregnancy, and birth.',
       zh: '了解准父母代孕流程：从咨询、IVF 规划到匹配、法律清关、移植、孕期和出生。',
     },
-    image: '/images/process/redesign/hero-scene.png',
+    image: '/images/pages/surrogacy-process/hero.png',
   },
   '/surrogacy-protection-california': {
     title: {
@@ -83,7 +83,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Review California-focused surrogacy protection, including legal coordination, escrow payment timing, insurance planning, and parentage milestones.',
       zh: '了解加州代孕保障，包括法律协调、托管付款节点、保险规划和亲权流程。',
     },
-    image: '/images/california-surrogacy-process.jpg',
+    image: '/images/pages/surrogate-process/hero.jpg',
   },
   '/egg-donation': {
     title: {
@@ -94,7 +94,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Understand egg donor surrogacy, screening, fresh vs. frozen eggs, IVF coordination, costs, timelines, and next steps for intended parents across the U.S.',
       zh: '了解捐卵代孕、供体筛查、新鲜与冷冻卵子、IVF 协调、费用、时间线及美国准父母的下一步规划。',
     },
-    image: '/images/ip/egg/egg-donor-surrogacy-guide-og.jpg',
+    image: '/images/pages/egg-donation/og.jpg',
   },
   '/partner-ivf-clinics': {
     title: {
@@ -105,7 +105,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Already have an IVF clinic—or need help evaluating one? See how Yunda coordinates clinic records, surrogate screening, legal clearance, and transfer timing.',
       zh: '已有 IVF 诊所，或仍在选择诊所？了解孕达如何衔接诊所资料、代孕妈妈筛查、法律放行与移植排期。',
     },
-    image: '/images/replacements/2026-07-28/partner-ivf-clinics-hero.jpg',
+    image: '/images/pages/partner-ivf-clinics/hero.jpg',
   },
   '/single-parents-lgbtq': {
     title: {
@@ -116,7 +116,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Explore inclusive surrogacy guidance for LGBTQ+ couples and single intended parents, including donor planning, legal coordination, and matching.',
       zh: '了解面向 LGBTQ+ 伴侣和单身准父母的包容性代孕支持，包括捐赠规划、法律协调和匹配。',
     },
-    image: '/images/ip/Gay-Lesbia-Surrogacy.jpg',
+    image: '/images/pages/single-parents-lgbtq/hero.jpg',
   },
   '/surrogates': {
     title: {
@@ -127,7 +127,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Explore Yunda surrogate guides for application, requirements, journey, compensation, screening, referral, transfer steps, and California eligibility.',
       zh: '查看孕达代孕妈妈指南，了解申请、要求、旅程、补偿、筛查、推荐、移植步骤和加州资格。',
     },
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   '/be-surrogate': {
     title: {
@@ -138,7 +138,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Apply to become a surrogate with clear compensation, screening guidance, legal protection, insurance review, matching support, and dedicated care.',
       zh: '申请成为代孕妈妈，了解清晰补偿、筛查指导、法律保障、保险审核、匹配支持和专属关怀。',
     },
-    image: '/images/be-surrogate/hero.jpg',
+    image: '/images/pages/be-surrogate/hero.jpg',
   },
   '/surrogate-requirements': {
     title: {
@@ -149,7 +149,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Review surrogate requirements, including age, pregnancy history, health, lifestyle, support system, screening, legal clearance, and next steps.',
       zh: '查看代孕妈妈要求，包括年龄、孕产史、健康、生活方式、支持系统、筛查、法律清关和下一步。',
     },
-    image: '/images/landingpage3/Surrogate-Requirements.jpg',
+    image: '/images/pages/surrogate-requirements/requirements-overview.jpg',
   },
   '/journey': {
     title: {
@@ -160,7 +160,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Follow the surrogate journey from application and screening to matching, legal clearance, embryo transfer, pregnancy monitoring, birth, and postpartum support.',
       zh: '了解代孕妈妈旅程：从申请、筛查到匹配、法律清关、胚胎移植、孕期监测、分娩和产后支持。',
     },
-    image: '/images/replacements/2026-07-28/surrogate-journey-hero.jpg',
+    image: '/images/pages/journey/hero.jpg',
   },
   '/benefit': {
     title: {
@@ -171,7 +171,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Understand surrogate pay, benefits, allowances, reimbursements, escrow protection, insurance planning, and support throughout the journey.',
       zh: '了解代孕妈妈补偿、福利、津贴、报销、托管保障、保险规划和全程支持。',
     },
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   '/screening': {
     title: {
@@ -182,7 +182,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Learn what happens after you apply to be a surrogate, including medical records review, psychological screening, insurance checks, and clearance steps.',
       zh: '了解申请成为代孕妈妈后的流程，包括病历审核、心理筛查、保险检查和清关步骤。',
     },
-    image: '/images/screening/redesign/hero.jpg',
+    image: '/images/pages/screening/hero.jpg',
   },
   '/referral': {
     title: {
@@ -193,7 +193,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Refer a potential surrogate to Yunda and learn about referral eligibility, review steps, bonus milestones, timing, and support from the team.',
       zh: '向孕达推荐潜在代孕妈妈，了解推荐资格、审核步骤、奖金节点、时间安排和团队支持。',
     },
-    image: '/images/benefit/redesign/hero.jpg',
+    image: '/images/pages/benefit/hero.jpg',
   },
   '/resources': {
     title: {
@@ -204,7 +204,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Browse Yunda resources, blog guides, media updates, social stories, and contact paths for intended parents, surrogates, and egg donation planning.',
       zh: '浏览孕达资源、博客指南、媒体更新、社交动态，以及准父母、代孕妈妈和捐卵规划的联系入口。',
     },
-    image: '/images/resources-media/hero.webp',
+    image: '/images/pages/resources/hero.webp',
   },
   '/about': {
     title: {
@@ -215,7 +215,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Meet Yunda Surrogacy, a California agency team supporting intended parents and surrogates with coordinated care, bilingual communication, and trusted partnerships.',
       zh: '了解孕达代孕加州团队，如何通过协调服务、双语沟通和可信合作伙伴支持准父母与代孕妈妈。',
     },
-    image: '/images/base/kayla-luo.webp',
+    image: '/images/pages/about/kayla-luo.webp',
   },
   '/blog': {
     title: {
@@ -226,7 +226,7 @@ const socialMetaByPath: Record<string, SocialMeta> = {
       en: 'Read Yunda guides on surrogacy cost, process, requirements, compensation, legal basics, IVF coordination, and family-building stories.',
       zh: '阅读孕达关于代孕费用、流程、要求、补偿、法律基础、IVF 协调和家庭建立故事的指南。',
     },
-    image: '/images/home/index-bg.webp',
+    image: '/images/pages/home/hero.webp',
   },
 }
 
@@ -253,8 +253,8 @@ const defaultOgDescription = computed(() =>
 )
 const defaultOgImage = computed(() =>
   baseUrl.value
-    ? `${baseUrl.value}/images/home/index-bg.webp`
-    : '/images/home/index-bg.webp',
+    ? `${baseUrl.value}/images/pages/home/hero.webp`
+    : '/images/pages/home/hero.webp',
 )
 const socialPath = computed(() => {
   const path = (route.path || '/').replace(/^\/zh(?=\/|$)/, '') || '/'
@@ -276,7 +276,7 @@ const socialDescription = computed(() => {
   return locale.value === 'zh' ? meta.description.zh : meta.description.en
 })
 const socialImage = computed(() => {
-  const image = routeSocialMeta.value?.image || '/images/home/index-bg.webp'
+  const image = routeSocialMeta.value?.image || '/images/pages/home/hero.webp'
   if (!baseUrl.value)
     return image
 
@@ -342,7 +342,7 @@ useHead(() => ({
   link: [
     { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/favicon-48x48.png' },
     { rel: 'shortcut icon', href: '/favicon.ico' },
-    { rel: 'apple-touch-icon', href: '/images/base/logo.png' },
+    { rel: 'apple-touch-icon', href: '/images/shared/brand/logo.png' },
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value,
   ],

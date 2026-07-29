@@ -104,7 +104,7 @@ const translations = {
       'Do not have financial stability or family support',
       'Reside in a state that restricts surrogacy (our team can help verify)',
     ],
-    h24ImageAlt1: 'Disqualifying factor review for surrogacy',
+    h24ImageAlt1: 'Hatching embryo viewed under a fertility laboratory microscope',
     h24ImageAlt2: 'Ultrasound imaging during a surrogate journey',
     h25Title: 'Surrogate Age & Eligibility FAQ',
     h25FaqItems: [
@@ -242,7 +242,7 @@ const translations = {
       '缺乏基本经济稳定性或家庭支持',
       '居住在限制代孕的州（我们的团队可协助核实）',
     ],
-    h24ImageAlt1: '代母不符合因素核查',
+    h24ImageAlt1: '生殖实验室显微镜下正在孵化的胚胎',
     h24ImageAlt2: '代孕旅程中的超声检查影像',
     h25Title: '代母年龄与资格常见问题',
     h25FaqItems: [
@@ -415,7 +415,7 @@ useHead(() => ({
               <div class="flex items-center justify-center lg:justify-end">
                 <div class="max-w-[520px] w-full overflow-hidden border border-white/65 rounded-[20px] bg-white/85 shadow-[0_14px_34px_rgba(64,84,120,0.08)] lg:max-w-[640px]">
                   <img
-                    src="/images/gc/gc-pic/eligibility-banner.png"
+                    src="/images/pages/eligibility/hero.png"
                     :alt="c.heroImageAlt"
                     width="640"
                     height="420"
@@ -587,7 +587,7 @@ useHead(() => ({
               <div class="grid content-start gap-4 lg:pl-2">
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/gc/gc-pic/Surrogate-mother-qualifications-1.png"
+                    src="/images/pages/eligibility/qualification-01.png"
                     :alt="c.h23ImageAlt1"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
@@ -596,7 +596,7 @@ useHead(() => ({
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/replacements/2026-07-28/surrogate-eligibility-pregnancy-test.jpg"
+                    src="/images/pages/eligibility/pregnancy-test.jpg"
                     :alt="c.h23ImageAlt2"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
@@ -640,17 +640,22 @@ useHead(() => ({
 
               <div class="grid content-start gap-4 lg:pl-2">
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
-                  <img
-                    src="/images/gc/gc-pic/Surrogate-mother-qualifications-3.png"
-                    :alt="c.h24ImageAlt1"
-                    class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
-                    loading="lazy"
-                    decoding="async"
-                 >
+                  <picture>
+                    <source srcset="/images/pages/eligibility/hatching-embryo.avif" type="image/avif">
+                    <img
+                      src="/images/pages/eligibility/hatching-embryo.jpg"
+                      :alt="c.h24ImageAlt1"
+                      width="1280"
+                      height="917"
+                      class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  </picture>
                 </div>
                 <div class="overflow-hidden border border-[var(--primary-brown)]/18 rounded-[14px] bg-white/90 p-3 shadow-[0_10px_22px_rgba(39,31,24,0.05)]">
                   <img
-                    src="/images/replacements/2026-07-28/surrogate-eligibility-ultrasound.jpg"
+                    src="/images/pages/eligibility/ultrasound.jpg"
                     :alt="c.h24ImageAlt2"
                     class="h-[240px] w-full rounded-[10px] object-cover lg:h-[260px]"
                     loading="lazy"
