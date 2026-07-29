@@ -19,6 +19,7 @@ logs
 .idea
 .agents/
 .seo-cache/
+.seo-monitor/
 
 # Local env files
 .env

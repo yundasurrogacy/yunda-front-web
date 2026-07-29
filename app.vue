@@ -1,10 +1,22 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import zhMissingBlogs from '~/data/zh-missing-blogs.json'
 import { buildOrganizationSchema, buildWebsiteSchema } from '~/utils/schema'
 
 const { locale } = useI18n()
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
+
+/**
+ * /zh/blog/* routes whose Chinese body content is empty. Generated at build time
+ * by scripts/generate-xml-sitemaps.cjs. Used to suppress the zh-CN hreflang so
+ * page markup agrees with sitemap-zh.xml and the Vercel 302 redirects.
+ */
+const zhMissingBlogRoutes = new Set<string>(
+  (zhMissingBlogs as { signalReliable?: boolean, routes?: string[] }).signalReliable === false
+    ? []
+    : ((zhMissingBlogs as { routes?: string[] }).routes ?? []),
+)
 
 interface SocialMeta {
   title: {
@@ -297,9 +309,14 @@ const hreflangLinks = computed(() => {
   const zhPath = basePath === '/' ? '/zh' : `/zh${basePath}`
   const zhUrl = `${baseUrl.value}${zhPath}`
 
+  // 中文正文缺失的博客：其 /zh/ URL 已被 302 跳英文并从 sitemap-zh 剔除，
+  // 此时再声明 zh-CN alternate 会与那些信号矛盾。hreflang 只能指向可索引的
+  // 规范 URL，所以这里一并省略。补完中文后 manifest 自动更新，声明自动恢复。
+  const includeZh = !zhMissingBlogRoutes.has(zhPath.replace(/\/+$/, '') || zhPath)
+
   return [
     { rel: 'alternate', hreflang: 'en-US', href: enUrl },
-    { rel: 'alternate', hreflang: 'zh-CN', href: zhUrl },
+    ...(includeZh ? [{ rel: 'alternate', hreflang: 'zh-CN', href: zhUrl }] : []),
     { rel: 'alternate', hreflang: 'x-default', href: enUrl }, // 默认语言（英文）
   ]
 })

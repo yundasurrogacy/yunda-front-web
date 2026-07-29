@@ -188,18 +188,43 @@ async function fetchAllBlogs() {
 
 async function run() {
   const blogs = await fetchAllBlogs()
+  const zhMissingManifest = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), 'data', 'zh-missing-blogs.json'),
+    'utf8',
+  ))
+  if (zhMissingManifest.signalReliable === false)
+    throw new Error('Chinese-content manifest is not authoritative. Run sitemap:xml successfully first.')
+  if (zhMissingManifest.totalBlogPosts !== blogs.length) {
+    throw new Error(
+      `Blog manifest/API count mismatch: manifest=${zhMissingManifest.totalBlogPosts}, API=${blogs.length}.`,
+    )
+  }
+  const zhMissingRoutes = new Set(zhMissingManifest.routes || [])
+
   const blogLinksEn = blogs.map((blog) => {
     const slugValue = blog.route_id || blog.id
     const slug = String(slugValue).trim()
+    if (!/^[a-z0-9~-]+$/i.test(slug))
+      throw new Error(`Unsafe blog route_id "${slug}". Fix it in the CMS before building.`)
     const label = String(blog.en_title || blog.title || `Blog ${slug}`).trim()
     return { href: `/blog/${slug}`, label }
   })
-  const blogLinksZh = blogs.map((blog) => {
-    const slugValue = blog.route_id || blog.id
-    const slug = String(slugValue).trim()
-    const label = String(blog.title || blog.en_title || `博客 ${slug}`).trim()
-    return { href: `/blog/${slug}`, label }
-  })
+  // Only list posts that actually have Chinese content. Posts with an empty
+  // Chinese body are temporarily redirected to English, so linking them here would
+  // create internal links pointing at redirects and send Chinese readers
+  // through a hop. Use the same authoritative manifest as sitemap generation,
+  // prerendering, hreflang, and Vercel redirects.
+  const blogLinksZh = blogs
+    .filter((blog) => {
+      const slug = String(blog.route_id || blog.id || '').trim()
+      return slug && !zhMissingRoutes.has(`/zh/blog/${slug}`)
+    })
+    .map((blog) => {
+      const slugValue = blog.route_id || blog.id
+      const slug = String(slugValue).trim()
+      const label = String(blog.title || blog.en_title || `博客 ${slug}`).trim()
+      return { href: `/blog/${slug}`, label }
+    })
 
   const blogSectionEn = {
     title: 'Blog Articles',

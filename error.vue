@@ -2,6 +2,7 @@
 const { theme, radius } = useCustomize()
 
 useHead({
+  meta: [{ name: 'robots', content: 'noindex,follow' }],
   bodyAttrs: {
     class: computed(() => `theme-${theme.value}`),
     style: computed(() => `--radius: ${radius.value}rem;`),

@@ -2,6 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { buildBlogPostingSchema, buildBreadcrumbListSchema, buildFAQPageSchema, buildWebPageSchema } from '~/utils/schema'
+import commercialIntentMap from '~/data/seo-commercial-intent-map.json'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
 
@@ -411,6 +412,24 @@ const renderedBlogContent = computed(() =>
     : '',
 )
 
+/**
+ * True when:
+ *   - current locale is zh, AND
+ *   - the blog record exists, AND
+ *   - the Chinese body content (`content` field) is absent or empty.
+ *
+ * Used to suppress indexing and structured data for placeholder zh pages.
+ * When Chinese content is later published, this automatically becomes false
+ * on the next deploy without any further code change.
+ */
+const isZhContentEmpty = computed(() => {
+  if (locale.value !== 'zh')
+    return false
+  if (!blog.value)
+    return false
+  return !blog.value.content?.trim()
+})
+
 interface ExtractedFAQ {
   question: string
   answer: string
@@ -765,22 +784,64 @@ const isParentFocusedBlog = computed(() => {
   return /parent|intended|准父母/i.test(`${category}|${tags}`)
 })
 
+interface LocalizedCommercialCopy {
+  en: string
+  zh: string
+}
+
+interface CommercialIntentAssignment {
+  cluster: string
+  role: string
+  primaryUrl: string
+  heading: LocalizedCommercialCopy
+  body: LocalizedCommercialCopy
+  cta: LocalizedCommercialCopy
+}
+
+const commercialIntentAssignment = computed<CommercialIntentAssignment | null>(() => {
+  const slug = String(blog.value?.route_id || route.params.id || '').trim()
+  const assignments = commercialIntentMap.assignments as Record<string, CommercialIntentAssignment>
+  return assignments[slug] || null
+})
+
+const commercialIntentGuide = computed(() => {
+  const assignment = commercialIntentAssignment.value
+  if (!assignment)
+    return null
+
+  const lang = locale.value === 'zh' ? 'zh' : 'en'
+  return {
+    cluster: assignment.cluster,
+    role: assignment.role,
+    to: localePath(assignment.primaryUrl),
+    heading: assignment.heading[lang],
+    body: assignment.body[lang],
+    cta: assignment.cta[lang],
+  }
+})
+
 const relatedGuideLinks = computed(() => {
+  const primaryGuide = commercialIntentGuide.value
+    ? [{ to: commercialIntentGuide.value.to, label: commercialIntentGuide.value.cta }]
+    : []
+
   if (isParentFocusedBlog.value) {
     return [
+      ...primaryGuide,
       { to: localePath('/intended-parents'), label: locale.value === 'zh' ? '准父母指南' : 'Intended Parent Guide' },
       { to: localePath('/surrogacy-process'), label: locale.value === 'zh' ? '准父母代孕流程' : 'Intended Parent Process' },
       { to: localePath('/surrogacy-cost'), label: locale.value === 'zh' ? '代孕费用指南' : 'Surrogacy Cost Guide' },
       { to: localePath('/be-parents'), label: locale.value === 'zh' ? '准父母提交询盘' : 'Intended Parent Inquiry' },
-    ]
+    ].filter((guide, index, guides) => guides.findIndex(item => item.to === guide.to) === index)
   }
 
   return [
+    ...primaryGuide,
     { to: localePath('/surrogates'), label: locale.value === 'zh' ? '代孕妈妈指南' : 'Surrogate Guide' },
     { to: localePath('/surrogate-process'), label: locale.value === 'zh' ? '代孕妈妈流程' : 'Surrogate Process' },
     { to: localePath('/surrogate-compensation'), label: locale.value === 'zh' ? '代孕妈妈费用与补偿' : 'Surrogate Compensation' },
     { to: localePath('/surrogate-requirements'), label: locale.value === 'zh' ? '代孕妈妈要求' : 'Surrogate Requirements' },
-  ]
+  ].filter((guide, index, guides) => guides.findIndex(item => item.to === guide.to) === index)
 })
 
 const trustPoints = computed(() => [
@@ -816,9 +877,10 @@ onMounted(() => {
   nextTick(updateSideRailStickyTop)
   window.addEventListener('resize', updateSideRailStickyTop)
 
-  if (sideRailRef.value && 'ResizeObserver' in window) {
+  const sideRailElement = sideRailRef.value as unknown as Element | null
+  if (sideRailElement && 'ResizeObserver' in window) {
     sideRailResizeObserver = new ResizeObserver(() => updateSideRailStickyTop())
-    sideRailResizeObserver.observe(sideRailRef.value)
+    sideRailResizeObserver.observe(sideRailElement)
   }
 })
 
@@ -966,6 +1028,12 @@ const currentBlogHeroImage = computed(() => blog.value?.cover_img_url || fallbac
 const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}${fallbackBlogImage}`)
 
 const blogStructuredData = computed(() => {
+  // Do not emit structured data for Chinese pages with no Chinese body content.
+  // A BlogPosting claiming inLanguage: zh-CN with empty content is misleading
+  // for search engines and validation tools.
+  if (isZhContentEmpty.value)
+    return null
+
   if (!blog.value || !blogPostingSchema.value)
     return null
 
@@ -1031,10 +1099,15 @@ const blogStructuredData = computed(() => {
   }
 })
 
-// SEO 閰嶇疆
+// SEO 配置
 useHead(() => ({
   title: currentBlogTitle.value,
   meta: [
+    // noindex for Chinese blog pages that have no Chinese body content yet.
+    // Removed automatically once `blog.value.content` is non-empty on next deploy.
+    ...(isZhContentEmpty.value
+      ? [{ name: 'robots', content: 'noindex,follow' }]
+      : []),
     {
       name: 'description',
       content: currentBlogDescription.value,
@@ -1240,6 +1313,31 @@ useHead(() => (blogStructuredData.value
                   </p>
                 </article>
               </div>
+            </section>
+
+            <section
+              v-if="commercialIntentGuide"
+              class="brand-card mb-6 border border-[var(--yunda-maple)]/25 rounded-[8px] bg-[var(--yunda-petal)]/45 p-5 md:p-6"
+              data-seo-commercial-intent
+              :data-seo-cluster="commercialIntentGuide.cluster"
+              :data-seo-role="commercialIntentGuide.role"
+            >
+              <p class="mb-2 text-xs text-[var(--yunda-maple)] font-bold uppercase tracking-[0.14em]">
+                {{ locale === 'zh' ? '主指南' : 'Primary guide' }}
+              </p>
+              <h2 class="font-display text-2xl text-[var(--yunda-bark)] font-medium leading-tight">
+                {{ commercialIntentGuide.heading }}
+              </h2>
+              <p class="mt-3 text-base text-[var(--yunda-bark)]/80 leading-7">
+                {{ commercialIntentGuide.body }}
+              </p>
+              <NuxtLink
+                :to="commercialIntentGuide.to"
+                class="yunda-type-button mt-4 inline-flex items-center gap-2 rounded-[8px] bg-[var(--yunda-bark)] px-5 py-3 text-[var(--yunda-petal)] transition hover:opacity-90"
+              >
+                {{ commercialIntentGuide.cta }}
+                <Icon name="lucide:arrow-right" class="h-4 w-4" />
+              </NuxtLink>
             </section>
 
             <div class="article-surface rounded-[8px] bg-white px-5 py-6 shadow-[0_18px_48px_rgba(65,45,30,0.08)] md:px-8 md:py-8">
