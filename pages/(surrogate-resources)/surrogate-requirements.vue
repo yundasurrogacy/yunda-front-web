@@ -404,13 +404,6 @@ useHead(() => ({
       <!-- Screen 2: Intro / Overview -->
       <section id="intro" class="scroll-mt-40 w-full bg-[var(--yunda-petal)] py-12 lg:py-14">
         <div class="mx-auto max-w-320 flex items-center gap-8 px-6 lg:px-10">
-          <svg class="hidden h-28 w-20 shrink-0 text-[var(--olive-green)]/60 lg:block" viewBox="0 0 80 112" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-            <path d="M40 108C36 84 30 52 44 12" />
-            <path d="M42 30c-10-4-18-12-20-22 10 0 18 8 20 22Z" />
-            <path d="M43 52c-12-2-22-9-26-20 12-1 22 7 26 20Z" />
-            <path d="M41 34c8-6 12-14 12-24 8 6 8 18-2 26" />
-            <path d="M40 58c10-4 16-12 17-22 9 8 5 20-7 26" />
-          </svg>
           <div>
             <p class="text-[15px] text-[var(--yunda-bark)] font-bold leading-[1.85] lg:text-base">
               {{ tt('Most surrogate requirements begin with one practical question: is it safe and realistic for you to move into a full review?', '大多数代孕妈妈要求都始于一个实际问题：进入全面审核对你来说是否安全、可行？') }}
