@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
       "src": "/be-surrogate/success",
@@ -10,6 +11,61 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/surrogacy-process-1",
+      "destination": "/surrogacy-process",
+      "permanent": true
+    },
+    {
+      "source": "/compensation-benefits-for-surrogates",
+      "destination": "/surrogate-compensation",
+      "permanent": true
+    },
+    {
+      "source": "/zh/be-surrogate-v2/_/useBeSurrogateV2Storage",
+      "destination": "/zh/be-surrogate",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/intended-parents",
+      "permanent": true
+    },
+    {
+      "source": "/zh/services",
+      "destination": "/zh/intended-parents",
+      "permanent": true
+    },
+    {
+      "source": "/blog/Gestational-Surrogacy-Process-2025:c(.)-Step-by-Step-Guide-with-Yunda",
+      "destination": "/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
+      "permanent": true
+    },
+    {
+      "source": "/blog/Surrogacy-cost-in-Los-Angeles:c(.)-full-cost-breakdown-of-Agency-Fees",
+      "destination": "/blog/Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees",
+      "permanent": true
+    },
+    {
+      "source": "/zh/blog/Gestational-Surrogacy-Process-2025:c(.)-Step-by-Step-Guide-with-Yunda",
+      "destination": "/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
+      "permanent": true
+    },
+    {
+      "source": "/zh/blog/Surrogacy-cost-in-Los-Angeles:c(.)-full-cost-breakdown-of-Agency-Fees",
+      "destination": "/blog/Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees",
+      "permanent": true
+    },
+    {
+      "source": "/blog/New-Fertility-Coverage-Rules-for-LGBTQ:c(.)-Single-Parents-in-2026",
+      "destination": "/blog/New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "permanent": true
+    },
+    {
+      "source": "/zh/blog/New-Fertility-Coverage-Rules-for-LGBTQ:c(.)-Single-Parents-in-2026",
+      "destination": "/blog/New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "permanent": true
+    },
     {
       "source": "/about）",
       "destination": "/about",
@@ -114,6 +170,196 @@
       "source": "/zh/surrogacy-price",
       "destination": "/zh/surrogacy-cost",
       "permanent": true
+    },
+    {
+      "source": "/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",
+      "destination": "/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
+      "destination": "/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Average-Compensation-Surrogacy-Cost-in-California",
+      "destination": "/blog/Average-Compensation-Surrogacy-Cost-in-California",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Best-States-for-LGBTQ-Surrogacy-in-2026",
+      "destination": "/blog/Best-States-for-LGBTQ-Surrogacy-in-2026",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Best-Surrogacy-Agencies-in-California-2026",
+      "destination": "/blog/Best-Surrogacy-Agencies-in-California-2026",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
+      "destination": "/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA",
+      "destination": "/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
+      "destination": "/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
+      "destination": "/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/How-Much-Does-Surrogacy-Cost-And-Pricing",
+      "destination": "/blog/How-Much-Does-Surrogacy-Cost-And-Pricing",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
+      "destination": "/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family",
+      "destination": "/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide",
+      "destination": "/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide",
+      "destination": "/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask",
+      "destination": "/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing",
+      "destination": "/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process",
+      "destination": "/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
+      "destination": "/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area",
+      "destination": "/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate",
+      "destination": "/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Surrogacy-Escrow-Payment-Protection-for-Parents-Surrogates",
+      "destination": "/blog/Surrogacy-Escrow-Payment-Protection-for-Parents-Surrogates",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+      "destination": "/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees",
+      "destination": "/blog/Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation",
+      "destination": "/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
+      "destination": "/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby",
+      "destination": "/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026",
+      "destination": "/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/U-S-Surrogacy-Laws-Is-It-Legal",
+      "destination": "/blog/U-S-Surrogacy-Laws-Is-It-Legal",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
+      "destination": "/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process",
+      "destination": "/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/already-have-embryos-before-surrogate-matching",
+      "destination": "/blog/already-have-embryos-before-surrogate-matching",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/how-to-afford-surrogacy",
+      "destination": "/blog/how-to-afford-surrogacy",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/international-intended-parents-us-surrogacy-checklist-2026",
+      "destination": "/blog/international-intended-parents-us-surrogacy-checklist-2026",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
+      "destination": "/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
+      "destination": "/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+      "destination": "/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/surrogate-mother-health-insurance-questions-2026",
+      "destination": "/blog/surrogate-mother-health-insurance-questions-2026",
+      "permanent": false
+    },
+    {
+      "source": "/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+      "destination": "/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+      "permanent": false
     }
   ],
   "headers": [

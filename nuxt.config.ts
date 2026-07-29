@@ -1,6 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import process from 'node:process'
 import seoRoutes from './data/seo-routes.json'
+import zhMissingBlogs from './data/zh-missing-blogs.json'
+
+const zhMissingManifest = zhMissingBlogs as {
+  signalReliable?: boolean
+  totalBlogPosts?: number
+  routes?: string[]
+}
+
+if (zhMissingManifest.signalReliable === false)
+  throw new Error('data/zh-missing-blogs.json is not authoritative. Run npm run sitemap:xml before building.')
+
+const zhMissingBlogRouteSet = new Set(zhMissingManifest.routes ?? [])
 
 async function fetchBlogEntries() {
   const urls = [
@@ -23,19 +35,29 @@ async function fetchBlogEntries() {
 
     if (data?.blogs && Array.isArray(data.blogs)) {
       return data.blogs
-        .map((blog: any) => ({
-          loc: `/blog/${blog?.route_id || blog?.id}`,
-          lastmod: blog?.updated_at || blog?.created_at,
-          priority: 0.6,
-        }))
-        .filter((blog: { loc: string }) => blog.loc)
+        .map((blog: any) => {
+          const slug = String(blog?.route_id || blog?.id || '').trim()
+          if (!slug)
+            return null
+          if (!/^[a-z0-9~-]+$/i.test(slug))
+            throw new Error(`Unsafe blog route_id "${slug}". Fix it in the CMS before building.`)
+          const loc = `/blog/${slug}`
+          return {
+            loc,
+            lastmod: blog?.updated_at || blog?.created_at,
+            priority: 0.6,
+            hasZhContent: !zhMissingBlogRouteSet.has(`/zh${loc}`),
+          }
+        })
+        .filter(Boolean)
     }
   }
   catch (error) {
     console.error('Error fetching blog entries for prerender/sitemap:', error)
+    throw error
   }
 
-  return []
+  throw new Error('Blog API returned no usable blog list; refusing to build incomplete routes.')
 }
 
 const staticPages = seoRoutes.staticPages
@@ -46,6 +68,15 @@ function toZhPath(loc: string) {
 
 // 预获取博客条目用于 prerender
 const blogEntries = await fetchBlogEntries()
+if (
+  typeof zhMissingManifest.totalBlogPosts === 'number'
+  && zhMissingManifest.totalBlogPosts !== blogEntries.length
+) {
+  throw new Error(
+    `Blog manifest/API count mismatch: manifest=${zhMissingManifest.totalBlogPosts}, API=${blogEntries.length}. `
+    + 'Run npm run sitemap:xml and rebuild.',
+  )
+}
 const blogRoutes = blogEntries.map((blog: { loc: string }) => blog.loc)
 
 const legacyRedirectPaths = new Set([
@@ -70,6 +101,8 @@ const legacyRedirectPaths = new Set([
   '/how-much-do-surrogates-make.html',
   '/for-surrogates.html',
   '/parents.html',
+  '/services',
+  '/zh/services',
 ])
 
 // 生成英文路由（默认语言，无前缀）
@@ -78,10 +111,12 @@ const englishRoutes = [
   ...blogRoutes,
 ]
 // 生成中文路由（带 /zh 前缀）
-// 处理首页路径：/ 应该映射到 /zh 而不是 /zh/
+// 只预渲染有中文内容的博客页；无中文内容的页面由 vercel.json 临时重定向到英文版
 const chineseRoutes = [
   ...staticPages.map(page => toZhPath(page.loc)),
-  ...blogRoutes.map((route: string) => toZhPath(route)),
+  ...blogEntries
+    .filter((entry: any) => entry.hasZhContent)
+    .map((entry: any) => toZhPath(entry.loc)),
 ]
 const prerenderRoutes = Array.from(new Set([
   ...englishRoutes,
@@ -127,6 +162,12 @@ export default defineNuxtConfig({
   ssr: true,
   router: {},
   routeRules: {
+    '/services': {
+      redirect: { to: '/intended-parents', statusCode: 301 },
+    },
+    '/zh/services': {
+      redirect: { to: '/zh/intended-parents', statusCode: 301 },
+    },
     '/success': {
       redirect: { to: '/be-surrogate/success', statusCode: 301 },
     },
@@ -252,6 +293,11 @@ export default defineNuxtConfig({
       // 约定：页面下非页面文件（多语言、composable 等）统一放在 _ 目录，prerender 忽略所有 /_/ 路径
       ignore: [
         (path: string) => path.includes('/_/'),
+        // CMS legacy slugs containing ":" are covered by permanent Vercel
+        // redirects. They are never valid current route_ids, so do not let the
+        // link crawler recreate their obsolete HTML.
+        (path: string) => path.includes(':'),
+        (path: string) => zhMissingBlogRouteSet.has(path.replace(/\/+$/, '')),
         (path: string) => legacyRedirectPaths.has(path),
         (path: string) => path === '/be-surrogate/success' || path === '/zh/be-surrogate/success',
       ],
@@ -285,7 +331,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'preload',
-          href: '/images/base/logo.webp',
+          href: '/images/shared/brand/logo.webp',
           as: 'image',
           type: 'image/webp',
           fetchpriority: 'high',

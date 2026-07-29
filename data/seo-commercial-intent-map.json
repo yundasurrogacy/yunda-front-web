@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29",
+  "clusters": {
+    "intended-parent-total-cost": {
+      "primaryUrl": "/surrogacy-cost",
+      "audience": "intended parents",
+      "intent": "commercial investigation",
+      "pageType": "hybrid service and educational guide"
+    },
+    "surrogate-compensation": {
+      "primaryUrl": "/benefit",
+      "audience": "surrogate candidates",
+      "intent": "commercial investigation and application consideration",
+      "pageType": "hybrid service and educational guide"
+    }
+  },
+  "assignments": {
+    "Average-Compensation-Surrogacy-Cost-in-California": {
+      "cluster": "intended-parent-total-cost",
+      "role": "supporting-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Planning the full surrogacy budget?",
+        "zh": "需要规划完整代孕预算？"
+      },
+      "body": {
+        "en": "This article explains how California surrogate compensation fits into a broader budget. Use Yunda's main cost guide for the complete agency, medical, legal, insurance, escrow, and contingency breakdown.",
+        "zh": "本文重点说明加州代孕妈妈补偿如何计入整体预算。完整的机构、医疗、法律、保险、托管和预备金拆分，请查看孕达代孕费用主指南。"
+      },
+      "cta": {
+        "en": "See the complete surrogacy cost guide",
+        "zh": "查看完整代孕费用指南"
+      }
+    },
+    "How-Much-Does-Surrogacy-Cost-And-Pricing": {
+      "cluster": "intended-parent-total-cost",
+      "role": "supporting-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Need the current itemized cost guide?",
+        "zh": "需要查看最新分项费用指南？"
+      },
+      "body": {
+        "en": "This article provides pricing context. Yunda's main cost page is the primary planning resource for total cost ranges, payment timing, major expense categories, and consultation questions.",
+        "zh": "本文提供价格背景。孕达费用主页面集中说明总费用区间、付款时间、主要支出类别和咨询前应准备的问题。"
+      },
+      "cta": {
+        "en": "Open the primary cost planning page",
+        "zh": "打开费用规划主页面"
+      }
+    },
+    "How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family": {
+      "cluster": "intended-parent-total-cost",
+      "role": "supporting-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Compare the complete cost categories",
+        "zh": "比较完整费用类别"
+      },
+      "body": {
+        "en": "Use this article for family-building context, then review the primary cost guide for the current agency, medical, legal, insurance, escrow, and contingency framework.",
+        "zh": "本文适合了解家庭构建背景；如需当前的机构、医疗、法律、保险、托管和预备金框架，请继续阅读费用主指南。"
+      },
+      "cta": {
+        "en": "Review the complete cost framework",
+        "zh": "查看完整费用框架"
+      }
+    },
+    "Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning": {
+      "cluster": "intended-parent-total-cost",
+      "role": "supporting-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Looking for the maintained cost guide?",
+        "zh": "需要持续更新的费用指南？"
+      },
+      "body": {
+        "en": "This dated breakdown remains supporting context. Use Yunda's main cost page as the maintained source for current planning categories and next-step consultation guidance.",
+        "zh": "这篇按年份整理的文章保留为补充背景。当前规划类别和下一步咨询说明以孕达费用主页面为准。"
+      },
+      "cta": {
+        "en": "Go to the maintained cost guide",
+        "zh": "前往持续更新的费用指南"
+      }
+    },
+    "How-Much-Does-Surrogacy-Cost-With-Insurance-in-California": {
+      "cluster": "intended-parent-total-cost",
+      "role": "insurance-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Place insurance in the full budget",
+        "zh": "把保险放入完整预算中评估"
+      },
+      "body": {
+        "en": "This guide owns the California insurance angle. Use the primary cost page to compare insurance with agency, medical, legal, escrow, and contingency expenses.",
+        "zh": "本指南专门解释加州保险因素。请通过费用主页面把保险与机构、医疗、法律、托管和预备费用放在一起比较。"
+      },
+      "cta": {
+        "en": "See the full cost breakdown",
+        "zh": "查看完整费用拆分"
+      }
+    },
+    "orange-county-surrogate-costs-surrogate-mother-pay-2025-guide": {
+      "cluster": "intended-parent-total-cost",
+      "role": "local-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Compare Orange County costs with the full budget",
+        "zh": "将橙县费用与完整预算对照"
+      },
+      "body": {
+        "en": "This page keeps its Orange County focus. Use the primary cost guide for the nationwide and California-wide expense framework behind the local figures.",
+        "zh": "本页保留橙县本地意图。当地数字背后的全美和加州整体费用框架，请查看费用主指南。"
+      },
+      "cta": {
+        "en": "Compare the complete cost categories",
+        "zh": "比较完整费用类别"
+      }
+    },
+    "San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area": {
+      "cluster": "intended-parent-total-cost",
+      "role": "local-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Put Bay Area costs in context",
+        "zh": "了解湾区费用的整体背景"
+      },
+      "body": {
+        "en": "This article keeps its San Francisco and San Jose focus. Use the primary cost guide for the complete expense structure and planning sequence.",
+        "zh": "本文保留旧金山和圣何塞本地意图。完整支出结构与预算规划顺序，请查看费用主指南。"
+      },
+      "cta": {
+        "en": "See the primary surrogacy cost guide",
+        "zh": "查看代孕费用主指南"
+      }
+    },
+    "Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees": {
+      "cluster": "intended-parent-total-cost",
+      "role": "local-spoke",
+      "primaryUrl": "/surrogacy-cost",
+      "heading": {
+        "en": "Compare Los Angeles fees with total cost",
+        "zh": "将洛杉矶机构费用与总费用对照"
+      },
+      "body": {
+        "en": "This article focuses on Los Angeles and agency fees. Use the primary cost guide for medical, legal, insurance, escrow, and contingency categories as well.",
+        "zh": "本文重点说明洛杉矶和机构费用。医疗、法律、保险、托管和预备金等类别，请一并查看费用主指南。"
+      },
+      "cta": {
+        "en": "Review all major cost categories",
+        "zh": "查看全部主要费用类别"
+      }
+    },
+    "Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation": {
+      "cluster": "surrogate-compensation",
+      "role": "local-spoke",
+      "primaryUrl": "/benefit",
+      "heading": {
+        "en": "Review the complete compensation package",
+        "zh": "查看完整补偿方案"
+      },
+      "body": {
+        "en": "This article keeps its California regional comparison. Use the primary compensation guide for base pay, benefits, reimbursements, escrow safeguards, and payment timing.",
+        "zh": "本文保留加州地区比较。基础补偿、福利、报销、托管保障和付款时间，请查看补偿主指南。"
+      },
+      "cta": {
+        "en": "See the primary compensation guide",
+        "zh": "查看补偿主指南"
+      }
+    },
+    "Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know": {
+      "cluster": "surrogate-compensation",
+      "role": "supporting-spoke",
+      "primaryUrl": "/benefit",
+      "heading": {
+        "en": "Check the maintained pay and benefits guide",
+        "zh": "查看持续更新的补偿与福利指南"
+      },
+      "body": {
+        "en": "This dated article summarizes key facts. Use Yunda's primary compensation page for the maintained package structure, payment schedule, safeguards, and application context.",
+        "zh": "这篇按年份整理的文章总结核心信息。持续更新的补偿结构、付款时间、保障与申请背景，以孕达补偿主页面为准。"
+      },
+      "cta": {
+        "en": "Open the primary compensation page",
+        "zh": "打开补偿主页面"
+      }
+    },
+    "First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared": {
+      "cluster": "surrogate-compensation",
+      "role": "experience-comparison-spoke",
+      "primaryUrl": "/benefit",
+      "heading": {
+        "en": "See how experience fits the full package",
+        "zh": "了解经验如何影响完整补偿方案"
+      },
+      "body": {
+        "en": "This article owns the first-time versus experienced comparison. Use the primary compensation guide for the complete pay, benefits, reimbursement, escrow, and timing framework.",
+        "zh": "本文专门比较首次与有经验代孕妈妈。完整的补偿、福利、报销、托管和付款时间框架，请查看补偿主指南。"
+      },
+      "cta": {
+        "en": "Review the complete compensation framework",
+        "zh": "查看完整补偿框架"
+      }
+    },
+    "Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare": {
+      "cluster": "surrogate-compensation",
+      "role": "agency-comparison-spoke",
+      "primaryUrl": "/benefit",
+      "heading": {
+        "en": "Compare more than the headline pay number",
+        "zh": "不要只比较表面补偿数字"
+      },
+      "body": {
+        "en": "This article explains how to compare agencies. Use the primary compensation guide to review the complete package, reimbursements, escrow safeguards, and payment schedule.",
+        "zh": "本文说明如何比较机构。完整补偿方案、报销、托管保障和付款时间，请查看补偿主指南。"
+      },
+      "cta": {
+        "en": "See the complete compensation guide",
+        "zh": "查看完整补偿指南"
+      }
+    },
+    "Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California": {
+      "cluster": "surrogate-compensation",
+      "role": "payment-schedule-spoke",
+      "primaryUrl": "/surrogate-compensation",
+      "heading": {
+        "en": "Connect payment timing to the full package",
+        "zh": "把付款时间与完整补偿方案结合理解"
+      },
+      "body": {
+        "en": "This article owns the California payment-schedule angle. Use the primary compensation guide for package components, benefits, reimbursements, and escrow safeguards.",
+        "zh": "本文专门说明加州付款时间。补偿组成、福利、报销和托管保障，请查看补偿主指南。"
+      },
+      "cta": {
+        "en": "Review the primary compensation guide",
+        "zh": "查看补偿主指南"
+      }
+    }
+  }
+}
