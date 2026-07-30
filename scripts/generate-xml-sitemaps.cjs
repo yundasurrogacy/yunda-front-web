@@ -260,24 +260,25 @@ async function getBlogEntriesFromApi(blogs) {
   })
 }
 
-function formatLastmod(value, nowIsoDate) {
-  if (!value) {
-    return nowIsoDate
-  }
+function formatLastmod(value) {
+  if (!value)
+    return undefined
+
   const date = new Date(value)
-  if (Number.isNaN(date.getTime())) {
-    return nowIsoDate
-  }
+  if (Number.isNaN(date.getTime()))
+    return undefined
+
   return date.toISOString().slice(0, 10)
 }
 
-function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
+function buildLocaleEntries(locale, blogEntries) {
   const localize = locale === 'zh' ? toZhPath : loc => loc
   const pageEntries = STATIC_PAGES.map(page => ({
     loc: localize(page.loc),
     priority: page.priority,
-    changefreq: 'weekly',
-    lastmod: nowIsoDate,
+    // Static pages only emit lastmod after a durable content-maintenance
+    // date is recorded in data/seo-routes.json. Build time is not content time.
+    lastmod: formatLastmod(page.lastmod || page.updated_at || page.updatedAt),
   }))
   // For zh sitemap, only include blog posts that have Chinese content.
   // Posts with hasZhContent === false have an empty Chinese body (placeholder)
@@ -288,8 +289,7 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
   const blogLocaleEntries = filteredBlogEntries.map(blog => ({
     loc: localize(blog.loc),
     priority: 0.6,
-    changefreq: 'daily',
-    lastmod: formatLastmod(blog.lastmod, nowIsoDate),
+    lastmod: formatLastmod(blog.lastmod),
     // Drives hreflang: omit the zh-CN alternate when the Chinese body is empty.
     includeZhAlternate: blog.hasZhContent !== false,
   }))
@@ -299,12 +299,10 @@ function buildLocaleEntries(locale, blogEntries, nowIsoDate) {
   }
 }
 
-function buildAiEntries(nowIsoDate) {
+function buildAiEntries() {
   return uniqueByLoc(AI_MACHINE_READABLE_FILES.map(loc => ({
     loc,
     priority: 0.4,
-    changefreq: 'weekly',
-    lastmod: nowIsoDate,
     alternates: false,
   })))
 }
@@ -319,8 +317,7 @@ function createUrlNode(entry) {
     ...alternateLinks.map(alternate =>
       `    <xhtml:link rel="alternate" hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}" />`,
     ),
-    `    <lastmod>${escapeXml(entry.lastmod)}</lastmod>`,
-    `    <changefreq>${escapeXml(entry.changefreq)}</changefreq>`,
+    ...(entry.lastmod ? [`    <lastmod>${escapeXml(entry.lastmod)}</lastmod>`] : []),
     `    <priority>${entry.priority.toFixed(1)}</priority>`,
     '  </url>',
   ]
@@ -353,24 +350,31 @@ function createAiUrlSetXml(aiEntries) {
   return `${xmlLines.join('\n')}\n`
 }
 
-function createIndexXml() {
-  const now = new Date().toISOString().slice(0, 10)
+function getLatestLastmod(localeEntries) {
+  const datedEntries = [...localeEntries.pages, ...localeEntries.blog]
+    .map(entry => entry.lastmod)
+    .filter(Boolean)
+    .sort()
+  return datedEntries.at(-1)
+}
+
+function createSitemapIndexNode(loc, lastmod) {
+  return [
+    '  <sitemap>',
+    `    <loc>${escapeXml(toAbsoluteUrl(loc))}</loc>`,
+    ...(lastmod ? [`    <lastmod>${escapeXml(lastmod)}</lastmod>`] : []),
+    '  </sitemap>',
+  ]
+}
+
+function createIndexXml(enEntries, zhEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    '  <sitemap>',
-    `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-en.xml'))}</loc>`,
-    `    <lastmod>${escapeXml(now)}</lastmod>`,
-    '  </sitemap>',
-    '  <sitemap>',
-    `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-zh.xml'))}</loc>`,
-    `    <lastmod>${escapeXml(now)}</lastmod>`,
-    '  </sitemap>',
-    '  <sitemap>',
-    `    <loc>${escapeXml(toAbsoluteUrl('/sitemap-ai.xml'))}</loc>`,
-    `    <lastmod>${escapeXml(now)}</lastmod>`,
-    '  </sitemap>',
+    ...createSitemapIndexNode('/sitemap-en.xml', getLatestLastmod(enEntries)),
+    ...createSitemapIndexNode('/sitemap-zh.xml', getLatestLastmod(zhEntries)),
+    ...createSitemapIndexNode('/sitemap-ai.xml'),
     '</sitemapindex>',
   ]
   return `${xmlLines.join('\n')}\n`
@@ -411,7 +415,6 @@ function writeZhMissingManifest(blogEntries, signalReliable) {
 }
 
 async function run() {
-  const nowIsoDate = new Date().toISOString().slice(0, 10)
   let blogEntries = []
   const signalReliable = true
 
@@ -430,14 +433,14 @@ async function run() {
 
   writeZhMissingManifest(blogEntries, signalReliable)
 
-  const enEntries = buildLocaleEntries('en', blogEntries, nowIsoDate)
-  const zhEntries = buildLocaleEntries('zh', blogEntries, nowIsoDate)
-  const aiEntries = buildAiEntries(nowIsoDate)
+  const enEntries = buildLocaleEntries('en', blogEntries)
+  const zhEntries = buildLocaleEntries('zh', blogEntries)
+  const aiEntries = buildAiEntries()
 
   fs.writeFileSync(OUTPUT_EN_PATH, createUrlSetXml(enEntries), 'utf8')
   fs.writeFileSync(OUTPUT_ZH_PATH, createUrlSetXml(zhEntries), 'utf8')
   fs.writeFileSync(OUTPUT_AI_PATH, createAiUrlSetXml(aiEntries), 'utf8')
-  fs.writeFileSync(OUTPUT_INDEX_PATH, createIndexXml(), 'utf8')
+  fs.writeFileSync(OUTPUT_INDEX_PATH, createIndexXml(enEntries, zhEntries), 'utf8')
 
   console.warn(`Sitemap XML generated:
 - ${OUTPUT_INDEX_PATH}

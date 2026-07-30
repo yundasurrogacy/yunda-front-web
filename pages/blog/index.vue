@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import zhMissingBlogs from '~/data/zh-missing-blogs.json'
 import { buildBlogListSchema, buildWebPageSchema } from '~/utils/schema'
 import AppFooter from '../../components/base/AppFooter.vue'
 import AppHeader from '../../components/base/AppHeader.vue'
@@ -8,6 +9,7 @@ import SeoTrustNote from '../../components/base/SeoTrustNote.vue'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
@@ -238,20 +240,42 @@ function getBlogExcerpt(blog: Blog | null, maxLength: number = 120): string {
   return cleaned
 }
 
-function hasCjkText(text: string): boolean {
-  return /[\u3400-\u9FFF]/.test(text)
+function getDisplayBlogTitle(blog: Blog | null): string {
+  return getBlogTitle(blog).trim()
 }
 
-function getDisplayBlogTitle(blog: Blog | null): string {
-  const title = getBlogTitle(blog).trim()
-  if (locale.value === 'zh' && title && !hasCjkText(title))
-    return `代孕文章：${title}`
-  return title
+function parseRoutePage(value: unknown): number {
+  if (value === undefined)
+    return 1
+
+  const rawValue = Array.isArray(value) ? value[0] : value
+  const parsed = Number.parseInt(String(rawValue), 10)
+  if (!Number.isInteger(parsed) || parsed < 2 || String(parsed) !== String(rawValue)) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Blog page not found',
+    })
+  }
+  return parsed
 }
+
+const initialPage = parseRoutePage(route.params.page)
+const currentPage = ref(initialPage)
+const currentBlogPath = computed(() =>
+  currentPage.value > 1 ? `/blog/page/${currentPage.value}` : '/blog',
+)
+const canonicalUrl = computed(() => `${siteUrl.value}${localePath(currentBlogPath.value)}`)
+const pageMetaTitle = computed(() => {
+  if (currentPage.value === 1)
+    return blogCopy.value.meta.title
+  return locale.value === 'zh'
+    ? `${blogCopy.value.meta.title} - 第 ${currentPage.value} 页`
+    : `${blogCopy.value.meta.title} - Page ${currentPage.value}`
+})
 
 // SEO 配置
 useHead(() => ({
-  title: blogCopy.value.meta.title,
+  title: pageMetaTitle.value,
   meta: [
     {
       name: 'description',
@@ -259,7 +283,7 @@ useHead(() => ({
     },
     {
       property: 'og:title',
-      content: blogCopy.value.meta.title,
+      content: pageMetaTitle.value,
     },
     {
       property: 'og:description',
@@ -271,14 +295,20 @@ useHead(() => ({
     },
     {
       property: 'og:url',
-      content: `${siteUrl.value}${localePath('/blog')}`,
+      content: canonicalUrl.value,
     },
   ],
   link: [
     {
       rel: 'canonical',
-      href: `${siteUrl.value}${localePath('/blog')}`,
+      href: canonicalUrl.value,
     },
+    ...(currentPage.value > 1
+      ? [{
+          rel: 'prev',
+          href: `${siteUrl.value}${localePath(currentPage.value === 2 ? '/blog' : `/blog/page/${currentPage.value - 1}`)}`,
+        }]
+      : []),
   ],
 }))
 
@@ -337,65 +367,10 @@ const searchQuery = ref('')
 const blogApiUrl = computed(() => `${apiBase.value}/api/blog`)
 const blogCategoriesApiUrl = computed(() => `${apiBase.value}/api/blog/categories`)
 const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
-const initialBlogsCacheKey = computed(() => `blogs-initial-v3-${blogApiLang.value}`)
 const selectedCategory = ref('all')
-const currentPage = ref(1)
 const jumpToPage = ref(1)
 const itemsPerPage = 10
 let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
-
-// 首屏通过 SSR 获取，保证 SEO 可以抓到文章内容；客户端筛选/分页继续复用同一接口。
-const { data: blogsData, pending: loading, error } = await useFetch<BlogListResponse>(blogApiUrl, {
-  key: initialBlogsCacheKey.value,
-  query: {
-    page: 1,
-    limit: itemsPerPage,
-    lang: blogApiLang.value,
-  },
-  default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),
-  transform: (data: any) => data,
-  // 添加缓存，5分钟内不重复请求
-  getCachedData: (key, nuxtApp) => {
-    const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
-    if (payloadData)
-      return payloadData
-
-    if (import.meta.client) {
-      const cached = sessionStorage.getItem(key)
-      if (cached) {
-        try {
-          const { data, timestamp } = JSON.parse(cached)
-          // 5分钟缓存
-          if (Date.now() - timestamp < 5 * 60 * 1000) {
-            return data
-          }
-        }
-        catch {
-          // 忽略缓存解析错误
-        }
-      }
-    }
-    return undefined
-  },
-  onResponse({ response }) {
-    // 缓存响应数据
-    if (import.meta.client && response._data) {
-      try {
-        sessionStorage.setItem(initialBlogsCacheKey.value, JSON.stringify({
-          data: response._data,
-          timestamp: Date.now(),
-        }))
-      }
-      catch {
-        // 忽略存储错误（可能因为存储空间不足）
-      }
-    }
-  },
-})
-
-const blogs = computed(() => blogsData.value?.blogs || [])
-const pagination = computed(() => blogsData.value?.pagination || { totalPages: 1, totalCount: 0 })
-const totalPages = computed(() => pagination.value?.totalPages || 1)
 
 // 分类选项配置
 const categoryOptions = [
@@ -410,6 +385,77 @@ const categoryOptions = [
   { key: 'categoryRelatedToSuccess', value: '成功案例相关' },
   { key: 'categoryRelatedToPsychology', value: '心理情绪相关' },
 ]
+
+const zhMissingBlogRouteSet = new Set(
+  ((zhMissingBlogs as { routes?: string[] }).routes ?? []).map(routePath => routePath.replace(/\/+$/, '')),
+)
+
+function isAvailableInCurrentLocale(blog: Blog): boolean {
+  if (locale.value !== 'zh')
+    return true
+  const slug = String(blog.route_id || blog.id || '').trim()
+  return !zhMissingBlogRouteSet.has(`/zh/blog/${slug}`)
+}
+
+async function fetchBlogPageData(): Promise<BlogListResponse> {
+  const params = new URLSearchParams({
+    page: '1',
+    limit: '2000',
+    lang: blogApiLang.value,
+  })
+
+  if (searchQuery.value.trim())
+    params.append('search', searchQuery.value.trim())
+
+  if (selectedCategory.value && selectedCategory.value !== 'all') {
+    const categoryOption = categoryOptions.find(option => option.key === selectedCategory.value)
+    if (categoryOption)
+      params.append('category', categoryOption.value)
+  }
+
+  const response = await $fetch<BlogListResponse>(`${blogApiUrl.value}?${params.toString()}`)
+  const eligibleBlogs = (response?.blogs || []).filter(isAvailableInCurrentLocale)
+  const totalCount = eligibleBlogs.length
+  const totalPages = Math.max(1, Math.ceil(totalCount / itemsPerPage))
+
+  if (currentPage.value > totalPages) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Blog page not found',
+    })
+  }
+
+  const start = (currentPage.value - 1) * itemsPerPage
+  return {
+    blogs: eligibleBlogs.slice(start, start + itemsPerPage),
+    pagination: {
+      currentPage: currentPage.value,
+      totalPages,
+      totalCount,
+      limit: itemsPerPage,
+      hasNextPage: currentPage.value < totalPages,
+      hasPrevPage: currentPage.value > 1,
+    },
+  }
+}
+
+// 每个分页 URL 在 SSR/预渲染阶段取得自己的文章切片，保证深层文章可由普通链接抓取。
+const {
+  data: blogsData,
+  pending: loading,
+  error,
+  refresh: refreshBlogs,
+} = await useAsyncData<BlogListResponse>(
+  `blogs-page-v4-${blogApiLang.value}-${initialPage}`,
+  fetchBlogPageData,
+  {
+    default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),
+  },
+)
+
+const blogs = computed(() => blogsData.value?.blogs || [])
+const pagination = computed(() => blogsData.value?.pagination || { totalPages: 1, totalCount: 0 })
+const totalPages = computed(() => pagination.value?.totalPages || 1)
 
 // 根据当前语言获取分类名称
 function getCategoryName(categoryValue: string): string {
@@ -493,36 +539,6 @@ const categories = computed(() => {
   return validCategories
 })
 
-// 分类统计
-const categoryCounts = computed(() => {
-  const apiCategoryCounts = categoriesData.value?.categoryCounts || {}
-  const mappedCounts: Record<string, number> = {}
-
-  Object.entries(apiCategoryCounts).forEach(([categoryValue, count]) => {
-    const categoryOption = categoryOptions.find(option => option.value === categoryValue)
-    if (categoryOption) {
-      mappedCounts[categoryOption.key] = count as number
-    }
-  })
-
-  return mappedCounts
-})
-
-const totalCount = computed(() => {
-  if (pagination.value?.totalCount)
-    return pagination.value.totalCount
-
-  const counts = categoryCounts.value
-  if (counts && Object.keys(counts).length > 0) {
-    const sum = Object.values(counts)
-      .filter((count): count is number => typeof count === 'number' && !Number.isNaN(count))
-      .reduce((acc, cur) => acc + cur, 0)
-    if (sum > 0)
-      return sum
-  }
-  return blogs.value?.length ?? 0
-})
-
 function toDisplayBlog(blog: Blog): DisplayBlog {
   return {
     id: blog.id,
@@ -544,56 +560,7 @@ const articleBlogs = computed(() => displayBlogs.value.slice(1))
 
 async function refreshBlogData() {
   try {
-    const params = new URLSearchParams({
-      page: currentPage.value.toString(),
-      limit: itemsPerPage.toString(),
-      lang: blogApiLang.value,
-    })
-
-    if (searchQuery.value.trim())
-      params.append('search', searchQuery.value.trim())
-
-    if (selectedCategory.value && selectedCategory.value !== 'all') {
-      const categoryOption = categoryOptions.find(option => option.key === selectedCategory.value)
-      if (categoryOption)
-        params.append('category', categoryOption.value)
-    }
-
-    const cacheKey = `blogs-${params.toString()}`
-
-    if (import.meta.client) {
-      const cached = sessionStorage.getItem(cacheKey)
-      if (cached) {
-        try {
-          const { data, timestamp } = JSON.parse(cached)
-          if (Date.now() - timestamp < 2 * 60 * 1000) {
-            blogsData.value = data
-            return
-          }
-        }
-        catch {
-          // 忽略缓存解析错误
-        }
-      }
-    }
-
-    const response = await $fetch<BlogListResponse>(`${blogApiUrl.value}?${params.toString()}`)
-
-    if (response?.blogs) {
-      blogsData.value = response
-
-      if (import.meta.client) {
-        try {
-          sessionStorage.setItem(cacheKey, JSON.stringify({
-            data: response,
-            timestamp: Date.now(),
-          }))
-        }
-        catch {
-          // 忽略存储错误
-        }
-      }
-    }
+    await refreshBlogs()
   }
   catch (err) {
     console.error('Error refreshing blogs:', err)
@@ -618,11 +585,28 @@ function selectCategory(category: string) {
   selectedCategory.value = category
 }
 
-function jumpToPageHandler() {
+function getPaginationPath(page: number): string {
+  return localePath(page <= 1 ? '/blog' : `/blog/page/${page}`)
+}
+
+const visiblePaginationPages = computed(() =>
+  Array.from(
+    { length: Math.min(totalPages.value, 7) },
+    (_, index) => index + Math.max(1, Math.min(currentPage.value - 3, Math.max(totalPages.value - 6, 1))),
+  ),
+)
+
+async function navigateToPage(page: number) {
+  const targetPage = Math.max(1, Math.min(totalPages.value, page))
+  jumpToPage.value = targetPage
+  if (targetPage === currentPage.value)
+    return
+  await navigateTo(getPaginationPath(targetPage))
+}
+
+async function jumpToPageHandler() {
   const page = Math.max(1, Math.min(totalPages.value, jumpToPage.value))
-  if (page !== currentPage.value)
-    currentPage.value = page
-  jumpToPage.value = page
+  await navigateToPage(page)
 }
 
 const blogListSchema = computed(() => {
@@ -635,11 +619,11 @@ const blogListSchema = computed(() => {
     description: blogCopy.value.meta.description,
     baseUrl: siteUrl.value || undefined,
     locale: locale.value,
-    path: '/blog',
+    path: currentBlogPath.value,
     items: list.slice(0, 10).map((blogItem, index) => ({
       name: getDisplayBlogTitle(blogItem),
       url: getBlogDetailPath(blogItem),
-      position: index + 1,
+      position: (currentPage.value - 1) * itemsPerPage + index + 1,
       description: getBlogExcerpt(blogItem, 155),
       image: blogItem.cover_img_url,
       datePublished: blogItem.created_at,
@@ -649,8 +633,8 @@ const blogListSchema = computed(() => {
 
 const blogPageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value || undefined,
-  url: '/blog',
-  name: blogCopy.value.meta.title,
+  url: currentBlogPath.value,
+  name: pageMetaTitle.value,
   description: blogCopy.value.meta.description,
   about: blogCopy.value.directAnswer,
   audience: locale.value === 'zh'
@@ -684,7 +668,6 @@ useHead(() => ({
 function clearFilters() {
   searchQuery.value = ''
   selectedCategory.value = 'all'
-  currentPage.value = 1
   scrollToContent()
 }
 
@@ -692,34 +675,35 @@ watch(searchQuery, () => {
   if (searchDebounceTimer)
     clearTimeout(searchDebounceTimer)
 
-  searchDebounceTimer = setTimeout(() => {
-    currentPage.value = 1
+  searchDebounceTimer = setTimeout(async () => {
     jumpToPage.value = 1
-    refreshBlogData()
+    if (currentPage.value !== 1)
+      await navigateTo(getPaginationPath(1))
+    else
+      await refreshBlogData()
     scrollToContent()
   }, 300)
 })
 
-watch(selectedCategory, () => {
-  currentPage.value = 1
+watch(selectedCategory, async () => {
   jumpToPage.value = 1
-  refreshBlogData()
+  if (currentPage.value !== 1)
+    await navigateTo(getPaginationPath(1))
+  else
+    await refreshBlogData()
   scrollToContent()
 })
 
-watch(currentPage, () => {
+watch(() => route.params.page, async (pageParam) => {
+  currentPage.value = parseRoutePage(pageParam)
   jumpToPage.value = currentPage.value
-  refreshBlogData()
+  await refreshBlogData()
   scrollToContent()
 })
 
 onBeforeUnmount(() => {
   if (searchDebounceTimer)
     clearTimeout(searchDebounceTimer)
-})
-
-onMounted(() => {
-  refreshBlogData()
 })
 
 // 格式化短日期
@@ -1001,48 +985,55 @@ function formatDateShort(dateString: string) {
                 {{ blogCopy.pagination.showing }} {{ (currentPage - 1) * itemsPerPage + 1 }} - {{ Math.min(currentPage * itemsPerPage, pagination?.totalCount || 0) }} {{ blogCopy.pagination.of }} {{ pagination?.totalCount || 0 }} {{ blogCopy.pagination.results }}
               </div>
 
-              <nav class="flex items-center space-x-1">
-                <button
-                  :disabled="currentPage === 1"
-                  class="border border-[var(--yunda-bark)]/25 rounded-l-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                  @click="currentPage = 1"
+              <nav class="flex items-center space-x-1" :aria-label="blogCopy.pagination.goTo">
+                <NuxtLink
+                  :to="getPaginationPath(1)"
+                  class="border border-[var(--yunda-bark)]/25 rounded-l-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]"
+                  :class="{ 'pointer-events-none opacity-50': currentPage === 1 }"
+                  :aria-disabled="currentPage === 1"
                 >
                   {{ blogCopy.pagination.first }}
-                </button>
-                <button
-                  :disabled="currentPage === 1"
+                </NuxtLink>
+                <NuxtLink
+                  :to="getPaginationPath(Math.max(1, currentPage - 1))"
+                  :rel="currentPage > 1 ? 'prev' : undefined"
                   class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                  @click="currentPage--"
+                  :class="{ 'pointer-events-none opacity-50': currentPage === 1 }"
+                  :aria-disabled="currentPage === 1"
                 >
                   ‹
-                </button>
-                <button
-                  v-for="page in Array.from({ length: Math.min(totalPages, 7) }, (_, index) => index + Math.max(1, Math.min(currentPage - 3, Math.max(totalPages - 6, 1))))"
+                </NuxtLink>
+                <NuxtLink
+                  v-for="page in visiblePaginationPages"
                   :key="page"
+                  :to="getPaginationPath(page)"
                   class="border-b border-t px-3 py-2 text-sm font-medium transition-colors"
                   :class="[
                     currentPage === page
                       ? 'border-[var(--yunda-bark)] bg-[var(--yunda-bark)] text-[var(--yunda-petal)]'
                       : 'border-[var(--yunda-bark)]/25 bg-white text-[var(--yunda-bark)]/60 hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)]',
                   ]"
-                  @click="currentPage = page"
+                  :aria-current="currentPage === page ? 'page' : undefined"
                 >
                   {{ page }}
-                </button>
-                <button
-                  :disabled="currentPage === totalPages"
+                </NuxtLink>
+                <NuxtLink
+                  :to="getPaginationPath(Math.min(totalPages, currentPage + 1))"
+                  :rel="currentPage < totalPages ? 'next' : undefined"
                   class="border-b border-t border-[var(--yunda-bark)]/25 bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                  @click="currentPage++"
+                  :class="{ 'pointer-events-none opacity-50': currentPage === totalPages }"
+                  :aria-disabled="currentPage === totalPages"
                 >
                   ›
-                </button>
-                <button
-                  :disabled="currentPage === totalPages"
+                </NuxtLink>
+                <NuxtLink
+                  :to="getPaginationPath(totalPages)"
                   class="border border-[var(--yunda-bark)]/25 rounded-r-lg bg-white px-3 py-2 text-sm text-[var(--yunda-bark)]/60 font-medium transition-colors disabled:cursor-not-allowed hover:bg-[color-mix(in_srgb,var(--yunda-maple)_8%,var(--yunda-petal)_92%)] hover:text-[var(--yunda-bark)] disabled:opacity-50"
-                  @click="currentPage = totalPages"
+                  :class="{ 'pointer-events-none opacity-50': currentPage === totalPages }"
+                  :aria-disabled="currentPage === totalPages"
                 >
                   {{ blogCopy.pagination.last }}
-                </button>
+                </NuxtLink>
               </nav>
 
               <div class="flex items-center text-sm space-x-2">

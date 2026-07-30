@@ -505,7 +505,25 @@ useHead(() => ({
           </div>
           <div class="rounded-6 bg-white/70 p-8 text-center shadow-black/10 shadow-xl backdrop-blur">
             <div class="image-placeholder max-w-300 w-full transition-all duration-500 hover:scale-105">
-              <img src="/images/pages/surrogate-compensation/hero.jpg" :alt="tt('Surrogate Compensation', '代孕补偿')">
+              <picture class="block w-full overflow-hidden rounded-5">
+                <source
+                  srcset="/images/pages/surrogate-compensation/hero-480.avif 480w, /images/pages/surrogate-compensation/hero-768.avif 768w, /images/pages/surrogate-compensation/hero-1280.avif 1280w"
+                  sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
+                  type="image/avif"
+                >
+                <img
+                  src="/images/pages/surrogate-compensation/hero.jpg"
+                  srcset="/images/pages/surrogate-compensation/hero-480.jpg 480w, /images/pages/surrogate-compensation/hero-768.jpg 768w, /images/pages/surrogate-compensation/hero.jpg 1280w"
+                  sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
+                  :alt="tt('Surrogate Compensation', '代孕补偿')"
+                  class="h-auto w-full object-cover"
+                  width="1280"
+                  height="708"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
         </div>

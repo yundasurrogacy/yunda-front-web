@@ -879,9 +879,12 @@ useHead(() => ({
           <OptimizedPicture
             :src="PAGE_ASSETS.heroScene"
             :avif-src="avifSrc(PAGE_ASSETS.heroScene)"
+            srcset="/images/pages/surrogacy-process/hero-480.jpg 480w, /images/pages/surrogacy-process/hero-768.jpg 768w, /images/pages/surrogacy-process/hero-1024.jpg 1024w"
+            avif-srcset="/images/pages/surrogacy-process/hero-480.avif 480w, /images/pages/surrogacy-process/hero-768.avif 768w, /images/pages/surrogacy-process/hero.avif 1024w"
             alt=""
             :width="1024"
             :height="1536"
+            sizes="100vw"
             picture-class="contents"
             img-class="absolute inset-0 h-full w-full scale-[1.08] object-cover object-[82%_38%] blur-[8px] lg:object-[88%_42%] lg:blur-[10px]"
             loading="eager"

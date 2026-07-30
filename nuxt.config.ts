@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 import seoRoutes from './data/seo-routes.json'
 import zhMissingBlogs from './data/zh-missing-blogs.json'
 
@@ -78,6 +79,16 @@ if (
   )
 }
 const blogRoutes = blogEntries.map((blog: { loc: string }) => blog.loc)
+const blogPageSize = 10
+const englishBlogPaginationRoutes = Array.from(
+  { length: Math.max(0, Math.ceil(blogEntries.length / blogPageSize) - 1) },
+  (_, index) => `/blog/page/${index + 2}`,
+)
+const chineseBlogCount = blogEntries.filter((entry: any) => entry.hasZhContent).length
+const chineseBlogPaginationRoutes = Array.from(
+  { length: Math.max(0, Math.ceil(chineseBlogCount / blogPageSize) - 1) },
+  (_, index) => `/zh/blog/page/${index + 2}`,
+)
 
 const legacyRedirectPaths = new Set([
   '/become-a-surrogate-mother',
@@ -109,6 +120,7 @@ const legacyRedirectPaths = new Set([
 const englishRoutes = [
   ...staticPages.map(page => page.loc),
   ...blogRoutes,
+  ...englishBlogPaginationRoutes,
 ]
 // 生成中文路由（带 /zh 前缀）
 // 只预渲染有中文内容的博客页；无中文内容的页面由 vercel.json 临时重定向到英文版
@@ -117,6 +129,7 @@ const chineseRoutes = [
   ...blogEntries
     .filter((entry: any) => entry.hasZhContent)
     .map((entry: any) => toZhPath(entry.loc)),
+  ...chineseBlogPaginationRoutes,
 ]
 const prerenderRoutes = Array.from(new Set([
   ...englishRoutes,
@@ -127,6 +140,15 @@ const prerenderRoutes = Array.from(new Set([
 const apiProxyTarget = process.env.API_PROXY_TARGET || process.env.NUXT_PUBLIC_API_BASE || 'https://yunda-admin-system.yundasurrogacy.com'
 
 export default defineNuxtConfig({
+  hooks: {
+    'pages:extend': function (pages) {
+      pages.push({
+        name: 'blog-pagination',
+        path: '/blog/page/:page',
+        file: fileURLToPath(new URL('./pages/blog/index.vue', import.meta.url)),
+      })
+    },
+  },
   // 修复 prerender 时 vite-node-shared 中 baseURL 为 undefined 导致的 "Cannot read properties of undefined (reading 'startsWith')" 错误
   // 参见 https://github.com/nuxt/nuxt/issues/30367
   experimental: {
