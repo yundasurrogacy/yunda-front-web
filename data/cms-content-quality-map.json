@@ -1,0 +1,181 @@
+{
+  "artifactDate": "2026-07-30",
+  "batchSize": 5,
+  "titleOverrides": {
+    "California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained": {
+      "en_title": "California Surrogacy Laws: Legal Rights & Process Explained"
+    },
+    "Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda": {
+      "en_title": "Gestational Surrogacy Process: Step-by-Step Guide with Yunda"
+    },
+    "Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy": {
+      "en_title": "Real Surrogate Journeys: Why They Chose Yunda Surrogacy"
+    },
+    "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers": {
+      "title": "代孕与保险：代孕妈妈需要了解的基本保障",
+      "en_title": "Surrogacy and Insurance: Essential Coverage for Surrogate Mothers"
+    },
+    "Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning": {
+      "title": "代孕费用明细：美国家庭代孕费用透明化"
+    },
+    "Surrogacy-Insurance-A-2025-Coverage-Guide": {
+      "en_title": "Surrogacy & Insurance: A Coverage Guide"
+    },
+    "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria": {
+      "title": "代孕妈妈要求：资格与关键标准",
+      "en_title": "Surrogate Mother Requirements: Qualifications & Key Criteria"
+    },
+    "Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know": {
+      "title": "代孕妈妈的补偿与福利：需要了解的关键信息"
+    },
+    "What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025": {
+      "en_title": "What Is a “Com Surrogate” and How Does Surrogacy Work?"
+    }
+  },
+  "anchorTextOverrides": [
+    {
+      "route_id": "Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All",
+      "field": "content",
+      "hrefContains": "/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "from": "法律",
+      "to": "美国各州代孕法律地图"
+    },
+    {
+      "route_id": "Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All",
+      "field": "en_content",
+      "hrefContains": "/blog/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "from": "Legal",
+      "to": "U.S. surrogacy law map"
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "field": "content",
+      "hrefContains": "/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+      "from": "精子捐赠",
+      "to": "成为卵子捐赠者的常见问题"
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "field": "en_content",
+      "hrefContains": "/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+      "from": "Sperm Donation",
+      "to": "common questions about becoming an egg donor"
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "field": "content",
+      "hrefContains": "/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+      "from": "保险",
+      "to": "代孕保险保障指南"
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "field": "en_content",
+      "hrefContains": "/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+      "from": "Insurance",
+      "to": "surrogacy insurance coverage guide"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "field": "content",
+      "hrefContains": "/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "from": "保险",
+      "to": "试管婴儿保险保障说明"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "field": "en_content",
+      "hrefContains": "/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "from": "Insurance",
+      "to": "IVF insurance coverage guide"
+    },
+    {
+      "route_id": "What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+      "field": "en_content",
+      "hrefContains": "/blog/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "from": "Emotional",
+      "to": "building the intended parent–surrogate relationship"
+    },
+    {
+      "route_id": "What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+      "field": "en_content",
+      "hrefContains": "/blog/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
+      "from": "Ethical",
+      "to": "faith and ethical questions about surrogacy"
+    }
+  ],
+  "textReplacements": {
+    "Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy": {
+      "en_content": [
+        ["Real Surrogate Journeys 2025 capture", "Real surrogate journeys capture"],
+        ["What makes each surrogate journey in 2025 so meaningful?", "What makes each surrogate journey so meaningful?"],
+        ["in 2025", ""],
+        ["The Real Surrogate Journeys 2025 show", "These real surrogate journeys show"]
+      ]
+    },
+    "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers": {
+      "content": [
+        ["保险看似复杂，但只要找到合适的机构并获得专家指导，您在整个代孕过程中就会感到受到保护、支持和全面保障。", "代孕保险较为复杂，保障范围取决于具体保单、除外责任和项目安排。开始流程前，应由保险专业人员核查现有保单，并确认是否需要补充方案。"],
+        ["ART Risk Solutions 如何确保每位代孕母亲都获得全面的保障", "保险协调方如何协助核查保单并规划所需保障"],
+        ["了解如何开启您充满意义的2025年之旅", "了解如何开启这段有意义的旅程"]
+      ],
+      "en_content": [
+        ["Insurance for surrogate mothers can seem complex, but with the right agency and expert guidance, you’ll feel protected, supported, and fully covered throughout your surrogacy journey.", "Insurance for surrogate mothers can be complex. Coverage depends on the specific policy, exclusions, and journey arrangements, so the policy should be reviewed by an insurance professional before the process begins."],
+        ["how Yunda’s trusted partner, ART Risk Solutions, ensures every surrogate receives complete protection", "how insurance coordination can help review a policy and plan for necessary coverage"],
+        ["start your rewarding 2025 journey today", "start your journey today"]
+      ]
+    },
+    "Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning": {
+      "content": [
+        ["并为2025年制定切实可行的代孕预算", "并制定切实可行的代孕预算"],
+        ["2025年，Yunda通过代孕需要花费多少钱？", "通过 Yunda 开展代孕需要花费多少钱？"],
+        ["家庭如何规划2025年的代孕费用？", "家庭如何规划代孕费用？"]
+      ],
+      "en_content": [
+        ["build a realistic surrogacy budget for 2025", "build a realistic surrogacy budget"],
+        ["How much does surrogacy cost for Yunda in 2025?", "How much does a surrogacy journey with Yunda cost?"],
+        ["How can families plan for surrogacy costs in 2025?", "How can families plan for surrogacy costs?"]
+      ]
+    },
+    "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria": {
+      "content": [
+        ["本指南将带您了解2025 年代 孕补偿的 具体情况。", "本指南将介绍代孕补偿的构成与影响因素。"],
+        ["了解您的 2025 年代孕补偿方案", "了解代孕补偿方案"],
+        ["2025年，一套完整的 代孕母亲补偿方案 可能非常可观，通常在5万至7.5万美元甚至更高，具体金额取决于您的个人情况。", "代孕妈妈的补偿通常由基础补偿、津贴与约定福利组成；具体金额取决于经验、所在地、医疗情况和协议条款。"]
+      ],
+      "en_content": [
+        ["How Much Do Surrogates Get Paid? A 2025 Guide to Compensation & Requirements", "How Much Do Surrogates Get Paid? A Guide to Compensation & Requirements"],
+        ["This guide will walk you through what surrogate compensation looks like in 2025.", "This guide explains how surrogate compensation is structured and which factors can affect it."],
+        ["Understanding Your 2025 Surrogate Compensation Package", "Understanding Your Surrogate Compensation Package"],
+        ["In 2025, a complete surrogate mother compensation package can be very significant, often ranging from $50,000 to $75,000 or more, depending on your situation.", "A surrogate compensation package generally combines base compensation, allowances, and agreed benefits; the amount varies by experience, location, medical circumstances, and contract terms."]
+      ]
+    },
+    "Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know": {
+      "content": [
+        ["在 2025 年理应获得公平、透明和有意义的补偿", "理应获得公平、透明且有明确协议依据的补偿"],
+        ["2025年，随着需求的增长，代孕报酬将持续上涨，而像云达代孕中心这样的机构则将对每位代孕母亲的关怀、保护和尊重放在首位。", "补偿会因经验、所在地、医疗情况和协议条款而异；清楚理解基础补偿、津贴与报销项目，比只看一个总金额更重要。"],
+        ["2025年代孕妈妈的平均工资是多少？", "代孕妈妈的补偿通常如何构成？"],
+        ["2025年，美国 首次代孕母亲 的平均年薪在 5万至8万美元 之间。", "本文列示的首次代孕妈妈补偿区间为 5 万至 8 万美元；这不是固定工资或保证金额，实际方案以个人资格、项目和合同为准。"],
+        ["但2025年的全国平均水平仍然具有竞争力。", "但不同项目和地区的实际方案可能存在明显差异。"],
+        ["十余年的经验，服务过400多个家庭，将美国先进的生育资源与温暖贴心的个性化支持相结合。Yunda 与全国领先的第三方托管服务公司 SeedTrust和顶级生殖保险提供商 ART Risk 合作，以确保每一笔付款都安全、透明且准时。", "云达提供双语个案协调，并与托管和保险服务方协作。具体付款、保障范围和时间以个人协议及第三方文件为准。"],
+        ["Q1. 2025年我做代孕妈妈能赚多少钱？", "Q1. 代孕妈妈的补偿金额如何确定？"],
+        ["云达提供美国最透明、最完善的补偿体系之一", "云达会在匹配与签约过程中说明补偿项目和支付安排"],
+        ["2025年为何选择云达代孕", "为什么选择云达代孕"],
+        ["凭借 十余年的经验 、 服务超过400个家庭 以及 95%的满意度 ，云达提供的不仅仅是经济回报，更是安心保障。该机构的网络覆盖美国所有代孕合法州的顶尖生育诊所、生殖法律事务所和保险公司。", "云达提供双语个案协调，并与生殖诊所、独立律师、保险及托管服务方协作，帮助代孕妈妈了解流程、合同、保障与付款安排。"],
+        ["了解如何开启您充满意义的2025年之旅", "了解如何开启这段有意义的旅程"]
+      ],
+      "en_content": [
+        ["deserves fair, transparent, and meaningful compensation in 2025", "deserves fair, transparent compensation supported by a clear agreement"],
+        ["In 2025, surrogacy compensation continues to rise as demand grows and agencies like Yunda Surrogacy prioritize care, protection, and respect for every surrogate.", "Compensation varies by experience, location, medical circumstances, and contract terms. Understanding base compensation, allowances, and reimbursements matters more than relying on one headline number."],
+        ["What Is the Average Surrogate Salary in 2025?", "How Is Surrogate Compensation Usually Structured?"],
+        ["In 2025, the average surrogate salary in the U.S. ranges from $50,000 to $80,000 for first-time surrogates.", "The first-time surrogate compensation range described in this article is $50,000 to $80,000. This is not a fixed salary or guaranteed amount; the actual package depends on eligibility, the program, and the agreement."],
+        ["though the overall 2025 national average remains competitive.", "and actual packages can differ substantially by program and location."],
+        ["Q1. How much can I make as a surrogate in 2025?", "Q1. How is a surrogate compensation amount determined?"],
+        ["Yunda offers one of the most transparent and supportive compensation structures in the U.S.", "Yunda explains compensation categories and payment arrangements during matching and contracting"],
+        ["Why Choose Yunda Surrogacy in 2025", "Why Choose Yunda Surrogacy"],
+        ["With over 10 years of experience , 400+ families served , and a 95% satisfaction rate , Yunda offers more than financial reward — it offers peace of mind. The agency’s network includes top fertility clinics, reproductive law firms, and insurance providers across every surrogacy-legal U.S. state.", "Yunda provides bilingual case coordination and works with fertility clinics, independent attorneys, insurance professionals, and escrow providers to help surrogates understand the process, agreements, coverage, and payment arrangements."],
+        ["start your rewarding 2025 journey today", "start your journey today"]
+      ]
+    }
+  }
+}
