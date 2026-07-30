@@ -1,0 +1,88 @@
+{
+  "batch": 2,
+  "expectedCount": 10,
+  "preparedAt": "2026-07-30",
+  "scope": "剩余32个有真实中文正文页面中的GSC曝光优先批次",
+  "updates": [
+    {
+      "route_id": "2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "intent": "2026年美国各州妊娠代孕法律与准父母保护比较",
+      "gscImpressions": 378,
+      "gscClicks": 1,
+      "seo_title": "2026美国代孕法律地图：准父母州别指南 | 孕达代孕",
+      "seo_description": "比较美国各州妊娠代孕在合同效力、亲子关系确认、补偿和家庭类型方面的差异，帮助准父母识别州别法律风险；具体方案应由当地生殖律师审核。"
+    },
+    {
+      "route_id": "When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy",
+      "intent": "代孕历史及传统代孕向妊娠代孕的演变",
+      "gscImpressions": 72,
+      "gscClicks": 0,
+      "seo_title": "代孕始于何时？从传统代孕到妊娠代孕 | 孕达代孕",
+      "seo_description": "梳理代孕从古代非正式安排、人工授精到试管婴儿和现代妊娠代孕的发展，说明传统代孕与妊娠代孕在遗传、医疗和法律结构上的区别。"
+    },
+    {
+      "route_id": "What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
+      "intent": "基督教语境下的代孕经文、伦理和不同观点",
+      "gscImpressions": 29,
+      "gscClicks": 2,
+      "seo_title": "圣经如何看待代孕？基督教伦理与不同观点 | 孕达代孕",
+      "seo_description": "圣经没有直接讨论现代医学代孕。本指南结合常被引用的经文故事与基督教伦理原则，呈现不同教派和信徒可能采取的观点，供家庭进一步与宗教领袖讨论。"
+    },
+    {
+      "route_id": "Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "intent": "非存活妊娠的含义、可能症状、医学确认和后续支持",
+      "gscImpressions": 19,
+      "gscClicks": 0,
+      "seo_title": "什么是非存活妊娠？症状、诊断与下一步 | 孕达代孕",
+      "seo_description": "解释非存活妊娠的含义、常见类型、可能症状及医生常用的超声和激素评估。症状本身不能确诊，如有出血、疼痛或疑虑，应及时联系医疗专业人员。"
+    },
+    {
+      "route_id": "Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy",
+      "intent": "伊斯兰教法和伦理对第三方代孕的主要观点",
+      "gscImpressions": 13,
+      "gscClicks": 0,
+      "seo_title": "伊斯兰教允许代孕吗？主流观点与伦理考量 | 孕达代孕",
+      "seo_description": "介绍伊斯兰学者讨论代孕时关注的血统、婚姻和第三方参与问题，并区分婚内试管婴儿与代孕。不同传统和个案可能有差异，建议咨询可信赖的宗教学者。"
+    },
+    {
+      "route_id": "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "intent": "代孕妈妈健康保险的保单审查、除外责任和费用安排",
+      "gscImpressions": 4,
+      "gscClicks": 0,
+      "seo_title": "代孕妈妈保险指南：保单审查与保障要点 | 孕达代孕",
+      "seo_description": "说明代孕妈妈保险审查时应核对的孕产保障、代孕除外条款、自付费用、理赔和备用方案。承保范围取决于具体保单与所在地，不能仅凭计划名称判断。"
+    },
+    {
+      "route_id": "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "intent": "代孕妈妈资格筛选与补偿方案的双重信息需求",
+      "gscImpressions": 3,
+      "gscClicks": 0,
+      "seo_title": "代孕妈妈条件与报酬：筛选要求及费用构成 | 孕达代孕",
+      "seo_description": "了解代孕妈妈申请中常见的年龄、健康孕史、生活稳定性、医学与心理筛查，以及基本补偿、津贴和报销的构成。资格和金额需按项目、合同及个人情况确认。"
+    },
+    {
+      "route_id": "How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "intent": "准父母代孕预算、融资和现金流规划",
+      "gscImpressions": 2,
+      "gscClicks": 0,
+      "seo_title": "如何负担代孕费用？预算、贷款与融资选择 | 孕达代孕",
+      "seo_description": "从总费用构成、付款节点和应急金出发，比较储蓄、生育贷款、个人贷款、雇主福利、补助与筹款等选择，并提示利率、资格和还款风险需逐项核实。"
+    },
+    {
+      "route_id": "What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+      "intent": "传统代孕定义及其与妊娠代孕、捐卵的区别",
+      "gscImpressions": 2,
+      "gscClicks": 0,
+      "seo_title": "什么是传统代孕？与妊娠代孕的区别 | 孕达代孕",
+      "seo_description": "解释传统代孕中代孕者使用自身卵子的含义，并与妊娠代孕、捐卵安排比较遗传关系、受孕方式以及法律和情感风险，帮助读者准确区分相关概念。"
+    },
+    {
+      "route_id": "Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+      "intent": "内华达州妊娠代孕合同、独立律师和亲子关系要求",
+      "gscImpressions": 1,
+      "gscClicks": 0,
+      "seo_title": "内华达州代孕合法吗？合同与亲子权要点 | 孕达代孕",
+      "seo_description": "概述内华达州妊娠代孕协议的书面签署、独立律师、医学评估和亲子关系确认等要点，并提示传统代孕与保险安排需单独评估；本文不替代法律意见。"
+    }
+  ]
+}

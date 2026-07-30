@@ -1,0 +1,88 @@
+{
+  "batch": 3,
+  "expectedCount": 10,
+  "preparedAt": "2026-07-30",
+  "scope": "剩余32个有真实中文正文页面中的资格、机构、法律与保险主题",
+  "updates": [
+    {
+      "route_id": "Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "intent": "加州代孕妈妈申请资格、筛查和匹配流程",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "加州代孕妈妈申请条件：资格、筛查与流程 | 孕达代孕",
+      "seo_description": "梳理加州代孕妈妈申请时常见的健康孕史、年龄、生活方式、医学和心理筛查，并解答输卵管结扎、HSV等个别情况；最终资格由项目和医疗团队评估。"
+    },
+    {
+      "route_id": "What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
+      "intent": "美国代孕机构的选择标准与签约前比较",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "美国代孕机构怎么选？筛选与比较清单 | 孕达代孕",
+      "seo_description": "从代孕者筛选、法律协调、费用透明度、保险规划、诊所合作和沟通机制比较美国代孕机构，并提供签约前应核验的问题；不存在适合所有家庭的统一排名。"
+    },
+    {
+      "route_id": "5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+      "intent": "男同性恋准父母比较代孕机构的服务清单",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "同性准父母如何比较代孕机构？5家案例 | 孕达代孕",
+      "seo_description": "以5家美国代孕机构为比较案例，说明男同性恋准父母应关注的LGBTQ+服务经验、捐卵与法律协调、费用透明度和跨州支持；名单不是统一质量排名。"
+    },
+    {
+      "route_id": "2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "intent": "美国代孕总费用构成、额外支出与预算透明度",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "美国代孕总费用：项目构成与额外预算 | 孕达代孕",
+      "seo_description": "拆解代孕者补偿、试管婴儿、法律、保险、机构协调和孕期支出，说明基本报价与总预算为何不同，并列出准父母比较项目时应询问的额外费用和变动因素。"
+    },
+    {
+      "route_id": "How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+      "intent": "准父母选择独立生殖律师的核验问题",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "如何选择代孕律师？准父母签约前必问问题 | 孕达代孕",
+      "seo_description": "列出选择代孕律师时应核验的州别经验、独立代理、合同范围、亲子关系程序、收费和沟通方式，并说明常见风险信号；具体法律要求取决于相关州和个案。"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+      "intent": "美国50州代孕法律差异与常见规划误区",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "美国50州都允许代孕吗？常见法律误区 | 孕达代孕",
+      "seo_description": "美国没有统一的联邦代孕规则，各州对合同、补偿、亲子关系和家庭资格的处理不同。本指南梳理常见误区及跨州规划问题，开始前应由当地律师确认。"
+    },
+    {
+      "route_id": "What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+      "intent": "美国代孕受限州和法律风险识别",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "美国哪些州限制代孕？州别法律风险指南 | 孕达代孕",
+      "seo_description": "说明美国各州对妊娠代孕、传统代孕、有偿安排、合同执行和亲子关系确认的差异，帮助准父母识别高风险司法辖区；法律持续变化，请咨询当地律师。"
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "intent": "试管婴儿与代孕保险覆盖范围的综合核对",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "保险涵盖试管婴儿或代孕吗？核保指南 | 孕达代孕",
+      "seo_description": "区分不孕诊断、试管婴儿、胚胎相关服务、代孕者孕产医疗与代孕项目费用，说明州规定、雇主计划和保单除外条款如何影响保障，并提供书面核保清单。"
+    },
+    {
+      "route_id": "Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "intent": "准父母核查美国试管婴儿保险福利",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "试管婴儿保险能报销吗？准父母核对清单 | 孕达代孕",
+      "seo_description": "解释美国试管婴儿保障为何因州、雇主和具体保单而异，列出诊断、药物、取卵、胚胎与移植项目的核对问题，并提示代孕相关费用通常需分开确认。"
+    },
+    {
+      "route_id": "California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "intent": "加州SB 729生育保险适用范围及其与代孕的关系",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "加州SB 729：试管婴儿保险与代孕要点 | 孕达代孕",
+      "seo_description": "解读加州SB 729自2026年起对部分大型团体健康计划生育服务和试管婴儿保障的影响，并说明小型团体、计划例外及代孕相关费用为何仍需逐项核实。"
+    }
+  ]
+}
