@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29",
+  "siteOrigin": "https://www.yundasurrogacy.com",
+  "internalHosts": [
+    "www.yundasurrogacy.com",
+    "yundasurrogacy.com"
+  ],
+  "legacyPathMap": {
+    "/become-a-surrogate-mother": "/become-a-surrogate",
+    "/surrogate-journey": "/surrogate-process",
+    "/surrogacy-price": "/surrogacy-cost",
+    "/become-a-surrogay-mother": "/become-a-surrogate",
+    "/surrogate-qualification": "/be-surrogate",
+    "/about）": "/about",
+    "/about%EF%BC%89": "/about"
+  },
+  "recordPathOverrides": [
+    {
+      "route_id": "Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
+      "field": "en_content",
+      "from": "/journey",
+      "to": "/surrogate-process",
+      "reason": "Correct the one href changed to the wrong target by the 2026-07-29 commercial-blog updater."
+    }
+  ],
+  "rules": {
+    "rewriteOnlyAnchorHrefAttributes": true,
+    "preserveQueryAndFragment": true,
+    "preserveExternalLinks": true,
+    "localizeChineseStaticLinksOnlyWhenZhTargetIsInSitemap": true,
+    "excludeBlogTargetsFromAutomaticLocalization": true,
+    "keepLegacyRedirects": true
+  }
+}
