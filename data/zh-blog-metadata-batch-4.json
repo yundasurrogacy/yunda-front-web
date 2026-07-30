@@ -1,0 +1,104 @@
+{
+  "batch": 4,
+  "expectedCount": 12,
+  "preparedAt": "2026-07-30",
+  "scope": "剩余32个有真实中文正文页面中的医学、家庭与概念主题",
+  "updates": [
+    {
+      "route_id": "Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
+      "intent": "以Alysa Liu相关话题为引子的妊娠代孕基础科普",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "从Alysa Liu相关话题了解妊娠代孕 | 孕达代孕",
+      "seo_description": "以公众人物相关讨论为引子，解释妊娠代孕的基本概念、试管婴儿、法律准备与家庭支持。人物经历与代孕的关联应以可靠公开来源为准，不以传闻代替事实。"
+    },
+    {
+      "route_id": "Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "intent": "代孕前PGT-A的用途、适用情形和证据局限",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "代孕前需要做PGT-A吗？适用情形与局限 | 孕达代孕",
+      "seo_description": "介绍PGT-A用于胚胎非整倍体筛查的目的、可能结果、成本和局限。现有证据不支持所有试管婴儿患者常规使用，应结合年龄、病史和生殖医生建议决定。"
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "intent": "代孕中捐赠卵子与自体卵子的选择因素",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "代孕用捐卵还是自体卵子？选择因素对比 | 孕达代孕",
+      "seo_description": "比较代孕中使用捐赠卵子与自体卵子的遗传关系、医学评估、时间、费用和情感考量。成功概率受年龄、胚胎和个体病史等因素影响，应由生殖团队评估。"
+    },
+    {
+      "route_id": "How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+      "intent": "高隐私代孕项目的资格、补偿和保密要求",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "名人代孕项目有什么不同？资格、报酬与隐私 | 孕达代孕",
+      "seo_description": "说明高知名度家庭的代孕项目在医学和法律标准上并无特殊捷径，但可能增加保密、沟通和隐私安排；资格、补偿与托管仍应依据筛查结果和独立合同确定。"
+    },
+    {
+      "route_id": "Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "intent": "准父母与代孕妈妈的匹配、沟通和关系边界",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "准父母与代孕妈妈：如何建立合适的关系 | 孕达代孕",
+      "seo_description": "从匹配偏好、沟通频率、隐私边界、孕期参与和分娩后联系等方面，帮助准父母与代孕妈妈尽早对齐期望，并在变化或冲突出现时采用清晰、尊重的处理方式。"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "intent": "美国妊娠代孕合法性和准父母州别规划",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "代孕在美国合法吗？准父母州别规划指南 | 孕达代孕",
+      "seo_description": "美国代孕规则由各州分别处理。本指南说明妊娠代孕与传统代孕在合同、补偿和亲子关系方面的差异，并列出准父母选择州别和独立律师时的核对要点。"
+    },
+    {
+      "route_id": "New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "intent": "LGBTQ+与单身准父母的生育保险适用和核保",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "LGBTQ+与单身父母生育保险：2026核对要点 | 孕达代孕",
+      "seo_description": "说明LGBTQ+和单身准父母核查生育保险时应关注的不孕定义、非歧视要求、试管婴儿、供精供卵和代孕服务。适用范围因州、雇主及计划类型而异。"
+    },
+    {
+      "route_id": "Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "intent": "多基因胚胎筛查的证据局限和ASRM伦理意见",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "多基因胚胎筛查靠谱吗？ASRM为何不建议常规使用 | 孕达代孕",
+      "seo_description": "解释多基因胚胎筛查试图预测复杂疾病风险的原理，以及模型适用性、公平性、临床效用和伦理方面的局限。ASRM认为现阶段不适合常规临床使用。"
+    },
+    {
+      "route_id": "Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy",
+      "intent": "识别Reddit代孕经验的价值、偏差和核验方法",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "Reddit代孕讨论可信吗？经验、偏差与核验方法 | 孕达代孕",
+      "seo_description": "总结Reddit代孕讨论中常见的补偿、匹配、情绪和流程问题，说明匿名经验可提供哪些参考、存在哪些选择偏差，以及医疗、法律和保险信息应如何交叉核验。"
+    },
+    {
+      "route_id": "Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "intent": "子宫切除术后通过妊娠代孕组建家庭的条件",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "子宫切除术后还能通过代孕生育吗？ | 孕达代孕",
+      "seo_description": "解释子宫切除术后妊娠代孕可能涉及的卵巢功能评估、自体或捐赠卵子、既有冷冻胚胎、试管婴儿和法律步骤。能否实施取决于手术范围与个体医学评估。"
+    },
+    {
+      "route_id": "Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "intent": "代孕出生的孩子、代孕者和准父母角色科普",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "“代孕婴儿”是什么意思？妊娠代孕基础科普 | 孕达代孕",
+      "seo_description": "解释“代孕婴儿”这一常见搜索词背后的准确含义，区分传统代孕与妊娠代孕中的遗传关系，并说明试管婴儿、代孕者和准父母在流程中的不同角色。"
+    },
+    {
+      "route_id": "What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "intent": "代孕安排中准父亲的遗传、意愿和法律角色",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "什么是“代孕父亲”？准父亲的角色与认定 | 孕达代孕",
+      "seo_description": "说明“代孕父亲”通常指代孕安排中的准父亲，并区分遗传关系、养育意愿与法律亲子关系。具体认定程序受代孕类型、合同和相关司法辖区影响。"
+    }
+  ]
+}

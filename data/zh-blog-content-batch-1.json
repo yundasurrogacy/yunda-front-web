@@ -1,0 +1,104 @@
+{
+  "batch": 1,
+  "expectedCount": 6,
+  "preparedAt": "2026-07-30",
+  "scope": "6个非医学、非法律高风险中文博客正文的E-E-A-T与GEO优化",
+  "updates": [
+    {
+      "route_id": "When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy",
+      "intent": "代孕历史及传统代孕向妊娠代孕的演变",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy.html",
+      "marker": "现代妊娠代孕形成于辅助生殖技术、法律制度和专业协作逐步成熟之后",
+      "internalLinks": [
+        "/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+        "/zh/surrogacy-process",
+        "/zh/partner-ivf-clinics"
+      ],
+      "sources": [
+        "https://www.nobelprize.org/prizes/medicine/2010/popular-information/",
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/"
+      ]
+    },
+    {
+      "route_id": "What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions",
+      "intent": "基督教语境下的代孕经文、伦理和不同观点",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/What-Does-the-Bible-Say-About-Surrogacy-Faith-Ethics-and-Modern-Questions.html",
+      "marker": "圣经没有直接讨论由试管婴儿和胚胎移植实现的现代代孕",
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today"
+      ],
+      "sources": [
+        "https://bible.usccb.org/bible/genesis/16",
+        "https://bible.usccb.org/bible/genesis/30",
+        "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_con_cfaith_doc_19870222_respect-for-human-life_en.html"
+      ]
+    },
+    {
+      "route_id": "Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy",
+      "intent": "伊斯兰教法和伦理对第三方代孕的主要观点",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/Is-Surrogacy-Haram-in-Islam--Understanding-Islamic-Views-on-Surrogacy.html",
+      "marker": "许多逊尼派教法机构把第三方代孕视为不被允许的安排",
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/blog/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today"
+      ],
+      "sources": [
+        "https://iifa-aifi.org/wp-content/uploads/2021/12/Resolutions-Recommendations-of-the-IIFA-Official-Edition-Oct-2021.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12085801/",
+        "https://pubmed.ncbi.nlm.nih.gov/36203710/"
+      ]
+    },
+    {
+      "route_id": "What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today",
+      "intent": "传统代孕定义及其与妊娠代孕、捐卵的区别",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/What-Is-Traditional-Surrogacy--Understanding-How-It-Works-Today.html",
+      "marker": "传统代孕的核心特征是怀孕者同时提供自己的卵子",
+      "internalLinks": [
+        "/zh/blog/When-Did-Surrogacy-Start--A-Brief-History-of-Surrogacy",
+        "/zh/surrogacy-process",
+        "/zh/partner-ivf-clinics"
+      ],
+      "sources": [
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/family-members-as-gamete-donors-or-gestational-carriers/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/"
+      ]
+    },
+    {
+      "route_id": "Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
+      "intent": "以Alysa Liu公开采访为引子的妊娠代孕基础科普",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy.html",
+      "marker": "关于Alysa Liu家庭经历，可以确认的核心事实来自她本人的公开采访",
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/single-parents-lgbtq",
+        "/zh/blog/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families"
+      ],
+      "sources": [
+        "https://ca.rollingstone.com/alysa-liu-olympic-gold-medalist-interview/",
+        "https://www.teamusa.com/profiles/alysa-liu-1029541",
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/"
+      ]
+    },
+    {
+      "route_id": "Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy",
+      "intent": "识别Reddit代孕经验的价值、偏差和核验方法",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-30-batch-1/Reddit-Surrogate-Discussions-What-People-Really-Say-About-Surrogacy.html",
+      "marker": "Reddit适合发现问题和理解个体感受，不适合单独用来做医疗、法律、保险或费用决定",
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-cost",
+        "/zh/surrogate-requirements",
+        "/zh/surrogacy-protection-california"
+      ],
+      "sources": [
+        "https://www.reddit.com/r/Surrogate/comments/1qx294s/seeking_advice_dos_and_donts_for_intended_parents/",
+        "https://www.reddit.com/r/Surrogate/comments/1qikk8f/intended_parents_here_advice_needed/",
+        "https://www.reddit.com/r/Surrogate/comments/1rocrpo/trying_to_get_an_idea_of_costs/",
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "batch": 1,
+  "preparedAt": "2026-07-30",
+  "scope": "首批 10 个有真实中文正文的博客页面，仅更新中文 seo_title 与 seo_description",
+  "gscSource": "seo-project/02-baseline/source-data/2026-07-27-google/gsc-web-page-2026-06-27_to_2026-07-24.json",
+  "updates": [
+    {
+      "route_id": "Is-Surrogacy-Legal-in-California-What-Surrogates-Should-Know-Before-Signing-a-Contract",
+      "intent": "加州代孕法律与代孕妈妈签约前注意事项",
+      "gscImpressions": 116,
+      "gscClicks": 0,
+      "seo_title": "加州代孕合法吗？签合同前的法律要点 | 孕达代孕",
+      "seo_description": "面向代孕妈妈梳理加州妊娠代孕的合同签署时间、独立法律顾问、权利责任及朋友或家庭成员代孕等注意事项，具体安排请咨询合格律师。"
+    },
+    {
+      "route_id": "How-Surrogacy-Agreements-Protect-Everyone-Not-Just-the-Parents",
+      "intent": "代孕协议如何保护代孕妈妈与准父母",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "代孕协议如何保护代孕妈妈与准父母 | 孕达代孕",
+      "seo_description": "了解代孕协议如何明确双方权利、补偿、医疗、保险、隐私与亲子关系安排，以及独立法律代理为何是签约前的重要保障。"
+    },
+    {
+      "route_id": "How-Long-Does-the-Surrogacy-Process-Take-From-Start-to-Finish",
+      "intent": "代孕流程从开始到出生的时间线",
+      "gscImpressions": 92,
+      "gscClicks": 0,
+      "seo_title": "代孕流程需要多久？从匹配到出生的时间线 | 孕达代孕",
+      "seo_description": "按阶段了解代孕项目从前期规划、寻找代孕妈妈、法律合同、试管婴儿与孕期到出生的常见时间线，以及可能延长进度的因素。"
+    },
+    {
+      "route_id": "Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
+      "intent": "美国代孕费用的六类预算明细",
+      "gscImpressions": 41,
+      "gscClicks": 0,
+      "seo_title": "美国代孕费用明细：六大预算类别 | 孕达代孕",
+      "seo_description": "梳理美国代孕预算中的机构服务、代孕妈妈补偿、医疗、法律、保险和预备金六类费用，帮助准父母比较报价并规划资金。"
+    },
+    {
+      "route_id": "Highest-Paying-Surrogacy-Agencies-in-2026-What-to-Compare",
+      "intent": "比较代孕机构补偿方案而非只看最高报价",
+      "gscImpressions": 42,
+      "gscClicks": 0,
+      "seo_title": "代孕机构补偿怎么比？不只看最高报价 | 孕达代孕",
+      "seo_description": "比较代孕机构补偿方案时，不只看宣传金额；还应核对基本补偿、津贴与报销、保险支持、托管安排、付款节奏和合同透明度。"
+    },
+    {
+      "route_id": "Best-States-for-LGBTQ-Surrogacy-in-2026-Why-California-Leads",
+      "intent": "LGBTQ+家庭代孕友好州比较",
+      "gscImpressions": 36,
+      "gscClicks": 0,
+      "seo_title": "2026年LGBTQ+代孕友好州比较：加州为何领先 | 孕达代孕",
+      "seo_description": "比较加州、纽约州、伊利诺伊州和内华达州对LGBTQ+及单身准父母的合同、亲子关系认定和独立法律代理安排，了解选州重点。"
+    },
+    {
+      "route_id": "Best-Full-Service-Surrogacy-Programs-in-2026-Who-Truly-Does-It-All",
+      "intent": "全方位代孕项目的服务范围与比较方法",
+      "gscImpressions": 11,
+      "gscClicks": 1,
+      "seo_title": "全方位代孕项目怎么选？服务范围与比较清单 | 孕达代孕",
+      "seo_description": "了解全方位代孕项目通常包含的筛选匹配、诊所协调、法律、托管和孕期支持，并用服务范围、费用与沟通机制比较机构。"
+    },
+    {
+      "route_id": "Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
+      "intent": "代孕妈妈补偿与福利方案组成",
+      "gscImpressions": 9,
+      "gscClicks": 0,
+      "seo_title": "代孕妈妈薪酬与福利：补偿方案包含什么 | 孕达代孕",
+      "seo_description": "了解代孕妈妈补偿并非传统工资，而是由基本补偿、津贴、奖金、经批准的报销和保险支持组成，并核对付款时间与合同条款。"
+    },
+    {
+      "route_id": "What-Does-It-Really-Mean-to-Qualify-as-a-Surrogate",
+      "intent": "成为代孕妈妈的资格与筛查标准",
+      "gscImpressions": 0,
+      "gscClicks": 0,
+      "seo_title": "成为代孕妈妈需要什么条件？资格与筛查要点 | 孕达代孕",
+      "seo_description": "了解机构和诊所通常如何审查年龄、孕产史、健康状况、生活方式、支持系统及情绪准备，并说明不同项目的资格标准可能不同。"
+    },
+    {
+      "route_id": "How-to-Verify-Surrogacy-Agency-Credentials-Before-You-Sign",
+      "intent": "签约前核实代孕机构资质",
+      "gscImpressions": 3,
+      "gscClicks": 0,
+      "seo_title": "如何核实代孕机构资质？签约前检查清单 | 孕达代孕",
+      "seo_description": "签约前核查代孕机构的企业注册、法律经验、医疗合作、筛选标准、保险指导、费用透明度、评价和沟通机制，并识别常见风险信号。"
+    }
+  ]
+}
