@@ -53,13 +53,16 @@
     "format": "eslint --fix .",
     "sitemap:xml": "node scripts/generate-xml-sitemaps.cjs && node scripts/sync-vercel-zh-redirects.cjs",
     "sitemap:html": "node scripts/generate-html-sitemap.cjs",
-    "seo:finalize-build": "node scripts/cleanup-200.cjs && node scripts/verify-p0-build.cjs && node scripts/verify-commercial-cannibalization.cjs",
+    "seo:finalize-build": "node scripts/cleanup-200.cjs && node scripts/verify-p0-build.cjs && node scripts/verify-commercial-cannibalization.cjs && node scripts/verify-sitemap-quality.cjs && node scripts/verify-blog-pagination.cjs && node scripts/verify-priority-images.cjs",
     "seo:analyze-cannibalization": "node scripts/analyze-commercial-cannibalization.cjs",
     "seo:backup-commercial-blogs": "node scripts/backup-commercial-blogs.cjs",
     "seo:update-commercial-blogs": "node scripts/update-commercial-blogs.cjs",
     "verify:commercial-cannibalization": "node scripts/verify-commercial-cannibalization.cjs",
     "indexnow:submit": "node scripts/submit-indexnow.cjs",
-    "verify:zh-seo": "node scripts/verify-zh-seo.cjs"
+    "verify:zh-seo": "node scripts/verify-zh-seo.cjs",
+    "verify:sitemap-quality": "node scripts/verify-sitemap-quality.cjs",
+    "verify:blog-pagination": "node scripts/verify-blog-pagination.cjs",
+    "verify:priority-images": "node scripts/verify-priority-images.cjs"
   },
   "dependencies": {
     "@formatjs/intl-locale": "^4.2.11",

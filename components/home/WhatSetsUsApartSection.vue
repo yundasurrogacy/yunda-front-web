@@ -43,12 +43,21 @@ function toggleFeature(index) {
           <div class="md:w-[420px] md:shrink-0 lg:w-[480px] xl:w-[520px]">
             <div class="aspect-square w-full overflow-hidden rounded-[28px]">
               <picture class="block h-full w-full">
-                <source srcset="/images/pages/home/what-sets-us-apart.webp" type="image/webp">
+                <source
+                  srcset="/images/pages/home/what-sets-us-apart-480.avif 480w, /images/pages/home/what-sets-us-apart-768.avif 768w, /images/pages/home/what-sets-us-apart-1200.avif 1200w"
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 420px, calc(100vw - 40px)"
+                  type="image/avif"
+                >
                 <img
                   src="/images/pages/home/what-sets-us-apart.jpeg"
+                  srcset="/images/pages/home/what-sets-us-apart-480.jpg 480w, /images/pages/home/what-sets-us-apart-768.jpg 768w, /images/pages/home/what-sets-us-apart.jpeg 1200w"
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 420px, calc(100vw - 40px)"
                   :alt="$t('home.whatSetsUsApartSection.imageAlt')"
                   class="h-full w-full object-cover"
+                  width="1200"
+                  height="1200"
                   loading="lazy"
+                  decoding="async"
                 >
               </picture>
             </div>

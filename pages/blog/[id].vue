@@ -975,6 +975,7 @@ const currentBlogUrl = computed(() => {
   const blogPath = blog.value.route_id ? `/blog/${blog.value.route_id}` : `/blog/${blog.value.id}`
   return `${resolvedSiteUrl.value}${localePath(blogPath)}`
 })
+const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}${fallbackBlogImage}`)
 
 const blogPostingSchema = computed(() => {
   if (!blog.value)
@@ -1025,7 +1026,16 @@ const currentBlogDescription = computed(() =>
   buildLocalizedBlogDescription(blog.value, 155),
 )
 const currentBlogHeroImage = computed(() => blog.value?.cover_img_url || fallbackBlogImage)
-const currentBlogImage = computed(() => blog.value?.cover_img_url || `${resolvedSiteUrl.value}${fallbackBlogImage}`)
+const fallbackBlogAvifSrcset = [
+  '/images/pages/blog/fallback-hero-640.avif 640w',
+  '/images/pages/blog/fallback-hero-960.avif 960w',
+  '/images/pages/blog/fallback-hero-1600.avif 1600w',
+].join(', ')
+const fallbackBlogJpegSrcset = [
+  '/images/pages/blog/fallback-hero-640.jpg 640w',
+  '/images/pages/blog/fallback-hero-960.jpg 960w',
+  '/images/pages/blog/fallback-hero.jpg 1600w',
+].join(', ')
 
 const blogStructuredData = computed(() => {
   // Do not emit structured data for Chinese pages with no Chinese body content.
@@ -1228,17 +1238,26 @@ useHead(() => (blogStructuredData.value
 
         <header class="mb-8">
           <div class="mb-6 aspect-[16/8.5] max-h-[520px] w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]">
-            <img
-              :src="currentBlogHeroImage"
-              :alt="getBlogTitle(blog)"
-              class="size-full object-cover"
-              width="1200"
-              height="638"
-              sizes="(min-width: 1440px) 1376px, 100vw"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            >
+            <picture class="contents">
+              <source
+                v-if="!blog.cover_img_url"
+                :srcset="fallbackBlogAvifSrcset"
+                sizes="(min-width: 1440px) 1376px, 100vw"
+                type="image/avif"
+              >
+              <img
+                :src="currentBlogHeroImage"
+                :srcset="blog.cover_img_url ? undefined : fallbackBlogJpegSrcset"
+                :alt="getBlogTitle(blog)"
+                class="size-full object-cover"
+                width="1600"
+                height="1066"
+                sizes="(min-width: 1440px) 1376px, 100vw"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </picture>
           </div>
 
           <div class="max-w-4xl">
