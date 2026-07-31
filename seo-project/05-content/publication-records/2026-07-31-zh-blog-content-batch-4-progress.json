@@ -1,0 +1,31 @@
+{
+  "action": "apply-progress",
+  "updated_at": "2026-07-31T03:36:27.731Z",
+  "source_snapshot_sha256": "4a6dc79cbe01f927ffc212848506ea2ebd631d028deae10a671c97ab0d2a896c",
+  "applied": [
+    {
+      "route_id": "2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "content_sha256": "73b00db311137fbe42d5af4c4e6686b6e66be79abf87c99111450d7d63d33d66"
+    },
+    {
+      "route_id": "Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+      "content_sha256": "b785aea55ea47c173361ddf9ba7afd7542ca5808cf31bbf02ad52311de3633d6"
+    },
+    {
+      "route_id": "How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+      "content_sha256": "b7d84a38359d5083f9fb4756ce6f559f228208a2bfa5169fac945aa8a23965b0"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+      "content_sha256": "1d1c625bc0015d76885f14325986a3f410680379ae702f91526d4d6c90651fde"
+    },
+    {
+      "route_id": "What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+      "content_sha256": "64a9502126bf004aa512daa06d58a7a33ff5920dc7ce4138a2c66d9046363e10"
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "content_sha256": "ddbaab8fbc9271ad6597c37c78e1bbd060e314d5f83f0f58c049decba928ac52"
+    }
+  ]
+}

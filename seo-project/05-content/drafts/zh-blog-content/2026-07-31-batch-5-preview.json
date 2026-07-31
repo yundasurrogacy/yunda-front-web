@@ -1,0 +1,99 @@
+{
+  "preview_type": "zh-blog-content-batch-5",
+  "generated_at": "2026-07-31T02:48:03.426Z",
+  "source_snapshot_sha256": "fa2db31ab6658944ab4aa2c9baefa69b9d1e57a9f4b1c00a2584da80ba7a287a",
+  "count": 3,
+  "updates": [
+    {
+      "route_id": "What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
+      "intent": "美国代孕机构的透明比较框架",
+      "before_content_sha256": "28477872b986fcfbce8841f8b8c22e74ad66f60f38a3521911c94c898e687dcf",
+      "after": {
+        "content_sha256": "d4c12c15a67ab2eed3fd55a74923547b03be4c39c73f9455c45a54b7e818e525",
+        "visible_characters": 1325,
+        "cjk_characters": 951,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/be-parents",
+          "/zh/surrogacy-process",
+          "/zh/surrogacy-cost",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.circlesurrogacy.com/",
+          "https://www.growinggenerations.com/intended-parents/lgbtqia-parents",
+          "https://www.conceiveabilities.com/parents/",
+          "https://www.rootssurrogacy.com/",
+          "https://www.hatch.us/intended-parents"
+        ]
+      },
+      "cms_derived_excerpt": "不存在由美国政府或行业统一发布的“顶尖代孕机构”排名。本页采用截至2026年7月31日的公开资料，把机构当作比较案例，核对服务对象、匹配与筛查、法律和保险协调、费用披露、国际及LGBTQ+支持和持续服务；官网未披露的字段标为“需直接确认”，不据营销数字宣布最佳。 适用范围： 机构官网可以说明其自述服务，但不能单独证明服务质量、结果或适合每个家庭。比较时应核对...",
+      "untouched": {
+        "title": "美国顶尖的代孕机构有哪些？",
+        "seo_title": "美国代孕机构怎么选？筛选与比较清单 | 孕达代孕",
+        "seo_description": "从代孕者筛选、法律协调、费用透明度、保险规划、诊所合作和沟通机制比较美国代孕机构，并提供签约前应核验的问题；不存在适合所有家庭的统一排名。",
+        "meta_description": "从代孕者筛选、法律协调、费用透明度、保险规划、诊所合作和沟通机制比较美国代孕机构，并提供签约前应核验的问题；不存在适合所有家庭的统一排名。"
+      }
+    },
+    {
+      "route_id": "5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+      "intent": "同性男性准父母比较代孕机构的五个公开案例",
+      "before_content_sha256": "1ac934ecb60bf016d7552722ea895c82ad0df35dc5638a5d63198e2613005367",
+      "after": {
+        "content_sha256": "31df10dd96dbf0e5121837d7627b71217c83426dc38a3705506cbcade38f00ec",
+        "visible_characters": 1439,
+        "cjk_characters": 888,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/single-parents-lgbtq",
+          "/zh/egg-donation",
+          "/zh/surrogacy-protection-california",
+          "/zh/be-parents"
+        ],
+        "external_links": [
+          "https://www.growinggenerations.com/intended-parents/lgbtqia-parents",
+          "https://www.conceiveabilities.com/parents/same-sex/",
+          "https://www.rootssurrogacy.com/",
+          "https://www.circlesurrogacy.com/intended-parents/who-we-help/lgbtq-parents",
+          "https://globalsurrogacyservices.com/intended-parents/who-we-help/",
+          "https://familyequality.org/providers-database/"
+        ]
+      },
+      "cms_derived_excerpt": "“最佳同性家庭代孕机构”没有统一排名。本页把Growing Generations、ConceiveAbilities、Roots、Circle和Global Surrogacy Services作为五个公开案例，比较官网是否说明LGBTQ+服务、捐卵与胚胎协调、州别法律支持、费用材料和国际家庭能力；这不是背书，所有信息都需在签约前书面复核。 适用范围： 机...",
+      "untouched": {
+        "title": "2026年5家最佳男同性恋代孕机构：两位爸爸的推荐名单",
+        "seo_title": "同性准父母如何比较代孕机构？5家案例 | 孕达代孕",
+        "seo_description": "以5家美国代孕机构为比较案例，说明男同性恋准父母应关注的LGBTQ+服务经验、捐卵与法律协调、费用透明度和跨州支持；名单不是统一质量排名。",
+        "meta_description": "以5家美国代孕机构为比较案例，说明男同性恋准父母应关注的LGBTQ+服务经验、捐卵与法律协调、费用透明度和跨州支持；名单不是统一质量排名。"
+      }
+    },
+    {
+      "route_id": "How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+      "intent": "高隐私代孕项目的资格、边界和安全问题",
+      "before_content_sha256": "49e60436a80309e5353d930391bf169582564b86cb40c41d544e92cbc2672e54",
+      "after": {
+        "content_sha256": "a7358b3ec156f46c74d8316872dfec5b3c78476b71d134ffc8204db904cd73f7",
+        "visible_characters": 1135,
+        "cjk_characters": 864,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogate-requirements",
+          "/zh/be-surrogate",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+          "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+        ]
+      },
+      "cms_derived_excerpt": "不存在独立的“名人代孕妈妈资格”或统一更高补偿标准。高知名度准父母项目仍应使用普通妊娠载体的医学与心理筛查、独立律师、保险和知情同意流程；不同之处可能是更严格的保密、媒体安全和沟通安排，但NDA不能限制载体寻求医疗、法律或心理支持。 适用范围： 机构官网可以说明其自述服务，但不能单独证明服务质量、结果或适合每个家庭。比较时应核对书面服务范围、费用、退款与重配...",
+      "untouched": {
+        "title": "如何成为名人代孕母亲：要求和报酬",
+        "seo_title": "名人代孕项目有什么不同？资格、报酬与隐私 | 孕达代孕",
+        "seo_description": "说明高知名度家庭的代孕项目在医学和法律标准上并无特殊捷径，但可能增加保密、沟通和隐私安排；资格、补偿与托管仍应依据筛查结果和独立合同确定。",
+        "meta_description": "说明高知名度家庭的代孕项目在医学和法律标准上并无特殊捷径，但可能增加保密、沟通和隐私安排；资格、补偿与托管仍应依据筛查结果和独立合同确定。"
+      }
+    }
+  ]
+}

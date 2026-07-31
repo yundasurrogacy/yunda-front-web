@@ -1,0 +1,92 @@
+{
+  "preview_type": "zh-blog-content-batch-6",
+  "generated_at": "2026-07-31T02:48:03.464Z",
+  "source_snapshot_sha256": "15b780de970e1a03093d6b5f1f411586aa6481ada3a440f7b8b71de61279d266",
+  "count": 3,
+  "updates": [
+    {
+      "route_id": "Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "intent": "准父母与代孕者如何匹配沟通和长期边界",
+      "before_content_sha256": "361b67397536bf2ed69011b3f3c146e70b87702a6e64d5a4ad5efc513a06e169",
+      "after": {
+        "content_sha256": "845ae537f6d8e5c04f049320e85b7194b1d29f3c9e3525b6bc450adce50bb489",
+        "visible_characters": 1132,
+        "cjk_characters": 896,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-process",
+          "/zh/surrogacy-protection-california",
+          "/zh/be-parents"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+        ]
+      },
+      "cms_derived_excerpt": "合适的代孕关系不是“越亲密越好”，而是双方在沟通频率、就诊参与、隐私、医疗自主、分娩、困难决定和产后联系上有可持续的共同预期。匹配阶段应允许双方独立表达和拒绝，不把礼貌回答当成真正一致，也不把单一成功案例当作所有关系模板。 适用范围： 代孕关系涉及独立成年人、医疗自主、隐私、合同义务和未来家庭叙事。没有一种联系强度适合所有人，任何示例都不代表必然结果。孕达提...",
+      "untouched": {
+        "title": "准父母与代孕母亲：找到合适的代孕关系",
+        "seo_title": "准父母与代孕妈妈：如何建立合适的关系 | 孕达代孕",
+        "seo_description": "从匹配偏好、沟通频率、隐私边界、孕期参与和分娩后联系等方面，帮助准父母与代孕妈妈尽早对齐期望，并在变化或冲突出现时采用清晰、尊重的处理方式。",
+        "meta_description": "从匹配偏好、沟通频率、隐私边界、孕期参与和分娩后联系等方面，帮助准父母与代孕妈妈尽早对齐期望，并在变化或冲突出现时采用清晰、尊重的处理方式。"
+      }
+    },
+    {
+      "route_id": "Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "intent": "通过代孕出生的孩子、遗传关系和法律亲子关系术语",
+      "before_content_sha256": "c017d905014a4dc7ff9bd2c20f7b9c59052501131a4f2e9e6e5a08658abfc3fb",
+      "after": {
+        "content_sha256": "4561c68f05dc463631da4fa0442be2673c1a7ccf3665f63cf265176f6329f5d8",
+        "visible_characters": 1077,
+        "cjk_characters": 863,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-process",
+          "/zh/surrogacy-protection-california",
+          "/zh/egg-donation"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+        ]
+      },
+      "cms_derived_excerpt": "“通过代孕出生的孩子”比“代孕婴儿”更尊重，也更准确：代孕描述的是家庭建立和妊娠安排，不是孩子的身份。妊娠代孕中，妊娠载体通常不提供卵子；传统代孕中，怀孕者提供卵子。遗传关系、怀孕与分娩、以及法律亲子关系是三个不同概念。 适用范围： 代孕关系涉及独立成年人、医疗自主、隐私、合同义务和未来家庭叙事。没有一种联系强度适合所有人，任何示例都不代表必然结果。孕达提供...",
+      "untouched": {
+        "title": "代孕婴儿的意义：代孕如何缔造家庭",
+        "seo_title": "“代孕婴儿”是什么意思？妊娠代孕基础科普 | 孕达代孕",
+        "seo_description": "解释“代孕婴儿”这一常见搜索词背后的准确含义，区分传统代孕与妊娠代孕中的遗传关系，并说明试管婴儿、代孕者和准父母在流程中的不同角色。",
+        "meta_description": "解释“代孕婴儿”这一常见搜索词背后的准确含义，区分传统代孕与妊娠代孕中的遗传关系，并说明试管婴儿、代孕者和准父母在流程中的不同角色。"
+      }
+    },
+    {
+      "route_id": "What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "intent": "准父亲、遗传父亲和法律父亲的区别",
+      "before_content_sha256": "a212ca56f0b101ab757873fe65e97f99031d67ab40051511be147944b2140a07",
+      "after": {
+        "content_sha256": "d6731a5437408373fe1de3bfb9515327942ec66444d3fa4321e328ddaec9251d",
+        "visible_characters": 1104,
+        "cjk_characters": 864,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/single-parents-lgbtq",
+          "/zh/egg-donation",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+        ]
+      },
+      "cms_derived_excerpt": "“代孕父亲”不是稳定的医学或法律术语，更清楚的说法是“准父亲”或“意向父亲”。一个人可能是提供精子的遗传父亲、计划并承担养育责任的准父亲、经州法或法院确认的法律父亲，或同时具有这些角色；它们不应在网页中被自动画上等号。 适用范围： 代孕关系涉及独立成年人、医疗自主、隐私、合同义务和未来家庭叙事。没有一种联系强度适合所有人，任何示例都不代表必然结果。孕达提供教...",
+      "untouched": {
+        "title": "什么是代孕父亲？了解其角色和意义",
+        "seo_title": "什么是“代孕父亲”？准父亲的角色与认定 | 孕达代孕",
+        "seo_description": "说明“代孕父亲”通常指代孕安排中的准父亲，并区分遗传关系、养育意愿与法律亲子关系。具体认定程序受代孕类型、合同和相关司法辖区影响。",
+        "meta_description": "说明“代孕父亲”通常指代孕安排中的准父亲，并区分遗传关系、养育意愿与法律亲子关系。具体认定程序受代孕类型、合同和相关司法辖区影响。"
+      }
+    }
+  ]
+}

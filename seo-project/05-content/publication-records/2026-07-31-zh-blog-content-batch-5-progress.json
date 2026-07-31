@@ -1,0 +1,19 @@
+{
+  "action": "apply-progress",
+  "updated_at": "2026-07-31T02:48:51.088Z",
+  "source_snapshot_sha256": "fa2db31ab6658944ab4aa2c9baefa69b9d1e57a9f4b1c00a2584da80ba7a287a",
+  "applied": [
+    {
+      "route_id": "What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
+      "content_sha256": "d4c12c15a67ab2eed3fd55a74923547b03be4c39c73f9455c45a54b7e818e525"
+    },
+    {
+      "route_id": "5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+      "content_sha256": "31df10dd96dbf0e5121837d7627b71217c83426dc38a3705506cbcade38f00ec"
+    },
+    {
+      "route_id": "How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+      "content_sha256": "a7358b3ec156f46c74d8316872dfec5b3c78476b71d134ffc8204db904cd73f7"
+    }
+  ]
+}

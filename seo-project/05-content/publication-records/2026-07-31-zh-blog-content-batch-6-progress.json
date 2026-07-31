@@ -1,0 +1,19 @@
+{
+  "action": "apply-progress",
+  "updated_at": "2026-07-31T02:49:03.009Z",
+  "source_snapshot_sha256": "15b780de970e1a03093d6b5f1f411586aa6481ada3a440f7b8b71de61279d266",
+  "applied": [
+    {
+      "route_id": "Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "content_sha256": "845ae537f6d8e5c04f049320e85b7194b1d29f3c9e3525b6bc450adce50bb489"
+    },
+    {
+      "route_id": "Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "content_sha256": "4561c68f05dc463631da4fa0442be2673c1a7ccf3665f63cf265176f6329f5d8"
+    },
+    {
+      "route_id": "What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "content_sha256": "d6731a5437408373fe1de3bfb9515327942ec66444d3fa4321e328ddaec9251d"
+    }
+  ]
+}

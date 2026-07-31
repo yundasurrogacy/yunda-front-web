@@ -1,0 +1,60 @@
+{
+  "verification_type": "zh-blog-content-batch-6-build",
+  "verified_at": "2026-07-31T02:50:25.228Z",
+  "pages_checked": 3,
+  "chinese_missing_routes_checked": 38,
+  "chinese_missing_routes_generated": [],
+  "fallback_200_absent": true,
+  "fallback_404_noindex": true,
+  "pages": [
+    {
+      "route_id": "Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    }
+  ],
+  "failures": []
+}

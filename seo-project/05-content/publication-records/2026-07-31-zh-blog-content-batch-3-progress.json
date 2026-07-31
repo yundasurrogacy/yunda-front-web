@@ -1,0 +1,35 @@
+{
+  "action": "apply-progress",
+  "updated_at": "2026-07-31T03:35:55.739Z",
+  "source_snapshot_sha256": "9ed9320bd257fa4a5f0fd7849effa88b8ca3a84f5c8590bf46e9283814c8cbee",
+  "applied": [
+    {
+      "route_id": "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "content_sha256": "0d5f63b160f0ebe9da53def164fd01e581717c382e8c5af37ba86de2c13a7e45"
+    },
+    {
+      "route_id": "How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "content_sha256": "9ee888a2c2f648842f9f37ca7c9f9526770ab3f5cad2bd36fe57b50acfc49a6e"
+    },
+    {
+      "route_id": "2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "content_sha256": "e6f63264623f2843ee619d0f6b91df018bb9ab19be9e0cced3d3ec1f465e86a4"
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "content_sha256": "0aef8db9dab30526ffa9395a21f288a263b5b2c3de07369cee907ac1efb708fd"
+    },
+    {
+      "route_id": "Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "content_sha256": "15384ecd882a615e57c2ac36a4255bbf0bc6c852b5796613ab932c99ed6c9f45"
+    },
+    {
+      "route_id": "California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "content_sha256": "c550ef2bce749167c530f3d4c2a2163040b03ed1e0569c7f466ba8f5ff2cb1e7"
+    },
+    {
+      "route_id": "New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "content_sha256": "7dd476521fb0284df8dde162a22bd41d4b66cf819d51a8059304aa3ae251c55a"
+    }
+  ]
+}

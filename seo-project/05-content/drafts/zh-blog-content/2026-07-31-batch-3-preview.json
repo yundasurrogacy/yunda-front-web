@@ -1,0 +1,205 @@
+{
+  "preview_type": "zh-blog-content-batch-3",
+  "generated_at": "2026-07-31T03:34:31.483Z",
+  "source_snapshot_sha256": "9ed9320bd257fa4a5f0fd7849effa88b8ca3a84f5c8590bf46e9283814c8cbee",
+  "count": 7,
+  "updates": [
+    {
+      "route_id": "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "intent": "代孕妈妈孕产保险的核验流程与常见除外",
+      "before_content_sha256": "44adfc7501a109762134190eea211b82aeeaae624bdd647eb9e1e018d5654ae5",
+      "after": {
+        "content_sha256": "0d5f63b160f0ebe9da53def164fd01e581717c382e8c5af37ba86de2c13a7e45",
+        "visible_characters": 1211,
+        "cjk_characters": 910,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-protection-california",
+          "/zh/surrogacy-cost",
+          "/zh/surrogacy-process"
+        ],
+        "external_links": [
+          "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+          "https://www.healthcare.gov/what-if-im-pregnant-or-plan-to-get-pregnant/",
+          "https://webapps.dol.gov/elaws/elg/erisa.htm"
+        ]
+      },
+      "cms_derived_excerpt": "代孕妈妈已有健康保险不等于保单一定支付代孕相关孕产照护，也不能据计划名称判断“所有费用都受保”。核验应查看完整计划文件和SBC，确认代孕除外、网络、孕产服务、自付额与上限、先授权、理赔追偿、并发症、产后期限和备用方案，并取得书面说明。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必要性、先授权、药品目录和除外条款。电话口头答复不能...",
+      "untouched": {
+        "title": "代孕与保险：代孕妈妈需要了解的基本保障",
+        "seo_title": "代孕妈妈保险指南：保单审查与保障要点 | 孕达代孕",
+        "seo_description": "说明代孕妈妈保险审查时应核对的孕产保障、代孕除外条款、自付费用、理赔和备用方案。承保范围取决于具体保单与所在地，不能仅凭计划名称判断。",
+        "meta_description": "说明代孕妈妈保险审查时应核对的孕产保障、代孕除外条款、自付费用、理赔和备用方案。承保范围取决于具体保单与所在地，不能仅凭计划名称判断。"
+      }
+    },
+    {
+      "route_id": "How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "intent": "代孕融资的预算步骤、信贷成本与风险比较",
+      "before_content_sha256": "bfe26e6f49f73ad84c5a0c81f7ffea150d527cdbbdf0a1a401876bbbd8666cd8",
+      "after": {
+        "content_sha256": "9ee888a2c2f648842f9f37ca7c9f9526770ab3f5cad2bd36fe57b50acfc49a6e",
+        "visible_characters": 1187,
+        "cjk_characters": 925,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-cost",
+          "/zh/surrogacy-process",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.consumerfinance.gov/ask-cfpb/do-personal-installment-loans-have-fees-en-2120/",
+          "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loan-interest-rate-and-the-apr-en-733/",
+          "https://www.consumerfinance.gov/ask-cfpb/what-is-a-home-equity-loan-en-106/",
+          "https://consumer.ftc.gov/articles/donating-through-crowdfunding-and-fundraising-platforms"
+        ]
+      },
+      "cms_derived_excerpt": "负担代孕费用的第一步不是立即申请贷款，而是建立分阶段、可解释的预算：区分机构协调、代孕者补偿与报销、IVF、法律、保险、托管、差旅和应急费用，再比较储蓄、雇主福利、补助、众筹、个人贷款或房屋净值融资。所有借款都应按APR、费用、期限、月供、抵押风险和退款条件比较。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必要性、先授权、药品目...",
+      "untouched": {
+        "title": "如何负担代孕费用：揭秘明智的融资方案",
+        "seo_title": "如何负担代孕费用？预算、贷款与融资选择 | 孕达代孕",
+        "seo_description": "从总费用构成、付款节点和应急金出发，比较储蓄、生育贷款、个人贷款、雇主福利、补助与筹款等选择，并提示利率、资格和还款风险需逐项核实。",
+        "meta_description": "从总费用构成、付款节点和应急金出发，比较储蓄、生育贷款、个人贷款、雇主福利、补助与筹款等选择，并提示利率、资格和还款风险需逐项核实。"
+      }
+    },
+    {
+      "route_id": "2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "intent": "美国代孕总预算的包含项、发生时间与核验方法",
+      "before_content_sha256": "7e7086af0b0c94c8246c9644d7f5f9b59c55d47ca122940576a64f87328f4730",
+      "after": {
+        "content_sha256": "e6f63264623f2843ee619d0f6b91df018bb9ab19be9e0cced3d3ec1f465e86a4",
+        "visible_characters": 1169,
+        "cjk_characters": 910,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-cost",
+          "/zh/surrogacy-protection-california",
+          "/zh/surrogacy-process"
+        ],
+        "external_links": [
+          "https://www.circlesurrogacy.com/",
+          "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loan-interest-rate-and-the-apr-en-733/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
+        ]
+      },
+      "cms_derived_excerpt": "美国代孕总费用没有适用于所有家庭的固定数字，主要差异来自胚胎准备、机构服务、代孕者补偿与报销、法律、保险、托管、差旅及意外医疗情形。判断报价是否透明，应比较“包含什么、何时发生、谁收款、什么情况下追加或退款”，而不是用“机构都在隐瞒”作未经证实的结论。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必要性、先授权、药品目录和除外条款...",
+      "untouched": {
+        "title": "2026年代孕母亲费用冲击：机构不会告诉你的事",
+        "seo_title": "美国代孕总费用：项目构成与额外预算 | 孕达代孕",
+        "seo_description": "拆解代孕者补偿、试管婴儿、法律、保险、机构协调和孕期支出，说明基本报价与总预算为何不同，并列出准父母比较项目时应询问的额外费用和变动因素。",
+        "meta_description": "拆解代孕者补偿、试管婴儿、法律、保险、机构协调和孕期支出，说明基本报价与总预算为何不同，并列出准父母比较项目时应询问的额外费用和变动因素。"
+      }
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "intent": "IVF与代孕保险的总览核验矩阵",
+      "before_content_sha256": "8154f19f94759df0f66a5f9a09637669b714b8bc5abe20e5ce860a2ebee3516f",
+      "after": {
+        "content_sha256": "0aef8db9dab30526ffa9395a21f288a263b5b2c3de07369cee907ac1efb708fd",
+        "visible_characters": 1185,
+        "cjk_characters": 889,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-protection-california",
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-cost"
+        ],
+        "external_links": [
+          "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+          "https://webapps.dol.gov/elaws/elg/erisa.htm",
+          "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false"
+        ]
+      },
+      "cms_derived_excerpt": "保险可能支付部分IVF、药物或孕产医疗，但“IVF保障”“代孕保障”和“新生儿保障”是不同问题。是否适用取决于计划类型、州法、雇主设计、医疗必要性、先授权、第三方生殖条款和服务对象；任何家庭都应以自己的书面计划文件和持牌专业分析为准。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必要性、先授权、药品目录和除外条款。电话口头答复不能...",
+      "untouched": {
+        "title": "2026年保险是否涵盖试管婴儿或代孕？完整指南",
+        "seo_title": "保险涵盖试管婴儿或代孕吗？核保指南 | 孕达代孕",
+        "seo_description": "区分不孕诊断、试管婴儿、胚胎相关服务、代孕者孕产医疗与代孕项目费用，说明州规定、雇主计划和保单除外条款如何影响保障，并提供书面核保清单。",
+        "meta_description": "区分不孕诊断、试管婴儿、胚胎相关服务、代孕者孕产医疗与代孕项目费用，说明州规定、雇主计划和保单除外条款如何影响保障，并提供书面核保清单。"
+      }
+    },
+    {
+      "route_id": "Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "intent": "准父母核验IVF保险的操作清单",
+      "before_content_sha256": "f777c38faa990f181862ee535e301bccf267ed33cdf5226b0f903e91b3d29039",
+      "after": {
+        "content_sha256": "15384ecd882a615e57c2ac36a4255bbf0bc6c852b5796613ab932c99ed6c9f45",
+        "visible_characters": 1200,
+        "cjk_characters": 898,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-protection-california",
+          "/zh/surrogacy-cost"
+        ],
+        "external_links": [
+          "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+          "https://webapps.dol.gov/elaws/elg/erisa.htm",
+          "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf"
+        ]
+      },
+      "cms_derived_excerpt": "IVF是否受保不能只查“所在州是否强制”，还要确认计划是全保险还是自筹资、法规何时适用、谁是被保险人、哪些诊断和服务符合条件，以及取卵、药物、实验室、冷冻、移植和遗传检测是否分别需要先授权。最可靠的结果是逐项书面确认，而不是州名单或客服电话的一句“有生育福利”。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必要性、先授权、药品目录...",
+      "untouched": {
+        "title": "试管婴儿治疗是否在医保范围内？准父母应该了解哪些信息",
+        "seo_title": "试管婴儿保险能报销吗？准父母核对清单 | 孕达代孕",
+        "seo_description": "解释美国试管婴儿保障为何因州、雇主和具体保单而异，列出诊断、药物、取卵、胚胎与移植项目的核对问题，并提示代孕相关费用通常需分开确认。",
+        "meta_description": "解释美国试管婴儿保障为何因州、雇主和具体保单而异，列出诊断、药物、取卵、胚胎与移植项目的核对问题，并提示代孕相关费用通常需分开确认。"
+      }
+    },
+    {
+      "route_id": "California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "intent": "California SB 729的适用计划、生效规则与第三方生殖边界",
+      "before_content_sha256": "bb3e059423005d5f36c9553bc0fd24a5794cb7dd44b0f94e6a53df1e2e76deb2",
+      "after": {
+        "content_sha256": "c550ef2bce749167c530f3d4c2a2163040b03ed1e0569c7f466ba8f5ff2cb1e7",
+        "visible_characters": 1249,
+        "cjk_characters": 897,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogacy-protection-california",
+          "/zh/partner-ivf-clinics",
+          "/zh/single-parents-lgbtq"
+        ],
+        "external_links": [
+          "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false",
+          "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf",
+          "https://webapps.dol.gov/elaws/elg/erisa.htm"
+        ]
+      },
+      "cms_derived_excerpt": "California SB 729并不是“所有加州居民从2026年起免费做IVF”。法案要求受约束的大型团体计划在签发、修订或续保时提供不孕诊断和治疗保障，并要求小型团体计划提供可选保障；DMHC 2026修订指引进一步解释适用服务和实施。计划类型、生效/续保日、医疗必要性、网络、费用分担和法定例外仍需逐项确认。 适用范围： 保险能否支付某项服务取决于具体计...",
+      "untouched": {
+        "title": "2026年加州试管婴儿保险覆盖范围：SB 729法案和代孕详解",
+        "seo_title": "加州SB 729：试管婴儿保险与代孕要点 | 孕达代孕",
+        "seo_description": "解读加州SB 729自2026年起对部分大型团体健康计划生育服务和试管婴儿保障的影响，并说明小型团体、计划例外及代孕相关费用为何仍需逐项核实。",
+        "meta_description": "解读加州SB 729自2026年起对部分大型团体健康计划生育服务和试管婴儿保障的影响，并说明小型团体、计划例外及代孕相关费用为何仍需逐项核实。"
+      }
+    },
+    {
+      "route_id": "New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "intent": "LGBTQ+与单身家庭的生育保障法规和保单核验",
+      "before_content_sha256": "e7fed7bc4c1d7892523bbdaf3e56ca1e58ca2ac803a7e5cc9157fe992c234629",
+      "after": {
+        "content_sha256": "7dd476521fb0284df8dde162a22bd41d4b66cf819d51a8059304aa3ae251c55a",
+        "visible_characters": 1265,
+        "cjk_characters": 882,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/single-parents-lgbtq",
+          "/zh/surrogacy-protection-california",
+          "/zh/partner-ivf-clinics"
+        ],
+        "external_links": [
+          "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false",
+          "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf",
+          "https://familyequality.org/providers-database/"
+        ]
+      },
+      "cms_derived_excerpt": "2026年并不存在一条让全美LGBTQ+或单身准父母自动获得IVF与代孕全额保障的统一新规。变化来自具体州法、监管指引和雇主计划；例如California SB 729扩大部分受约束团体计划的生育服务规则，并禁止基于婚姻状况、性别身份或性取向等进行差别保障，但计划类型和例外仍然重要。 适用范围： 保险能否支付某项服务取决于具体计划文件、适用州法、网络、医疗必...",
+      "untouched": {
+        "title": "2026年针对LGBTQ+群体和单身父母的新生育保险规则",
+        "seo_title": "LGBTQ+与单身父母生育保险：2026核对要点 | 孕达代孕",
+        "seo_description": "说明LGBTQ+和单身准父母核查生育保险时应关注的不孕定义、非歧视要求、试管婴儿、供精供卵和代孕服务。适用范围因州、雇主及计划类型而异。",
+        "meta_description": "说明LGBTQ+和单身准父母核查生育保险时应关注的不孕定义、非歧视要求、试管婴儿、供精供卵和代孕服务。适用范围因州、雇主及计划类型而异。"
+      }
+    }
+  ]
+}

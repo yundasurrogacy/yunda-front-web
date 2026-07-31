@@ -1,0 +1,205 @@
+{
+  "preview_type": "zh-blog-content-batch-2",
+  "generated_at": "2026-07-31T03:34:31.483Z",
+  "source_snapshot_sha256": "675ed4cb646c975e49f2639e315c4783eafe9012c97bbc2851129ecce1f2ad38",
+  "count": 7,
+  "updates": [
+    {
+      "route_id": "Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "intent": "非存活妊娠的含义、诊断路径、急症红旗与下一步",
+      "before_content_sha256": "731e3b7d1941ba0ead0f40ae72433a6ed717a0005df25bdc9b135fb9b7480778",
+      "after": {
+        "content_sha256": "40b61b420798665f72802d0a9eb597649f7830d9df7459aea85a17699b3db429",
+        "visible_characters": 1259,
+        "cjk_characters": 1014,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-process",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.acog.org/womens-health/faqs/early-pregnancy-loss",
+          "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/11/early-pregnancy-loss",
+          "https://www.acog.org/womens-health/faqs/ectopic-pregnancy"
+        ]
+      },
+      "cms_derived_excerpt": "“非存活妊娠”表示妊娠不能继续发展，但阴道出血、腹痛或一次超声结果本身通常不能让读者自行确诊。早孕期需要结合孕周、症状、超声位置与表现、hCG变化和必要复查；突然剧痛、肩痛、明显虚弱、头晕或晕厥可能提示异位妊娠破裂，应立即急诊就医。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果会受到年龄、病史、胚胎情况、实验室方...",
+      "untouched": {
+        "title": "非存活妊娠详解：原因、症状和后续步骤",
+        "seo_title": "什么是非存活妊娠？症状、诊断与下一步 | 孕达代孕",
+        "seo_description": "解释非存活妊娠的含义、常见类型、可能症状及医生常用的超声和激素评估。症状本身不能确诊，如有出血、疼痛或疑虑，应及时联系医疗专业人员。",
+        "meta_description": "解释非存活妊娠的含义、常见类型、可能症状及医生常用的超声和激素评估。症状本身不能确诊，如有出血、疼痛或疑虑，应及时联系医疗专业人员。"
+      }
+    },
+    {
+      "route_id": "Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "intent": "PGT-A是否为代孕前必需检查以及决策限制",
+      "before_content_sha256": "ba3b5c7fd403edbb929c224cffca7a30409197ecc9c0767a937cd24f0574da86",
+      "after": {
+        "content_sha256": "80fe76cf6e8dc85398475a1c8768cc3dcb238bcdb63e3f8d19a8267b71e26818",
+        "visible_characters": 1304,
+        "cjk_characters": 1013,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-process",
+          "/zh/egg-donation"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/the-use-of-preimplantation-genetic-testing-for-aneuploidy-a-committee-opinion-2024/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.cdc.gov/art/success-rates/interpret.html"
+        ]
+      },
+      "cms_derived_excerpt": "PGT-A不是开始代孕或每个IVF周期都必须完成的检查，ASRM 2024委员会意见也没有支持把它作为所有IVF患者的常规筛查。它是在胚胎移植前对染色体非整倍体风险进行筛查，不是诊断；是否使用应结合卵子来源年龄、胚胎数量、既往治疗史、实验室方案、费用和个人价值观讨论。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果...",
+      "untouched": {
+        "title": "代孕前需要进行 PGT-A 检测吗？2026 年 ASRM 洞察",
+        "seo_title": "代孕前需要做PGT-A吗？适用情形与局限 | 孕达代孕",
+        "seo_description": "介绍PGT-A用于胚胎非整倍体筛查的目的、可能结果、成本和局限。现有证据不支持所有试管婴儿患者常规使用，应结合年龄、病史和生殖医生建议决定。",
+        "meta_description": "介绍PGT-A用于胚胎非整倍体筛查的目的、可能结果、成本和局限。现有证据不支持所有试管婴儿患者常规使用，应结合年龄、病史和生殖医生建议决定。"
+      }
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "intent": "代孕中使用自体卵与捐赠卵的决策与数据口径",
+      "before_content_sha256": "8a1652a62aae1a24d889563f59a9a3500a47b50e8c098608998a70b4115e41d8",
+      "after": {
+        "content_sha256": "aac2cc780dd73e2438258757fcc398448e2d1be2c78b63134b64892ed5bb1f6c",
+        "visible_characters": 1245,
+        "cjk_characters": 992,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/egg-donation",
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-process"
+        ],
+        "external_links": [
+          "https://www.cdc.gov/art/success-rates/interpret.html",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-regarding-gamete-and-embryo-donation/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+        ]
+      },
+      "cms_derived_excerpt": "代孕中选择自体卵还是捐赠卵，没有仅凭“38岁”或单一成功率就能决定的规则。自体卵路径更受取卵者年龄、卵巢储备和既往周期影响；捐赠卵还涉及捐赠者筛查、遗传与感染风险沟通、法律文件、未来披露和额外费用。两类CDC成功率使用的分母不同，不能直接横向排名。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果会受到年龄、病史、胚...",
+      "untouched": {
+        "title": "捐卵与自体卵子用于代孕：2026 年数据洞察",
+        "seo_title": "代孕用捐卵还是自体卵子？选择因素对比 | 孕达代孕",
+        "seo_description": "比较代孕中使用捐赠卵子与自体卵子的遗传关系、医学评估、时间、费用和情感考量。成功概率受年龄、胚胎和个体病史等因素影响，应由生殖团队评估。",
+        "meta_description": "比较代孕中使用捐赠卵子与自体卵子的遗传关系、医学评估、时间、费用和情感考量。成功概率受年龄、胚胎和个体病史等因素影响，应由生殖团队评估。"
+      }
+    },
+    {
+      "route_id": "Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "intent": "PGT-P多基因胚胎筛查的临床限制与伦理问题",
+      "before_content_sha256": "a16293b7cc6acd6c931413f6801fd3dd02754a2571286fda71336a50d6dfd16d",
+      "after": {
+        "content_sha256": "595c2d37ab60f1e894783dabbff753787a0ee154344fda818f6a7b49c4c89223",
+        "visible_characters": 1255,
+        "cjk_characters": 944,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/partner-ivf-clinics",
+          "/zh/surrogacy-process",
+          "/zh/egg-donation"
+        ],
+        "external_links": [
+          "https://www.asrm.org/news-and-events/asrm-news/press-releasesbulletins/asrm-ethics-and-practice-committees-release-new-report-concluding-polygenic-embryo-screening-is-not-ready-for-clinical-use/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/the-use-of-preimplantation-genetic-testing-for-aneuploidy-a-committee-opinion-2024/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/"
+        ]
+      },
+      "cms_derived_excerpt": "ASRM在2025年12月发布、对应2026伦理意见的结论是：多基因胚胎筛查（PGT-P）目前缺乏已证明的临床效用，不应作为常规生殖服务提供。它与PGT-A或针对特定单基因病的PGT-M不同；多基因风险分数是概率估计，会受数据族群、基因与环境互动、可选胚胎数量和模型变化影响。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助...",
+      "untouched": {
+        "title": "2026年多基因胚胎筛查：ASRM为何敦促谨慎",
+        "seo_title": "多基因胚胎筛查靠谱吗？ASRM为何不建议常规使用 | 孕达代孕",
+        "seo_description": "解释多基因胚胎筛查试图预测复杂疾病风险的原理，以及模型适用性、公平性、临床效用和伦理方面的局限。ASRM认为现阶段不适合常规临床使用。",
+        "meta_description": "解释多基因胚胎筛查试图预测复杂疾病风险的原理，以及模型适用性、公平性、临床效用和伦理方面的局限。ASRM认为现阶段不适合常规临床使用。"
+      }
+    },
+    {
+      "route_id": "Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "intent": "子宫切除后通过代孕生育的医学评估路径",
+      "before_content_sha256": "d3241a791b8f3b549cbcbed3014d0f2d2355e86a621cf049fac478a0167b284d",
+      "after": {
+        "content_sha256": "41e7e180712bed4e9881b902ff5ce6aaadb0b1a931cdfc06564caf358195ef9b",
+        "visible_characters": 1184,
+        "cjk_characters": 945,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/partner-ivf-clinics",
+          "/zh/egg-donation",
+          "/zh/surrogacy-process"
+        ],
+        "external_links": [
+          "https://www.acog.org/womens-health/faqs/hysterectomy",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-preservation-in-patients-with-medical-indications-a-committee-opinion-2026/",
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
+        ]
+      },
+      "cms_derived_excerpt": "子宫切除后本人不能再在子宫内怀孕，但仍可能通过已有胚胎、已保存卵子、保留且可取卵的卵巢，或捐赠卵与妊娠载体建立家庭。能否取卵不能只看“卵巢是否还在”，还取决于卵巢功能、手术方式、基础疾病、既往放化疗、盆腔解剖和取卵安全性。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果会受到年龄、病史、胚胎情况、实验室方法和个体治...",
+      "untouched": {
+        "title": "子宫切除术后代孕：是否仍然可行？",
+        "seo_title": "子宫切除术后还能通过代孕生育吗？ | 孕达代孕",
+        "seo_description": "解释子宫切除术后妊娠代孕可能涉及的卵巢功能评估、自体或捐赠卵子、既有冷冻胚胎、试管婴儿和法律步骤。能否实施取决于手术范围与个体医学评估。",
+        "meta_description": "解释子宫切除术后妊娠代孕可能涉及的卵巢功能评估、自体或捐赠卵子、既有冷冻胚胎、试管婴儿和法律步骤。能否实施取决于手术范围与个体医学评估。"
+      }
+    },
+    {
+      "route_id": "Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "intent": "加州代孕申请的机构初筛、医学批准和法律审查",
+      "before_content_sha256": "c125dcae3198940c6691a02b00a1d919c5a0730d6b5a368bcea38c80281ec9a8",
+      "after": {
+        "content_sha256": "ec7f403237a24e6a0771415760b0220d1ba3544b4c4b94005d549e14bf0eb788",
+        "visible_characters": 1203,
+        "cjk_characters": 910,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogate-requirements",
+          "/zh/be-surrogate",
+          "/zh/surrogacy-protection-california"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+          "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+        ]
+      },
+      "cms_derived_excerpt": "在加州能否成为妊娠载体，不由一个年龄、BMI、输卵管结扎或单项病史独立决定。实际流程至少包括机构初筛、IVF诊所医学评估与心理评估，以及独立法律咨询；ASRM给出的是专业建议，诊所和项目还可能采用更严格的标准。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果会受到年龄、病史、胚胎情况、实验室方法和个体治疗方案影响；...",
+      "untouched": {
+        "title": "在加州可以成为代孕妈妈吗？关键要求详解",
+        "seo_title": "加州代孕妈妈申请条件：资格、筛查与流程 | 孕达代孕",
+        "seo_description": "梳理加州代孕妈妈申请时常见的健康孕史、年龄、生活方式、医学和心理筛查，并解答输卵管结扎、HSV等个别情况；最终资格由项目和医疗团队评估。",
+        "meta_description": "梳理加州代孕妈妈申请时常见的健康孕史、年龄、生活方式、医学和心理筛查，并解答输卵管结扎、HSV等个别情况；最终资格由项目和医疗团队评估。"
+      }
+    },
+    {
+      "route_id": "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "intent": "代孕妈妈资格、补偿构成与合同边界",
+      "before_content_sha256": "b4badc8c55db1b4679aa8e2c2cb479f9555dff154058cb2c0ec1b6edeea44617",
+      "after": {
+        "content_sha256": "97dbdc2ffce7764274a473744373164587714ef1a7e1bbf92e769c36d67ca7bf",
+        "visible_characters": 1233,
+        "cjk_characters": 947,
+        "heading_count": 7,
+        "internal_links": [
+          "/zh/surrogate-requirements",
+          "/zh/be-surrogate",
+          "/zh/surrogacy-protection-california",
+          "/zh/surrogacy-cost"
+        ],
+        "external_links": [
+          "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+          "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+          "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+        ]
+      },
+      "cms_derived_excerpt": "代孕妈妈资格通常同时考察既往健康孕史、当前身体与心理状况、生活稳定性、支持系统、背景资料和独立知情同意；机构初筛不能替代IVF诊所的医学批准。补偿也不是统一工资，而是按地区、经验、项目和合同拆分为基础补偿、津贴、报销及特定事件费用。 适用范围： 本文用于帮助读者整理就诊问题，不用于诊断、决定用药或替代医生意见。辅助生殖结果会受到年龄、病史、胚胎情况、实验室方...",
+      "untouched": {
+        "title": "代孕妈妈要求：资格与关键标准",
+        "seo_title": "代孕妈妈条件与报酬：筛选要求及费用构成 | 孕达代孕",
+        "seo_description": "了解代孕妈妈申请中常见的年龄、健康孕史、生活稳定性、医学与心理筛查，以及基本补偿、津贴和报销的构成。资格和金额需按项目、合同及个人情况确认。",
+        "meta_description": "了解代孕妈妈申请中常见的年龄、健康孕史、生活稳定性、医学与心理筛查，以及基本补偿、津贴和报销的构成。资格和金额需按项目、合同及个人情况确认。"
+      }
+    }
+  ]
+}

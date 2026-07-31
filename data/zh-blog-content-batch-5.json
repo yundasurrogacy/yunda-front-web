@@ -1,0 +1,69 @@
+{
+  "batch": 5,
+  "preparedAt": "2026-07-31",
+  "reviewDate": "2026年7月31日",
+  "expectedCount": 3,
+  "updates": [
+    {
+      "route_id": "What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
+      "intent": "美国代孕机构的透明比较框架",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-5/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States.html",
+      "marker": "YUNDA-ZH-B5-What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
+      "sources": [
+        "https://www.circlesurrogacy.com/",
+        "https://www.growinggenerations.com/intended-parents/lgbtqia-parents",
+        "https://www.conceiveabilities.com/parents/",
+        "https://www.rootssurrogacy.com/",
+        "https://www.hatch.us/intended-parents"
+      ],
+      "internalLinks": [
+        "/zh/be-parents",
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-cost",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    },
+    {
+      "route_id": "5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+      "intent": "同性男性准父母比较代孕机构的五个公开案例",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-5/5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads.html",
+      "marker": "YUNDA-ZH-B5-5-Best-Gay-Surrogacy-Agencies-in-2026-A-Shortlist-for-Two-Dads",
+      "sources": [
+        "https://www.growinggenerations.com/intended-parents/lgbtqia-parents",
+        "https://www.conceiveabilities.com/parents/same-sex/",
+        "https://www.rootssurrogacy.com/",
+        "https://www.circlesurrogacy.com/intended-parents/who-we-help/lgbtq-parents",
+        "https://globalsurrogacyservices.com/intended-parents/who-we-help/",
+        "https://familyequality.org/providers-database/"
+      ],
+      "internalLinks": [
+        "/zh/single-parents-lgbtq",
+        "/zh/egg-donation",
+        "/zh/surrogacy-protection-california",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    },
+    {
+      "route_id": "How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+      "intent": "高隐私代孕项目的资格、边界和安全问题",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-5/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation.html",
+      "marker": "YUNDA-ZH-B5-How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+      ],
+      "internalLinks": [
+        "/zh/surrogate-requirements",
+        "/zh/be-surrogate",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    }
+  ]
+}
