@@ -1,0 +1,124 @@
+{
+  "verification_type": "zh-blog-content-batch-3-build",
+  "verified_at": "2026-07-31T03:37:28.600Z",
+  "pages_checked": 7,
+  "chinese_missing_routes_checked": 38,
+  "chinese_missing_routes_generated": [],
+  "fallback_200_absent": true,
+  "fallback_404_noindex": true,
+  "pages": [
+    {
+      "route_id": "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,157 @@
+{
+  "batch": 4,
+  "preparedAt": "2026-07-31",
+  "reviewDate": "2026年7月31日",
+  "expectedCount": 6,
+  "updates": [
+    {
+      "route_id": "2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "intent": "美国州级代孕法比较入口与风险筛查",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents.html",
+      "marker": "YUNDA-ZH-B4-2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "sources": [
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.",
+        "https://www.leg.state.nv.us/nrs/nrs-126.html",
+        "https://www.nysenate.gov/legislation/laws/FCT/581-403",
+        "https://www.nebraskalegislature.gov/laws/statutes.php?statute=25-21%2C200",
+        "https://legis.la.gov/legis/LawPrint.aspx?d=1015743"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+      "intent": "内华达妊娠代孕协议与亲权程序要点",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know.html",
+      "marker": "YUNDA-ZH-B4-Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+      "sources": [
+        "https://www.leg.state.nv.us/nrs/nrs-126.html",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://nvbar.org/for-the-public/attorney-discipline/"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+      "intent": "如何核验代孕律师执照、经验、独立性与服务边界",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask.html",
+      "marker": "YUNDA-ZH-B4-How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://nvbar.org/for-the-public/attorney-discipline/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+      "intent": "美国50州代孕法律是否统一及常见误区",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong.html",
+      "marker": "YUNDA-ZH-B4-Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+      "sources": [
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.",
+        "https://www.leg.state.nv.us/nrs/nrs-126.html",
+        "https://www.nebraskalegislature.gov/laws/statutes.php?statute=25-21%2C200"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+      "intent": "哪些州对代孕合同、补偿或家庭资格有限制",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws.html",
+      "marker": "YUNDA-ZH-B4-What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+      "sources": [
+        "https://www.nebraskalegislature.gov/laws/statutes.php?statute=25-21%2C200",
+        "https://legis.la.gov/legis/LawPrint.aspx?d=1015743",
+        "https://legis.la.gov/Legis/Law.aspx?d=1015740",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "intent": "国际与首次准父母理解美国代孕法律的入口",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-4/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents.html",
+      "marker": "YUNDA-ZH-B4-Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "sources": [
+        "https://www.asrm.org/advocacy-and-policy/fact-sheets-and-one-pagers/gestational-carrier-policy-in-the-united-states/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.",
+        "https://www.leg.state.nv.us/nrs/nrs-126.html"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    }
+  ]
+}

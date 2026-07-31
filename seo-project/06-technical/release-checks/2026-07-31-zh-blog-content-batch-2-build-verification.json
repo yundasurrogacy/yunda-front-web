@@ -1,0 +1,124 @@
+{
+  "verification_type": "zh-blog-content-batch-2-build",
+  "verified_at": "2026-07-31T03:37:28.603Z",
+  "pages_checked": 7,
+  "chinese_missing_routes_checked": 38,
+  "chinese_missing_routes_generated": [],
+  "fallback_200_absent": true,
+  "fallback_404_noindex": true,
+  "pages": [
+    {
+      "route_id": "Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    }
+  ],
+  "failures": []
+}

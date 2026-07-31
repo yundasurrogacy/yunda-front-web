@@ -21,6 +21,7 @@ const initialConfig = fs.existsSync(CONFIG_PATH)
   : null
 const BATCH = String(initialConfig?.batch ?? 'unknown')
 const ARTIFACT_DATE = String(initialConfig?.preparedAt || '2026-07-30')
+const REVIEW_DATE = String(initialConfig?.reviewDate || '2026年7月30日')
 const artifact = (...segments) => path.join(ROOT, ...segments)
 const BEFORE_PATH = artifact('seo-project', '05-content', 'source-snapshots', `${ARTIFACT_DATE}-zh-blog-content-batch-${BATCH}-before.json`)
 const PREVIEW_PATH = artifact('seo-project', '05-content', 'drafts', 'zh-blog-content', `${ARTIFACT_DATE}-batch-${BATCH}-preview.json`)
@@ -92,7 +93,10 @@ function derivedExcerpt(html) {
 
 function extractLinks(html) {
   return [...String(html || '').matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
-    .map(match => ({ href: match[1], tag: match[0] }))
+    .map(match => ({
+      href: match[1].replace(/&amp;/gi, '&'),
+      tag: match[0],
+    }))
 }
 
 function escapeHtml(value) {
@@ -138,7 +142,7 @@ function assertDraft(update, html) {
     throw new Error(`${update.route_id}: empty heading found`)
   if (!html.startsWith('<p data-content-summary="true">'))
     throw new Error(`${update.route_id}: answer-first summary marker is missing`)
-  if (!html.includes('<p data-content-review-date="true">资料核查日期：2026年7月30日。'))
+  if (!html.includes(`<p data-content-review-date="true">资料核查日期：${REVIEW_DATE}。`))
     throw new Error(`${update.route_id}: review date is missing`)
   if (!html.includes(update.marker))
     throw new Error(`${update.route_id}: unique verification marker is missing`)
@@ -183,6 +187,10 @@ function loadConfig({ requireDrafts = true } = {}) {
   for (const update of config.updates) {
     if (!update.route_id || !update.intent || !update.draftFile || !update.marker)
       throw new Error('Content specification is missing required fields')
+    if (typeof update.publishEligible !== 'boolean')
+      throw new Error(`${update.route_id}: publishEligible must be explicitly true or false`)
+    if (!update.reviewStatus)
+      throw new Error(`${update.route_id}: reviewStatus is required`)
     if (!Array.isArray(update.sources) || update.sources.length < 2)
       throw new Error(`${update.route_id}: at least two sources are required`)
     if (!Array.isArray(update.internalLinks))
@@ -318,6 +326,12 @@ function dryRun() {
 
 async function apply() {
   const { config, snapshot, beforeBySlug } = loadState()
+  const blocked = config.updates.filter(update => !update.publishEligible)
+  if (blocked.length) {
+    throw new Error(
+      `Batch ${BATCH} is review-gated and cannot be published: ${blocked.map(update => update.route_id).join(', ')}`,
+    )
+  }
   const intendedBySlug = new Map(config.updates.map(update => [update.route_id, readDraft(update)]))
   for (const update of config.updates) {
     const current = await fetchBlog(update.route_id)
@@ -405,6 +419,9 @@ async function apply() {
 
 async function verify() {
   const { config, snapshot, beforeBySlug } = loadState()
+  const blocked = config.updates.filter(update => !update.publishEligible)
+  if (blocked.length)
+    throw new Error(`Batch ${BATCH} is review-gated and has no approved live state to verify`)
   const blogs = []
   const checks = []
   for (const update of config.updates) {
@@ -457,6 +474,9 @@ async function rollback() {
 
 function verifyBuild() {
   const { config, beforeBySlug } = loadState()
+  const blocked = config.updates.filter(update => !update.publishEligible)
+  if (blocked.length)
+    throw new Error(`Batch ${BATCH} is review-gated and cannot enter release verification`)
   if (!fs.existsSync(AFTER_PATH))
     throw new Error(`Missing CMS after snapshot: ${AFTER_PATH}`)
   const after = readJson(AFTER_PATH)

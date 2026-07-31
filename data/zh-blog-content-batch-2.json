@@ -1,0 +1,177 @@
+{
+  "batch": 2,
+  "preparedAt": "2026-07-31",
+  "reviewDate": "2026年7月31日",
+  "expectedCount": 7,
+  "updates": [
+    {
+      "route_id": "Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "intent": "非存活妊娠的含义、诊断路径、急症红旗与下一步",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next.html",
+      "marker": "YUNDA-ZH-B2-Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "sources": [
+        "https://www.acog.org/womens-health/faqs/early-pregnancy-loss",
+        "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/11/early-pregnancy-loss",
+        "https://www.acog.org/womens-health/faqs/ectopic-pregnancy"
+      ],
+      "internalLinks": [
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "intent": "PGT-A是否为代孕前必需检查以及决策限制",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights.html",
+      "marker": "YUNDA-ZH-B2-Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-use-of-preimplantation-genetic-testing-for-aneuploidy-a-committee-opinion-2024/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.cdc.gov/art/success-rates/interpret.html"
+      ],
+      "internalLinks": [
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-process",
+        "/zh/egg-donation"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "intent": "代孕中使用自体卵与捐赠卵的决策与数据口径",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights.html",
+      "marker": "YUNDA-ZH-B2-Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "sources": [
+        "https://www.cdc.gov/art/success-rates/interpret.html",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-regarding-gamete-and-embryo-donation/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+      ],
+      "internalLinks": [
+        "/zh/egg-donation",
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-process"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "intent": "PGT-P多基因胚胎筛查的临床限制与伦理问题",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution.html",
+      "marker": "YUNDA-ZH-B2-Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "sources": [
+        "https://www.asrm.org/news-and-events/asrm-news/press-releasesbulletins/asrm-ethics-and-practice-committees-release-new-report-concluding-polygenic-embryo-screening-is-not-ready-for-clinical-use/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-use-of-preimplantation-genetic-testing-for-aneuploidy-a-committee-opinion-2024/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/"
+      ],
+      "internalLinks": [
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-process",
+        "/zh/egg-donation"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "intent": "子宫切除后通过代孕生育的医学评估路径",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Surrogacy-After-Hysterectomy-Is-It-Still-Possible.html",
+      "marker": "YUNDA-ZH-B2-Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "sources": [
+        "https://www.acog.org/womens-health/faqs/hysterectomy",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-preservation-in-patients-with-medical-indications-a-committee-opinion-2026/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
+      ],
+      "internalLinks": [
+        "/zh/partner-ivf-clinics",
+        "/zh/egg-donation",
+        "/zh/surrogacy-process"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "intent": "加州代孕申请的机构初筛、医学批准和法律审查",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained.html",
+      "marker": "YUNDA-ZH-B2-Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+      ],
+      "internalLinks": [
+        "/zh/surrogate-requirements",
+        "/zh/be-surrogate",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "intent": "代孕妈妈资格、补偿构成与合同边界",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-2/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria.html",
+      "marker": "YUNDA-ZH-B2-Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+        "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962."
+      ],
+      "internalLinks": [
+        "/zh/surrogate-requirements",
+        "/zh/be-surrogate",
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-cost"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    }
+  ]
+}

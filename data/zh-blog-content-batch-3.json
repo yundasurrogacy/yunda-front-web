@@ -1,0 +1,177 @@
+{
+  "batch": 3,
+  "preparedAt": "2026-07-31",
+  "reviewDate": "2026年7月31日",
+  "expectedCount": 7,
+  "updates": [
+    {
+      "route_id": "Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "intent": "代孕妈妈孕产保险的核验流程与常见除外",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers.html",
+      "marker": "YUNDA-ZH-B3-Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
+      "sources": [
+        "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+        "https://www.healthcare.gov/what-if-im-pregnant-or-plan-to-get-pregnant/",
+        "https://webapps.dol.gov/elaws/elg/erisa.htm"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-cost",
+        "/zh/surrogacy-process"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "intent": "代孕融资的预算步骤、信贷成本与风险比较",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed.html",
+      "marker": "YUNDA-ZH-B3-How-to-Afford-Surrogacy-Smart-Financing-Options-Revealed",
+      "sources": [
+        "https://www.consumerfinance.gov/ask-cfpb/do-personal-installment-loans-have-fees-en-2120/",
+        "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loan-interest-rate-and-the-apr-en-733/",
+        "https://www.consumerfinance.gov/ask-cfpb/what-is-a-home-equity-loan-en-106/",
+        "https://consumer.ftc.gov/articles/donating-through-crowdfunding-and-fundraising-platforms"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-cost",
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "intent": "美国代孕总预算的包含项、发生时间与核验方法",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You.html",
+      "marker": "YUNDA-ZH-B3-2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
+      "sources": [
+        "https://www.circlesurrogacy.com/",
+        "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loan-interest-rate-and-the-apr-en-733/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-cost",
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-process"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "intent": "IVF与代孕保险的总览核验矩阵",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide.html",
+      "marker": "YUNDA-ZH-B3-Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
+      "sources": [
+        "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+        "https://webapps.dol.gov/elaws/elg/erisa.htm",
+        "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-cost"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "intent": "准父母核验IVF保险的操作清单",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know.html",
+      "marker": "YUNDA-ZH-B3-Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
+      "sources": [
+        "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/",
+        "https://webapps.dol.gov/elaws/elg/erisa.htm",
+        "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf"
+      ],
+      "internalLinks": [
+        "/zh/partner-ivf-clinics",
+        "/zh/surrogacy-protection-california",
+        "/zh/surrogacy-cost"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "intent": "California SB 729的适用计划、生效规则与第三方生殖边界",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained.html",
+      "marker": "YUNDA-ZH-B3-California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
+      "sources": [
+        "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false",
+        "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf",
+        "https://webapps.dol.gov/elaws/elg/erisa.htm"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-protection-california",
+        "/zh/partner-ivf-clinics",
+        "/zh/single-parents-lgbtq"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    },
+    {
+      "route_id": "New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "intent": "LGBTQ+与单身家庭的生育保障法规和保单核验",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-3/New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026.html",
+      "marker": "YUNDA-ZH-B3-New-Fertility-Coverage-Rules-for-LGBTQ-Single-Parents-in-2026",
+      "sources": [
+        "https://www.leginfo.legislature.ca.gov/faces/billCompareClient.xhtml?bill_id=202320240SB729&showamends=false",
+        "https://www.dmhc.ca.gov/Portals/0/Docs/OPL/APL25-021-ImplementationofSenateBill729%282024%29-REVISED%282_23_2026%29.pdf",
+        "https://familyequality.org/providers-database/"
+      ],
+      "internalLinks": [
+        "/zh/single-parents-lgbtq",
+        "/zh/surrogacy-protection-california",
+        "/zh/partner-ivf-clinics"
+      ],
+      "reviewStatus": "reviewed-by-kayla-luo-industry-editorial",
+      "publishEligible": true,
+      "reviewer": {
+        "name": "Kayla Luo",
+        "title": "北美区副总裁",
+        "profileUrl": "/zh/about#kayla-luo",
+        "scope": "辅助生殖行业流程与编辑审阅"
+      }
+    }
+  ]
+}

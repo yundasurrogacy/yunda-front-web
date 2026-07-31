@@ -1,0 +1,62 @@
+{
+  "batch": 6,
+  "preparedAt": "2026-07-31",
+  "reviewDate": "2026年7月31日",
+  "expectedCount": 3,
+  "updates": [
+    {
+      "route_id": "Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "intent": "准父母与代孕者如何匹配沟通和长期边界",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-6/Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship.html",
+      "marker": "YUNDA-ZH-B6-Intended-Parents-and-Surrogates-Finding-the-Right-Surrogate-Relationship",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-protection-california",
+        "/zh/be-parents"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    },
+    {
+      "route_id": "Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "intent": "通过代孕出生的孩子、遗传关系和法律亲子关系术语",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-6/Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families.html",
+      "marker": "YUNDA-ZH-B6-Surrogate-Baby-Meaning-How-Surrogacy-Creates-Families",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+      ],
+      "internalLinks": [
+        "/zh/surrogacy-process",
+        "/zh/surrogacy-protection-california",
+        "/zh/egg-donation"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    },
+    {
+      "route_id": "What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "intent": "准父亲、遗传父亲和法律父亲的区别",
+      "draftFile": "seo-project/05-content/drafts/zh-blog-content/2026-07-31-batch-6/What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning.html",
+      "marker": "YUNDA-ZH-B6-What-Is-a-Surrogacy-Father--Understanding-the-Role-and-Meaning",
+      "sources": [
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/the-international-glossary-on-infertility-and-fertility-care-2025/",
+        "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/",
+        "https://www.asrm.org/practice-guidance/ethics-opinions/informing-offspring-of-their-conception-by-gamete-or-embryo-donation-an-ethics-committee-opinion-2018/"
+      ],
+      "internalLinks": [
+        "/zh/single-parents-lgbtq",
+        "/zh/egg-donation",
+        "/zh/surrogacy-protection-california"
+      ],
+      "reviewStatus": "editorial-source-verified",
+      "publishEligible": true
+    }
+  ]
+}

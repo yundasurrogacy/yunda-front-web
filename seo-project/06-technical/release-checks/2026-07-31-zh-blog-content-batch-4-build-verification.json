@@ -1,0 +1,108 @@
+{
+  "verification_type": "zh-blog-content-batch-4-build",
+  "verified_at": "2026-07-31T03:37:28.603Z",
+  "pages_checked": 6,
+  "chinese_missing_routes_checked": 38,
+  "chinese_missing_routes_generated": [],
+  "fallback_200_absent": true,
+  "fallback_404_noindex": true,
+  "pages": [
+    {
+      "route_id": "2026-Surrogacy-Law-Map-States-That-Protect-Intended-Parents",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    },
+    {
+      "route_id": "Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
+      "checks": {
+        "content_marker": true,
+        "internal_links": true,
+        "source_links": true,
+        "exact_title": true,
+        "exact_description": true,
+        "canonical": true,
+        "english_hreflang": true,
+        "chinese_hreflang": true,
+        "article_schema": true,
+        "indexable": true,
+        "mobile_safe_structure": true
+      }
+    }
+  ],
+  "failures": []
+}

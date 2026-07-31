@@ -1,0 +1,35 @@
+{
+  "action": "apply-progress",
+  "updated_at": "2026-07-31T03:35:16.678Z",
+  "source_snapshot_sha256": "675ed4cb646c975e49f2639e315c4783eafe9012c97bbc2851129ecce1f2ad38",
+  "applied": [
+    {
+      "route_id": "Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
+      "content_sha256": "40b61b420798665f72802d0a9eb597649f7830d9df7459aea85a17699b3db429"
+    },
+    {
+      "route_id": "Do-You-Need-PGT-A-Before-Surrogacy-2026-ASRM-Insights",
+      "content_sha256": "80fe76cf6e8dc85398475a1c8768cc3dcb238bcdb63e3f8d19a8267b71e26818"
+    },
+    {
+      "route_id": "Donor-Egg-vs-Own-Eggs-for-Surrogacy-2026-Data-Insights",
+      "content_sha256": "aac2cc780dd73e2438258757fcc398448e2d1be2c78b63134b64892ed5bb1f6c"
+    },
+    {
+      "route_id": "Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
+      "content_sha256": "595c2d37ab60f1e894783dabbff753787a0ee154344fda818f6a7b49c4c89223"
+    },
+    {
+      "route_id": "Surrogacy-After-Hysterectomy-Is-It-Still-Possible",
+      "content_sha256": "41e7e180712bed4e9881b902ff5ce6aaadb0b1a931cdfc06564caf358195ef9b"
+    },
+    {
+      "route_id": "Can-You-Become-a-Surrogate-in-California-Key-Requirements-Explained",
+      "content_sha256": "ec7f403237a24e6a0771415760b0220d1ba3544b4c4b94005d549e14bf0eb788"
+    },
+    {
+      "route_id": "Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
+      "content_sha256": "97dbdc2ffce7764274a473744373164587714ef1a7e1bbf92e769c36d67ca7bf"
+    }
+  ]
+}
