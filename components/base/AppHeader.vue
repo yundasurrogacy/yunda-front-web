@@ -15,33 +15,53 @@ const isHomePage = computed(() => route.path === homePath.value)
   <!-- 占位元素，防止内容被固定的 header 遮挡 -->
   <div class="h-20 w-full md:h-25" />
 
-  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
-    <!-- Left Menu Button (always visible) -->
-    <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
-      <img src="/images/shared/ui/menu.svg" alt="Menu" class="h-10 w-10">
-    </button>
+  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between overflow-hidden bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
+    <!-- 左右等宽槽位，避免语言切换比菜单宽时视觉上把 Logo「挤歪」 -->
+    <div class="z-10 w-28 flex shrink-0 items-center justify-start">
+      <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">
+        <img src="/images/shared/ui/menu.svg" alt="Menu" class="h-10 w-10" width="40" height="40">
+      </button>
+    </div>
 
-    <!-- Logo -->
-    <div class="absolute left-1/2 -translate-x-1/2 transform">
-      <h1 v-if="isHomePage" class="m-0">
-        <NuxtLink :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
+    <!-- Logo：相对 header 真正水平+垂直居中，并限制高度防止溢出 -->
+    <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+      <h1 v-if="isHomePage" class="pointer-events-auto m-0 leading-none">
+        <NuxtLink :to="homePath" class="inline-flex items-center justify-center" aria-label="Yunda Surrogacy">
           <span class="sr-only">Yunda Surrogacy</span>
           <picture>
             <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-            <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+            <img
+              src="/images/shared/brand/logo.png"
+              alt="Yunda Logo"
+              width="80"
+              height="73"
+              class="block h-14 w-auto max-h-14 object-contain md:h-16 md:max-h-16"
+              decoding="async"
+            >
           </picture>
         </NuxtLink>
       </h1>
-      <NuxtLink v-else :to="homePath" class="inline-block" aria-label="Yunda Surrogacy">
+      <NuxtLink
+        v-else
+        :to="homePath"
+        class="pointer-events-auto inline-flex items-center justify-center"
+        aria-label="Yunda Surrogacy"
+      >
         <picture>
           <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-          <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-20" loading="lazy" decoding="async">
+          <img
+            src="/images/shared/brand/logo.png"
+            alt="Yunda Logo"
+            width="80"
+            height="73"
+            class="block h-14 w-auto max-h-14 object-contain md:h-16 md:max-h-16"
+            decoding="async"
+          >
         </picture>
       </NuxtLink>
     </div>
 
-    <!-- Language switcher: same EN / 中文 control on mobile and desktop -->
-    <nav class="app-header-lang flex shrink-0 items-center" aria-label="Language">
+    <nav class="app-header-lang z-10 w-28 flex shrink-0 items-center justify-end" aria-label="Language">
       <LanguageSwitcher />
     </nav>
   </header>
