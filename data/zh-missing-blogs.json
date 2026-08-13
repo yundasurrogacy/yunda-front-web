@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-05T21:10:31.441Z",
+  "generatedAt": "2026-08-13T09:22:41.560Z",
   "signalReliable": true,
   "signal": "Chinese detail content field from /api/blog?route_id=...&lang=zh (authoritative)",
-  "totalBlogPosts": 81,
+  "totalBlogPosts": 82,
   "zhMissingCount": 39,
   "routes": [
     "/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",

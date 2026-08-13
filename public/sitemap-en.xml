@@ -200,10 +200,18 @@
   </url>
   <!-- Blog -->
   <url>
+    <loc>https://www.yundasurrogacy.com/blog/egg-donation-and-surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/egg-donation-and-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/egg-donation-and-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/egg-donation-and-surrogacy" />
+    <lastmod>2026-08-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.yundasurrogacy.com/blog/how-to-find-a-surrogate-in-california</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/how-to-find-a-surrogate-in-california" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/how-to-find-a-surrogate-in-california" />
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
