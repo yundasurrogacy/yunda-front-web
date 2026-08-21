@@ -45,7 +45,7 @@ const footerGroups = computed(() => [
 </script>
 
 <template>
-  <footer class="bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
+  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
     <div class="mx-auto max-w-300 md:max-w-full">
       <!-- Footer Content -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between">

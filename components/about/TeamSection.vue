@@ -136,7 +136,7 @@ onMounted(() => {
   justify-self: center;
   overflow: hidden;
   border-radius: 1.75rem 1.75rem 0.75rem 0.75rem;
-  background: color-mix(in srgb, var(--yunda-maple) 9%, var(--yunda-petal));
+  background: white;
   box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--yunda-bark) 12%, transparent);
 }
 
