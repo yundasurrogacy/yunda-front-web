@@ -48,34 +48,28 @@ const heroParagraphs = computed(() => [
   t('about.hero.highlight'),
 ].filter(Boolean))
 
-function teamBio(nameKey) {
-  const paragraphs = []
-  let index = 1
-  while (true) {
-    const value = t(`about.team.${nameKey}.bio.paragraph${index}`)
-    if (!value || value.startsWith(`about.team.${nameKey}.bio.paragraph`))
-      break
-    paragraphs.push(value)
-    index++
-  }
-  return paragraphs
+function teamBio(nameKey, paragraphCount) {
+  return Array.from(
+    { length: paragraphCount },
+    (_, index) => t(`about.team.${nameKey}.bio.paragraph${index + 1}`),
+  )
 }
 
 const teamMemberDefinitions = [
-  { key: 'kareZhang', id: 'kare-zhang' },
-  { key: 'kaylaLuo', id: 'kayla-luo', image: '/images/pages/about/kayla-luo-2026.jpg' },
-  { key: 'michaelSim', id: 'michael-sim', image: '/images/pages/about/michael-sim-2026.jpg' },
-  { key: 'claraChen', id: 'clara-chen' },
-  { key: 'moonLiang', id: 'moon-liang' },
-  { key: 'celiaChen', id: 'celia-chen' },
-  { key: 'nickyZhang', id: 'nicky-zhang' },
+  { key: 'kareZhang', id: 'kare-zhang', paragraphCount: 4 },
+  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-2026.jpg' },
+  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-2026.jpg' },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
+  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3 },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3 },
+  { key: 'nickyZhang', id: 'nicky-zhang', paragraphCount: 4 },
 ]
 
 const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
   ...member,
   title: t(`about.team.${member.key}.name`),
   jobTitle: t(`about.team.${member.key}.title`),
-  text: teamBio(member.key).join(' '),
+  text: teamBio(member.key, member.paragraphCount).join(' '),
 })))
 
 const aboutPageSchema = computed(() => buildWebPageSchema({
