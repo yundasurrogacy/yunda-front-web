@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T15:18:35.489Z",
+  "generatedAt": "2026-08-21T08:06:26.321Z",
   "sections": {
     "en": [
       {
@@ -153,6 +153,18 @@
           {
             "href": "/blog",
             "label": "Blog Index"
+          },
+          {
+            "href": "/blog/surrogate-medical-screening-process",
+            "label": "Surrogate Medical Screening Process: Tests, Timeline, and Clinic Clearance"
+          },
+          {
+            "href": "/blog/egg-donation-and-surrogacy",
+            "label": "Egg Donation and Surrogacy: How the Two Processes Work Together"
+          },
+          {
+            "href": "/blog/how-to-find-a-surrogate-in-california",
+            "label": "How to Find a Surrogate in California: Matching, Screening, Timeline, and Next Steps"
           },
           {
             "href": "/blog/already-have-embryos-before-surrogate-matching",
@@ -392,7 +404,7 @@
           },
           {
             "href": "/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
-            "label": "What Is Com Surrogate and How Does Surrogacy Work in 2025"
+            "label": "What Is a “Com Surrogate” and How Does Surrogacy Work?"
           },
           {
             "href": "/blog/how-to-afford-surrogacy",
@@ -428,7 +440,7 @@
           },
           {
             "href": "/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
-            "label": "Surrogacy & Insurance: A 2025 Coverage Guide"
+            "label": "Surrogacy & Insurance: A Coverage Guide"
           },
           {
             "href": "/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
@@ -444,11 +456,11 @@
           },
           {
             "href": "/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
-            "label": "California Surrogacy Laws 2025: Legal Rights & Process Explained"
+            "label": "California Surrogacy Laws: Legal Rights & Process Explained"
           },
           {
             "href": "/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
-            "label": "Real Surrogate Journeys 2025: Why They Chose Yunda Surrogacy"
+            "label": "Real Surrogate Journeys: Why They Chose Yunda Surrogacy"
           },
           {
             "href": "/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
@@ -456,11 +468,11 @@
           },
           {
             "href": "/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
-            "label": "Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda"
+            "label": "Gestational Surrogacy Process: Step-by-Step Guide with Yunda"
           },
           {
             "href": "/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
-            "label": "Surrogacy and Insurance 2025: Essential Coverage for Surrogate Mothers"
+            "label": "Surrogacy and Insurance: Essential Coverage for Surrogate Mothers"
           },
           {
             "href": "/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
@@ -468,14 +480,14 @@
           },
           {
             "href": "/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
-            "label": "Surrogate Mother Requirements 2025: Qualifications & Key Criteria"
+            "label": "Surrogate Mother Requirements: Qualifications & Key Criteria"
           },
           {
             "href": "/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
             "label": "Surrogate Salary vs. Compensation and Benefits"
           }
         ],
-        "note": "Posts fetched from API: 80 items.",
+        "note": "Posts fetched from API: 83 items.",
         "className": "section-blog"
       }
     ],
@@ -633,6 +645,10 @@
             "label": "博客列表"
           },
           {
+            "href": "/zh/blog/egg-donation-and-surrogacy",
+            "label": "卵子捐赠与代孕：这两个过程如何协同运作"
+          },
+          {
             "href": "/zh/blog/Best-States-for-LGBTQ-Surrogacy-in-2026-Why-California-Leads",
             "label": "2026年最适合LGBTQ+群体代孕的州：加州为何领先"
           },
@@ -718,7 +734,7 @@
           },
           {
             "href": "/zh/blog/Nonviable-Pregnancy-Explained-Causes-Signs-and-Next",
-            "label": "非存活妊娠详解：原因、���状和后续步骤"
+            "label": "非存活妊娠详解：原因、症状和后续步骤"
           },
           {
             "href": "/zh/blog/Is-IVF-Covered-by-Insurance-What-Intended-Parents-Should-Know",
@@ -786,22 +802,22 @@
           },
           {
             "href": "/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
-            "label": "2025年代孕与保险：代孕母亲的基本保障"
+            "label": "代孕与保险：代孕妈妈需要了解的基本保障"
           },
           {
             "href": "/zh/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
-            "label": "2025年代孕费用明细：美国家庭代孕费用透明化"
+            "label": "代孕费用明细：美国家庭代孕费用透明化"
           },
           {
             "href": "/zh/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
-            "label": "2025年代孕母亲要求：资格和关键标准"
+            "label": "代孕妈妈要求：资格与关键标准"
           },
           {
             "href": "/zh/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
-            "label": "2025年代孕妈妈的薪酬和福利：每位代孕妈妈都应该了解的关键信息"
+            "label": "代孕妈妈的补偿与福利：需要了解的关键信息"
           }
         ],
-        "note": "从接口获取文章：42篇。",
+        "note": "从接口获取文章：43篇。",
         "className": "section-blog"
       }
     ]
