@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-13T09:22:41.560Z",
+  "generatedAt": "2026-08-21T08:08:41.738Z",
   "signalReliable": true,
   "signal": "Chinese detail content field from /api/blog?route_id=...&lang=zh (authoritative)",
-  "totalBlogPosts": 82,
-  "zhMissingCount": 39,
+  "totalBlogPosts": 83,
+  "zhMissingCount": 40,
   "routes": [
     "/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",
     "/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
@@ -42,6 +42,7 @@
     "/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
     "/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
     "/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+    "/zh/blog/surrogate-medical-screening-process",
     "/zh/blog/surrogate-mother-health-insurance-questions-2026",
     "/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor"
   ]

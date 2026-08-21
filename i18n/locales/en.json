@@ -1714,15 +1714,78 @@
       "highlight": "Yunda walks beside you—with honesty, respect, and unwavering dedication."
     },
     "team": {
+      "kareZhang": {
+        "name": "Kare Zhang",
+        "title": "Founder & CEO",
+        "imageAlt": "Portrait of Kare Zhang, Founder and CEO of Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "Kare Zhang earned his Bachelor's degree from The Oregon State University before building his career in technology, software development, and digital media. His background in innovation and client-focused technology continues to shape Yunda Surrogacy's commitment to delivering a more transparent, efficient, and personalized experience for intended parents.",
+          "paragraph2": "Kare's passion for surrogacy began with his own family's journey. After becoming a father through surrogacy, he developed a deeper appreciation for the life-changing impact of family building while recognizing opportunities to improve the client experience. Inspired by his personal journey, he founded Yunda Surrogacy with a mission to make the surrogacy process more transparent, supportive, and accessible for families around the world.",
+          "paragraph3": "As Founder and CEO, Kare leads Yunda's long-term vision, strategic partnerships, and technology innovation. Drawing on his experience in software development and digital media, he has helped build Yunda's proprietary bilingual CRM platform to enhance communication, streamline case management, and provide greater visibility throughout the surrogacy journey. He is also passionate about using storytelling to increase public understanding of surrogacy and help more families feel informed, supported, and empowered.",
+          "paragraph4": "Kare believes that every family-building journey deserves trust, compassion, and exceptional care. His vision is to combine innovative technology with personalized service, creating an experience where intended parents feel confident, connected, and supported from the very first conversation through the joyful arrival of their child."
+        }
+      },
       "kaylaLuo": {
         "name": "Kayla Luo",
-        "title": "Vice President, North America",
+        "title": "Co-Founder & COO",
+        "imageAlt": "Portrait of Kayla Luo, Co-Founder and COO of Yunda Surrogacy",
         "bio": {
-          "paragraph1": "Kayla earned her degree from Cornell University and completed her graduate studies at Columbia University. She is fluent in Mandarin, English, and German, and brings over 8 years of experience in the field of assisted reproduction.",
-          "paragraph2": "Before founding Yunda Surrogacy, she worked as an international fertility consultant, helping clients from diverse cultural backgrounds complete their journeys through surrogacy and egg donation.",
-          "paragraph3": "Kayla's passion for this work stems from personal experience. As a mother of two children born through surrogacy, she has lived the joy and uncertainty of this process firsthand. Her encounters with unqualified legal advice and a lack of transparency fueled her commitment to creating a more ethical, warm, and professional surrogacy platform.",
-          "paragraph4": "At Yunda, Kayla is guided by the principles of legal integrity, emotional support, and clinical excellence. Outside of work, she enjoys traveling, reading, and spending time with her children—who remind her daily of the profound impact of this mission.",
-          "paragraph5": ""
+          "paragraph1": "Kayla Luo earned her Bachelor's degree in German Linguistics and Literature before completing advanced studies in Linguistics at the University of Göttingen in Germany. She later received a Master's degree in Public Administration from Cornell University and a Master's degree in Data Science from Columbia University. Fluent in English, Mandarin, and German, with conversational Spanish, Kayla brings a global perspective and multidisciplinary expertise to Yunda Surrogacy.",
+          "paragraph2": "As Chief Operating Officer, Kayla oversees Yunda's overall operations, technology development, business strategy, and cross-border initiatives. She is passionate about using technology to simplify complex processes, improve operational efficiency, and build systems that create greater transparency for intended parents, surrogates, and industry partners.",
+          "paragraph3": "Kayla is particularly committed to making ethical U.S. surrogacy more accessible to international intended parents. She understands the challenges families face when navigating different legal systems, languages, and cultures, and works to remove those barriers through education, innovation, and streamlined operations.",
+          "paragraph4": "She also believes that increasing public understanding of ethical surrogacy is essential to the future of the industry. Through education, technology, and international collaboration, Kayla is dedicated to promoting transparent, legally protected surrogacy while helping families around the world pursue parenthood with confidence."
+        }
+      },
+      "michaelSim": {
+        "name": "Michael Sim",
+        "title": "Co-Founder & Vice President, Asia-Pacific",
+        "imageAlt": "Portrait of Michael Sim, Co-Founder and Vice President of Asia-Pacific at Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "Michael holds a Bachelor's degree in Business from the London School of Economics and Political Science (LSE). With a background in business development, strategic partnerships, and international marketing, he brings extensive experience across technology, media, and assisted reproductive services.",
+          "paragraph2": "Since entering the assisted reproductive industry in 2018, Michael has built a strong network throughout the Asia-Pacific fertility community, working closely with fertility clinics, physicians, agencies, and industry partners. His expertise in cross-border business development and international collaboration has helped connect intended parents with trusted reproductive resources across multiple countries.",
+          "paragraph3": "As Vice President of Asia-Pacific at Yunda Surrogacy, Michael leads the company's regional strategy, business development, and strategic partnerships throughout Asia. He is committed to expanding access to ethical U.S. surrogacy while strengthening relationships with fertility professionals and partner organizations across the region.",
+          "paragraph4": "Michael believes that international family building begins with trust, education, and strong collaboration. His goal is to bridge cultures, simplify cross-border communication, and help intended parents navigate their family-building journey with confidence."
+        }
+      },
+      "claraChen": {
+        "name": "Clara Chen",
+        "title": "Director of Client Operations",
+        "imageAlt": "Portrait of Clara Chen, Director of Client Operations at Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "With nearly a decade of experience in the surrogacy industry, Clara Chen leads Yunda Surrogacy's Client Operations team, overseeing the intended parent experience from onboarding through journey completion. She is passionate about delivering responsive, personalized service and ensuring every family feels supported throughout the surrogacy journey.",
+          "paragraph2": "Over the years, Clara has guided hundreds of intended parents from around the world through both domestic and international surrogacy journeys. She leads Yunda's team of case managers and works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance specialists, and other trusted partners to ensure every journey progresses smoothly—from matching and medical screening to legal clearance, embryo transfer, pregnancy, and delivery.",
+          "paragraph3": "Clara is committed to building a client experience defined by trust, clear communication, and attention to detail. She believes that every family's journey is unique and takes pride in helping intended parents feel informed, supported, and confident as they navigate one of the most meaningful experiences of their lives."
+        }
+      },
+      "moonLiang": {
+        "name": "Moon Liang",
+        "title": "Surrogate Services Manager",
+        "imageAlt": "Portrait of Moon Liang, Surrogate Services Manager at Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "Moon Liang holds dual Master's degrees from Columbia University in Quantitative Methods in the Social Sciences and Public Administration. Her background in analytics, operations, and strategic planning allows her to combine thoughtful decision-making with a compassionate, people-centered approach to surrogacy.",
+          "paragraph2": "As Director of Surrogate Services at Yunda Surrogacy, Moon leads the recruitment, screening, and matching of gestational carriers, working closely with intended parents, fertility clinics, and agency partners to ensure every journey begins with the right foundation. She is committed to building a strong and supportive surrogate community while maintaining the highest standards of professionalism, transparency, and care.",
+          "paragraph3": "Fluent in both English and Mandarin, Moon is passionate about creating meaningful connections between intended parents and gestational carriers. She believes that successful surrogacy begins with trust, clear communication, and genuine relationships, and is dedicated to helping every family move forward with confidence from the very first step."
+        }
+      },
+      "celiaChen": {
+        "name": "Celia Chen",
+        "title": "Case Manager",
+        "imageAlt": "Portrait of Celia Chen, Case Manager at Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "Celia earned her Bachelor's degree from the University of California, San Diego and her Master's degree from the University of Southern California. She is passionate about helping intended parents navigate the surrogacy journey with confidence, compassion, and clear communication.",
+          "paragraph2": "At Yunda Surrogacy, Celia serves as the primary point of contact for intended parents throughout their journey. She works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance specialists, and other trusted partners to guide each case from matching and medical screening through legal clearance, embryo transfer, pregnancy, and delivery.",
+          "paragraph3": "Celia believes that every surrogacy journey is unique and deserves personalized care. She is committed to building trusted relationships with intended parents and surrogates, providing thoughtful guidance and timely support throughout the process. The greatest reward in her work is celebrating alongside families as they welcome the child they have long hoped for."
+        }
+      },
+      "nickyZhang": {
+        "name": "Nicky Zhang",
+        "title": "Donor Program Coordinator",
+        "imageAlt": "Portrait of Nicky Zhang, Donor Program Coordinator at Yunda Surrogacy",
+        "bio": {
+          "paragraph1": "Nicky earned her Bachelor's degree from the University of California, Irvine and is currently pursuing her Master's degree at Pepperdine University. She is passionate about providing compassionate, organized, and personalized support to intended parents and donors throughout their family-building journey.",
+          "paragraph2": "With a background in psychology, Nicky understands the importance of recognizing and supporting the unique emotional experiences of both intended parents and donors. Her training allows her to approach each interaction with empathy and sensitivity, while better understanding the different emotions, concerns, and expectations that may arise throughout the donation process.",
+          "paragraph3": "As Donor Program Coordinator at Yunda Surrogacy, Nicky works closely with egg donors, intended parents, fertility clinics, and partner agencies to coordinate every stage of the donor process. From donor matching and screening to medical appointments and ongoing communication, she helps ensure that each journey is well organized, efficient, and fully supported.",
+          "paragraph4": "Nicky believes that every donation represents an opportunity to help build a family. She enjoys building meaningful relationships with both donors and intended parents, making what can often feel like a complex process more approachable and reassuring. For Nicky, the most rewarding part of her work is knowing that her support helps families take an important step toward achieving their dream of parenthood."
         }
       }
     },

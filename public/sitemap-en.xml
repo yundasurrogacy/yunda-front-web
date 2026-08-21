@@ -200,6 +200,13 @@
   </url>
   <!-- Blog -->
   <url>
+    <loc>https://www.yundasurrogacy.com/blog/surrogate-medical-screening-process</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/surrogate-medical-screening-process" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/surrogate-medical-screening-process" />
+    <lastmod>2026-08-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.yundasurrogacy.com/blog/egg-donation-and-surrogacy</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/egg-donation-and-surrogacy" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/egg-donation-and-surrogacy" />
@@ -606,7 +613,7 @@
     <loc>https://www.yundasurrogacy.com/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation" />
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>

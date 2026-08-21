@@ -1,23 +1,20 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { buildBreadcrumbListSchema, buildProfilePageSchema, buildWebPageSchema } from '~/utils/schema'
+import { buildBreadcrumbListSchema, buildWebPageSchema } from '~/utils/schema'
 import AboutCareerSection from '../components/about/CareerSection.vue'
 import AboutHeroSection from '../components/about/HeroSection.vue'
 import PhotoGallerySection from '../components/about/PhotoGallerySection.vue'
 import AboutTeamSection from '../components/about/TeamSection.vue'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
-import SeoTrustNote from '../components/base/SeoTrustNote.vue'
 
 const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
-const localePath = useLocalePath()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en, zh) => (isZh.value ? zh : en)
-const dateModified = '2026-06-30'
-const reviewerId = computed(() => `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo`)
+const dateModified = '2026-08-21'
 
 const trustStandards = computed(() => [
   {
@@ -51,26 +48,29 @@ const heroParagraphs = computed(() => [
   t('about.hero.highlight'),
 ].filter(Boolean))
 
-function teamBio(nameKey) {
-  const paragraphs = []
-  let index = 1
-  while (true) {
-    const value = t(`about.team.${nameKey}.bio.paragraph${index}`)
-    if (!value || value.startsWith(`about.team.${nameKey}.bio.paragraph`))
-      break
-    paragraphs.push(value)
-    index++
-  }
-  return paragraphs
+function teamBio(nameKey, paragraphCount) {
+  return Array.from(
+    { length: paragraphCount },
+    (_, index) => t(`about.team.${nameKey}.bio.paragraph${index + 1}`),
+  )
 }
 
-const teamMembers = computed(() => [
-  {
-    title: t('about.team.kaylaLuo.name'),
-    jobTitle: t('about.team.kaylaLuo.title'),
-    text: teamBio('kaylaLuo').join(' '),
-  },
-])
+const teamMemberDefinitions = [
+  { key: 'kareZhang', id: 'kare-zhang', paragraphCount: 4 },
+  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-2026.jpg' },
+  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-2026.jpg' },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
+  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3 },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3 },
+  { key: 'nickyZhang', id: 'nicky-zhang', paragraphCount: 4 },
+]
+
+const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
+  ...member,
+  title: t(`about.team.${member.key}.name`),
+  jobTitle: t(`about.team.${member.key}.title`),
+  text: teamBio(member.key, member.paragraphCount).join(' '),
+})))
 
 const aboutPageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value || undefined,
@@ -82,7 +82,6 @@ const aboutPageSchema = computed(() => buildWebPageSchema({
     ? ['准父母', '代孕妈妈', '国际家庭']
     : ['Intended parents', 'Surrogates', 'International families'],
   dateModified,
-  reviewedBy: { '@id': reviewerId.value },
   locale: locale.value,
 }))
 
@@ -95,34 +94,24 @@ const aboutBreadcrumbSchema = computed(() => buildBreadcrumbListSchema({
   ],
 }))
 
-const founderSchema = computed(() => {
+const teamPersonSchemas = computed(() => {
   const baseUrl = siteUrl.value || 'https://www.yundasurrogacy.com'
   const aboutPath = locale.value === 'zh' ? '/zh/about' : '/about'
 
-  return {
+  return teamMembers.value.map(member => ({
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': `${baseUrl}/about#kayla-luo`,
-    'name': teamMembers.value[0]?.title,
-    'jobTitle': teamMembers.value[0]?.jobTitle,
-    'description': teamMembers.value[0]?.text,
-    'url': `${baseUrl}${aboutPath}`,
+    '@id': `${baseUrl}/about#${member.id}`,
+    'name': member.title,
+    'jobTitle': member.jobTitle,
+    'description': member.text,
+    'url': `${baseUrl}${aboutPath}#${member.id}`,
+    ...(member.image ? { image: `${baseUrl}${member.image}` } : {}),
     'worksFor': {
       '@id': `${baseUrl}/#organization`,
     },
-  }
+  }))
 })
-
-const founderProfileSchema = computed(() => buildProfilePageSchema({
-  baseUrl: siteUrl.value || undefined,
-  url: '/about',
-  name: teamMembers.value[0]?.title
-    ? `${teamMembers.value[0].title} Profile`
-    : 'Kayla Luo Profile',
-  description: teamMembers.value[0]?.text,
-  person: founderSchema.value,
-  locale: locale.value,
-}))
 
 useHead(() => ({
   script: [
@@ -137,14 +126,9 @@ useHead(() => ({
       children: JSON.stringify(aboutBreadcrumbSchema.value),
     },
     {
-      key: 'schema-about-founder',
+      key: 'schema-about-team',
       type: 'application/ld+json',
-      children: JSON.stringify(founderSchema.value),
-    },
-    {
-      key: 'schema-about-founder-profile',
-      type: 'application/ld+json',
-      children: JSON.stringify(founderProfileSchema.value),
+      children: JSON.stringify(teamPersonSchemas.value),
     },
   ],
 }))
@@ -154,17 +138,6 @@ useHead(() => ({
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <AboutHeroSection />
-    <SeoTrustNote
-      :updated="tt('Last updated: June 30, 2026', '最后更新：2026年6月30日')"
-      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
-      :note="tt('This page identifies the Yunda team and how the agency approaches high-stakes surrogacy decisions. Yunda provides coordination and education, not legal, medical, insurance, escrow, or IVF treatment advice.', '本页说明孕达团队以及机构如何处理高风险代孕决策。孕达提供协调与教育说明，不提供法律、医疗、保险、托管或 IVF 治疗建议。')"
-      :sources="[
-        { label: tt('Intended parent hub', '准父母指南'), href: localePath('/intended-parents') },
-        { label: tt('Surrogate hub', '代孕妈妈指南'), href: localePath('/surrogates') },
-        { label: tt('Disclaimer', '免责声明'), href: localePath('/disclaimer') },
-        { label: tt('Terms', '服务条款'), href: localePath('/terms-of-service') },
-      ]"
-    />
     <section class="bg-[var(--yunda-petal)] px-5 py-12 lg:px-20 lg:py-16">
       <div class="mx-auto max-w-300">
         <div class="max-w-4xl">
