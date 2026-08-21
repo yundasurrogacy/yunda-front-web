@@ -383,7 +383,7 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
+  <div class="site-content-theme font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

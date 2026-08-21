@@ -55,7 +55,7 @@ function toggleMenu() {
         <Transition name="menu-slide">
           <div
             v-if="internalIsOpen"
-            class="side-menu-panel fixed inset-y-0 left-0 w-full overflow-y-auto bg-[color-mix(in_srgb,var(--yunda-petal)_92%,var(--yunda-sky)_8%)] pb-[calc(8rem+env(safe-area-inset-bottom))] backdrop-blur-md lg:max-w-4xl md:max-w-2xl sm:max-w-2xl"
+            class="site-chrome-theme side-menu-panel fixed inset-y-0 left-0 w-full overflow-y-auto bg-[color-mix(in_srgb,var(--yunda-petal)_92%,var(--yunda-sky)_8%)] pb-[calc(8rem+env(safe-area-inset-bottom))] backdrop-blur-md lg:max-w-4xl md:max-w-2xl sm:max-w-2xl"
           >
             <!-- 关闭按钮 -->
             <button class="absolute left-6 top-6 z-10 p-0" @click="toggleMenu">

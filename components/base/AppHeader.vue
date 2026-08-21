@@ -15,7 +15,7 @@ const isHomePage = computed(() => route.path === homePath.value)
   <!-- 占位元素，防止内容被固定的 header 遮挡 -->
   <div class="h-20 w-full md:h-25" />
 
-  <header class="fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between overflow-hidden bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
+  <header class="site-chrome-theme fixed left-0 top-0 z-50 h-20 w-full flex items-center justify-between overflow-hidden bg-[var(--yunda-petal)] px-4.5 md:h-25 md:px-20">
     <!-- 左右等宽槽位，避免语言切换比菜单宽时视觉上把 Logo「挤歪」 -->
     <div class="z-10 w-28 flex shrink-0 items-center justify-start">
       <button class="h-10 w-10 flex items-center justify-center" @click="isMenuOpen = !isMenuOpen">

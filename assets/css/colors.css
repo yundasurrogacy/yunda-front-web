@@ -23,3 +23,13 @@
   --hero-center: #bfc9bfb3;
   --faq-bg: #d2d8ce;
 }
+
+/* Site pages use a clean white canvas; shared chrome keeps the brand petal tone. */
+.site-content-theme {
+  --yunda-petal: #ffffff;
+  background-color: #ffffff;
+}
+
+.site-chrome-theme {
+  --yunda-petal: #faf1e0;
+}
