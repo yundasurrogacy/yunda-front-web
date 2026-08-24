@@ -11,7 +11,6 @@ interface TeamMember {
     width: number
     height: number
     side: 'left' | 'right'
-    blend?: boolean
   }
 }
 
@@ -22,9 +21,9 @@ const teamMembers: TeamMember[] = [
     id: 'kayla-luo',
     paragraphCount: 4,
     image: {
-      src: '/images/pages/about/kayla-luo-2026.jpg',
-      width: 1200,
-      height: 1600,
+      src: '/images/pages/about/kayla-luo-2026.webp',
+      width: 1086,
+      height: 1448,
       side: 'left',
     },
   },
@@ -33,17 +32,35 @@ const teamMembers: TeamMember[] = [
     id: 'michael-sim',
     paragraphCount: 4,
     image: {
-      src: '/images/pages/about/michael-sim-2026.jpg',
-      width: 1200,
-      height: 1600,
+      src: '/images/pages/about/michael-sim-2026.webp',
+      width: 1086,
+      height: 1448,
       side: 'right',
-      blend: true,
     },
   },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3 },
-  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3 },
-  { key: 'nickyZhang', id: 'nicky-zhang', paragraphCount: 4 },
+  {
+    key: 'moonLiang',
+    id: 'moon-liang',
+    paragraphCount: 3,
+    image: {
+      src: '/images/pages/about/moon-liang-2026.webp',
+      width: 1086,
+      height: 1448,
+      side: 'left',
+    },
+  },
+  {
+    key: 'celiaChen',
+    id: 'celia-chen',
+    paragraphCount: 3,
+    image: {
+      src: '/images/pages/about/celia-chen-2026.webp',
+      width: 1086,
+      height: 1448,
+      side: 'right',
+    },
+  },
 ]
 
 const { initScrollAnimation } = useScrollAnimation()
@@ -67,7 +84,6 @@ onMounted(() => {
         <div
           v-if="member.image"
           class="member-portrait slide-left"
-          :class="{ 'member-portrait--blend': member.image.blend }"
         >
           <img
             :src="member.image.src"
@@ -138,10 +154,6 @@ onMounted(() => {
   border-radius: 1.75rem 1.75rem 0.75rem 0.75rem;
   background: white;
   box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--yunda-bark) 12%, transparent);
-}
-
-.member-portrait--blend img {
-  mix-blend-mode: multiply;
 }
 
 .member-heading,
