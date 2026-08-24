@@ -137,6 +137,7 @@ useHead(() => ({
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <AboutHeroSection />
+    <AboutTeamSection />
     <section class="bg-[var(--yunda-petal)] px-5 py-12 lg:px-20 lg:py-16">
       <div class="mx-auto max-w-300">
         <div class="max-w-4xl">
@@ -166,7 +167,6 @@ useHead(() => ({
         </div>
       </div>
     </section>
-    <AboutTeamSection />
     <PhotoGallerySection />
     <AboutCareerSection />
     <AppFooter />
