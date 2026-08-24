@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
     id: 'kayla-luo',
     paragraphCount: 4,
     image: {
-      src: '/images/pages/about/kayla-luo-2026.webp',
+      src: '/images/pages/about/kayla-luo-2026.png',
       width: 1086,
       height: 1448,
       side: 'left',
@@ -32,7 +32,7 @@ const teamMembers: TeamMember[] = [
     id: 'michael-sim',
     paragraphCount: 4,
     image: {
-      src: '/images/pages/about/michael-sim-2026.webp',
+      src: '/images/pages/about/michael-sim-2026.png',
       width: 1086,
       height: 1448,
       side: 'right',
@@ -44,7 +44,7 @@ const teamMembers: TeamMember[] = [
     id: 'moon-liang',
     paragraphCount: 3,
     image: {
-      src: '/images/pages/about/moon-liang-2026.webp',
+      src: '/images/pages/about/moon-liang-2026.png',
       width: 1086,
       height: 1448,
       side: 'left',
@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     id: 'celia-chen',
     paragraphCount: 3,
     image: {
-      src: '/images/pages/about/celia-chen-2026.webp',
+      src: '/images/pages/about/celia-chen-2026.png',
       width: 1086,
       height: 1448,
       side: 'right',
