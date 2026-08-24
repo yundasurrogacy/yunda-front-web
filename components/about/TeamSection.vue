@@ -23,6 +23,7 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 4,
     image: { src: '/images/pages/about/michael-sim-2026.jpg', width: 1086, height: 1448 },
   },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
   {
     key: 'moonLiang',
     id: 'moon-liang',
@@ -35,11 +36,13 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 3,
     image: { src: '/images/pages/about/celia-chen-2026.jpg', width: 1086, height: 1448 },
   },
-  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
 ]
 
 const founder = teamMembers[0]
-const leadership = teamMembers.slice(1)
+const teamGroups = [
+  { labelKey: 'leadership', members: teamMembers.slice(1, 3) },
+  { labelKey: 'ourTeam', members: teamMembers.slice(3) },
+]
 const expandedMemberIds = ref<Set<string>>(new Set())
 
 function isExpanded(memberId: string) {
@@ -105,68 +108,71 @@ onMounted(() => {
         </div>
       </article>
 
-      <div class="leadership-heading">
-        <p class="section-label">
-          {{ $t('about.team.ourTeam') }}
-        </p>
-        <h2>{{ $t('about.team.leadership') }}</h2>
-      </div>
+      <section
+        v-for="group in teamGroups"
+        :key="group.labelKey"
+        class="team-group"
+      >
+        <div class="team-group-heading">
+          <h2>{{ $t(`about.team.${group.labelKey}`) }}</h2>
+        </div>
 
-      <div class="leadership-grid">
-        <article
-          v-for="member in leadership"
-          :id="member.id"
-          :key="member.id"
-          class="member-card"
-          :class="{ 'member-card--without-image': !member.image }"
-        >
-          <div v-if="member.image" class="member-portrait slide-left">
-            <img
-              :src="member.image.src"
-              :alt="$t(`about.team.${member.key}.imageAlt`)"
-              :width="member.image.width"
-              :height="member.image.height"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-
-          <div class="member-copy slide-right">
-            <header>
-              <h3 class="member-name">
-                {{ $t(`about.team.${member.key}.name`) }}
-              </h3>
-              <p class="member-title member-title--badge">
-                {{ $t(`about.team.${member.key}.title`) }}
-              </p>
-            </header>
-
-            <div :id="`${member.id}-bio`" class="member-bio member-card-bio">
-              <template v-if="isExpanded(member.id)">
-                <p
-                  v-for="paragraphIndex in member.paragraphCount"
-                  :key="paragraphIndex"
-                >
-                  {{ $t(`about.team.${member.key}.bio.paragraph${paragraphIndex}`) }}
-                </p>
-              </template>
-              <p v-else class="bio-preview">
-                {{ $t(`about.team.${member.key}.bio.paragraph1`) }}
-              </p>
+        <div class="team-grid">
+          <article
+            v-for="member in group.members"
+            :id="member.id"
+            :key="member.id"
+            class="member-card"
+            :class="{ 'member-card--without-image': !member.image }"
+          >
+            <div v-if="member.image" class="member-portrait slide-left">
+              <img
+                :src="member.image.src"
+                :alt="$t(`about.team.${member.key}.imageAlt`)"
+                :width="member.image.width"
+                :height="member.image.height"
+                loading="lazy"
+                decoding="async"
+              >
             </div>
 
-            <button
-              class="bio-toggle"
-              type="button"
-              :aria-controls="`${member.id}-bio`"
-              :aria-expanded="isExpanded(member.id)"
-              @click="toggleBio(member.id)"
-            >
-              {{ isExpanded(member.id) ? $t('about.team.showLess') : $t('about.team.readFullBio') }}
-            </button>
-          </div>
-        </article>
-      </div>
+            <div class="member-copy slide-right">
+              <header>
+                <h3 class="member-name">
+                  {{ $t(`about.team.${member.key}.name`) }}
+                </h3>
+                <p class="member-title member-title--badge">
+                  {{ $t(`about.team.${member.key}.title`) }}
+                </p>
+              </header>
+
+              <div :id="`${member.id}-bio`" class="member-bio member-card-bio">
+                <template v-if="isExpanded(member.id)">
+                  <p
+                    v-for="paragraphIndex in member.paragraphCount"
+                    :key="paragraphIndex"
+                  >
+                    {{ $t(`about.team.${member.key}.bio.paragraph${paragraphIndex}`) }}
+                  </p>
+                </template>
+                <p v-else class="bio-preview">
+                  {{ $t(`about.team.${member.key}.bio.paragraph1`) }}
+                </p>
+              </div>
+
+              <button
+                class="bio-toggle"
+                type="button"
+                :aria-controls="`${member.id}-bio`"
+                :aria-expanded="isExpanded(member.id)"
+                @click="toggleBio(member.id)"
+              >
+                {{ isExpanded(member.id) ? $t('about.team.showLess') : $t('about.team.readFullBio') }}
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </section>
 </template>
@@ -203,12 +209,15 @@ onMounted(() => {
   line-height: 1;
 }
 
-.leadership-heading {
+.team-group-heading {
   padding-block: clamp(3.5rem, 6vw, 6rem) clamp(2rem, 3vw, 3rem);
 }
 
-.leadership-heading h2 {
-  margin-top: 0.65rem;
+.team-group + .team-group .team-group-heading {
+  padding-top: clamp(4.5rem, 7vw, 7rem);
+}
+
+.team-group-heading h2 {
   color: var(--yunda-bark);
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 4vw, 3.75rem);
@@ -217,7 +226,7 @@ onMounted(() => {
   line-height: 1.05;
 }
 
-.leadership-grid {
+.team-grid {
   display: grid;
   gap: clamp(2.5rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
 }
@@ -336,7 +345,7 @@ onMounted(() => {
     align-items: start;
   }
 
-  .leadership-grid {
+  .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
