@@ -15,27 +15,27 @@ const teamMembers: TeamMember[] = [
     key: 'kaylaLuo',
     id: 'kayla-luo',
     paragraphCount: 4,
-    image: { src: '/images/pages/about/kayla-luo-2026.png', width: 1086, height: 1448 },
+    image: { src: '/images/pages/about/kayla-luo-2026.jpg', width: 1086, height: 1448 },
   },
   {
     key: 'michaelSim',
     id: 'michael-sim',
     paragraphCount: 4,
-    image: { src: '/images/pages/about/michael-sim-2026.png', width: 1086, height: 1448 },
+    image: { src: '/images/pages/about/michael-sim-2026.jpg', width: 1086, height: 1448 },
   },
-  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
   {
     key: 'moonLiang',
     id: 'moon-liang',
     paragraphCount: 3,
-    image: { src: '/images/pages/about/moon-liang-2026.png', width: 1086, height: 1448 },
+    image: { src: '/images/pages/about/moon-liang-2026.jpg', width: 1086, height: 1448 },
   },
   {
     key: 'celiaChen',
     id: 'celia-chen',
     paragraphCount: 3,
-    image: { src: '/images/pages/about/celia-chen-2026.png', width: 1086, height: 1448 },
+    image: { src: '/images/pages/about/celia-chen-2026.jpg', width: 1086, height: 1448 },
   },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
 ]
 
 const founder = teamMembers[0]
@@ -78,13 +78,30 @@ onMounted(() => {
           </p>
         </header>
 
-        <div class="founder-bio member-bio slide-right">
+        <div id="kare-zhang-bio" class="founder-bio member-bio slide-right">
           <p
-            v-for="paragraphIndex in founder.paragraphCount"
+            v-for="paragraphIndex in 2"
             :key="paragraphIndex"
           >
             {{ $t(`about.team.${founder.key}.bio.paragraph${paragraphIndex}`) }}
           </p>
+          <template v-if="isExpanded(founder.id)">
+            <p
+              v-for="paragraphIndex in founder.paragraphCount - 2"
+              :key="paragraphIndex + 2"
+            >
+              {{ $t(`about.team.${founder.key}.bio.paragraph${paragraphIndex + 2}`) }}
+            </p>
+          </template>
+          <button
+            class="bio-toggle"
+            type="button"
+            aria-controls="kare-zhang-bio"
+            :aria-expanded="isExpanded(founder.id)"
+            @click="toggleBio(founder.id)"
+          >
+            {{ isExpanded(founder.id) ? $t('about.team.showLess') : $t('about.team.readFullBio') }}
+          </button>
         </div>
       </article>
 

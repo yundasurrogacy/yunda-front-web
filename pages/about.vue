@@ -57,11 +57,11 @@ function teamBio(nameKey, paragraphCount) {
 
 const teamMemberDefinitions = [
   { key: 'kareZhang', id: 'kare-zhang', paragraphCount: 4 },
-  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-2026.png' },
-  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-2026.png' },
+  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-2026.jpg' },
+  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-2026.jpg' },
+  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3, image: '/images/pages/about/moon-liang-2026.jpg' },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3, image: '/images/pages/about/celia-chen-2026.jpg' },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3, image: '/images/pages/about/moon-liang-2026.png' },
-  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3, image: '/images/pages/about/celia-chen-2026.png' },
 ]
 
 const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
