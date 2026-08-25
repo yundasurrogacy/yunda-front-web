@@ -145,7 +145,7 @@ const footerGroups = computed(() => [
               </a>
             </div>
 
-            <!-- 英文显示 WhatsApp，中文显示微信 -->
+            <!-- WhatsApp -->
             <div v-if="locale === 'en'">
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.whatsapp') }}
@@ -165,7 +165,8 @@ const footerGroups = computed(() => [
                 </picture>
               </div>
             </div>
-            <div v-else>
+            <!-- WeChat -->
+            <div>
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.wechat') }}
               </p>
@@ -173,10 +174,13 @@ const footerGroups = computed(() => [
                 {{ $t('footer.wechatId') }}
               </p>
               <div class="mt-2 flex items-center">
-                <picture>
-                  <source srcset="/images/shared/contact/wechat.webp" type="image/webp">
-                  <img src="/images/shared/contact/wechat.png" alt="微信二维码" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
-                </picture>
+                <img
+                  src="/images/shared/contact/wechat-yundaus1.jpg"
+                  :alt="`${$t('menu.wechat')} ${$t('footer.wechatId')} QR code`"
+                  class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded object-contain shadow"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </div>
           </div>
