@@ -67,12 +67,13 @@ onMounted(() => {
 
 <template>
   <section class="team-section bg-[var(--yunda-petal)] px-5 py-10 lg:px-20 lg:py-24">
-    <div class="mx-auto w-full max-w-300">
+    <div class="mx-auto max-w-300 w-full">
+      <p class="slide-left founder-section-title">
+        {{ $t('about.team.founder') }}
+      </p>
+
       <article :id="founder.id" class="founder-card">
         <header class="founder-heading slide-left">
-          <p class="section-label">
-            {{ $t('about.team.founder') }}
-          </p>
           <h2 class="founder-name">
             {{ $t(`about.team.${founder.key}.name`) }}
           </h2>
@@ -190,17 +191,17 @@ onMounted(() => {
   padding-block: clamp(3rem, 5vw, 4.75rem);
 }
 
-.section-label {
+.founder-section-title {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
   color: var(--yunda-maple);
-  font-family: var(--font-text);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .founder-name {
-  margin-top: 0.85rem;
   color: var(--yunda-bark);
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4vw, 4rem);
