@@ -23,19 +23,19 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 4,
     image: { src: '/images/pages/about/michael-sim-square-2026.jpg', width: 1080, height: 1080 },
   },
-  {
-    key: 'moonLiang',
-    id: 'moon-liang',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/moon-liang-square-2026.jpg', width: 1080, height: 1080 },
-  },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
   {
     key: 'celiaChen',
     id: 'celia-chen',
     paragraphCount: 3,
     image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
   },
-  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
+  {
+    key: 'moonLiang',
+    id: 'moon-liang',
+    paragraphCount: 3,
+    image: { src: '/images/pages/about/moon-liang-square-2026.jpg', width: 1080, height: 1080 },
+  },
 ]
 
 const founder = teamMembers[0]
@@ -77,9 +77,6 @@ onMounted(() => {
           <h2 class="founder-name">
             {{ $t(`about.team.${founder.key}.name`) }}
           </h2>
-          <p class="member-title">
-            {{ $t(`about.team.${founder.key}.title`) }}
-          </p>
         </header>
 
         <div id="kare-zhang-bio" class="founder-bio member-bio slide-right">
@@ -124,7 +121,10 @@ onMounted(() => {
             :id="member.id"
             :key="member.id"
             class="member-card"
-            :class="{ 'member-card--without-image': !member.image }"
+            :class="{
+              'member-card--without-image': !member.image,
+              'member-card--featured': member.key === 'claraChen',
+            }"
           >
             <div v-if="member.image" class="member-portrait slide-left">
               <img
@@ -193,7 +193,7 @@ onMounted(() => {
 
 .founder-section-title {
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
-  color: var(--yunda-maple);
+  color: var(--yunda-bark);
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 4vw, 3.75rem);
   font-weight: 600;
@@ -349,6 +349,10 @@ onMounted(() => {
 
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-card--featured {
+    grid-column: 1 / -1;
   }
 }
 
