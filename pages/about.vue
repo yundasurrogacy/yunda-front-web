@@ -14,7 +14,7 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en, zh) => (isZh.value ? zh : en)
-const dateModified = '2026-08-21'
+const dateModified = '2026-08-24'
 
 const trustStandards = computed(() => [
   {
@@ -57,12 +57,11 @@ function teamBio(nameKey, paragraphCount) {
 
 const teamMemberDefinitions = [
   { key: 'kareZhang', id: 'kare-zhang', paragraphCount: 4 },
-  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-2026.jpg' },
-  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-2026.jpg' },
+  { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-square-2026.jpg' },
+  { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-square-2026.jpg' },
+  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3, image: '/images/pages/about/moon-liang-square-2026.jpg' },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3, image: '/images/pages/about/celia-chen-square-2026.jpg' },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3 },
-  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3 },
-  { key: 'nickyZhang', id: 'nicky-zhang', paragraphCount: 4 },
 ]
 
 const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
@@ -138,6 +137,7 @@ useHead(() => ({
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <AboutHeroSection />
+    <AboutTeamSection />
     <section class="bg-[var(--yunda-petal)] px-5 py-12 lg:px-20 lg:py-16">
       <div class="mx-auto max-w-300">
         <div class="max-w-4xl">
@@ -167,7 +167,6 @@ useHead(() => ({
         </div>
       </div>
     </section>
-    <AboutTeamSection />
     <PhotoGallerySection />
     <AboutCareerSection />
     <AppFooter />
