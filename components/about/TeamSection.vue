@@ -289,6 +289,7 @@ onMounted(() => {
 .member-title--badge {
   display: inline-block;
   width: fit-content;
+  margin-inline-start: -0.65rem;
   border-radius: 0.5rem;
   background: color-mix(in srgb, var(--yunda-sage) 42%, white);
   padding: 0.3rem 0.65rem;
