@@ -23,7 +23,6 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 4,
     image: { src: '/images/pages/about/michael-sim-square-2026.jpg', width: 1080, height: 1080 },
   },
-  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
   {
     key: 'moonLiang',
     id: 'moon-liang',
@@ -36,6 +35,7 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 3,
     image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
   },
+  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
 ]
 
 const founder = teamMembers[0]
