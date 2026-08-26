@@ -1714,6 +1714,11 @@
       "highlight": "Yunda walks beside you—with honesty, respect, and unwavering dedication."
     },
     "team": {
+      "founder": "Founder & CEO",
+      "ourTeam": "Our team",
+      "leadership": "Leadership",
+      "readFullBio": "Read Full Bio",
+      "showLess": "Show Less",
       "kareZhang": {
         "name": "Kare Zhang",
         "title": "Founder & CEO",

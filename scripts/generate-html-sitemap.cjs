@@ -61,7 +61,6 @@ const STATIC_SECTIONS_EN = [
     title: 'Resources / Blog',
     links: [
       { href: '/resources', label: 'Resources & Media Center' },
-      { href: '/resources/mhb-new-york-2026', label: 'MHB New York 2026 Event Guide' },
       { href: '/blog', label: 'Blog Index' },
     ],
   },
@@ -120,7 +119,6 @@ const STATIC_SECTIONS_ZH = [
     title: '资源 / 博客',
     links: [
       { href: '/resources', label: '资源与媒体中心' },
-      { href: '/resources/mhb-new-york-2026', label: 'MHB New York 2026 活动指南' },
       { href: '/blog', label: '博客首页' },
     ],
   },
