@@ -75,7 +75,7 @@ const translations = {
     ],
     faqTitle: 'Questions to ask a surrogacy agency before MHB',
     faqs: [
-      { q: 'Who organizes MHB New York 2026?', a: 'Men Having Babies organizes the event. Yunda is presented on this page only as part of the SILVER SPONSORS and does not claim to organize, co-organize, or partner in the event.' },
+      { q: 'Who organizes MHB New York 2026?', a: 'Men Having Babies is the event organizer. Yunda is participating as part of the SILVER SPONSORS.' },
       { q: 'How does surrogacy work for gay couples, and what should I ask at MHB?', a: 'The path commonly connects egg donation, embryo creation, agency screening and matching, legal and insurance review, escrow, transfer, pregnancy, and parentage planning. Ask each gay or LGBTQ+ surrogacy agency which parts it coordinates, which professionals remain independent, what fees are included, and how communication works across the journey.' },
       { q: 'What should I bring to a conversation with a surrogacy agency?', a: 'Bring your family-building goals, residence, embryo status, donor needs, IVF clinic status, preferred timing, budget questions, communication expectations, and concerns about legal, insurance, escrow, or travel coordination.' },
       { q: 'Can Yunda provide legal, medical, insurance, IVF, or escrow advice at the event?', a: 'Yunda provides education, coordination, bilingual communication, and case-management support. Final legal, medical, insurance, IVF, and escrow decisions belong with the relevant qualified professionals.' },
@@ -145,7 +145,7 @@ const translations = {
     ],
     faqTitle: '参加 MHB 前向代孕机构询问的问题',
     faqs: [
-      { q: 'MHB New York 2026 由谁组织？', a: '活动由 Men Having Babies 组织。本页只将孕达表述为 SILVER SPONSORS 的一员，不主张孕达是活动组织方或共同组织方。' },
+      { q: 'MHB New York 2026 由谁组织？', a: 'Men Having Babies 是本次活动的主办方。孕达将以 SILVER SPONSORS 的身份参与活动。' },
       { q: '男同志伴侣的代孕流程如何衔接？在 MHB 应该问什么？', a: '常见路径会连接供卵、胚胎建立、机构筛查与匹配、法律与保险审核、托管、移植、孕期和亲权规划。建议询问各代孕机构负责哪些协调工作、哪些专业人士保持独立、费用包含范围，以及整个旅程如何沟通。' },
       { q: '与代孕机构沟通时应该准备哪些信息？', a: '建议准备家庭成家目标、居住地、胚胎状态、供体需求、IVF 诊所状态、希望时间、预算问题、沟通预期，以及法律、保险、托管或旅行协调方面的顾虑。' },
       { q: '孕达能否在活动上直接提供法律、医疗、保险、IVF 或托管意见？', a: '孕达提供教育、协调、双语沟通和个案管理支持。最终法律、医疗、保险、IVF 和托管决定应由相应的合格专业人士作出。' },
@@ -385,18 +385,6 @@ useHead(() => ({
               </NuxtLink>
             </li>
           </ol>
-        </div>
-      </section>
-
-      <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-[1240px] px-6 md:px-10">
-          <h2 class="font-display text-[34px] font-semibold leading-tight lg:text-[44px]">{{ c.galleryTitle }}</h2>
-          <p class="mt-4 max-w-[65ch] text-base text-[var(--yunda-bark)]/75 leading-relaxed">{{ c.galleryIntro }}</p>
-          <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
-            <figure v-for="(image, index) in EVENT_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
-              <OptimizedPicture :src="image" :alt="c.galleryAlts[index]" width="1200" height="1200" loading="lazy" picture-class="block h-full" img-class="aspect-square h-full w-full object-cover transition-transform duration-300 hover:scale-[1.025]" />
-            </figure>
-          </div>
         </div>
       </section>
 
