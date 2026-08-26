@@ -43,4 +43,4 @@ Yunda provides education, coordination, bilingual communication, and case-manage
 
 ## Image context
 
-Photographs shown on the page are from previous MHB events attended by Yunda. They are not photographs of MHB New York 2026.
+Photographs shown on the page are from previous MHB events attended by Yunda.

@@ -64,7 +64,7 @@ const translations = {
       { label: 'Next step', title: 'Private consultation', body: 'Turn the questions you gathered into a case-specific planning conversation with Yunda.', to: '/be-parents' },
     ],
     galleryTitle: 'Previous MHB moments with Yunda',
-    galleryIntro: 'These photographs document Yunda at past MHB events. They were not taken at MHB New York 2026.',
+    galleryIntro: 'These photographs document Yunda at past MHB events.',
     galleryAlts: [
       'Yunda team booth at a previous Men Having Babies event',
       'Yunda representatives speaking with attendees at a previous MHB event',
@@ -134,7 +134,7 @@ const translations = {
       { label: '下一步', title: '私密咨询', body: '把会前整理的问题带入与你个案相关的孕达规划沟通。', to: '/be-parents' },
     ],
     galleryTitle: '孕达过往 MHB 活动瞬间',
-    galleryIntro: '这些照片记录孕达参加过往 MHB 活动的经历，并非拍摄于 MHB New York 2026。',
+    galleryIntro: '这些照片记录孕达参加过往 MHB 活动的经历。',
     galleryAlts: [
       '孕达团队在过往 Men Having Babies 活动的展位',
       '孕达代表在过往 MHB 活动与参与者沟通',
@@ -307,6 +307,18 @@ useHead(() => ({
               {{ c.previousPhotoLabel }}
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
+        <div class="mx-auto max-w-[1240px] px-6 md:px-10">
+          <h2 class="font-display text-[34px] font-semibold leading-tight lg:text-[44px]">{{ c.galleryTitle }}</h2>
+          <p class="mt-4 max-w-[65ch] text-base text-[var(--yunda-bark)]/75 leading-relaxed">{{ c.galleryIntro }}</p>
+          <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
+            <figure v-for="(image, index) in EVENT_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
+              <OptimizedPicture :src="image" :alt="c.galleryAlts[index]" width="1200" height="1200" loading="lazy" picture-class="block h-full" img-class="aspect-square h-full w-full object-cover transition-transform duration-300 hover:scale-[1.025]" />
+            </figure>
+          </div>
         </div>
       </section>
 

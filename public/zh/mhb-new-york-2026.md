@@ -43,4 +43,4 @@ MHB New York 2026 是由 Men Having Babies 主办的三天代孕会议与展会�
 
 ## 图片说明
 
-页面照片来自孕达参加过往 MHB 活动的记录，并非 MHB New York 2026 现场照片。
+页面照片来自孕达参加过往 MHB 活动的记录。
