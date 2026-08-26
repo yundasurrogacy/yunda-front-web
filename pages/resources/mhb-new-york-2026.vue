@@ -310,18 +310,6 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
-        <div class="mx-auto max-w-[1240px] px-6 md:px-10">
-          <h2 class="font-display text-[34px] font-semibold leading-tight lg:text-[44px]">{{ c.galleryTitle }}</h2>
-          <p class="mt-4 max-w-[65ch] text-base text-[var(--yunda-bark)]/75 leading-relaxed">{{ c.galleryIntro }}</p>
-          <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
-            <figure v-for="(image, index) in EVENT_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
-              <OptimizedPicture :src="image" :alt="c.galleryAlts[index]" width="1200" height="1200" loading="lazy" picture-class="block h-full" img-class="aspect-square h-full w-full object-cover transition-transform duration-300 hover:scale-[1.025]" />
-            </figure>
-          </div>
-        </div>
-      </section>
-
       <section class="bg-white py-16 lg:py-24">
         <div class="mx-auto grid max-w-[1180px] gap-10 px-6 md:grid-cols-[0.78fr_1.22fr] md:px-10 lg:gap-16">
           <h2 class="max-w-[14ch] font-display text-[34px] font-semibold leading-[1.12] tracking-[-0.025em] lg:text-[46px]">
@@ -357,6 +345,18 @@ useHead(() => ({
                 <p class="mt-3 text-[15px] text-[var(--yunda-bark)]/78 leading-[1.75]">{{ item.body }}</p>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
+        <div class="mx-auto max-w-[1240px] px-6 md:px-10">
+          <h2 class="font-display text-[34px] font-semibold leading-tight lg:text-[44px]">{{ c.galleryTitle }}</h2>
+          <p class="mt-4 max-w-[65ch] text-base text-[var(--yunda-bark)]/75 leading-relaxed">{{ c.galleryIntro }}</p>
+          <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
+            <figure v-for="(image, index) in EVENT_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
+              <OptimizedPicture :src="image" :alt="c.galleryAlts[index]" width="1200" height="1200" loading="lazy" picture-class="block h-full" img-class="aspect-square h-full w-full object-cover transition-transform duration-300 hover:scale-[1.025]" />
+            </figure>
           </div>
         </div>
       </section>
