@@ -8,9 +8,9 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
 import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
+import BlogNewsSection from '@/components/home/BlogNewsSection.vue'
 import { RESOURCES_INSTAGRAM_POSTS } from '~/utils/resources-instagram-posts'
 import { getSubstackFallbackImage, normalizeSubstackPostUrl } from '~/utils/resources-substack-posts'
 import { buildBreadcrumbListSchema, buildItemListSchema, buildWebPageSchema } from '~/utils/schema'
@@ -240,6 +240,19 @@ function getAvifImage(src: string) {
 const localePath = useLocalePath()
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const featuredEvent = computed(() => locale.value === 'zh'
+  ? {
+      title: 'MHB New York 2026 活动指南',
+      date: '2026 年 9 月 25-27 日 | 纽约',
+      body: '查看活动事实，提前准备流程、费用、供卵与咨询问题，并了解孕达的参展信息。',
+      cta: '查看活动指南',
+    }
+  : {
+      title: 'MHB New York 2026 Event Guide',
+      date: 'September 25-27, 2026 | New York',
+      body: 'Review event facts, prepare questions about process, cost, egg donation, and consultation, and learn about Yunda’s exhibitor presence.',
+      cta: 'View event guide',
+    })
 const resourcesDirectAnswer = computed(() => locale.value === 'zh'
   ? '孕达资源与媒体中心把代孕教育内容、Substack 深度说明、代孕妈妈动态、活动资讯和联系入口集中在同一页面。它适合正在比较美国代孕流程、费用、资格、筛查、法律保障、保险、捐卵和跨境沟通的准父母，也适合正在了解代孕申请、补偿与支持的潜在代孕妈妈。博客和 Substack 内容用于解释常见问题；社媒动态用于展示团队活动和旅程片段；高风险决定仍应回到对应专题页面，并由法律、医疗、保险、托管或 IVF 专业人士确认。'
   : 'Yunda\'s Resources & Media Center brings together surrogacy education, Substack explainers, surrogate journey updates, event coverage, and ways to contact the team. It is for intended parents comparing U.S. surrogacy process, cost, eligibility, screening, legal protection, insurance, egg donation, and cross-border communication, as well as potential surrogates learning about application, compensation, and support. Blog and Substack content explain common questions; social updates show team activity and journey moments; high-stakes decisions should still be reviewed on the relevant service pages and confirmed by legal, medical, insurance, escrow, or IVF professionals.')
@@ -304,22 +317,29 @@ const resourcesItemListSchema = computed(() => buildItemListSchema({
       description: c.value.metaDescription,
       url: '/blog',
     },
+    {
+      position: 2,
+      name: featuredEvent.value.title,
+      description: featuredEvent.value.body,
+      image: '/images/pages/about/mhb/mhb-1.jpg',
+      url: '/resources/mhb-new-york-2026',
+    },
     ...substackCards.value.map((post, index) => ({
-      position: index + 2,
+      position: index + 3,
       name: post.title,
       description: post.excerpt,
       image: post.image,
       url: post.url,
     })),
     ...surrogateUpdateCards.value.slice(0, 4).map((post, index) => ({
-      position: index + substackCards.value.length + 2,
+      position: index + substackCards.value.length + 3,
       name: `${c.value.updatesTitle} ${index + 1}`,
       description: c.value.updatesIntro,
       image: post.image,
       url: post.url,
     })),
     ...eventPostCards.value.slice(0, 4).map((post, index) => ({
-      position: index + substackCards.value.length + surrogateUpdateCards.value.slice(0, 4).length + 2,
+      position: index + substackCards.value.length + surrogateUpdateCards.value.slice(0, 4).length + 3,
       name: `${c.value.eventsTitle} ${index + 1}`,
       description: c.value.eventsIntro,
       image: post.image,
@@ -579,6 +599,34 @@ useHead(() => ({
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.eventsIntro }}
             </p>
+            <NuxtLink
+              :to="localePath('/resources/mhb-new-york-2026')"
+              class="group mt-8 grid overflow-hidden rounded-[18px] border border-[var(--yunda-bark)]/12 bg-white shadow-[0_10px_30px_rgba(55,40,25,0.07)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(55,40,25,0.12)] md:grid-cols-[0.8fr_1.2fr]"
+            >
+              <OptimizedPicture
+                src="/images/pages/about/mhb/mhb-1.jpg"
+                :alt="locale === 'zh' ? '孕达参加过往 MHB 活动的照片' : 'Yunda at a previous MHB event'"
+                width="1200"
+                height="1200"
+                loading="lazy"
+                picture-class="block h-full min-h-[260px] bg-[var(--yunda-petal)]"
+                img-class="h-full w-full object-cover"
+              />
+              <div class="flex flex-col justify-center p-6 lg:p-9">
+                <p class="text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.14em]">
+                  {{ featuredEvent.date }}
+                </p>
+                <h3 class="mt-4 font-display text-[28px] font-semibold leading-tight lg:text-[34px]">
+                  {{ featuredEvent.title }}
+                </h3>
+                <p class="mt-4 max-w-2xl text-[15px] text-[var(--yunda-bark)]/78 leading-[1.75]">
+                  {{ featuredEvent.body }}
+                </p>
+                <span class="mt-6 inline-flex text-sm text-[var(--yunda-maple)] font-bold underline decoration-2 underline-offset-4">
+                  {{ featuredEvent.cta }}
+                </span>
+              </div>
+            </NuxtLink>
             <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in eventPostCards"

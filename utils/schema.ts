@@ -647,6 +647,108 @@ export function buildWebPageSchema(options: WebPageSchemaOptions) {
   })
 }
 
+export interface EventSchemaOrganization {
+  name: string
+  url?: string
+  id?: string
+}
+
+export interface EventSchemaLocation {
+  name?: string
+  address?: {
+    streetAddress?: string
+    addressLocality?: string
+    addressRegion?: string
+    postalCode?: string
+    addressCountry?: string
+  }
+}
+
+export interface EventSchemaOptions {
+  name: string
+  description?: string
+  startDate: string
+  endDate?: string
+  eventStatus?: 'scheduled' | 'postponed' | 'cancelled' | 'rescheduled' | 'moved-online' | 'completed'
+  eventAttendanceMode?: 'offline' | 'online' | 'mixed'
+  location?: EventSchemaLocation
+  organizer: EventSchemaOrganization
+  attendeeOrganization?: EventSchemaOrganization
+  officialUrl?: string
+  pageUrl: string
+  pageEntityId?: string
+  eventId?: string
+  image?: string | string[]
+  baseUrl?: string
+  locale?: string
+  inLanguage?: string
+}
+
+const EVENT_STATUS_URLS = {
+  'scheduled': 'https://schema.org/EventScheduled',
+  'postponed': 'https://schema.org/EventPostponed',
+  'cancelled': 'https://schema.org/EventCancelled',
+  'rescheduled': 'https://schema.org/EventRescheduled',
+  'moved-online': 'https://schema.org/EventMovedOnline',
+  'completed': 'https://schema.org/EventCompleted',
+} as const
+
+const EVENT_ATTENDANCE_MODE_URLS = {
+  offline: 'https://schema.org/OfflineEventAttendanceMode',
+  online: 'https://schema.org/OnlineEventAttendanceMode',
+  mixed: 'https://schema.org/MixedEventAttendanceMode',
+} as const
+
+function buildEventOrganization(organization: EventSchemaOrganization, baseUrl: string) {
+  return cleanSchema({
+    '@type': 'Organization',
+    '@id': organization.id,
+    'name': organization.name,
+    'url': organization.url ? resolveUrl(baseUrl, organization.url) : undefined,
+  })
+}
+
+export function buildEventSchema(options: EventSchemaOptions) {
+  const baseUrl = options.baseUrl || DEFAULT_BASE_URL
+  const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
+  const pageUrl = resolveLocalizedUrl(baseUrl, options.pageUrl, inLanguage)
+  const image = Array.isArray(options.image) ? options.image : (options.image ? [options.image] : undefined)
+
+  return cleanSchema({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    '@id': options.eventId || `${pageUrl}#event`,
+    'name': options.name,
+    'description': options.description,
+    'startDate': options.startDate,
+    'endDate': options.endDate,
+    'eventStatus': EVENT_STATUS_URLS[options.eventStatus || 'scheduled'],
+    'eventAttendanceMode': EVENT_ATTENDANCE_MODE_URLS[options.eventAttendanceMode || 'offline'],
+    'location': options.location
+      ? cleanSchema({
+          '@type': 'Place',
+          'name': options.location.name,
+          'address': options.location.address
+            ? cleanSchema({
+                '@type': 'PostalAddress',
+                ...options.location.address,
+              })
+            : undefined,
+        })
+      : undefined,
+    'organizer': buildEventOrganization(options.organizer, baseUrl),
+    'attendee': options.attendeeOrganization
+      ? buildEventOrganization(options.attendeeOrganization, baseUrl)
+      : undefined,
+    'url': options.officialUrl ? resolveUrl(baseUrl, options.officialUrl) : pageUrl,
+    'mainEntityOfPage': {
+      '@id': options.pageEntityId || `${pageUrl}#webpage`,
+    },
+    'image': image?.map(item => resolveUrl(baseUrl, item)),
+    'inLanguage': inLanguage,
+  })
+}
+
 export function normalizeFAQItems(faqs: FAQItem[] = []) {
   const seen = new Set<string>()
 

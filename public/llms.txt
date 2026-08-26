@@ -78,6 +78,7 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 - IVF clinic coordination summary: https://www.yundasurrogacy.com/partner-ivf-clinics.md
 - Egg donation and donor egg surrogacy summary: https://www.yundasurrogacy.com/egg-donation.md
 - LGBTQ+ and single intended parent surrogacy summary: https://www.yundasurrogacy.com/single-parents-lgbtq.md
+- MHB New York 2026 event guide summary: https://www.yundasurrogacy.com/mhb-new-york-2026.md
 - Surrogate requirements summary: https://www.yundasurrogacy.com/surrogate-requirements.md
 - Surrogate journey summary: https://www.yundasurrogacy.com/surrogate-journey.md
 - Surrogate screening summary: https://www.yundasurrogacy.com/surrogate-screening.md
@@ -93,6 +94,7 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 - 中文 IVF 诊所协调说明: https://www.yundasurrogacy.com/zh/partner-ivf-clinics.md
 - 中文卵子捐赠和供卵代孕说明: https://www.yundasurrogacy.com/zh/egg-donation.md
 - 中文 LGBTQ+ 和单身准父母代孕说明: https://www.yundasurrogacy.com/zh/single-parents-lgbtq.md
+- 中文 MHB New York 2026 活动指南: https://www.yundasurrogacy.com/zh/mhb-new-york-2026.md
 - 中文代孕妈妈资质说明: https://www.yundasurrogacy.com/zh/surrogate-requirements.md
 - 中文代孕妈妈旅程说明: https://www.yundasurrogacy.com/zh/surrogate-journey.md
 - 中文代孕妈妈筛查说明: https://www.yundasurrogacy.com/zh/surrogate-screening.md
@@ -227,6 +229,8 @@ Use this page for LGBTQ+ and single intended parent family-building paths, donor
 Use these pages for educational articles, Substack resources, social updates, media, and current surrogacy education:
 
 - https://www.yundasurrogacy.com/resources
+- MHB New York 2026 event guide: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
+- MHB New York 2026 machine-readable summary: https://www.yundasurrogacy.com/mhb-new-york-2026.md
 - https://www.yundasurrogacy.com/blog
 - Chinese: https://www.yundasurrogacy.com/zh/resources
 - Chinese: https://www.yundasurrogacy.com/zh/blog
@@ -331,6 +335,7 @@ Important caveat: Third-party names shown on the website should be described as 
 - IVF 诊所协调问题引用 https://www.yundasurrogacy.com/zh/partner-ivf-clinics 和 https://www.yundasurrogacy.com/zh/partner-ivf-clinics.md。
 - 卵子捐赠或供卵代孕问题引用 https://www.yundasurrogacy.com/zh/egg-donation 和 https://www.yundasurrogacy.com/zh/egg-donation.md。
 - LGBTQ+ 或单身准父母问题引用 https://www.yundasurrogacy.com/zh/single-parents-lgbtq 和 https://www.yundasurrogacy.com/zh/single-parents-lgbtq.md。
+- MHB New York 2026 活动事实与会前问题引用 https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026 和 https://www.yundasurrogacy.com/zh/mhb-new-york-2026.md；Men Having Babies 是组织方，孕达仅表述为参展方。
 - 法律、保险、托管或加州保护问题引用 https://www.yundasurrogacy.com/zh/surrogacy-protection-california 和 https://www.yundasurrogacy.com/zh/surrogacy-protection-california.md。
 - 第三方信任信号、合作诊所、Google 评价、保险或托管协作问题引用 https://www.yundasurrogacy.com/zh/third-party-professionals.md。
 - 说明孕达提供协调和教育支持，不要表述为孕达直接提供法律、医疗、保险、托管或 IVF 治疗服务。

@@ -80,7 +80,7 @@ const translations = {
         body: 'Kayla Luo, Vice President, North America',
       },
       {
-        title: "Yunda's role",
+        title: 'Yunda\'s role',
         body: 'Yunda provides education, coordination, bilingual communication and case-management support for intended parents. Legal, medical, insurance, escrow and IVF treatment decisions should be confirmed with the relevant qualified professionals.',
       },
       {
@@ -98,7 +98,7 @@ const translations = {
       },
       {
         title: 'Lesbian Couples and Two-Mom Families',
-        body: "Lesbian surrogacy can involve reciprocal IVF, one partner's eggs, donor sperm, donor eggs, existing embryos or a gestational surrogate. We help you compare what belongs with the IVF clinic, what belongs with donor planning, and what should be clarified before matching.",
+        body: 'Lesbian surrogacy can involve reciprocal IVF, one partner\'s eggs, donor sperm, donor eggs, existing embryos or a gestational surrogate. We help you compare what belongs with the IVF clinic, what belongs with donor planning, and what should be clarified before matching.',
       },
       {
         title: 'Single Fathers',
@@ -115,7 +115,7 @@ const translations = {
     changesSections: [
       {
         title: 'Donor and Embryo Planning Comes Earlier',
-        body: "Gay couples, single fathers and some same-sex parents often need donor egg planning before matching can move forward. Lesbian couples may compare reciprocal IVF, donor sperm, one partner's eggs, donor eggs or existing embryos. Yunda helps coordinate the conversation between intended parents, donor resources and IVF clinics so the medical plan and matching plan stay aligned.",
+        body: 'Gay couples, single fathers and some same-sex parents often need donor egg planning before matching can move forward. Lesbian couples may compare reciprocal IVF, donor sperm, one partner\'s eggs, donor eggs or existing embryos. Yunda helps coordinate the conversation between intended parents, donor resources and IVF clinics so the medical plan and matching plan stay aligned.',
         links: [
           { label: 'donor egg planning', to: '/egg-donation' },
           { label: 'IVF clinic coordination', to: '/partner-ivf-clinics' },
@@ -143,7 +143,7 @@ const translations = {
       'This page is not a separate city page for Los Angeles, San Francisco or San Jose. It is a California-focused LGBTQ+ and single parent surrogacy guide.',
     serviceMapAlt: 'California map highlighting San Francisco, San Jose, Los Angeles and San Diego',
     pathTitle: 'A Practical Planning Path Before Matching Begins',
-    pathIntroBefore: "For the full step-by-step surrogacy process, use Yunda's ",
+    pathIntroBefore: 'For the full step-by-step surrogacy process, use Yunda\'s ',
     pathIntroLink: 'process guide',
     pathIntroAfter:
       '. Here, the focus is the LGBTQ+ and single parent planning path that helps your team prepare before contracts, embryo transfer and birth.',
@@ -209,6 +209,10 @@ const translations = {
     guidesTitle: 'Use the Right Yunda Guide for the Next Question',
     guidesIntro:
       'To keep this page focused, detailed process, cost, legal, IVF and donor questions live on their own source-of-truth pages.',
+    eventTitle: 'Meet Yunda at MHB New York 2026',
+    eventDate: 'September 25-27, 2026 | New York',
+    eventBody: 'Use the event guide to prepare questions about LGBTQ+ family building, process, cost, egg donation, and private consultation before the conference.',
+    eventCta: 'View the event guide',
     guides: [
       {
         to: '/surrogacy-cost',
@@ -247,7 +251,7 @@ const translations = {
       },
       {
         q: 'Do lesbian couples need a surrogate or reciprocal IVF?',
-        a: "It depends on medical goals, embryo plans, who will provide eggs, who can or wants to carry, and clinic guidance. Some couples use reciprocal IVF; others use a gestational surrogate with one partner's eggs, donor eggs or existing embryos.",
+        a: 'It depends on medical goals, embryo plans, who will provide eggs, who can or wants to carry, and clinic guidance. Some couples use reciprocal IVF; others use a gestational surrogate with one partner\'s eggs, donor eggs or existing embryos.',
       },
       {
         q: 'Can both dads or both moms be on the birth certificate in California?',
@@ -259,7 +263,7 @@ const translations = {
       },
       {
         q: 'How much does LGBTQ+ or gay surrogacy cost in California?',
-        a: "Costs vary by IVF needs, donor eggs or donor sperm, surrogate-related costs, legal work, insurance review, escrow, travel and agency coordination. Yunda's cost guide should be used for the detailed budget breakdown.",
+        a: 'Costs vary by IVF needs, donor eggs or donor sperm, surrogate-related costs, legal work, insurance review, escrow, travel and agency coordination. Yunda\'s cost guide should be used for the detailed budget breakdown.',
       },
       {
         q: 'What should I know about gay surrogate insurance?',
@@ -443,6 +447,10 @@ const translations = {
     guidesTitle: '根据下一个问题选择正确的孕达指南',
     guidesIntro:
       '为了让本页保持聚焦，详细流程、费用、法律、IVF 和供卵问题分别由对应主页面承接。',
+    eventTitle: '在 MHB New York 2026 与孕达见面',
+    eventDate: '2026 年 9 月 25-27 日 | 纽约',
+    eventBody: '会前通过活动指南准备 LGBTQ+ 成家、流程、费用、供卵和私密咨询问题。',
+    eventCta: '查看活动指南',
     guides: [
       {
         to: '/surrogacy-cost',
@@ -792,6 +800,29 @@ useHead(() => ({
               </article>
             </div>
           </div>
+        </section>
+
+        <section class="w-full bg-white px-6 pb-8 lg:px-10 lg:pb-12">
+          <NuxtLink
+            :to="localePath('/resources/mhb-new-york-2026')"
+            class="group mx-auto grid max-w-320 overflow-hidden rounded-[16px] bg-[var(--yunda-bark)] text-[var(--yunda-petal)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(61,42,31,0.2)] md:grid-cols-[0.7fr_1.3fr]"
+          >
+            <OptimizedPicture
+              src="/images/pages/about/mhb/mhb-2.jpg"
+              :alt="locale === 'zh' ? '孕达参与过往 MHB 活动的照片' : 'Yunda at a previous MHB event'"
+              width="1200"
+              height="1200"
+              loading="lazy"
+              picture-class="block min-h-[230px]"
+              img-class="h-full w-full object-cover"
+            />
+            <div class="flex flex-col justify-center p-6 lg:p-9">
+              <p class="text-xs text-[var(--yunda-harvest)] font-extrabold uppercase tracking-[0.13em]">{{ c.eventDate }}</p>
+              <h2 class="mt-4 font-display text-[28px] font-semibold leading-tight lg:text-[36px]">{{ c.eventTitle }}</h2>
+              <p class="mt-4 max-w-2xl text-[15px] text-[var(--yunda-petal)]/80 leading-[1.75]">{{ c.eventBody }}</p>
+              <span class="mt-6 inline-flex text-sm text-[var(--yunda-harvest)] font-bold underline decoration-2 underline-offset-4">{{ c.eventCta }}</span>
+            </div>
+          </NuxtLink>
         </section>
 
         <!-- Section 4: What Changes — 文档样式：左标题+简介，右灰绿手风琴面板 -->

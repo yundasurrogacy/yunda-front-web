@@ -13,6 +13,7 @@
     { "loc": "/become-surrogate-california", "priority": 0.9 },
     { "loc": "/blog", "priority": 0.5 },
     { "loc": "/resources", "priority": 0.5 },
+    { "loc": "/resources/mhb-new-york-2026", "priority": 0.7, "lastmod": "2026-08-12" },
     { "loc": "/egg-donation", "priority": 0.9 },
     { "loc": "/partner-ivf-clinics", "priority": 0.9 },
     { "loc": "/single-parents-lgbtq", "priority": 0.9 },
