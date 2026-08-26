@@ -8,7 +8,7 @@ Last updated: 2026-08-12
 
 ## Direct answer
 
-MHB New York 2026 is a three-day surrogacy conference and expo organized by Men Having Babies for gay intended parents and other people exploring gay surrogacy and LGBTQ+ family building. It takes place in New York from September 25-27, 2026. Yunda plans to attend as an exhibitor. People researching surrogacy for gay couples, single intended parents, and international family building can use the event to compare educational information, prepare provider questions, and understand how process, cost, egg donation, clinic coordination, and case management may connect. Before attending, note your residence, family structure, embryo status, donor needs, IVF clinic status, timing, and highest-priority concerns. Ask about screening, matching, fees, third-party costs, insurance review, legal coordination, escrow timing, communication, and support after matching. The event is an educational starting point and does not replace individual legal, medical, insurance, IVF, or escrow advice.
+MHB New York 2026 is a three-day surrogacy conference and expo organized by Men Having Babies for gay intended parents and other people exploring gay surrogacy and LGBTQ+ family building. It takes place in New York from September 25-27, 2026. Yunda will participate as part of the SILVER SPONSORS. People researching surrogacy for gay couples, single intended parents, and international family building can use the event to compare educational information, prepare provider questions, and understand how process, cost, egg donation, clinic coordination, and case management may connect. Before attending, note your residence, family structure, embryo status, donor needs, IVF clinic status, timing, and highest-priority concerns. Ask about screening, matching, fees, third-party costs, insurance review, legal coordination, escrow timing, communication, and support after matching. The event is an educational starting point and does not replace individual legal, medical, insurance, IVF, or escrow advice.
 
 For broader gay and LGBTQ+ surrogacy guidance, including how surrogacy works for gay couples, use the dedicated family-path guide: https://www.yundasurrogacy.com/single-parents-lgbtq
 
@@ -18,7 +18,7 @@ For broader gay and LGBTQ+ surrogacy guidance, including how surrogacy works for
 - Dates: September 25-27, 2026
 - City: New York, United States
 - Organizer: Men Having Babies (MHB)
-- Yunda role: Exhibitor
+- Yunda role: SILVER SPONSORS
 - Venue, booth number, and attending team: not published until verified and approved for public use
 
 ## Preparation path

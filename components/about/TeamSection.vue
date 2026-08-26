@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 interface TeamMember {
   key: string
   id: string
   paragraphCount: number
-  image?: { src: string, width: number, height: number }
+  image?: {
+    src: string
+    width: number
+    height: number
+    side: 'left' | 'right'
+    blend?: boolean
+  }
 }
 
 const teamMembers: TeamMember[] = [
@@ -15,48 +21,30 @@ const teamMembers: TeamMember[] = [
     key: 'kaylaLuo',
     id: 'kayla-luo',
     paragraphCount: 4,
-    image: { src: '/images/pages/about/kayla-luo-square-2026.jpg', width: 1080, height: 1080 },
+    image: {
+      src: '/images/pages/about/kayla-luo-2026.jpg',
+      width: 1200,
+      height: 1600,
+      side: 'left',
+    },
   },
   {
     key: 'michaelSim',
     id: 'michael-sim',
     paragraphCount: 4,
-    image: { src: '/images/pages/about/michael-sim-square-2026.jpg', width: 1080, height: 1080 },
+    image: {
+      src: '/images/pages/about/michael-sim-2026.jpg',
+      width: 1200,
+      height: 1600,
+      side: 'right',
+      blend: true,
+    },
   },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  {
-    key: 'celiaChen',
-    id: 'celia-chen',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'moonLiang',
-    id: 'moon-liang',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/moon-liang-square-2026.jpg', width: 1080, height: 1080 },
-  },
+  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3 },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3 },
+  { key: 'nickyZhang', id: 'nicky-zhang', paragraphCount: 4 },
 ]
-
-const founder = teamMembers[0]
-const teamGroups = [
-  { labelKey: 'leadership', members: teamMembers.slice(1, 3) },
-  { labelKey: 'ourTeam', members: teamMembers.slice(3) },
-]
-const expandedMemberIds = ref<Set<string>>(new Set())
-
-function isExpanded(memberId: string) {
-  return expandedMemberIds.value.has(memberId)
-}
-
-function toggleBio(memberId: string) {
-  const nextIds = new Set(expandedMemberIds.value)
-  if (nextIds.has(memberId))
-    nextIds.delete(memberId)
-  else
-    nextIds.add(memberId)
-  expandedMemberIds.value = nextIds
-}
 
 const { initScrollAnimation } = useScrollAnimation()
 
@@ -67,312 +55,165 @@ onMounted(() => {
 
 <template>
   <section class="team-section bg-[var(--yunda-petal)] px-5 py-10 lg:px-20 lg:py-24">
-    <div class="mx-auto max-w-300 w-full">
-      <p class="slide-left founder-section-title">
-        {{ $t('about.team.founder') }}
-      </p>
+    <div class="mx-auto w-full max-w-300">
+      <article
+        v-for="member in teamMembers"
+        :id="member.id"
+        :key="member.id"
+        class="team-member"
+        :class="member.image ? 'team-member--portrait' : 'team-member--text'"
+        :data-image-side="member.image?.side"
+      >
+        <div
+          v-if="member.image"
+          class="member-portrait slide-left"
+          :class="{ 'member-portrait--blend': member.image.blend }"
+        >
+          <img
+            :src="member.image.src"
+            :alt="$t(`about.team.${member.key}.imageAlt`)"
+            class="h-full w-full object-cover"
+            :width="member.image.width"
+            :height="member.image.height"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
 
-      <article :id="founder.id" class="founder-card">
-        <header class="founder-heading slide-left">
-          <h2 class="founder-name">
-            {{ $t(`about.team.${founder.key}.name`) }}
+        <header v-if="!member.image" class="member-heading slide-left">
+          <h2 class="member-name">
+            {{ $t(`about.team.${member.key}.name`) }}
           </h2>
+          <p class="member-title">
+            {{ $t(`about.team.${member.key}.title`) }}
+          </p>
         </header>
 
-        <div id="kare-zhang-bio" class="founder-bio member-bio slide-right">
-          <p
-            v-for="paragraphIndex in 2"
-            :key="paragraphIndex"
-          >
-            {{ $t(`about.team.${founder.key}.bio.paragraph${paragraphIndex}`) }}
-          </p>
-          <template v-if="isExpanded(founder.id)">
-            <p
-              v-for="paragraphIndex in founder.paragraphCount - 2"
-              :key="paragraphIndex + 2"
-            >
-              {{ $t(`about.team.${founder.key}.bio.paragraph${paragraphIndex + 2}`) }}
+        <div class="member-copy slide-right">
+          <header v-if="member.image" class="mb-7">
+            <h2 class="member-name">
+              {{ $t(`about.team.${member.key}.name`) }}
+            </h2>
+            <p class="member-title">
+              {{ $t(`about.team.${member.key}.title`) }}
             </p>
-          </template>
-          <button
-            class="bio-toggle"
-            type="button"
-            aria-controls="kare-zhang-bio"
-            :aria-expanded="isExpanded(founder.id)"
-            @click="toggleBio(founder.id)"
-          >
-            {{ isExpanded(founder.id) ? $t('about.team.showLess') : $t('about.team.readFullBio') }}
-          </button>
+          </header>
+
+          <div class="member-bio">
+            <p
+              v-for="paragraphIndex in member.paragraphCount"
+              :key="paragraphIndex"
+            >
+              {{ $t(`about.team.${member.key}.bio.paragraph${paragraphIndex}`) }}
+            </p>
+          </div>
         </div>
       </article>
-
-      <section
-        v-for="group in teamGroups"
-        :key="group.labelKey"
-        class="team-group"
-      >
-        <div class="team-group-heading">
-          <h2>{{ $t(`about.team.${group.labelKey}`) }}</h2>
-        </div>
-
-        <div class="team-grid">
-          <article
-            v-for="member in group.members"
-            :id="member.id"
-            :key="member.id"
-            class="member-card"
-            :class="{
-              'member-card--without-image': !member.image,
-              'member-card--featured': member.key === 'claraChen',
-            }"
-          >
-            <div v-if="member.image" class="member-portrait slide-left">
-              <img
-                :src="member.image.src"
-                :alt="$t(`about.team.${member.key}.imageAlt`)"
-                :width="member.image.width"
-                :height="member.image.height"
-                loading="lazy"
-                decoding="async"
-              >
-            </div>
-
-            <div class="member-copy slide-right">
-              <header>
-                <h3 class="member-name">
-                  {{ $t(`about.team.${member.key}.name`) }}
-                </h3>
-                <p class="member-title member-title--badge">
-                  {{ $t(`about.team.${member.key}.title`) }}
-                </p>
-              </header>
-
-              <div :id="`${member.id}-bio`" class="member-bio member-card-bio">
-                <template v-if="isExpanded(member.id)">
-                  <p
-                    v-for="paragraphIndex in member.paragraphCount"
-                    :key="paragraphIndex"
-                  >
-                    {{ $t(`about.team.${member.key}.bio.paragraph${paragraphIndex}`) }}
-                  </p>
-                </template>
-                <p v-else class="bio-preview">
-                  {{ $t(`about.team.${member.key}.bio.paragraph1`) }}
-                </p>
-              </div>
-
-              <button
-                class="bio-toggle"
-                type="button"
-                :aria-controls="`${member.id}-bio`"
-                :aria-expanded="isExpanded(member.id)"
-                @click="toggleBio(member.id)"
-              >
-                {{ isExpanded(member.id) ? $t('about.team.showLess') : $t('about.team.readFullBio') }}
-              </button>
-            </div>
-          </article>
-        </div>
-      </section>
     </div>
   </section>
 </template>
 
 <style scoped>
-.founder-card,
-.member-card {
+.team-member {
   scroll-margin-top: 7rem;
+  border-top: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+  padding-block: clamp(3rem, 6vw, 5.5rem);
 }
 
-.founder-card {
+.team-member:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
+}
+
+.team-member--portrait,
+.team-member--text {
   display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
-  border-block: 1px solid color-mix(in srgb, var(--yunda-bark) 14%, transparent);
-  padding-block: clamp(3rem, 5vw, 4.75rem);
-}
-
-.founder-section-title {
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
-  color: var(--yunda-bark);
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 3.75rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.founder-name {
-  color: var(--yunda-bark);
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4vw, 4rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1;
-}
-
-.team-group-heading {
-  padding-block: clamp(3.5rem, 6vw, 6rem) clamp(2rem, 3vw, 3rem);
-}
-
-.team-group + .team-group .team-group-heading {
-  padding-top: clamp(4.5rem, 7vw, 7rem);
-}
-
-.team-group-heading h2 {
-  color: var(--yunda-bark);
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 3.75rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.team-grid {
-  display: grid;
-  gap: clamp(2.5rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
-}
-
-.member-card {
-  display: grid;
-  grid-template-columns: minmax(7.5rem, 9.5rem) minmax(0, 1fr);
-  gap: clamp(1.25rem, 2.5vw, 2.25rem);
-  align-items: start;
-  border-top: 1px solid color-mix(in srgb, var(--yunda-bark) 13%, transparent);
-  padding-top: 2rem;
-}
-
-.member-card--without-image {
-  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5.5rem);
 }
 
 .member-portrait {
-  width: 100%;
-  aspect-ratio: 1;
+  width: min(100%, 30rem);
+  aspect-ratio: 3 / 4;
+  justify-self: center;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: 1.75rem 1.75rem 0.75rem 0.75rem;
   background: white;
-  box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--yunda-bark) 9%, transparent);
+  box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--yunda-bark) 12%, transparent);
 }
 
-.member-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 28%;
+.member-portrait--blend img {
+  mix-blend-mode: multiply;
 }
 
-.member-copy,
-.founder-heading,
-.founder-bio {
+.member-heading,
+.member-copy {
   min-width: 0;
 }
 
 .member-name {
+  max-width: 13ch;
   color: var(--yunda-bark);
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.05;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
 .member-title {
-  margin-top: 0.65rem;
+  margin-top: 0.85rem;
   color: var(--yunda-maple);
   font-family: var(--font-text);
-  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  font-size: clamp(0.92rem, 1.4vw, 1.08rem);
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.45;
   text-wrap: pretty;
 }
 
-.member-title--badge {
-  display: inline-block;
-  width: fit-content;
-  margin-inline-start: -0.65rem;
-  border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--yunda-sage) 42%, white);
-  padding: 0.3rem 0.65rem;
-  color: var(--yunda-bark);
-}
-
 .member-bio {
+  max-width: 49rem;
   color: color-mix(in srgb, var(--yunda-bark) 84%, transparent);
   font-family: var(--font-text);
-  font-size: clamp(0.94rem, 1.05vw, 1rem);
-  line-height: 1.72;
-}
-
-.member-card-bio {
-  margin-top: 1.15rem;
+  font-size: clamp(1rem, 1.35vw, 1.08rem);
+  line-height: 1.82;
 }
 
 .member-bio p + p {
-  margin-top: 0.9rem;
-}
-
-.bio-preview {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
-
-.bio-toggle {
-  margin-top: 1rem;
-  color: var(--yunda-bark);
-  font-family: var(--font-text);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.28em;
-  transition: color 200ms ease;
-}
-
-.bio-toggle:hover {
-  color: var(--yunda-maple);
-}
-
-.bio-toggle:focus-visible {
-  border-radius: 0.2rem;
-  outline: 2px solid var(--yunda-maple);
-  outline-offset: 4px;
+  margin-top: 1.25rem;
 }
 
 @media (min-width: 1024px) {
-  .founder-card {
-    grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.6fr);
+  .team-member--text {
+    grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.72fr);
     align-items: start;
   }
 
-  .team-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .team-member--portrait {
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.48fr);
+    align-items: center;
   }
 
-  .member-card--featured {
-    grid-column: 1 / -1;
+  .team-member--portrait[data-image-side='right'] {
+    grid-template-columns: minmax(0, 1.48fr) minmax(18rem, 0.82fr);
+  }
+
+  .team-member--portrait[data-image-side='right'] .member-portrait {
+    order: 2;
+  }
+
+  .team-member--portrait[data-image-side='right'] .member-copy {
+    order: 1;
   }
 }
 
-@media (max-width: 767px) {
-  .member-card {
-    grid-template-columns: 7rem minmax(0, 1fr);
+@media (max-width: 1023px) {
+  .member-heading {
+    margin-bottom: -0.25rem;
   }
 
-  .member-card--without-image {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 479px) {
-  .member-card {
-    grid-template-columns: 1fr;
-  }
-
-  .member-portrait {
-    width: min(54vw, 10rem);
+  .member-copy,
+  .member-heading {
+    text-align: left;
   }
 }
 </style>

@@ -17,6 +17,8 @@ const OUTPUT_DIR = path.join(ROOT, '.output', 'public')
 const MANIFEST_PATH = path.join(ROOT, 'data', 'zh-missing-blogs.json')
 const LEDGER_PATH = path.join(ROOT, 'data', 'vercel-managed-zh-redirects.json')
 const VERCEL_PATH = path.join(ROOT, 'vercel.json')
+const isNoindexPreview = process.env.VERCEL_ENV === 'preview'
+  || process.env.NUXT_PREVIEW_NOINDEX === '1'
 
 let failures = 0
 
@@ -181,10 +183,13 @@ else {
         continue
       }
       const html = fs.readFileSync(htmlPath, 'utf8')
-      if (hasNoindex(html))
+      if (!isNoindexPreview && hasNoindex(html))
         fail(`indexable Chinese route was accidentally noindexed: ${route}`)
     }
-    if (!zhLocs.some((absoluteUrl) => {
+    if (isNoindexPreview) {
+      pass('preview build intentionally noindexes all prerendered routes')
+    }
+    else if (!zhLocs.some((absoluteUrl) => {
       const route = new URL(absoluteUrl).pathname
       const htmlPath = routeHtmlPath(route)
       return !fs.existsSync(htmlPath) || hasNoindex(fs.readFileSync(htmlPath, 'utf8'))

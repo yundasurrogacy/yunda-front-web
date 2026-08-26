@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url'
 import seoRoutes from './data/seo-routes.json'
 import zhMissingBlogs from './data/zh-missing-blogs.json'
 
+const isNoindexPreview = process.env.VERCEL_ENV === 'preview'
+  || process.env.NUXT_PREVIEW_NOINDEX === '1'
+
 const zhMissingManifest = zhMissingBlogs as {
   signalReliable?: boolean
   totalBlogPosts?: number
@@ -360,6 +363,9 @@ export default defineNuxtConfig({
         },
       ],
       meta: [
+        ...(isNoindexPreview
+          ? [{ name: 'robots', content: 'noindex, nofollow, noarchive' }]
+          : []),
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
         { name: 'description', content: 'Yunda Surrogacy is a professional cross-border surrogacy agency providing comprehensive US surrogacy services. Expert team, transparent costs, warm support to help you achieve your parenthood dreams.' },
         { name: 'keywords', content: 'surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process' },

@@ -8,7 +8,7 @@ export default withNuxt(antfu(
     ignores: [
       'docs/**',
       '**/*.md',
-      '.seo-audit-output/**',
+      'seo-project/**',
       '.seo-cache/**',
     ],
   },
