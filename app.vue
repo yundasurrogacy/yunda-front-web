@@ -302,7 +302,8 @@ const hreflangLinks = computed(() => {
 
   const path = route.path || '/'
   // 仅移除严格的 /zh 语言前缀，避免误匹配 /zhejiang 等路径
-  const basePath = path.replace(/^\/zh(?=\/|$)/, '') || '/'
+  const localizedPath = path.replace(/^\/zh(?=\/|$)/, '') || '/'
+  const basePath = localizedPath === '/' ? '/' : localizedPath.replace(/\/+$/, '')
 
   // 生成英文和中文版本的 URL
   const enUrl = `${baseUrl.value}${basePath}`

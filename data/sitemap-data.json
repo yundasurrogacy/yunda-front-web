@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T08:08:42.092Z",
+  "generatedAt": "2026-08-31T03:58:59.854Z",
   "sections": {
     "en": [
       {
@@ -153,6 +153,10 @@
           {
             "href": "/blog",
             "label": "Blog Index"
+          },
+          {
+            "href": "/blog/mhb-new-york-2026-guide-gay-intended-parents",
+            "label": "Questions to Ask a Surrogacy Agency at MHB New York 2026"
           },
           {
             "href": "/blog/surrogate-medical-screening-process",
@@ -487,7 +491,7 @@
             "label": "Surrogate Salary vs. Compensation and Benefits"
           }
         ],
-        "note": "Posts fetched from API: 83 items.",
+        "note": "Posts fetched from API: 84 items.",
         "className": "section-blog"
       }
     ],

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "collection_date": "2026-08-30",
+  "collection_time": "2026-08-30T22:47:35+08:00",
+  "timezone": "Asia/Shanghai",
+  "market": "United States",
+  "language": "English",
+  "device_context": "desktop-intent approximation",
+  "collection_method": "live web search observation",
+  "position_claim_boundary": "The search interface returned representative results, not a stable rank export; no numeric rank positions are claimed.",
+  "queries": [
+    {
+      "query": "MHB New York 2026",
+      "cluster": "event-entity",
+      "observed_page_types": [
+        "official/event ticket page",
+        "organizer entity page",
+        "provider profile mentioning conference attendance"
+      ],
+      "intent": "navigational and event discovery",
+      "primary_page_decision": "/resources/mhb-new-york-2026",
+      "representative_urls": [
+        "https://www.eventbrite.com/e/men-having-babies-2026-new-york-surrogacy-conference-expo-tickets-1992062755326",
+        "https://menhavingbabies.org/surrogacy-seminars/ny/",
+        "https://surrogacyadvisor.menhavingbabies.org/providers/85"
+      ]
+    },
+    {
+      "query": "Men Having Babies New York 2026",
+      "cluster": "event-entity",
+      "observed_page_types": [
+        "event ticket/detail page",
+        "organizer social/entity page",
+        "provider and sponsor references"
+      ],
+      "intent": "navigational and event discovery",
+      "primary_page_decision": "/resources/mhb-new-york-2026",
+      "representative_urls": [
+        "https://www.eventbrite.com/e/men-having-babies-2026-new-york-surrogacy-conference-expo-tickets-1992062755326",
+        "https://www.linkedin.com/company/men-having-babies"
+      ]
+    },
+    {
+      "query": "MHB surrogacy conference gay intended parents",
+      "cluster": "event-audience",
+      "observed_page_types": [
+        "event detail page",
+        "event preview/news story",
+        "organizer entity page"
+      ],
+      "intent": "event discovery plus audience fit",
+      "primary_page_decision": "/resources/mhb-new-york-2026",
+      "representative_urls": [
+        "https://www.eventbrite.com/e/men-having-babies-2026-new-york-surrogacy-conference-expo-tickets-1992062755326",
+        "https://glaad.org/single-gay-dad-shares-surrogacy-journey-ahead-of-men-having-babies-atlanta-conference-as-attendance-surges/"
+      ]
+    },
+    {
+      "query": "questions to ask a surrogacy agency before conference",
+      "cluster": "provider-question-checklist",
+      "observed_page_types": [
+        "numbered checklist blog",
+        "agency selection guide",
+        "community question about providers at an MHB conference"
+      ],
+      "intent": "informational to commercial investigation",
+      "primary_page_decision": "new MHB-context pre-event checklist blog",
+      "representative_urls": [
+        "https://www.americansurrogacy.com/surrogacy/questions-to-ask-surrogacy-agency",
+        "https://www.growinggenerations.com/blog/questions-to-ask-surrogacy-agency",
+        "https://www.reddit.com/r/gaydads/comments/1s0t3cd/questions_to_ask_providers_at_mhb_sf/"
+      ]
+    }
+  ],
+  "serp_overlap_conclusion": "The observed exact-event result set and provider-question result set had no representative URL overlap. A distinct checklist blog is justified only when it owns the question/preparation task and links event facts to the existing MHB hub.",
+  "limitations": [
+    "Search results are volatile and personalized by the search provider.",
+    "The official MHB page returned a fetch error during direct opening, so its event facts are reused from the campaign's previously verified first-party evidence.",
+    "Eventbrite returned an HTTP 429 during direct opening; its search-result extract and previously verified campaign evidence were used.",
+    "No search volume or difficulty is inferred from live result visibility."
+  ]
+}
