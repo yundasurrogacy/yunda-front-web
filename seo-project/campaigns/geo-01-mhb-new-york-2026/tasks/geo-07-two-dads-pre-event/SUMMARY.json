@@ -1,0 +1,31 @@
+{
+  "task": "geo-07-two-dads-pre-event",
+  "analyzed_at": "2026-08-31T08:53:05+08:00",
+  "status": "local_visual_and_technical_validation_passed",
+  "viewports": [
+    { "width": 1600, "height": 900, "unit": "css_px" },
+    { "width": 390, "height": 844, "unit": "css_px" }
+  ],
+  "locales": ["en-US", "zh-CN"],
+  "checks": {
+    "horizontal_overflow": "pass",
+    "main_cta_touch_height": "pass_approximately_45px",
+    "branch_and_source_touch_height": "pass_approximately_44px",
+    "cta_navigation": "pass",
+    "hydrated_hreflang": "pass_one_set",
+    "faq_schema_present": "pass",
+    "console_errors": "pass_none_observed",
+    "typecheck": "pass",
+    "build": "pass"
+  },
+  "changes": [
+    "Expanded branch and source link touch targets.",
+    "Normalized hreflang base paths to prevent duplicate hydrated alternates on trailing-slash routes."
+  ],
+  "remaining_gates": [
+    "named IVF, reproductive-law, and insurance review",
+    "production deployment",
+    "production conversion-event validation",
+    "live recrawl and index evidence"
+  ]
+}

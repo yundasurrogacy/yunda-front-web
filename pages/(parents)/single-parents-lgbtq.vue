@@ -66,6 +66,7 @@ const translations = {
     navItems: [
       { id: 'overview', label: 'Overview' },
       { id: 'who-this-is-for', label: 'Who This Is For' },
+      { id: 'two-dads-flow', label: 'Two Dads Flow' },
       { id: 'what-changes', label: 'What Changes' },
       { id: 'service-area', label: 'Service Area' },
       { id: 'planning-path', label: 'Planning Path' },
@@ -213,6 +214,57 @@ const translations = {
     eventDate: 'September 25-27, 2026 | New York',
     eventBody: 'Use the event guide to prepare questions about LGBTQ+ family building, process, cost, egg donation, and private consultation before the conference.',
     eventCta: 'View the event guide',
+    twoDadsTitle: 'How Does Surrogacy Work for Two Dads?',
+    twoDadsAnswer:
+      'Surrogacy for two dads usually uses a donor egg, IVF and a gestational carrier. After the fathers discuss genetic options with an IVF clinic, eggs are retrieved from a screened donor and fertilized with sperm from one father or, in separate embryos, potentially each father. The clinic creates and evaluates the embryos. A gestational carrier is then screened and matched; she does not provide the egg. Before medication or embryo transfer, the parties complete the independent legal review, insurance analysis and financial or escrow planning required for their arrangement. After transfer, the carrier directs her own medical care while the clinic and obstetric team manage treatment and pregnancy. Legal counsel plans parentage and birth documents for the relevant jurisdictions. The exact order varies by embryo status, donor arrangements, clinic readiness, match, state law and insurance. Yunda coordinates information and handoffs; qualified professionals make medical, legal, insurance and escrow decisions.',
+    twoDadsBranchTitle: 'The five planning branches to resolve before transfer',
+    twoDadsBranches: [
+      {
+        label: 'Donor egg and IVF',
+        body: 'If you do not already have embryos, confirm donor preferences, screening, clinic requirements, embryo-creation timing and who owns each handoff.',
+        to: '/egg-donation',
+        linkLabel: 'Review donor-egg planning',
+      },
+      {
+        label: 'Genetic plan',
+        body: 'Ask the IVF clinic how sperm from one or both fathers may be used in separate embryos, how records are kept and which decisions require medical counseling.',
+        to: '/partner-ivf-clinics',
+        linkLabel: 'Prepare clinic questions',
+      },
+      {
+        label: 'Carrier screening and match',
+        body: 'Confirm medical and psychological screening, communication expectations, independent support and the carrier\'s authority over her own medical care.',
+        to: '/surrogacy-process',
+        linkLabel: 'See the full process',
+      },
+      {
+        label: 'Legal and parentage path',
+        body: 'Use independent reproductive-law counsel to review the contract, parentage process and birth documents for the carrier\'s state, the birth state and your residence.',
+        to: '/surrogacy-protection-california',
+        linkLabel: 'Review protection topics',
+      },
+      {
+        label: 'Insurance and financial plan',
+        body: 'Review IVF or fertility benefits separately from the carrier\'s maternity coverage, exclusions, notice requirements, escrow timing and contingency reserves.',
+        to: '/surrogacy-cost',
+        linkLabel: 'Map cost categories',
+      },
+    ],
+    twoDadsSourceLabel: 'Medical and legal review basis',
+    twoDadsSources: [
+      {
+        label: 'ASRM: Consideration of the Gestational Carrier (2023)',
+        href: 'https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/',
+      },
+      {
+        label: 'ASRM: Recommendations for Practices Using Gestational Carriers (2022)',
+        href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/',
+      },
+      {
+        label: 'California Family Code §7962',
+        href: 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.',
+      },
+    ],
     guides: [
       {
         to: '/surrogacy-cost',
@@ -247,7 +299,7 @@ const translations = {
       },
       {
         q: 'How does gay surrogacy work for two dads?',
-        a: 'Gay surrogacy for two dads often includes donor egg planning, IVF to create embryos, surrogate matching, medical and psychological screening, legal and insurance coordination, embryo transfer, pregnancy support and parentage paperwork.',
+        a: 'Surrogacy for two dads usually includes donor-egg planning, IVF and embryo creation, gestational-carrier screening and matching, independent legal representation, insurance and escrow review, embryo transfer, pregnancy support and a jurisdiction-specific parentage process. The exact order depends on embryo status, clinic readiness, the match and applicable law.',
       },
       {
         q: 'Do lesbian couples need a surrogate or reciprocal IVF?',
@@ -304,6 +356,7 @@ const translations = {
     navItems: [
       { id: 'overview', label: '概览' },
       { id: 'who-this-is-for', label: '适合谁' },
+      { id: 'two-dads-flow', label: '两位爸爸流程' },
       { id: 'what-changes', label: '路径差异' },
       { id: 'service-area', label: '服务地区' },
       { id: 'planning-path', label: '规划路径' },
@@ -451,6 +504,57 @@ const translations = {
     eventDate: '2026 年 9 月 25-27 日 | 纽约',
     eventBody: '会前通过活动指南准备 LGBTQ+ 成家、流程、费用、供卵和私密咨询问题。',
     eventCta: '查看活动指南',
+    twoDadsTitle: '两位爸爸的代孕流程如何进行？',
+    twoDadsAnswer:
+      '两位爸爸的代孕路径通常包括供卵、IVF 与妊娠代孕。两位准父亲先与 IVF 诊所讨论遗传方案；经筛查的卵子捐赠者完成取卵后，诊所可使用其中一位父亲的精子，或在不同胚胎中分别使用两位父亲的精子完成受精与胚胎评估。之后进入妊娠载体筛查和匹配；妊娠载体不提供卵子。在开始用药或胚胎移植前，各方需要完成适用于个案的独立法律审核、保险分析，以及资金和托管规划。移植后，妊娠载体对自己的医疗照护拥有决定权，诊所与产科团队负责治疗和孕期管理；律师则根据相关司法辖区规划亲权和出生文件。具体顺序会因胚胎状态、供卵安排、诊所准备、匹配、州法律与保险而变化。孕达负责信息整理与多方衔接，医疗、法律、保险和托管决定由相应合格专业人士作出。',
+    twoDadsBranchTitle: '移植前需要解决的五条规划分支',
+    twoDadsBranches: [
+      {
+        label: '供卵与 IVF',
+        body: '如果尚未拥有胚胎，需要确认供卵偏好、筛查、诊所要求、胚胎创建时间，以及每个环节由谁负责交接。',
+        to: '/egg-donation',
+        linkLabel: '查看供卵规划',
+      },
+      {
+        label: '遗传方案',
+        body: '向 IVF 诊所确认如何在不同胚胎中使用一位或两位父亲的精子、记录如何管理，以及哪些决定需要医学咨询。',
+        to: '/partner-ivf-clinics',
+        linkLabel: '准备诊所问题',
+      },
+      {
+        label: '妊娠载体筛查与匹配',
+        body: '核对医学与心理筛查、沟通预期、独立支持，以及妊娠载体对自身医疗照护的决定权。',
+        to: '/surrogacy-process',
+        linkLabel: '查看完整流程',
+      },
+      {
+        label: '法律与亲权路径',
+        body: '由独立辅助生殖律师根据妊娠载体所在州、出生州和准父母居住地审查合同、亲权程序与出生文件。',
+        to: '/surrogacy-protection-california',
+        linkLabel: '查看保障主题',
+      },
+      {
+        label: '保险与资金规划',
+        body: '分别审核 IVF 或生育福利与妊娠载体的孕产保险，并核对除外责任、通知要求、托管时间和应急准备金。',
+        to: '/surrogacy-cost',
+        linkLabel: '梳理费用类别',
+      },
+    ],
+    twoDadsSourceLabel: '医疗与法律审核依据',
+    twoDadsSources: [
+      {
+        label: 'ASRM：妊娠载体伦理意见（2023）',
+        href: 'https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/',
+      },
+      {
+        label: 'ASRM：妊娠载体临床实践建议（2022）',
+        href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/',
+      },
+      {
+        label: '《加州家庭法典》第 7962 条',
+        href: 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.',
+      },
+    ],
     guides: [
       {
         to: '/surrogacy-cost',
@@ -482,7 +586,7 @@ const translations = {
       },
       {
         q: '两位爸爸的男同志代孕通常怎么进行？',
-        a: '两位爸爸的男同志代孕通常包括供卵规划、通过 IVF 创建胚胎、代孕妈妈匹配、医学与心理筛查、法律和保险协调、胚胎移植、孕期支持及亲权文件。',
+        a: '两位爸爸的代孕通常包括供卵规划、IVF 与胚胎创建、妊娠载体筛查和匹配、各方独立法律代理、保险与托管审核、胚胎移植、孕期支持及与司法辖区对应的亲权程序。具体顺序取决于胚胎状态、诊所准备、匹配和适用法律。',
       },
       {
         q: '女同志伴侣需要代孕还是互惠 IVF？',
@@ -567,7 +671,7 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
   path: pagePath,
   name: c.value.heroTitle,
   description: c.value.seoDescription,
-  dateModified: '2026-07-27',
+  dateModified: '2026-08-31',
   reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
   about: 'LGBTQ-friendly and single parent gestational surrogacy support in California',
   audience: [
@@ -823,6 +927,91 @@ useHead(() => ({
               <span class="mt-6 inline-flex text-sm text-[var(--yunda-harvest)] font-bold underline decoration-2 underline-offset-4">{{ c.eventCta }}</span>
             </div>
           </NuxtLink>
+        </section>
+
+        <!-- GEO 07: self-contained two-dads process answer and decision branches -->
+        <section id="two-dads-flow" class="scroll-mt-40 w-full bg-[color-mix(in_srgb,var(--yunda-sky)_12%,white_88%)] py-16 lg:py-22">
+          <div class="mx-auto max-w-320 px-6 lg:px-10">
+            <div class="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+              <div>
+                <p class="text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.14em]">
+                  {{ locale === 'zh' ? 'Two Dads 流程' : 'Two Dads Process' }}
+                </p>
+                <h2 class="mt-3 font-display text-[30px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[40px]">
+                  {{ c.twoDadsTitle }}
+                </h2>
+                <p class="mt-5 text-[15px] text-[var(--yunda-bark)]/86 leading-[1.85] lg:text-base">
+                  {{ c.twoDadsAnswer }}
+                </p>
+
+                <div class="mt-7 flex flex-wrap gap-3">
+                  <NuxtLink
+                    :to="localePath('/be-parents')"
+                    class="inline-flex items-center justify-center rounded-full bg-[var(--yunda-bark)] px-6 py-3 text-sm text-white font-bold transition hover:-translate-y-0.5"
+                  >
+                    {{ c.heroPrimary }}
+                  </NuxtLink>
+                  <NuxtLink
+                    :to="localePath('/resources/mhb-new-york-2026')"
+                    class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/45 rounded-full bg-white px-6 py-3 text-sm text-[var(--yunda-maple)] font-bold transition hover:-translate-y-0.5"
+                  >
+                    {{ c.eventCta }}
+                  </NuxtLink>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-display text-xl text-[var(--yunda-bark)] font-semibold lg:text-2xl">
+                  {{ c.twoDadsBranchTitle }}
+                </h3>
+                <ol class="mt-5 space-y-3">
+                  <li
+                    v-for="(branch, index) in c.twoDadsBranches"
+                    :key="branch.label"
+                    class="border border-[var(--yunda-maple)]/28 rounded-[14px] bg-white p-5 shadow-[0_8px_24px_rgba(61,42,31,0.06)]"
+                  >
+                    <div class="flex items-start gap-3">
+                      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--yunda-maple)] text-xs text-white font-bold">
+                        {{ index + 1 }}
+                      </span>
+                      <div>
+                        <h4 class="text-[15px] text-[var(--yunda-bark)] font-bold lg:text-base">
+                          {{ branch.label }}
+                        </h4>
+                        <p class="mt-1.5 text-sm text-[var(--yunda-bark)]/78 leading-[1.7]">
+                          {{ branch.body }}
+                        </p>
+                        <NuxtLink
+                          :to="localePath(branch.to)"
+                          class="mt-1 inline-flex min-h-11 items-center py-2 text-sm text-[var(--yunda-maple)] font-bold underline underline-offset-4"
+                        >
+                          {{ branch.linkLabel }}
+                        </NuxtLink>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="mt-9 border-t border-[var(--yunda-bark)]/12 pt-5">
+              <p class="text-xs text-[var(--yunda-bark)]/65 font-bold uppercase tracking-[0.1em]">
+                {{ c.twoDadsSourceLabel }}
+              </p>
+              <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+                <li v-for="source in c.twoDadsSources" :key="source.href">
+                  <a
+                    :href="source.href"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex min-h-11 items-center py-2 text-sm text-[var(--yunda-maple)] font-semibold underline underline-offset-4"
+                  >
+                    {{ source.label }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <!-- Section 4: What Changes — 文档样式：左标题+简介，右灰绿手风琴面板 -->
