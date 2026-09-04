@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-31T03:58:57.356Z",
+  "generatedAt": "2026-09-04T13:07:51.492Z",
   "signalReliable": true,
   "signal": "Chinese detail content field from /api/blog?route_id=...&lang=zh (authoritative)",
-  "totalBlogPosts": 84,
-  "zhMissingCount": 41,
+  "totalBlogPosts": 85,
+  "zhMissingCount": 42,
   "routes": [
     "/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",
     "/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
@@ -39,6 +39,7 @@
     "/zh/blog/how-to-afford-surrogacy",
     "/zh/blog/how-to-find-a-surrogate-in-california",
     "/zh/blog/international-intended-parents-us-surrogacy-checklist-2026",
+    "/zh/blog/known-vs-anonymous-egg-donor-gay-men",
     "/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
     "/zh/blog/mhb-new-york-2026-guide-gay-intended-parents",
     "/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
