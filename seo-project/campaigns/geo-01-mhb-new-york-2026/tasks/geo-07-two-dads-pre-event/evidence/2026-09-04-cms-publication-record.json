@@ -1,0 +1,12 @@
+{
+  "action": "created",
+  "applied_at": "2026-09-04T13:07:03.788Z",
+  "api": "https://yunda-admin-system.yundasurrogacy.com/api/blog",
+  "id": 180,
+  "route_id": "known-vs-anonymous-egg-donor-gay-men",
+  "body_sha256": "80fee592b1490fc9a5602bfafdf3dc202975dc4123c386dc962faf0db7fb0f8d",
+  "cover_img_url": "https://qiniu-resources.weweknow.com/yundasurrogacy-1/known-vs-anonymous-egg-donor-gay-men-hero-20260904.jpg",
+  "cover_head_status": 200,
+  "cover_content_type": "image/jpeg",
+  "rollback": "node seo-project/campaigns/geo-01-mhb-new-york-2026/tasks/geo-07-two-dads-pre-event/scripts/publish-known-vs-anonymous-donor-blog.cjs --rollback"
+}
