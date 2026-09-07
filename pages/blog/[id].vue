@@ -1415,24 +1415,6 @@ useHead(() => (blogStructuredData.value
                 </div>
               </section>
 
-              <div
-                v-if="blogTags.length"
-                class="mt-8 border-t border-[var(--yunda-bark)]/12 pt-6"
-              >
-                <div class="mb-4 flex items-center gap-2 text-sm text-[var(--yunda-bark)] font-semibold">
-                  <Icon name="lucide:tags" class="h-4 w-4 text-[var(--yunda-maple)]" />
-                  {{ blogCopy.tagsTitle }}
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    v-for="tag in blogTags"
-                    :key="tag"
-                    class="inline-flex items-center border border-[var(--yunda-maple)]/22 rounded-full bg-[var(--yunda-petal)]/65 px-3 py-1.5 text-xs text-[var(--yunda-bark)] font-medium"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-              </div>
             </div>
 
             <section
