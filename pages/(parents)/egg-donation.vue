@@ -497,11 +497,11 @@ useHead(() => ({
 
           <div class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-7 bg-white shadow-[0_28px_70px_rgba(61,42,31,0.16)]">
             <OptimizedPicture
-              src="/images/pages/egg-donation/surrogate-pregnancy-test.jpg"
-              avif-src="/images/pages/egg-donation/surrogate-pregnancy-test.avif"
+              src="/images/pages/egg-donation/hero-surrogate-clinic.jpg"
+              avif-src="/images/pages/egg-donation/hero-surrogate-clinic.jpg"
               :alt="c.heroAlt"
-              width="941"
-              height="1436"
+              width="1368"
+              height="1824"
               sizes="(max-width: 1024px) 100vw, 48vw"
               loading="eager"
               decoding="async"

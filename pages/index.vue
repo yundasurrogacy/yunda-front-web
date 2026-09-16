@@ -95,6 +95,8 @@ const homeSurrogateSlides = [
   { src: '/images/pages/home/meet-our-surrogates/surrogate-06.jpg', alt: 'Yunda team meeting surrogates at HRC Fertility' },
   { src: '/images/pages/home/meet-our-surrogates/surrogate-07.jpg', alt: 'Yunda team supporting a surrogate at Ember Fertility Center' },
   { src: '/images/pages/home/meet-our-surrogates/surrogate-08.jpg', alt: 'Yunda team meeting intended parents at a fertility clinic' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-10.jpg', alt: 'Yunda team supporting a surrogate during her journey' },
+  { src: '/images/pages/home/meet-our-surrogates/surrogate-11.jpg', alt: 'Yunda surrogate meeting with the Yunda team' },
 ]
 
 // SEO 配置

@@ -31,6 +31,12 @@ const teamMembers: TeamMember[] = [
     image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
   },
   {
+    key: 'angelaNavarro',
+    id: 'angela-navarro',
+    paragraphCount: 4,
+    image: { src: '/images/pages/about/angela-navarro-square-2026.png', width: 1080, height: 1080 },
+  },
+  {
     key: 'moonLiang',
     id: 'moon-liang',
     paragraphCount: 3,

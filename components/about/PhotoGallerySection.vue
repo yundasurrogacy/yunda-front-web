@@ -19,6 +19,14 @@ interface Photo {
 const baseUrl = '/images/pages/about'
 
 const photos = ref<Photo[]>([
+  // Newly added industry and team activity photos first
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: `ourteam-activity-${i + 1}`,
+    url: `${baseUrl}/team/activity-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/team/activity-${i + 1}.jpg`,
+    category: ['all', 'our-team'] as PhotoCategory[],
+    alt: `Yunda team and industry activity ${i + 1}`,
+  })),
   // Our Team 照片 (1-4)
   ...Array.from({ length: 4 }, (_, i) => ({
     id: `ourteam-${i + 1}`,

@@ -525,17 +525,17 @@ useHead(() => ({
             <div class="overflow-hidden border border-white/80 rounded-[28px] bg-white/80 shadow-[0_24px_60px_rgba(64,84,120,0.12)]">
               <picture class="contents">
                 <source
-                  srcset="/images/pages/partner-ivf-clinics/hero-640.avif 640w, /images/pages/partner-ivf-clinics/hero-1280.avif 1280w"
+                  srcset="/images/pages/partner-ivf-clinics/hero-clinic-visit.jpg 640w, /images/pages/partner-ivf-clinics/hero-clinic-visit.jpg 1280w"
                   sizes="(max-width: 1024px) 100vw, 520px"
                   type="image/avif"
                 >
                 <source
-                  srcset="/images/pages/partner-ivf-clinics/hero-640.webp 640w, /images/pages/partner-ivf-clinics/hero-1280.webp 1280w"
+                  srcset="/images/pages/partner-ivf-clinics/hero-clinic-visit.jpg 640w, /images/pages/partner-ivf-clinics/hero-clinic-visit.jpg 1280w"
                   sizes="(max-width: 1024px) 100vw, 520px"
                   type="image/webp"
                 >
                 <img
-                  src="/images/pages/partner-ivf-clinics/hero.jpg"
+                  src="/images/pages/partner-ivf-clinics/hero-clinic-visit.jpg"
                   :alt="c.heroImgAlt"
                   width="1280"
                   height="1280"
