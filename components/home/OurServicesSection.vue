@@ -57,11 +57,11 @@ useScrollAnimation()
           </div>
           <div class="order-1 mx-auto aspect-[3/4] max-w-[420px] w-full overflow-hidden rounded-5 bg-[#f6f2ea] shadow-[0_16px_40px_rgba(39,31,24,0.1)] lg:order-2">
             <img
-              src="/images/pages/home/surrogacy-cost-card.webp"
+              src="/images/pages/home/surrogacy-cost-card-2026.jpg"
               :alt="t('home.costSection.title2')"
               class="h-full w-full object-contain"
-              width="420"
-              height="560"
+              width="1080"
+              height="1350"
               loading="lazy"
               decoding="async"
             >
