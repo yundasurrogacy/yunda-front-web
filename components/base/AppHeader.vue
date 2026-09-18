@@ -4,11 +4,16 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
+const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const isMenuOpen = ref(false)
 const homePath = computed(() => localePath('/'))
 const isHomePage = computed(() => route.path === homePath.value)
+const mhbAnnouncement = computed(() => localePath('/resources/mhb-new-york-2026'))
+const mhbAnnouncementLabel = computed(() => locale.value === 'zh'
+  ? 'MHB New York 2026 · 2026 年 9 月 25-27 日 · 查看活动指南'
+  : 'MHB New York 2026 · September 25-27 · View event guide')
 </script>
 
 <template>
@@ -65,6 +70,14 @@ const isHomePage = computed(() => route.path === homePath.value)
       <LanguageSwitcher />
     </nav>
   </header>
+
+  <NuxtLink
+    :to="mhbAnnouncement"
+    class="group flex min-h-11 w-full items-center justify-center gap-3 bg-[var(--yunda-bark)] px-4 py-2.5 text-center text-[12px] text-[var(--yunda-petal)] font-bold leading-snug tracking-[0.04em] transition-colors hover:bg-[var(--yunda-maple)] focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-[var(--yunda-harvest)] sm:text-[13px]"
+  >
+    <span>{{ mhbAnnouncementLabel }}</span>
+    <span class="shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+  </NuxtLink>
 
   <!-- SideMenu Component -->
   <SideMenu v-model:is-open="isMenuOpen" />

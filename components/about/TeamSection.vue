@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 interface TeamMember {
@@ -71,6 +72,23 @@ function toggleBio(memberId: string) {
 }
 
 const { initScrollAnimation } = useScrollAnimation()
+const { locale } = useI18n()
+const localePath = useLocalePath()
+const isZh = computed(() => locale.value === 'zh')
+const eventPath = computed(() => localePath('/resources/mhb-new-york-2026'))
+const eventCopy = computed(() => isZh.value
+  ? {
+      eyebrow: 'MHB NEW YORK 2026 · 2026 年 9 月 25-27 日 · 纽约',
+      title: '孕达将参加 MHB New York 2026',
+      body: '查看活动日期、已核实信息和会前准备路径。',
+      cta: '查看活动指南',
+    }
+  : {
+      eyebrow: 'MHB NEW YORK 2026 · SEPTEMBER 25-27 · NEW YORK',
+      title: 'Yunda is participating in MHB New York 2026',
+      body: 'Review the dates, verified event details, and preparation paths before the conference.',
+      cta: 'Explore the event guide',
+    })
 
 onMounted(() => {
   initScrollAnimation()
@@ -80,6 +98,26 @@ onMounted(() => {
 <template>
   <section class="team-section bg-[var(--yunda-petal)] px-5 py-10 lg:px-20 lg:py-24">
     <div class="mx-auto max-w-300 w-full">
+      <NuxtLink
+        :to="eventPath"
+        class="group mb-8 grid gap-4 rounded-[8px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(60,36,21,0.16)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[var(--yunda-maple)] lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:px-7 lg:py-6"
+      >
+        <div>
+          <p class="text-[11px] text-[var(--yunda-harvest)] font-extrabold uppercase tracking-[0.14em]">
+            {{ eventCopy.eyebrow }}
+          </p>
+          <h2 class="mt-2 font-display text-[26px] font-semibold leading-tight lg:text-[32px]">
+            {{ eventCopy.title }}
+          </h2>
+          <p class="mt-2 max-w-[72ch] text-sm text-[var(--yunda-petal)]/76 leading-[1.7]">
+            {{ eventCopy.body }}
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-2 text-sm text-[var(--yunda-harvest)] font-bold underline decoration-2 underline-offset-4">
+          {{ eventCopy.cta }} <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+        </span>
+      </NuxtLink>
+
       <p class="slide-left founder-section-title">
         {{ $t('about.team.founder') }}
       </p>
@@ -193,7 +231,7 @@ onMounted(() => {
 <style scoped>
 .founder-card,
 .member-card {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 10rem;
 }
 
 .founder-card {

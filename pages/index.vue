@@ -7,6 +7,7 @@ import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
 import GoogleReviewsSection from '../components/home/GoogleReviewsSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
+import MhbTeamSpotlight from '../components/home/MhbTeamSpotlight.vue'
 import OurServicesSection from '../components/home/OurServicesSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
@@ -157,6 +158,7 @@ useHead(() => {
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <HeroSection />
+    <MhbTeamSpotlight />
     <StatsSection />
     <WhatSetsUsApartSection />
     <OurServicesSection />

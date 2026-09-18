@@ -3,10 +3,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
-import BreadcrumbNav from '@/components/base/BreadcrumbNav.vue'
 import OptimizedPicture from '@/components/base/OptimizedPicture.vue'
 import {
-  buildBreadcrumbListSchema,
   buildEventSchema,
   buildFAQPageSchema,
   buildWebPageSchema,
@@ -174,11 +172,6 @@ const pageUrl = computed(() => `${siteUrl.value}${localePath(PAGE_PATH)}`)
 const heroImageUrl = computed(() => `${siteUrl.value}${EVENT_IMAGES[0]}`)
 const statusLabel = computed(() => EVENT_STATE === 'upcoming' ? c.value.statusUpcoming : c.value.statusPast)
 
-const breadcrumbItems = computed(() => [
-  { label: locale.value === 'zh' ? '资源与媒体中心' : 'Resources & Media', to: '/resources' },
-  { label: c.value.breadcrumb },
-])
-
 const pageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value,
   url: PAGE_PATH,
@@ -226,16 +219,6 @@ const eventSchema = computed(() => buildEventSchema({
   inLanguage: inLanguage.value,
 }))
 
-const breadcrumbSchema = computed(() => buildBreadcrumbListSchema({
-  baseUrl: siteUrl.value,
-  inLanguage: inLanguage.value,
-  items: [
-    { name: locale.value === 'zh' ? '首页' : 'Home', url: '/' },
-    { name: locale.value === 'zh' ? '资源与媒体中心' : 'Resources & Media', url: '/resources' },
-    { name: c.value.breadcrumb, url: PAGE_PATH },
-  ],
-}))
-
 const faqSchema = computed(() => buildFAQPageSchema({
   baseUrl: siteUrl.value,
   url: PAGE_PATH,
@@ -258,7 +241,7 @@ useHead(() => ({
     { name: 'twitter:image', content: heroImageUrl.value },
   ],
   link: [{ rel: 'preload', as: 'image', href: EVENT_IMAGES[0], fetchpriority: 'high' }],
-  script: [pageSchema.value, eventSchema.value, breadcrumbSchema.value, faqSchema.value].map((schema, index) => ({
+  script: [pageSchema.value, eventSchema.value, faqSchema.value].map((schema, index) => ({
     key: `schema-mhb-new-york-2026-${index}`,
     type: 'application/ld+json',
     children: JSON.stringify(schema),
@@ -269,7 +252,6 @@ useHead(() => ({
 <template>
   <div class="mhb-page min-h-screen overflow-x-clip bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
-    <BreadcrumbNav :items="breadcrumbItems" />
 
     <main>
       <section class="relative isolate overflow-hidden bg-[var(--yunda-petal)]">
