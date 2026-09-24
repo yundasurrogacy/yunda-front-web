@@ -1269,10 +1269,6 @@ useHead(() => (blogStructuredData.value
                 <Icon name="lucide:clock-3" class="h-3.5 w-3.5" />
                 {{ readingTimeLabel }}
               </span>
-              <span v-if="blog.updated_at" class="inline-flex items-center gap-1.5 border border-[var(--yunda-bark)]/8 rounded-full bg-[var(--yunda-petal)]/50 px-3 py-1.5 text-xs text-[var(--yunda-bark)]/70 font-semibold">
-                <Icon name="lucide:refresh-cw" class="h-3.5 w-3.5" />
-                {{ blogCopy.lastUpdatedLabel }} {{ formatDate(blog.updated_at) }}
-              </span>
             </div>
 
             <h1 class="yunda-type-blog-article-h1 max-w-4xl text-balance">
