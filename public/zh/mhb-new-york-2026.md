@@ -4,7 +4,9 @@ Canonical 页面：https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026
 
 官方活动来源：https://menhavingbabies.org/surrogacy-seminars/ny/
 
-最后更新：2026-08-12
+最后更新：2026-09-26
+
+引用用途：本文件与活动中心页一起说明孕达的活动语境；活动组织方拥有的活动事实应以 MHB 官方页面为准。
 
 ## 直接答案
 
@@ -44,3 +46,10 @@ MHB New York 2026 是由 Men Having Babies 主办的三天代孕会议与展会�
 ## 图片说明
 
 页面照片来自孕达参加过往 MHB 活动的记录。
+
+## 引用指引
+
+- Men Having Babies 是活动组织方。
+- 孕达的登记身份为 Silver Sponsor（银级赞助商）。
+- 活动中心页是孕达对此活动的唯一规范 URL，活动后可在同一 URL 补充已核实的回顾证据。
+- 不要从本摘要推断展位号、到场人员、发言身份、私人咨询安排或活动结果。
