@@ -17,14 +17,14 @@ const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 
 const pageTitle = computed(() =>
   tt(
-    'Surrogate Compensation in the U.S. | Pay & Benefits',
-    '美国代孕补偿 | 代孕妈妈能获得多少补偿？',
+    'Surrogate Payment Schedule, Escrow and Reimbursements | Yunda',
+    '美国代孕付款时间表、信托与报销 | Yunda',
   ),
 )
 const pageDescription = computed(() =>
   tt(
-    'Learn how much surrogates get paid in the U.S., what benefits are included, and how the surrogate payment schedule works, plus key surrogacy costs for families.',
-    '了解美国代孕妈妈的补偿金额、包含的福利，以及代孕付款时间表的运作方式，同时说明家庭的主要代孕成本。',
+    'Understand surrogate payment milestones, third-party trust handling, approved reimbursements, and the agreement terms that govern timing and final accounting.',
+    '了解代孕付款里程碑、第三方信托管理、获批报销，以及决定付款时间和最终结算的协议条款。',
   ),
 )
 
@@ -86,8 +86,8 @@ const payAccordions = computed(() => [
     title: tt('Bonuses and medical add-ons', '奖金与医疗附加项'),
     paragraphs: [
       tt(
-        'Your plan may include add-ons based on medical needs. If a doctor confirms multiples, I add a $15,000 multiples bonus. If you need a C-section, I add $5,000. Bed rest, household help, and childcare follow doctor notes and receipts. If you choose to pump milk, the stipend is $250/week. We also consider wage loss and, in very rare cases, organ-loss amounts ($2,500 partial, $5,000 total) after medical confirmation. These items keep paid surrogacy fair and safe.',
-        '补偿方案可能包含医疗需求相关的附加项。若医生确认多胎，可增加 $15,000 多胎奖金；如需剖宫产，可增加 $5,000。卧床、家务协助与托育依据医生证明和票据报销。若选择泵奶，津贴为 $250/周。我们也考虑误工补偿，极少数情况下按医疗确认设置器官损失补偿（部分 $2,500，全额 $5,000）。这些条目让代孕补偿更公平、更安全。',
+        'Your plan may include approved add-ons based on medical needs and the written agreement. The 2026 customer estimate lists $10,000 for multiples and $5,000 for a C-section, while bed rest, household help, childcare, travel, meals, and lost wages may require medical confirmation, receipts, or actual-cost review. The agreement controls eligibility and payment timing for each item.',
+        '补偿方案可能根据医疗需求和书面协议包含获批附加项。2026 年客户费用说明列出多胎 $10,000、剖宫产 $5,000；卧床、家务、托育、差旅、餐费和误工等项目可能需要医疗证明、票据或按实际发生审核。每一项的资格和付款时间以协议为准。',
       ),
     ],
   },
@@ -96,8 +96,8 @@ const payAccordions = computed(() => [
     title: tt('How and when you receive payment', '如何与何时收到补偿'),
     paragraphs: [
       tt(
-        'I use a clear surrogate payment schedule with independent escrow. Intended parents fund a trust in three steps: $56,850 at signing, $83,500 after medical clearance, and $17,500 after heartbeat, while keeping $10,000 in the account. This structure supports on-time releases during pregnancy and at delivery. Unused funds settle after final accounting.',
-        '我们采用清晰的代孕付款时间表与独立托管。意向父母分三步入账：签约时 $56,850，医疗清关后 $83,500，心跳确认后 $17,500，同时账户保留 $10,000。该结构支持孕期与分娩的准时发放，未使用资金在最终结算后处理。',
+        'The 2026 estimate describes intended-parent project funding in three stages: $42,400 after medical-record pre-review approval, $66,850 after the legal documents become effective and are notarized, and $33,500 after pregnancy or heartbeat confirmation. These are project funding stages, not a promise that every surrogate receives the same amount at the same time. The written agreement and third-party trust instructions govern releases and final accounting.',
+        '2026 年费用说明将意向父母项目资金分为三阶段：医疗资料预审通过后 $42,400，法律文件生效并完成公证后 $66,850，确认妊娠或胎心后 $33,500。这些是项目资金阶段，并不代表每位代孕妈妈都会在同一时间收到相同金额。具体发放和最终结算以书面协议及第三方信托说明为准。',
       ),
       tt(
         'For trust administration, I work with established third-party providers (e.g., SeedTrust) so your surrogacy payment stays timely and compliant.',
@@ -352,8 +352,8 @@ const faqQuestions = computed(() => [
   {
     question: tt('How much do surrogates get paid in the U.S.?', '美国代孕妈妈一般能获得多少补偿？'),
     answer: tt(
-      'Surrogate pay in the U.S. varies by agency, state, experience, insurance, agreement terms, and pregnancy-related events. Yunda explains a $61,000+ total compensation package for qualified surrogate candidates, but final compensation depends on eligibility, agreement review, and approved items.',
-      '美国代孕补偿会因机构、州、经验、保险、协议条款和孕期事件而变化。孕达为符合条件的代孕妈妈候选人说明 $61,000+ 总补偿方案，但最终金额取决于资格、协议审核和获批项目。',
+      'Surrogate compensation in the U.S. varies by agency, state, experience, insurance, agreement terms, and pregnancy-related events. Yunda’s 2026 customer estimate lists $50,000 in base compensation and an estimated $11,000 benefits package; final compensation depends on eligibility, agreement review, and approved items.',
+      '美国代孕补偿会因机构、州、经验、保险、协议条款和孕期事件变化。孕达 2026 年客户费用说明列出 $50,000 基础补偿和预估 $11,000 福利包；最终金额取决于资格、协议审核和获批项目。',
     ),
   },
   {

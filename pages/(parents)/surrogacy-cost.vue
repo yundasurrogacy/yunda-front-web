@@ -84,7 +84,7 @@ const translations = {
     hero: {
       title: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
       lead:
-        'Transparent, all-in surrogacy pricing in California and across the U.S. so you can plan with confidence and clarity.',
+        'Use Yunda’s 2026 planning estimate to compare program services, payment stages, insurance, reserves, and case-dependent costs before requesting a personalized budget.',
       primary: 'Get a Personalized Cost Estimate',
       secondary: 'Become a Parent',
       totalLabel: 'Estimated Program Total',
@@ -153,15 +153,15 @@ const translations = {
         },
         {
           title: 'Legal Fees',
-          amount: '$10,750',
+          amount: '$8,750',
           description:
-            'Covers legal agreement drafting and review, attorney support, and parentage-related legal steps such as California PBO planning.',
+            'Covers agreement drafting and review, surrogate attorney review, and parentage-related legal steps. Trust-account management is listed separately.',
         },
         {
           title: 'Surrogate Compensation',
-          amount: '$61,000+',
+          amount: '$50,000',
           description:
-            'Covers base surrogate compensation and related support. Final compensation may vary depending on match details and case circumstances.',
+            'The 2026 estimate lists $50,000 in base compensation and an estimated $11,000 benefits package. Final terms depend on the match, approved items, and written agreement.',
         },
       ],
       fixedTitle: 'Fixed Costs',
@@ -186,13 +186,13 @@ const translations = {
         'Breast milk support',
         'Miscarriage-related compensation',
       ],
-      donutTitle: 'Where Costs Usually Go',
+      donutTitle: 'Illustrative Share of Listed Categories',
       donutLegend: [
-        'Agency service fee: 39%',
-        'Surrogate compensation: 47%',
-        'Legal fees: 8%',
-        'Administrative support: 4%',
-        'Trust management: 2%',
+        'Agency service fee: about 35%',
+        'Surrogate compensation: about 35%',
+        'Insurance and coverage setup: about 9%',
+        'Legal fees: about 6%',
+        'Variable costs and reserves: about 15%',
       ],
       fixed: [
         {
@@ -225,10 +225,9 @@ const translations = {
         },
         {
           title: '4) Legal Fees (Surrogacy Agreement)',
-          amount: '$10,750',
-          description: 'To make legal costs easy to compare, I break them into two counsel lines:',
+          amount: '$8,750',
+          description: 'To make legal costs easy to compare, these are the legal line items listed in the estimate:',
           subItems: [
-            'Escrow (Trust) Account Management: $2,000',
             'Surrogacy Agreement Drafting & Review: $3,750',
             'Surrogate’s Attorney Contract Review: $1,500',
             'California Parentage / PBO: $3,500',
@@ -236,9 +235,9 @@ const translations = {
         },
         {
           title: '5) Surrogate Compensation',
-          amount: '$61,000+',
+          amount: '$50,000',
           description:
-            'This is one of the biggest drivers of surrogacy costs in California and across the U.S., and it can vary by match and circumstances.',
+            'The estimate lists $50,000 in base compensation plus an estimated $11,000 benefits package. Payment timing and approved items follow the written agreement.',
         },
       ],
       variable: [
@@ -531,13 +530,13 @@ const translations = {
         },
         {
           title: '法律费用',
-          amount: '$10,750',
-          description: '涵盖法律协议起草与审核、律师支持及加州亲子关系等法律步骤。',
+          amount: '$8,750',
+          description: '涵盖协议起草与审核、代孕律师审查及亲子关系等法律步骤；信托账户管理另行列示。',
         },
         {
           title: '代孕补偿',
-          amount: '$61,000+',
-          description: '涵盖基础代孕补偿及相关支持，最终金额因匹配与个案情况而异。',
+          amount: '$50,000',
+          description: '2026 年费用说明列出 50,000 美元基础补偿及预估 11,000 美元福利包，具体付款和获批项目以书面协议为准。',
         },
       ],
       fixedTitle: '固定费用',
@@ -562,8 +561,8 @@ const translations = {
         '母乳支持',
         '流产相关补偿',
       ],
-      donutTitle: '费用通常的分布',
-      donutLegend: ['机构服务费：39%', '代孕补偿：47%', '法律费用：8%', '行政支持：4%', '信托管理：2%'],
+      donutTitle: '列明费用类别的示意占比',
+      donutLegend: ['机构服务费：约 35%', '代孕补偿：约 35%', '保险与保障配置：约 9%', '法律费用：约 6%', '变量费用与预备金：约 15%'],
       fixed: [
         {
           title: '1）代孕机构服务费',
@@ -583,20 +582,19 @@ const translations = {
         },
         {
           title: '3）保险审查与保险范围设置',
-          amount: '$12,600美元',
+          amount: '$12,600',
           description: '为了让保险相关成本清晰且易于追踪，我将其分为三项：',
           subItems: [
-            '健康保险专业审核与管理：2000美元',
-            '替代人寿保险（可报销）：600美元0',
-            '替代健康保险费（可报销）：10,000美元',
+            '健康保险专业审核与管理：$2,000',
+            '代孕人寿保险（可报销）：$600',
+            '代孕医疗保险费（可报销）：$10,000',
           ],
         },
         {
           title: '4）法律费用（代孕协议）',
-          amount: '$10,750',
+          amount: '$8,750',
           description: '为便于比较，拆分如下：',
           subItems: [
-            '托管（信托）账户管理：2000美元',
             '代孕协议起草与审核：3750美元',
             '代孕律师合同审查：1500美元',
             '加利福尼亚亲子关系/亲子关系令：3500美元',
@@ -604,8 +602,8 @@ const translations = {
         },
         {
           title: '5）代孕补偿',
-          amount: '$61,000+',
-          description: '代孕费用的重要驱动之一，会随匹配情况而变化。',
+          amount: '$50,000',
+          description: '2026 年费用说明列出 50,000 美元基础补偿及预估 11,000 美元福利包，具体付款和获批项目以书面协议为准。',
         },
       ],
       variable: [
@@ -1366,7 +1364,7 @@ onUnmounted(() => {
                   class="chart-slot cost-donut"
                   role="img"
                   :aria-label="t.breakdown.donutTitle"
-                  style="--p1:39; --p2:47; --p3:8; --p4:4; --p5:2;"
+                  style="--p1:35; --p2:35; --p3:9; --p4:6; --p5:15;"
                 />
                 <ul class="donut-legend">
                   <li v-for="(item, idx) in t.breakdown.donutLegend" :key="item">
