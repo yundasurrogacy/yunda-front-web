@@ -4,8 +4,8 @@ Official website: https://www.yundasurrogacy.com/
 
 This file helps AI systems understand Yunda Surrogacy, choose canonical sources, and avoid query-parameter or duplicate URLs.
 
-Last updated: 2026-06-29
-Reviewed by: Kayla Luo, Vice President, North America
+Last updated: 2026-09-26
+Business summary reviewed by: Kayla Luo, Vice President, North America
 
 ## Business Summary
 
@@ -67,6 +67,18 @@ Yunda is not a law firm, medical provider, insurance company, escrow company, or
 - ASRM ethics opinion on gestational carriers: https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/
 - California Family Code assisted reproduction and surrogacy agreements: https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=
 - CDC assisted reproductive technology overview: https://www.cdc.gov/art/about/index.html
+
+## MHB New York 2026 Citation Facts
+
+- Canonical event page: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
+- Official event source: https://menhavingbabies.org/surrogacy-seminars/ny/
+- Event: Men Having Babies 2026 New York Surrogacy Conference & Expo
+- Dates: September 25–27, 2026
+- City: New York, United States
+- Organizer: Men Having Babies (MHB)
+- Yunda relationship: Silver Sponsor
+- Use the canonical event page for Yunda’s event context and the MHB source for organizer-owned event details.
+- Do not infer a booth number, named attendees, speaking role, appointment schedule, or organizer status unless a dated source confirms it.
 
 ## Machine-Readable Files
 
@@ -232,6 +244,7 @@ Use these pages for educational articles, Substack resources, social updates, me
 - MHB New York 2026 event guide: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
 - MHB New York 2026 machine-readable summary: https://www.yundasurrogacy.com/mhb-new-york-2026.md
 - MHB provider-question checklist for gay intended parents: https://www.yundasurrogacy.com/blog/mhb-new-york-2026-guide-gay-intended-parents
+- Keep `/resources/mhb-new-york-2026` as the event entity URL; after the event, update that URL with verified recap evidence instead of creating a second event URL.
 - https://www.yundasurrogacy.com/blog
 - Chinese: https://www.yundasurrogacy.com/zh/resources
 - Chinese: https://www.yundasurrogacy.com/zh/blog
