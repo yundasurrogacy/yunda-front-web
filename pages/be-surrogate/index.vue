@@ -116,7 +116,7 @@ const beSurrogateGallerySlides = [
 ]
 
 const v2HeroTrustChips = computed(() => [
-  tt('$61,000+ compensation package', '$61,000+ 总补偿方案'),
+  tt('$50,000 base compensation + estimated $11,000 support benefits', '$50,000 基础补偿 + 预估 $11,000 福利支持'),
   tt('Independent escrow payment protection', '独立托管保障付款'),
   tt('Legal and insurance coordination', '法律与保险协调'),
   tt('Private review by the Yunda team', '孕达团队私密审核'),
@@ -151,7 +151,7 @@ const v2AfterApplySteps = computed(() => [
 const v2FaqItems = computed(() => [
   {
     q: tt('How much can I earn as a surrogate with Yunda?', '通过孕达成为代孕妈妈可以获得多少补偿？'),
-    a: tt('Qualified surrogate candidates may receive a $61,000+ total compensation package through Yunda, including base compensation and support benefits. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '符合条件的代孕妈妈候选人可通过孕达获得 $61,000+ 总补偿方案，包括基础补偿和支持福利。具体金额取决于资格、协议条款、医疗事件、获批报销和项目要求。'),
+    a: tt('Qualified surrogate candidates may receive a $50,000 base compensation amount plus an estimated $11,000 benefits/support package through Yunda. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '符合条件的代孕妈妈候选人可通过孕达获得 $50,000 基础补偿 + 预估 $11,000 福利支持，包括基础补偿和支持福利。具体金额取决于资格、协议条款、医疗事件、获批报销和项目要求。'),
   },
   {
     q: tt('Is submitting the application a commitment?', '提交申请是否代表已经承诺？'),
@@ -854,7 +854,7 @@ function scrollToPageTop() {
                 class="max-w-full w-fit inline-flex self-center text-center text-4.5 text-[var(--yunda-maple)] font-bold leading-snug lg:text-5.5 sm:text-5"
                 style="font-family: var(--font-text)"
               >
-                {{ tt('$61,000+ total compensation package for qualified surrogates', '符合条件的代孕妈妈可获得 $61,000+ 总补偿方案') }}
+                {{ tt('$50,000 base compensation plus estimated $11,000 support benefits for qualified surrogates', '符合条件的代孕妈妈可获得 $50,000 基础补偿 + 预估 $11,000 福利支持') }}
               </p>
               <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
                 <span

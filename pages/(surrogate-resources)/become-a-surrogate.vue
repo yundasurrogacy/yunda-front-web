@@ -307,7 +307,7 @@ const journeySteps = computed(() => [
     details: [
       tt('You work with your own attorney.', '由你自己的律师提供建议。'),
       tt('You review the contract line by line.', '逐条审阅合同。'),
-      tt('Funds move into escrow with trusted partners such as SeedTrust.', '资金进入托管账户（如 SeedTrust）。'),
+      tt('Funds move into a third-party trust according to the written agreement.', '资金按照书面协议进入第三方托管账户。'),
       tt('We coordinate insurance with sector experts like ART Risk.', '与 ART Risk 等保险专家协作。'),
       tt('You see clear schedules, categories, and milestones before you start medication.', '在用药前看到清晰的时间表、类别与里程碑。'),
     ],
@@ -373,11 +373,11 @@ const typicalInclusions = computed(() => [
 ])
 
 const paymentsParagraphs = computed(() => [
-  tt('We keep money predictable. Intended parents place funds in escrow with partners such as SeedTrust.', '费用可预测，意向父母将资金存入如 SeedTrust 的托管账户。'),
+  tt('We keep money predictable. Intended parents place funds in a third-party trust according to the written agreement.', '费用可预测，意向父母按照书面协议将资金存入第三方托管账户。'),
   tt('We align each payment to a real step on the calendar. Contracts define start points and dates.', '每笔付款对应真实里程碑，合同明确起点与日期。'),
   tt('Many journeys trigger monthly payments after heartbeat confirmation. We publish the schedule, and we follow it.', '多数项目在心跳确认后启动月度支付，时间表公开并严格执行。'),
   tt('Do surrogates get paid? Yes—by contract, by milestone, and through secure escrow for surrogacy payments.', '代孕妈妈会按合同、按里程碑、通过安全托管得到支付。'),
-  tt('Client framework: first-time packages commonly range $61,000–$70,000+. Final numbers vary by state, clinic, insurance, and medical history. The contract sets the amount for each surrogate.', '参考范围：首次代孕常见 $61,000–$70,000+。最终金额因州别、诊所、保险与病史而异，合同会明确每位代孕妈妈的金额。'),
+  tt('The 2026 customer estimate lists $50,000 in base compensation plus an estimated $11,000 benefits/support package. Final amounts depend on eligibility, approved items, actual costs, and the written agreement.', '2026 年客户费用说明列出 $50,000 基础补偿与预估 $11,000 福利支持方案。最终金额取决于资格、获批项目、实际费用和书面协议。'),
 ])
 
 const benefitsIntroParagraphs = computed(() => [
@@ -780,7 +780,7 @@ useHead(() => {
           {{ tt('Compensation & Benefits', '补偿与福利') }}
         </h2>
         <p class="mt-6 animate-fade-in-up text-4.25 leading-relaxed" style="animation-delay: 400ms;">
-          {{ tt('Most first-time surrogates in Southern California receive total compensation in the mid–five figures, plus structured benefits. This section explains how surrogate pay works, what is covered and how your payments are protected.', '南加州首次代孕的总补偿通常为五位数中段并附带结构化福利。本节说明补偿如何支付、涵盖哪些内容以及如何保障款项。') }}
+          {{ tt('Most first-time surrogates in Southern California receive total compensation in the mid–five figures, plus structured benefits. This section explains how surrogate pay works, what is covered and how your payments are protected.', '2026 年客户费用说明列出 $50,000 基础补偿与预估 $11,000 福利支持方案，具体按资格、获批项目和书面协议执行。本节说明补偿如何支付、涵盖哪些内容以及如何保障款项。') }}
         </p>
 
         <!-- Compensation Overview Cards -->
@@ -795,7 +795,7 @@ useHead(() => {
               {{ tt('Base Compensation', '基础补偿') }}
             </h3>
             <div class="mb-4 text-center">
-              <span class="text-6 font-bold">$61,000 - $70,000+</span>
+              <span class="text-6 font-bold">$50,000 base + estimated $11,000 support</span>
               <p class="mt-2 text-3.5 opacity-90">
                 {{ tt('First-time packages', '首次代孕常见区间') }}
               </p>

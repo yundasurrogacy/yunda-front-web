@@ -646,7 +646,7 @@ useHead(() => ({
               <div class="mx-auto max-w-[300px] w-full">
                 <div class="border-2 border-[var(--yunda-maple)] rounded-[50%] bg-[#fdf3e3] px-8 py-12 text-center">
                   <p class="font-display text-[34px] text-[var(--yunda-bark)] font-semibold leading-none lg:text-[38px]">
-                    $61,000+
+                    $50,000 base compensation + estimated $11,000 support
                   </p>
                   <p class="mt-3 text-[13px] text-[var(--yunda-bark)] font-bold leading-snug tracking-wide uppercase">
                     {{ tt('Total Compensation Package', '总补偿方案') }}
@@ -666,7 +666,7 @@ useHead(() => ({
                   {{ tt('Compensation, Protection, and Support', '补偿、保障与支持') }}
                 </h2>
                 <p class="mt-5 text-[15px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.85]">
-                  {{ tt('Qualified surrogate candidates may receive a $61,000+ total compensation package through Yunda. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, state logistics, and program requirements.', '符合条件的候选人可通过孕达获得 $61,000+ 总补偿方案。具体金额取决于资格、协议条款、医疗事件、获批报销、州执行条件和项目要求。') }}
+                  {{ tt('Qualified surrogate candidates may receive a $50,000 base compensation amount plus an estimated $11,000 benefits/support package through Yunda. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, state logistics, and program requirements.', '符合条件的候选人可通过孕达获得 $50,000 基础补偿 + 预估 $11,000 福利支持方案。具体金额取决于资格、协议条款、医疗事件、获批报销、州执行条件和项目要求。') }}
                 </p>
                 <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/88 font-semibold leading-[1.85]">
                   {{ tt('Compensation and reimbursements are handled through clear agreement terms and escrow or trust account coordination. Legal protection, insurance review, and dedicated support are explained before the journey moves forward.', '补偿与报销通过清晰的协议条款和托管/信托账户协调处理。法律保障、保险审查与专属支持会在旅程推进前讲清楚。') }}

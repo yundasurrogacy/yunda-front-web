@@ -1,5 +1,4 @@
 const fs = require('node:fs')
-const https = require('node:https')
 const path = require('node:path')
 const process = require('node:process')
 
@@ -10,6 +9,7 @@ const BLOG_DETAIL_API_URL = process.env.BLOG_DETAIL_API_URL || BLOG_API_FALLBACK
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '200', 10)
 const BLOG_DETAIL_CONCURRENCY = Number.parseInt(process.env.BLOG_DETAIL_CONCURRENCY || '8', 10)
 const BLOG_API_TIMEOUT_MS = Number.parseInt(process.env.BLOG_API_TIMEOUT_MS || '30000', 10)
+const BLOG_API_RETRIES = Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10)
 
 const OUTPUT_INDEX_PATH = path.join(process.cwd(), 'public', 'sitemap.xml')
 const OUTPUT_EN_PATH = path.join(process.cwd(), 'public', 'sitemap-en.xml')
@@ -96,31 +96,43 @@ function createAlternateLinks(loc, includeZh = true) {
   ]
 }
 
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    const request = https.get(url, (res) => {
-      let data = ''
-      res.on('data', (chunk) => {
-        data += chunk
-      })
-      res.on('end', () => {
-        if (res.statusCode && res.statusCode >= 400) {
-          reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''}`.trim()))
-          return
-        }
-        try {
-          resolve(JSON.parse(data))
-        }
-        catch (error) {
-          reject(error)
-        }
-      })
-    })
-    request.setTimeout(BLOG_API_TIMEOUT_MS, () => {
-      request.destroy(new Error(`Request timed out after ${BLOG_API_TIMEOUT_MS}ms: ${url}`))
-    })
-    request.on('error', reject)
-  })
+async function fetchJsonOnce(url) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), BLOG_API_TIMEOUT_MS)
+  try {
+    const response = await fetch(url, { signal: controller.signal })
+    if (!response.ok)
+      throw new Error(`Request failed: ${response.status} ${response.statusText}`.trim())
+    return await response.json()
+  }
+  finally {
+    clearTimeout(timeout)
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function fetchJson(url) {
+  const attempts = Math.max(1, BLOG_API_RETRIES + 1)
+  let lastError
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await fetchJsonOnce(url)
+    }
+    catch (error) {
+      lastError = error
+      if (attempt === attempts)
+        throw error
+      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
+      console.warn(`Sitemap XML: blog API request failed (attempt ${attempt}/${attempts}); retrying in ${delayMs}ms: ${error?.code || error?.message || error}`)
+      await sleep(delayMs)
+    }
+  }
+
+  throw lastError
 }
 
 function withQuery(input, params) {
@@ -414,6 +426,25 @@ function writeZhMissingManifest(blogEntries, signalReliable) {
     console.warn(`Sitemap XML: ${routes.length} of ${blogEntries.length} blog posts have no Chinese content.`)
 }
 
+function hasValidatedCachedSitemaps() {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(ZH_MISSING_OUTPUT_PATH, 'utf8'))
+    if (manifest.signalReliable === false || !Number.isInteger(manifest.totalBlogPosts) || !Number.isInteger(manifest.zhMissingCount))
+      return false
+
+    const englishSitemap = fs.readFileSync(OUTPUT_EN_PATH, 'utf8')
+    const chineseSitemap = fs.readFileSync(OUTPUT_ZH_PATH, 'utf8')
+    const englishBlogCount = (englishSitemap.match(/<loc>https:\/\/www\.yundasurrogacy\.com\/blog\//g) || []).length
+    const chineseBlogCount = (chineseSitemap.match(/<loc>https:\/\/www\.yundasurrogacy\.com\/zh\/blog\//g) || []).length
+
+    return englishBlogCount === manifest.totalBlogPosts
+      && chineseBlogCount === manifest.totalBlogPosts - manifest.zhMissingCount
+  }
+  catch {
+    return false
+  }
+}
+
 async function run() {
   let blogEntries = []
   const signalReliable = true
@@ -427,7 +458,11 @@ async function run() {
   }
   catch (error) {
     console.error('Sitemap XML: authoritative blog content check failed.', error?.message || error)
-    console.error('Sitemap XML: refusing to overwrite indexability signals with stale fallback data.')
+    if (hasValidatedCachedSitemaps()) {
+      console.warn('Sitemap XML: API unavailable; keeping the validated sitemap snapshot and manifest from the previous successful run.')
+      return
+    }
+    console.error('Sitemap XML: no validated snapshot is available; refusing to overwrite indexability signals with stale fallback data.')
     throw error
   }
 

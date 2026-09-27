@@ -342,7 +342,7 @@ const yundaHighlights = computed(() => [
   {
     title: tt('Transparent Process & Escrow Security', '流程透明与托管安全'),
     body: tt(
-      'SeedTrust manages escrow. ART Risk supports insurance. Milestones stay on time. Payments stay clear. The surrogacy process stays fair.',
+      'Independent third-party providers may support trust and insurance coordination. Milestones, payment controls, and documentation follow the written agreement.',
       'SeedTrust 管理托管，ART Risk 支持保险，里程碑按时推进，支付清晰透明，流程公平可靠。',
     ),
   },

@@ -86,8 +86,8 @@ const payAccordions = computed(() => [
     title: tt('Bonuses and medical add-ons', '奖金与医疗附加项'),
     paragraphs: [
       tt(
-        'Your plan may include add-ons based on medical needs. If a doctor confirms multiples, I add a $15,000 multiples bonus. If you need a C-section, I add $5,000. Bed rest, household help, and childcare follow doctor notes and receipts. If you choose to pump milk, the stipend is $250/week. We also consider wage loss and, in very rare cases, organ-loss amounts ($2,500 partial, $5,000 total) after medical confirmation. These items keep paid surrogacy fair and safe.',
-        '补偿方案可能包含医疗需求相关的附加项。若医生确认多胎，可增加 $15,000 多胎奖金；如需剖宫产，可增加 $5,000。卧床、家务协助与托育依据医生证明和票据报销。若选择泵奶，津贴为 $250/周。我们也考虑误工补偿，极少数情况下按医疗确认设置器官损失补偿（部分 $2,500，全额 $5,000）。这些条目让代孕补偿更公平、更安全。',
+        'Your plan may include add-ons based on medical needs. If a doctor confirms multiples, I add a $10,000 multiples bonus. If you need a C-section, I add $5,000. Bed rest, household help, and childcare follow doctor notes and receipts. If you choose to pump milk, the stipend is $300/week. We also consider wage loss and, in very rare cases, organ-loss amounts ($3,000 partial hysterectomy, $6,000 total hysterectomy) after medical confirmation. These items keep paid surrogacy fair and safe.',
+        '补偿方案可能包含医疗需求相关的附加项。若医生确认多胎，可增加 $10,000 多胎奖金；如需剖宫产，可增加 $5,000。卧床、家务协助与托育依据医生证明和票据报销。若选择泵奶，津贴为 $300/周。我们也考虑误工补偿，极少数情况下按医疗确认设置器官损失补偿（半子宫切除 $3,000，全子宫切除 $6,000）。这些条目让代孕补偿更公平、更安全。',
       ),
     ],
   },
@@ -96,12 +96,12 @@ const payAccordions = computed(() => [
     title: tt('How and when you receive payment', '如何与何时收到补偿'),
     paragraphs: [
       tt(
-        'I use a clear surrogate payment schedule with independent escrow. Intended parents fund a trust in three steps: $56,850 at signing, $83,500 after medical clearance, and $17,500 after heartbeat, while keeping $10,000 in the account. This structure supports on-time releases during pregnancy and at delivery. Unused funds settle after final accounting.',
-        '我们采用清晰的代孕付款时间表与独立托管。意向父母分三步入账：签约时 $56,850，医疗清关后 $83,500，心跳确认后 $17,500，同时账户保留 $10,000。该结构支持孕期与分娩的准时发放，未使用资金在最终结算后处理。',
+        'I use a clear surrogate payment schedule with independent escrow. Intended parents fund the trust in three stages under the 2026 customer estimate: $42,400 after medical-record pre-review approval, $66,850 after the legal documents become effective and are notarized, and $33,500 after pregnancy or heartbeat confirmation. The source separately describes a $20,000 reserve in two $10,000 deposits; use and reconciliation follow the estimate and written agreement. This structure supports on-time releases during pregnancy and at delivery. Unused funds settle after final accounting.',
+        '我们采用清晰的代孕付款时间表与独立托管。意向父母按照 2026 年客户费用说明分三笔入账：医疗记录预审通过后 $42,400，法律文件生效并完成公证后 $66,850，妊娠或心跳确认后 $33,500。来源文件另行说明总计 $20,000、分两期各 $10,000 的预存金；具体使用与结算以费用说明和书面协议为准。该结构支持孕期与分娩的准时发放，未使用资金在最终结算后处理。',
       ),
       tt(
-        'For trust administration, I work with established third-party providers (e.g., SeedTrust) so your surrogacy payment stays timely and compliant.',
-        '托管由专业第三方机构（如 SeedTrust）管理，确保补偿发放及时且合规。',
+        'For trust administration, independent third-party providers manage the account according to the written agreement so approved payments and reimbursements remain documented.',
+        '托管由独立第三方机构依据书面协议管理，确保获批补偿与报销有记录可核对。',
       ),
     ],
   },
@@ -204,8 +204,8 @@ const scheduleHighlights = computed(() => [
   {
     title: tt('Independent escrow partners', '独立托管合作方'),
     body: tt(
-      'Specialized partners manage the trust and insurance coordination. SeedTrust provides escrow and online tracking; ART Risk supports insurance and risk design. This team keeps money movement compliant and transparent at every step.',
-      '专业伙伴管理托管与保险协调。SeedTrust 提供托管和在线追踪；ART Risk 支持保险与风险设计，确保资金流动合规透明。',
+      'Independent third-party providers may support trust administration and insurance coordination. The provider, scope, and payment controls depend on the written agreement and case requirements.',
+      '独立第三方机构可支持托管与保险协调，具体机构、服务范围和资金控制方式以书面协议及个案要求为准。',
     ),
     icon: 'lucide:clipboard-list',
   },
@@ -262,8 +262,8 @@ const protectionSections = computed(() => [
     title: tt('Escrow: fund once, pay on schedule', '托管：一次入账，按时发放'),
     content: [
       tt(
-        'Families fund a third-party trust at key milestones like contract signing, medical clearance, and heartbeat confirmation. The trust then releases installments and approved reimbursements on time. Independent escrow (e.g., SeedTrust) gives online tracking, tight controls, and low delays, so surrogacy payment stays clean and documented.',
-        '家庭在签约、医疗清关与心跳确认等关键节点向第三方托管入账，托管按时发放分期与报销。独立托管（如 SeedTrust）提供在线追踪与严格控制，确保支付清晰可追溯。',
+        'Families fund a third-party trust at key milestones like contract signing, medical clearance, and heartbeat confirmation. The trust then releases installments and approved reimbursements on time. Independent escrow can provide transaction tracking and documented disbursements, with controls defined by the provider and written agreement.',
+        '家庭在签约、医疗清关与心跳确认等关键节点向第三方托管入账，托管按时发放分期与报销。独立托管可提供交易追踪与发放记录，具体控制方式以托管机构和书面协议为准。',
       ),
     ],
   },
@@ -352,8 +352,8 @@ const faqQuestions = computed(() => [
   {
     question: tt('How much do surrogates get paid in the U.S.?', '美国代孕妈妈一般能获得多少补偿？'),
     answer: tt(
-      'Surrogate pay in the U.S. varies by agency, state, experience, insurance, agreement terms, and pregnancy-related events. Yunda explains a $61,000+ total compensation package for qualified surrogate candidates, but final compensation depends on eligibility, agreement review, and approved items.',
-      '美国代孕补偿会因机构、州、经验、保险、协议条款和孕期事件而变化。孕达为符合条件的代孕妈妈候选人说明 $61,000+ 总补偿方案，但最终金额取决于资格、协议审核和获批项目。',
+      'Surrogate pay in the U.S. varies by agency, state, experience, insurance, agreement terms, and pregnancy-related events. Yunda explains a $50,000 base compensation amount plus an estimated $11,000 benefits/support package for qualified surrogate candidates, but final compensation depends on eligibility, agreement review, and approved items.',
+      '美国代孕补偿会因机构、州、经验、保险、协议条款和孕期事件而变化。孕达为符合条件的代孕妈妈候选人说明 $50,000 基础补偿与预估 $11,000 福利支持方案，但最终金额取决于资格、协议审核和获批项目。',
     ),
   },
   {

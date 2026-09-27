@@ -806,6 +806,18 @@ useHead(() => ({
         </div>
       </section>
 
+      <SeoTrustNote
+        :updated="locale === 'zh' ? '最后更新：2026年8月31日' : 'Last updated: August 31, 2026'"
+        :reviewed-by="locale === 'zh' ? 'Kayla Luo（北美区副总裁）审阅' : 'Reviewed by Kayla Luo, Vice President, North America'"
+        :note="locale === 'zh' ? '本页说明 LGBTQ+ 和单身准父母的代孕规划路径。孕达提供教育、协调、双语沟通和个案管理支持；法律、医疗、保险、托管和 IVF 决定应由相应专业人士确认。' : 'This page explains planning considerations for LGBTQ+ and single intended parents. Yunda provides education, coordination, bilingual communication, and case-management support; legal, medical, insurance, escrow, and IVF decisions should be confirmed with the relevant professionals.'"
+        :sources="[
+          { label: locale === 'zh' ? '代孕费用' : 'Surrogacy cost', href: localePath('/surrogacy-cost') },
+          { label: locale === 'zh' ? '加州保障指南' : 'California protection guide', href: localePath('/surrogacy-protection-california') },
+          { label: locale === 'zh' ? 'ASRM 妊娠载体指南' : 'ASRM gestational carrier guidance', href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
+          { label: locale === 'zh' ? '加州家庭法第 7962 条' : 'California Family Code §7962', href: 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=7962.' },
+        ]"
+      />
+
       <!-- Section 2: Trust strip — 文档样式为整块圆角 + 三列竖分割 -->
       <section id="overview" class="scroll-mt-40 bg-[color-mix(in_srgb,var(--yunda-sky)_12%,var(--yunda-petal)_88%)] px-6 py-10 lg:px-10 lg:py-12">
         <div class="mx-auto max-w-320 border border-[var(--yunda-maple)]/28 rounded-[22px] bg-[color-mix(in_srgb,var(--yunda-petal)_90%,white_10%)] shadow-[0_10px_28px_rgba(61,42,31,0.07)]">

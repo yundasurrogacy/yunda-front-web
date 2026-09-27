@@ -3,7 +3,7 @@
 Primary compensation and benefits page: https://www.yundasurrogacy.com/benefit
 Canonical detail page: https://www.yundasurrogacy.com/surrogate-compensation
 Application page: https://www.yundasurrogacy.com/be-surrogate
-Last updated: 2026-06-29
+Last updated: 2026-09-26
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
@@ -13,6 +13,12 @@ Yunda Surrogacy uses the main compensation and benefits page for broad surrogate
 Compensation amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.
 
 For broad compensation and benefits questions, see: https://www.yundasurrogacy.com/benefit
+
+## 2026 payment schedule and approved examples
+
+For the customer-approved 2026 estimate, intended parents fund the trust in three listed stages: **$42,400** after medical-record pre-review approval, **$66,850** after the legal documents become effective and are notarized, and **$33,500** after pregnancy or heartbeat confirmation. The source separately describes a **$20,000 reserve in two $10,000 deposits**; use and reconciliation follow the estimate and written agreement.
+
+The same source lists **$50,000 base compensation**, an **estimated $11,000 benefits/support package**, **$10,000 multiples compensation**, **$5,000 C-section compensation**, and **$300 per week for breast-milk pumping**, when applicable. These are planning estimates and agreement-based items, not guaranteed offers.
 
 ## Compensation Topics
 

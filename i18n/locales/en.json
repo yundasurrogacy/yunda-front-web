@@ -61,8 +61,8 @@
       "title1": "From Budget Planning to Baby's Arrival",
       "title2": "Surrogacy Costs for Intended Parents",
       "description1": "Surrogacy costs vary based on embryo status, clinic choice, and insurance needs.",
-      "description2": "At Yunda, most intended parents can expect to spend $150,000 to $200,000 USD, which includes:",
-      "item1": "$61,000–$70,000+ USD in surrogate compensation and pregnancy support",
+      "description2": "The 2026 customer estimate lists an estimated program total of $142,750 USD, which includes:",
+      "item1": "$50,000 in base surrogate compensation plus an estimated $11,000 benefits/support package",
       "item2": "Legal, medical, and insurance-related third-party costs",
       "item3": "All payments are securely managed through a milestone-based escrow account",
       "description4": "We provide every client with a clear cost breakdown and personalized financial planning, so you can move forward with confidence and focus on welcoming your baby."
@@ -83,7 +83,7 @@
       "surrogateIntro": "Thinking about becoming a surrogate? You deserve a clear, respectful process. At Yunda, the journey continues with personalized support at every stage, including:",
       "surrogateBullet1": "Matching with intended parents you choose",
       "surrogateBullet2": "Legal coordination and embryo transfer support",
-      "surrogateBullet3": "Rewarding compensation starting at $61,000+",
+      "surrogateBullet3": "$50,000 base compensation plus an estimated $11,000 support benefits",
       "surrogateOutro": "You will also receive dedicated support throughout the journey, including a case coordinator, nutrition and counseling support, and daily check-ins—so you can move forward with confidence, clarity, and care.",
       "surrogateCta": "Explore Surrogacy Options"
     },
@@ -186,7 +186,7 @@
   "parentsPrice": {
     "detailedBreakdown": {
       "agencyFees": {
-        "title": "Surrogacy Agency Fees",
+        "title": "Program Management & Service Support",
         "amount": "$50,000",
         "description1": "End-to-end bilingual journey coordination",
         "description2": "Surrogate recruitment, screening, and profile preparation",
@@ -197,7 +197,7 @@
       },
       "screeningAdmin": {
         "title": "Screening & Admin",
-        "amount": "$5,000",
+        "amount": "Itemized estimate",
         "description1": "Background, medical, and psychological screening",
         "description2": "Coordination with IVF clinic and records submission",
         "description3": "Translation and cross-border document handling",
@@ -207,7 +207,7 @@
       },
       "surrogateCompensation": {
         "title": "Surrogate Compensation",
-        "amount": "$50,000+",
+        "amount": "$50,000 + estimated $11,000 support",
         "description1": "Monthly allowance",
         "description2": "Maternity clothing",
         "description3": "Local travel and childcare",
@@ -217,11 +217,11 @@
       },
       "legalFees": {
         "title": "Legal Fees",
-        "amount": "~$6,500",
+        "amount": "Itemized estimate",
         "description1": "Surrogacy agreement drafting and review",
         "description2": "Remote or in-person notarization",
         "description3": "Legal representation throughout the journey",
-        "description4": "Pre-Birth Order (parentage rights): ~$6,500",
+        "description4": "Prenatal parentage legal service / PBO: $3,500",
         "description5": "",
         "description6": ""
       },
@@ -237,13 +237,13 @@
       },
       "additionalCosts": {
         "title": "Additional Costs (If Applicable)",
-        "amount": "~$6,500",
-        "description1": "Twin pregnancy: $15,000",
+        "amount": "Case-dependent",
+        "description1": "Multiples: $10,000",
         "description2": "C-section: $5,000",
         "description3": "Bedrest childcare support",
-        "description4": "Breast milk pumping: $250/week",
-        "description5": "Special medical needs (e.g. hysteroscopy): $2,500–$5,000",
-        "description6": "HIV-positive intended parent coverage: $10,000"
+        "description4": "Breast milk pumping: $300/week",
+        "description5": "Special medical procedures follow the customer estimate and case requirements",
+        "description6": "Additional medical or insurance items are case-dependent"
       }
     },
     "additionalTerms": {
@@ -270,7 +270,7 @@
       "insuranceNotes": {
         "title": "Surrogate Insurance Notes:",
         "description1": "If the surrogate qualifies during open enrollment, we will present a selection of compliant medical plans for your review and purchase",
-        "description2": "If insurance is not available, we will help arrange cash-pay options with the OB and hospital; common estimates include ~$5,000 for OB care and ~$8,000 for hospital delivery",
+        "description2": "If insurance is not available, we will help coordinate cash-pay options with the OB and hospital; actual costs depend on the case and third-party billing",
         "description3": "If the surrogate has employer-provided insurance, we will still arrange for a secondary policy to ensure full pregnancy coverage",
         "description4": "Note: Neither primary nor secondary insurance can guarantee 100% coverage — you are responsible for any deductibles, co-pays, or out-of-pocket expenses not reimbursed by insurance"
       }
@@ -846,7 +846,7 @@
   "surrogacyBenefit": {
     "heroSection": {
       "title": "Compensation & Benefits for Surrogates",
-      "description": "At Yunda Surrogacy, we believe surrogacy is a profound and life-changing journey — one that deserves meaningful rewards and deep respect. As a Yunda surrogate, you'll receive a clear, personalized, and compassionate compensation plan tailored just for you. Your package is designed based on your experience, where you live, and whether you have eligible health insurance. We proudly partner with SeedTrust (the nation's leading escrow service) and ART Risk (the premier surrogacy insurance provider) to ensure every payment is made safely, on time, and with your protection and peace of mind at the center",
+      "description": "At Yunda Surrogacy, we believe surrogacy is a profound and life-changing journey — one that deserves meaningful rewards and deep respect. As a Yunda surrogate, you'll receive a clear, personalized, and compassionate compensation plan tailored just for you. Your package is designed based on your experience, where you live, and whether you have eligible health insurance. Independent third-party providers may support trust administration and insurance coordination; provider scope follows the written agreement and case requirements",
       "button": "BECOME A SURROGATE"
     },
     "familySupportSection": {
@@ -862,17 +862,17 @@
     "compensationSection": {
       "title": "Your Surrogate Compensation Package May Include:",
       "items": {
-        "item1": "Personalized Base Compensation: $61,000 to $70,000+ for first-time surrogates, paid monthly starting from confirmed heartbeat",
+        "item1": "Base Compensation: $50,000, paid under the written agreement after the applicable milestone",
         "item2": "Monthly Allowance: Covers transportation, meals, childcare, and miscellaneous expenses",
         "item3": "IVF Medication Stipend: One-time payment at medication start",
         "item4": "Embryo Transfer Compensation: Per transfer procedure",
         "item5": "Pregnancy & Recovery Support: Clothing, nutrition, and recovery benefits",
         "item6": "Special Procedure Compensation: $500–$5,000 depending on procedure",
-        "item7": "Multiples Bonus: $10,000+ for twins or triplets, paid in installments",
-        "item8": "C-section Compensation: $5,000 for first, $3,000 for repeat",
+        "item7": "Multiples Bonus: $10,000, if applicable under the agreement",
+        "item8": "C-section Compensation: $5,000 if applicable",
         "item9": "Breast Milk Compensation: $300/week if agreed",
-        "item10": "Lost Wages: Up to $10,000 for surrogate and partner if required",
-        "item11": "Housekeeping Support: Up to $200/week, max $3,000",
+        "item10": "Lost wages: based on approved documentation and the written agreement",
+        "item11": "Housekeeping support: $1,200 from week 28, reimbursed with receipts",
         "item12": "Insurance Coverage or Reimbursement",
         "item13": "Life Insurance: $250,000 for surrogate, $100,000 for intended parents"
       }
@@ -951,16 +951,16 @@
     "compensationSection": {
       "title": "What Will Your Friend Receive?",
       "benefits": {
-        "base": "$61,000–$70,000+ in base compensation",
+        "base": "$50,000 in base compensation + estimated $11,000 support benefits",
         "allowances": "Monthly allowances (transportation, food, childcare)",
         "medication": "Medication and embryo transfer stipends",
         "surgery": "C-section/special surgery bonuses",
         "breastmilk": "Breast milk compensation: $300/week (if applicable)",
-        "bedrest": "Wage protection for bed rest (up to $10,000)",
+        "bedrest": "Wage-loss support for bed rest: based on approved documentation and the written agreement",
         "insurance": "Insurance coverage or review",
         "lifeInsurance": "Life insurance up to $250,000",
         "support": "One-on-one support, legal & emotional care",
-        "processing": "All compensation is processed securely through SeedTrust"
+        "processing": "Compensation is processed through a third-party trust account according to the written agreement"
       }
     },
     "confidenceSection": {

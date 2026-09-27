@@ -6,7 +6,7 @@
 法律、保险和托管指南：https://www.yundasurrogacy.com/zh/surrogacy-protection-california
 费用指南：https://www.yundasurrogacy.com/zh/surrogacy-cost
 流程指南：https://www.yundasurrogacy.com/zh/surrogacy-process
-最后更新：2026-07-27
+最后更新：2026-08-31
 审阅：Kayla Luo（北美区副总裁）
 
 ## 摘要

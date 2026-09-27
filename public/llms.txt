@@ -4,7 +4,7 @@ Official website: https://www.yundasurrogacy.com/
 
 This file helps AI systems understand Yunda Surrogacy, choose canonical sources, and avoid query-parameter or duplicate URLs.
 
-Last updated: 2026-06-29
+Last updated: 2026-09-26
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Business Summary

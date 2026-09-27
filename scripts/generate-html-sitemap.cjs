@@ -1,11 +1,12 @@
 const fs = require('node:fs')
-const https = require('node:https')
 const path = require('node:path')
 const process = require('node:process')
 
 const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs'
 const BLOG_API_FALLBACK_URL = process.env.BLOG_API_FALLBACK_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
+const BLOG_API_TIMEOUT_MS = Number.parseInt(process.env.BLOG_API_TIMEOUT_MS || '30000', 10)
+const BLOG_API_RETRIES = Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10)
 const OUTPUT_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
 
 const STATIC_SECTIONS_EN = [
@@ -124,29 +125,43 @@ const STATIC_SECTIONS_ZH = [
   },
 ]
 
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        let data = ''
-        res.on('data', (chunk) => {
-          data += chunk
-        })
-        res.on('end', () => {
-          if (res.statusCode && res.statusCode >= 400) {
-            reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''}`.trim()))
-            return
-          }
-          try {
-            resolve(JSON.parse(data))
-          }
-          catch (error) {
-            reject(error)
-          }
-        })
-      })
-      .on('error', reject)
-  })
+async function fetchJsonOnce(url) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), BLOG_API_TIMEOUT_MS)
+  try {
+    const response = await fetch(url, { signal: controller.signal })
+    if (!response.ok)
+      throw new Error(`Request failed: ${response.status} ${response.statusText}`.trim())
+    return await response.json()
+  }
+  finally {
+    clearTimeout(timeout)
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function fetchJson(url) {
+  const attempts = Math.max(1, BLOG_API_RETRIES + 1)
+  let lastError
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await fetchJsonOnce(url)
+    }
+    catch (error) {
+      lastError = error
+      if (attempt === attempts)
+        throw error
+      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
+      console.warn(`HTML sitemap: blog API request failed (attempt ${attempt}/${attempts}); retrying in ${delayMs}ms: ${error?.code || error?.message || error}`)
+      await sleep(delayMs)
+    }
+  }
+
+  throw lastError
 }
 
 async function fetchAllBlogs() {
@@ -186,14 +201,48 @@ async function fetchAllBlogs() {
   return allBlogs
 }
 
+function readValidatedCachedSitemap(manifest) {
+  if (!fs.existsSync(OUTPUT_DATA_PATH))
+    return null
+
+  try {
+    const cached = JSON.parse(fs.readFileSync(OUTPUT_DATA_PATH, 'utf8'))
+    const englishBlogSection = cached.sections?.en?.find(section => section.className === 'section-blog')
+    const chineseBlogSection = cached.sections?.zh?.find(section => section.className === 'section-blog')
+    const englishBlogCount = (englishBlogSection?.links || []).filter(link => /^\/blog\//.test(link.href)).length
+    const chineseBlogCount = (chineseBlogSection?.links || []).filter(link => /^\/zh\/blog\//.test(link.href)).length
+    const expectedChineseCount = manifest.totalBlogPosts - manifest.zhMissingCount
+
+    if (englishBlogCount !== manifest.totalBlogPosts || chineseBlogCount !== expectedChineseCount)
+      return null
+
+    return cached
+  }
+  catch {
+    return null
+  }
+}
+
 async function run() {
-  const blogs = await fetchAllBlogs()
   const zhMissingManifest = JSON.parse(fs.readFileSync(
     path.join(process.cwd(), 'data', 'zh-missing-blogs.json'),
     'utf8',
   ))
   if (zhMissingManifest.signalReliable === false)
     throw new Error('Chinese-content manifest is not authoritative. Run sitemap:xml successfully first.')
+
+  let blogs
+  try {
+    blogs = await fetchAllBlogs()
+  }
+  catch (error) {
+    if (readValidatedCachedSitemap(zhMissingManifest)) {
+      console.warn(`HTML sitemap: blog API unavailable; keeping validated cached sitemap data (${zhMissingManifest.totalBlogPosts} English posts).`)
+      return
+    }
+    throw error
+  }
+
   if (zhMissingManifest.totalBlogPosts !== blogs.length) {
     throw new Error(
       `Blog manifest/API count mismatch: manifest=${zhMissingManifest.totalBlogPosts}, API=${blogs.length}.`,

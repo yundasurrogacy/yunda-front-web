@@ -35,7 +35,7 @@ useHead(() => ({
 }))
 
 const localePath = useLocalePath()
-const qualificationUrl = computed(() => localePath('/be-surrogate'))
+const qualificationUrl = computed(() => localePath('/be-parents'))
 
 const heroPoints = computed(() => [
   tt('Transparent costs: clear cost structure and budgeting, managed by milestones via escrow.', '费用透明：提供清晰的费用构成与预算规划，按里程碑节点管理资金（Escrow）。'),
@@ -122,7 +122,7 @@ const insurancePoints = computed(() => [
 const whyYunda = computed(() => [
   {
     title: tt('Stricter surrogate screening (fewer surprises)', '代母筛选标准更严（更少踩雷）'),
-    detail: tt('Materials show acceptance rate < 1%, with background, health, and psychological screening.', '材料显示：代母录取通过率低于 1%，筛查包含背景、健康与心理评估等'),
+    detail: tt('Screening includes background, health, and psychological assessments; final approval depends on program and clinic review.', '筛查包含背景、健康与心理评估，最终是否通过以项目与诊所审核为准'),
   },
   {
     title: tt('Dedicated project manager (ideal for cross-border families)', '全流程项目经理跟进（更适合跨境家庭）'),
@@ -152,23 +152,23 @@ const timelineSteps = computed(() => [
 const faqItems = computed(() => [
   {
     q: tt('Is surrogacy legal in the U.S.? Why choose California?', '美国代孕合法吗？加州为什么被很多家庭选择？'),
-    a: tt('U.S. rules vary by state. We have a network across 45 legal ART states and recommend the best fit for your case.', '美国各州规则不同。我们在美国45个辅助生殖合法州建立合作与招募网络，可根据你的家庭情况建议更合适的州与路径。'),
+    a: tt('U.S. rules vary by state. Qualified counsel reviews the legal path and helps identify a fit for your case.', '美国各州规则不同。我们会结合家庭情况协助整理信息，并由合格律师评估适合的法律路径。'),
   },
   {
     q: tt('Where is your team based? Do you support Los Angeles locally?', '你们是哪里团队？是否有洛杉矶本地支持？'),
-    a: tt('Yunda started in Los Angeles and is rooted in Southern California, serving global families with a one-stop ART platform.', '孕达发源于美国洛杉矶、扎根南加州，面向全球客户提供一站式辅助生殖服务平台。'),
+    a: tt('Yunda coordinates assisted-reproduction services for international families with bilingual project support.', '孕达为国际家庭提供辅助生殖项目协调与双语项目支持。'),
   },
   {
     q: tt('How do you screen surrogates? How reliable is the process?', '代母/代孕妈妈怎么筛选？靠谱不靠谱怎么判断？'),
-    a: tt('We follow strict screening; acceptance rate is below 1%, including background, health, and psychological assessments.', '我们对代母执行严格筛查，资料中明确：代母录取通过率低于1%，筛查包含背景、健康与心理评估等。'),
+    a: tt('Screening includes background, health, and psychological assessments; final approval depends on program and clinic review.', '筛查包含背景、健康与心理评估，最终是否通过以项目与诊所审核为准。'),
   },
   {
     q: tt('How much does California surrogacy cost? What’s included?', '加州代孕多少钱？费用一般怎么构成？'),
-    a: tt('Families care most about transparency. Sample total cost is $15000+ (as listed), broken down by service, escrow, legal, insurance, and stipends.', '你们最关心的通常是代孕费用透明度。套餐示例总费用为 $15000+，并在费用表中拆分到服务费、信托管理费、法律费、保险与津贴等条目。'),
+    a: tt('The 2026 customer estimate lists an estimated program total of $142,750, including $50,000 in base surrogate compensation and an estimated $11,000 benefits/support package. It is a planning estimate; actual costs, reserves, reimbursements, and agreement terms may vary.', '2026 年客户费用说明列出的项目预估总额为 $142,750，其中包括 $50,000 基础补偿和预估 $11,000 福利支持方案。这是用于规划的预估金额，实际费用、预存金、报销项目及协议条款可能因个案而调整。'),
   },
   {
     q: tt('How do payments work? Why use escrow?', '费用怎么支付？为什么要用信托账户（Escrow）？'),
-    a: tt('Payments are split into three escrow deposits: $56,850 after signing, $83,500 after medical clearance, $17,500 after heartbeat (maintain ≥ $10,000). This keeps funding controlled by milestones.', '费用按节点分三笔汇入信托账户：协议签署后$56,850、医学清关后$83,500、胎心确认后$17,500（并要求余额≥$10,000）。这样能把资金流向按节点管理，更可控。'),
+    a: tt('The 2026 customer estimate lists three funding stages: $42,400 after medical-record pre-review approval, $66,850 after the legal documents become effective and are notarized, and $33,500 after pregnancy or heartbeat confirmation. The source separately describes a $20,000 reserve in two $10,000 deposits; use and reconciliation follow the estimate and written agreement.', '2026 年客户费用说明列出三笔项目款：医疗记录预审通过后 $42,400，法律文件生效并完成公证后 $66,850，妊娠或心跳确认后 $33,500。来源文件另行说明总计 $20,000、分两期各 $10,000 的预存金；具体使用与结算以费用说明和书面协议为准。'),
   },
   {
     q: tt('What’s not included? (Avoid misunderstanding)', '哪些费用不包含？（避免后期误解）'),
@@ -180,7 +180,7 @@ const faqItems = computed(() => [
   },
   {
     q: tt('How is surrogate insurance planned? What if you miss enrollment?', '代母保险怎么规划？如果错过购买窗口怎么办？'),
-    a: tt('If a plan can be purchased during open enrollment, we screen options; if missed, we coordinate cash-pay (e.g., OB ~$5,000, delivery stay ~$8,000). Co-pays/deductibles may still apply.', '资料说明：若在开放注册期能购买符合要求的保险，会筛选方案供选择；若错过时机，会协助沟通自费支付方案，并给出常见自费预估（如产科医生约$5,000、分娩住院约$8,000）。同时也提示主险/补充险不可能100%覆盖，仍可能产生共付额、免赔额等自付部分。'),
+    a: tt('If a suitable plan can be purchased during the applicable enrollment window, we coordinate review; if insurance is unavailable, cash-pay arrangements with the local OB or hospital may be needed. Actual medical costs and any deductibles or co-pays depend on the case and are handled according to the estimate and agreement.', '资料说明：如在适用的投保窗口内可以购买符合要求的保险，我们会协助审核；如无法投保，可能需要与本地产科医生或医院协调自费方案。实际医疗费用以及免赔额、共付额等，以个案、第三方账单和书面协议为准。'),
   },
   {
     q: tt('How do you keep us updated if we’re abroad?', '你们怎么跟进？我人在国内也能随时掌握进度吗？'),
@@ -192,7 +192,7 @@ const faqItems = computed(() => [
   },
   {
     q: tt('How do parentage/legal steps work? Any fees?', '亲权/法律部分怎么做？是否有对应费用？'),
-    a: tt('Fees include parentage order ($6,500) plus intended parents and surrogate attorney fees. Legal path depends on state and counsel.', '费用拆分中包含亲权相关费用条目（亲子权利判决费$6,500），并同时列出准父母律师费与代母律师费。具体法律路径以合作律师建议与州规则为准。'),
+    a: tt('The 2026 customer estimate lists $3,500 for prenatal parentage legal service/PBO, in addition to agreement drafting, surrogate attorney review, and other counsel fees. The legal path depends on the state and independent counsel.', '2026 年客户费用说明列出出生前亲权法律服务/PBO $3,500，此外还有协议起草、代母律师审核及其他律师费用。具体法律路径以州规则和独立律师意见为准。'),
   },
   {
     q: tt('What support is provided after birth?', '宝宝出生后有哪些支持？（证件/行政协助）'),
@@ -253,6 +253,8 @@ const coreServicePageSchemas = computed(() => buildCoreServicePageSchemas({
     })),
   },
   locale: locale.value,
+  dateModified: '2026-06-29',
+  reviewedBy: { '@id': `${siteUrl.value || 'https://www.yundasurrogacy.com'}/about#kayla-luo` },
 }))
 
 useHead(() => ({
@@ -326,6 +328,18 @@ useHead(() => ({
         </div>
       </div>
     </section>
+
+    <SeoTrustNote
+      :updated="tt('Last updated: June 29, 2026', '最后更新：2026年6月29日')"
+      :reviewed-by="tt('Reviewed by Kayla Luo, Vice President, North America', 'Kayla Luo（北美区副总裁）审阅')"
+      :note="tt('This page is for Chinese-speaking and international intended parents. Yunda provides education, coordination, bilingual communication, and case-management support; legal, medical, insurance, escrow, and IVF decisions should be confirmed with the relevant professionals.', '本页面向中文与国际准父母。孕达提供教育、协调、双语沟通和个案管理支持；法律、医疗、保险、托管和 IVF 决定应由相应专业人士确认。')"
+      :sources="[
+        { label: tt('Intended parent process', '准父母代孕流程'), href: localePath('/surrogacy-process') },
+        { label: tt('Surrogacy cost guide', '代孕费用指南'), href: localePath('/surrogacy-cost') },
+        { label: tt('California protection guide', '加州保障指南'), href: localePath('/surrogacy-protection-california') },
+        { label: tt('California Family Code', '加州家庭法'), href: 'https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=FAM&division=12.&title=&part=7.&chapter=&article=' },
+      ]"
+    />
 
     <!-- 我们能提供什么 -->
     <section class="py-16 lg:py-20">

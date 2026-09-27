@@ -14,6 +14,29 @@ if (zhMissingManifest.signalReliable === false)
   throw new Error('data/zh-missing-blogs.json is not authoritative. Run npm run sitemap:xml before building.')
 
 const zhMissingBlogRouteSet = new Set(zhMissingManifest.routes ?? [])
+const blogApiRetries = Math.max(1, Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10))
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function fetchBlogApi(url: string) {
+  let lastError: unknown
+  for (let attempt = 1; attempt <= blogApiRetries; attempt++) {
+    try {
+      return await fetch(url)
+    }
+    catch (error) {
+      lastError = error
+      if (attempt === blogApiRetries)
+        throw error
+      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
+      console.warn(`Blog API request failed (attempt ${attempt}/${blogApiRetries}); retrying in ${delayMs}ms`, error)
+      await sleep(delayMs)
+    }
+  }
+  throw lastError
+}
 
 async function fetchBlogEntries() {
   const urls = [
@@ -25,7 +48,7 @@ async function fetchBlogEntries() {
     let data: any = null
 
     for (const url of urls) {
-      const response = await fetch(url)
+      const response = await fetchBlogApi(url)
       if (!response.ok)
         continue
 

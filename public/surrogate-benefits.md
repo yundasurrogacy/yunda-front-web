@@ -4,7 +4,7 @@ Canonical page: https://www.yundasurrogacy.com/benefit
 Application page: https://www.yundasurrogacy.com/be-surrogate
 Payment and escrow detail page: https://www.yundasurrogacy.com/surrogate-compensation
 Requirements page: https://www.yundasurrogacy.com/surrogate-requirements
-Last updated: 2026-06-29
+Last updated: 2026-09-26
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
@@ -12,6 +12,12 @@ Reviewed by: Kayla Luo, Vice President, North America
 Yunda Surrogacy explains surrogate compensation and benefits as a package that may include base compensation, benefit support, allowances, approved reimbursements, insurance review coordination, legal coordination, escrow payment protection, and journey support.
 
 Actual compensation depends on eligibility, agreement terms, medical events, approved reimbursements, program requirements, and independent professional review. Compensation information is educational and should not be treated as a guaranteed offer.
+
+## 2026 customer-approved amounts
+
+The 2026 customer estimate lists **$50,000 in base compensation** and an **estimated $11,000 benefits/support package**. The attachment lists these examples: **$2,000 per embryo transfer**, **$1,000 signing bonus**, **$1,200 injection-medication stipend per cycle**, **$300 monthly allowance**, **$1,000 maternity clothing stipend** (multiples add $200), **$1,000 health support**, and **$1,200 housekeeping/cleaning support from week 28**.
+
+Special-condition examples include **$10,000 for multiples**, **$5,000 for a C-section**, and **$300 per week for breast-milk pumping**, when applicable under the agreement. These are customer-material estimates; eligibility, medical confirmation, receipts, actual costs, and the written agreement control.
 
 ## What This Page Is For
 

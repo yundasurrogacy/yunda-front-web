@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T03:58:59.854Z",
+  "generatedAt": "2026-09-27T14:31:02.385Z",
   "sections": {
     "en": [
       {
@@ -155,6 +155,10 @@
             "label": "Blog Index"
           },
           {
+            "href": "/blog/known-vs-anonymous-egg-donor-gay-men",
+            "label": "Known Egg Donor vs Anonymous Egg Donor for Gay Men"
+          },
+          {
             "href": "/blog/mhb-new-york-2026-guide-gay-intended-parents",
             "label": "Questions to Ask a Surrogacy Agency at MHB New York 2026"
           },
@@ -265,10 +269,6 @@
           {
             "href": "/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
             "label": "California IVF Coverage 2026: SB 729 and Surrogacy Explained"
-          },
-          {
-            "href": "/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
-            "label": "Is Surrogacy Legal in the U.S.? 2026 Guide for Intended Parents"
           },
           {
             "href": "/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
@@ -721,10 +721,6 @@
             "label": "2026年加州试管婴儿保险覆盖范围：SB 729法案和代孕详解"
           },
           {
-            "href": "/zh/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
-            "label": "代孕在美国合法吗？2026年准父母指南"
-          },
-          {
             "href": "/zh/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
             "label": "Alysa Liu和她的经历对代孕的启示"
           },
@@ -821,7 +817,7 @@
             "label": "代孕妈妈的补偿与福利：需要了解的关键信息"
           }
         ],
-        "note": "从接口获取文章：43篇。",
+        "note": "从接口获取文章：42篇。",
         "className": "section-blog"
       }
     ]

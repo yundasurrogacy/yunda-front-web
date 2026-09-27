@@ -6,7 +6,7 @@ Consultation page: https://www.yundasurrogacy.com/be-parents
 Legal, insurance, and escrow guide: https://www.yundasurrogacy.com/surrogacy-protection-california
 Cost guide: https://www.yundasurrogacy.com/surrogacy-cost
 Process guide: https://www.yundasurrogacy.com/surrogacy-process
-Last updated: 2026-07-27
+Last updated: 2026-08-31
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
