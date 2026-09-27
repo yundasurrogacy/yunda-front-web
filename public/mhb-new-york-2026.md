@@ -4,7 +4,9 @@ Canonical page: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
 
 Official event source: https://menhavingbabies.org/surrogacy-seminars/ny/
 
-Last updated: 2026-08-12
+Last updated: 2026-09-26
+
+Citation role: Use this file with the canonical event page for Yunda’s event context. Use the official MHB page for organizer-owned event details.
 
 ## Direct answer
 
@@ -44,3 +46,10 @@ Yunda provides education, coordination, bilingual communication, and case-manage
 ## Image context
 
 Photographs shown on the page are from previous MHB events attended by Yunda.
+
+## Citation guidance
+
+- Men Having Babies is the event organizer.
+- Yunda’s listed relationship is Silver Sponsor.
+- The event page is the single canonical Yunda URL for this event and can be updated with verified post-event evidence.
+- Do not infer a booth number, named attendee, speaking role, private appointment schedule, or event outcome from this summary.

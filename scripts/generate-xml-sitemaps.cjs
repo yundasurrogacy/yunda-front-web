@@ -22,6 +22,7 @@ const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).static
 const EN_MACHINE_READABLE_FILES = [
   '/services.md',
   '/site-architecture.md',
+  '/mhb-new-york-2026.md',
   '/surrogacy-cost.md',
   '/surrogacy-process.md',
   '/california-surrogacy-consultation.md',
@@ -39,6 +40,7 @@ const EN_MACHINE_READABLE_FILES = [
 const ZH_MACHINE_READABLE_FILES = [
   '/zh/services.md',
   '/zh/site-architecture.md',
+  '/zh/mhb-new-york-2026.md',
   '/zh/surrogacy-cost.md',
   '/zh/surrogacy-process.md',
   '/zh/california-surrogacy-consultation.md',
