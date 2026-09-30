@@ -131,10 +131,10 @@ interface BlogListResponse {
 }
 
 const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
-const blogCacheKey = computed(() => `blog-${route.params.id}-${blogApiLang.value}`)
+const blogCacheKey = computed(() => `blog-v2-${route.params.id}-${blogApiLang.value}`)
 const blogApiUrl = computed(() => {
   const routeId = encodeURIComponent(String(route.params.id))
-  return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}`
+  return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}&cache_bust=dates-20260930-v1`
 })
 
 // 鑾峰彇鍗氬璇︽儏鏁版嵁锛屾敮鎸佺紦瀛樺拰棰勫姞杞?
@@ -143,9 +143,6 @@ const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
   key: blogCacheKey.value,
   server: true, // 淇濇寔鏈嶅姟绔覆鏌撲互鏀寔 SEO
   default: () => null,
-  retry: 3,
-  retryDelay: 500,
-  timeout: 90000,
   // 娣诲姞瀹㈡埛绔紦瀛橈紝10鍒嗛挓鍐呬笉閲嶅璇锋眰
   getCachedData: (key) => {
     const payloadData = nuxtApp.payload.data[key] || nuxtApp.static.data[key]
@@ -243,9 +240,6 @@ const { data: relatedPostsData } = await useFetch<BlogListResponse>(computed(() 
   query: relatedPostsQuery,
   server: true,
   default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),
-  retry: 3,
-  retryDelay: 500,
-  timeout: 90000,
   transform: (data: any) => data,
 })
 
