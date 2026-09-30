@@ -48,14 +48,14 @@ const footerGroups = computed(() => [
   <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
     <div class="mx-auto max-w-300 md:max-w-full">
       <!-- Footer Content -->
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+      <div class="grid gap-y-12 md:grid-cols-[minmax(0,0.75fr)_minmax(0,0.85fr)_minmax(0,2fr)] md:items-start">
         <!-- Services Section (Mobile: Top, LG: Right side) -->
-        <div class="order-1 mt-2 md:order-2 md:ml-auto md:mt-0 md:pl-12">
+        <div class="order-1 mt-2 md:col-start-3 md:row-start-1 md:mt-0 md:pl-12 md:pt-[6.5rem]">
           <div class="footer-links">
             <div
               v-for="group in footerGroups"
               :key="group.title"
-              class="min-w-[220px] text-left space-y-2"
+              class="min-w-0 text-left space-y-2"
             >
               <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
                 {{ group.title }}
@@ -77,74 +77,145 @@ const footerGroups = computed(() => [
         </div>
 
         <!-- Company Info (Mobile: Bottom, md: Left side) -->
-        <div class="order-2 mt-12 md:order-1 md:mt-0 md:max-w-80 md:flex-shrink-0">
-          <div class="mb-6 flex justify-start">
-            <picture>
-              <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-              <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-80px lg:h-[3.15rem] lg:object-contain lg:object-left" loading="lazy" decoding="async">
-            </picture>
-          </div>
+        <div class="order-2 mt-12 md:col-start-1 md:row-start-1 md:mt-0 md:max-w-[32rem]">
+          <div>
+            <div class="min-w-0">
+              <div class="flex justify-start">
+                <picture>
+                  <source srcset="/images/shared/brand/logo.webp" type="image/webp">
+                  <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" loading="lazy" decoding="async">
+                </picture>
+              </div>
 
-          <!-- About Us Section -->
-          <div class="mb-8 text-left text-3.5 md:text-4.5">
-            <div class="mt-2 space-y-1">
-              <hr class="my-2 border-[var(--yunda-bark)]">
-              <NuxtLink
-                :to="localePath('/about')"
-                class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-              >
-                {{ $t('menu.aboutUs') }}
-              </NuxtLink>
-              <hr class="my-2 border-[var(--yunda-bark)]">
-              <!-- <a href="#" class="block text-[var(--yunda-bark)] font-normal uppercase hover:opacity-75 transition-opacity">{{ $t('menu.logIn') }}</a>
-              <hr class="border-[var(--yunda-bark)] my-2"> -->
-              <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('menu.careers') }}</a>
-              <hr class="my-2 border-[var(--yunda-bark)]">
-              <NuxtLink
-                :to="localePath('/resources')"
-                prefetch
-                class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-              >
-                {{ $t('menu.resources') }}
-              </NuxtLink>
-              <hr class="my-2 border-[var(--yunda-bark)]">
-              <NuxtLink
-                :to="localePath('/blog')"
-                prefetch
-                class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-              >
-                {{ $t('menu.blog') }}
-              </NuxtLink>
-              <hr class="my-2 border-[var(--yunda-bark)]">
+              <!-- About Us Section -->
+              <div class="footer-company-nav mt-10 text-left text-3.5 md:text-4.5">
+                <div class="space-y-1">
+                  <hr class="my-2 border-[var(--yunda-bark)]">
+                  <NuxtLink
+                    :to="localePath('/about')"
+                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
+                  >
+                    {{ $t('menu.aboutUs') }}
+                  </NuxtLink>
+                  <hr class="my-2 border-[var(--yunda-bark)]">
+                  <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('menu.careers') }}</a>
+                  <hr class="my-2 border-[var(--yunda-bark)]">
+                  <NuxtLink
+                    :to="localePath('/resources')"
+                    prefetch
+                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
+                  >
+                    {{ $t('menu.resources') }}
+                  </NuxtLink>
+                  <hr class="my-2 border-[var(--yunda-bark)]">
+                  <NuxtLink
+                    :to="localePath('/blog')"
+                    prefetch
+                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
+                  >
+                    {{ $t('menu.blog') }}
+                  </NuxtLink>
+                  <hr class="my-2 border-[var(--yunda-bark)]">
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="mt-7 flex items-center gap-3 text-[var(--yunda-bark)]">
+                <a
+                  href="https://www.instagram.com/yunda_surrogacy_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="$t('footer.socialLinks.instagram')"
+                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                    <path d="M7.5 0h9C20.64 0 24 3.36 24 7.5v9c0 4.14-3.36 7.5-7.5 7.5h-9C3.36 24 0 20.64 0 16.5v-9C0 3.36 3.36 0 7.5 0Zm0 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9Zm10.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+                  </svg>
+                  <span class="sr-only">{{ $t('footer.socialLinks.instagram') }}</span>
+                </a>
+                <a
+                  href="https://www.facebook.com/people/Yunda-Surrogacy/61577914871802/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="$t('footer.socialLinks.facebook')"
+                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                    <path d="M13.5 24v-10h3.4l.5-4h-3.9V7.45c0-1.16.32-1.95 2-1.95h2.14V1.92A28.6 28.6 0 0 0 14.52 1C11.3 1 9.1 2.97 9.1 6.6V10H5.5v4h3.6v10h4.4Z" />
+                  </svg>
+                  <span class="sr-only">{{ $t('footer.socialLinks.facebook') }}</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@YundaSurrogacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="$t('footer.socialLinks.youtube')"
+                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.8V8.2l6.3 3.8-6.3 3.8Z" />
+                  </svg>
+                  <span class="sr-only">{{ $t('footer.socialLinks.youtube') }}</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/yunda-surrogacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="$t('footer.socialLinks.linkedin')"
+                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                    <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM2.5 10h5v11.5h-5V10Zm8 0h4.8v1.57h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 5.9 3.33 5.9 7.67v4.73h-5v-4.2c0-1.01-.02-2.3-1.4-2.3-1.4 0-1.62 1.1-1.62 2.23v4.27h-5V10Z" />
+                  </svg>
+                  <span class="sr-only">{{ $t('footer.socialLinks.linkedin') }}</span>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@yunda.surrogacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                    <path d="M15.45 2h3.06c.25 1.93 1.3 3.48 3.49 4.33v3.13a9.2 9.2 0 0 1-3.46-1.08v6.9A5.72 5.72 0 1 1 13.6 9.6v3.24a2.55 2.55 0 1 0 1.85 2.44V2Z" />
+                  </svg>
+                  <span class="sr-only">TikTok</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone and Email below Blog -->
+            <div class="mt-8 max-w-[20rem] text-left text-3.5 space-y-8 md:text-4.5">
+              <div>
+                <p class="text-[var(--yunda-bark)] font-normal uppercase">
+                  {{ $t('menu.phone') }}
+                </p>
+                <a
+                  :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
+                  class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                >
+                  {{ $t('footer.phoneNumber') }}
+                </a>
+              </div>
+
+              <div>
+                <p class="text-[var(--yunda-bark)] font-normal uppercase">
+                  {{ $t('menu.email') }}
+                </p>
+                <a
+                  href="mailto:kaylal@yundasurrogacy.com"
+                  class="mt-1 block break-words text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                >
+                  kaylal@yundasurrogacy.com
+                </a>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Contact Info -->
-          <div class="mb-8 text-left text-3.5 space-y-4 md:text-4.5">
-            <div>
-              <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                {{ $t('menu.phone') }}
-              </p>
-              <a
-                :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
-                class="text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
-              >
-                {{ $t('footer.phoneNumber') }}
-              </a>
-            </div>
-
-            <div>
-              <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                {{ $t('menu.email') }}
-              </p>
-              <a
-                href="mailto:kaylal@yundasurrogacy.com"
-                class="text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
-              >
-                kaylal@yundasurrogacy.com
-              </a>
-            </div>
-
+        <!-- Messaging Contacts -->
+        <div class="order-3 md:col-start-2 md:row-start-1 md:pl-8 md:pt-[8.5rem]">
+          <div class="grid grid-cols-2 gap-x-4 gap-y-8 text-left text-3.5 md:text-4">
             <!-- WhatsApp -->
             <div v-if="locale === 'en'">
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
@@ -154,43 +225,32 @@ const footerGroups = computed(() => [
                 :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
               >
                 {{ $t('footer.whatsappNumber') }}
               </a>
-              <div class="mt-2 flex items-center">
-                <picture>
-                  <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
-                  <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow">
-                </picture>
-              </div>
+              <picture class="mt-3 block w-fit">
+                <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
+                <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow" loading="lazy" decoding="async">
+              </picture>
             </div>
+
             <!-- WeChat -->
             <div>
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.wechat') }}
               </p>
-              <p class="text-[var(--yunda-bark)] font-normal">
+              <p class="mt-1 text-[var(--yunda-bark)] font-normal">
                 {{ $t('footer.wechatId') }}
               </p>
-              <div class="mt-2 flex items-center">
-                <img
-                  src="/images/shared/contact/wechat-yundaus1.jpg"
-                  :alt="`${$t('menu.wechat')} ${$t('footer.wechatId')} QR code`"
-                  class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded object-contain shadow"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </div>
+              <img
+                src="/images/shared/contact/wechat-yundaus1.jpg"
+                :alt="`${$t('menu.wechat')} ${$t('footer.wechatId')} QR code`"
+                class="mt-3 h-28 w-28 border border-[var(--yunda-bark)]/15 rounded object-contain shadow"
+                loading="lazy"
+                decoding="async"
+              >
             </div>
-          </div>
-
-          <!-- Social Links -->
-          <div class="text-left text-3.5 space-y-1 lg:text-4">
-            <a href="https://www.instagram.com/yunda_surrogacy_/" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('footer.socialLinks.instagram') }}</a>
-            <a href="https://www.facebook.com/people/Yunda-Surrogacy/61577914871802/" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('footer.socialLinks.facebook') }}</a>
-            <a href="https://www.youtube.com/@YundaSurrogacy" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('footer.socialLinks.youtube') }}</a>
-            <a href="https://www.linkedin.com/company/yunda-surrogacy" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('footer.socialLinks.linkedin') }}</a>
           </div>
         </div>
       </div>
@@ -240,6 +300,11 @@ const footerGroups = computed(() => [
 </template>
 
 <style scoped>
+.footer-company-nav {
+  width: max-content;
+  max-width: 100%;
+}
+
 .footer-links {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -257,13 +322,13 @@ const footerGroups = computed(() => [
 @media (min-width: 1024px) {
   .footer-links {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 4rem;
+    column-gap: 2rem;
   }
 }
 
 @media (min-width: 1280px) {
   .footer-links {
-    column-gap: 5rem;
+    column-gap: 2rem;
   }
 }
 </style>
