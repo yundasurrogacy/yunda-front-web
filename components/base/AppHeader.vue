@@ -1,6 +1,5 @@
 <script setup>
 import { computed, defineAsyncComponent, ref } from 'vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
@@ -66,9 +65,7 @@ const mhbAnnouncementLabel = computed(() => locale.value === 'zh'
       </NuxtLink>
     </div>
 
-    <nav class="app-header-lang z-10 w-28 flex shrink-0 items-center justify-end" aria-label="Language">
-      <LanguageSwitcher />
-    </nav>
+    <div class="z-10 w-28 shrink-0" aria-hidden="true" />
   </header>
 
   <NuxtLink
@@ -88,19 +85,5 @@ const mhbAnnouncementLabel = computed(() => locale.value === 'zh'
 header {
   /* 添加阴影效果，使吸顶导航更加明显 */
   box-shadow: 0 2px 10px rgba(60, 36, 21, 0.08);
-}
-
-/* 语言切换：正文 Text + Bark，悬停 Maple（不改动 LanguageSwitcher 组件文件） */
-.app-header-lang :deep(button) {
-  font-family: var(--font-text);
-  color: var(--yunda-bark);
-}
-
-.app-header-lang :deep(button:hover) {
-  color: var(--yunda-maple);
-}
-
-.app-header-lang :deep(span[aria-hidden='true']) {
-  color: color-mix(in srgb, var(--yunda-bark) 38%, transparent);
 }
 </style>

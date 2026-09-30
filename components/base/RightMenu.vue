@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const props = defineProps<{
   isOpen: boolean
@@ -31,10 +30,6 @@ function toggleMenu() {
             v-if="internalIsOpen"
             class="fixed right-0 w-full overflow-y-auto bg-[#BFC9BF]"
           >
-            <div class="flex items-center justify-center px-7 py-6 pt-8">
-              <LanguageSwitcher />
-            </div>
-
             <!-- 关闭按钮 -->
             <button class="absolute right-6 top-6 z-10 p-0" @click="toggleMenu">
               <svg
