@@ -386,7 +386,19 @@ useHead(() => ({
 <template>
   <div class="site-content-theme font-sans text-base text-[var(--yunda-bark)] leading-[1.75] lg:text-[17px]" style="font-family: var(--font-text)">
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage :transition="{ name: 'page-fade', mode: 'out-in' }" />
     </NuxtLayout>
   </div>
 </template>
+
+<style>
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: opacity 280ms ease;
+}
+
+.page-fade-enter-from,
+.page-fade-leave-to {
+  opacity: 0;
+}
+</style>

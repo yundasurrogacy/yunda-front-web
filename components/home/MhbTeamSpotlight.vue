@@ -60,7 +60,7 @@ const copy = computed(() => isZh.value
     <div class="mx-auto max-w-[1180px] px-6 md:px-10">
       <div class="grid overflow-hidden rounded-[10px] border border-[var(--yunda-bark)]/10 bg-white shadow-[0_10px_28px_rgba(60,36,21,0.08)] md:grid-cols-[0.72fr_1.28fr]">
         <OptimizedPicture
-          src="/images/pages/about/mhb/mhb-1.jpg"
+          src="/images/pages/about/mhb/spotlight-2026.jpg"
           :alt="copy.imageAlt"
           width="1200"
           height="1200"

@@ -32,9 +32,8 @@ onMounted(() => {
 <template>
   <section class="mail-hero-section relative min-h-50 w-full from-[var(--yunda-petal)] via-[var(--hero-center)] to-[var(--yunda-petal)] bg-gradient-to-b px-8 py-20 lg:min-h-100 lg:px-40 lg:py-40">
     <!-- Hero Background with Gradient -->
-    <div class="scroll-animate mx-auto text-center text-3 lg:max-w-320 lg:text-5">
-      <!-- Title -->
-      <h1 class="mb-6 text-7.5 font-semibold leading-tight lg:mb-8 lg:text-10" >
+    <div class="scroll-animate mx-auto max-w-4xl text-center text-base leading-[1.7] lg:text-lg" style="font-family: var(--font-text)">
+      <h1 class="mb-6 font-display text-[40px] text-[var(--yunda-bark)] font-semibold leading-[1.08] lg:mb-8 lg:text-[56px]">
         {{ title }}
       </h1>
 

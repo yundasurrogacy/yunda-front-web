@@ -14,7 +14,7 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en, zh) => (isZh.value ? zh : en)
-const dateModified = '2026-09-17'
+const dateModified = '2026-10-06'
 
 const trustStandards = computed(() => [
   {
@@ -60,10 +60,8 @@ const teamMemberDefinitions = [
   { key: 'kaylaLuo', id: 'kayla-luo', paragraphCount: 4, image: '/images/pages/about/kayla-luo-square-2026.jpg' },
   { key: 'michaelSim', id: 'michael-sim', paragraphCount: 4, image: '/images/pages/about/michael-sim-square-2026.jpg' },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3, image: '/images/pages/about/celia-chen-square-2026.jpg' },
-  { key: 'kristenPilling', id: 'kristen-pilling', paragraphCount: 3, image: '/images/pages/about/kristen-pilling-square-2026.jpg' },
-  { key: 'moonLiang', id: 'moon-liang', paragraphCount: 3, image: '/images/pages/about/moon-liang-square-2026.jpg' },
   { key: 'angelaNavarro', id: 'angela-navarro', paragraphCount: 4, image: '/images/pages/about/angela-navarro-square-2026.png' },
+  { key: 'celiaChen', id: 'celia-chen', paragraphCount: 3, image: '/images/pages/about/celia-chen-square-2026.jpg' },
 ]
 
 const teamMembers = computed(() => teamMemberDefinitions.map(member => ({

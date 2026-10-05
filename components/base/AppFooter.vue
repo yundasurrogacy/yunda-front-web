@@ -45,12 +45,12 @@ const footerGroups = computed(() => [
 </script>
 
 <template>
-  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
-    <div class="mx-auto max-w-300 md:max-w-full">
-      <!-- Footer Content -->
-      <div class="grid gap-y-12 md:grid-cols-[minmax(0,0.75fr)_minmax(0,0.85fr)_minmax(0,2fr)] md:items-start">
-        <!-- Services Section (Mobile: Top, LG: Right side) -->
-        <div class="order-1 mt-2 md:col-start-3 md:row-start-1 md:mt-0 md:pl-12 md:pt-[6.5rem]">
+  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-10 md:py-12 xl:px-24" style="font-family: var(--font-text)">
+    <div class="mx-auto max-w-300 xl:max-w-full">
+      <!-- Footer Content. 笔记本宽度保持单列，避免三栏把联系方式挤断；宽屏再并排。 -->
+      <div class="grid gap-x-8 gap-y-12 2xl:grid-cols-[max-content_max-content_minmax(0,1fr)] 2xl:items-start">
+        <!-- Services Section -->
+        <div class="order-1 mt-2 min-w-0 2xl:col-start-3 2xl:row-start-1 2xl:mt-0 2xl:pl-10 2xl:pt-16">
           <div class="footer-links">
             <div
               v-for="group in footerGroups"
@@ -77,7 +77,7 @@ const footerGroups = computed(() => [
         </div>
 
         <!-- Company Info (Mobile: Bottom, md: Left side) -->
-        <div class="order-2 mt-12 md:col-start-1 md:row-start-1 md:mt-0 md:max-w-[32rem]">
+        <div class="order-2 mt-12 2xl:col-start-1 2xl:row-start-1 2xl:mt-0 2xl:max-w-[32rem]">
           <div>
             <div class="min-w-0">
               <div class="flex justify-start">
@@ -185,37 +185,32 @@ const footerGroups = computed(() => [
             </div>
 
             <!-- Phone and Email below Blog -->
-            <div class="mt-8 max-w-[20rem] text-left text-3.5 space-y-8 md:text-4.5">
-              <div>
-                <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                  {{ $t('menu.phone') }}
-                </p>
+            <div class="mt-8 max-w-full text-left text-3.5 space-y-4 md:text-4.5">
+              <p class="flex flex-wrap items-baseline gap-x-2 text-[var(--yunda-bark)] font-normal uppercase md:flex-nowrap md:whitespace-nowrap">
+                <span>{{ $t('menu.phone') }}</span>
                 <a
                   :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
-                  class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                  class="whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
                 >
                   {{ $t('footer.phoneNumber') }}
                 </a>
-              </div>
-
-              <div>
-                <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                  {{ $t('menu.email') }}
-                </p>
+              </p>
+              <p class="flex flex-wrap items-baseline gap-x-2 text-[var(--yunda-bark)] font-normal uppercase md:flex-nowrap md:whitespace-nowrap">
+                <span>{{ $t('menu.email') }}</span>
                 <a
                   href="mailto:kaylal@yundasurrogacy.com"
-                  class="mt-1 block break-words text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                  class="whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
                 >
                   kaylal@yundasurrogacy.com
                 </a>
-              </div>
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Messaging Contacts -->
-        <div class="order-3 md:col-start-2 md:row-start-1 md:pl-8 md:pt-[8.5rem]">
-          <div class="grid grid-cols-2 gap-x-4 gap-y-8 text-left text-3.5 md:text-4">
+        <div class="order-3 min-w-0 2xl:col-start-2 2xl:row-start-1 2xl:pt-24">
+          <div class="grid w-max max-w-full grid-cols-1 items-start gap-x-10 gap-y-8 text-left text-3.5 sm:grid-cols-[max-content_max-content] md:text-4">
             <!-- WhatsApp -->
             <div v-if="locale === 'en'">
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
@@ -225,7 +220,7 @@ const footerGroups = computed(() => [
                 :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                class="mt-1 block whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
               >
                 {{ $t('footer.whatsappNumber') }}
               </a>
@@ -240,7 +235,7 @@ const footerGroups = computed(() => [
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.wechat') }}
               </p>
-              <p class="mt-1 text-[var(--yunda-bark)] font-normal">
+              <p class="mt-1 whitespace-nowrap text-[var(--yunda-bark)] font-normal">
                 {{ $t('footer.wechatId') }}
               </p>
               <img

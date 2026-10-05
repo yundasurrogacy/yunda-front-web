@@ -311,7 +311,7 @@ useHead(() => ({
     />
 
     <!-- Hero Section -->
-    <section class="relative bg-[var(--yunda-bark)] py-16 lg:py-24">
+    <section class="relative bg-[var(--yunda-bark)] py-16 text-[var(--yunda-petal)] lg:py-24">
       <div class="mx-auto max-w-1200px px-4 lg:px-6">
         <div class="text-center">
           <h1 class="mb-4 text-6 font-semibold italic lg:text-10" >
@@ -320,21 +320,9 @@ useHead(() => ({
           <h2 class="mb-6 text-4 font-semibold lg:text-6" >
             {{ t.hero.subtitle }}
           </h2>
-          <p class="mx-auto mb-8 max-w-966px text-base text-[var(--yunda-bark)] leading-relaxed lg:text-lg" style="font-family: var(--font-text)">
+          <p class="mx-auto mb-8 max-w-966px text-base text-[var(--yunda-petal)] leading-relaxed lg:text-lg" style="font-family: var(--font-text)">
             {{ t.hero.description }}
           </p>
-          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <NuxtLink
-              :to="localePath('/be-parents')"
-              class="rounded-2.5 bg-[var(--primary-brown)] px-8 py-4 text-lg text-[var(--yunda-petal)] font-semibold shadow-[inset_-2px_-2px_1px_rgba(255,255,255,0.3)] backdrop-blur-5 transition-opacity hover:opacity-90"
-              style="font-family: var(--font-text)"
-            >
-              {{ t.hero.cta }}
-            </NuxtLink>
-            <button class="shadow-inner-white-soft rounded-[10px] bg-[var(--yunda-petal)] px-8 py-4 text-lg text-[var(--yunda-bark)] font-semibold uppercase transition-all duration-300 ease-in-out active:translate-y-0 hover:bg-[var(--yunda-petal)] hover:underline hover:-translate-y-0.5" style="font-family: var(--font-text)">
-              {{ t.hero.downloadChecklist }}
-            </button>
-          </div>
         </div>
       </div>
     </section>

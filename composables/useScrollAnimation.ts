@@ -1,65 +1,61 @@
+let observer: IntersectionObserver | null = null
+const seen = new WeakSet<Element>()
+let pageFinishHooked = false
+
+function ensureObserver() {
+  if (observer || !import.meta.client)
+    return
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const target = entry.target
+      if (!entry.isIntersecting || seen.has(target))
+        return
+      target.classList.add('animate-in')
+      seen.add(target)
+      observer?.unobserve(target)
+    })
+  }, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15,
+  })
+}
+
+function observeGroup(selector: string, initClass: string) {
+  document.querySelectorAll(selector).forEach((element) => {
+    if (element.classList.contains('animate-in') || element.classList.contains(initClass))
+      return
+    element.classList.add(initClass)
+    observer?.observe(element)
+  })
+}
+
+export function initScrollAnimation() {
+  if (!import.meta.client)
+    return
+  ensureObserver()
+  observeGroup('.scroll-animate', 'scroll-animate-init')
+  observeGroup('.slide-left', 'slide-left-init')
+  observeGroup('.slide-right', 'slide-right-init')
+}
+
 export function useScrollAnimation() {
-  const observerRef = ref<IntersectionObserver | null>(null)
-  const animatedElements = ref<Set<Element>>(new Set()) as Ref<Set<any>>
-
-  const initScrollAnimation = () => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15,
-    }
-
-    observerRef.value = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const target = entry.target
-        if (entry.isIntersecting && !animatedElements.value.has(target)) {
-          ;(target as HTMLElement).classList.add('animate-in')
-          animatedElements.value.add(target)
-          observerRef.value?.unobserve(target as any)
-        }
-      })
-    }, options)
-
-    // Handle vertical scroll animations
-    const scrollElements = document.querySelectorAll('.scroll-animate')
-    scrollElements.forEach((element) => {
-      if (!element.classList.contains('scroll-animate-init')) {
-        element.classList.add('scroll-animate-init')
-        observerRef.value?.observe(element)
-      }
-    })
-
-    // Handle horizontal slide-left animations
-    const slideLeftElements = document.querySelectorAll('.slide-left')
-    slideLeftElements.forEach((element) => {
-      if (!element.classList.contains('slide-left-init')) {
-        element.classList.add('slide-left-init')
-        observerRef.value?.observe(element)
-      }
-    })
-
-    // Handle horizontal slide-right animations
-    const slideRightElements = document.querySelectorAll('.slide-right')
-    slideRightElements.forEach((element) => {
-      if (!element.classList.contains('slide-right-init')) {
-        element.classList.add('slide-right-init')
-        observerRef.value?.observe(element)
-      }
-    })
-  }
-
   onMounted(() => {
     setTimeout(() => {
       initScrollAnimation()
     }, 100)
   })
 
-  onUnmounted(() => {
-    if (observerRef.value) {
-      observerRef.value.disconnect()
-      observerRef.value = null
-    }
-  })
+  // 切页后页面是新的 DOM，需要再扫一次。hook 只注册一次。
+  if (import.meta.client && !pageFinishHooked) {
+    pageFinishHooked = true
+    useNuxtApp().hook('page:finish', () => {
+      setTimeout(() => {
+        initScrollAnimation()
+      }, 50)
+    })
+  }
 
   return {
     initScrollAnimation,

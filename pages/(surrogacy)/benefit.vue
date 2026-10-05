@@ -407,7 +407,6 @@ useHead(() => ({
               <div aria-hidden="true" class="benefit-hero-arch pointer-events-none absolute inset-y-0 right-0 w-[88%] max-w-[520px]" />
               <OptimizedPicture
                 :src="PAGE_ASSETS.hero"
-                :avif-src="avifSrc(PAGE_ASSETS.hero)"
                 :alt="c.heroTitle"
                 :width="896"
                 :height="1082"

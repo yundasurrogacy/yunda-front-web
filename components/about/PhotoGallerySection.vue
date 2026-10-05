@@ -5,7 +5,7 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 // 照片分类
-type PhotoCategory = 'all' | 'our-team' | 'asrm' | 'seeds' | 'mhb'
+type PhotoCategory = 'all' | 'our-team' | 'asrm' | 'seeds' | 'mhb' | 'families-out-loud'
 
 interface Photo {
   id: string
@@ -43,21 +43,29 @@ const photos = ref<Photo[]>([
     category: ['all', 'asrm'] as PhotoCategory[],
     alt: `ASRM Conference ${i + 1}`,
   })),
-  // SEEDS 照片 (1-6)
-  ...Array.from({ length: 6 }, (_, i) => ({
-    id: `seeds-${i + 1}`,
-    url: `${baseUrl}/seeds/seeds-${i + 1}.jpg`,
-    thumbnail: `${baseUrl}/seeds/seeds-${i + 1}.jpg`,
+  // SEEDS：2026-10 客户指定 Instagram 轮播的 10 张
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: `seeds-ig-2026-${i + 1}`,
+    url: `${baseUrl}/seeds/seeds-ig-2026-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/seeds/seeds-ig-2026-${i + 1}.jpg`,
     category: ['all', 'seeds'] as PhotoCategory[],
     alt: `SEEDS Event ${i + 1}`,
   })),
-  // MHB 照片 (1-6)
-  ...Array.from({ length: 6 }, (_, i) => ({
-    id: `mhb-${i + 1}`,
-    url: `/images/pages/about/mhb/mhb-${i + 1}.jpg`,
-    thumbnail: `/images/pages/about/mhb/mhb-${i + 1}.jpg`,
+  // MHB：先换成指定帖子里的 3 张
+  ...Array.from({ length: 3 }, (_, i) => ({
+    id: `mhb-ig-2026-${i + 1}`,
+    url: `${baseUrl}/mhb/mhb-ig-2026-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/mhb/mhb-ig-2026-${i + 1}.jpg`,
     category: ['all', 'mhb'] as PhotoCategory[],
     alt: `MHB Event ${i + 1}`,
+  })),
+  // Families Out Loud：放在 MHB 后面，取帖子前 3 张
+  ...Array.from({ length: 3 }, (_, i) => ({
+    id: `fol-ig-2026-${i + 1}`,
+    url: `${baseUrl}/families-out-loud/fol-ig-2026-${i + 1}.jpg`,
+    thumbnail: `${baseUrl}/families-out-loud/fol-ig-2026-${i + 1}.jpg`,
+    category: ['all', 'families-out-loud'] as PhotoCategory[],
+    alt: `Families Out Loud ${i + 1}`,
   })),
   {
     id: 'ourteam-surrogate-12',
@@ -82,6 +90,7 @@ const categories: Array<{ key: PhotoCategory, label: string }> = [
   { key: 'asrm', label: 'ASRM' },
   { key: 'seeds', label: 'SEEDS' },
   { key: 'mhb', label: 'MHB' },
+  { key: 'families-out-loud', label: 'Families Out Loud' },
 ]
 
 // 滑块相关状态

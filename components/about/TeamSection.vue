@@ -26,28 +26,16 @@ const teamMembers: TeamMember[] = [
   },
   { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
   {
-    key: 'celiaChen',
-    id: 'celia-chen',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'kristenPilling',
-    id: 'kristen-pilling',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/kristen-pilling-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'moonLiang',
-    id: 'moon-liang',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/moon-liang-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
     key: 'angelaNavarro',
     id: 'angela-navarro',
     paragraphCount: 4,
     image: { src: '/images/pages/about/angela-navarro-square-2026.png', width: 1080, height: 1080 },
+  },
+  {
+    key: 'celiaChen',
+    id: 'celia-chen',
+    paragraphCount: 3,
+    image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
   },
 ]
 

@@ -904,7 +904,7 @@
   "surrogacyReferral": {
     "heroSection": {
       "title": "Surrogate Referral Program",
-      "description": "Refer a qualified potential surrogate to Yunda and earn milestone rewards up to $5,000 for each successful referral.",
+      "description": "Refer a qualified potential surrogate to Yunda and earn up to $3,000 in milestone rewards for each successful referral after Legal is finalized.",
       "button": "CONTACT US"
     },
     "whyMattersSection": {
@@ -925,13 +925,13 @@
         "pregnancy": "Pregnancy confirmed with fetal heartbeat"
       },
       "bonuses": {
-        "accepted": "$500",
-        "screening": "$1,000",
-        "matching": "$1,500",
-        "transfer": "$1,000",
-        "pregnancy": "$1,000"
+        "accepted": "$300",
+        "screening": "$600",
+        "matching": "$900",
+        "transfer": "$600",
+        "pregnancy": "$600"
       },
-      "totalTitle": "Total Possible Referral Reward: $5,000",
+      "totalTitle": "Total Possible Referral Reward: $3,000",
       "terms1": "Bonuses are paid within 14 business days after each milestone.",
       "terms2": "You must be listed as the referral in your friend's initial application."
     },
@@ -1762,16 +1762,6 @@
           "paragraph3": "Clara is committed to building a client experience defined by trust, clear communication, and attention to detail. She believes that every family's journey is unique and takes pride in helping intended parents feel informed, supported, and confident as they navigate one of the most meaningful experiences of their lives."
         }
       },
-      "moonLiang": {
-        "name": "Moon Liang",
-        "title": "Surrogate Services Manager",
-        "imageAlt": "Portrait of Moon Liang, Surrogate Services Manager at Yunda Surrogacy",
-        "bio": {
-          "paragraph1": "Moon Liang holds dual Master's degrees from Columbia University in Quantitative Methods in the Social Sciences and Public Administration. Her background in analytics, operations, and strategic planning allows her to combine thoughtful decision-making with a compassionate, people-centered approach to surrogacy.",
-          "paragraph2": "As Director of Surrogate Services at Yunda Surrogacy, Moon leads the recruitment, screening, and matching of gestational carriers, working closely with intended parents, fertility clinics, and agency partners to ensure every journey begins with the right foundation. She is committed to building a strong and supportive surrogate community while maintaining the highest standards of professionalism, transparency, and care.",
-          "paragraph3": "Fluent in both English and Mandarin, Moon is passionate about creating meaningful connections between intended parents and gestational carriers. She believes that successful surrogacy begins with trust, clear communication, and genuine relationships, and is dedicated to helping every family move forward with confidence from the very first step."
-        }
-      },
       "celiaChen": {
         "name": "Celia Chen",
         "title": "Case Manager",
@@ -1780,16 +1770,6 @@
           "paragraph1": "Celia earned her Bachelor's degree from the University of California, San Diego and her Master's degree from the University of Southern California. She is passionate about helping intended parents navigate the surrogacy journey with confidence, compassion, and clear communication.",
           "paragraph2": "At Yunda Surrogacy, Celia serves as the primary point of contact for intended parents throughout their journey. She works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance specialists, and other trusted partners to guide each case from matching and medical screening through legal clearance, embryo transfer, pregnancy, and delivery.",
           "paragraph3": "Celia believes that every surrogacy journey is unique and deserves personalized care. She is committed to building trusted relationships with intended parents and surrogates, providing thoughtful guidance and timely support throughout the process. The greatest reward in her work is celebrating alongside families as they welcome the child they have long hoped for."
-        }
-      },
-      "kristenPilling": {
-        "name": "Kristen Pilling",
-        "title": "Intended Parents Case Manager",
-        "imageAlt": "Portrait of Kristen Pilling, Intended Parents Case Manager at Yunda Surrogacy",
-        "bio": {
-          "paragraph1": "Kristen Pilling is a bilingual Intended Parents Case Manager at Yunda Surrogacy who is fluent in English and Mandarin. With nearly five years of experience in the surrogacy industry, she has supported domestic and international intended parents through every stage of their journeys. She is passionate about providing responsive, personalized guidance and helping each family feel informed, reassured, and supported along the way.",
-          "paragraph2": "Kristen's professional background includes intended parent and gestational carrier case management, matching coordination, insurance management, and medical and legal process support. She works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance professionals, and other trusted partners to help each journey progress smoothly—from matching and medical screening through legal clearance, embryo transfer, pregnancy, and delivery.",
-          "paragraph3": "Known for being organized, compassionate, and attentive to detail, Kristen builds trusting relationships through clear and consistent communication. She understands that every surrogacy journey is unique and takes pride in helping intended parents and gestational carriers feel informed, supported, and genuinely cared for throughout the experience."
         }
       },
       "angelaNavarro": {
@@ -1828,7 +1808,8 @@
         "our-team": "Our Team",
         "asrm": "ASRM",
         "seeds": "SEEDS",
-        "mhb": "MHB"
+        "mhb": "MHB",
+        "families-out-loud": "Families Out Loud"
       },
       "viewMore": "View More",
       "viewing": "Viewing",

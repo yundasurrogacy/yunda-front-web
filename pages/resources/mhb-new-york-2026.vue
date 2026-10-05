@@ -15,7 +15,11 @@ const OFFICIAL_EVENT_URL = 'https://menhavingbabies.org/surrogacy-seminars/ny/'
 const EVENT_STATE: 'upcoming' | 'past' = 'upcoming'
 const EVENT_START = '2026-09-25'
 const EVENT_END = '2026-09-27'
-const EVENT_IMAGES = Array.from({ length: 6 }, (_, index) => `/images/pages/about/mhb/mhb-${index + 1}.jpg`)
+const HERO_IMAGES = [
+  '/images/pages/about/mhb/hero-main-2026.jpg',
+  '/images/pages/about/mhb/hero-side-2026.jpg',
+]
+const GALLERY_IMAGES = Array.from({ length: 6 }, (_, index) => `/images/pages/about/mhb/moment-2026-${index + 1}.jpg`)
 
 const translations = {
   en: {
@@ -169,7 +173,7 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || 'https://www.yun
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
 const inLanguage = computed(() => locale.value === 'zh' ? 'zh-CN' : 'en-US')
 const pageUrl = computed(() => `${siteUrl.value}${localePath(PAGE_PATH)}`)
-const heroImageUrl = computed(() => `${siteUrl.value}${EVENT_IMAGES[0]}`)
+const heroImageUrl = computed(() => `${siteUrl.value}${HERO_IMAGES[0]}`)
 const statusLabel = computed(() => EVENT_STATE === 'upcoming' ? c.value.statusUpcoming : c.value.statusPast)
 
 const pageSchema = computed(() => buildWebPageSchema({
@@ -215,7 +219,7 @@ const eventSchema = computed(() => buildEventSchema({
     url: siteUrl.value,
   },
   officialUrl: OFFICIAL_EVENT_URL,
-  image: EVENT_IMAGES,
+  image: [...HERO_IMAGES, ...GALLERY_IMAGES],
   inLanguage: inLanguage.value,
 }))
 
@@ -240,7 +244,7 @@ useHead(() => ({
     { name: 'twitter:description', content: c.value.metaDescription },
     { name: 'twitter:image', content: heroImageUrl.value },
   ],
-  link: [{ rel: 'preload', as: 'image', href: EVENT_IMAGES[0], fetchpriority: 'high' }],
+  link: [{ rel: 'preload', as: 'image', href: HERO_IMAGES[0], fetchpriority: 'high' }],
   script: [pageSchema.value, eventSchema.value, faqSchema.value].map((schema, index) => ({
     key: `schema-mhb-new-york-2026-${index}`,
     type: 'application/ld+json',
@@ -278,9 +282,9 @@ useHead(() => ({
 
           <figure class="relative mx-auto w-full max-w-[690px] pb-10 md:pb-0">
             <div class="grid grid-cols-[1.32fr_0.68fr] gap-3 sm:gap-4">
-              <OptimizedPicture :src="EVENT_IMAGES[0]" :alt="c.galleryAlts[0]" width="1200" height="1200" loading="eager" fetchpriority="high" picture-class="block overflow-hidden rounded-[16px] bg-white" img-class="aspect-[4/5] h-full w-full object-cover" />
+              <OptimizedPicture :src="HERO_IMAGES[0]" :alt="c.galleryAlts[0]" width="1200" height="1600" loading="eager" fetchpriority="high" picture-class="block overflow-hidden rounded-[16px] bg-white" img-class="aspect-[4/5] h-full w-full object-cover" />
               <div class="grid gap-3 sm:gap-4">
-                <OptimizedPicture :src="EVENT_IMAGES[1]" :alt="c.galleryAlts[1]" width="1200" height="1200" loading="eager" picture-class="block overflow-hidden rounded-[16px] bg-white" img-class="aspect-square h-full w-full object-cover" />
+                <OptimizedPicture :src="HERO_IMAGES[1]" :alt="c.galleryAlts[1]" width="1200" height="1200" loading="eager" picture-class="block overflow-hidden rounded-[16px] bg-white" img-class="aspect-square h-full w-full object-cover" />
                 <div class="flex min-h-[150px] flex-col justify-between rounded-[16px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] sm:p-6">
                   <span class="text-xs font-bold uppercase tracking-[0.13em]">{{ statusLabel }}</span>
                   <time :datetime="EVENT_START" class="font-display text-[27px] font-semibold leading-[1.05] sm:text-[34px]">{{ locale === 'zh' ? '9月25-27日' : 'Sep 25-27' }}<br>2026</time>
@@ -338,7 +342,7 @@ useHead(() => ({
           <h2 class="font-display text-[34px] font-semibold leading-tight lg:text-[44px]">{{ c.galleryTitle }}</h2>
           <p class="mt-4 max-w-[65ch] text-base text-[var(--yunda-bark)]/75 leading-relaxed">{{ c.galleryIntro }}</p>
           <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
-            <figure v-for="(image, index) in EVENT_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
+            <figure v-for="(image, index) in GALLERY_IMAGES" :key="image" class="overflow-hidden rounded-[14px] bg-white" :class="index === 0 || index === 5 ? 'md:col-span-5' : 'md:col-span-3'">
               <OptimizedPicture :src="image" :alt="c.galleryAlts[index]" width="1200" height="1200" loading="lazy" picture-class="block h-full" img-class="aspect-square h-full w-full object-cover transition-transform duration-300 hover:scale-[1.025]" />
             </figure>
           </div>
