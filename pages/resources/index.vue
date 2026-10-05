@@ -321,7 +321,7 @@ const resourcesItemListSchema = computed(() => buildItemListSchema({
       position: 2,
       name: featuredEvent.value.title,
       description: featuredEvent.value.body,
-      image: '/images/pages/about/mhb/spotlight-2026.jpg',
+      image: '/images/pages/about/mhb/spotlight-2026.webp',
       url: '/resources/mhb-new-york-2026',
     },
     ...substackCards.value.map((post, index) => ({
@@ -604,7 +604,7 @@ useHead(() => ({
               class="group mt-8 grid overflow-hidden rounded-[18px] border border-[var(--yunda-bark)]/12 bg-white shadow-[0_10px_30px_rgba(55,40,25,0.07)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(55,40,25,0.12)] md:grid-cols-[0.8fr_1.2fr]"
             >
               <OptimizedPicture
-                src="/images/pages/about/mhb/spotlight-2026.jpg"
+                src="/images/pages/about/mhb/spotlight-2026.webp"
                 :alt="locale === 'zh' ? '孕达参加过往 MHB 活动的照片' : 'Yunda at a previous MHB event'"
                 width="1200"
                 height="1200"

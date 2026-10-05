@@ -83,7 +83,7 @@ const footerGroups = computed(() => [
               <div class="flex justify-start">
                 <picture>
                   <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-                  <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" loading="lazy" decoding="async">
+                  <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" width="112" height="102" loading="lazy" decoding="async">
                 </picture>
               </div>
 
