@@ -45,7 +45,7 @@ useHead(() => ({
     {
       name: 'keywords',
       content: tt(
-        'surrogate mother, gestational surrogacy, Surrogate process, IVF, embryo transfer, surrogacy requirements, become a surrogate',
+        'surrogate, gestational surrogacy, Surrogate process, IVF, embryo transfer, surrogacy requirements, become a surrogate',
         '代孕妈妈, 妊娠代孕, 代孕流程, IVF, 胚胎移植, 代孕要求, 成为代孕妈妈',
       ),
     },
@@ -72,7 +72,7 @@ const readinessPillars = computed(() => [
   {
     title: tt('Medical & lab planning', '医疗与实验室规划'),
     body: tt(
-      'Now the clinic plan. Doctors and nurses show how is surrogacy performed in modern care. They design meds and timing. Labs build embryos. The ivf surrogacy process covers stimulation (if needed), retrieval, fertilization, and culture. The ivf surrogacy procedure sets transfer day. That is how does a surrogate mother get pregnant in a clinical sense—through embryo transfer, not intercourse.',
+      'Now the clinic plan. Doctors and nurses show how is surrogacy performed in modern care. They design meds and timing. Labs build embryos. The ivf surrogacy process covers stimulation (if needed), retrieval, fertilization, and culture. The ivf surrogacy procedure sets transfer day. That is how does a surrogate get pregnant in a clinical sense—through embryo transfer, not intercourse.',
       '进入诊所计划。医生与护士说明现代代孕如何进行，制定用药与时间表，实验室完成胚胎培养。IVF 代孕流程包含促排（如需）、取卵、受精与培养，最终确定移植日。临床上代孕妈妈通过胚胎移植怀孕，而非自然受孕。',
     ),
   },
@@ -113,7 +113,7 @@ const timelinePhases = computed(() => [
     label: tt('Month 1–3', '第 1–3 个月'),
     title: tt('Full Screening & Matching', '全面筛查与匹配'),
     summary: tt(
-      'Labs, ultrasound, and psych consult for the surrogate mother. Values and birth plan align.',
+      'Labs, ultrasound, and psych consult for the surrogate. Values and birth plan align.',
       '完成化验、超声与心理咨询，匹配价值观与分娩计划。',
     ),
   },
@@ -160,7 +160,7 @@ const flowchartStages = computed(() => [
     id: 1,
     title: tt('Inquiry → Pre-screen', '咨询 → 预筛'),
     parents: tt('Parents share goals and clinic choices.', '意向父母分享目标与诊所选择。'),
-    surrogates: tt('The surrogate mother shares OB records and lifestyle notes.', '代孕妈妈提供产科记录与生活方式信息。'),
+    surrogates: tt('The surrogate shares OB records and lifestyle notes.', '代孕妈妈提供产科记录与生活方式信息。'),
     summary: tt('Team sets the surrogacy steps and timing.', '团队明确代孕步骤与时间线。'),
   },
   {
@@ -196,7 +196,7 @@ const flowchartStages = computed(() => [
     title: tt('Delivery → Parentage → Home', '分娩 → 亲权 → 回家'),
     parents: tt('Hospital follows the plan.', '医院按计划执行。'),
     surrogates: tt('Attorneys finish orders and the birth certificate.', '律师完成裁定与出生证明。'),
-    summary: tt('Family goes home. The surrogate mother rests with support.', '家庭回家，代孕妈妈得到支持与休息。'),
+    summary: tt('Family goes home. The surrogate rests with support.', '家庭回家，代孕妈妈得到支持与休息。'),
   },
 ])
 
@@ -216,7 +216,7 @@ const faqItems = computed(() => [
   {
     question: tt('How does surrogacy work?', '代孕是如何进行的？'),
     answer: tt(
-      'In surrogacy, intended parents work with a fertility clinic and a surrogate mother. The surrogacy process includes screening, matching, legal contracts, IVF, pregnancy and birth. Everyone has clear roles and protections at each step.',
+      'In surrogacy, intended parents work with a fertility clinic and a surrogate. The surrogacy process includes screening, matching, legal contracts, IVF, pregnancy and birth. Everyone has clear roles and protections at each step.',
       '代孕中，意向父母与生殖诊所和代孕妈妈合作。流程包含筛查、匹配、法律合同、IVF、妊娠与分娩。每一步都有清晰角色与保障。',
     ),
   },
@@ -228,23 +228,23 @@ const faqItems = computed(() => [
     ),
   },
   {
-    question: tt('What does a surrogate mother do?', '代孕妈妈需要做什么？'),
+    question: tt('What does a surrogate do?', '代孕妈妈需要做什么？'),
     answer: tt(
-      'A surrogate mother carries a baby for intended parents who cannot carry a pregnancy. She follows medical advice, takes medications for IVF and surrogacy, and attends all key appointments. She does not use her own eggs in a gestational surrogacy program.',
+      'A surrogate carries a baby for intended parents who cannot carry a pregnancy. She follows medical advice, takes medications for IVF and surrogacy, and attends all key appointments. She does not use her own eggs in a gestational surrogacy program.',
       '代孕妈妈为无法自行怀孕的意向父母孕育孩子。她遵循医疗建议，进行 IVF 与代孕相关用药并参加关键就诊。在妊娠代孕中，她不使用自己的卵子。',
     ),
   },
   {
-    question: tt('How does a surrogate mother get pregnant?', '代孕妈妈如何怀孕？'),
+    question: tt('How does a surrogate get pregnant?', '代孕妈妈如何怀孕？'),
     answer: tt(
-      'In modern care, a surrogate mother gets pregnant through embryo transfer, not intercourse. Doctors place an embryo created in the lab into the surrogate’s uterus during the IVF surrogate process. Hormone medications help prepare her body for pregnancy.',
+      'In modern care, a surrogate gets pregnant through embryo transfer, not intercourse. Doctors place an embryo created in the lab into the surrogate’s uterus during the IVF surrogate process. Hormone medications help prepare her body for pregnancy.',
       '现代代孕通过胚胎移植实现怀孕，而非自然受孕。医生在 IVF 过程中将实验室形成的胚胎移植入子宫，激素用药帮助身体准备妊娠。',
     ),
   },
   {
     question: tt('How much does a gestational carrier cost?', '妊娠代孕费用大概多少？'),
     answer: tt(
-      'The cost of a gestational carrier and surrogate mother cost in USA varies by state, clinic, agency and insurance. Total costs include base compensation, medical fees, legal work and program support. We walk through typical ranges and budget tips in our separate surrogacy cost guide.',
+      'The cost of a gestational carrier and surrogate cost in USA varies by state, clinic, agency and insurance. Total costs include base compensation, medical fees, legal work and program support. We walk through typical ranges and budget tips in our separate surrogacy cost guide.',
       '妊娠代孕费用因州、诊所、机构与保险而异。总成本包含基础补偿、医疗费用、法律与项目支持。我们在代孕费用指南中提供常见区间与预算建议。',
     ),
   },
@@ -328,7 +328,7 @@ const yundaHighlights = computed(() => [
   {
     title: tt('A Trusted U.S. Surrogacy Partner Based in California', '值得信赖的加州代孕伙伴'),
     body: tt(
-      'We know the courts and clinics. We guide families and surrogate mothers through the surrogacy steps with calm, clear updates.',
+      'We know the courts and clinics. We guide families and surrogates through the surrogacy steps with calm, clear updates.',
       '我们熟悉法院与诊所，以清晰更新引导意向父母与代孕妈妈完成每一步。',
     ),
   },
@@ -349,7 +349,7 @@ const yundaHighlights = computed(() => [
   {
     title: tt('Dedicated Project Managers & Weekly Updates', '专属项目经理与周更新'),
     body: tt(
-      'One case manager owns your file. We send weekly notes. We keep the surrogacy process step by step on track for intended parents and for the surrogate mother.',
+      'One case manager owns your file. We send weekly notes. We keep the surrogacy process step by step on track for intended parents and for the surrogate.',
       '专属项目经理负责你的档案，每周更新，确保意向父母与代孕妈妈按步骤推进。',
     ),
   },
@@ -366,11 +366,11 @@ const surrogacySteps = computed(() => [
     title: tt('Initial Consultation & Eligibility Review', '初次咨询与资格评估'),
     duration: tt('Week 1–3', '第 1–3 周'),
     description: tt(
-      'A coordinator opens the file and sets goals. The team listens first. We review timelines, clinics, and legal paths in the surrogacy in the United States context. For the surrogate mother, we outline the process to become a surrogate mother in plain steps. We welcome U.S. citizens and prefer California residents for fast access to care.',
+      'A coordinator opens the file and sets goals. The team listens first. We review timelines, clinics, and legal paths in the surrogacy in the United States context. For the surrogate, we outline the process to become a surrogate in plain steps. We welcome U.S. citizens and prefer California residents for fast access to care.',
       '协调员建立档案并设定目标，团队先倾听后规划。我们在美国代孕背景下梳理时间线、诊所与法律路径。对于代孕妈妈，我们以清晰步骤说明如何成为代孕妈妈。我们欢迎美国公民，并优先加州居民以便快速就医。',
     ),
     activities: [
-      tt('Align goals and timelines for parents and surrogate mother.', '统一意向父母与代孕妈妈的目标与时间线。'),
+      tt('Align goals and timelines for parents and surrogate.', '统一意向父母与代孕妈妈的目标与时间线。'),
       tt('Outline clinics, legal paths, and program expectations in calm language.', '用清晰语言说明诊所、法律路径与项目期望。'),
       tt('Review pre-screen records and ensure both tracks feel supported.', '审核初筛资料，确保双方都被支持。'),
     ],
@@ -397,7 +397,7 @@ const surrogacySteps = computed(() => [
       },
     ],
     softCtas: [
-      tt('Surrogates: Start the surrogate mother program pre-screen.', '代孕妈妈：开始项目预筛。'),
+      tt('Surrogates: Start the surrogate program pre-screen.', '代孕妈妈：开始项目预筛。'),
       tt('Parents: Book a consult to see the surrogacy process step by step.', '意向父母：预约咨询了解流程。'),
     ],
   },
@@ -443,12 +443,12 @@ const surrogacySteps = computed(() => [
     title: tt('Medical Screening & IVF Preparation', '医学筛查与 IVF 准备'),
     duration: tt('Month 1–3', '第 1–3 个月'),
     description: tt(
-      'Clinics run full screening before any cycle. Doctors check labs and uterine health. A psychologist meets the surrogate mother to confirm readiness and support. Counselors explain what does a surrogate mother do in day-to-day life during treatment.',
+      'Clinics run full screening before any cycle. Doctors check labs and uterine health. A psychologist meets the surrogate to confirm readiness and support. Counselors explain what does a surrogate do in day-to-day life during treatment.',
       '诊所在进入周期前完成全面筛查，医生检查化验与子宫健康。心理师评估代孕妈妈的准备情况并提供支持，咨询师说明治疗期间的日常事项。',
     ),
     activities: [
-      tt('Complete health, lab, and psychological evaluations for the surrogate mother.', '完成代孕妈妈的健康、化验与心理评估。'),
-      tt('Coordinate insurance review for surrogate mother health insurance options.', '协调代孕妈妈保险方案审核。'),
+      tt('Complete health, lab, and psychological evaluations for the surrogate.', '完成代孕妈妈的健康、化验与心理评估。'),
+      tt('Coordinate insurance review for surrogate health insurance options.', '协调代孕妈妈保险方案审核。'),
       tt('Finalize IVF medication calendar and embryo creation plan.', '确定 IVF 用药日历与胚胎创建计划。'),
     ],
     details: tt('Health, lab, and psychological evaluations.', '健康、化验与心理评估。'),
@@ -458,7 +458,7 @@ const surrogacySteps = computed(() => [
         items: [
           tt('OB records review, infectious-disease panel, ultrasound.', '产科记录审核、传染病筛查与超声。'),
           tt('Mental health consult and lifestyle check.', '心理咨询与生活方式评估。'),
-          tt('Insurance advisors review surrogate mother health insurance options.', '保险顾问评估代孕妈妈保险方案。'),
+          tt('Insurance advisors review surrogate health insurance options.', '保险顾问评估代孕妈妈保险方案。'),
         ],
       },
       {
@@ -496,7 +496,7 @@ const surrogacySteps = computed(() => [
         items: [
           tt('Lining review, embryo thaw or selection, and transfer.', '内膜评估、胚胎解冻/选择与移植。'),
           tt('Beta-hCG confirms the result 9–12 days later.', '9–12 天后通过 β-hCG 确认结果。'),
-          tt('This is how a surrogate mother gets pregnant in modern care—through embryo transfer, not intercourse.', '现代代孕通过胚胎移植怀孕，而非自然受孕。'),
+          tt('This is how a surrogate gets pregnant in modern care—through embryo transfer, not intercourse.', '现代代孕通过胚胎移植怀孕，而非自然受孕。'),
           tt('Clinics teach what does a surrogate do to get pregnant: follow meds, rest, and scan on time.', '诊所会指导代孕妈妈按时用药、休息与检查。'),
         ],
       },
@@ -541,7 +541,7 @@ const surrogacySteps = computed(() => [
         heading: tt('Surrogate wellness support and insurance coverage', '代孕妈妈健康支持与保险覆盖'),
         items: [
           tt('Mental health check-ins and lactation support if desired.', '心理关怀与泌乳支持（如需）。'),
-          tt('Advisors manage claims under surrogate mother health insurance.', '顾问协助保险理赔。'),
+          tt('Advisors manage claims under surrogate health insurance.', '顾问协助保险理赔。'),
           tt('Parents plan first-hours bonding for babies born through surrogacy.', '意向父母规划宝宝出生后初期陪伴。'),
         ],
       },
@@ -562,7 +562,7 @@ const surrogacySteps = computed(() => [
     activities: [
       tt('Coordinate hospital logistics, travel, and bonding preferences.', '协调医院流程、出行与陪伴偏好。'),
       tt('Ensure legal parentage documents and filings are completed.', '确立法律亲权文件并完成申请。'),
-      tt('Offer gentle close-out support for surrogate mother and intended parents.', '为代孕妈妈与意向父母提供温和收尾支持。'),
+      tt('Offer gentle close-out support for surrogate and intended parents.', '为代孕妈妈与意向父母提供温和收尾支持。'),
     ],
     details: tt('Hospital coordination & intended parents’ presence.', '医院协调与意向父母在场安排。'),
     sections: [
@@ -578,7 +578,7 @@ const surrogacySteps = computed(() => [
         heading: tt('Legal parentage establishment and return home', '亲权确立与回家'),
         items: [
           tt('Attorneys complete orders and vital records.', '律师完成裁定与关键文件。'),
-          tt('Counselors offer a gentle close for the surrogate mother.', '咨询师为代孕妈妈提供情感收尾。'),
+          tt('Counselors offer a gentle close for the surrogate.', '咨询师为代孕妈妈提供情感收尾。'),
           tt('Parents travel home as a family. Lawyers answer common questions, like in surrogacy who is the biological father (the genetic father on record).', '家庭顺利回家，律师解答常见问题，如代孕中的生物学父亲（记录中的遗传父亲）。'),
         ],
       },
@@ -621,7 +621,7 @@ function setActiveStep(stepId: number) {
             </h1>
             <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-5 md:text-xl">
               <p>
-                {{ tt('In a typical gestational surrogacy process, you move through six stages: screening, matching, legal contracts, IVF and embryo transfer, pregnancy and delivery, then post-birth legal steps. This guide walks through each step in plain language so intended parents and surrogate mothers know what to expect at every stage.', '典型的妊娠代孕流程包括六个阶段：筛查、匹配、法律合同、IVF 与胚胎移植、妊娠与分娩，以及产后法律步骤。本指南用清晰语言逐步说明，让意向父母与代孕妈妈清楚每一步的预期。') }}
+                {{ tt('In a typical gestational surrogacy process, you move through six stages: screening, matching, legal contracts, IVF and embryo transfer, pregnancy and delivery, then post-birth legal steps. This guide walks through each step in plain language so intended parents and surrogates know what to expect at every stage.', '典型的妊娠代孕流程包括六个阶段：筛查、匹配、法律合同、IVF 与胚胎移植、妊娠与分娩，以及产后法律步骤。本指南用清晰语言逐步说明，让意向父母与代孕妈妈清楚每一步的预期。') }}
               </p>
             </div>
           </div>
@@ -684,7 +684,7 @@ function setActiveStep(stepId: number) {
             {{ tt('Choose Your Surrogacy Track', '选择你的代孕路径') }}
           </h2>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('The surrogacy process looks slightly different depending on whether you’re an intended parent or a prospective surrogate mother. Choose the path that fits you:', '代孕流程会因你的身份（意向父母或代孕妈妈）略有不同。请选择适合你的路径：') }}
+            {{ tt('The surrogacy process looks slightly different depending on whether you’re an intended parent or a prospective surrogate. Choose the path that fits you:', '代孕流程会因你的身份（意向父母或代孕妈妈）略有不同。请选择适合你的路径：') }}
           </p>
         </div>
         <div class="grid gap-6 md:grid-cols-2">
@@ -714,7 +714,7 @@ function setActiveStep(stepId: number) {
             {{ tt('Step-by-Step Breakdown of the Surrogacy process', '代孕流程分步详解') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('The surrogacy process works best with simple, clear surrogacy steps. This map shows how does surrogacy work for intended parents and for a surrogate mother in California and across the United States.', '清晰的步骤让代孕流程更顺畅。本图展示在加州及全美，代孕如何在意向父母与代孕妈妈之间运作。') }}
+            {{ tt('The surrogacy process works best with simple, clear surrogacy steps. This map shows how does surrogacy work for intended parents and for a surrogate in California and across the United States.', '清晰的步骤让代孕流程更顺畅。本图展示在加州及全美，代孕如何在意向父母与代孕妈妈之间运作。') }}
           </p>
         </div>
         <SurrogateStepsComponent
@@ -734,7 +734,7 @@ function setActiveStep(stepId: number) {
               {{ tt('Surrogacy process Flowchart & Checklist', '代孕流程图与清单') }}
             </h2>
             <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('A simple map keeps the surrogacy process calm. It shows each handoff. It shows who owns each task. It answers how does surrogacy work and how does the surrogate mother process work without noise.', '一张简洁的地图让代孕流程更稳定，显示每次交接和责任归属。它能清楚回答代孕如何运作，无需杂讯。') }}
+              {{ tt('A simple map keeps the surrogacy process calm. It shows each handoff. It shows who owns each task. It answers how does surrogacy work and how does the surrogate process work without noise.', '一张简洁的地图让代孕流程更稳定，显示每次交接和责任归属。它能清楚回答代孕如何运作，无需杂讯。') }}
             </p>
             <div class="space-y-6">
               <div
@@ -921,7 +921,7 @@ function setActiveStep(stepId: number) {
             {{ tt('Start Your Journey with Yunda', '与 Yunda 开启旅程') }}
           </h3>
           <p class="mx-auto mb-8 max-w-3xl text-lg text-white leading-relaxed">
-            {{ tt('We know the courts and clinics. We guide families and surrogate mothers through the surrogacy steps with calm, clear updates.', '我们熟悉法院与诊所，以稳定、清晰的更新引导家庭与代孕妈妈完成每一步。') }}
+            {{ tt('We know the courts and clinics. We guide families and surrogates through the surrogacy steps with calm, clear updates.', '我们熟悉法院与诊所，以稳定、清晰的更新引导家庭与代孕妈妈完成每一步。') }}
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <NuxtLink
