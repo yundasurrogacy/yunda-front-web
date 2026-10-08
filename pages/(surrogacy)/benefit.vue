@@ -93,7 +93,7 @@ const translations = {
       'When and how payments are made',
       'How the estimate and agreement terms apply',
     ],
-    overviewTitle: 'Surrogate Pay Overview: Surrogate Mother Pay Rate',
+    overviewTitle: 'Surrogate Pay Overview: Surrogate Pay Rate',
     overviewIntro: 'Surrogates are generously compensated for the time, commitment, and incredible gift they provide.',
     overviewCards: [
       { title: 'Base Compensation', amount: '$50,000', text: 'The 2026 customer estimate lists $50,000 in base compensation, paid under the written agreement.' },
@@ -138,10 +138,10 @@ const translations = {
     faqTitle: 'Surrogate Pay FAQ: Miscarriage Pay, Eligibility, and Common Questions',
     faqItems: [
       { q: 'Do surrogates get paid?', a: 'Yes. In most U.S. journeys, surrogates receive structured surrogate compensation and reimbursements. The terms are written into a legal agreement and paid on a set timeline.' },
-      { q: 'Do surrogate mothers get paid, or is it a "salary"?', a: 'Surrogates are typically paid as compensation, not a traditional salary. That means payments follow milestones and agreed support items, rather than hourly wages.' },
+      { q: 'Do surrogates get paid, or is it a "salary"?', a: 'Surrogates are typically paid as compensation, not a traditional salary. That means payments follow milestones and agreed support items, rather than hourly wages.' },
       { q: 'Can surrogates get paid monthly?', a: 'Often, yes. Many programs use milestone-based payments, and base compensation is commonly paid in monthly installments after key pregnancy confirmation steps.' },
       { q: 'Do surrogates get paid if they miscarry?', a: 'It depends on the stage of pregnancy and what the agreement states. Many arrangements include clear terms for compensation already earned and for what happens if a pregnancy ends early.' },
-      { q: 'How much do surrogate mothers get paid?', a: 'It varies by experience, state, and medical factors. The best way to understand compensation is to look at the full package: base pay, allowances, benefits, and reimbursements.' },
+      { q: 'How much do surrogates get paid?', a: 'It varies by experience, state, and medical factors. The best way to understand compensation is to look at the full package: base pay, allowances, benefits, and reimbursements.' },
       { q: 'How much do surrogates make a year?', a: 'Surrogacy compensation is not guaranteed annual income because the timeline can span many months and varies by matching and clinic schedules. We usually explain expected totals over the journey instead.' },
       { q: 'How much do surrogates make overall?', a: 'If you are asking what surrogates get paid, the total depends on base compensation plus milestone benefits and any situation-based add-ons defined in the agreement.' },
       { q: 'What does a surrogate make in California compared to other states?', a: 'The applicable amount depends on the customer estimate, eligibility, approved items, actual costs, and the written agreement. State and case details should be reviewed with the relevant professionals.' },

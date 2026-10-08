@@ -101,20 +101,6 @@ const { submitSurrogateApplication, getApplicationById, updateApplicationById } 
 
 const computedBMI = computed(() => calculatedBMI(form))
 
-/** GC 申请页图集：素材包 10 张（含新增 2 张） */
-const beSurrogateGallerySlides = [
-  { src: '/images/pages/be-surrogate/gallery/gallery-1.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-2.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-4.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-6.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-9.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-10.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-3.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-5.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-7.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-8.webp', alt: 'Yunda surrogate' },
-]
-
 const v2HeroTrustChips = computed(() => [
   tt('$50,000 base compensation + estimated $11,000 support benefits', '$50,000 基础补偿 + 预估 $11,000 福利支持'),
   tt('Independent escrow payment protection', '独立托管保障付款'),
@@ -187,7 +173,7 @@ const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchem
     tt('Women considering surrogacy', '正在考虑代孕的女性'),
   ],
   service: {
-    name: tt('Surrogate Mother Program', '代孕妈妈项目'),
+    name: tt('Surrogate Program', '代孕妈妈项目'),
     description: tt(
       'Yunda supports qualified surrogate candidates with private eligibility review, compensation education, medical screening coordination, legal coordination, insurance review, escrow payment protection, and matching.',
       '孕达为符合条件的代孕妈妈候选人提供私密资格评估、补偿说明、医学筛查协调、法律协调、保险审查、托管付款保障和匹配支持。',
@@ -1975,7 +1961,6 @@ function scrollToPageTop() {
 
     <SurrogateGallerySection
       variant="plain"
-      :slides="beSurrogateGallerySlides"
       :title="t.landing.galleryTitle"
       :subtitle="t.landing.gallerySubtitle"
     />

@@ -24,7 +24,7 @@ const pageTitle = computed(() =>
 )
 const pageDescription = computed(() =>
   tt(
-    'Review surrogate requirements, surrogate qualifications, and surrogate mother requirements before you apply: age, BMI, birth history, health, screening, and support.',
+    'Review surrogate requirements and qualifications before you apply: age, BMI, birth history, health, screening, and support.',
     '申请前先了解代孕妈妈要求与资格：年龄、BMI、分娩史、健康、筛查与支持。',
   ),
 )
@@ -113,7 +113,7 @@ const quickEligibilityCards = computed(() => [
       tt('BMI within the clinic range for gestational surrogacy screening.', 'BMI 在诊所妊娠代孕筛查范围内。'),
       tt('No smoking, vaping, or drug use.', '不吸烟、不电子烟、不使用毒品。'),
       tt('Reliable transportation and a stable schedule.', '交通可靠且日程稳定。'),
-      tt('These are baseline surrogate requirements and surrogate mother qualifications, not a final approval decision.', '以上是基础代孕要求与资格，不代表最终批准。'),
+      tt('These are baseline surrogate requirements and surrogate qualifications, not a final approval decision.', '以上是基础代孕要求与资格，不代表最终批准。'),
     ],
   },
   {
@@ -243,7 +243,7 @@ const faqItems = computed(() => [
     answer: tt('Yunda generally reviews candidates ages 21–39, at least one prior full-term birth, and BMI within the clinic range. OB records, current health, medications, prior complications, and clinic guidance also matter.', '孕达一般审核 21–39 岁、至少一次足月分娩、BMI 在诊所范围内的候选人。产科病历、当前健康、用药、既往并发症和诊所意见也很重要。'),
   },
   {
-    question: tt('What can disqualify someone from becoming a surrogate mother?', '哪些情况会导致无法成为代孕妈妈？'),
+    question: tt('What can disqualify someone from becoming a surrogate?', '哪些情况会导致无法成为代孕妈妈？'),
     answer: tt('Possible disqualifying factors include uncontrolled medical conditions, severe pregnancy complications, current nicotine or drug use, unsafe logistics, legal constraints, or clinic concerns after records review.', '可能包括未控制的疾病、严重妊娠并发症、当前使用尼古丁或药物、执行条件不安全、法律限制，或病历审核后诊所提出的顾虑。'),
   },
   {
@@ -251,7 +251,7 @@ const faqItems = computed(() => [
     answer: tt('You may be able to start a conversation, but clinics usually wait until breastfeeding has ended and your body has had enough recovery time before medications and embryo transfer.', '可以先开始沟通，但诊所通常会等哺乳结束、身体充分恢复后，再开始用药与胚胎移植。'),
   },
   {
-    question: tt('Do I have to be a U.S. citizen to meet surrogate mother requirements?', '必须是美国公民才符合代孕妈妈要求吗？'),
+    question: tt('Do I have to be a U.S. citizen to meet surrogate requirements?', '必须是美国公民才符合代孕妈妈要求吗？'),
     answer: tt('Yunda reviews U.S. citizens and U.S. residents accepted by the program. Your state, travel ability, identity or residency status, and legal logistics all affect whether you can move forward.', '孕达审核美国公民及项目接受的美国居民。所在州、出行能力、身份或居住状态及法律执行条件都会影响能否推进。'),
   },
   {
@@ -333,7 +333,7 @@ useHead(() => ({
                 {{ tt('Surrogate Requirements & Qualifications: See If You May Qualify Before You Apply', '代孕妈妈要求与资格：申请前先看你是否符合条件') }}
               </h1>
               <p class="mt-6 text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.85] lg:text-base">
-                {{ tt('Wondering whether you meet the surrogate requirements? Start here. This guide explains the surrogate qualifications and surrogate mother requirements Yunda reviews first, including age, prior birth history, BMI, health, lifestyle, U.S. status, screening readiness, and home support.', '想知道自己是否符合代孕妈妈要求？从这里开始。本指南解释孕达优先审核的代孕资格与要求，包括年龄、既往分娩史、BMI、健康、生活方式、美国身份、筛查准备度和家庭支持。') }}
+                {{ tt('Wondering whether you meet the surrogate requirements? Start here. This guide explains the surrogate qualifications and requirements Yunda reviews first, including age, prior birth history, BMI, health, lifestyle, U.S. status, screening readiness, and home support.', '想知道自己是否符合代孕妈妈要求？从这里开始。本指南解释孕达优先审核的代孕资格与要求，包括年龄、既往分娩史、BMI、健康、生活方式、美国身份、筛查准备度和家庭支持。') }}
               </p>
               <p class="mt-3 text-[15px] text-[var(--yunda-maple)] font-semibold leading-[1.7]">
                 {{ tt('Applying is private and not a commitment.', '申请是私密的，也不代表承诺。') }}
@@ -445,7 +445,7 @@ useHead(() => ({
           <div class="mx-auto max-w-320 px-6 lg:px-10">
             <div class="mx-auto max-w-4xl text-center">
               <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[34px]">
-                {{ tt('Surrogacy Requirements and Surrogate Mother Qualifications', '代孕要求与代孕妈妈资格') }}
+                {{ tt('Surrogacy Requirements and Surrogate Qualifications', '代孕要求与代孕妈妈资格') }}
               </h2>
               <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.8] lg:text-base">
                 {{ tt('Use this quick check to compare your situation with the surrogate requirements that usually receive the first review.', '用这份快速清单，对照通常最先审核的代孕妈妈要求，看看你的情况是否匹配。') }}
@@ -516,7 +516,7 @@ useHead(() => ({
           <div class="mx-auto max-w-320 px-6 lg:px-10">
             <div class="mx-auto max-w-4xl text-center">
               <h2 class="font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[34px]">
-                {{ tt('What Can Disqualify You From Becoming a Surrogate Mother', '哪些情况会导致无法成为代孕妈妈') }}
+                {{ tt('What Can Disqualify You From Becoming a Surrogate', '哪些情况会导致无法成为代孕妈妈') }}
               </h2>
               <p class="mt-4 text-[15px] text-[var(--yunda-bark)]/85 font-semibold leading-[1.8] lg:text-base">
                 {{ tt('Some factors can prevent approval, while others only delay the process. Final eligibility depends on OB records, clinic medical clearance, psychological screening, legal review, insurance review, and program requirements.', '有些因素会阻止批准，有些只是延后流程。最终资格取决于产科病历、诊所医疗清关、心理筛查、法律审核、保险审查和项目要求。') }}

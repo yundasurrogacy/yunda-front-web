@@ -131,7 +131,7 @@ const compensationFactors = computed(() => [
     title: tt('First-Time vs Repeat Surrogate Compensation', '首次与重复代孕补偿'),
     content: [
       tt(
-        'Repeat journeys often raise surrogate mother pay. A smooth prior pregnancy and a successful journey signal reliability.Agencies factor in medical history, delivery type, and communication style. Strong references and complete records help you get paid to be a surrogate at a higher level. This is how many “best paying surrogacy agencies” evaluate surrogate income in a fair, transparent way.',
+        'Repeat journeys often raise surrogate pay. A smooth prior pregnancy and a successful journey signal reliability.Agencies factor in medical history, delivery type, and communication style. Strong references and complete records help you get paid to be a surrogate at a higher level. This is how many “best paying surrogacy agencies” evaluate surrogate income in a fair, transparent way.',
         '重复代孕通常带来更高补偿。顺利的既往妊娠与成功旅程代表可靠性。机构会参考病史、分娩方式与沟通表现。良好推荐与完整记录有助于提升补偿水平。这也是高口碑机构公平、透明评估补偿的方式。',
       ),
     ],
