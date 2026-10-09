@@ -903,71 +903,105 @@
   },
   "surrogacyReferral": {
     "heroSection": {
-      "title": "Surrogate Referral Program",
-      "description": "Refer a qualified potential surrogate to Yunda and earn up to $3,000 in milestone rewards for each successful referral after Legal is finalized.",
-      "button": "CONTACT US"
+      "title": "Help a family grow.\nEarn $3,000.",
+      "eyebrow": "Surrogate Referral Program",
+      "description": "Refer a potential surrogate to Yunda. Receive a $3,000 referral reward after she completes final legal clearance and the program requirements are met.",
+      "button": "Refer a Friend",
+      "imageAlt": "Illustrative image of two friends talking on a garden terrace"
     },
     "whyMattersSection": {
       "title": "Why Your Referral Matters",
       "description": "You're not just helping a friend begin a powerful and meaningful journey—you're helping another family finally hold the baby they've dreamed of. And we'll thank you for it, every step of the way."
     },
     "earningsSection": {
-      "title": "How Much Can You Earn?",
-      "tableHeaders": {
-        "milestone": "Milestone",
-        "bonus": "Your Bonus"
-      },
-      "milestones": {
-        "accepted": "Surrogate is officially accepted by Yunda",
-        "screening": "Passes medical and psychological screening",
-        "matching": "Matches with Intended Parents",
-        "transfer": "Embryo Transfer is completed",
-        "pregnancy": "Pregnancy confirmed with fetal heartbeat"
-      },
-      "bonuses": {
-        "accepted": "$300",
-        "screening": "$600",
-        "matching": "$900",
-        "transfer": "$600",
-        "pregnancy": "$600"
-      },
-      "totalTitle": "Total Possible Referral Reward: $3,000",
-      "terms1": "Bonuses are paid within 14 business days after each milestone.",
-      "terms2": "You must be listed as the referral in your friend's initial application."
+      "title": "When is the reward paid?",
+      "amount": "$3,000",
+      "label": "Per qualifying referral",
+      "condition": "After the referred surrogate completes final legal clearance and the referral program requirements are met.",
+      "terms": "The referrer must be named on her initial application. A referral alone does not guarantee qualification or payment."
+    },
+    "processSection": {
+      "title": "How the referral works",
+      "steps": [
+        {
+          "title": "Share the opportunity",
+          "description": "Introduce a friend to Yunda and help her explore the surrogate requirements."
+        },
+        {
+          "title": "She applies",
+          "description": "She includes your name on her initial application so Yunda can identify the referral."
+        },
+        {
+          "title": "Screening and legal clearance",
+          "description": "She completes the required screening, matching and final legal clearance."
+        },
+        {
+          "title": "Receive $3,000",
+          "description": "The referral reward is paid after final legal clearance and the program requirements are met."
+        }
+      ]
     },
     "eligibilitySection": {
-      "title": "Who Makes a Great Surrogate?",
-      "intro": "We're looking for women who are:",
-      "requirements": {
-        "age": "Age 21–39",
-        "residence": "U.S. residents",
-        "pregnancy": "Have had at least one healthy pregnancy",
-        "bmi": "BMI under 32",
-        "lifestyle": "Non-smokers, drug-free",
-        "support": "Emotionally supported by family or friends",
-        "health": "No serious pregnancy complications or chronic health issues"
-      }
+      "eyebrow": "Who to refer",
+      "title": "Who Should You Refer?",
+      "intro": "A promising referral has a healthy pregnancy history, support from family or friends, and a genuine interest in helping another family. Qualification depends on the full application and professional screening process.",
+      "link": "Review Surrogate Requirements",
+      "requirements": [
+        "Has had at least one healthy pregnancy",
+        "Meets Yunda’s age, residency and BMI requirements",
+        "Is a non-smoker and drug-free",
+        "Has emotional support from family or friends",
+        "Has no serious pregnancy complications or chronic health issues",
+        "Is willing to complete screening and understands that final qualification requires professional review"
+      ]
     },
     "compensationSection": {
       "title": "What Will Your Friend Receive?",
-      "benefits": {
-        "base": "$50,000 in base compensation + estimated $11,000 support benefits",
-        "allowances": "Monthly allowances (transportation, food, childcare)",
-        "medication": "Medication and embryo transfer stipends",
-        "surgery": "C-section/special surgery bonuses",
-        "breastmilk": "Breast milk compensation: $300/week (if applicable)",
-        "bedrest": "Wage-loss support for bed rest: based on approved documentation and the written agreement",
-        "insurance": "Insurance coverage or review",
-        "lifeInsurance": "Life insurance up to $250,000",
-        "support": "One-on-one support, legal & emotional care",
-        "processing": "Compensation is processed through a third-party trust account according to the written agreement"
-      }
+      "base": "$50,000 in base compensation + estimated $11,000 support benefits",
+      "benefits": [
+        "Monthly allowances (transportation, food, childcare)",
+        "Medication and embryo transfer stipends",
+        "C-section / special surgery bonuses",
+        "Breast milk compensation: $300/week (if applicable)",
+        "Wage-loss support for bed rest: based on approved documentation and the written agreement",
+        "Insurance coverage or review",
+        "Life insurance up to $250,000",
+        "One-on-one support, legal & emotional care"
+      ],
+      "processing": "Compensation is processed through a third-party trust account according to the written agreement.",
+      "link": "Explore Compensation & Benefits"
+    },
+    "faqSection": {
+      "title": "Your referral questions, answered",
+      "items": [
+        {
+          "question": "How much is the referral reward?",
+          "answer": "$3,000 per qualifying referral, paid to the referrer after the referred surrogate completes final legal clearance and the program requirements are met."
+        },
+        {
+          "question": "When can I receive it?",
+          "answer": "The reward becomes payable only after the referred surrogate completes final legal clearance and the referral program requirements are met. Contact Yunda for payment arrangements; submitting an application alone does not trigger a payment."
+        },
+        {
+          "question": "How is my referral recorded?",
+          "answer": "Your name must appear on the referred surrogate’s initial application. Ask her to include it when she first applies."
+        },
+        {
+          "question": "Does a referral guarantee approval?",
+          "answer": "No. Each applicant must complete the application and professional screening process. If the final legal clearance and program requirements are not met, the referral reward is not payable."
+        }
+      ]
     },
     "confidenceSection": {
-      "title": "",
-      "description": "Over a hundred incredible women have already partnered with Yunda to help others build their families—and in doing so, they've also experienced personal growth and fulfillment. A referral is a gesture of belief in her—and our thank you is a promise to you.",
-      "button": "CONTACT US"
-    }
+      "title": "A small introduction.\nA meaningful beginning.",
+      "description": "Know someone who may be interested? Speak with Yunda about the referral program and help her take an informed first step.",
+      "button": "Contact Yunda"
+    },
+    "meta": {
+      "title": "Surrogate Referral Program – $3,000 Reward – Yunda",
+      "description": "Refer a surrogate to Yunda and earn $3,000 after she completes final legal clearance and meets program requirements. Learn how to refer a friend."
+    },
+    "updated": "Updated October 9, 2026"
   },
   "footer": {
     "sections": {
@@ -1708,10 +1742,10 @@
     },
     "hero": {
       "title": "Where Professional Commitment Meets Heartfelt Care",
-      "paragraph1": "At Yunda Surrogacy, we are more than a surrogacy agency—we are your dedicated partners on a deeply human journey. Our team brings together expertise in reproductive law, fertility coordination, clinical advocacy, and international case management—with something just as important: personal experience.",
-      "paragraph2": "Many of us are parents through surrogacy, former surrogates, or lifelong advocates for family-building. We've sat in waiting rooms. We've held hands during embryo transfers. We've felt the anticipation, the anxiety, and the indescribable joy. That's why we don't just work in this field—we live it.",
-      "paragraph3": "From your first consultation to the moment a baby is placed into loving arms, we ensure every step is handled with professionalism, empathy, and clarity. Whether you're a surrogate offering the gift of life or an intended parent dreaming of a family,",
-      "highlight": "Yunda walks beside you—with honesty, respect, and unwavering dedication."
+      "paragraph1": "At Yunda Surrogacy, we combine expertise in reproductive law and global case management with personal experience. As former surrogates and parents through surrogacy, we’ve lived every step of this journey.",
+      "paragraph2": "From your first consultation to holding your newborn, Yunda walks beside you with professionalism, empathy, and unwavering dedication.",
+      "paragraph3": "",
+      "highlight": ""
     },
     "team": {
       "founder": "Founder & CEO",

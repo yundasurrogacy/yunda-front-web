@@ -1,33 +1,35 @@
 <script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-useScrollAnimation()
+const { t } = useI18n()
+const localePath = useLocalePath()
+const benefitColumns = computed(() => [0, 4].map(start => Array.from({ length: 4 }, (_, index) => t(`surrogacyReferral.compensationSection.benefits.${start + index}`))))
 </script>
 
 <template>
-  <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-8 lg:px-20 lg:py-20">
-    <div class="scroll-animate mx-auto mb-10 max-w-300">
-      <h2 class="mb-6 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:mb-8 lg:text-left lg:text-[36px]">
+  <section class="referral-section referral-benefits" aria-labelledby="referral-benefits-title">
+    <div class="referral-container">
+      <h2 id="referral-benefits-title">
         {{ $t('surrogacyReferral.compensationSection.title') }}
       </h2>
-
-      <div>
-        <div class="ml-6 text-left space-y-2">
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.base') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.allowances') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.medication') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.surgery') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.breastmilk') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.bedrest') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.insurance') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.lifeInsurance') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.support') }}</li>
-          <li>{{ $t('surrogacyReferral.compensationSection.benefits.processing') }}</li>
-        </div>
+      <p class="referral-benefits-base">
+        {{ $t('surrogacyReferral.compensationSection.base') }}
+      </p>
+      <div class="referral-benefit-columns">
+        <ul v-for="(column, index) in benefitColumns" :key="index" class="referral-benefit-list">
+          <li v-for="benefit in column" :key="benefit">
+            <span class="referral-check" aria-hidden="true">✓</span>
+            <span>{{ benefit }}</span>
+          </li>
+        </ul>
       </div>
+      <p class="referral-fine-print referral-processing">
+        {{ $t('surrogacyReferral.compensationSection.processing') }}
+      </p>
+      <NuxtLink class="referral-text-link" :to="localePath('/benefit')">
+        {{ $t('surrogacyReferral.compensationSection.link') }} <span aria-hidden="true">→</span>
+      </NuxtLink>
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>
