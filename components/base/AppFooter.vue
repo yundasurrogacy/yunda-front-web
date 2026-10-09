@@ -45,23 +45,28 @@ const footerGroups = computed(() => [
 </script>
 
 <template>
-  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-10 md:py-12 xl:px-24" style="font-family: var(--font-text)">
-    <div class="mx-auto max-w-300 xl:max-w-full">
-      <!-- Footer Content. 笔记本宽度保持单列，避免三栏把联系方式挤断；宽屏再并排。 -->
-      <div class="grid gap-x-8 gap-y-12 2xl:grid-cols-[max-content_max-content_minmax(0,1fr)] 2xl:items-start">
-        <!-- Services Section -->
-        <div class="order-1 mt-2 min-w-0 2xl:col-start-3 2xl:row-start-1 2xl:mt-0 2xl:pl-10 2xl:pt-16">
+  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
+    <div class="mx-auto max-w-300 md:max-w-full">
+      <!-- Footer Content -->
+      <div class="footer-layout">
+        <div class="footer-brand">
+          <picture>
+            <source srcset="/images/shared/brand/logo.webp" type="image/webp">
+            <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <!-- Services Section (Mobile: Top, LG: Right side) -->
+        <div class="footer-services">
           <div class="footer-links">
             <div
               v-for="group in footerGroups"
               :key="group.title"
               class="min-w-0 text-left space-y-2"
             >
-              <h3 class="mb-6 text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
+              <h3 class="footer-guide-heading text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
                 {{ group.title }}
               </h3>
               <div class="space-y-1">
-                <hr class="my-2 border-[var(--yunda-bark)]">
                 <NuxtLink
                   v-for="(link, index) in group.links"
                   :key="link.to"
@@ -77,18 +82,13 @@ const footerGroups = computed(() => [
         </div>
 
         <!-- Company Info (Mobile: Bottom, md: Left side) -->
-        <div class="order-2 mt-12 2xl:col-start-1 2xl:row-start-1 2xl:mt-0 2xl:max-w-[32rem]">
+        <div class="footer-company">
           <div>
             <div class="min-w-0">
-              <div class="flex justify-start">
-                <picture>
-                  <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-                  <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" width="112" height="102" loading="lazy" decoding="async">
-                </picture>
-              </div>
+
 
               <!-- About Us Section -->
-              <div class="footer-company-nav mt-10 text-left text-3.5 md:text-4.5">
+              <div class="footer-company-nav text-left text-3.5 md:text-4.5">
                 <div class="space-y-1">
                   <hr class="my-2 border-[var(--yunda-bark)]">
                   <NuxtLink
@@ -120,7 +120,7 @@ const footerGroups = computed(() => [
               </div>
 
               <!-- Social Links -->
-              <div class="mt-7 flex items-center gap-3 text-[var(--yunda-bark)]">
+              <div class="footer-social mt-7 flex items-center gap-3 text-[var(--yunda-bark)]">
                 <a
                   href="https://www.instagram.com/yunda_surrogacy_/"
                   target="_blank"
@@ -185,34 +185,39 @@ const footerGroups = computed(() => [
             </div>
 
             <!-- Phone and Email below Blog -->
-            <div class="mt-8 max-w-full text-left text-3.5 space-y-4 md:text-4.5">
-              <p class="flex flex-wrap items-baseline gap-x-2 text-[var(--yunda-bark)] font-normal uppercase md:flex-nowrap md:whitespace-nowrap">
-                <span>{{ $t('menu.phone') }}</span>
+            <div class="footer-direct-contact mt-8 max-w-[20rem] text-left text-3.5 md:space-y-8 md:text-4.5">
+              <div>
+                <p class="text-[var(--yunda-bark)] font-normal uppercase">
+                  {{ $t('menu.phone') }}
+                </p>
                 <a
                   :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
-                  class="whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                  class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
                 >
                   {{ $t('footer.phoneNumber') }}
                 </a>
-              </p>
-              <p class="flex flex-wrap items-baseline gap-x-2 text-[var(--yunda-bark)] font-normal uppercase md:flex-nowrap md:whitespace-nowrap">
-                <span>{{ $t('menu.email') }}</span>
+              </div>
+
+              <div>
+                <p class="text-[var(--yunda-bark)] font-normal uppercase">
+                  {{ $t('menu.email') }}
+                </p>
                 <a
                   href="mailto:kaylal@yundasurrogacy.com"
-                  class="whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                  class="mt-1 block break-words text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
                 >
                   kaylal@yundasurrogacy.com
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Messaging Contacts -->
-        <div class="order-3 min-w-0 2xl:col-start-2 2xl:row-start-1 2xl:pt-24">
-          <div class="grid w-max max-w-full grid-cols-1 items-start gap-x-10 gap-y-8 text-left text-3.5 sm:grid-cols-[max-content_max-content] md:text-4">
+        <div class="footer-messaging">
+          <div class="grid grid-cols-2 gap-x-4 gap-y-8 text-left text-3.5 md:text-4">
             <!-- WhatsApp -->
-            <div v-if="locale === 'en'">
+            <div v-if="locale === 'en'" class="footer-contact-block">
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.whatsapp') }}
               </p>
@@ -220,7 +225,7 @@ const footerGroups = computed(() => [
                 :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-1 block whitespace-nowrap normal-case transition-colors hover:text-[var(--yunda-maple)] hover:underline"
+                class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
               >
                 {{ $t('footer.whatsappNumber') }}
               </a>
@@ -231,11 +236,11 @@ const footerGroups = computed(() => [
             </div>
 
             <!-- WeChat -->
-            <div>
+            <div class="footer-contact-block">
               <p class="text-[var(--yunda-bark)] font-normal uppercase">
                 {{ $t('menu.wechat') }}
               </p>
-              <p class="mt-1 whitespace-nowrap text-[var(--yunda-bark)] font-normal">
+              <p class="mt-1 text-[var(--yunda-bark)] font-normal">
                 {{ $t('footer.wechatId') }}
               </p>
               <img
@@ -295,6 +300,49 @@ const footerGroups = computed(() => [
 </template>
 
 <style scoped>
+.footer-layout {
+  display: grid;
+  gap: 2.5rem 0;
+  align-items: start;
+}
+
+.footer-services { order: 4; min-width: 0; }
+.footer-brand { order: 1; }
+.footer-company { order: 2; min-width: 0; }
+.footer-messaging { order: 3; min-width: 0; }
+
+.footer-brand picture { display: block; }
+.footer-brand img { display: block; height: auto; }
+
+.footer-guide-heading,
+.footer-contact-block {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.footer-guide-heading { margin-bottom: 1rem; white-space: nowrap; }
+
+@media (min-width: 768px) {
+  .footer-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+  }
+  .footer-brand { grid-column: 1; grid-row: 1; }
+  .footer-company { grid-column: 1; grid-row: 2; max-width: 32rem; }
+  .footer-messaging { grid-column: 2; grid-row: 2; }
+  .footer-services { grid-column: 1 / -1; grid-row: 3; }
+}
+
+@media (min-width: 1024px) {
+  .footer-layout {
+    grid-template-columns: minmax(0, 0.75fr) minmax(256px, 0.85fr) minmax(0, 2fr);
+  }
+  .footer-services { grid-column: 3; grid-row: 2; }
+}
+
+.footer-messaging img { width: 7rem; height: 7rem; max-width: none; }
+
 .footer-company-nav {
   width: max-content;
   max-width: 100%;
@@ -308,7 +356,7 @@ const footerGroups = computed(() => [
 
 @media (min-width: 768px) {
   .footer-links {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
     column-gap: 3rem;
     row-gap: 2.5rem;
   }
@@ -316,7 +364,7 @@ const footerGroups = computed(() => [
 
 @media (min-width: 1024px) {
   .footer-links {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
     column-gap: 2rem;
   }
 }
@@ -326,4 +374,53 @@ const footerGroups = computed(() => [
     column-gap: 2rem;
   }
 }
+
+@media (max-width: 767px) {
+  .footer-layout { row-gap: 1.5rem; }
+  .footer-brand img { width: 4.5rem; }
+  .footer-company-nav { width: 100%; }
+  .footer-company-nav > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+  }
+  .footer-company-nav hr { display: none; }
+  .footer-company-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin: 0;
+    font-size: 0.8125rem;
+  }
+  .footer-social { margin-top: 1rem; gap: 0.5rem; }
+  .footer-social a { width: 2.75rem; height: 2.75rem; }
+  .footer-direct-contact { margin-top: 1rem; max-width: 100%; }
+  .footer-direct-contact > div {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0;
+    padding: 0.5rem 0;
+  }
+  .footer-direct-contact a { margin-top: 0; }
+  .footer-messaging > div { gap: 1rem; }
+  .footer-contact-block { margin-top: 0; padding-top: 0; }
+  .footer-contact-block > a { font-size: 0.8125rem; white-space: nowrap; }
+  .footer-links { gap: 1.5rem; }
+  .footer-guide-heading { margin-top: 0; padding-top: 0; margin-bottom: 0.75rem; }
+  .footer-links > div > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 1rem;
+  }
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem;
+    margin-top: 0;
+    line-height: 1.5;
+  }
+}
+
 </style>
