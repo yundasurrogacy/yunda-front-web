@@ -62,6 +62,7 @@ const STATIC_SECTIONS_EN = [
     title: 'Resources / Blog',
     links: [
       { href: '/resources', label: 'Resources & Media Center' },
+      { href: '/resources/mhb-new-york-2026', label: 'MHB New York 2026: Event & Consultation Guide' },
       { href: '/blog', label: 'Blog Index' },
     ],
   },
@@ -120,6 +121,7 @@ const STATIC_SECTIONS_ZH = [
     title: '资源 / 博客',
     links: [
       { href: '/resources', label: '资源与媒体中心' },
+      { href: '/resources/mhb-new-york-2026', label: 'MHB 纽约 2026 活动与咨询指南' },
       { href: '/blog', label: '博客首页' },
     ],
   },
@@ -278,13 +280,13 @@ async function run() {
   const blogSectionEn = {
     title: 'Blog Articles',
     links: [{ href: '/blog', label: 'Blog Index' }, ...blogLinksEn],
-    note: `Posts fetched from API: ${blogLinksEn.length} items.`,
+    note: `${blogLinksEn.length} articles to explore.`,
     className: 'section-blog',
   }
   const blogSectionZh = {
     title: '博客文章',
     links: [{ href: '/blog', label: '博客列表' }, ...blogLinksZh],
-    note: `从接口获取文章：${blogLinksZh.length}篇。`,
+    note: `共 ${blogLinksZh.length} 篇中文文章。`,
     className: 'section-blog',
   }
 
