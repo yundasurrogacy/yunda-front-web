@@ -177,7 +177,10 @@ async function fetchAllBlogs() {
 
     try {
       do {
-        const url = `${endpoint}?page=${page}&limit=${BLOG_API_LIMIT}`
+        const url = new URL(endpoint)
+        url.searchParams.set('page', String(page))
+        url.searchParams.set('limit', String(BLOG_API_LIMIT))
+        url.searchParams.set('cache_bust', String(Date.now()))
         const response = await fetchJson(url)
         const blogs = Array.isArray(response?.blogs) ? response.blogs : []
         allBlogs.push(...blogs)

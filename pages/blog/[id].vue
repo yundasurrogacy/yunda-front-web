@@ -134,7 +134,7 @@ const blogApiLang = computed(() => (locale.value === 'zh' ? 'zh' : 'en'))
 const blogCacheKey = computed(() => `blog-v2-${route.params.id}-${blogApiLang.value}`)
 const blogApiUrl = computed(() => {
   const routeId = encodeURIComponent(String(route.params.id))
-  return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}&cache_bust=dates-20260930-v1`
+  return `${apiBase.value}/api/blog?route_id=${routeId}&lang=${blogApiLang.value}&cache_bust=zh-complete-20261009-v1`
 })
 
 // 鑾峰彇鍗氬璇︽儏鏁版嵁锛屾敮鎸佺紦瀛樺拰棰勫姞杞?

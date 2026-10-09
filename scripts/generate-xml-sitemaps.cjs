@@ -171,7 +171,7 @@ async function fetchAllBlogs() {
 
     try {
       do {
-        const url = withQuery(endpoint, { page, limit: BLOG_API_LIMIT })
+        const url = withQuery(endpoint, { page, limit: BLOG_API_LIMIT, cache_bust: Date.now() })
         const response = await fetchJson(url)
         const blogs = Array.isArray(response?.blogs) ? response.blogs : []
         allBlogs.push(...blogs)
@@ -256,6 +256,7 @@ async function getBlogEntriesFromApi(blogs) {
     const detailUrl = withQuery(BLOG_DETAIL_API_URL, {
       route_id: entry.slug,
       lang: 'zh',
+      cache_bust: Date.now(),
     })
     const detail = await fetchJson(detailUrl)
     if (!detail || typeof detail !== 'object' || !Object.prototype.hasOwnProperty.call(detail, 'content')) {
