@@ -23,37 +23,11 @@ const teamMembers: TeamMember[] = [
     paragraphCount: 4,
     image: { src: '/images/pages/about/michael-sim-square-2026.jpg', width: 1080, height: 1080 },
   },
-  { key: 'claraChen', id: 'clara-chen', paragraphCount: 3 },
-  {
-    key: 'celiaChen',
-    id: 'celia-chen',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/celia-chen-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'kristenPilling',
-    id: 'kristen-pilling',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/kristen-pilling-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'moonLiang',
-    id: 'moon-liang',
-    paragraphCount: 3,
-    image: { src: '/images/pages/about/moon-liang-square-2026.jpg', width: 1080, height: 1080 },
-  },
-  {
-    key: 'angelaNavarro',
-    id: 'angela-navarro',
-    paragraphCount: 4,
-    image: { src: '/images/pages/about/angela-navarro-square-2026.png', width: 1080, height: 1080 },
-  },
 ]
 
 const founder = teamMembers[0]
 const teamGroups = [
   { labelKey: 'leadership', members: teamMembers.slice(1, 3) },
-  { labelKey: 'ourTeam', members: teamMembers.slice(3) },
 ]
 const expandedMemberIds = ref<Set<string>>(new Set())
 
@@ -134,7 +108,6 @@ onMounted(() => {
             class="member-card"
             :class="{
               'member-card--without-image': !member.image,
-              'member-card--featured': member.key === 'claraChen',
             }"
           >
             <div v-if="member.image" class="member-portrait slide-left">
@@ -360,10 +333,6 @@ onMounted(() => {
 
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .member-card--featured {
-    grid-column: 1 / -1;
   }
 }
 
