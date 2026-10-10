@@ -33,31 +33,24 @@ const EVENT_VIDEOS = {
   conversation: '/videos/mhb-new-york-2026/booth-conversation.webm',
 }
 const { locale } = useI18n()
-const galleryOrder = [9, 10, 11, 21, 23, 15, 1, 7, 2, 3, 4, 5, 6, 8, 12, 13, 14, 16, 17, 18, 19, 20, 22]
+const galleryOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 const galleryDescriptions = [
-  ['Conference room', '会议现场'],
-  ['Conversations in the expo hall', '展区交流'],
-  ['Exhibitors and attendees', '参展方与参会者'],
-  ['Conversation at Yunda’s booth', '孕达展位交流'],
-  ['On-site discussion', '现场讨论'],
-  ['Yunda team at the booth', '孕达展位团队'],
   ['Yunda representative with Dr. Diana Chavkin at SCRC’s booth', '孕达代表与 Diana Chavkin 医生在 SCRC 展位合影'],
-  ['Yunda booth and display', '孕达展位与展示物料'],
-  ['Yunda printed materials', '孕达印刷资料'],
-  ['Yunda brochures and rainbow giveaways', '孕达折页与彩虹纪念品'],
-  ['Yunda brochures', '孕达宣传折页'],
+  ['Yunda team in conversation in the expo hall', '孕达团队在展区交流'],
+  ['Yunda team speaking with an attendee', '孕达团队与参会者交流'],
+  ['Yunda representatives at the MHB backdrop', '孕达代表在 MHB 背景板前交流'],
+  ['MHB event display with rainbow flags', 'MHB 活动展示与彩虹旗'],
+  ['Yunda team sponsor badges', '孕达团队赞助商胸牌'],
+  ['Yunda brochures on the display table', '展示桌上的孕达宣传折页'],
   ['Yunda branded giveaways', '孕达品牌纪念品'],
-  ['Brochures on the display table', '展示桌上的宣传折页'],
+  ['Yunda representative presenting a brochure at the booth', '孕达代表在展位展示宣传折页'],
+  ['Yunda brochures and rainbow giveaways', '孕达折页与彩虹纪念品'],
+  ['Yunda representative and attendee at the MHB backdrop', '孕达代表与参会者在 MHB 背景板前合影'],
+  ['Yunda representative with an attendee in the expo hall', '孕达代表与参会者在展区合影'],
+  ['Yunda team and attendee at the booth', '孕达团队与参会者在展位合影'],
+  ['Yunda printed materials and branded giveaways', '孕达印刷资料与品牌纪念品'],
   ['MHB sponsor badge and event agenda', 'MHB 赞助商胸牌与活动日程'],
-  ['Yunda representative at the MHB backdrop', '孕达代表在 MHB 背景板前'],
-  ['Yunda sponsor badge', '孕达赞助商胸牌'],
-  ['Yunda representative in the expo hall', '孕达代表在展区'],
-  ['On-site introduction', '现场介绍'],
-  ['Yunda representative speaking at the event', '孕达代表介绍活动'],
-  ['Yunda representative in the event reception area', '孕达代表在活动接待区'],
-  ['Yunda representative outside the conference room', '孕达代表在会议室外'],
-  ['Yunda representative near exhibitor displays', '孕达代表在参展展示区'],
-  ['Visitors in the expo hall', '展区参观者'],
+  ['Yunda booth and display', '孕达展位与展示物料'],
 ]
 const galleryIndex = ref(0)
 const showAllPhotos = ref(false)
@@ -74,7 +67,7 @@ function selectVideo(index: number) {
 }
 let galleryTimer: ReturnType<typeof setInterval> | undefined
 const galleryPhotos = computed(() => galleryOrder.map((number, index) => ({
-  src: `/images/events/mhb-new-york-2026/gallery/photo-${String(number).padStart(2, '0')}.webp`,
+  src: `/images/events/mhb-new-york-2026/gallery/new-set/photo-${String(number).padStart(2, '0')}.webp`,
   alt: `${galleryDescriptions[index]?.[locale.value === 'zh' ? 1 : 0]} · MHB New York 2026`,
 })))
 const visiblePhotos = computed(() => [0, 1, 2].map(offset => galleryPhotos.value[(galleryIndex.value + offset) % galleryPhotos.value.length]))
@@ -132,11 +125,11 @@ const translations = {
     journeyTitle: 'Build your next-step journey',
     journeyIntro: 'Use what you learned at the event to review family structure, process, cost, donor planning, and a private consultation.',
     journey: [
-      { label: 'Family path', title: 'Gay and LGBTQ+ surrogacy', body: 'Use the dedicated guide for gay couples, LGBTQ+ families, and single intended parents when comparing donor planning, parentage coordination, matching, and communication.', to: '/single-parents-lgbtq' },
-      { label: 'Sequence', title: 'Surrogacy process', body: 'Understand how the major stages connect without treating one conference conversation as a full plan.', to: '/surrogacy-process' },
-      { label: 'Budget', title: 'Surrogacy cost', body: 'Prepare questions about included services, variables, third-party fees, and timing of funds.', to: '/surrogacy-cost' },
-      { label: 'Embryos', title: 'Egg donation', body: 'Review donor and IVF clinic coordination if your path requires donor eggs.', to: '/egg-donation' },
-      { label: 'Next step', title: 'Private consultation', body: 'Turn the questions you gathered into a case-specific planning conversation with Yunda.', to: '/be-parents' },
+      { label: 'Family path', title: 'Gay and LGBTQ+ surrogacy', body: 'Compare donor planning, parentage coordination, matching expectations, and communication for LGBTQ+ families and single intended parents.', to: '/single-parents-lgbtq' },
+      { label: 'Sequence', title: 'Surrogacy process', body: 'Map clinic readiness, screening, matching, legal coordination, transfer, pregnancy, and birth planning in the order they connect.', to: '/surrogacy-process' },
+      { label: 'Budget', title: 'Surrogacy cost', body: 'Separate coordination fees from medical, legal, insurance, escrow, travel, and donor expenses before planning funds.', to: '/surrogacy-cost' },
+      { label: 'Embryos', title: 'Egg donation', body: 'Review donor selection, screening, embryo creation, and IVF clinic timing when donor eggs are part of your plan.', to: '/egg-donation' },
+      { label: 'Next step', title: 'Private consultation', body: 'Bring your family structure, embryo status, donor needs, location, timing, and priority questions into a case-specific planning conversation.', to: '/be-parents' },
     ],
     galleryTitle: 'Yunda at MHB New York 2026',
     galleryIntro: 'Scenes from the conference, Yunda’s display, and on-site conversations.',
@@ -154,9 +147,12 @@ const translations = {
     videoLabels: ['English introduction', 'Chinese introduction', 'Conference overview', 'Expo floor', 'On-site conversation'],
     faqTitle: 'MHB New York 2026 FAQs',
     faqs: [
-      { q: 'Who organized MHB New York 2026?', a: 'Men Having Babies organized the conference. Yunda participated as a Silver Sponsor.' },
-      { q: 'What can I review after the event?', a: 'Watch the event videos, browse the on-site photographs, and use the provider checklist to organize questions about process, costs, coordination, and support.' },
-      { q: 'Where can I find the complete provider-question checklist?', a: 'Use Yunda’s dedicated MHB New York 2026 provider checklist. It keeps detailed agency, screening, matching, cost, legal, insurance, escrow, and communication questions separate from this event page.' },
+      { q: 'Who organized MHB New York 2026?', a: 'Men Having Babies organized the conference. Yunda participated as a Silver Sponsor and exhibitor.' },
+      { q: 'Who are these event resources for?', a: 'They are designed for intended parents, including gay and LGBTQ+ families, single intended parents, and international families organizing questions after the conference.' },
+      { q: 'What should I review after the event?', a: 'Start with the process, cost, egg-donation, and provider-question guides, then use the videos and photographs to revisit the conversations that raised questions for your family.' },
+      { q: 'Where can I find the complete provider-question checklist?', a: 'Use Yunda’s dedicated provider checklist to compare agency scope, screening, matching, IVF and embryo coordination, legal and insurance handoffs, escrow, communication, and ongoing support.' },
+      { q: 'Who handles medical, legal, insurance, and escrow decisions?', a: 'The guides help identify questions and professional handoffs. Medical decisions remain with medical providers, legal advice with independent attorneys, insurance with relevant insurance professionals, and escrow administration with the selected escrow provider.' },
+      { q: 'What information should I prepare for a private consultation?', a: 'Bring your family structure, residence, embryo status, donor needs, preferred timing, and the questions you want to prioritize.' },
       { q: 'How can I contact Yunda after the event?', a: 'Use Yunda’s intended-parent consultation form to share your starting point and questions. The conference has ended, so this is a general consultation request rather than an event booking.' },
       { q: 'Are the photographs and videos from the 2026 New York event?', a: 'Yes. Yunda supplied these photographs and videos as material captured during the September 25–27, 2026 event.' },
     ],
@@ -207,11 +203,11 @@ const translations = {
     journeyTitle: '建立下一步阅读路径',
     journeyIntro: '结合活动收获，依次了解家庭结构、流程、费用、供体规划和私密咨询。',
     journey: [
-      { label: '家庭路径', title: '男同志与 LGBTQ+ 代孕', body: '通过专题指南了解男同志伴侣、LGBTQ+ 家庭与单身准父母在供体规划、亲权协调、匹配和沟通方面的常见差异。', to: '/single-parents-lgbtq' },
-      { label: '步骤', title: '代孕流程', body: '理解主要阶段如何连接，不把一次会议沟通当作完整个案方案。', to: '/surrogacy-process' },
-      { label: '预算', title: '代孕费用', body: '准备服务范围、费用变量、第三方费用和资金时间问题。', to: '/surrogacy-cost' },
-      { label: '胚胎', title: '供卵规划', body: '如需供卵，先了解供体与 IVF 诊所协调事项。', to: '/egg-donation' },
-      { label: '下一步', title: '私密咨询', body: '把活动后整理的问题带入与你个案相关的孕达规划沟通。', to: '/be-parents' },
+      { label: '家庭路径', title: '男同志与 LGBTQ+ 代孕', body: '了解供体规划、亲权协调、匹配预期和沟通方式，适用于 LGBTQ+ 家庭与单身准父母。', to: '/single-parents-lgbtq' },
+      { label: '步骤', title: '代孕流程', body: '按顺序梳理诊所准备、筛查、匹配、法律协调、移植、孕期和出生规划。', to: '/surrogacy-process' },
+      { label: '预算', title: '代孕费用', body: '区分协调费、医疗、法律、保险、托管、旅行和供体费用，再安排资金。', to: '/surrogacy-cost' },
+      { label: '胚胎', title: '供卵规划', body: '如需供卵，了解供体选择、筛查、胚胎建立和 IVF 诊所时间衔接。', to: '/egg-donation' },
+      { label: '下一步', title: '私密咨询', body: '准备家庭结构、居住地、胚胎状态、供体需求、时间和优先问题。', to: '/be-parents' },
     ],
     galleryTitle: '孕达在 MHB New York 2026 的现场',
     galleryIntro: '这些照片记录会议、孕达展示区与现场交流。',
@@ -229,9 +225,12 @@ const translations = {
     videoLabels: ['英文介绍', '中文介绍', '会议概览', '展区现场', '现场交流'],
     faqTitle: 'MHB New York 2026 常见问题',
     faqs: [
-      { q: 'MHB New York 2026 由谁组织？', a: 'Men Having Babies 是本次活动的主办方。孕达以银级赞助商身份参加了活动。' },
-      { q: '活动结束后可以查看什么？', a: '可以观看现场视频、浏览照片，并使用机构提问清单继续整理流程、费用、协调与支持方面的问题。' },
-      { q: '在哪里查看完整的机构提问清单？', a: '请使用孕达独立的 MHB New York 2026 机构提问清单。机构职责、筛查、匹配、费用、法律、保险、托管和沟通等详细问题均由该清单承接。' },
+      { q: 'MHB New York 2026 由谁组织？', a: 'Men Having Babies 是本次活动的主办方。孕达以银级赞助商及参展方身份参加了活动。' },
+      { q: '这些活动资源适合哪些人？', a: '适合准父母使用，包括男同志与 LGBTQ+ 家庭、单身准父母，以及正在整理跨境问题的国际家庭。' },
+      { q: '活动结束后应该先看什么？', a: '可以先查看流程、费用、供卵和机构提问指南，再通过视频和照片回顾引发你们问题的现场交流。' },
+      { q: '在哪里查看完整的机构提问清单？', a: '请使用孕达独立的机构提问清单，按机构职责、筛查、匹配、IVF 与胚胎协调、法律保险交接、托管、沟通和后续支持进行比较。' },
+      { q: '医疗、法律、保险和托管事项分别由谁负责？', a: '这些指南帮助你识别问题和专业交接：医疗决定由医疗服务方处理，法律意见由独立律师提供，保险问题由相关保险专业人员处理，托管资金由选定的托管服务方管理。' },
+      { q: '私密咨询前需要准备哪些信息？', a: '建议准备家庭结构、居住地、胚胎状态、供体需求、计划时间和优先问题，让咨询直接围绕你的情况展开。' },
       { q: '活动后如何联系孕达？', a: '可通过孕达的准父母咨询表单说明起点和问题。活动已经结束，该表单用于一般咨询，而非活动现场预约。' },
       { q: '页面上的照片和视频来自 2026 年纽约活动吗？', a: '是。孕达提供并确认这些照片和视频均拍摄于 2026 年 9 月 25–27 日活动期间。' },
     ],
@@ -380,7 +379,7 @@ useHead(() => ({
           </div>
 
           <figure class="mx-auto max-w-[690px] w-full">
-            <OptimizedPicture src="/images/events/mhb-new-york-2026/gallery/photo-07.webp" :alt="c.galleryAlts[2]" width="1368" height="1824" loading="eager" fetchpriority="high" picture-class="block overflow-hidden rounded-[12px]" img-class="mhb-hero-photo w-full object-cover" />
+            <OptimizedPicture src="/images/events/mhb-new-york-2026/gallery/new-set/photo-17.webp" :alt="c.galleryAlts[2]" width="1920" height="2400" loading="eager" fetchpriority="high" picture-class="block overflow-hidden rounded-[12px]" img-class="mhb-hero-photo w-full object-cover" />
           </figure>
         </div>
       </section>
@@ -417,7 +416,7 @@ useHead(() => ({
 
       <section class="bg-[var(--yunda-petal)] py-16 lg:py-24">
         <div class="mx-auto max-w-[1180px] px-6 md:px-10">
-          <h2 class="text-[34px] font-semibold leading-tight font-display md:whitespace-nowrap lg:text-[44px]">
+          <h2 class="text-[34px] font-semibold leading-tight font-display lg:text-[44px] md:whitespace-nowrap">
             {{ c.audienceTitle }}
           </h2>
           <div class="grid mt-10 gap-x-8 gap-y-10 md:grid-cols-2">
