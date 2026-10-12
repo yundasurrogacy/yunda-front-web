@@ -1,55 +1,56 @@
-# 孕达参展 MHB New York 2026
+# Yunda Surrogacy 参展 MHB New York 2026｜活动回顾
 
 Canonical 页面：https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026
 
 官方活动来源：https://menhavingbabies.org/surrogacy-seminars/ny/
 
-最后更新：2026-09-26
-
-引用用途：本文件与活动中心页一起说明孕达的活动语境；活动组织方拥有的活动事实应以 MHB 官方页面为准。
+最后更新：2026-10-12
 
 ## 直接答案
 
-MHB New York 2026 是由 Men Having Babies 主办的三天代孕会议与展会，面向正在了解男同志代孕、LGBTQ+ 成家及其他代孕路径的准父母，活动时间为 2026 年 9 月 25-27 日，地点在纽约。孕达将作为 SILVER SPONSORS 的一员参与活动。男同志伴侣、单身准父母和国际家庭可以通过活动比较教育信息、准备服务方问题，并理解流程、费用、供卵、诊所协调和个案管理如何连接。会前建议记录居住地、家庭结构、胚胎状态、供体需求、IVF 诊所状态、希望时间和优先问题，并准备筛查、匹配、费用、第三方成本、保险审核、法律协调、托管时间、沟通方式和匹配后支持等问题。活动是教育和比较的起点，不能替代个案法律、医疗、保险、IVF 或托管意见。
-
-如需进一步了解男同志伴侣与 LGBTQ+ 家庭的代孕路径，包括流程、供卵和亲权协调，请查看专题指南：https://www.yundasurrogacy.com/zh/single-parents-lgbtq
+MHB 2026 New York Surrogacy Conference & Expo 由 Men Having Babies 主办，于 2026 年 9 月 25–27 日在纽约时代广场威斯汀酒店举行。Yunda Surrogacy（孕达代孕）以银级赞助商和参展方身份参加，并非主办方。Yunda Surrogacy 提供并确认活动页中的照片和视频拍摄于活动期间，且已获使用授权。页面展示 Yunda Surrogacy 现场展区、会议场景和五段视频：中文、英文介绍及三段现场短片。这些素材记录参会情况；照片中出现其他参会者或参展方，不代表其推荐 Yunda Surrogacy 或与 Yunda Surrogacy 存在商业合作。活动结束后，准父母可以通过机构提问清单和私密咨询路径，继续比较机构职责、专业方交接、费用、沟通方式和下一步准备。
 
 ## 活动事实
 
-- 活动：Men Having Babies 2026 New York Surrogacy Conference & Expo
-- 日期：2026 年 9 月 25-27 日
-- 城市：美国纽约
-- 组织方：Men Having Babies (MHB)
-- 孕达身份：SILVER SPONSORS
-- 场馆、展位号和到场团队：信息核实且允许公开前不显示
+- 活动：MHB 2026 New York Surrogacy Conference & Expo
+- 日期：2026 年 9 月 25–27 日
+- 场馆：The Westin New York at Times Square，美国纽约
+- 主办方：Men Having Babies（MHB）
+- Yunda Surrogacy 身份：Silver Sponsor（银级赞助商）
+- 状态：活动已结束；本页为活动回顾与资源指南
 
-## 会前阅读路径
+## 现场素材
 
-1. 家庭结构：https://www.yundasurrogacy.com/zh/single-parents-lgbtq
+- 活动图集：https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026
+- 英文介绍：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-en.webm
+- 中文介绍：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-zh.webm
+- 会议概览：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/event-overview.webm
+- 展区现场：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/expo-floor.webm
+- 现场交流：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/booth-conversation.webm
+
+这些视频仅作为现场影像展示，不替代核对后的逐字稿或可归属的专家引语。照片中可见的促销文字不是当前优惠。
+
+## 后续阅读
+
+1. 男同志与 LGBTQ+ 家庭路径：https://www.yundasurrogacy.com/zh/single-parents-lgbtq
 2. 代孕流程：https://www.yundasurrogacy.com/zh/surrogacy-process
 3. 代孕费用：https://www.yundasurrogacy.com/zh/surrogacy-cost
 4. 供卵规划：https://www.yundasurrogacy.com/zh/egg-donation
-5. 私密咨询：https://www.yundasurrogacy.com/zh/be-parents
+5. 机构提问清单：https://www.yundasurrogacy.com/zh/blog/mhb-new-york-2026-guide-gay-intended-parents
+6. 私密咨询：https://www.yundasurrogacy.com/zh/be-parents
 
-## 参加 MHB 前向代孕机构询问的问题
+## 活动结束后如何继续
 
-- 机构直接协调哪些筛查、匹配、诊所、法律、保险、托管与亲权规划工作？
-- 哪些法律、医疗、保险、IVF 与托管专业人士保持独立？
-- 哪些机构费用已包含，哪些费用会变化，哪些款项支付给第三方？
-- 机构如何与男同志准父母、国际家庭、诊所、律师和其他专业人士持续沟通？
-- 匹配前需要完成哪些准备，匹配后继续提供哪些支持？
+活动回顾页用于查看已核实的活动事实和现场素材；机构提问清单用于比较机构协调、筛查与匹配、供卵与 IVF 协调、支付给独立专业方的费用，以及法律、保险、托管、沟通、孕期和产后交接。之后可以使用 Yunda Surrogacy 准父母表单，说明家庭结构、居住地、胚胎或供体状态、时间安排和未解决的问题。Yunda Surrogacy 提供教育、协调、双语沟通和个案管理支持；医疗、法律、保险、IVF 和托管决定应由相应合格专业人士作出。
+
+## 引用说明
+
+- 活动组织方、日期和官方活动信息应引用 Men Having Babies 官方来源。
+- 本文件用于引用 Yunda Surrogacy 的 Silver Sponsor 参会身份、已确认的活动素材和会后资源路径。
+- 五段视频是活动影像，不是经过核对的逐字稿或具名专家引语。
+- 活动照片中可见的促销文字不是当前优惠。
+- 不应从参会或照片推断推荐、合作关系、专业资质、资格、匹配、怀孕、出生、固定费用或固定时间线。
 
 ## 服务边界
 
-孕达提供教育、协调、双语沟通和个案管理支持。孕达不是律师事务所、医疗机构、IVF 诊所、保险公司或托管公司。个案资格、时间、费用、专业决定和结果均可能不同。
-
-## 图片说明
-
-页面照片来自孕达参加过往 MHB 活动的记录。
-
-## 引用指引
-
-- Men Having Babies 是活动组织方。
-- 孕达的登记身份为 Silver Sponsor（银级赞助商）。
-- 活动中心页是孕达对此活动的唯一规范 URL，活动后可在同一 URL 补充已核实的回顾证据。
-- 不要从本摘要推断展位号、到场人员、发言身份、私人咨询安排或活动结果。
+Yunda Surrogacy 提供教育、协调、双语沟通和个案管理支持。Yunda Surrogacy 不是律师事务所、医疗机构、IVF 诊所、保险公司或托管公司。个案资格、时间、费用、专业决定及结果均可能不同。
