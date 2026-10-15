@@ -210,10 +210,10 @@ const translations = {
     guidesTitle: 'Use the Right Yunda Guide for the Next Question',
     guidesIntro:
       'To keep this page focused, detailed process, cost, legal, IVF and donor questions live on their own source-of-truth pages.',
-    eventTitle: 'Meet Yunda at MHB New York 2026',
-    eventDate: 'September 25-27, 2026 | New York',
-    eventBody: 'Use the event guide to prepare questions about LGBTQ+ family building, process, cost, egg donation, and private consultation before the conference.',
-    eventCta: 'View the event guide',
+    eventTitle: 'Yunda Surrogacy at MHB New York 2026',
+    eventDate: 'September 25–27, 2026 | New York',
+    eventBody: 'Read the event recap, then explore LGBTQ+ family building, the surrogacy process, costs, and questions to ask providers.',
+    eventCta: 'Read the event recap',
     twoDadsTitle: 'How Does Surrogacy Work for Two Dads?',
     twoDadsAnswer:
       'Surrogacy for two dads usually uses a donor egg, IVF and a gestational carrier. After the fathers discuss genetic options with an IVF clinic, eggs are retrieved from a screened donor and fertilized with sperm from one father or, in separate embryos, potentially each father. The clinic creates and evaluates the embryos. A gestational carrier is then screened and matched; she does not provide the egg. Before medication or embryo transfer, the parties complete the independent legal review, insurance analysis and financial or escrow planning required for their arrangement. After transfer, the carrier directs her own medical care while the clinic and obstetric team manage treatment and pregnancy. Legal counsel plans parentage and birth documents for the relevant jurisdictions. The exact order varies by embryo status, donor arrangements, clinic readiness, match, state law and insurance. Yunda coordinates information and handoffs; qualified professionals make medical, legal, insurance and escrow decisions.',
@@ -500,10 +500,10 @@ const translations = {
     guidesTitle: '根据下一个问题选择正确的孕达指南',
     guidesIntro:
       '为了让本页保持聚焦，详细流程、费用、法律、IVF 和供卵问题分别由对应主页面承接。',
-    eventTitle: '在 MHB New York 2026 与孕达见面',
-    eventDate: '2026 年 9 月 25-27 日 | 纽约',
-    eventBody: '会前通过活动指南准备 LGBTQ+ 成家、流程、费用、供卵和私密咨询问题。',
-    eventCta: '查看活动指南',
+    eventTitle: 'Yunda Surrogacy 参加 MHB New York 2026',
+    eventDate: '2026 年 9 月 25–27 日 | 纽约',
+    eventBody: '阅读活动回顾，再了解 LGBTQ+ 成家、代孕流程、费用和机构选择时应提出的问题。',
+    eventCta: '阅读活动回顾',
     twoDadsTitle: '两位爸爸的代孕流程如何进行？',
     twoDadsAnswer:
       '两位爸爸的代孕路径通常包括供卵、IVF 与妊娠代孕。两位准父亲先与 IVF 诊所讨论遗传方案；经筛查的卵子捐赠者完成取卵后，诊所可使用其中一位父亲的精子，或在不同胚胎中分别使用两位父亲的精子完成受精与胚胎评估。之后进入妊娠载体筛查和匹配；妊娠载体不提供卵子。在开始用药或胚胎移植前，各方需要完成适用于个案的独立法律审核、保险分析，以及资金和托管规划。移植后，妊娠载体对自己的医疗照护拥有决定权，诊所与产科团队负责治疗和孕期管理；律师则根据相关司法辖区规划亲权和出生文件。具体顺序会因胚胎状态、供卵安排、诊所准备、匹配、州法律与保险而变化。孕达负责信息整理与多方衔接，医疗、法律、保险和托管决定由相应合格专业人士作出。',
@@ -924,8 +924,8 @@ useHead(() => ({
             class="group mx-auto grid max-w-320 overflow-hidden rounded-[16px] bg-[var(--yunda-bark)] text-[var(--yunda-petal)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(61,42,31,0.2)] md:grid-cols-[0.7fr_1.3fr]"
           >
             <OptimizedPicture
-              src="/images/pages/about/mhb/mhb-2.jpg"
-              :alt="locale === 'zh' ? '孕达参与过往 MHB 活动的照片' : 'Yunda at a previous MHB event'"
+              src="/images/events/mhb-new-york-2026/yunda-booth.webp"
+              :alt="locale === 'zh' ? 'Yunda Surrogacy 在 MHB New York 2026 的展示区' : 'Yunda Surrogacy display at MHB New York 2026'"
               width="1200"
               height="1200"
               loading="lazy"
