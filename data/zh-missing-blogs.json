@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-09T02:38:02.116Z",
+  "generatedAt": "2026-10-21T17:58:46.495Z",
   "signalReliable": true,
   "signal": "Chinese detail content field from /api/blog?route_id=...&lang=zh (authoritative)",
-  "totalBlogPosts": 84,
+  "totalBlogPosts": 86,
   "zhMissingCount": 0,
   "routes": []
 }

@@ -19,10 +19,7 @@ const PAGE_ASSETS = {
   hero: '/images/pages/resources/hero.webp',
 } as const
 
-const AVIF_IMAGE_BY_PATH: Record<string, string> = {
-  '/images/pages/resources/instagram-event-01.jpg': '/images/pages/resources/instagram-event-01.avif',
-  '/images/pages/resources/instagram-event-02.jpg': '/images/pages/resources/instagram-event-02.avif',
-}
+const AVIF_IMAGE_BY_PATH: Record<string, string> = {}
 
 const SUBSTACK_HOME = 'https://yundasurrogacy.substack.com/'
 const INSTAGRAM_HOME = 'https://www.instagram.com/yunda_surrogacy_/'

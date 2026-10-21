@@ -14,7 +14,7 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en, zh) => (isZh.value ? zh : en)
-const dateModified = '2026-10-06'
+const dateModified = '2026-10-21'
 
 const trustStandards = computed(() => [
   {

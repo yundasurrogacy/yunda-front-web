@@ -43,24 +43,24 @@ const photos = ref<Photo[]>([
     category: ['all', 'asrm'] as PhotoCategory[],
     alt: `ASRM Conference ${i + 1}`,
   })),
-  // SEEDS：2026-10 客户指定 Instagram 轮播的 10 张
-  ...Array.from({ length: 10 }, (_, i) => ({
+  // SEEDS：2026-10-21 客户提供的活动图
+  ...Array.from({ length: 12 }, (_, i) => ({
     id: `seeds-ig-2026-${i + 1}`,
     url: `${baseUrl}/seeds/seeds-ig-2026-${i + 1}.jpg`,
     thumbnail: `${baseUrl}/seeds/seeds-ig-2026-${i + 1}.jpg`,
     category: ['all', 'seeds'] as PhotoCategory[],
     alt: `SEEDS Event ${i + 1}`,
   })),
-  // MHB：先换成指定帖子里的 3 张
-  ...Array.from({ length: 3 }, (_, i) => ({
+  // MHB New York
+  ...Array.from({ length: 15 }, (_, i) => ({
     id: `mhb-ig-2026-${i + 1}`,
     url: `${baseUrl}/mhb/mhb-ig-2026-${i + 1}.jpg`,
     thumbnail: `${baseUrl}/mhb/mhb-ig-2026-${i + 1}.jpg`,
     category: ['all', 'mhb'] as PhotoCategory[],
     alt: `MHB Event ${i + 1}`,
   })),
-  // Families Out Loud：放在 MHB 后面，取帖子前 3 张
-  ...Array.from({ length: 3 }, (_, i) => ({
+  // Families Out Loud Chicago：放在 MHB 后面
+  ...Array.from({ length: 10 }, (_, i) => ({
     id: `fol-ig-2026-${i + 1}`,
     url: `${baseUrl}/families-out-loud/fol-ig-2026-${i + 1}.jpg`,
     thumbnail: `${baseUrl}/families-out-loud/fol-ig-2026-${i + 1}.jpg`,
