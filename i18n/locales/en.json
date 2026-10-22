@@ -903,11 +903,24 @@
   },
   "surrogacyReferral": {
     "heroSection": {
-      "title": "Help a family grow.\nEarn $3,000.",
+      "title": "Help a family grow.\nEarn up to $5,000.",
       "eyebrow": "Surrogate Referral Program",
-      "description": "Refer a potential surrogate to Yunda. Receive a $3,000 referral reward after she completes final legal clearance and the program requirements are met.",
+      "description": "Refer an eligible gestational carrier to Yunda Surrogacy. Standard referrals receive $5,000 in California or $3,000 in other qualifying states after the referred carrier completes final legal clearance and the program requirements are met.",
       "button": "Refer a Friend",
-      "imageAlt": "Illustrative image of two friends talking on a garden terrace"
+      "imageAlt": "Two women standing together with flowers, including a pregnant woman"
+    },
+    "shareSection": {
+      "eyebrow": "Share the opportunity",
+      "title": "Send the Surrogate Application",
+      "description": "Share the Yunda Surrogacy application link. The link never carries your name or any other personal information.",
+      "linkLabel": "Application link",
+      "copied": "Link copied",
+      "copyButton": "Copy Surrogate Application Link",
+      "emailButton": "Email the Application Link",
+      "requirementsButton": "Review Surrogate Requirements",
+      "notice": "The applicant must enter your first and last name in the “Who referred you?” field on her initial application. Yunda Surrogacy must receive that information with the initial application for the referral to qualify.\n\nSharing a link does not register a referral on its own.",
+      "emailSubject": "Yunda Surrogacy surrogate application",
+      "emailBody": "Here is the Yunda Surrogacy surrogate application link:"
     },
     "whyMattersSection": {
       "title": "Why Your Referral Matters",
@@ -915,8 +928,16 @@
     },
     "earningsSection": {
       "title": "When is the reward paid?",
-      "amount": "$3,000",
-      "label": "Per qualifying referral",
+      "rewards": [
+        {
+          "amount": "$5,000",
+          "label": "Standard referrals for eligible gestational carriers in California"
+        },
+        {
+          "amount": "$3,000",
+          "label": "Standard referrals for eligible gestational carriers in all other qualifying states"
+        }
+      ],
       "condition": "After the referred surrogate completes final legal clearance and the referral program requirements are met.",
       "terms": "The referrer must be named on her initial application. A referral alone does not guarantee qualification or payment."
     },
@@ -925,19 +946,19 @@
       "steps": [
         {
           "title": "Share the opportunity",
-          "description": "Introduce a friend to Yunda and help her explore the surrogate requirements."
+          "description": "Introduce a friend to Yunda Surrogacy and help her explore the surrogate requirements."
         },
         {
           "title": "She applies",
-          "description": "She includes your name on her initial application so Yunda can identify the referral."
+          "description": "She includes your name on her initial application so Yunda Surrogacy can identify the referral."
         },
         {
           "title": "Screening and legal clearance",
           "description": "She completes the required screening, matching and final legal clearance."
         },
         {
-          "title": "Receive $3,000",
-          "description": "The referral reward is paid after final legal clearance and the program requirements are met."
+          "title": "Receive up to $5,000",
+          "description": "The standard reward is $5,000 in California or $3,000 in other qualifying states after final legal clearance and the program requirements are met."
         }
       ]
     },
@@ -976,11 +997,11 @@
       "items": [
         {
           "question": "How much is the referral reward?",
-          "answer": "$3,000 per qualifying referral, paid to the referrer after the referred surrogate completes final legal clearance and the program requirements are met."
+          "answer": "$5,000 for standard referrals of eligible gestational carriers in California, or $3,000 for standard referrals in other qualifying states. The reward is paid after the referred carrier completes final legal clearance and the program requirements are met."
         },
         {
           "question": "When can I receive it?",
-          "answer": "The reward becomes payable only after the referred surrogate completes final legal clearance and the referral program requirements are met. Contact Yunda for payment arrangements; submitting an application alone does not trigger a payment."
+          "answer": "The reward becomes payable only after the referred surrogate completes final legal clearance and the referral program requirements are met. Contact Yunda Surrogacy for payment arrangements; submitting an application alone does not trigger a payment."
         },
         {
           "question": "How is my referral recorded?",
@@ -994,14 +1015,14 @@
     },
     "confidenceSection": {
       "title": "A small introduction.\nA meaningful beginning.",
-      "description": "Know someone who may be interested? Speak with Yunda about the referral program and help her take an informed first step.",
-      "button": "Contact Yunda"
+      "description": "Know someone who may be interested? Speak with Yunda Surrogacy about the referral program and help her take an informed first step.",
+      "button": "Contact Yunda Surrogacy"
     },
     "meta": {
-      "title": "Surrogate Referral Program – $3,000 Reward – Yunda",
-      "description": "Refer a surrogate to Yunda and earn $3,000 after she completes final legal clearance and meets program requirements. Learn how to refer a friend."
+      "title": "Surrogate Referral Program – Up to $5,000 Reward – Yunda Surrogacy",
+      "description": "Refer an eligible gestational carrier to Yunda Surrogacy and earn $5,000 in California or $3,000 in other qualifying states after final legal clearance and program requirements are met."
     },
-    "updated": "Updated October 9, 2026"
+    "updated": "Updated October 22, 2026"
   },
   "footer": {
     "sections": {
