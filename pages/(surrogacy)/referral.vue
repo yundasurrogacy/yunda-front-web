@@ -6,13 +6,14 @@ import AppHeader from '@/components/base/AppHeader.vue'
 import ReferralCompensationSection from '@/components/surrogacy/referral/CompensationSection.vue'
 import ReferralEarningsSection from '@/components/surrogacy/referral/EarningsSection.vue'
 import ReferralEligibilitySection from '@/components/surrogacy/referral/EligibilitySection.vue'
+import ReferralShareSection from '@/components/surrogacy/referral/ShareSection.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { t, locale } = useI18n()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const pagePath = '/referral'
-const dateModified = '2026-10-09'
+const dateModified = '2026-10-22'
 const localePath = useLocalePath()
 const steps = computed(() => Array.from({ length: 4 }, (_, index) => ({
   title: t(`surrogacyReferral.processSection.steps.${index}.title`),
@@ -69,9 +70,10 @@ useHead(() => ({
           </NuxtLink>
         </div>
         <div class="referral-hero-photo">
-          <img src="/images/pages/referral/friends-hero-2026.webp" :alt="$t('surrogacyReferral.heroSection.imageAlt')" width="1536" height="1024" fetchpriority="high" decoding="async">
+          <img src="/images/pages/referral/referral-hero-2026.jpg" :alt="$t('surrogacyReferral.heroSection.imageAlt')" width="1536" height="1024" fetchpriority="high" decoding="async">
         </div>
       </section>
+      <ReferralShareSection />
       <ReferralEarningsSection />
       <section class="referral-section" aria-labelledby="referral-process-title">
         <div class="referral-container">
@@ -110,6 +112,9 @@ useHead(() => ({
           <p>{{ $t('surrogacyReferral.confidenceSection.description') }}</p>
           <NuxtLink class="referral-button referral-button-light" :to="localePath('/be-surrogate')">
             {{ $t('surrogacyReferral.confidenceSection.button') }} <span aria-hidden="true">→</span>
+          </NuxtLink>
+          <NuxtLink class="referral-benefit-link" :to="localePath('/benefit')">
+            {{ $t('menu.benefitsSupport') }} <span aria-hidden="true">→</span>
           </NuxtLink>
         </div>
       </section>
@@ -258,6 +263,11 @@ useHead(() => ({
   border-right: 1px solid var(--referral-rule);
   padding-right: 36px;
 }
+.referral-reward-tier + .referral-reward-tier {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--referral-rule);
+}
 .referral-page .referral-amount {
   font-size: clamp(70px, 8vw, 112px);
   letter-spacing: -0.045em;
@@ -266,7 +276,8 @@ useHead(() => ({
   font-variant-numeric: lining-nums tabular-nums;
 }
 .referral-reward-label {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.4;
   margin: 0;
 }
 .referral-reward h2 {
@@ -334,6 +345,123 @@ useHead(() => ({
 }
 .referral-text-link:hover {
   color: var(--referral-accent);
+}
+.referral-share {
+  padding: 64px 0;
+}
+.referral-share-card {
+  padding-top: 58px;
+  padding-bottom: 58px;
+  background: #fffaf0;
+  border: 1px solid var(--referral-rule);
+  border-top: 4px solid #f28c22;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px #432a1d0b;
+}
+.referral-share-card h2 {
+  max-width: 850px;
+}
+.referral-share-description {
+  max-width: 850px;
+  margin: 24px 0 28px;
+  font-size: 18px;
+}
+.referral-share-link-label {
+  margin-bottom: 8px;
+  color: #715b4d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.referral-share-link-row {
+  display: flex;
+  align-items: stretch;
+  max-width: 900px;
+  min-height: 64px;
+  border: 1px solid var(--referral-rule);
+  border-radius: 12px;
+  background: #fffdf9;
+  overflow: hidden;
+}
+.referral-share-link {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+  padding: 0 22px;
+  color: #5e5148;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.referral-share-copy {
+  flex-shrink: 0;
+  margin: 8px;
+  padding: 0 24px;
+  border: 1px solid #f28c22;
+  border-radius: 10px;
+  background: transparent;
+  color: #d8661c;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.referral-share-copy:hover {
+  background: #fff0df;
+}
+.referral-share-status {
+  margin: 10px 0 0;
+  color: #d8661c;
+  font-size: 14px;
+}
+.referral-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+.referral-share-primary,
+.referral-share-secondary {
+  min-height: 54px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.referral-share-primary {
+  border-color: #f28c22;
+  background: #f28c22;
+  cursor: pointer;
+}
+.referral-share-primary:hover {
+  background: #d8661c;
+}
+.referral-share-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bd7652;
+  color: var(--referral-ink);
+  text-decoration: none;
+}
+.referral-share-secondary:hover {
+  background: #fff0df;
+}
+.referral-share-notice {
+  max-width: 1160px;
+  margin-top: 34px;
+  padding: 28px 32px;
+  border: 1px solid var(--referral-rule);
+  border-radius: 16px;
+  background: #fff4df;
+  color: #5e5148;
+  font-size: 17px;
+}
+.referral-share-notice p {
+  margin: 0;
+}
+.referral-share-notice p + p {
+  margin-top: 20px;
 }
 .referral-requirements {
   display: grid;
@@ -531,6 +659,10 @@ useHead(() => ({
     padding: 0 0 24px;
     text-align: left;
   }
+  .referral-reward-tier + .referral-reward-tier {
+    margin-top: 22px;
+    padding-top: 22px;
+  }
   .referral-reward-label {
     font-size: 18px;
   }
@@ -554,6 +686,37 @@ useHead(() => ({
   .referral-benefit-columns {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+  .referral-share {
+    padding: 42px 0;
+  }
+  .referral-share-card {
+    padding-top: 38px;
+    padding-bottom: 38px;
+    border-radius: 16px;
+  }
+  .referral-share-link-row {
+    display: block;
+  }
+  .referral-share-link {
+    min-height: 58px;
+    padding: 14px 16px;
+  }
+  .referral-share-copy {
+    width: calc(100% - 16px);
+    min-height: 48px;
+    margin: 0 8px 8px;
+  }
+  .referral-share-actions {
+    display: grid;
+  }
+  .referral-share-primary,
+  .referral-share-secondary {
+    width: 100%;
+  }
+  .referral-share-notice {
+    padding: 22px;
+    font-size: 16px;
   }
   .referral-benefits-base {
     line-height: 1.4;
