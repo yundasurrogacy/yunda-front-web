@@ -61,6 +61,7 @@ const STATIC_SECTIONS_EN = [
     title: 'Resources / Blog',
     links: [
       { href: '/resources', label: 'Resources & Media Center' },
+      { href: '/resources/asrm-2026', label: 'ASRM 2026: Baltimore Conference Guide' },
       { href: '/blog', label: 'Blog Index' },
     ],
   },
@@ -119,6 +120,7 @@ const STATIC_SECTIONS_ZH = [
     title: '资源 / 博客',
     links: [
       { href: '/resources', label: '资源与媒体中心' },
+      { href: '/resources/asrm-2026', label: 'ASRM 2026 巴尔的摩会议指南' },
       { href: '/blog', label: '博客首页' },
     ],
   },
