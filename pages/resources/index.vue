@@ -615,6 +615,32 @@ useHead(() => ({
                 <span class="mt-6 text-sm text-[var(--yunda-maple)] font-bold underline underline-offset-4">{{ featuredEvent.cta }}</span>
               </div>
             </NuxtLink>
+            <NuxtLink
+              :to="localePath('/resources/asrm-2026')"
+              class="group grid mt-6 overflow-hidden border border-[#ead0d9] rounded-[8px] bg-white md:grid-cols-[0.8fr_1.2fr]"
+            >
+              <OptimizedPicture
+                src="/images/events/asrm-2026/asrm-3.jpg"
+                :alt="locale === 'zh' ? '孕达参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026'"
+                width="1200"
+                height="1200"
+                loading="lazy"
+                picture-class="block h-full"
+                img-class="aspect-[4/3] h-full w-full object-cover"
+              />
+              <div class="flex flex-col justify-center p-6 lg:p-9">
+                <p class="text-xs text-[#c8103f] font-bold uppercase tracking-[.2em]">
+                  {{ locale === 'zh' ? 'ASRM 2026 专题活动' : 'ASRM 2026 Featured Event' }}
+                </p>
+                <h3 class="mt-4 text-[28px] font-semibold leading-tight font-display lg:text-[34px]">
+                  {{ locale === 'zh' ? 'Yunda Surrogacy 参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026' }}
+                </h3>
+                <p class="mt-4 text-[15px] leading-[1.75]">
+                  {{ locale === 'zh' ? '了解参会目的、关注议题和准父母可带去咨询的问题。' : 'Explore why we are attending, what we are following, and questions intended parents can bring.' }}
+                </p>
+                <span class="mt-6 text-sm text-[#c8103f] font-bold underline underline-offset-4">{{ locale === 'zh' ? '查看 ASRM 活动专题' : 'View the ASRM guide' }} →</span>
+              </div>
+            </NuxtLink>
             <div class="grid grid-cols-2 mt-8 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in eventPostCards"

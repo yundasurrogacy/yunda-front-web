@@ -13,6 +13,7 @@ import SurrogateGallerySection from '../components/home/SurrogateGallerySection.
 import WhatSetsUsApartSection from '../components/home/WhatSetsUsApartSection.vue'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
@@ -160,6 +161,26 @@ useHead(() => {
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <HeroSection />
+    <section class="bg-white px-4 py-10 md:px-20 md:py-14" aria-labelledby="asrm-home-entry-title">
+      <div class="mx-auto grid max-w-[1400px] overflow-hidden rounded-[18px] bg-[#c8103f] text-white shadow-[0_14px_40px_rgba(200,16,63,0.18)] lg:grid-cols-[1.08fr_.92fr]">
+        <div class="flex flex-col justify-center px-7 py-9 md:px-12 md:py-12">
+          <p class="text-xs font-bold uppercase tracking-[.28em] text-white/75">YUNDA SURROGACY · ASRM 2026</p>
+          <h2 id="asrm-home-entry-title" class="mt-4 max-w-[620px] font-display text-[32px] font-semibold leading-[1.04] md:text-[46px]">
+            {{ locale === 'zh' ? 'Yunda Surrogacy 参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026' }}
+          </h2>
+          <p class="mt-5 max-w-[560px] text-base leading-7 text-white/85 md:text-lg">
+            {{ locale === 'zh' ? '了解生殖医学行业发展，参与专业交流，并整理准父母关心的问题。' : 'Following the conversations shaping reproductive medicine and bringing clearer questions back to intended parents.' }}
+          </p>
+          <NuxtLink :to="localePath('/resources/asrm-2026')" class="mt-7 inline-flex w-fit items-center border border-white px-6 py-3.5 text-sm font-bold transition-colors hover:bg-white hover:text-[#c8103f]">
+            {{ locale === 'zh' ? '查看 ASRM 2026 活动专题' : 'Explore the ASRM 2026 guide' }} →
+          </NuxtLink>
+        </div>
+        <div class="relative min-h-[260px] overflow-hidden lg:min-h-[360px]">
+          <img src="/images/events/asrm-2026/asrm-3.jpg" alt="Yunda Surrogacy at ASRM 2025" class="absolute inset-0 h-full w-full object-cover object-center">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#c8103f]/35 via-transparent to-transparent" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
     <StatsSection />
     <WhatSetsUsApartSection />
     <OurServicesSection />

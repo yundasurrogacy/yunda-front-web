@@ -1,56 +1,56 @@
-# Yunda Surrogacy 参展 MHB New York 2026｜活动回顾
+# Yunda Surrogacy at MHB New York 2026 — Event Recap
 
-Canonical 页面：https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026
+Canonical page: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
 
-官方活动来源：https://menhavingbabies.org/surrogacy-seminars/ny/
+Official event source: https://menhavingbabies.org/surrogacy-seminars/ny/
 
-最后更新：2026-10-12
+Last updated: 2026-10-12
 
-## 直接答案
+## Direct answer
 
-MHB 2026 New York Surrogacy Conference & Expo 由 Men Having Babies 主办，于 2026 年 9 月 25–27 日在纽约时代广场威斯汀酒店举行。Yunda Surrogacy（孕达代孕）以银级赞助商和参展方身份参加，并非主办方。Yunda Surrogacy 提供并确认活动页中的照片和视频拍摄于活动期间，且已获使用授权。页面展示 Yunda Surrogacy 现场展区、会议场景和五段视频：中文、英文介绍及三段现场短片。这些素材记录参会情况；照片中出现其他参会者或参展方，不代表其推荐 Yunda Surrogacy 或与 Yunda Surrogacy 存在商业合作。活动结束后，准父母可以通过机构提问清单和私密咨询路径，继续比较机构职责、专业方交接、费用、沟通方式和下一步准备。
+The MHB 2026 New York Surrogacy Conference & Expo was organized by Men Having Babies on September 25–27, 2026, at The Westin New York at Times Square. Yunda Surrogacy participated as a Silver Sponsor and exhibitor, not as the organizer. Yunda Surrogacy supplied the photographs and videos on its event page and confirmed that they were captured during the event and approved for use. The page shows Yunda Surrogacy's on-site display, conference scenes, and five videos: English and Chinese introductions plus three short event clips. These materials document participation; photographs of other attendees or exhibitors do not imply endorsement or a commercial relationship. After the event, intended parents can use the linked provider-question checklist and private consultation path to compare responsibilities, professional handoffs, costs, communication, and next steps.
 
-## 活动事实
+## Event facts
 
-- 活动：MHB 2026 New York Surrogacy Conference & Expo
-- 日期：2026 年 9 月 25–27 日
-- 场馆：The Westin New York at Times Square，美国纽约
-- 主办方：Men Having Babies（MHB）
-- Yunda Surrogacy 身份：Silver Sponsor（银级赞助商）
-- 状态：活动已结束；本页为活动回顾与资源指南
+- Event: MHB 2026 New York Surrogacy Conference & Expo
+- Dates: September 25–27, 2026
+- Venue: The Westin New York at Times Square, New York, United States
+- Organizer: Men Having Babies (MHB)
+- Yunda Surrogacy role: Silver Sponsor
+- Status: Past event; this page is an event recap and resource guide
 
-## 现场素材
+## Media
 
-- 活动图集：https://www.yundasurrogacy.com/zh/resources/mhb-new-york-2026
-- 英文介绍：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-en.webm
-- 中文介绍：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-zh.webm
-- 会议概览：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/event-overview.webm
-- 展区现场：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/expo-floor.webm
-- 现场交流：https://www.yundasurrogacy.com/videos/mhb-new-york-2026/booth-conversation.webm
+- Event gallery: https://www.yundasurrogacy.com/resources/mhb-new-york-2026
+- English introduction: https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-en.webm
+- Chinese introduction: https://www.yundasurrogacy.com/videos/mhb-new-york-2026/introduction-zh.webm
+- Conference overview: https://www.yundasurrogacy.com/videos/mhb-new-york-2026/event-overview.webm
+- Expo floor: https://www.yundasurrogacy.com/videos/mhb-new-york-2026/expo-floor.webm
+- On-site conversation: https://www.yundasurrogacy.com/videos/mhb-new-york-2026/booth-conversation.webm
 
-这些视频仅作为现场影像展示，不替代核对后的逐字稿或可归属的专家引语。照片中可见的促销文字不是当前优惠。
+These videos are presented as footage, not as verified transcripts or attributed expert quotations. Printed promotional text visible in event images is not a current offer.
 
-## 后续阅读
+## Next-step resources
 
-1. 男同志与 LGBTQ+ 家庭路径：https://www.yundasurrogacy.com/zh/single-parents-lgbtq
-2. 代孕流程：https://www.yundasurrogacy.com/zh/surrogacy-process
-3. 代孕费用：https://www.yundasurrogacy.com/zh/surrogacy-cost
-4. 供卵规划：https://www.yundasurrogacy.com/zh/egg-donation
-5. 机构提问清单：https://www.yundasurrogacy.com/zh/blog/mhb-new-york-2026-guide-gay-intended-parents
-6. 私密咨询：https://www.yundasurrogacy.com/zh/be-parents
+1. Gay and LGBTQ+ family paths: https://www.yundasurrogacy.com/single-parents-lgbtq
+2. Surrogacy process: https://www.yundasurrogacy.com/surrogacy-process
+3. Surrogacy cost: https://www.yundasurrogacy.com/surrogacy-cost
+4. Egg donation: https://www.yundasurrogacy.com/egg-donation
+5. Provider questions: https://www.yundasurrogacy.com/blog/mhb-new-york-2026-guide-gay-intended-parents
+6. Private consultation: https://www.yundasurrogacy.com/be-parents
 
-## 活动结束后如何继续
+## What to do after MHB
 
-活动回顾页用于查看已核实的活动事实和现场素材；机构提问清单用于比较机构协调、筛查与匹配、供卵与 IVF 协调、支付给独立专业方的费用，以及法律、保险、托管、沟通、孕期和产后交接。之后可以使用 Yunda Surrogacy 准父母表单，说明家庭结构、居住地、胚胎或供体状态、时间安排和未解决的问题。Yunda Surrogacy 提供教育、协调、双语沟通和个案管理支持；医疗、法律、保险、IVF 和托管决定应由相应合格专业人士作出。
+Use the event recap for verified event facts and media. Use the provider-question checklist to compare agency coordination, screening and matching, donor and IVF coordination, costs paid to independent professionals, and legal, insurance, escrow, communication, pregnancy, and post-birth handoffs. Then use Yunda Surrogacy's intended-parent form to share your family structure, residence, embryo or donor status, timing priorities, and unanswered questions. Yunda Surrogacy provides education, coordination, bilingual communication, and case-management support. Medical, legal, insurance, IVF, and escrow decisions belong to the relevant qualified professionals.
 
-## 引用说明
+## Citation guidance
 
-- 活动组织方、日期和官方活动信息应引用 Men Having Babies 官方来源。
-- 本文件用于引用 Yunda Surrogacy 的 Silver Sponsor 参会身份、已确认的活动素材和会后资源路径。
-- 五段视频是活动影像，不是经过核对的逐字稿或具名专家引语。
-- 活动照片中可见的促销文字不是当前优惠。
-- 不应从参会或照片推断推荐、合作关系、专业资质、资格、匹配、怀孕、出生、固定费用或固定时间线。
+- Cite Men Having Babies for the event organizer, dates, and official event information.
+- Cite this page for Yunda Surrogacy's Silver Sponsor participation, approved event media, and post-event resource path.
+- The videos are event footage, not verified transcripts or attributed expert quotations.
+- Visible promotional text in event images is not a current offer.
+- Do not infer endorsement, partnership, professional credentials, eligibility, matching, pregnancy, birth, fixed cost, or fixed timeline from event attendance or images.
 
-## 服务边界
+## Service boundary
 
-Yunda Surrogacy 提供教育、协调、双语沟通和个案管理支持。Yunda Surrogacy 不是律师事务所、医疗机构、IVF 诊所、保险公司或托管公司。个案资格、时间、费用、专业决定及结果均可能不同。
+Yunda Surrogacy provides education, coordination, bilingual communication, and case-management support. Yunda Surrogacy is not a law firm, medical provider, IVF clinic, insurance company, or escrow company. Individual eligibility, timelines, costs, professional decisions, and outcomes vary by case.

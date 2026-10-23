@@ -125,7 +125,7 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
 </script>
 
 <template>
-  <div class="asrm-page min-h-screen overflow-x-clip bg-[#f5f0e8] text-[#351c12]">
+  <div class="asrm-page min-h-screen overflow-x-clip bg-[#ffffff] text-[#36454f]">
     <AppHeader />
     <main>
       <section class="relative overflow-hidden px-6 py-12 lg:min-h-[clamp(700px,44vw,860px)] lg:px-10 lg:py-10 xl:px-12">
@@ -148,38 +148,38 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
             <NuxtLink :to="localePath('/resources')" class="text-sm underline underline-offset-4">
               ← {{ c.back }}
             </NuxtLink>
-            <p class="mt-10 text-xs text-[#1958ae] font-bold tracking-[.28em]">
+            <p class="mt-10 text-xs text-[#c8103f] font-bold tracking-[.28em]">
               {{ c.eyebrow }}
             </p>
             <h1 class="asrm-hero-title mt-5 max-w-[820px] text-[46px] font-semibold leading-[.94] tracking-[-.04em] sm:text-[56px] lg:text-[68px] xl:text-[82px]">
               <span class="block">Yunda Surrogacy at</span>
-              <span class="block text-[#bf5b35]">ASRM 2026</span>
+              <span class="block text-[#c8103f]">ASRM 2026</span>
             </h1>
-            <p class="mt-7 max-w-[560px] text-base text-[#351c12]/75 leading-7 lg:text-lg">
+            <p class="mt-7 max-w-[560px] text-base text-[#36454f]/75 leading-7 lg:text-lg">
               {{ c.heroBody }}
             </p>
             <div class="mt-8 flex flex-wrap gap-3 lg:mt-10">
-              <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="bg-[#bf5b35] px-6 py-4 text-sm text-white font-bold lg:px-7 lg:py-4">{{ c.official }} →</a>
-              <NuxtLink :to="localePath('/be-parents')" class="border border-[#351c12] px-6 py-4 text-sm font-bold lg:px-7 lg:py-4">
+              <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="bg-[#c8103f] px-6 py-4 text-sm text-white font-bold lg:px-7 lg:py-4">{{ c.official }} →</a>
+              <NuxtLink :to="localePath('/be-parents')" class="border border-[#36454f] px-6 py-4 text-sm font-bold lg:px-7 lg:py-4">
                 {{ c.consult }} →
               </NuxtLink>
             </div>
           </div>
         </div>
-        <div class="pointer-events-none absolute right-7 top-1/2 hidden -translate-y-1/2 border-l border-[#351c12]/35 pl-7 text-center lg:block">
+        <div class="pointer-events-none absolute right-7 top-1/2 hidden -translate-y-1/2 border-l border-[#36454f]/35 pl-7 text-center lg:block">
           <span class="block text-xs tracking-[.35em]">OCT</span>
           <span class="mt-5 block text-5xl font-display">24</span>
-          <span class="my-4 block text-3xl text-[#bf5b35]">—</span>
+          <span class="my-4 block text-3xl text-[#c8103f]">—</span>
           <span class="block text-5xl font-display">28</span>
           <span class="mt-6 block text-xs tracking-[.32em] [writing-mode:vertical-rl]">BALTIMORE</span>
         </div>
       </section>
 
-      <section class="relative overflow-hidden bg-[#f5f0e8] px-6 py-16 lg:px-12 lg:py-24">
+      <section class="relative overflow-hidden bg-[#ffffff] px-6 py-16 lg:px-12 lg:py-24">
         <div class="relative mx-auto max-w-[1500px]">
           <div class="grid gap-10 xl:grid-cols-[.52fr_1fr_.6fr] xl:items-start xl:gap-12">
             <div class="pointer-events-none relative hidden min-h-[630px] select-none overflow-visible xl:block" aria-hidden="true">
-              <div class="absolute left-[-8px] top-8 flex flex-col text-[175px] text-[#1958ae] font-display font-semibold leading-[.86]">
+              <div class="absolute left-[-8px] top-8 flex flex-col text-[175px] text-[#c8103f] font-display font-semibold leading-[.86]">
                 <span>A</span>
                 <span>S</span>
                 <span>R</span>
@@ -189,31 +189,31 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
             <div class="relative z-1">
               <div>
                 <div class="flex items-center gap-8">
-                  <p class="text-xs text-[#bf5b35] font-bold tracking-[.3em]">
+                  <p class="text-xs text-[#c8103f] font-bold tracking-[.3em]">
                     {{ c.glance }}
                   </p>
-                  <span class="h-px flex-1 bg-[#351c12]/35" />
+                  <span class="h-px flex-1 bg-[#36454f]/35" />
                 </div>
                 <h2 class="mt-8 text-[34px] font-semibold leading-[1.12] font-display sm:text-[38px] xl:text-[46px]">
                   ASRM 2026
                   <span class="mt-3 block text-[26px] sm:text-[30px] xl:text-[44px] xl:whitespace-nowrap">Scientific Congress &amp; Expo</span>
                 </h2>
-                <p class="mt-6 max-w-[760px] text-[17px] text-[#351c12]/70 leading-[1.9]">{{ c.eventDescription }}</p>
-                <div class="mt-12 border-y border-[#351c12]/20 divide-y divide-[#351c12]/20">
+                <p class="mt-6 max-w-[760px] text-[17px] text-[#36454f]/70 leading-[1.9]">{{ c.eventDescription }}</p>
+                <div class="mt-12 border-y border-[#36454f]/20 divide-y divide-[#36454f]/20">
                   <div v-for="(fact, index) in c.facts" :key="fact[0]" class="grid grid-cols-[72px_1fr] items-center gap-5 py-6">
-                    <span class="grid h-14 w-14 place-items-center rounded-full bg-[#eadfd5] text-[#bf5b35]">
+                    <span class="grid h-14 w-14 place-items-center rounded-full bg-[#f4e9ec] text-[#c8103f]">
                       <Icon :name="['lucide:calendar-days', 'lucide:map-pin', 'lucide:book-open', 'lucide:users-round'][index]" class="h-7 w-7" aria-hidden="true" />
                     </span>
                     <div>
-                      <span class="text-xs text-[#351c12] font-bold tracking-[.25em] uppercase">{{ fact[0] }}</span>
+                      <span class="text-xs text-[#36454f] font-bold tracking-[.25em] uppercase">{{ fact[0] }}</span>
                       <span class="mt-2 block text-lg font-bold leading-snug">{{ fact[1] }}</span>
                     </div>
                   </div>
                 </div>
-                <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex border border-[#bf5b35] px-8 py-4 text-xs text-[#bf5b35] font-bold tracking-[.22em] uppercase">{{ c.official }} →</a>
+                <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex border border-[#c8103f] px-8 py-4 text-xs text-[#c8103f] font-bold tracking-[.22em] uppercase">{{ c.official }} →</a>
               </div>
             </div>
-            <figure class="relative mt-2 border border-[#bf5b35] bg-[#bf5b35] xl:mt-14">
+            <figure class="relative mt-2 border border-[#c8103f] bg-[#c8103f] xl:mt-14">
               <OptimizedPicture :src="ARCHIVE[7]" :alt="`${c.archiveLabel}: ASRM 2025 scientific session`" width="1200" height="1200" loading="lazy" img-class="aspect-[.82/1] w-full object-cover" />
               <figcaption class="flex items-center gap-5 px-5 py-3 text-sm text-white tracking-[.18em]">
                 {{ c.archiveLabel }}
@@ -224,114 +224,114 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
         </div>
       </section>
 
-      <section class="bg-[#f5f0e8] px-6 py-20 lg:px-12 lg:py-28">
+      <section class="bg-[#ffffff] px-6 py-20 lg:px-12 lg:py-28">
         <div class="mx-auto max-w-[1500px]">
           <div class="flex items-start justify-between gap-10">
             <div>
-              <span class="block h-1 w-24 bg-[#1958ae]" />
+              <span class="block h-1 w-24 bg-[#c8103f]" />
               <h2 class="mt-8 text-[34px] font-semibold leading-tight font-display lg:text-[44px]">{{ c.archive }}</h2>
-              <p class="mt-5 max-w-[980px] text-[17px] leading-[1.9] text-[#351c12]/85 lg:text-lg">{{ c.archiveIntro }}</p>
+              <p class="mt-5 max-w-[980px] text-[17px] leading-[1.9] text-[#36454f]/85 lg:text-lg">{{ c.archiveIntro }}</p>
             </div>
-            <p class="hidden max-w-[220px] border-l-2 border-[#1958ae] pl-6 pt-2 text-lg leading-snug lg:block">{{ c.archiveNote }}</p>
+            <p class="hidden max-w-[220px] border-l-2 border-[#c8103f] pl-6 pt-2 text-lg leading-snug lg:block">{{ c.archiveNote }}</p>
           </div>
-          <p class="mt-6 border-l-2 border-[#1958ae] pl-4 text-base leading-snug lg:hidden">{{ c.archiveNote }}</p>
+          <p class="mt-6 border-l-2 border-[#c8103f] pl-4 text-base leading-snug lg:hidden">{{ c.archiveNote }}</p>
           <div class="mt-10 grid gap-4 lg:grid-cols-[1.58fr_1fr]">
-            <figure class="border border-[#bf5b35] bg-[#bf5b35]">
+            <figure class="border border-[#c8103f] bg-[#c8103f]">
               <OptimizedPicture :src="ARCHIVE[2]" :alt="`${c.archiveLabel}: ASRM 2025 exhibit floor`" width="1200" height="1200" loading="lazy" img-class="aspect-[1.32/1] w-full object-cover" />
               <figcaption class="flex items-center gap-7 px-5 py-3 text-sm text-white tracking-[.18em]">{{ c.archiveLabel }}<span class="h-px w-20 bg-white/75" /></figcaption>
             </figure>
             <div class="grid gap-4">
-              <figure class="border border-[#bf5b35] bg-[#bf5b35]">
+              <figure class="border border-[#c8103f] bg-[#c8103f]">
                 <OptimizedPicture :src="ARCHIVE[5]" :alt="`${c.archiveLabel}: Yunda Surrogacy team`" width="1200" height="1200" loading="lazy" img-class="aspect-[1.72/1] w-full object-cover" />
                 <figcaption class="flex items-center gap-7 px-5 py-3 text-sm text-white tracking-[.18em]">{{ c.archiveLabel }}<span class="h-px w-20 bg-white/75" /></figcaption>
               </figure>
-              <figure class="border border-[#bf5b35] bg-[#bf5b35]">
+              <figure class="border border-[#c8103f] bg-[#c8103f]">
                 <OptimizedPicture :src="ARCHIVE[10]" :alt="`${c.archiveLabel}: Yunda Surrogacy materials`" width="1200" height="1200" loading="lazy" img-class="aspect-[1.72/1] w-full object-cover" />
                 <figcaption class="flex items-center gap-7 px-5 py-3 text-sm text-white tracking-[.18em]">{{ c.archiveLabel }}<span class="h-px w-20 bg-white/75" /></figcaption>
               </figure>
             </div>
           </div>
-          <div class="mt-8 flex flex-wrap items-center justify-between gap-6 text-[#1958ae]">
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-6 text-[#c8103f]">
             <div class="flex flex-1 items-center justify-center gap-4">
-              <span class="grid h-14 w-14 place-items-center rounded-full border border-[#bf5b35] text-3xl">‹</span>
-              <span class="h-3 w-3 rounded-full bg-[#1958ae]" /><span class="h-3 w-3 rounded-full bg-[#bf5b35]/25" /><span class="h-3 w-3 rounded-full bg-[#bf5b35]/25" /><span class="h-3 w-3 rounded-full bg-[#bf5b35]/25" />
-              <span class="grid h-14 w-14 place-items-center rounded-full border border-[#bf5b35] text-3xl">›</span>
+              <span class="grid h-14 w-14 place-items-center rounded-full border border-[#c8103f] text-3xl">‹</span>
+              <span class="h-3 w-3 rounded-full bg-[#c8103f]" /><span class="h-3 w-3 rounded-full bg-[#c8103f]/25" /><span class="h-3 w-3 rounded-full bg-[#c8103f]/25" /><span class="h-3 w-3 rounded-full bg-[#c8103f]/25" />
+              <span class="grid h-14 w-14 place-items-center rounded-full border border-[#c8103f] text-3xl">›</span>
             </div>
-            <NuxtLink :to="localePath('/resources')" class="text-xl underline decoration-[#1958ae] underline-offset-8">{{ c.archiveLink }} →</NuxtLink>
+            <NuxtLink :to="localePath('/resources')" class="text-xl underline decoration-[#c8103f] underline-offset-8">{{ c.archiveLink }} →</NuxtLink>
           </div>
         </div>
       </section>
 
-      <section class="relative overflow-hidden bg-[#351c12] px-6 py-20 text-[#f5f0e8] lg:px-12 lg:py-28">
-        <div class="pointer-events-none absolute -left-28 bottom-[-18rem] h-[34rem] w-[34rem] rounded-full bg-[#bf5b35]/15" aria-hidden="true" />
+      <section class="relative overflow-hidden bg-[#36454f] px-6 py-20 text-[#ffffff] lg:px-12 lg:py-28">
+        <div class="pointer-events-none absolute -left-28 bottom-[-18rem] h-[34rem] w-[34rem] rounded-full bg-[#c8103f]/15" aria-hidden="true" />
         <div class="relative mx-auto grid max-w-[1500px] gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
           <div>
-            <div class="flex items-center gap-7 text-sm text-[#d97850] font-bold tracking-[.28em] uppercase"><span class="h-px w-20 bg-[#d97850]" />{{ c.listening }}</div>
+            <div class="flex items-center gap-7 text-sm text-[#7b8b97] font-bold tracking-[.28em] uppercase"><span class="h-px w-20 bg-[#7b8b97]" />{{ c.listening }}</div>
             <h2 class="mt-10 max-w-[760px] text-[34px] font-semibold leading-tight font-display lg:text-[44px]">{{ c.listeningLead }}</h2>
-            <div class="mt-8 max-w-[680px] border-l-2 border-[#d97850] pl-6">
+            <div class="mt-8 max-w-[680px] border-l-2 border-[#7b8b97] pl-6">
               <h3 class="text-[24px] font-semibold leading-snug font-display">{{ c.whyTitle }}</h3>
               <p class="mt-3 text-[15px] text-white/75 leading-[1.75]">{{ c.whyBody }}</p>
             </div>
-            <figure class="mt-10 max-w-[620px] border border-[#d97850] bg-[#d97850]">
+            <figure class="mt-10 max-w-[620px] border border-[#7b8b97] bg-[#7b8b97]">
               <OptimizedPicture :src="ARCHIVE[9]" :alt="`${c.archiveLabel}: ASRM 2025 session`" width="1200" height="1200" loading="lazy" img-class="aspect-[1.55/1] w-full object-cover" />
-              <figcaption class="flex items-center gap-7 px-5 py-3 text-sm text-[#351c12] tracking-[.22em]">{{ c.archiveLabel }}<span class="h-px w-20 bg-[#351c12]/60" /></figcaption>
+              <figcaption class="flex items-center gap-7 px-5 py-3 text-sm text-[#36454f] tracking-[.22em]">{{ c.archiveLabel }}<span class="h-px w-20 bg-[#36454f]/60" /></figcaption>
             </figure>
           </div>
-          <div class="relative border-l-2 border-[#1958ae] pl-14 lg:pt-2">
+          <div class="relative border-l-2 border-[#c8103f] pl-14 lg:pt-2">
             <div v-for="(topic, index) in c.topics" :key="topic[0]" class="relative pb-14 last:pb-0">
-              <span class="absolute -left-[4.4rem] top-0 grid h-16 w-16 place-items-center rounded-full bg-[#bf5b35] text-lg font-display">0{{ index + 1 }}</span>
+              <span class="absolute -left-[4.4rem] top-0 grid h-16 w-16 place-items-center rounded-full bg-[#c8103f] text-lg font-display">0{{ index + 1 }}</span>
               <div class="flex items-start gap-6">
-                <Icon :name="['lucide:flask-conical', 'lucide:route', 'lucide:building-2', 'lucide:scale', 'lucide:languages'][index]" class="mt-1 h-12 w-12 shrink-0 text-[#d97850]" aria-hidden="true" />
+                <Icon :name="['lucide:flask-conical', 'lucide:route', 'lucide:building-2', 'lucide:scale', 'lucide:languages'][index]" class="mt-1 h-12 w-12 shrink-0 text-[#7b8b97]" aria-hidden="true" />
                 <div>
                   <h3 class="text-[24px] font-semibold leading-snug font-display lg:text-[30px]">{{ topic[0] }}</h3>
-                  <span class="mt-5 block h-px w-16 bg-[#d97850]" />
+                  <span class="mt-5 block h-px w-16 bg-[#7b8b97]" />
                   <p class="mt-5 text-[15px] text-white/75 leading-[1.75]">{{ topic[1] }}</p>
                 </div>
               </div>
             </div>
-            <NuxtLink :to="localePath('/intended-parents')" class="mt-10 inline-flex text-xl underline decoration-[#d97850] underline-offset-8">Explore intended-parent resources →</NuxtLink>
+            <NuxtLink :to="localePath('/intended-parents')" class="mt-10 inline-flex text-xl underline decoration-[#7b8b97] underline-offset-8">Explore intended-parent resources →</NuxtLink>
           </div>
         </div>
       </section>
 
-      <section class="bg-[#f5f0e8] px-6 py-16 lg:px-12 lg:py-24">
+      <section class="bg-[#ffffff] px-6 py-16 lg:px-12 lg:py-24">
         <div class="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
           <div>
-            <span class="block h-1 w-24 bg-[#1958ae]" />
+            <span class="block h-1 w-24 bg-[#c8103f]" />
             <h2 class="mt-8 text-[34px] font-semibold leading-tight font-display lg:text-[44px]">{{ c.questionsTitle }}</h2>
-            <p class="mt-7 max-w-[520px] text-lg text-[#351c12]/70 leading-8">{{ c.questionsBody }}</p>
+            <p class="mt-7 max-w-[520px] text-lg text-[#36454f]/70 leading-8">{{ c.questionsBody }}</p>
           </div>
-          <div class="border-y border-[#1958ae] divide-y divide-[#1958ae]">
+          <div class="border-y border-[#c8103f] divide-y divide-[#c8103f]">
             <div v-for="(question, index) in c.questions" :key="question[0]" class="grid gap-4 px-1 py-6 sm:grid-cols-[76px_1fr] sm:gap-7 lg:py-7">
-              <span class="border-r border-[#1958ae] pr-6 text-4xl text-[#bf5b35] leading-none font-display">0{{ index + 1 }}</span>
+              <span class="border-r border-[#c8103f] pr-6 text-4xl text-[#c8103f] leading-none font-display">0{{ index + 1 }}</span>
               <div>
-                <h3 class="text-xl text-[#1958ae] font-semibold leading-tight font-display lg:text-2xl">{{ question[0] }}</h3>
-                <p class="mt-2 max-w-[760px] text-base text-[#1958ae]/80 leading-7 lg:text-lg">{{ question[1] }}</p>
+                <h3 class="text-xl text-[#c8103f] font-semibold leading-tight font-display lg:text-2xl">{{ question[0] }}</h3>
+                <p class="mt-2 max-w-[760px] text-base text-[#c8103f]/80 leading-7 lg:text-lg">{{ question[1] }}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="relative overflow-hidden bg-[#1958ae] px-6 py-16 lg:px-12 lg:py-24">
-        <div class="relative mx-auto max-w-[1500px] rounded-[28px] bg-[#f5f0e8] px-7 py-10 lg:px-20 lg:py-14">
+      <section class="relative overflow-hidden bg-[#c8103f] px-6 py-16 lg:px-12 lg:py-24">
+        <div class="relative mx-auto max-w-[1500px] rounded-[28px] bg-[#ffffff] px-7 py-10 lg:px-20 lg:py-14">
           <div class="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
             <div>
-              <div class="flex items-center gap-7 text-xs text-[#bf5b35] font-bold tracking-[.28em] uppercase">
-                <span class="h-px w-20 bg-[#bf5b35]" />
+              <div class="flex items-center gap-7 text-xs text-[#c8103f] font-bold tracking-[.28em] uppercase">
+                <span class="h-px w-20 bg-[#c8103f]" />
                 {{ c.after }}
               </div>
               <h2 class="mt-10 max-w-[700px] text-[34px] font-semibold leading-tight font-display lg:text-[46px]">{{ c.afterLead }}</h2>
-              <p class="mt-8 max-w-[600px] text-base text-[#351c12]/70 leading-relaxed lg:text-lg">{{ c.afterBody }}</p>
-              <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex text-xl underline decoration-[#bf5b35] underline-offset-8">Read the post-event recap →</a>
+              <p class="mt-8 max-w-[600px] text-base text-[#36454f]/70 leading-relaxed lg:text-lg">{{ c.afterBody }}</p>
+              <a :href="OFFICIAL_URL" target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex text-xl underline decoration-[#c8103f] underline-offset-8">Read the post-event recap →</a>
             </div>
-            <div class="border-l border-[#bf5b35] pl-8 lg:pl-12">
-              <div class="border border-[#bf5b35] p-2">
-                <div class="grid aspect-[1.8/1] place-items-center bg-[#e9e3da] text-sm text-[#351c12]/40">2026 FIELD NOTES / UPDATE AFTER OCT 28</div>
+            <div class="border-l border-[#c8103f] pl-8 lg:pl-12">
+              <div class="border border-[#c8103f] p-2">
+                <div class="grid aspect-[1.8/1] place-items-center bg-[#f3f6fb] text-sm text-[#36454f]/40">2026 FIELD NOTES / UPDATE AFTER OCT 28</div>
               </div>
-              <div class="mt-8 divide-y divide-[#351c12]/20">
+              <div class="mt-8 divide-y divide-[#36454f]/20">
                 <div v-for="label in ['SESSIONS ATTENDED', 'CONVERSATIONS', 'RESOURCES TO SHARE']" :key="label" class="flex items-center justify-between py-5 text-sm font-bold tracking-[.22em]">
-                  <span>{{ label }}</span><span class="h-px w-12 bg-[#351c12]" />
+                  <span>{{ label }}</span><span class="h-px w-12 bg-[#36454f]" />
                 </div>
               </div>
             </div>
@@ -339,33 +339,33 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
         </div>
       </section>
 
-      <section class="bg-[#f5f0e8] px-6 py-16 lg:px-12 lg:py-24">
+      <section class="bg-[#ffffff] px-6 py-16 lg:px-12 lg:py-24">
         <div class="mx-auto max-w-[1500px]">
           <div class="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
             <div>
-              <p class="text-xs text-[#bf5b35] font-bold tracking-[.3em]">YUNDA SURROGACY</p>
+              <p class="text-xs text-[#c8103f] font-bold tracking-[.3em]">YUNDA SURROGACY</p>
               <h2 class="mt-8 text-[34px] font-semibold leading-tight font-display lg:text-[44px]">
                 {{ c.faqTitle }}
               </h2>
-              <p class="mt-8 max-w-[420px] text-lg leading-8 text-[#351c12]/70">{{ c.faqLead }}</p>
-              <NuxtLink :to="localePath('/intended-parents')" class="mt-8 inline-flex border border-[#1958ae] px-5 py-4 text-xs text-[#1958ae] font-bold tracking-[.15em] uppercase">
+              <p class="mt-8 max-w-[420px] text-lg leading-8 text-[#36454f]/70">{{ c.faqLead }}</p>
+              <NuxtLink :to="localePath('/intended-parents')" class="mt-8 inline-flex border border-[#c8103f] px-5 py-4 text-xs text-[#c8103f] font-bold tracking-[.15em] uppercase">
                 {{ c.faqLink }} →
               </NuxtLink>
             </div>
-            <div class="border-y border-[#1958ae] divide-y divide-[#1958ae]">
+            <div class="border-y border-[#c8103f] divide-y divide-[#c8103f]">
               <details v-for="item in c.faqs" :key="item[0]" class="group py-5">
                 <summary class="flex cursor-pointer list-none justify-between gap-5 text-base font-bold leading-snug lg:text-lg">
                   {{ item[0] }}
-                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-[#1958ae] text-2xl text-[#1958ae]">+</span>
+                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-[#c8103f] text-2xl text-[#c8103f]">+</span>
                 </summary>
-                <p class="pt-4 text-sm text-[#351c12]/70 leading-7">
+                <p class="pt-4 text-sm text-[#36454f]/70 leading-7">
                   {{ item[1] }}
                 </p>
               </details>
             </div>
           </div>
-          <div class="mt-14 border-t border-[#1958ae] pt-5">
-            <div class="flex items-center gap-5 text-xs text-[#1958ae] font-bold tracking-[.3em]">{{ c.archiveLabel }}<span class="h-px flex-1 bg-[#1958ae]" /></div>
+          <div class="mt-14 border-t border-[#c8103f] pt-5">
+            <div class="flex items-center gap-5 text-xs text-[#c8103f] font-bold tracking-[.3em]">{{ c.archiveLabel }}<span class="h-px flex-1 bg-[#c8103f]" /></div>
             <div class="mt-5 grid gap-5 md:grid-cols-3">
               <OptimizedPicture v-for="image in [ARCHIVE[7], ARCHIVE[12], ARCHIVE[9]]" :key="image" :src="image" :alt="`${c.archiveLabel}: ASRM 2025 archive`" width="1200" height="1200" loading="lazy" img-class="aspect-[4/3] w-full object-cover" />
             </div>
@@ -373,13 +373,13 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
         </div>
       </section>
 
-      <section class="bg-[#351c12] px-6 py-20 text-[#f5f0e8] lg:px-12 lg:py-28">
+      <section class="bg-[#36454f] px-6 py-20 text-[#ffffff] lg:px-12 lg:py-28">
         <div class="mx-auto grid max-w-[1500px] items-center gap-14 lg:grid-cols-[1fr_.9fr]">
           <div>
             <h2 class="max-w-[820px] text-[42px] font-semibold leading-[1.02] tracking-[-.035em] font-display lg:text-[46px]">
               {{ c.cta }}
             </h2>
-            <span class="mt-10 block h-1 w-36 bg-[#1958ae]" />
+            <span class="mt-10 block h-1 w-36 bg-[#c8103f]" />
             <p class="mt-7 max-w-[650px] text-base text-white/80 leading-relaxed lg:text-lg">
               {{ c.ctaBody }}
             </p>
@@ -396,7 +396,7 @@ useHead(() => ({ title: c.value.title, meta: [{ name: 'description', content: c.
             </figure>
             <figure class="absolute bottom-0 left-4 z-1 w-[52%] -rotate-[5deg] border-[10px] border-white bg-white p-1 shadow-2xl">
               <OptimizedPicture :src="ARCHIVE[5]" :alt="`${c.archiveLabel}: Yunda Surrogacy archive photo`" width="1200" height="1200" loading="lazy" img-class="aspect-square w-full object-cover" />
-              <figcaption class="px-3 py-2 text-xs text-[#351c12] tracking-[.22em]">{{ c.archiveLabel }}</figcaption>
+              <figcaption class="px-3 py-2 text-xs text-[#36454f] tracking-[.22em]">{{ c.archiveLabel }}</figcaption>
             </figure>
           </div>
         </div>
