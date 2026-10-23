@@ -113,9 +113,11 @@ useHead(() => ({
           <NuxtLink class="referral-button referral-button-light" :to="localePath('/be-surrogate')">
             {{ $t('surrogacyReferral.confidenceSection.button') }} <span aria-hidden="true">→</span>
           </NuxtLink>
-          <NuxtLink class="referral-benefit-link" :to="localePath('/benefit')">
-            {{ $t('menu.benefitsSupport') }} <span aria-hidden="true">→</span>
-          </NuxtLink>
+          <div class="referral-closing-links">
+            <NuxtLink class="referral-benefit-link" :to="localePath('/benefit')">
+              {{ $t('menu.benefitsSupport') }} <span aria-hidden="true">→</span>
+            </NuxtLink>
+          </div>
         </div>
       </section>
       <p class="referral-updated">
@@ -352,9 +354,9 @@ useHead(() => ({
 .referral-share-card {
   padding-top: 58px;
   padding-bottom: 58px;
-  background: #fffaf0;
+  background: var(--referral-cream);
   border: 1px solid var(--referral-rule);
-  border-top: 4px solid #f28c22;
+  border-top: 4px solid var(--referral-accent);
   border-radius: 22px;
   box-shadow: 0 10px 30px #432a1d0b;
 }
@@ -368,7 +370,7 @@ useHead(() => ({
 }
 .referral-share-link-label {
   margin-bottom: 8px;
-  color: #715b4d;
+  color: var(--referral-accent);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -381,7 +383,7 @@ useHead(() => ({
   min-height: 64px;
   border: 1px solid var(--referral-rule);
   border-radius: 12px;
-  background: #fffdf9;
+  background: var(--referral-cream);
   overflow: hidden;
 }
 .referral-share-link {
@@ -390,7 +392,7 @@ useHead(() => ({
   min-width: 0;
   flex: 1;
   padding: 0 22px;
-  color: #5e5148;
+  color: var(--referral-ink);
   font-size: 16px;
   overflow-wrap: anywhere;
 }
@@ -398,20 +400,20 @@ useHead(() => ({
   flex-shrink: 0;
   margin: 8px;
   padding: 0 24px;
-  border: 1px solid #f28c22;
+  border: 1px solid var(--referral-accent);
   border-radius: 10px;
   background: transparent;
-  color: #d8661c;
+  color: var(--referral-accent);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 .referral-share-copy:hover {
-  background: #fff0df;
+  background: var(--referral-petal);
 }
 .referral-share-status {
   margin: 10px 0 0;
-  color: #d8661c;
+  color: var(--referral-accent);
   font-size: 14px;
 }
 .referral-share-actions {
@@ -429,23 +431,23 @@ useHead(() => ({
   font-weight: 700;
 }
 .referral-share-primary {
-  border-color: #f28c22;
-  background: #f28c22;
+  border-color: var(--referral-accent);
+  background: var(--referral-accent);
   cursor: pointer;
 }
 .referral-share-primary:hover {
-  background: #d8661c;
+  background: var(--referral-ink);
 }
 .referral-share-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #bd7652;
+  border: 1px solid var(--referral-accent);
   color: var(--referral-ink);
   text-decoration: none;
 }
 .referral-share-secondary:hover {
-  background: #fff0df;
+  background: var(--referral-petal);
 }
 .referral-share-notice {
   max-width: 1160px;
@@ -453,8 +455,8 @@ useHead(() => ({
   padding: 28px 32px;
   border: 1px solid var(--referral-rule);
   border-radius: 16px;
-  background: #fff4df;
-  color: #5e5148;
+  background: var(--referral-petal);
+  color: var(--referral-ink);
   font-size: 17px;
 }
 .referral-share-notice p {
@@ -587,6 +589,29 @@ useHead(() => ({
 }
 .referral-button-light:hover {
   background: #ead7c5;
+}
+.referral-closing-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+.referral-benefit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 24px;
+  border: 1px solid rgba(255, 249, 240, 0.65);
+  color: #fff9f0;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.3;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.referral-benefit-link:hover {
+  background: #fff9f0;
+  color: var(--referral-ink);
 }
 .referral-updated {
   font-size: 12px;
