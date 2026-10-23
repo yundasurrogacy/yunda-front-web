@@ -63,6 +63,7 @@ const STATIC_SECTIONS_EN = [
     links: [
       { href: '/resources', label: 'Resources & Media Center' },
       { href: '/resources/mhb-new-york-2026', label: 'MHB New York 2026: Event & Consultation Guide' },
+      { href: '/resources/asrm-2026', label: 'ASRM 2026: Baltimore Conference Guide' },
       { href: '/blog', label: 'Blog Index' },
     ],
   },
@@ -122,6 +123,7 @@ const STATIC_SECTIONS_ZH = [
     links: [
       { href: '/resources', label: '资源与媒体中心' },
       { href: '/resources/mhb-new-york-2026', label: 'MHB 纽约 2026 活动与咨询指南' },
+      { href: '/resources/asrm-2026', label: 'ASRM 2026 巴尔的摩会议指南' },
       { href: '/blog', label: '博客首页' },
     ],
   },
