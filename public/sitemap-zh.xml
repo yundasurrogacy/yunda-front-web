@@ -102,6 +102,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.yundasurrogacy.com/zh/resources/asrm-2026</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/resources/asrm-2026" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/resources/asrm-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/resources/asrm-2026" />
+    <lastmod>2026-10-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.yundasurrogacy.com/zh/egg-donation</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/egg-donation" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/egg-donation" />
@@ -208,11 +216,19 @@
   </url>
   <!-- Blog -->
   <url>
+    <loc>https://www.yundasurrogacy.com/zh/blog/altruistic-vs-compensated-surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/altruistic-vs-compensated-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/altruistic-vs-compensated-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/altruistic-vs-compensated-surrogacy" />
+    <lastmod>2026-10-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/independent-vs-agency-surrogacy</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/independent-vs-agency-surrogacy" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/independent-vs-agency-surrogacy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/independent-vs-agency-surrogacy" />
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -220,7 +236,7 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/surrogacy-vs-adoption" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/surrogacy-vs-adoption" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/surrogacy-vs-adoption" />
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
