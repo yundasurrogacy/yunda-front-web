@@ -1698,6 +1698,38 @@ function scrollToPageTop() {
           </p>
         </div>
 
+        <section class="relative isolate mt-12 min-h-[23rem] overflow-hidden rounded-[6px] bg-[var(--yunda-bark)] shadow-[0_18px_42px_rgba(61,42,31,0.14)] md:min-h-[26rem]" aria-labelledby="surrogate-facebook-group-title">
+          <img
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            src="/images/pages/be-surrogate/facebook-community.jpg"
+            alt=""
+            width="1920"
+            height="1280"
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="absolute inset-0 bg-[rgba(61,42,31,0.64)]" aria-hidden="true" />
+          <div class="relative z-1 min-h-[23rem] w-full flex flex-col items-center justify-center px-6 py-12 text-center md:min-h-[26rem] md:px-12">
+            <p class="mb-4 text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.18em]">
+              {{ t.landing.facebookGroupEyebrow }}
+            </p>
+            <h2 id="surrogate-facebook-group-title" class="max-w-220 font-display text-[32px] text-white font-semibold leading-[1.1] sm:text-[42px] md:text-[52px]">
+              {{ t.landing.facebookGroupTitle }}
+            </h2>
+            <p class="mx-auto mt-5 max-w-190 text-4.5 text-white/92 leading-relaxed md:text-5" style="font-family: var(--font-text)">
+              {{ t.landing.facebookGroupDescription }}
+            </p>
+            <a
+              href="https://www.facebook.com/share/g/19M2Zx7XzD/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-8 inline-flex items-center justify-center rounded-2 bg-[var(--yunda-petal)] px-8 py-3.5 text-4 text-[var(--yunda-bark)] font-semibold tracking-[0.02em] transition hover:bg-[var(--yunda-maple)]"
+            >
+              {{ t.landing.facebookGroupCta }}
+            </a>
+          </div>
+        </section>
+
         <div class="mt-12">
           <h2 class="mx-auto mb-4 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px] md:whitespace-nowrap">
             {{ t.landing.eligibilitySectionTitle }}
