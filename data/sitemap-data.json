@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T02:38:03.076Z",
+  "generatedAt": "2026-10-27T02:44:44.170Z",
   "sections": {
     "en": [
       {
@@ -146,6 +146,14 @@
             "label": "MHB New York 2026: Event & Consultation Guide"
           },
           {
+            "href": "/resources/asrm-2026",
+            "label": "ASRM 2026: Baltimore Conference Guide"
+          },
+          {
+            "href": "/resources/asrm-2026",
+            "label": "ASRM 2026: Baltimore Conference Guide"
+          },
+          {
             "href": "/blog",
             "label": "Blog Index"
           }
@@ -159,12 +167,24 @@
             "label": "Blog Index"
           },
           {
+            "href": "/blog/altruistic-vs-compensated-surrogacy",
+            "label": "Altruistic vs. Compensated Surrogacy: What Changes and What Still Needs Planning"
+          },
+          {
+            "href": "/blog/independent-vs-agency-surrogacy",
+            "label": "Independent vs. Agency Surrogacy: Responsibilities, Coordination, and Support"
+          },
+          {
+            "href": "/blog/surrogacy-vs-adoption",
+            "label": "Surrogacy vs Adoption: Compare Family-Building Paths"
+          },
+          {
             "href": "/blog/known-vs-anonymous-egg-donor-gay-men",
             "label": "Known Egg Donor vs Anonymous Egg Donor for Gay Men"
           },
           {
             "href": "/blog/mhb-new-york-2026-guide-gay-intended-parents",
-            "label": "Questions to Ask a Surrogacy Agency at MHB New York 2026"
+            "label": "Five Questions Gay Intended Parents Brought to MHB New York 2026"
           },
           {
             "href": "/blog/surrogate-medical-screening-process",
@@ -495,7 +515,7 @@
             "label": "Surrogate Salary vs. Compensation and Benefits"
           }
         ],
-        "note": "84 articles to explore.",
+        "note": "87 articles to explore.",
         "className": "section-blog"
       }
     ],
@@ -644,6 +664,14 @@
             "label": "MHB 纽约 2026 活动与咨询指南"
           },
           {
+            "href": "/zh/resources/asrm-2026",
+            "label": "ASRM 2026 巴尔的摩会议指南"
+          },
+          {
+            "href": "/zh/resources/asrm-2026",
+            "label": "ASRM 2026 巴尔的摩会议指南"
+          },
+          {
             "href": "/zh/blog",
             "label": "博客首页"
           }
@@ -655,6 +683,18 @@
           {
             "href": "/zh/blog",
             "label": "博客列表"
+          },
+          {
+            "href": "/zh/blog/altruistic-vs-compensated-surrogacy",
+            "label": "Altruistic vs. Compensated Surrogacy: What Changes and What Still Needs Planning"
+          },
+          {
+            "href": "/zh/blog/independent-vs-agency-surrogacy",
+            "label": "独立代孕与机构代孕：责任、协调与支持"
+          },
+          {
+            "href": "/zh/blog/surrogacy-vs-adoption",
+            "label": "代孕与收养：比较两种组建家庭的途径"
           },
           {
             "href": "/zh/blog/known-vs-anonymous-egg-donor-gay-men",
@@ -993,7 +1033,7 @@
             "label": "代孕妈妈的补偿与福利：需要了解的关键信息"
           }
         ],
-        "note": "共 84 篇中文文章。",
+        "note": "共 87 篇中文文章。",
         "className": "section-blog"
       }
     ]
