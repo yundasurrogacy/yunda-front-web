@@ -308,6 +308,10 @@ export const translations = {
       processCta: 'Begin your surrogacy journey',
       galleryTitle: 'Our Wonderful Surrogates',
       gallerySubtitle: 'Dedicated women making dreams of parenthood come true.',
+      facebookGroupEyebrow: 'Community support',
+      facebookGroupTitle: 'Connect with our Facebook community',
+      facebookGroupDescription: 'Talk with current and former surrogates, ask questions, and hear real experiences as you explore your next step.',
+      facebookGroupCta: 'Join the Facebook Group',
     },
   },
   zh: {
@@ -615,6 +619,10 @@ export const translations = {
       processCta: '开启您的代孕之旅',
       galleryTitle: '我们优秀的代孕妈妈们',
       gallerySubtitle: '用爱与专业，帮助更多家庭的育儿梦想成真',
+      facebookGroupEyebrow: '社群支持',
+      facebookGroupTitle: '加入孕达代孕 Facebook 社群',
+      facebookGroupDescription: '与正在代孕或曾经代孕的妈妈交流，了解真实经历，在探索下一步时获得更多支持与答案。',
+      facebookGroupCta: '加入 Facebook 社群',
     },
   },
 } as const
