@@ -4,6 +4,7 @@ import { useScrollAnimation } from '~/composables/useScrollAnimation'
 useScrollAnimation()
 
 const partners = [
+  { name: 'ASRM', logo: '/images/shared/associations/asrm.svg', url: 'https://www.asrm.org/', width: 300, height: 120 },
   { name: 'MHB', logo: '/images/shared/associations/men-having-babies.webp', url: 'https://surrogacyadvisor.menhavingbabies.org/providers/583?back=public.directory_agency', width: 230, height: 113 },
   { name: 'RESOLVE', logo: '/images/shared/associations/resolve.webp', url: 'https://resolve.org/about-us/team/corporate-council/', width: 600, height: 600, logoClass: 'scale-110' },
   { name: 'ART', logo: '/images/shared/associations/art-risk.webp', url: 'https://artrisksolutions.com/', width: 694, height: 206 },
