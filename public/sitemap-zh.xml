@@ -216,6 +216,22 @@
   </url>
   <!-- Blog -->
   <url>
+    <loc>https://www.yundasurrogacy.com/zh/blog/surrogacy-birth-plan</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/surrogacy-birth-plan" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/surrogacy-birth-plan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/surrogacy-birth-plan" />
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/blog/breastfeeding-after-surrogacy</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/breastfeeding-after-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/breastfeeding-after-surrogacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yundasurrogacy.com/blog/breastfeeding-after-surrogacy" />
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.yundasurrogacy.com/zh/blog/altruistic-vs-compensated-surrogacy</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.yundasurrogacy.com/blog/altruistic-vs-compensated-surrogacy" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.yundasurrogacy.com/zh/blog/altruistic-vs-compensated-surrogacy" />

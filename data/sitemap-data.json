@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T02:44:44.170Z",
+  "generatedAt": "2026-11-09T07:38:07.765Z",
   "sections": {
     "en": [
       {
@@ -165,6 +165,14 @@
           {
             "href": "/blog",
             "label": "Blog Index"
+          },
+          {
+            "href": "/blog/surrogacy-birth-plan",
+            "label": "Surrogacy Birth Plan: Hospital Questions for Surrogates and Intended Parents"
+          },
+          {
+            "href": "/blog/breastfeeding-after-surrogacy",
+            "label": "Breastfeeding After Surrogacy: Feeding Options and Questions to Discuss Before Birth"
           },
           {
             "href": "/blog/altruistic-vs-compensated-surrogacy",
@@ -515,7 +523,7 @@
             "label": "Surrogate Salary vs. Compensation and Benefits"
           }
         ],
-        "note": "87 articles to explore.",
+        "note": "89 articles to explore.",
         "className": "section-blog"
       }
     ],
@@ -683,6 +691,14 @@
           {
             "href": "/zh/blog",
             "label": "博客列表"
+          },
+          {
+            "href": "/zh/blog/surrogacy-birth-plan",
+            "label": "代孕分娩计划：医院向代孕妈妈和准父母提出的问题"
+          },
+          {
+            "href": "/zh/blog/breastfeeding-after-surrogacy",
+            "label": "代孕后母乳喂养：喂养方式及产前讨论问题"
           },
           {
             "href": "/zh/blog/altruistic-vs-compensated-surrogacy",
@@ -1033,7 +1049,7 @@
             "label": "代孕妈妈的补偿与福利：需要了解的关键信息"
           }
         ],
-        "note": "共 87 篇中文文章。",
+        "note": "共 89 篇中文文章。",
         "className": "section-blog"
       }
     ]
