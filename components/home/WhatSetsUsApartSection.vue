@@ -45,13 +45,11 @@ function toggleFeature(index) {
               <picture class="block h-full w-full">
                 <source
                   srcset="/images/pages/home/what-sets-us-apart-480.avif 480w, /images/pages/home/what-sets-us-apart-768.avif 768w, /images/pages/home/what-sets-us-apart-1200.avif 1200w"
-                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 420px, calc(100vw - 40px)"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 420px, 520px"
                   type="image/avif"
                 >
                 <img
-                  src="/images/pages/home/what-sets-us-apart.jpeg"
-                  srcset="/images/pages/home/what-sets-us-apart-480.jpg 480w, /images/pages/home/what-sets-us-apart-768.jpg 768w, /images/pages/home/what-sets-us-apart.jpeg 1200w"
-                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 420px, calc(100vw - 40px)"
+                  src="/images/pages/home/what-sets-us-apart-1200.avif"
                   :alt="$t('home.whatSetsUsApartSection.imageAlt')"
                   class="h-full w-full object-cover"
                   width="1200"
