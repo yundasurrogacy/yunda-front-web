@@ -585,12 +585,12 @@ useHead(() => ({
             >
               <div class="relative min-h-[220px] overflow-hidden bg-[#c8103f] lg:min-h-[300px]">
                 <OptimizedPicture
-                  src="/images/events/asrm-2026/asrm-3.jpg"
-                  alt="Yunda Surrogacy at ASRM 2025"
+                  src="/images/events/asrm-2026/2026/asrm-baltimore-event-card.png"
+                  alt="Yunda Surrogacy at ASRM 2026 in Baltimore"
                   picture-class="block h-full w-full"
                   img-class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  width="1200"
-                  height="1200"
+                  width="1080"
+                  height="1350"
                   loading="lazy"
                   decoding="async"
                 />
