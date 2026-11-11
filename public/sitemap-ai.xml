@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- AI and machine-readable files -->
   <url>
@@ -12,6 +11,10 @@
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/site-architecture.md</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/mhb-new-york-2026.md</loc>
     <priority>0.4</priority>
   </url>
   <url>
@@ -72,6 +75,10 @@
   </url>
   <url>
     <loc>https://www.yundasurrogacy.com/zh/site-architecture.md</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.yundasurrogacy.com/zh/mhb-new-york-2026.md</loc>
     <priority>0.4</priority>
   </url>
   <url>

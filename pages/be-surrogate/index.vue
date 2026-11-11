@@ -101,22 +101,8 @@ const { submitSurrogateApplication, getApplicationById, updateApplicationById } 
 
 const computedBMI = computed(() => calculatedBMI(form))
 
-/** GC 申请页图集：素材包 10 张（含新增 2 张） */
-const beSurrogateGallerySlides = [
-  { src: '/images/pages/be-surrogate/gallery/gallery-1.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-2.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-4.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-6.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-9.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-10.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-3.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-5.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-7.webp', alt: 'Yunda surrogate' },
-  { src: '/images/pages/be-surrogate/gallery/gallery-8.webp', alt: 'Yunda surrogate' },
-]
-
 const v2HeroTrustChips = computed(() => [
-  tt('$61,000+ compensation package', '$61,000+ 总补偿方案'),
+  tt('$50,000 base compensation + estimated $11,000 support benefits', '$50,000 基础补偿 + 预估 $11,000 福利支持'),
   tt('Independent escrow payment protection', '独立托管保障付款'),
   tt('Legal and insurance coordination', '法律与保险协调'),
   tt('Private review by the Yunda team', '孕达团队私密审核'),
@@ -151,7 +137,7 @@ const v2AfterApplySteps = computed(() => [
 const v2FaqItems = computed(() => [
   {
     q: tt('How much can I earn as a surrogate with Yunda?', '通过孕达成为代孕妈妈可以获得多少补偿？'),
-    a: tt('Qualified surrogate candidates may receive a $61,000+ total compensation package through Yunda, including base compensation and support benefits. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '符合条件的代孕妈妈候选人可通过孕达获得 $61,000+ 总补偿方案，包括基础补偿和支持福利。具体金额取决于资格、协议条款、医疗事件、获批报销和项目要求。'),
+    a: tt('Qualified surrogate candidates may receive a $50,000 base compensation amount plus an estimated $11,000 benefits/support package through Yunda. Exact amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements.', '符合条件的代孕妈妈候选人可通过孕达获得 $50,000 基础补偿 + 预估 $11,000 福利支持，包括基础补偿和支持福利。具体金额取决于资格、协议条款、医疗事件、获批报销和项目要求。'),
   },
   {
     q: tt('Is submitting the application a commitment?', '提交申请是否代表已经承诺？'),
@@ -187,7 +173,7 @@ const surrogateCoreServicePageSchemas = computed(() => buildCoreServicePageSchem
     tt('Women considering surrogacy', '正在考虑代孕的女性'),
   ],
   service: {
-    name: tt('Surrogate Mother Program', '代孕妈妈项目'),
+    name: tt('Surrogate Program', '代孕妈妈项目'),
     description: tt(
       'Yunda supports qualified surrogate candidates with private eligibility review, compensation education, medical screening coordination, legal coordination, insurance review, escrow payment protection, and matching.',
       '孕达为符合条件的代孕妈妈候选人提供私密资格评估、补偿说明、医学筛查协调、法律协调、保险审查、托管付款保障和匹配支持。',
@@ -854,7 +840,7 @@ function scrollToPageTop() {
                 class="max-w-full w-fit inline-flex self-center text-center text-4.5 text-[var(--yunda-maple)] font-bold leading-snug lg:text-5.5 sm:text-5"
                 style="font-family: var(--font-text)"
               >
-                {{ tt('$61,000+ total compensation package for qualified surrogates', '符合条件的代孕妈妈可获得 $61,000+ 总补偿方案') }}
+                {{ tt('$50,000 base compensation plus estimated $11,000 support benefits for qualified surrogates', '符合条件的代孕妈妈可获得 $50,000 基础补偿 + 预估 $11,000 福利支持') }}
               </p>
               <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
                 <span
@@ -1712,6 +1698,38 @@ function scrollToPageTop() {
           </p>
         </div>
 
+        <section class="relative isolate mt-12 min-h-[23rem] overflow-hidden rounded-[6px] bg-[var(--yunda-bark)] shadow-[0_18px_42px_rgba(61,42,31,0.14)] md:min-h-[26rem]" aria-labelledby="surrogate-facebook-group-title">
+          <img
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            src="/images/pages/be-surrogate/facebook-community.jpg"
+            alt=""
+            width="1920"
+            height="1280"
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="absolute inset-0 bg-[rgba(61,42,31,0.64)]" aria-hidden="true" />
+          <div class="relative z-1 min-h-[23rem] w-full flex flex-col items-center justify-center px-6 py-12 text-center md:min-h-[26rem] md:px-12">
+            <p class="mb-4 text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.18em]">
+              {{ t.landing.facebookGroupEyebrow }}
+            </p>
+            <h2 id="surrogate-facebook-group-title" class="max-w-220 font-display text-[32px] text-white font-semibold leading-[1.1] sm:text-[42px] md:text-[52px]">
+              {{ t.landing.facebookGroupTitle }}
+            </h2>
+            <p class="mx-auto mt-5 max-w-190 text-4.5 text-white/92 leading-relaxed md:text-5" style="font-family: var(--font-text)">
+              {{ t.landing.facebookGroupDescription }}
+            </p>
+            <a
+              href="https://www.facebook.com/share/g/19M2Zx7XzD/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-8 inline-flex items-center justify-center rounded-2 bg-[var(--yunda-petal)] px-8 py-3.5 text-4 text-[var(--yunda-bark)] font-semibold tracking-[0.02em] transition hover:bg-[var(--yunda-maple)]"
+            >
+              {{ t.landing.facebookGroupCta }}
+            </a>
+          </div>
+        </section>
+
         <div class="mt-12">
           <h2 class="mx-auto mb-4 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px] md:whitespace-nowrap">
             {{ t.landing.eligibilitySectionTitle }}
@@ -1975,7 +1993,6 @@ function scrollToPageTop() {
 
     <SurrogateGallerySection
       variant="plain"
-      :slides="beSurrogateGallerySlides"
       :title="t.landing.galleryTitle"
       :subtitle="t.landing.gallerySubtitle"
     />

@@ -11,11 +11,13 @@ const sections = computed(() => {
 
 const pageTitle = computed(() => (locale.value === 'zh' ? '网站地图' : 'Sitemap'))
 const pageSubtitle = computed(() =>
-  locale.value === 'zh' ? '网站地图 | 按页面类型分类' : 'Sitemap | Organized by page type',
+  locale.value === 'zh'
+    ? '按类别浏览准父母指南、代孕妈妈指南、资源与博客文章。'
+    : 'Browse intended parent guides, surrogate guides, resources, and blog articles by category.',
 )
 
 useHead(() => ({
-  title: `${pageTitle.value} | Sitemap`,
+  title: `${pageTitle.value} | Yunda Surrogacy`,
 }))
 </script>
 
@@ -35,7 +37,7 @@ useHead(() => ({
             :key="section.title"
             :class="section.className"
           >
-            <h3>{{ section.title }}</h3>
+            <h2>{{ section.title }}</h2>
             <ul>
               <li v-for="link in section.links" :key="link.href">
                 <NuxtLink :to="link.href">
@@ -112,7 +114,7 @@ section {
   margin: 0;
 }
 
-h3 {
+h2 {
   margin: 0 0 10px;
   font-size: 18px;
   font-weight: 600;

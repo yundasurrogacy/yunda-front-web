@@ -1,7 +1,7 @@
 # Surrogacy Cost Summary
 
 Canonical page: https://www.yundasurrogacy.com/surrogacy-cost
-Last updated: 2026-06-29
+Last updated: 2026-09-26
 Reviewed by: Kayla Luo, Vice President, North America
 
 ## Summary
@@ -9,6 +9,16 @@ Reviewed by: Kayla Luo, Vice President, North America
 Surrogacy cost in California and the United States varies by agency coordination, surrogate compensation, IVF clinic fees, legal work, insurance, escrow administration, medical events, pregnancy details, and case-specific factors.
 
 Yunda's cost content is intended to help intended parents understand categories and planning questions. It is not a guaranteed quote.
+
+## 2026 customer estimate (planning reference)
+
+The customer-approved 2026 estimate lists an **estimated program total of $142,750**. It includes **$50,000 in base surrogate compensation** and an **estimated $11,000 benefits/support package**. The three listed funding stages are:
+
+- **$42,400** after medical-record pre-review approval.
+- **$66,850** after the legal documents become effective and are notarized.
+- **$33,500** after pregnancy or heartbeat confirmation.
+
+The source separately describes a **$20,000 reserve in two $10,000 deposits** for screening, transfer, and pregnancy-related expenses; reserve use and reconciliation follow the estimate and written agreement. The amounts are planning estimates, not a guaranteed quote. Actual-cost reimbursements, IVF clinic fees, newborn medical care, medical events, and agreement terms may change the final amount.
 
 ## What is included in a surrogacy cost estimate?
 

@@ -38,7 +38,7 @@ const translations = {
       'If you’re thinking, “I want to be a surrogate,” you deserve a clear, respectful path forward. The process starts with a simple surrogate application, followed by pre-qualification, consultation, and screening—so your health, insurance, and support system are protected before you’re matched.',
     conclusionBody2:
       'Along the way, we explain the requirements to be a surrogate, common disqualifying factors, and practical questions like age limits and how many times you can be a surrogate. If you’re ready, the next step is simple: apply to be a surrogate and let our team guide you through the process with steady support.',
-    h21Title: 'I Want to Be a Surrogate-How Do I Become a Surrogate Mother?',
+    h21Title: 'I Want to Be a Surrogate-How Do I Become a Surrogate?',
     h21Lead:
       'If you’re thinking, “I want to be a surrogate,” you’re not alone. The good news is the path is clear.',
     h21Body:
@@ -54,15 +54,15 @@ const translations = {
     h21LinkJourney: 'clinic and legal process',
     h21FlowCaption: 'Process at a glance',
     h21FlowSteps: ['Apply', 'Pre-Qualify', 'Consult', 'Screening', 'Match', 'Start the Journey'],
-    h22Title: 'Surrogate Application: How to Apply to Be a Surrogate Mother (Step-by-Step)',
+    h22Title: 'Surrogate Application: How to Apply to Be a Surrogate (Step-by-Step)',
     h22Steps: [
       {
         title: 'Step 1 — Initial surrogate application (about 10 minutes)',
-        body: 'To apply to be a surrogate mother, start with the surrogate application. This first step is quick and focused-basic contact info, where you live, your pregnancy history, and a few health and lifestyle questions. It’s the fastest way to see if you may be a fit before you spend extra time.',
+        body: 'To apply to be a surrogate, start with the surrogate application. This first step is quick and focused-basic contact info, where you live, your pregnancy history, and a few health and lifestyle questions. It’s the fastest way to see if you may be a fit before you spend extra time.',
       },
       {
         title: 'Step 2 — Secure follow-up and portal tasks',
-        body: 'After your surrogate mother application, we’ll send secure next steps. This may include uploading records, confirming medications, and answering a few follow-up questions. These portal tasks help us review eligibility and guide you through the process to become a surrogate mother with fewer delays.',
+        body: 'After your surrogate application, we’ll send secure next steps. This may include uploading records, confirming medications, and answering a few follow-up questions. These portal tasks help us review eligibility and guide you through the process to become a surrogate with fewer delays.',
       },
       {
         title: 'Step 3 — Consultation (your questions + your timeline)',
@@ -79,7 +79,7 @@ const translations = {
     h23Title: 'Surrogate Requirements & Qualifications: What Are the Requirements to Be a Surrogate?',
     h23ReqTitle: 'Surrogate requirements',
     h23ReqLead:
-      'To support a healthy and secure journey, our surrogate requirements start with a few minimum standards. If you’re asking what are the requirements to be a surrogate mother, here are the basics:',
+      'To support a healthy and secure journey, our surrogate requirements start with a few minimum standards. If you’re asking what are the requirements to be a surrogate, here are the basics:',
     h23ReqItems: [
       'Be 21 to 40 years old',
       'Have had at least one full-term, uncomplicated vaginal birth',

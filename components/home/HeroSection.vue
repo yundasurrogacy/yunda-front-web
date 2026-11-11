@@ -7,7 +7,17 @@ const heroSection = ref<HTMLElement | ComponentPublicInstance | null>(null)
 const isMuted = ref(true)
 const isMobile = ref(false)
 const isPlaying = ref(false)
+const videoReady = ref(false)
 let visibilityObserver: IntersectionObserver | null = null
+
+useHead({
+  link: [{
+    rel: 'preload',
+    as: 'image',
+    href: '/videos/hero-poster.webp',
+    fetchpriority: 'high',
+  }],
+})
 
 const DESKTOP_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_pc.mp4'
 const MOBILE_VIDEO_SRC = 'https://qiniu-resources.weweknow.com/yundasurrogacy-1/static/yunda_opening_mobile.mp4'
@@ -76,18 +86,35 @@ function setupVisibilityObserver() {
   visibilityObserver.observe(element)
 }
 
+function startVideo() {
+  videoReady.value = true
+  nextTick(() => {
+    if (!introVideo.value)
+      return
+    introVideo.value.muted = isMuted.value
+    introVideo.value.load()
+    resumeVideo()
+  })
+}
+
+function scheduleVideo() {
+  const afterLoad = () => {
+    if ('requestIdleCallback' in window)
+      requestIdleCallback(() => startVideo(), { timeout: 1200 })
+    else
+      setTimeout(startVideo, 400)
+  }
+  if (document.readyState === 'complete')
+    afterLoad()
+  else
+    window.addEventListener('load', afterLoad, { once: true })
+}
+
 onMounted(() => {
   updateDeviceState()
   window.addEventListener('resize', updateDeviceState)
-
-  nextTick(() => {
-    if (introVideo.value) {
-      introVideo.value.muted = isMuted.value
-      introVideo.value.load()
-      resumeVideo()
-    }
-    setupVisibilityObserver()
-  })
+  nextTick(() => setupVisibilityObserver())
+  scheduleVideo()
 })
 
 onBeforeUnmount(() => {
@@ -108,10 +135,11 @@ watch(isMuted, (value) => {
 })
 
 watch(videoSource, () => {
+  if (!videoReady.value)
+    return
   nextTick(() => {
-    if (!introVideo.value) {
+    if (!introVideo.value)
       return
-    }
     introVideo.value.muted = isMuted.value
     introVideo.value.load()
     resumeVideo()
@@ -127,6 +155,7 @@ function toggleMute() {
   <section ref="heroSection" class="hero-section">
     <div class="video-wrapper">
       <video
+        v-if="videoReady"
         :key="videoSource"
         ref="introVideo"
         class="video-element"
@@ -137,12 +166,23 @@ function toggleMute() {
         loop
         playsinline
         preload="metadata"
-        poster="/videos/video-default-poster.webp"
+        poster="/videos/hero-poster.webp"
         @loadedmetadata="resumeVideo"
         @canplay="resumeVideo"
         @play="handlePlay"
         @pause="handlePause"
       />
+      <img
+        v-show="!isPlaying"
+        src="/videos/hero-poster.webp"
+        alt=""
+        aria-hidden="true"
+        class="video-element"
+        width="1280"
+        height="720"
+        fetchpriority="high"
+        decoding="async"
+      >
       <button
         v-if="!isPlaying"
         type="button"

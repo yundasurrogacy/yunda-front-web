@@ -1,33 +1,35 @@
 <script setup lang="ts">
-import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-useScrollAnimation()
+const { t } = useI18n()
+const localePath = useLocalePath()
+const requirements = computed(() => Array.from({ length: 6 }, (_, index) => t(`surrogacyReferral.eligibilitySection.requirements.${index}`)))
 </script>
 
 <template>
-  <section class="w-full from-[var(--yunda-petal)] via-[var(--yunda-petal)] to-[var(--yunda-petal)] bg-gradient-to-b px-4 py-8 lg:px-20 lg:py-12">
-    <div class="scroll-animate mx-auto max-w-300">
-      <h2 class="mb-6 text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:mb-8 lg:text-left lg:text-[36px]">
-        {{ $t('surrogacyReferral.eligibilitySection.title') }}
-      </h2>
-
+  <section class="referral-section" aria-labelledby="referral-eligibility-title">
+    <div class="referral-container referral-eligibility-grid">
       <div>
-        <p class="mb-4 text-center lg:text-left">
+        <p class="referral-eyebrow">
+          {{ $t('surrogacyReferral.eligibilitySection.eyebrow') }}
+        </p>
+        <h2 id="referral-eligibility-title">
+          {{ $t('surrogacyReferral.eligibilitySection.title') }}
+        </h2>
+        <p class="referral-intro">
           {{ $t('surrogacyReferral.eligibilitySection.intro') }}
         </p>
-        <div class="ml-6 text-left space-y-2">
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.age') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.residence') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.pregnancy') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.bmi') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.lifestyle') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.support') }}</li>
-          <li>{{ $t('surrogacyReferral.eligibilitySection.requirements.health') }}</li>
-        </div>
+        <NuxtLink class="referral-text-link" :to="localePath('/surrogate-requirements')">
+          {{ $t('surrogacyReferral.eligibilitySection.link') }} <span aria-hidden="true">→</span>
+        </NuxtLink>
       </div>
+      <ul class="referral-requirements">
+        <li v-for="requirement in requirements" :key="requirement">
+          <span class="referral-dot" aria-hidden="true" />
+          <span>{{ requirement }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
-
-<style scoped>
-</style>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { buildItemListSchema, buildProfessionalServiceSchema, buildVideoObjectSchema } from '~/utils/schema'
 import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
@@ -7,13 +7,13 @@ import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
 import GoogleReviewsSection from '../components/home/GoogleReviewsSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
-import MhbTeamSpotlight from '../components/home/MhbTeamSpotlight.vue'
 import OurServicesSection from '../components/home/OurServicesSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
 import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
 import WhatSetsUsApartSection from '../components/home/WhatSetsUsApartSection.vue'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
@@ -81,11 +81,15 @@ const introductionVideoSchema = computed(() => buildVideoObjectSchema({
   name: 'Yunda Surrogacy Introduction',
   description: 'An introductory video about Yunda Surrogacy, family-building support, and surrogacy coordination for intended parents and surrogates.',
   thumbnailUrl: '/images/pages/home/hero.webp',
+  uploadDate: '2025-10-25',
   embedUrl: 'https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1',
   url: '/',
   baseUrl: siteUrl.value || undefined,
   locale: locale.value,
 }))
+
+const introVideoPlaying = ref(false)
+const introEmbedSrc = 'https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1&autoplay=1'
 
 const homeSurrogateSlides = [
   { src: '/images/pages/home/meet-our-surrogates/surrogate-01.jpg', alt: 'Yunda surrogate receiving support during her journey' },
@@ -158,7 +162,26 @@ useHead(() => {
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
     <HeroSection />
-    <MhbTeamSpotlight />
+    <section class="bg-white px-4 py-10 md:px-20 md:py-14" aria-labelledby="asrm-home-entry-title">
+      <div class="mx-auto grid max-w-[1400px] overflow-hidden rounded-[18px] bg-[#c8103f] text-white shadow-[0_14px_40px_rgba(200,16,63,0.18)] lg:grid-cols-[1.08fr_.92fr]">
+        <div class="flex flex-col justify-center px-7 py-9 md:px-12 md:py-12">
+          <p class="text-xs font-bold uppercase tracking-[.28em] text-white/75">YUNDA SURROGACY · ASRM 2026</p>
+          <h2 id="asrm-home-entry-title" class="mt-4 max-w-[620px] font-display text-[32px] font-semibold leading-[1.04] md:text-[46px]">
+            {{ locale === 'zh' ? 'Yunda Surrogacy 参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026' }}
+          </h2>
+          <p class="mt-5 max-w-[560px] text-base leading-7 text-white/85 md:text-lg">
+            {{ locale === 'zh' ? '了解生殖医学行业发展，参与专业交流，并整理准父母关心的问题。' : 'Following the conversations shaping reproductive medicine and bringing clearer questions back to intended parents.' }}
+          </p>
+          <NuxtLink :to="localePath('/resources/asrm-2026')" class="mt-7 inline-flex w-fit items-center border border-white px-6 py-3.5 text-sm font-bold transition-colors hover:bg-white hover:text-[#c8103f]">
+            {{ locale === 'zh' ? '查看 ASRM 2026 活动专题' : 'Explore the ASRM 2026 guide' }} →
+          </NuxtLink>
+        </div>
+        <div class="relative min-h-[260px] overflow-hidden lg:min-h-[360px]">
+          <img src="/images/events/asrm-2026/asrm-3.jpg" alt="Yunda Surrogacy at ASRM 2025" class="absolute inset-0 h-full w-full object-cover object-center">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#c8103f]/35 via-transparent to-transparent" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
     <StatsSection />
     <WhatSetsUsApartSection />
     <OurServicesSection />
@@ -177,16 +200,38 @@ useHead(() => {
               Yunda Surrogacy is more than a bridge between families - we are a partner built on integrity, compassion, and commitment to creating life with love.
             </p>
           </div>
-          <div class="relative overflow-hidden rounded-[20px] shadow-[0_12px_34px_rgba(39,31,24,0.16)] aspect-video md:col-span-6 md:h-[500px] md:aspect-auto">
+          <div class="relative overflow-hidden rounded-[20px] bg-[var(--yunda-bark)] shadow-[0_12px_34px_rgba(39,31,24,0.16)] aspect-video md:col-span-6 md:h-[500px] md:aspect-auto">
             <iframe
+              v-if="introVideoPlaying"
               class="absolute left-1/2 top-1/2 h-full w-full max-w-none -translate-x-1/2 -translate-y-1/2 border-0 md:w-[108%]"
-              src="https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1"
+              :src="introEmbedSrc"
               title="Yunda Surrogacy Introduction"
-              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
             />
+            <button
+              v-else
+              type="button"
+              class="absolute inset-0 flex items-center justify-center"
+              aria-label="Play Yunda Surrogacy Introduction"
+              @click="introVideoPlaying = true"
+            >
+              <img
+                src="https://i.ytimg.com/vi/SMSpodH686I/hqdefault.jpg"
+                alt=""
+                class="absolute inset-0 h-full w-full object-cover"
+                width="480"
+                height="360"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="relative z-[1] h-16 w-16 inline-flex items-center justify-center rounded-full border border-white/50 bg-black/45 text-white backdrop-blur-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <polygon points="8 5 19 12 8 19" />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
       </div>

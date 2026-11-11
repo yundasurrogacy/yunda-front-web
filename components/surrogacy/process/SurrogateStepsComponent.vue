@@ -270,7 +270,7 @@ watch(() => props.activeStep, () => {
           6 Steps in the Surrogate Process
         </h3>
         <p class="mb-6 text-sm text-[var(--primary-brown)] leading-relaxed">
-          The surrogacy process works best with simple, clear surrogacy steps. Tap a step to see the focus for parents and surrogate mothers.
+          The surrogacy process works best with simple, clear surrogacy steps. Tap a step to see the focus for parents and surrogates.
         </p>
 
         <div class="grid grid-cols-2 gap-3">

@@ -153,13 +153,13 @@ const translations = {
         },
         {
           title: 'Legal Fees',
-          amount: '$10,750',
+          amount: 'Itemized estimate',
           description:
-            'Covers legal agreement drafting and review, attorney support, and parentage-related legal steps such as California PBO planning.',
+            'Includes agreement drafting and review, surrogate attorney contract review, and prenatal parentage legal service/PBO. Each line follows the 2026 customer estimate and the written agreement.',
         },
         {
           title: 'Surrogate Compensation',
-          amount: '$61,000+',
+          amount: '$50,000 + estimated $11,000 support',
           description:
             'Covers base surrogate compensation and related support. Final compensation may vary depending on match details and case circumstances.',
         },
@@ -188,11 +188,11 @@ const translations = {
       ],
       donutTitle: 'Where Costs Usually Go',
       donutLegend: [
-        'Agency service fee: 39%',
-        'Surrogate compensation: 47%',
-        'Legal fees: 8%',
-        'Administrative support: 4%',
-        'Trust management: 2%',
+        'Agency service fee',
+        'Surrogate compensation',
+        'Legal and parentage services',
+        'Insurance and support',
+        'Trust management',
       ],
       fixed: [
         {
@@ -225,10 +225,9 @@ const translations = {
         },
         {
           title: '4) Legal Fees (Surrogacy Agreement)',
-          amount: '$10,750',
-          description: 'To make legal costs easy to compare, I break them into two counsel lines:',
+          amount: 'Itemized estimate',
+          description: 'To make legal costs easy to compare, the 2026 estimate lists these itemized legal lines:',
           subItems: [
-            'Escrow (Trust) Account Management: $2,000',
             'Surrogacy Agreement Drafting & Review: $3,750',
             'Surrogate’s Attorney Contract Review: $1,500',
             'California Parentage / PBO: $3,500',
@@ -236,7 +235,7 @@ const translations = {
         },
         {
           title: '5) Surrogate Compensation',
-          amount: '$61,000+',
+          amount: '$50,000 + estimated $11,000 support',
           description:
             'This is one of the biggest drivers of surrogacy costs in California and across the U.S., and it can vary by match and circumstances.',
         },
@@ -531,12 +530,12 @@ const translations = {
         },
         {
           title: '法律费用',
-          amount: '$10,750',
-          description: '涵盖法律协议起草与审核、律师支持及加州亲子关系等法律步骤。',
+          amount: '按项目明细列示',
+          description: '包含协议起草与审核、代孕律师合同审核及出生前亲权法律服务/PBO。各项以 2026 年客户费用说明和书面协议为准。',
         },
         {
           title: '代孕补偿',
-          amount: '$61,000+',
+          amount: '$50,000 + 预估 $11,000 福利支持',
           description: '涵盖基础代孕补偿及相关支持，最终金额因匹配与个案情况而异。',
         },
       ],
@@ -563,7 +562,7 @@ const translations = {
         '流产相关补偿',
       ],
       donutTitle: '费用通常的分布',
-      donutLegend: ['机构服务费：39%', '代孕补偿：47%', '法律费用：8%', '行政支持：4%', '信托管理：2%'],
+      donutLegend: ['机构服务费', '代孕补偿', '法律与亲权服务', '保险与支持', '信托管理'],
       fixed: [
         {
           title: '1）代孕机构服务费',
@@ -593,10 +592,9 @@ const translations = {
         },
         {
           title: '4）法律费用（代孕协议）',
-          amount: '$10,750',
+          amount: '按项目明细列示',
           description: '为便于比较，拆分如下：',
           subItems: [
-            '托管（信托）账户管理：2000美元',
             '代孕协议起草与审核：3750美元',
             '代孕律师合同审查：1500美元',
             '加利福尼亚亲子关系/亲子关系令：3500美元',
@@ -604,7 +602,7 @@ const translations = {
         },
         {
           title: '5）代孕补偿',
-          amount: '$61,000+',
+          amount: '$50,000 + 预估 $11,000 福利支持',
           description: '代孕费用的重要驱动之一，会随匹配情况而变化。',
         },
       ],
@@ -1366,7 +1364,7 @@ onUnmounted(() => {
                   class="chart-slot cost-donut"
                   role="img"
                   :aria-label="t.breakdown.donutTitle"
-                  style="--p1:39; --p2:47; --p3:8; --p4:4; --p5:2;"
+                  style="--p1:35; --p2:42; --p3:10; --p4:10; --p5:3;"
                 />
                 <ul class="donut-legend">
                   <li v-for="(item, idx) in t.breakdown.donutLegend" :key="item">

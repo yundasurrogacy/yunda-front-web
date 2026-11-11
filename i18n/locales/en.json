@@ -51,7 +51,7 @@
     "meta": {
       "title": "Yunda Surrogacy ｜California Surrogacy Agency for Intended Parents",
       "description": "California surrogacy agency for US and international families. Trusted IVF, legal, and insurance coordination with bilingual, private care throughout.",
-      "keywords": "surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process"
+      "keywords": "surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate,surrogacy costs,surrogacy process"
     },
     "commitmentSection": {
       "title": "Professionalism. Transparency. Warmth. Protection.",
@@ -61,8 +61,8 @@
       "title1": "From Budget Planning to Baby's Arrival",
       "title2": "Surrogacy Costs for Intended Parents",
       "description1": "Surrogacy costs vary based on embryo status, clinic choice, and insurance needs.",
-      "description2": "At Yunda, most intended parents can expect to spend $150,000 to $200,000 USD, which includes:",
-      "item1": "$61,000–$70,000+ USD in surrogate compensation and pregnancy support",
+      "description2": "The 2026 customer estimate lists an estimated program total of $142,750 USD, which includes:",
+      "item1": "$50,000 in base surrogate compensation plus an estimated $11,000 benefits/support package",
       "item2": "Legal, medical, and insurance-related third-party costs",
       "item3": "All payments are securely managed through a milestone-based escrow account",
       "description4": "We provide every client with a clear cost breakdown and personalized financial planning, so you can move forward with confidence and focus on welcoming your baby."
@@ -83,7 +83,7 @@
       "surrogateIntro": "Thinking about becoming a surrogate? You deserve a clear, respectful process. At Yunda, the journey continues with personalized support at every stage, including:",
       "surrogateBullet1": "Matching with intended parents you choose",
       "surrogateBullet2": "Legal coordination and embryo transfer support",
-      "surrogateBullet3": "Rewarding compensation starting at $61,000+",
+      "surrogateBullet3": "$50,000 base compensation plus an estimated $11,000 support benefits",
       "surrogateOutro": "You will also receive dedicated support throughout the journey, including a case coordinator, nutrition and counseling support, and daily check-ins—so you can move forward with confidence, clarity, and care.",
       "surrogateCta": "Explore Surrogacy Options"
     },
@@ -186,7 +186,7 @@
   "parentsPrice": {
     "detailedBreakdown": {
       "agencyFees": {
-        "title": "Surrogacy Agency Fees",
+        "title": "Program Management & Service Support",
         "amount": "$50,000",
         "description1": "End-to-end bilingual journey coordination",
         "description2": "Surrogate recruitment, screening, and profile preparation",
@@ -197,7 +197,7 @@
       },
       "screeningAdmin": {
         "title": "Screening & Admin",
-        "amount": "$5,000",
+        "amount": "Itemized estimate",
         "description1": "Background, medical, and psychological screening",
         "description2": "Coordination with IVF clinic and records submission",
         "description3": "Translation and cross-border document handling",
@@ -207,7 +207,7 @@
       },
       "surrogateCompensation": {
         "title": "Surrogate Compensation",
-        "amount": "$50,000+",
+        "amount": "$50,000 + estimated $11,000 support",
         "description1": "Monthly allowance",
         "description2": "Maternity clothing",
         "description3": "Local travel and childcare",
@@ -217,11 +217,11 @@
       },
       "legalFees": {
         "title": "Legal Fees",
-        "amount": "~$6,500",
+        "amount": "Itemized estimate",
         "description1": "Surrogacy agreement drafting and review",
         "description2": "Remote or in-person notarization",
         "description3": "Legal representation throughout the journey",
-        "description4": "Pre-Birth Order (parentage rights): ~$6,500",
+        "description4": "Prenatal parentage legal service / PBO: $3,500",
         "description5": "",
         "description6": ""
       },
@@ -237,13 +237,13 @@
       },
       "additionalCosts": {
         "title": "Additional Costs (If Applicable)",
-        "amount": "~$6,500",
-        "description1": "Twin pregnancy: $15,000",
+        "amount": "Case-dependent",
+        "description1": "Multiples: $10,000",
         "description2": "C-section: $5,000",
         "description3": "Bedrest childcare support",
-        "description4": "Breast milk pumping: $250/week",
-        "description5": "Special medical needs (e.g. hysteroscopy): $2,500–$5,000",
-        "description6": "HIV-positive intended parent coverage: $10,000"
+        "description4": "Breast milk pumping: $300/week",
+        "description5": "Special medical procedures follow the customer estimate and case requirements",
+        "description6": "Additional medical or insurance items are case-dependent"
       }
     },
     "additionalTerms": {
@@ -270,7 +270,7 @@
       "insuranceNotes": {
         "title": "Surrogate Insurance Notes:",
         "description1": "If the surrogate qualifies during open enrollment, we will present a selection of compliant medical plans for your review and purchase",
-        "description2": "If insurance is not available, we will help arrange cash-pay options with the OB and hospital; common estimates include ~$5,000 for OB care and ~$8,000 for hospital delivery",
+        "description2": "If insurance is not available, we will help coordinate cash-pay options with the OB and hospital; actual costs depend on the case and third-party billing",
         "description3": "If the surrogate has employer-provided insurance, we will still arrange for a secondary policy to ensure full pregnancy coverage",
         "description4": "Note: Neither primary nor secondary insurance can guarantee 100% coverage — you are responsible for any deductibles, co-pays, or out-of-pocket expenses not reimbursed by insurance"
       }
@@ -846,7 +846,7 @@
   "surrogacyBenefit": {
     "heroSection": {
       "title": "Compensation & Benefits for Surrogates",
-      "description": "At Yunda Surrogacy, we believe surrogacy is a profound and life-changing journey — one that deserves meaningful rewards and deep respect. As a Yunda surrogate, you'll receive a clear, personalized, and compassionate compensation plan tailored just for you. Your package is designed based on your experience, where you live, and whether you have eligible health insurance. We proudly partner with SeedTrust (the nation's leading escrow service) and ART Risk (the premier surrogacy insurance provider) to ensure every payment is made safely, on time, and with your protection and peace of mind at the center",
+      "description": "At Yunda Surrogacy, we believe surrogacy is a profound and life-changing journey — one that deserves meaningful rewards and deep respect. As a Yunda surrogate, you'll receive a clear, personalized, and compassionate compensation plan tailored just for you. Your package is designed based on your experience, where you live, and whether you have eligible health insurance. Independent third-party providers may support trust administration and insurance coordination; provider scope follows the written agreement and case requirements",
       "button": "BECOME A SURROGATE"
     },
     "familySupportSection": {
@@ -862,17 +862,17 @@
     "compensationSection": {
       "title": "Your Surrogate Compensation Package May Include:",
       "items": {
-        "item1": "Personalized Base Compensation: $61,000 to $70,000+ for first-time surrogates, paid monthly starting from confirmed heartbeat",
+        "item1": "Base Compensation: $50,000, paid under the written agreement after the applicable milestone",
         "item2": "Monthly Allowance: Covers transportation, meals, childcare, and miscellaneous expenses",
         "item3": "IVF Medication Stipend: One-time payment at medication start",
         "item4": "Embryo Transfer Compensation: Per transfer procedure",
         "item5": "Pregnancy & Recovery Support: Clothing, nutrition, and recovery benefits",
         "item6": "Special Procedure Compensation: $500–$5,000 depending on procedure",
-        "item7": "Multiples Bonus: $10,000+ for twins or triplets, paid in installments",
-        "item8": "C-section Compensation: $5,000 for first, $3,000 for repeat",
+        "item7": "Multiples Bonus: $10,000, if applicable under the agreement",
+        "item8": "C-section Compensation: $5,000 if applicable",
         "item9": "Breast Milk Compensation: $300/week if agreed",
-        "item10": "Lost Wages: Up to $10,000 for surrogate and partner if required",
-        "item11": "Housekeeping Support: Up to $200/week, max $3,000",
+        "item10": "Lost wages: based on approved documentation and the written agreement",
+        "item11": "Housekeeping support: $1,200 from week 28, reimbursed with receipts",
         "item12": "Insurance Coverage or Reimbursement",
         "item13": "Life Insurance: $250,000 for surrogate, $100,000 for intended parents"
       }
@@ -903,71 +903,126 @@
   },
   "surrogacyReferral": {
     "heroSection": {
-      "title": "Surrogate Referral Program",
-      "description": "Refer a qualified potential surrogate to Yunda and earn milestone rewards up to $5,000 for each successful referral.",
-      "button": "CONTACT US"
+      "title": "Help a family grow.\nEarn up to $5,000.",
+      "eyebrow": "Surrogate Referral Program",
+      "description": "Refer an eligible gestational carrier to Yunda Surrogacy. Standard referrals receive $5,000 in California or $3,000 in other qualifying states after the referred carrier completes final legal clearance and the program requirements are met.",
+      "button": "Refer a Friend",
+      "imageAlt": "Two women standing together with flowers, including a pregnant woman"
+    },
+    "shareSection": {
+      "eyebrow": "Share the opportunity",
+      "title": "Send the Surrogate Application",
+      "description": "Share the Yunda Surrogacy application link. The link never carries your name or any other personal information.",
+      "linkLabel": "Application link",
+      "copied": "Link copied",
+      "copyButton": "Copy Surrogate Application Link",
+      "emailButton": "Email the Application Link",
+      "requirementsButton": "Review Surrogate Requirements",
+      "notice": "The applicant must enter your first and last name in the “Who referred you?” field on her initial application. Yunda Surrogacy must receive that information with the initial application for the referral to qualify.\n\nSharing a link does not register a referral on its own.",
+      "emailSubject": "Yunda Surrogacy surrogate application",
+      "emailBody": "Here is the Yunda Surrogacy surrogate application link:"
     },
     "whyMattersSection": {
       "title": "Why Your Referral Matters",
       "description": "You're not just helping a friend begin a powerful and meaningful journey—you're helping another family finally hold the baby they've dreamed of. And we'll thank you for it, every step of the way."
     },
     "earningsSection": {
-      "title": "How Much Can You Earn?",
-      "tableHeaders": {
-        "milestone": "Milestone",
-        "bonus": "Your Bonus"
-      },
-      "milestones": {
-        "accepted": "Surrogate is officially accepted by Yunda",
-        "screening": "Passes medical and psychological screening",
-        "matching": "Matches with Intended Parents",
-        "transfer": "Embryo Transfer is completed",
-        "pregnancy": "Pregnancy confirmed with fetal heartbeat"
-      },
-      "bonuses": {
-        "accepted": "$500",
-        "screening": "$1,000",
-        "matching": "$1,500",
-        "transfer": "$1,000",
-        "pregnancy": "$1,000"
-      },
-      "totalTitle": "Total Possible Referral Reward: $5,000",
-      "terms1": "Bonuses are paid within 14 business days after each milestone.",
-      "terms2": "You must be listed as the referral in your friend's initial application."
+      "title": "When is the reward paid?",
+      "rewards": [
+        {
+          "amount": "$5,000",
+          "label": "Standard referrals for eligible gestational carriers in California"
+        },
+        {
+          "amount": "$3,000",
+          "label": "Standard referrals for eligible gestational carriers in all other qualifying states"
+        }
+      ],
+      "condition": "After the referred surrogate completes final legal clearance and the referral program requirements are met.",
+      "terms": "The referrer must be named on her initial application. A referral alone does not guarantee qualification or payment."
+    },
+    "processSection": {
+      "title": "How the referral works",
+      "steps": [
+        {
+          "title": "Share the opportunity",
+          "description": "Introduce a friend to Yunda Surrogacy and help her explore the surrogate requirements."
+        },
+        {
+          "title": "She applies",
+          "description": "She includes your name on her initial application so Yunda Surrogacy can identify the referral."
+        },
+        {
+          "title": "Screening and legal clearance",
+          "description": "She completes the required screening, matching and final legal clearance."
+        },
+        {
+          "title": "Receive up to $5,000",
+          "description": "The standard reward is $5,000 in California or $3,000 in other qualifying states after final legal clearance and the program requirements are met."
+        }
+      ]
     },
     "eligibilitySection": {
-      "title": "Who Makes a Great Surrogate?",
-      "intro": "We're looking for women who are:",
-      "requirements": {
-        "age": "Age 21–39",
-        "residence": "U.S. residents",
-        "pregnancy": "Have had at least one healthy pregnancy",
-        "bmi": "BMI under 32",
-        "lifestyle": "Non-smokers, drug-free",
-        "support": "Emotionally supported by family or friends",
-        "health": "No serious pregnancy complications or chronic health issues"
-      }
+      "eyebrow": "Who to refer",
+      "title": "Who Should You Refer?",
+      "intro": "A promising referral has a healthy pregnancy history, support from family or friends, and a genuine interest in helping another family. Qualification depends on the full application and professional screening process.",
+      "link": "Review Surrogate Requirements",
+      "requirements": [
+        "Has had at least one healthy pregnancy",
+        "Meets Yunda’s age, residency and BMI requirements",
+        "Is a non-smoker and drug-free",
+        "Has emotional support from family or friends",
+        "Has no serious pregnancy complications or chronic health issues",
+        "Is willing to complete screening and understands that final qualification requires professional review"
+      ]
     },
     "compensationSection": {
       "title": "What Will Your Friend Receive?",
-      "benefits": {
-        "base": "$61,000–$70,000+ in base compensation",
-        "allowances": "Monthly allowances (transportation, food, childcare)",
-        "medication": "Medication and embryo transfer stipends",
-        "surgery": "C-section/special surgery bonuses",
-        "breastmilk": "Breast milk compensation: $300/week (if applicable)",
-        "bedrest": "Wage protection for bed rest (up to $10,000)",
-        "insurance": "Insurance coverage or review",
-        "lifeInsurance": "Life insurance up to $250,000",
-        "support": "One-on-one support, legal & emotional care",
-        "processing": "All compensation is processed securely through SeedTrust"
-      }
+      "base": "$50,000 in base compensation + estimated $11,000 support benefits",
+      "benefits": [
+        "Monthly allowances (transportation, food, childcare)",
+        "Medication and embryo transfer stipends",
+        "C-section / special surgery bonuses",
+        "Breast milk compensation: $300/week (if applicable)",
+        "Wage-loss support for bed rest: based on approved documentation and the written agreement",
+        "Insurance coverage or review",
+        "Life insurance up to $250,000",
+        "One-on-one support, legal & emotional care"
+      ],
+      "processing": "Compensation is processed through a third-party trust account according to the written agreement.",
+      "link": "Explore Compensation & Benefits"
+    },
+    "faqSection": {
+      "title": "Your referral questions, answered",
+      "items": [
+        {
+          "question": "How much is the referral reward?",
+          "answer": "$5,000 for standard referrals of eligible gestational carriers in California, or $3,000 for standard referrals in other qualifying states. The reward is paid after the referred carrier completes final legal clearance and the program requirements are met."
+        },
+        {
+          "question": "When can I receive it?",
+          "answer": "The reward becomes payable only after the referred surrogate completes final legal clearance and the referral program requirements are met. Contact Yunda Surrogacy for payment arrangements; submitting an application alone does not trigger a payment."
+        },
+        {
+          "question": "How is my referral recorded?",
+          "answer": "Your name must appear on the referred surrogate’s initial application. Ask her to include it when she first applies."
+        },
+        {
+          "question": "Does a referral guarantee approval?",
+          "answer": "No. Each applicant must complete the application and professional screening process. If the final legal clearance and program requirements are not met, the referral reward is not payable."
+        }
+      ]
     },
     "confidenceSection": {
-      "title": "",
-      "description": "Over a hundred incredible women have already partnered with Yunda to help others build their families—and in doing so, they've also experienced personal growth and fulfillment. A referral is a gesture of belief in her—and our thank you is a promise to you.",
-      "button": "CONTACT US"
-    }
+      "title": "A small introduction.\nA meaningful beginning.",
+      "description": "Know someone who may be interested? Speak with Yunda Surrogacy about the referral program and help her take an informed first step.",
+      "button": "Contact Yunda Surrogacy"
+    },
+    "meta": {
+      "title": "Surrogate Referral Program – Up to $5,000 Reward – Yunda Surrogacy",
+      "description": "Refer an eligible gestational carrier to Yunda Surrogacy and earn $5,000 in California or $3,000 in other qualifying states after final legal clearance and program requirements are met."
+    },
+    "updated": "Updated October 22, 2026"
   },
   "footer": {
     "sections": {
@@ -1644,7 +1699,7 @@
   "blog": {
     "meta": {
       "title": "Surrogacy Knowledge Blog - Yunda Surrogacy | Professional Surrogacy Information & Experience Sharing",
-      "description": "Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogate mothers learn about surrogacy.",
+      "description": "Yunda Surrogacy knowledge blog sharing professional surrogacy information, success stories, medical knowledge, legal regulations, and more to help intended parents and surrogates learn about surrogacy.",
       "keywords": "surrogacy blog,surrogacy information,surrogacy knowledge,surrogacy experience,surrogacy cases,surrogacy law,IVF information"
     },
     "title": "Blog",
@@ -1708,10 +1763,10 @@
     },
     "hero": {
       "title": "Where Professional Commitment Meets Heartfelt Care",
-      "paragraph1": "At Yunda Surrogacy, we are more than a surrogacy agency—we are your dedicated partners on a deeply human journey. Our team brings together expertise in reproductive law, fertility coordination, clinical advocacy, and international case management—with something just as important: personal experience.",
-      "paragraph2": "Many of us are parents through surrogacy, former surrogates, or lifelong advocates for family-building. We've sat in waiting rooms. We've held hands during embryo transfers. We've felt the anticipation, the anxiety, and the indescribable joy. That's why we don't just work in this field—we live it.",
-      "paragraph3": "From your first consultation to the moment a baby is placed into loving arms, we ensure every step is handled with professionalism, empathy, and clarity. Whether you're a surrogate offering the gift of life or an intended parent dreaming of a family,",
-      "highlight": "Yunda walks beside you—with honesty, respect, and unwavering dedication."
+      "paragraph1": "At Yunda Surrogacy, we combine expertise in reproductive law and global case management with personal experience. As former surrogates and parents through surrogacy, we’ve lived every step of this journey.",
+      "paragraph2": "From your first consultation to holding your newborn, Yunda walks beside you with professionalism, empathy, and unwavering dedication.",
+      "paragraph3": "",
+      "highlight": ""
     },
     "team": {
       "founder": "Founder & CEO",
@@ -1762,16 +1817,6 @@
           "paragraph3": "Clara is committed to building a client experience defined by trust, clear communication, and attention to detail. She believes that every family's journey is unique and takes pride in helping intended parents feel informed, supported, and confident as they navigate one of the most meaningful experiences of their lives."
         }
       },
-      "moonLiang": {
-        "name": "Moon Liang",
-        "title": "Surrogate Services Manager",
-        "imageAlt": "Portrait of Moon Liang, Surrogate Services Manager at Yunda Surrogacy",
-        "bio": {
-          "paragraph1": "Moon Liang holds dual Master's degrees from Columbia University in Quantitative Methods in the Social Sciences and Public Administration. Her background in analytics, operations, and strategic planning allows her to combine thoughtful decision-making with a compassionate, people-centered approach to surrogacy.",
-          "paragraph2": "As Director of Surrogate Services at Yunda Surrogacy, Moon leads the recruitment, screening, and matching of gestational carriers, working closely with intended parents, fertility clinics, and agency partners to ensure every journey begins with the right foundation. She is committed to building a strong and supportive surrogate community while maintaining the highest standards of professionalism, transparency, and care.",
-          "paragraph3": "Fluent in both English and Mandarin, Moon is passionate about creating meaningful connections between intended parents and gestational carriers. She believes that successful surrogacy begins with trust, clear communication, and genuine relationships, and is dedicated to helping every family move forward with confidence from the very first step."
-        }
-      },
       "celiaChen": {
         "name": "Celia Chen",
         "title": "Case Manager",
@@ -1780,16 +1825,6 @@
           "paragraph1": "Celia earned her Bachelor's degree from the University of California, San Diego and her Master's degree from the University of Southern California. She is passionate about helping intended parents navigate the surrogacy journey with confidence, compassion, and clear communication.",
           "paragraph2": "At Yunda Surrogacy, Celia serves as the primary point of contact for intended parents throughout their journey. She works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance specialists, and other trusted partners to guide each case from matching and medical screening through legal clearance, embryo transfer, pregnancy, and delivery.",
           "paragraph3": "Celia believes that every surrogacy journey is unique and deserves personalized care. She is committed to building trusted relationships with intended parents and surrogates, providing thoughtful guidance and timely support throughout the process. The greatest reward in her work is celebrating alongside families as they welcome the child they have long hoped for."
-        }
-      },
-      "kristenPilling": {
-        "name": "Kristen Pilling",
-        "title": "Intended Parents Case Manager",
-        "imageAlt": "Portrait of Kristen Pilling, Intended Parents Case Manager at Yunda Surrogacy",
-        "bio": {
-          "paragraph1": "Kristen Pilling is a bilingual Intended Parents Case Manager at Yunda Surrogacy who is fluent in English and Mandarin. With nearly five years of experience in the surrogacy industry, she has supported domestic and international intended parents through every stage of their journeys. She is passionate about providing responsive, personalized guidance and helping each family feel informed, reassured, and supported along the way.",
-          "paragraph2": "Kristen's professional background includes intended parent and gestational carrier case management, matching coordination, insurance management, and medical and legal process support. She works closely with gestational carriers, fertility clinics, reproductive attorneys, escrow providers, insurance professionals, and other trusted partners to help each journey progress smoothly—from matching and medical screening through legal clearance, embryo transfer, pregnancy, and delivery.",
-          "paragraph3": "Known for being organized, compassionate, and attentive to detail, Kristen builds trusting relationships through clear and consistent communication. She understands that every surrogacy journey is unique and takes pride in helping intended parents and gestational carriers feel informed, supported, and genuinely cared for throughout the experience."
         }
       },
       "angelaNavarro": {
@@ -1828,7 +1863,8 @@
         "our-team": "Our Team",
         "asrm": "ASRM",
         "seeds": "SEEDS",
-        "mhb": "MHB"
+        "mhb": "MHB",
+        "families-out-loud": "Families Out Loud"
       },
       "viewMore": "View More",
       "viewing": "Viewing",

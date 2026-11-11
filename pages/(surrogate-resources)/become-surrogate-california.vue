@@ -18,7 +18,7 @@ const pageTitle = computed(() =>
 )
 const pageDescription = computed(() =>
   tt(
-    'Become a surrogate mother in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
+    'Become a surrogate in California with Yunda Surrogacy. Enjoy safe, legal, and rewarding gestational surrogacy, full support.',
     '在 Yunda 成为加州代孕妈妈，享受安全、合法、值得信赖的妊娠代孕与全程支持。',
   ),
 )
@@ -37,7 +37,7 @@ useHead(() => ({
     {
       property: 'og:description',
       content: tt(
-        'Learn California surrogate mother requirements, surrogate pay ranges and application steps. Yunda Surrogacy supports Southern California surrogates with full legal and medical guidance..',
+        'Learn California surrogate requirements, surrogate pay ranges and application steps. Yunda Surrogacy supports Southern California surrogates with full legal and medical guidance..',
         '了解加州代孕妈妈要求、补偿区间与申请步骤。Yunda 为南加州代孕妈妈提供完整的法律与医疗支持。',
       ),
     },
@@ -48,7 +48,7 @@ useHead(() => ({
     {
       name: 'keywords',
       content: tt(
-        'surrogate mother California, gestational surrogacy California, surrogacy agency California, surrogate compensation California',
+        'surrogate California, gestational surrogacy California, surrogacy agency California, surrogate compensation California',
         '加州代孕妈妈, 妊娠代孕 加州, 加州代孕机构, 加州代孕补偿',
       ),
     },
@@ -69,14 +69,14 @@ const faqs = computed(() => [
   {
     question: tt('Is surrogacy legal in California?', '在加州代孕合法吗？'),
     answer: tt(
-      'Yes, surrogacy in California is completely legal and highly protected by state law. California is known as one of the most surrogate-friendly states in the U.S. Both gestational surrogacy and compensated surrogacy are recognized and supported here. The law ensures that every surrogate mother\'s rights are clear and respected, and that intended parents become the baby\'s legal parents through a court order before birth. This legal foundation makes California one of the safest places in the world to become a surrogate.',
+      'Yes, surrogacy in California is completely legal and highly protected by state law. California is known as one of the most surrogate-friendly states in the U.S. Both gestational surrogacy and compensated surrogacy are recognized and supported here. The law ensures that every surrogate\'s rights are clear and respected, and that intended parents become the baby\'s legal parents through a court order before birth. This legal foundation makes California one of the safest places in the world to become a surrogate.',
       '是的，加州代孕完全合法，并且受到州法律强有力的保护。加州被认为是美国最友好的代孕州之一，妊娠代孕与有偿代孕均被认可并受到支持。法律确保代孕妈妈的权利清晰、受尊重，并通过产前法院裁定确认意向父母的法定亲权，使加州成为全球最安全的代孕地区之一。',
     ),
   },
   {
     question: tt('How much do surrogates get paid in California?', '加州代孕妈妈能获得多少补偿？'),
     answer: tt(
-      'Compensation for surrogate mothers in California depends on experience, location, and personal circumstances. Most surrogates receive total compensation in the range of $60,000 to $80,000, with additional allowances for maternity needs, travel, and childcare. Yunda Surrogacy ensures that every surrogate\'s pay is transparent, fair, and protected by legal contracts and secure trust accounts. The financial side is handled carefully, so you can focus on your health and the joy of the journey.',
+      'Compensation for surrogates in California depends on experience, location, and personal circumstances. Most surrogates receive total compensation in the range of $60,000 to $80,000, with additional allowances for maternity needs, travel, and childcare. Yunda Surrogacy ensures that every surrogate\'s pay is transparent, fair, and protected by legal contracts and secure trust accounts. The financial side is handled carefully, so you can focus on your health and the joy of the journey.',
       '补偿金额取决于经验、地区和个人情况。大多数代孕妈妈的总补偿在 $60,000–$80,000 区间，并另有孕期需求、出行与托育补贴。Yunda 确保每位代孕妈妈的补偿透明、公平，并由法律合同与托管账户保障，让你可以专注健康和旅程中的喜悦。',
     ),
   },
@@ -136,7 +136,7 @@ const applicationSteps = computed(() => [
   {
     title: tt('Quick eligibility review', '快速资格审核'),
     description: tt(
-      'Our team reviews your answers against California surrogate mother requirements and schedules a short call if you qualify.',
+      'Our team reviews your answers against California surrogate requirements and schedules a short call if you qualify.',
       '团队会对照加州代孕妈妈要求审核资料，符合条件会安排简短电话沟通。',
     ),
   },
@@ -379,7 +379,7 @@ onUnmounted(() => {
       <div class="container mx-auto max-w-6xl px-4">
         <div class="max-w-none text-center prose prose-lg">
           <p class="mb-8 text-xl text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('As a surrogate mother, you open the door to someone\'s dream of parenthood. You bring hope, joy, and life into a story that might not exist without you.', '作为代孕妈妈，你为他人打开成为父母的梦想之门。你带来希望、喜悦与生命，让原本可能不存在的故事得以发生。') }}
+            {{ tt('As a surrogate, you open the door to someone\'s dream of parenthood. You bring hope, joy, and life into a story that might not exist without you.', '作为代孕妈妈，你为他人打开成为父母的梦想之门。你带来希望、喜悦与生命，让原本可能不存在的故事得以发生。') }}
           </p>
           <p class="mb-8 text-lg text-[var(--primary-brown)] leading-relaxed">
             {{ tt('At Yunda Surrogacy, we make sure every surrogate feels respected, supported, and protected. California is one of the most surrogate-friendly states in the U.S., offering strong legal protection and excellent medical care. Here, you can safely begin your surrogacy journey with confidence.', '在 Yunda，我们确保每位代孕妈妈都被尊重、支持与保护。加州是美国最友好的代孕州之一，拥有强大的法律保障与优质医疗。你可以在这里安心开启代孕旅程。') }}
@@ -388,7 +388,7 @@ onUnmounted(() => {
             {{ tt('Our team walks beside every woman who decides to become a surrogate in California. From the first call to the moment a baby arrives, we make sure you feel valued and cared for. Many surrogates say the experience changes their lives — not only because of the financial rewards but also because of the deep emotional fulfillment that comes from helping another family grow.', '我们陪伴每一位选择在加州成为代孕妈妈的女性。从第一通电话到宝宝出生，我们确保你被珍视与关怀。许多代孕妈妈表示，这段经历改变了她们的人生——不仅因为经济回报，更因为帮助他人家庭成长带来的深层情感满足。') }}
           </p>
           <p class="text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('If you\'ve ever felt called to do something meaningful, this may be the moment. Becoming a surrogate mother lets you share your strength, kindness, and heart in a way few others can.', '如果你一直渴望做一件有意义的事，也许现在就是契机。成为代孕妈妈，让你以独特的方式分享力量、善意与真心。') }}
+            {{ tt('If you\'ve ever felt called to do something meaningful, this may be the moment. Becoming a surrogate lets you share your strength, kindness, and heart in a way few others can.', '如果你一直渴望做一件有意义的事，也许现在就是契机。成为代孕妈妈，让你以独特的方式分享力量、善意与真心。') }}
           </p>
         </div>
       </div>
@@ -399,7 +399,7 @@ onUnmounted(() => {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
           <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
-            {{ tt('What Is Surrogacy and Who Can Become a Surrogate Mother?', '什么是代孕？谁可以成为代孕妈妈？') }}
+            {{ tt('What Is Surrogacy and Who Can Become a Surrogate?', '什么是代孕？谁可以成为代孕妈妈？') }}
           </h2>
         </div>
 
@@ -413,7 +413,7 @@ onUnmounted(() => {
               {{ tt('Surrogacy means carrying a baby for someone who cannot do it on their own. In gestational surrogacy, which is the model used in California, the surrogate carries a baby created from the intended parents’ or donors’ embryos and is not genetically related to the child.', '代孕是为无法自行怀孕的人承担孕育与分娩的过程。在加州采用的是妊娠代孕模式，代孕妈妈怀孕的胚胎来自意向父母或捐赠者，与孩子没有遗传关系。') }}
             </p>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('California is known for leading the way in gestational surrogacy. The process is well-supported by experienced fertility specialists, legal experts, and caring surrogacy agencies. This makes the entire journey smoother and safer for every surrogate mother.', '加州在妊娠代孕领域处于领先地位，流程由经验丰富的生育专家、法律顾问和专业机构共同支持，让每位代孕妈妈的旅程更顺畅、更安全。') }}
+              {{ tt('California is known for leading the way in gestational surrogacy. The process is well-supported by experienced fertility specialists, legal experts, and caring surrogacy agencies. This makes the entire journey smoother and safer for every surrogate.', '加州在妊娠代孕领域处于领先地位，流程由经验丰富的生育专家、法律顾问和专业机构共同支持，让每位代孕妈妈的旅程更顺畅、更安全。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
               {{ tt('When you become a surrogate in California, you can expect clear communication, medical guidance, and emotional support every step of the way. Many surrogates describe this as one of the most meaningful experiences of their lives — a chance to help another family while doing something they genuinely love.', '在加州成为代孕妈妈，你会获得清晰沟通、医疗指导与情感支持。许多代孕妈妈形容这是一生中最有意义的经历之一——既帮助他人，也做自己真正愿意做的事。') }}
@@ -432,7 +432,7 @@ onUnmounted(() => {
               {{ tt('Beyond the laws, California also provides outstanding fertility care. With advanced medical centers, supportive surrogacy professionals, and a diverse community of experienced surrogates, the environment here is ideal for this life-changing journey.', '除了法律保障，加州还拥有卓越的生殖医疗体系。先进的医疗中心、专业的代孕团队与经验丰富的代孕社区，共同营造出最适合这段人生旅程的环境。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('For many women, becoming a surrogate mother in California means joining a warm, supportive network — one that values compassion, respect, and trust. You\'re not just helping others have a child; you\'re becoming part of a community that celebrates the beauty of giving life.', '对许多女性来说，在加州成为代孕妈妈意味着加入一个温暖、互相支持的群体——这里重视善意、尊重与信任。你不仅是在帮助他人拥有孩子，更是在加入一个珍视生命与奉献的社区。') }}
+              {{ tt('For many women, becoming a surrogate in California means joining a warm, supportive network — one that values compassion, respect, and trust. You\'re not just helping others have a child; you\'re becoming part of a community that celebrates the beauty of giving life.', '对许多女性来说，在加州成为代孕妈妈意味着加入一个温暖、互相支持的群体——这里重视善意、尊重与信任。你不仅是在帮助他人拥有孩子，更是在加入一个珍视生命与奉献的社区。') }}
             </p>
           </div>
         </div>
@@ -461,10 +461,10 @@ onUnmounted(() => {
       <div class="container mx-auto max-w-7xl px-4">
         <div class="mb-16 text-center">
           <h2 class="mb-6 text-4xl text-[var(--yunda-bark)] font-bold md:text-5xl" >
-            {{ tt('Why Become a Surrogate Mother with Yunda Surrogacy', '为什么选择 Yunda 成为代孕妈妈') }}
+            {{ tt('Why Become a Surrogate with Yunda Surrogacy', '为什么选择 Yunda 成为代孕妈妈') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('Choosing to become a surrogate in California is a big decision — one that deserves care, trust, and the right support system. At Yunda Surrogacy, we believe every surrogate mother should feel respected, valued, and empowered throughout her journey.', '在加州成为代孕妈妈是一项重要决定，值得被认真对待、被信任并获得合适的支持体系。Yunda 相信每位代孕妈妈在旅程中都应被尊重、被认可并充满力量。') }}
+            {{ tt('Choosing to become a surrogate in California is a big decision — one that deserves care, trust, and the right support system. At Yunda Surrogacy, we believe every surrogate should feel respected, valued, and empowered throughout her journey.', '在加州成为代孕妈妈是一项重要决定，值得被认真对待、被信任并获得合适的支持体系。Yunda 相信每位代孕妈妈在旅程中都应被尊重、被认可并充满力量。') }}
           </p>
         </div>
 
@@ -480,10 +480,10 @@ onUnmounted(() => {
               {{ tt('Emotional Rewards and Fair Surrogate Pay', '情感回报与公平补偿') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Alongside emotional fulfillment, surrogate pay in California reflects the time, risk and commitment you invest. Surrogacy changes lives — not just for the families you help but also for you as a surrogate mother. Many women say it\'s one of the most fulfilling things they\'ve ever done.', '除了情感满足，加州代孕补偿也体现了你投入的时间、风险与承诺。代孕会改变人生——不仅是你帮助的家庭，也包括你自己。许多女性说，这是她们做过最有意义的事情之一。') }}
+              {{ tt('Alongside emotional fulfillment, surrogate pay in California reflects the time, risk and commitment you invest. Surrogacy changes lives — not just for the families you help but also for you as a surrogate. Many women say it\'s one of the most fulfilling things they\'ve ever done.', '除了情感满足，加州代孕补偿也体现了你投入的时间、风险与承诺。代孕会改变人生——不仅是你帮助的家庭，也包括你自己。许多女性说，这是她们做过最有意义的事情之一。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Alongside emotional fulfillment, surrogacy offers strong financial benefits. In California, surrogate mothers receive compensation that reflects their commitment, time, and dedication.', '在情感满足之外，代孕也提供稳健的经济回报。在加州，代孕妈妈的补偿与她们的投入、时间和付出相匹配。') }}
+              {{ tt('Alongside emotional fulfillment, surrogacy offers strong financial benefits. In California, surrogates receive compensation that reflects their commitment, time, and dedication.', '在情感满足之外，代孕也提供稳健的经济回报。在加州，代孕妈妈的补偿与她们的投入、时间和付出相匹配。') }}
             </p>
           </div>
 
@@ -498,7 +498,7 @@ onUnmounted(() => {
               {{ tt('A Supportive and Ethical Agency', '值得信赖且合规的机构') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Not every agency treats surrogate mothers the same way. At Yunda Surrogacy, our focus is always on your well-being. We follow strict ethical standards to ensure fairness, safety, and open communication.', '并非所有机构都以同样方式对待代孕妈妈。Yunda 始终把你的福祉放在首位，并遵循严格的伦理标准，确保公平、安全与坦诚沟通。') }}
+              {{ tt('Not every agency treats surrogates the same way. At Yunda Surrogacy, our focus is always on your well-being. We follow strict ethical standards to ensure fairness, safety, and open communication.', '并非所有机构都以同样方式对待代孕妈妈。Yunda 始终把你的福祉放在首位，并遵循严格的伦理标准，确保公平、安全与坦诚沟通。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
               {{ tt('You\'ll never feel like "just a number." You\'ll have a dedicated coordinator who knows your name, understands your needs, and keeps in touch with you every week.', '你不会被当成“编号”。你将拥有专属协调员，了解你的需求，并每周保持联系。') }}
@@ -516,7 +516,7 @@ onUnmounted(() => {
               {{ tt('A Journey Filled with Meaning', '一段充满意义的旅程') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Being a surrogate mother is about more than carrying a child — it\'s about carrying hope, love, and courage. Every pregnancy is a promise fulfilled for someone who has been waiting for years.', '成为代孕妈妈不仅是孕育生命，更是传递希望、爱与勇气。每一次妊娠，都是为等待多年的家庭实现承诺。') }}
+              {{ tt('Being a surrogate is about more than carrying a child — it\'s about carrying hope, love, and courage. Every pregnancy is a promise fulfilled for someone who has been waiting for years.', '成为代孕妈妈不仅是孕育生命，更是传递希望、爱与勇气。每一次妊娠，都是为等待多年的家庭实现承诺。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
               {{ tt('Our team takes care of every detail so you can focus on what you do best — creating life. From your first call to the moment of delivery, we guide you with compassion, honesty, and expertise.', '我们处理所有细节，让你专注于最重要的事情——孕育生命。从第一通电话到分娩那一刻，我们以关怀、真诚与专业陪伴你。') }}
@@ -530,7 +530,7 @@ onUnmounted(() => {
             {{ tt('Ready to do something extraordinary?', '准备好做一件非凡的事吗？') }}
           </h3>
           <p class="mb-8 text-lg text-white">
-            {{ tt('Join Yunda Surrogacy and become a surrogate mother in California — where your kindness changes lives, and your courage inspires new beginnings.', '加入 Yunda，在加州成为代孕妈妈——你的善意改变生命，你的勇气开启新篇章。') }}
+            {{ tt('Join Yunda Surrogacy and become a surrogate in California — where your kindness changes lives, and your courage inspires new beginnings.', '加入 Yunda，在加州成为代孕妈妈——你的善意改变生命，你的勇气开启新篇章。') }}
           </p>
           <NuxtLink
             to="/be-surrogate"
@@ -649,7 +649,7 @@ onUnmounted(() => {
               {{ tt('Benefits Beyond Surrogate Pay', '超越补偿的福利') }}
             </h3>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Being a surrogate mother in California comes with much more than just pay. You gain access to top-tier medical care from some of the country\'s most experienced fertility specialists.', '在加州成为代孕妈妈，收获远不止补偿。你将获得顶尖生殖专家提供的高水平医疗照护。') }}
+              {{ tt('Being a surrogate in California comes with much more than just pay. You gain access to top-tier medical care from some of the country\'s most experienced fertility specialists.', '在加州成为代孕妈妈，收获远不止补偿。你将获得顶尖生殖专家提供的高水平医疗照护。') }}
             </p>
             <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
               {{ tt('At Yunda Surrogacy, every surrogate also enjoys personalized care — regular wellness check-ins, flexible scheduling, and 24/7 communication with your coordinator.', '在 Yunda，每位代孕妈妈都能享受个性化关怀——定期健康关怀、灵活排期与 24/7 协调员沟通。') }}
@@ -704,7 +704,7 @@ onUnmounted(() => {
             {{ tt('Surrogate Requirements: Who Qualifies to Become a Surrogate in California', '代孕要求：谁符合在加州成为代孕妈妈的条件') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('Becoming a surrogate mother in California is a special calling — one that takes love, strength, and a deep sense of purpose. California welcomes women who want to help others grow their families while building something meaningful for themselves.', '在加州成为代孕妈妈是一种特别的召唤，需要爱、力量与明确的目标感。加州欢迎那些希望帮助他人家庭成长、同时为自己创造意义的女性。') }}
+            {{ tt('Becoming a surrogate in California is a special calling — one that takes love, strength, and a deep sense of purpose. California welcomes women who want to help others grow their families while building something meaningful for themselves.', '在加州成为代孕妈妈是一种特别的召唤，需要爱、力量与明确的目标感。加州欢迎那些希望帮助他人家庭成长、同时为自己创造意义的女性。') }}
           </p>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
             {{ tt('We welcome surrogates from across Southern California and Northern California, including Los Angeles, Orange County, surrounding areas. If you’re unsure whether your city is covered, our team can confirm it in a short call.', '我们欢迎来自南加州与北加州的代孕妈妈，包括洛杉矶、橙县及周边地区。如不确定所在城市是否覆盖，我们可在简短电话中确认。') }}
@@ -751,7 +751,7 @@ onUnmounted(() => {
               {{ tt('Health and Emotional Screening', '健康与心理筛查') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('Every surrogate mother deserves full support — medically and emotionally. California requires thorough health evaluations before the surrogacy journey begins. This includes physical exams, OB/GYN records review, and sometimes additional fertility tests.', '每位代孕妈妈都应得到医疗与情感的完整支持。加州在代孕开始前要求全面健康评估，包括体检、产科记录审核，以及必要时的生育检查。') }}
+              {{ tt('Every surrogate deserves full support — medically and emotionally. California requires thorough health evaluations before the surrogacy journey begins. This includes physical exams, OB/GYN records review, and sometimes additional fertility tests.', '每位代孕妈妈都应得到医疗与情感的完整支持。加州在代孕开始前要求全面健康评估，包括体检、产科记录审核，以及必要时的生育检查。') }}
             </p>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
               {{ tt('Equally important is emotional readiness. We work with licensed counselors who talk with you about your motivation, expectations, and support network. This isn’t a test — it’s a conversation to make sure you feel confident and supported from the very first step.', '同样重要的是心理准备。我们与持证咨询师合作，与你沟通动机、期望与支持系统。这不是考试，而是一场帮助你从第一步就感到安心与被支持的交流。') }}
@@ -801,7 +801,7 @@ onUnmounted(() => {
             {{ tt('Your Support System: Legal, Medical, and Emotional Care', '你的支持系统：法律、医疗与情感关怀') }}
           </h2>
           <p class="mx-auto max-w-4xl text-lg text-[var(--primary-brown)] leading-relaxed">
-            {{ tt('When you become a surrogate in California, you deserve to feel safe, supported, and valued at every step. Yunda Surrogacy was built around one simple promise — to take care of our surrogate mothers like family.', '在加州成为代孕妈妈，你理应在每一步都感到安全、被支持、被珍视。Yunda 的核心承诺很简单——像家人一样照顾每位代孕妈妈。') }}
+            {{ tt('When you become a surrogate in California, you deserve to feel safe, supported, and valued at every step. Yunda Surrogacy was built around one simple promise — to take care of our surrogates like family.', '在加州成为代孕妈妈，你理应在每一步都感到安全、被支持、被珍视。Yunda 的核心承诺很简单——像家人一样照顾每位代孕妈妈。') }}
           </p>
         </div>
 
@@ -817,7 +817,7 @@ onUnmounted(() => {
               {{ tt('Legal Protection You Can Count On in California', '加州可靠的法律保障') }}
             </h3>
             <p class="mb-4 text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('California is the most surrogate-friendly state in the U.S., and its laws are clear and protective. From the start, every surrogate mother works with her own independent attorney, paid for by the intended parents.', '加州是美国最友好的代孕州，法律清晰且保护充分。从一开始，每位代孕妈妈都有独立律师代表，费用由意向父母承担。') }}
+              {{ tt('California is the most surrogate-friendly state in the U.S., and its laws are clear and protective. From the start, every surrogate works with her own independent attorney, paid for by the intended parents.', '加州是美国最友好的代孕州，法律清晰且保护充分。从一开始，每位代孕妈妈都有独立律师代表，费用由意向父母承担。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
               {{ tt('California\'s surrogacy laws allow for pre-birth orders, meaning legal parentage is established before the baby is born. This gives both you and the intended parents full clarity and protection.', '加州允许产前亲权裁定，这意味着宝宝出生前法律亲权已确定，让你和意向父母都清晰安心。') }}
@@ -856,7 +856,7 @@ onUnmounted(() => {
               {{ tt('The surrogacy journey is emotional — filled with joy, hope, and sometimes a few nerves. That\'s why emotional support is just as important as medical care.', '代孕旅程充满情感——有喜悦、有希望，也难免紧张。这就是为什么情感支持与医疗照护同样重要。') }}
             </p>
             <p class="text-[var(--primary-brown)] leading-relaxed">
-              {{ tt('At Yunda Surrogacy, every surrogate mother in California has access to licensed counselors and peer mentors throughout the process.', '在 Yunda，每位加州代孕妈妈都可在全程获得持证咨询师与同伴导师的支持。') }}
+              {{ tt('At Yunda Surrogacy, every surrogate in California has access to licensed counselors and peer mentors throughout the process.', '在 Yunda，每位加州代孕妈妈都可在全程获得持证咨询师与同伴导师的支持。') }}
             </p>
           </div>
         </div>
@@ -869,7 +869,7 @@ onUnmounted(() => {
           <div class="grid gap-8 md:grid-cols-2">
             <div>
               <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-                {{ tt('At Yunda Surrogacy, we combine California\'s strong legal foundation with our own personal approach. We listen. We care. We stay by your side from the first call to the last hug. Our mission is to make sure every surrogate mother feels protected, appreciated, and proud of her journey.', '在 Yunda，我们将加州坚实的法律基础与贴心服务结合。我们倾听、关心，并从第一通电话到最后的拥抱全程陪伴。我们的使命是让每位代孕妈妈都感到被保护、被肯定并为旅程自豪。') }}
+                {{ tt('At Yunda Surrogacy, we combine California\'s strong legal foundation with our own personal approach. We listen. We care. We stay by your side from the first call to the last hug. Our mission is to make sure every surrogate feels protected, appreciated, and proud of her journey.', '在 Yunda，我们将加州坚实的法律基础与贴心服务结合。我们倾听、关心，并从第一通电话到最后的拥抱全程陪伴。我们的使命是让每位代孕妈妈都感到被保护、被肯定并为旅程自豪。') }}
               </p>
               <p class="text-[var(--primary-brown)] leading-relaxed">
                 {{ tt('Surrogacy in California works so well because it\'s built on trust — between the surrogate, the agency, the medical team, and the intended parents. Yunda Surrogacy keeps that trust strong by offering clear communication, transparent compensation, and heartfelt gratitude for everything you do.', '加州代孕之所以顺利，是因为建立在代孕妈妈、机构、医疗团队与意向父母之间的信任之上。Yunda 通过清晰沟通、透明补偿以及真诚感谢来维系这份信任。') }}
@@ -877,7 +877,7 @@ onUnmounted(() => {
             </div>
             <div>
               <p class="mb-6 text-[var(--primary-brown)] leading-relaxed">
-                {{ tt('Becoming a surrogate mother in California isn\'t just about helping others — it\'s about being part of something bigger, something beautiful. With Yunda Surrogacy, you\'ll always have a strong support system, every step of the way.', '在加州成为代孕妈妈不仅是帮助他人，更是参与一件更伟大、更美好的事情。有 Yunda 陪伴，你在每一步都拥有强大的支持系统。') }}
+                {{ tt('Becoming a surrogate in California isn\'t just about helping others — it\'s about being part of something bigger, something beautiful. With Yunda Surrogacy, you\'ll always have a strong support system, every step of the way.', '在加州成为代孕妈妈不仅是帮助他人，更是参与一件更伟大、更美好的事情。有 Yunda 陪伴，你在每一步都拥有强大的支持系统。') }}
               </p>
               <div class="rounded-lg bg-[var(--yunda-petal)] p-6">
                 <h4 class="mb-3 text-lg text-[var(--yunda-bark)] font-semibold">

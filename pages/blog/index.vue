@@ -402,6 +402,7 @@ async function fetchBlogPageData(): Promise<BlogListResponse> {
     page: '1',
     limit: '2000',
     lang: blogApiLang.value,
+    cache_bust: 'dates-20260930-v1',
   })
 
   if (searchQuery.value.trim())
@@ -446,7 +447,7 @@ const {
   error,
   refresh: refreshBlogs,
 } = await useAsyncData<BlogListResponse>(
-  `blogs-page-v4-${blogApiLang.value}-${initialPage}`,
+  `blogs-page-v5-${blogApiLang.value}-${initialPage}`,
   fetchBlogPageData,
   {
     default: () => ({ blogs: [], pagination: { totalPages: 1, totalCount: 0 } }),

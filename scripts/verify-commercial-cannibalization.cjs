@@ -78,7 +78,7 @@ const mainBenefitLinkFiles = [
   'pages/be-surrogate/index.vue',
   'pages/surrogates.vue',
   'pages/(surrogacy)/journey.vue',
-  'pages/(surrogacy)/referral.vue',
+  'components/surrogacy/referral/CompensationSection.vue',
   'scripts/generate-html-sitemap.cjs',
 ]
 for (const relativePath of mainBenefitLinkFiles) {

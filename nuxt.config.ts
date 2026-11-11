@@ -14,8 +14,52 @@ if (zhMissingManifest.signalReliable === false)
   throw new Error('data/zh-missing-blogs.json is not authoritative. Run npm run sitemap:xml before building.')
 
 const zhMissingBlogRouteSet = new Set(zhMissingManifest.routes ?? [])
+const blogApiRetries = Math.max(1, Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10))
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function fetchBlogApi(url: string) {
+  let lastError: unknown
+  for (let attempt = 1; attempt <= blogApiRetries; attempt++) {
+    try {
+      return await fetch(url)
+    }
+    catch (error) {
+      lastError = error
+      if (attempt === blogApiRetries)
+        throw error
+      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
+      console.warn(`Blog API request failed (attempt ${attempt}/${blogApiRetries}); retrying in ${delayMs}ms`, error)
+      await sleep(delayMs)
+    }
+  }
+  throw lastError
+}
 
 async function fetchBlogEntries() {
+  const blogCachePath = fileURLToPath(new URL('./data/blog-sitemap-cache.json', import.meta.url))
+  if (fs.existsSync(blogCachePath)) {
+    const cache = JSON.parse(fs.readFileSync(blogCachePath, 'utf8'))
+    if (Array.isArray(cache?.blogs) && cache.blogs.length) {
+      console.warn(`Nuxt config: reused ${cache.blogs.length} blog items from XML sitemap cache.`)
+      return cache.blogs
+        .map((blog: any) => {
+          const slug = String(blog?.slug || '').trim()
+          if (!slug)
+            return null
+          return {
+            loc: `/blog/${slug}`,
+            lastmod: blog?.lastmod,
+            priority: 0.6,
+            hasZhContent: blog?.hasZhContent !== false,
+          }
+        })
+        .filter(Boolean)
+    }
+  }
+
   const urls = [
     process.env.BLOG_SLUGS_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs?limit=2000',
     'https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=2000',
@@ -25,7 +69,7 @@ async function fetchBlogEntries() {
     let data: any = null
 
     for (const url of urls) {
-      const response = await fetch(url)
+      const response = await fetchBlogApi(url)
       if (!response.ok)
         continue
 
@@ -363,7 +407,7 @@ export default defineNuxtConfig({
         { name: 'google-site-verification', content: 'Uh2lsMPqkFF5_9oUi4wbwUDFB8Csx48Z7v3z2RdMqcQ' },
         { name: 'google-site-verification', content: 'dYqOv8c2hG5P6e-mn45QyFfv1eEahxARgl2Glk2iscY' },
         { name: 'description', content: 'Yunda Surrogacy is a professional cross-border surrogacy agency providing comprehensive US surrogacy services. Expert team, transparent costs, warm support to help you achieve your parenthood dreams.' },
-        { name: 'keywords', content: 'surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate mother,surrogacy costs,surrogacy process' },
+        { name: 'keywords', content: 'surrogacy,US surrogacy,cross-border surrogacy,surrogacy agency,IVF,intended parents,surrogate,surrogacy costs,surrogacy process' },
         { name: 'twitter:site', content: '@YundaSurrogacy' },
       ],
       script: [

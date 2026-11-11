@@ -664,6 +664,15 @@ export interface EventSchemaLocation {
   }
 }
 
+export interface EventSchemaOffer {
+  name?: string
+  description?: string
+  url: string
+  price: number
+  priceCurrency: string
+  validThrough?: string
+}
+
 export interface EventSchemaOptions {
   name: string
   description?: string
@@ -675,6 +684,7 @@ export interface EventSchemaOptions {
   organizer: EventSchemaOrganization
   attendeeOrganization?: EventSchemaOrganization
   officialUrl?: string
+  offers?: EventSchemaOffer[]
   pageUrl: string
   pageEntityId?: string
   eventId?: string
@@ -741,6 +751,17 @@ export function buildEventSchema(options: EventSchemaOptions) {
       ? buildEventOrganization(options.attendeeOrganization, baseUrl)
       : undefined,
     'url': options.officialUrl ? resolveUrl(baseUrl, options.officialUrl) : pageUrl,
+    'offers': options.offers?.length
+      ? options.offers.map(offer => cleanSchema({
+          '@type': 'Offer',
+          'name': offer.name,
+          'description': offer.description,
+          'url': resolveUrl(baseUrl, offer.url),
+          'price': offer.price,
+          'priceCurrency': offer.priceCurrency,
+          'validThrough': offer.validThrough,
+        }))
+      : undefined,
     'mainEntityOfPage': {
       '@id': options.pageEntityId || `${pageUrl}#webpage`,
     },

@@ -131,7 +131,7 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
       'How transfer, pregnancy, and delivery are supported',
       'What postpartum care and follow-up can look like',
     ],
-    processTitle: 'What Is the Surrogate Mother Process?',
+    processTitle: 'What Is the Surrogate Process?',
     processIntro:
       'At Yunda Surrogacy, we guide each surrogate through the process with clear communication, professional coordination, and respectful support.',
     processListLead: 'A typical surrogate process includes:',
@@ -310,8 +310,8 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
         a: 'The surrogate process works through a clear step-by-step journey. You apply, complete screening, match with intended parents, finish legal agreements, prepare for embryo transfer, carry the pregnancy, and receive support through birth and postpartum recovery. Yunda Surrogacy helps coordinate each stage so you know what comes next.',
       },
       {
-        q: 'What is the process of being a surrogate mother?',
-        a: 'The process of being a surrogate mother usually includes application, medical and psychological screening, matching, legal clearance, embryo transfer, surrogate pregnancy, delivery, and postpartum support. Each step helps protect your health, clarify expectations, and create a safer journey for you and the intended parents.',
+        q: 'What is the process of being a surrogate?',
+        a: 'The process of being a surrogate usually includes application, medical and psychological screening, matching, legal clearance, embryo transfer, surrogate pregnancy, delivery, and postpartum support. Each step helps protect your health, clarify expectations, and create a safer journey for you and the intended parents.',
       },
       {
         q: 'How does a surrogate get pregnant?',
@@ -326,12 +326,12 @@ const translations: Record<'en' | 'zh', LocaleBlock> = {
         a: 'As delivery gets closer, Yunda helps coordinate the surrogate birth process with you, the intended parents, medical providers, and the hospital team. A birth plan helps everyone understand expectations for labor, delivery, and the first moments after birth.',
       },
       {
-        q: 'How long does the surrogate mother process take?',
-        a: 'The surrogate mother process timeline can vary based on screening, matching, legal clearance, clinic schedules, embryo transfer timing, and pregnancy. In general, the full surrogate journey may take more than a year from application to birth and postpartum follow-up.',
+        q: 'How long does the surrogate process take?',
+        a: 'The surrogate process timeline can vary based on screening, matching, legal clearance, clinic schedules, embryo transfer timing, and pregnancy. In general, the full surrogate journey may take more than a year from application to birth and postpartum follow-up.',
       },
       {
-        q: 'What support do surrogate mothers receive?',
-        a: 'Surrogate mothers receive support with process guidance, clinic coordination, legal timing, appointment reminders, intended parent communication, pregnancy updates, birth planning, and postpartum follow-up. Yunda Surrogacy provides end-to-end surrogacy coordination so you do not have to manage the journey alone.',
+        q: 'What support do surrogates receive?',
+        a: 'Surrogates receive support with process guidance, clinic coordination, legal timing, appointment reminders, intended parent communication, pregnancy updates, birth planning, and postpartum follow-up. Yunda Surrogacy provides end-to-end surrogacy coordination so you do not have to manage the journey alone.',
       },
       {
         q: 'What is the next step after contacting a surrogacy agency?',

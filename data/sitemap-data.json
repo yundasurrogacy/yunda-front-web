@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T03:58:59.854Z",
+  "generatedAt": "2026-11-11T03:14:03.991Z",
   "sections": {
     "en": [
       {
@@ -142,6 +142,10 @@
             "label": "Resources & Media Center"
           },
           {
+            "href": "/resources/asrm-2026",
+            "label": "ASRM 2026: Baltimore Conference Guide"
+          },
+          {
             "href": "/blog",
             "label": "Blog Index"
           }
@@ -155,8 +159,32 @@
             "label": "Blog Index"
           },
           {
+            "href": "/blog/surrogacy-birth-plan",
+            "label": "Surrogacy Birth Plan: Hospital Questions for Surrogates and Intended Parents"
+          },
+          {
+            "href": "/blog/breastfeeding-after-surrogacy",
+            "label": "Breastfeeding After Surrogacy: Feeding Options and Questions to Discuss Before Birth"
+          },
+          {
+            "href": "/blog/altruistic-vs-compensated-surrogacy",
+            "label": "Altruistic vs. Compensated Surrogacy: What Changes and What Still Needs Planning"
+          },
+          {
+            "href": "/blog/independent-vs-agency-surrogacy",
+            "label": "Independent vs. Agency Surrogacy: Responsibilities, Coordination, and Support"
+          },
+          {
+            "href": "/blog/surrogacy-vs-adoption",
+            "label": "Surrogacy vs Adoption: Compare Family-Building Paths"
+          },
+          {
+            "href": "/blog/known-vs-anonymous-egg-donor-gay-men",
+            "label": "Known Egg Donor vs Anonymous Egg Donor for Gay Men"
+          },
+          {
             "href": "/blog/mhb-new-york-2026-guide-gay-intended-parents",
-            "label": "Questions to Ask a Surrogacy Agency at MHB New York 2026"
+            "label": "Five Questions Gay Intended Parents Brought to MHB New York 2026"
           },
           {
             "href": "/blog/surrogate-medical-screening-process",
@@ -188,7 +216,7 @@
           },
           {
             "href": "/blog/surrogate-mother-health-insurance-questions-2026",
-            "label": "Surrogate Mother Health Insurance: 12 Essential Questions Before Matching in 2026"
+            "label": "Surrogate Health Insurance: 12 Essential Questions Before Matching in 2026"
           },
           {
             "href": "/blog/Best-States-for-LGBTQ-Surrogacy-in-2026-Why-California-Leads",
@@ -224,7 +252,7 @@
           },
           {
             "href": "/blog/2026-Surrogate-Mother-Cost-Shock-What-Agencies-Don-t-Tell-You",
-            "label": "2026 Surrogate Mother Cost Shock: What Agencies Don’t Tell You"
+            "label": "Surrogacy Costs in 2026: How to Compare Agency Quotes"
           },
           {
             "href": "/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask",
@@ -256,7 +284,7 @@
           },
           {
             "href": "/blog/How-to-Choose-a-Surrogacy-Lawyer-in-2026-What-Parents-Should-Ask",
-            "label": "How to Choose a Surrogacy Lawyer in 2026: What Parents Should Ask"
+            "label": "How to Choose a Surrogacy Lawyer in 2026: Questions to Ask"
           },
           {
             "href": "/blog/Does-Insurance-Cover-IVF-or-Surrogacy-in-2026-Full-Guide",
@@ -264,11 +292,7 @@
           },
           {
             "href": "/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
-            "label": "California IVF Coverage 2026: SB 729 and Surrogacy Explained"
-          },
-          {
-            "href": "/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
-            "label": "Is Surrogacy Legal in the U.S.? 2026 Guide for Intended Parents"
+            "label": "California IVF Coverage in 2026: SB 729 and Surrogacy Questions"
           },
           {
             "href": "/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
@@ -296,7 +320,7 @@
           },
           {
             "href": "/blog/How-to-Become-a-Surrogate-Mother-for-Celebrities-Requirements-Compensation",
-            "label": "How to Become a Surrogate Mother for Celebrities: Requirements & Compensation"
+            "label": "How to Become a Surrogate for Celebrities: Requirements & Compensation"
           },
           {
             "href": "/blog/Nevada-Surrogacy-Laws-Explained--What-You-Need-to-Know",
@@ -340,7 +364,7 @@
           },
           {
             "href": "/blog/Is-Surrogacy-Legal-in-All-50-States-in-2026-What-Families-Often-Get-Wrong",
-            "label": "Is Surrogacy Legal in All 50 States in 2026? What Families Often Get Wrong"
+            "label": "Is Surrogacy Legal in All 50 States? Questions for a 2026 Journey"
           },
           {
             "href": "/blog/What-States-Is-Surrogacy-Illegal-A-Clear-Guide-to-US-Surrogacy-Laws",
@@ -388,7 +412,7 @@
           },
           {
             "href": "/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
-            "label": "Surrogate Payment Schedule and Structure in California"
+            "label": "Surrogate Payment Schedule in California: Milestones and Fund Handling"
           },
           {
             "href": "/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
@@ -416,7 +440,7 @@
           },
           {
             "href": "/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
-            "label": "The 7 Most Asked Questions About Becoming an Egg Donor"
+            "label": "Seven Questions to Ask Before Becoming an Egg Donor"
           },
           {
             "href": "/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
@@ -436,7 +460,7 @@
           },
           {
             "href": "/blog/U-S-Surrogacy-Laws-Is-It-Legal",
-            "label": "U.S. Surrogacy Laws: Is It Legal?"
+            "label": "U.S. Surrogacy Laws: A Legal Planning Guide for Intended Parents"
           },
           {
             "href": "/blog/Average-Compensation-Surrogacy-Cost-in-California",
@@ -476,7 +500,7 @@
           },
           {
             "href": "/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
-            "label": "Surrogacy and Insurance: Essential Coverage for Surrogate Mothers"
+            "label": "Surrogacy and Insurance: Essential Coverage for Surrogates"
           },
           {
             "href": "/blog/Surrogacy-Cost-Breakdown-2025-Transparent-Fees-Smart-Planning",
@@ -484,14 +508,14 @@
           },
           {
             "href": "/blog/Surrogate-Mother-Requirements-2025-Qualifications-Key-Criteria",
-            "label": "Surrogate Mother Requirements: Qualifications & Key Criteria"
+            "label": "Surrogate Requirements: Qualifications & Key Criteria"
           },
           {
             "href": "/blog/Surrogate-Salary-Benefits-2025-Key-Facts-Every-Surrogate-Should-Know",
             "label": "Surrogate Salary vs. Compensation and Benefits"
           }
         ],
-        "note": "Posts fetched from API: 84 items.",
+        "note": "Posts fetched from API: 89 items.",
         "className": "section-blog"
       }
     ],
@@ -636,6 +660,10 @@
             "label": "资源与媒体中心"
           },
           {
+            "href": "/zh/resources/asrm-2026",
+            "label": "ASRM 2026 巴尔的摩会议指南"
+          },
+          {
             "href": "/zh/blog",
             "label": "博客首页"
           }
@@ -649,8 +677,64 @@
             "label": "博客列表"
           },
           {
+            "href": "/zh/blog/surrogacy-birth-plan",
+            "label": "代孕分娩计划：医院向代孕妈妈和准父母提出的问题"
+          },
+          {
+            "href": "/zh/blog/breastfeeding-after-surrogacy",
+            "label": "代孕后母乳喂养：喂养方式及产前讨论问题"
+          },
+          {
+            "href": "/zh/blog/altruistic-vs-compensated-surrogacy",
+            "label": "Altruistic vs. Compensated Surrogacy: What Changes and What Still Needs Planning"
+          },
+          {
+            "href": "/zh/blog/independent-vs-agency-surrogacy",
+            "label": "独立代孕与机构代孕：责任、协调与支持"
+          },
+          {
+            "href": "/zh/blog/surrogacy-vs-adoption",
+            "label": "代孕与收养：比较两种组建家庭的途径"
+          },
+          {
+            "href": "/zh/blog/known-vs-anonymous-egg-donor-gay-men",
+            "label": "男同性恋准父母：已知与匿名捐卵者比较"
+          },
+          {
+            "href": "/zh/blog/mhb-new-york-2026-guide-gay-intended-parents",
+            "label": "MHB 纽约 2026：向代孕机构提问的清单"
+          },
+          {
+            "href": "/zh/blog/surrogate-medical-screening-process",
+            "label": "代孕妈妈医疗筛查：检测、时间与诊所批准"
+          },
+          {
             "href": "/zh/blog/egg-donation-and-surrogacy",
             "label": "卵子捐赠与代孕：这两个过程如何协同运作"
+          },
+          {
+            "href": "/zh/blog/how-to-find-a-surrogate-in-california",
+            "label": "如何在加州寻找代孕妈妈：匹配、筛查与时间安排"
+          },
+          {
+            "href": "/zh/blog/already-have-embryos-before-surrogate-matching",
+            "label": "已有胚胎？匹配代孕妈妈前的准备"
+          },
+          {
+            "href": "/zh/blog/Best-States-for-LGBTQ-Surrogacy-in-2026",
+            "label": "2026 年 LGBTQ+ 代孕州选择：为什么常选加州"
+          },
+          {
+            "href": "/zh/blog/international-intended-parents-us-surrogacy-checklist-2026",
+            "label": "国际准父母赴美代孕：法律、保险与新生儿规划清单"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-Escrow-Payment-Protection-for-Parents-Surrogates",
+            "label": "代孕资金托管：准父母与代孕妈妈的付款保障"
+          },
+          {
+            "href": "/zh/blog/surrogate-mother-health-insurance-questions-2026",
+            "label": "代孕妈妈健康保险：匹配前应问的 12 个问题"
           },
           {
             "href": "/zh/blog/Best-States-for-LGBTQ-Surrogacy-in-2026-Why-California-Leads",
@@ -689,8 +773,16 @@
             "label": "2026年代孕母亲费用冲击：机构不会告诉你的事"
           },
           {
+            "href": "/zh/blog/IVF-Clinic-Safety-in-2026-10-Questions-Parents-Should-Ask",
+            "label": "2026 年 IVF 诊所安全：准父母应问的 10 个问题"
+          },
+          {
             "href": "/zh/blog/What-Are-the-Top-Surrogacy-Agencies-in-the-United-States",
             "label": "美国顶尖的代孕机构有哪些？"
+          },
+          {
+            "href": "/zh/blog/AI-Embryo-Selection-in-IVF-Breakthrough-or-Marketing-Trend",
+            "label": "IVF 中的 AI 胚胎选择：突破还是营销趋势？"
           },
           {
             "href": "/zh/blog/Polygenic-Embryo-Screening-in-2026-Why-ASRM-Urges-Caution",
@@ -719,10 +811,6 @@
           {
             "href": "/zh/blog/California-IVF-Coverage-2026-SB-729-and-Surrogacy-Explained",
             "label": "2026年加州试管婴儿保险覆盖范围：SB 729法案和代孕详解"
-          },
-          {
-            "href": "/zh/blog/Is-Surrogacy-Legal-in-the-US-2026-Guide-for-Intended-Parents",
-            "label": "代孕在美国合法吗？2026年准父母指南"
           },
           {
             "href": "/zh/blog/Alysa-Liu-and-What-Her-Journey-Says-About-Surrogacy",
@@ -805,6 +893,130 @@
             "label": "代孕协议如何保护所有人，而不仅仅是父母"
           },
           {
+            "href": "/zh/blog/Top-Surrogacy-Agencies-in-California-Compare-Fees-Matching-Time-Support-2026",
+            "label": "加州代孕机构：费用、匹配时间与支持比较"
+          },
+          {
+            "href": "/zh/blog/Best-Surrogacy-Agencies-in-California-2026",
+            "label": "2026 年加州代孕机构比较"
+          },
+          {
+            "href": "/zh/blog/Are-You-Ready-To-Find-a-Surrogate-What-To-Know-Before-You-Begin",
+            "label": "准备好寻找代孕妈妈了吗？开始前需要了解什么"
+          },
+          {
+            "href": "/zh/blog/IVF-Surrogacy-In-Vitro-Fertilization-Process-PGD-Testing",
+            "label": "IVF 代孕：体外受精流程与 PGD 检测"
+          },
+          {
+            "href": "/zh/blog/Is-Surrogacy-Legal-in-the-UK-Understanding-UK-Surrogacy-Law-and-Process",
+            "label": "英国代孕是否合法？法律与流程"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Pay-in-California-A-Regional-Breakdown-of-Salary-and-Compensation",
+            "label": "加州代孕妈妈补偿：地区比较"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-cost-in-Los-Angeles-full-cost-breakdown-of-Agency-Fees",
+            "label": "洛杉矶代孕费用与机构收费"
+          },
+          {
+            "href": "/zh/blog/San-Francisco-and-San-Jose-surrogate-costs-surrogacy-costs-in-the-Bay-Area",
+            "label": "旧金山与圣何塞代孕费用"
+          },
+          {
+            "href": "/zh/blog/Southern-California-surrogacy-programs-and-surrogate-requirements-how-to-become-a-surrogate",
+            "label": "南加州代孕项目与代孕妈妈申请要求"
+          },
+          {
+            "href": "/zh/blog/Surrogate-Payment-Schedule-and-Surrogate-Payment-Structure-in-California",
+            "label": "加州代孕付款时间表：节点与资金管理"
+          },
+          {
+            "href": "/zh/blog/los-angeles-vs-san-diego-vs-san-jose-vs-san-francisco-surrogacy-cos",
+            "label": "洛杉矶、圣地亚哥、圣何塞与旧金山代孕费用比较"
+          },
+          {
+            "href": "/zh/blog/orange-county-surrogate-costs-surrogate-mother-pay-2025-guide",
+            "label": "橙县代孕费用与补偿指南"
+          },
+          {
+            "href": "/zh/blog/What-Is-Surrogate-Key-Understanding-the-Key-Steps-in-the-Surrogacy-Process",
+            "label": "什么是“Surrogate Key”？代孕关键步骤"
+          },
+          {
+            "href": "/zh/blog/How-Surrogate-Works-A-Clear-and-Simple-Guide",
+            "label": "代孕如何运作？"
+          },
+          {
+            "href": "/zh/blog/What-Is-Com-Surrogate-and-How-Does-Surrogacy-Work-in-2025",
+            "label": "什么是“Com Surrogate”？代孕如何运作"
+          },
+          {
+            "href": "/zh/blog/how-to-afford-surrogacy",
+            "label": "如何承担代孕费用"
+          },
+          {
+            "href": "/zh/blog/the-7-most-asked-questions-about-becoming-an-egg-donor",
+            "label": "成为捐卵者前的 7 个问题"
+          },
+          {
+            "href": "/zh/blog/surrogacy-and-dna-does-a-surrogate-share-dna-with-the-baby",
+            "label": "代孕与 DNA：代孕妈妈与宝宝有遗传关系吗？"
+          },
+          {
+            "href": "/zh/blog/How-Much-Does-Surrogacy-Cost-And-Pricing",
+            "label": "哪些因素影响代孕总费用？"
+          },
+          {
+            "href": "/zh/blog/How-to-Become-a-Surrogate-Step-by-Step-Guide",
+            "label": "如何成为代孕妈妈：逐步指南"
+          },
+          {
+            "href": "/zh/blog/How-Much-Is-Surrogacy-Understanding-the-Real-Cost-of-Building-a-Family",
+            "label": "美国代孕费用包含哪些项目？"
+          },
+          {
+            "href": "/zh/blog/U-S-Surrogacy-Laws-Is-It-Legal",
+            "label": "美国代孕法律：准父母法律规划指南"
+          },
+          {
+            "href": "/zh/blog/Average-Compensation-Surrogacy-Cost-in-California",
+            "label": "加州代孕需要多少钱？"
+          },
+          {
+            "href": "/zh/blog/Surrogacy-Insurance-A-2025-Coverage-Guide",
+            "label": "代孕与保险：保障范围指南"
+          },
+          {
+            "href": "/zh/blog/How-Much-Does-Surrogacy-Cost-With-Insurance-in-California",
+            "label": "加州有保险情况下的代孕费用"
+          },
+          {
+            "href": "/zh/blog/The-Gay-Surrogacy-Journey-Plan-Match-Welcome-Baby",
+            "label": "男同性恋准父母的代孕旅程"
+          },
+          {
+            "href": "/zh/blog/Choosing-a-Trusted-Surrogacy-Agency-in-Los-Angeles-Southern-CA",
+            "label": "如何选择洛杉矶及南加州代孕机构"
+          },
+          {
+            "href": "/zh/blog/California-Surrogacy-Laws-2025-Legal-Rights-Process-Explained",
+            "label": "加州代孕法律：权利与流程"
+          },
+          {
+            "href": "/zh/blog/Real-Surrogate-Journeys-2025-Why-They-Chose-Yunda-Surrogacy",
+            "label": "代孕妈妈的旅程：英文原文故事与支持说明"
+          },
+          {
+            "href": "/zh/blog/First-Time-vs-Experienced-Surrogates-2025-Pay-Benefits-Compared",
+            "label": "首次与有经验代孕妈妈的补偿比较"
+          },
+          {
+            "href": "/zh/blog/Gestational-Surrogacy-Process-2025-Step-by-Step-Guide-with-Yunda",
+            "label": "妊娠代孕流程：孕达逐步指南"
+          },
+          {
             "href": "/zh/blog/Surrogacy-and-Insurance-2025-Essential-Coverage-for-Surrogate-Mothers",
             "label": "代孕与保险：代孕妈妈需要了解的基本保障"
           },
@@ -821,7 +1033,7 @@
             "label": "代孕妈妈的补偿与福利：需要了解的关键信息"
           }
         ],
-        "note": "从接口获取文章：43篇。",
+        "note": "从接口获取文章：89篇。",
         "className": "section-blog"
       }
     ]

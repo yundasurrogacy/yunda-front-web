@@ -7,6 +7,7 @@ const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yun
 const BLOG_API_FALLBACK_URL = process.env.BLOG_API_FALLBACK_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
 const OUTPUT_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
+const BLOG_CACHE_PATH = path.join(process.cwd(), 'data', 'blog-sitemap-cache.json')
 
 const STATIC_SECTIONS_EN = [
   {
@@ -189,7 +190,20 @@ async function fetchAllBlogs() {
 }
 
 async function run() {
-  const blogs = await fetchAllBlogs()
+  let blogs
+  if (fs.existsSync(BLOG_CACHE_PATH)) {
+    const cache = JSON.parse(fs.readFileSync(BLOG_CACHE_PATH, 'utf8'))
+    blogs = (cache.blogs || []).map(blog => ({
+      route_id: blog.slug,
+      en_title: blog.enTitle,
+      title: blog.zhTitle || blog.enTitle,
+    }))
+    console.warn(`HTML sitemap: reused ${blogs.length} blog items from XML sitemap cache.`)
+  }
+  else {
+    blogs = await fetchAllBlogs()
+    console.warn('HTML sitemap: XML sitemap cache missing; fetched blog items from API.')
+  }
   const zhMissingManifest = JSON.parse(fs.readFileSync(
     path.join(process.cwd(), 'data', 'zh-missing-blogs.json'),
     'utf8',
