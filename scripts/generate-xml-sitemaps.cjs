@@ -1,4 +1,5 @@
 const fs = require('node:fs')
+const https = require('node:https')
 const path = require('node:path')
 const process = require('node:process')
 
@@ -7,22 +8,22 @@ const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yun
 const BLOG_API_FALLBACK_URL = process.env.BLOG_API_FALLBACK_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_DETAIL_API_URL = process.env.BLOG_DETAIL_API_URL || BLOG_API_FALLBACK_URL
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '200', 10)
-const BLOG_DETAIL_CONCURRENCY = Number.parseInt(process.env.BLOG_DETAIL_CONCURRENCY || '8', 10)
+const BLOG_DETAIL_CONCURRENCY = Number.parseInt(process.env.BLOG_DETAIL_CONCURRENCY || '2', 10)
 const BLOG_API_TIMEOUT_MS = Number.parseInt(process.env.BLOG_API_TIMEOUT_MS || '30000', 10)
-const BLOG_API_RETRIES = Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10)
+const VALIDATE_ZH_DETAILS = process.env.SITEMAP_VALIDATE_ZH_DETAILS === '1'
 
 const OUTPUT_INDEX_PATH = path.join(process.cwd(), 'public', 'sitemap.xml')
 const OUTPUT_EN_PATH = path.join(process.cwd(), 'public', 'sitemap-en.xml')
 const OUTPUT_ZH_PATH = path.join(process.cwd(), 'public', 'sitemap-zh.xml')
 const OUTPUT_AI_PATH = path.join(process.cwd(), 'public', 'sitemap-ai.xml')
 const ZH_MISSING_OUTPUT_PATH = path.join(process.cwd(), 'data', 'zh-missing-blogs.json')
+const BLOG_CACHE_OUTPUT_PATH = path.join(process.cwd(), 'data', 'blog-sitemap-cache.json')
 const SEO_ROUTES_PATH = path.join(process.cwd(), 'data', 'seo-routes.json')
 
 const STATIC_PAGES = JSON.parse(fs.readFileSync(SEO_ROUTES_PATH, 'utf8')).staticPages
 const EN_MACHINE_READABLE_FILES = [
   '/services.md',
   '/site-architecture.md',
-  '/mhb-new-york-2026.md',
   '/surrogacy-cost.md',
   '/surrogacy-process.md',
   '/california-surrogacy-consultation.md',
@@ -40,7 +41,6 @@ const EN_MACHINE_READABLE_FILES = [
 const ZH_MACHINE_READABLE_FILES = [
   '/zh/services.md',
   '/zh/site-architecture.md',
-  '/zh/mhb-new-york-2026.md',
   '/zh/surrogacy-cost.md',
   '/zh/surrogacy-process.md',
   '/zh/california-surrogacy-consultation.md',
@@ -98,43 +98,32 @@ function createAlternateLinks(loc, includeZh = true) {
   ]
 }
 
-async function fetchJsonOnce(url) {
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), BLOG_API_TIMEOUT_MS)
-  try {
-    const response = await fetch(url, { signal: controller.signal })
-    if (!response.ok)
-      throw new Error(`Request failed: ${response.status} ${response.statusText}`.trim())
-    return await response.json()
-  }
-  finally {
-    clearTimeout(timeout)
-  }
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-async function fetchJson(url) {
-  const attempts = Math.max(1, BLOG_API_RETRIES + 1)
-  let lastError
-
-  for (let attempt = 1; attempt <= attempts; attempt++) {
-    try {
-      return await fetchJsonOnce(url)
-    }
-    catch (error) {
-      lastError = error
-      if (attempt === attempts)
-        throw error
-      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
-      console.warn(`Sitemap XML: blog API request failed (attempt ${attempt}/${attempts}); retrying in ${delayMs}ms: ${error?.code || error?.message || error}`)
-      await sleep(delayMs)
-    }
-  }
-
-  throw lastError
+function fetchJson(url) {
+  return new Promise((resolve, reject) => {
+    const request = https.get(url, (res) => {
+      let data = ''
+      res.on('data', (chunk) => {
+        data += chunk
+      })
+      res.on('end', () => {
+        if (res.statusCode && res.statusCode >= 400) {
+          const body = data.replace(/\s+/g, ' ').trim().slice(0, 300)
+          reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''} ${url}${body ? ` — ${body}` : ''}`.trim()))
+          return
+        }
+        try {
+          resolve(JSON.parse(data))
+        }
+        catch (error) {
+          reject(error)
+        }
+      })
+    })
+    request.setTimeout(BLOG_API_TIMEOUT_MS, () => {
+      request.destroy(new Error(`Request timed out after ${BLOG_API_TIMEOUT_MS}ms: ${url}`))
+    })
+    request.on('error', reject)
+  })
 }
 
 function withQuery(input, params) {
@@ -171,7 +160,7 @@ async function fetchAllBlogs() {
 
     try {
       do {
-        const url = withQuery(endpoint, { page, limit: BLOG_API_LIMIT, cache_bust: Date.now() })
+        const url = withQuery(endpoint, { page, limit: BLOG_API_LIMIT })
         const response = await fetchJson(url)
         const blogs = Array.isArray(response?.blogs) ? response.blogs : []
         allBlogs.push(...blogs)
@@ -191,6 +180,27 @@ async function fetchAllBlogs() {
         throw error
     }
   }
+
+  return allBlogs
+}
+
+async function fetchAllBlogsFromEndpoint(endpoint, extraParams = {}) {
+  const allBlogs = []
+  let page = 1
+  let totalPages = 1
+
+  do {
+    const url = withQuery(endpoint, { ...extraParams, page, limit: BLOG_API_LIMIT })
+    const response = await fetchJson(url)
+    const blogs = Array.isArray(response?.blogs) ? response.blogs : []
+    allBlogs.push(...blogs)
+
+    const pagination = response?.pagination || {}
+    totalPages = Number.parseInt(pagination.totalPages || totalPages, 10)
+    if (pagination.hasNextPage === false)
+      break
+    page += 1
+  } while (page <= totalPages)
 
   return allBlogs
 }
@@ -240,39 +250,114 @@ async function getBlogEntriesFromApi(blogs) {
     locs.add(entry.loc)
   }
 
-  // The current /api/blog/slugs response does not expose has_zh_content.
-  // Query each zh detail record and inspect the actual Chinese body so the
-  // indexability decision cannot silently diverge from content availability.
-  return mapLimit(entries, BLOG_DETAIL_CONCURRENCY, async (entry) => {
+  const resolved = new Map()
+  for (const entry of entries) {
     if (typeof entry.blog?.has_zh_content === 'boolean') {
-      return {
+      resolved.set(entry.slug, {
         loc: entry.loc,
+        slug: entry.slug,
         lastmod: entry.lastmod,
+        enTitle: entry.blog?.en_title || entry.blog?.title || undefined,
+        zhTitle: entry.blog?.title || entry.blog?.en_title || undefined,
         hasZhContent: entry.blog.has_zh_content,
         signalSource: 'flag',
+      })
+    }
+  }
+
+  // Normal deployments reuse the reviewed manifest generated by the previous
+  // successful sitemap run. This avoids one detail request per blog on every
+  // build. Set SITEMAP_VALIDATE_ZH_DETAILS=1 for an explicit content recheck.
+  if (!VALIDATE_ZH_DETAILS && fs.existsSync(ZH_MISSING_OUTPUT_PATH)) {
+    const manifest = JSON.parse(fs.readFileSync(ZH_MISSING_OUTPUT_PATH, 'utf8'))
+    const manifestSlugs = new Set(manifest.blogSlugs || [])
+    const sameBlogSet = manifestSlugs.size === entries.length
+      && entries.every(entry => manifestSlugs.has(entry.slug))
+    if (manifest.signalReliable !== false && manifest.totalBlogPosts === entries.length && sameBlogSet) {
+      const missingRoutes = new Set(manifest.routes || [])
+      console.warn(`Sitemap XML: reused Chinese-content manifest for ${entries.length} blog items.`)
+      return entries.map(entry => ({
+        loc: entry.loc,
+        slug: entry.slug,
+        lastmod: entry.lastmod,
+        enTitle: entry.blog?.en_title || entry.blog?.title || undefined,
+        zhTitle: entry.blog?.title || entry.blog?.en_title || undefined,
+        hasZhContent: !missingRoutes.has(toZhPath(entry.loc)),
+        signalSource: 'manifest',
+      }))
+    }
+    console.warn('Sitemap XML: Chinese-content manifest is stale or incomplete; running detail checks.')
+  }
+
+  const unresolved = entries.filter(entry => !resolved.has(entry.slug))
+  if (unresolved.length) {
+    try {
+      const zhBlogs = await fetchAllBlogsFromEndpoint(BLOG_DETAIL_API_URL, { lang: 'zh' })
+      const zhBySlug = new Map(zhBlogs
+        .filter(blog => blog && Object.prototype.hasOwnProperty.call(blog, 'content'))
+        .map(blog => [String(blog.route_id || blog.id || '').trim(), blog]))
+
+      for (const entry of unresolved) {
+        const blog = zhBySlug.get(entry.slug)
+        if (!blog)
+          continue
+        resolved.set(entry.slug, {
+          loc: entry.loc,
+          slug: entry.slug,
+          lastmod: entry.lastmod,
+          enTitle: entry.blog?.en_title || entry.blog?.title || undefined,
+          zhTitle: blog.title || entry.blog?.title || entry.blog?.en_title || undefined,
+          hasZhContent: Boolean(String(blog.content || '').trim()),
+          signalSource: 'zh-bulk-content',
+        })
       }
-    }
 
-    const detailUrl = withQuery(BLOG_DETAIL_API_URL, {
-      route_id: entry.slug,
-      lang: 'zh',
-      cache_bust: Date.now(),
-    })
+      if (resolved.size === entries.length)
+        return entries.map(entry => resolved.get(entry.slug))
+      console.warn(`Sitemap XML: bulk Chinese response resolved ${resolved.size}/${entries.length}; falling back for the remainder.`)
+    }
+    catch (error) {
+      console.warn(`Sitemap XML: bulk Chinese request failed; falling back to per-post checks. ${error?.message || error}`)
+    }
+  }
+
+  // Compatibility fallback for APIs that only return content when route_id is supplied.
+  const remaining = entries.filter(entry => !resolved.has(entry.slug))
+  const detailed = await mapLimit(remaining, BLOG_DETAIL_CONCURRENCY, async (entry) => {
+    const detailUrl = withQuery(BLOG_DETAIL_API_URL, { route_id: entry.slug, lang: 'zh' })
     const detail = await fetchJson(detailUrl)
-    if (!detail || typeof detail !== 'object' || !Object.prototype.hasOwnProperty.call(detail, 'content')) {
+    if (!detail || typeof detail !== 'object' || !Object.prototype.hasOwnProperty.call(detail, 'content'))
       throw new Error(`Chinese detail API did not return a content field for ${entry.loc}`)
-    }
-    if (String(detail.route_id || '') !== entry.slug) {
+    if (String(detail.route_id || '') !== entry.slug)
       throw new Error(`Chinese detail API route mismatch for ${entry.loc}: received "${detail.route_id || ''}"`)
-    }
-
     return {
       loc: entry.loc,
+      slug: entry.slug,
       lastmod: entry.lastmod,
+      enTitle: entry.blog?.en_title || entry.blog?.title || undefined,
+      zhTitle: detail.title || entry.blog?.title || entry.blog?.en_title || undefined,
       hasZhContent: Boolean(String(detail.content || '').trim()),
       signalSource: 'zh-detail-content',
     }
   })
+  for (const entry of detailed)
+    resolved.set(entry.slug, entry)
+
+  return entries.map(entry => resolved.get(entry.slug))
+}
+
+function writeBlogCache(blogEntries) {
+  const cache = {
+    generatedAt: new Date().toISOString(),
+    blogs: blogEntries.map(entry => ({
+      slug: entry.slug,
+      lastmod: entry.lastmod,
+      enTitle: entry.enTitle,
+      zhTitle: entry.zhTitle,
+      hasZhContent: entry.hasZhContent,
+    })),
+  }
+  fs.writeFileSync(BLOG_CACHE_OUTPUT_PATH, `${JSON.stringify(cache, null, 2)}\n`, 'utf8')
 }
 
 function formatLastmod(value) {
@@ -342,7 +427,6 @@ function createUrlNode(entry) {
 function createUrlSetXml(localeEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     '  <!-- Pages -->',
     ...localeEntries.pages.map(createUrlNode),
@@ -356,7 +440,6 @@ function createUrlSetXml(localeEntries) {
 function createAiUrlSetXml(aiEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     '  <!-- AI and machine-readable files -->',
     ...aiEntries.map(createUrlNode),
@@ -385,7 +468,6 @@ function createSitemapIndexNode(loc, lastmod) {
 function createIndexXml(enEntries, zhEntries) {
   const xmlLines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...createSitemapIndexNode('/sitemap-en.xml', getLatestLastmod(enEntries)),
     ...createSitemapIndexNode('/sitemap-zh.xml', getLatestLastmod(zhEntries)),
@@ -414,10 +496,13 @@ function writeZhMissingManifest(blogEntries, signalReliable) {
     signalReliable,
     signal: blogEntries.every(b => b.signalSource === 'flag')
       ? 'has_zh_content flag from /api/blog/slugs (authoritative)'
+      : blogEntries.every(b => b.signalSource === 'manifest')
+        ? 'reviewed data/zh-missing-blogs.json manifest'
       : blogEntries.every(b => b.signalSource === 'zh-detail-content')
         ? 'Chinese detail content field from /api/blog?route_id=...&lang=zh (authoritative)'
         : 'mixed authoritative has_zh_content flag and Chinese detail content checks',
     totalBlogPosts: blogEntries.length,
+    blogSlugs: blogEntries.map(entry => entry.slug).sort(),
     zhMissingCount: routes.length,
     routes,
   }
@@ -427,25 +512,6 @@ function writeZhMissingManifest(blogEntries, signalReliable) {
     console.warn('Sitemap XML: WARNING blog API unavailable, zh-missing manifest written empty. No temporary redirects will be generated.')
   else
     console.warn(`Sitemap XML: ${routes.length} of ${blogEntries.length} blog posts have no Chinese content.`)
-}
-
-function hasValidatedCachedSitemaps() {
-  try {
-    const manifest = JSON.parse(fs.readFileSync(ZH_MISSING_OUTPUT_PATH, 'utf8'))
-    if (manifest.signalReliable === false || !Number.isInteger(manifest.totalBlogPosts) || !Number.isInteger(manifest.zhMissingCount))
-      return false
-
-    const englishSitemap = fs.readFileSync(OUTPUT_EN_PATH, 'utf8')
-    const chineseSitemap = fs.readFileSync(OUTPUT_ZH_PATH, 'utf8')
-    const englishBlogCount = (englishSitemap.match(/<loc>https:\/\/www\.yundasurrogacy\.com\/blog\//g) || []).length
-    const chineseBlogCount = (chineseSitemap.match(/<loc>https:\/\/www\.yundasurrogacy\.com\/zh\/blog\//g) || []).length
-
-    return englishBlogCount === manifest.totalBlogPosts
-      && chineseBlogCount === manifest.totalBlogPosts - manifest.zhMissingCount
-  }
-  catch {
-    return false
-  }
 }
 
 async function run() {
@@ -461,15 +527,12 @@ async function run() {
   }
   catch (error) {
     console.error('Sitemap XML: authoritative blog content check failed.', error?.message || error)
-    if (hasValidatedCachedSitemaps()) {
-      console.warn('Sitemap XML: API unavailable; keeping the validated sitemap snapshot and manifest from the previous successful run.')
-      return
-    }
-    console.error('Sitemap XML: no validated snapshot is available; refusing to overwrite indexability signals with stale fallback data.')
+    console.error('Sitemap XML: refusing to overwrite indexability signals with stale fallback data.')
     throw error
   }
 
   writeZhMissingManifest(blogEntries, signalReliable)
+  writeBlogCache(blogEntries)
 
   const enEntries = buildLocaleEntries('en', blogEntries)
   const zhEntries = buildLocaleEntries('zh', blogEntries)

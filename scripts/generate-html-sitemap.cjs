@@ -1,13 +1,13 @@
 const fs = require('node:fs')
+const https = require('node:https')
 const path = require('node:path')
 const process = require('node:process')
 
 const BLOG_API_URL = process.env.BLOG_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs'
 const BLOG_API_FALLBACK_URL = process.env.BLOG_API_FALLBACK_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog'
 const BLOG_API_LIMIT = Number.parseInt(process.env.BLOG_API_LIMIT || '100', 10)
-const BLOG_API_TIMEOUT_MS = Number.parseInt(process.env.BLOG_API_TIMEOUT_MS || '30000', 10)
-const BLOG_API_RETRIES = Number.parseInt(process.env.BLOG_API_RETRIES || '3', 10)
 const OUTPUT_DATA_PATH = path.join(process.cwd(), 'data', 'sitemap-data.json')
+const BLOG_CACHE_PATH = path.join(process.cwd(), 'data', 'blog-sitemap-cache.json')
 
 const STATIC_SECTIONS_EN = [
   {
@@ -62,8 +62,6 @@ const STATIC_SECTIONS_EN = [
     title: 'Resources / Blog',
     links: [
       { href: '/resources', label: 'Resources & Media Center' },
-      { href: '/resources/mhb-new-york-2026', label: 'MHB New York 2026: Event & Consultation Guide' },
-      { href: '/resources/asrm-2026', label: 'ASRM 2026: Baltimore Conference Guide' },
       { href: '/resources/asrm-2026', label: 'ASRM 2026: Baltimore Conference Guide' },
       { href: '/blog', label: 'Blog Index' },
     ],
@@ -123,51 +121,35 @@ const STATIC_SECTIONS_ZH = [
     title: '资源 / 博客',
     links: [
       { href: '/resources', label: '资源与媒体中心' },
-      { href: '/resources/mhb-new-york-2026', label: 'MHB 纽约 2026 活动与咨询指南' },
-      { href: '/resources/asrm-2026', label: 'ASRM 2026 巴尔的摩会议指南' },
       { href: '/resources/asrm-2026', label: 'ASRM 2026 巴尔的摩会议指南' },
       { href: '/blog', label: '博客首页' },
     ],
   },
 ]
 
-async function fetchJsonOnce(url) {
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), BLOG_API_TIMEOUT_MS)
-  try {
-    const response = await fetch(url, { signal: controller.signal })
-    if (!response.ok)
-      throw new Error(`Request failed: ${response.status} ${response.statusText}`.trim())
-    return await response.json()
-  }
-  finally {
-    clearTimeout(timeout)
-  }
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-async function fetchJson(url) {
-  const attempts = Math.max(1, BLOG_API_RETRIES + 1)
-  let lastError
-
-  for (let attempt = 1; attempt <= attempts; attempt++) {
-    try {
-      return await fetchJsonOnce(url)
-    }
-    catch (error) {
-      lastError = error
-      if (attempt === attempts)
-        throw error
-      const delayMs = Math.min(4000, 500 * (2 ** (attempt - 1)))
-      console.warn(`HTML sitemap: blog API request failed (attempt ${attempt}/${attempts}); retrying in ${delayMs}ms: ${error?.code || error?.message || error}`)
-      await sleep(delayMs)
-    }
-  }
-
-  throw lastError
+function fetchJson(url) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        let data = ''
+        res.on('data', (chunk) => {
+          data += chunk
+        })
+        res.on('end', () => {
+          if (res.statusCode && res.statusCode >= 400) {
+            reject(new Error(`Request failed: ${res.statusCode} ${res.statusMessage || ''}`.trim()))
+            return
+          }
+          try {
+            resolve(JSON.parse(data))
+          }
+          catch (error) {
+            reject(error)
+          }
+        })
+      })
+      .on('error', reject)
+  })
 }
 
 async function fetchAllBlogs() {
@@ -181,10 +163,7 @@ async function fetchAllBlogs() {
 
     try {
       do {
-        const url = new URL(endpoint)
-        url.searchParams.set('page', String(page))
-        url.searchParams.set('limit', String(BLOG_API_LIMIT))
-        url.searchParams.set('cache_bust', String(Date.now()))
+        const url = `${endpoint}?page=${page}&limit=${BLOG_API_LIMIT}`
         const response = await fetchJson(url)
         const blogs = Array.isArray(response?.blogs) ? response.blogs : []
         allBlogs.push(...blogs)
@@ -210,48 +189,27 @@ async function fetchAllBlogs() {
   return allBlogs
 }
 
-function readValidatedCachedSitemap(manifest) {
-  if (!fs.existsSync(OUTPUT_DATA_PATH))
-    return null
-
-  try {
-    const cached = JSON.parse(fs.readFileSync(OUTPUT_DATA_PATH, 'utf8'))
-    const englishBlogSection = cached.sections?.en?.find(section => section.className === 'section-blog')
-    const chineseBlogSection = cached.sections?.zh?.find(section => section.className === 'section-blog')
-    const englishBlogCount = (englishBlogSection?.links || []).filter(link => /^\/blog\//.test(link.href)).length
-    const chineseBlogCount = (chineseBlogSection?.links || []).filter(link => /^\/zh\/blog\//.test(link.href)).length
-    const expectedChineseCount = manifest.totalBlogPosts - manifest.zhMissingCount
-
-    if (englishBlogCount !== manifest.totalBlogPosts || chineseBlogCount !== expectedChineseCount)
-      return null
-
-    return cached
-  }
-  catch {
-    return null
-  }
-}
-
 async function run() {
+  let blogs
+  if (fs.existsSync(BLOG_CACHE_PATH)) {
+    const cache = JSON.parse(fs.readFileSync(BLOG_CACHE_PATH, 'utf8'))
+    blogs = (cache.blogs || []).map(blog => ({
+      route_id: blog.slug,
+      en_title: blog.enTitle,
+      title: blog.zhTitle || blog.enTitle,
+    }))
+    console.warn(`HTML sitemap: reused ${blogs.length} blog items from XML sitemap cache.`)
+  }
+  else {
+    blogs = await fetchAllBlogs()
+    console.warn('HTML sitemap: XML sitemap cache missing; fetched blog items from API.')
+  }
   const zhMissingManifest = JSON.parse(fs.readFileSync(
     path.join(process.cwd(), 'data', 'zh-missing-blogs.json'),
     'utf8',
   ))
   if (zhMissingManifest.signalReliable === false)
     throw new Error('Chinese-content manifest is not authoritative. Run sitemap:xml successfully first.')
-
-  let blogs
-  try {
-    blogs = await fetchAllBlogs()
-  }
-  catch (error) {
-    if (readValidatedCachedSitemap(zhMissingManifest)) {
-      console.warn(`HTML sitemap: blog API unavailable; keeping validated cached sitemap data (${zhMissingManifest.totalBlogPosts} English posts).`)
-      return
-    }
-    throw error
-  }
-
   if (zhMissingManifest.totalBlogPosts !== blogs.length) {
     throw new Error(
       `Blog manifest/API count mismatch: manifest=${zhMissingManifest.totalBlogPosts}, API=${blogs.length}.`,
@@ -287,13 +245,13 @@ async function run() {
   const blogSectionEn = {
     title: 'Blog Articles',
     links: [{ href: '/blog', label: 'Blog Index' }, ...blogLinksEn],
-    note: `${blogLinksEn.length} articles to explore.`,
+    note: `Posts fetched from API: ${blogLinksEn.length} items.`,
     className: 'section-blog',
   }
   const blogSectionZh = {
     title: '博客文章',
     links: [{ href: '/blog', label: '博客列表' }, ...blogLinksZh],
-    note: `共 ${blogLinksZh.length} 篇中文文章。`,
+    note: `从接口获取文章：${blogLinksZh.length}篇。`,
     className: 'section-blog',
   }
 

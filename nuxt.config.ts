@@ -39,6 +39,27 @@ async function fetchBlogApi(url: string) {
 }
 
 async function fetchBlogEntries() {
+  const blogCachePath = fileURLToPath(new URL('./data/blog-sitemap-cache.json', import.meta.url))
+  if (fs.existsSync(blogCachePath)) {
+    const cache = JSON.parse(fs.readFileSync(blogCachePath, 'utf8'))
+    if (Array.isArray(cache?.blogs) && cache.blogs.length) {
+      console.warn(`Nuxt config: reused ${cache.blogs.length} blog items from XML sitemap cache.`)
+      return cache.blogs
+        .map((blog: any) => {
+          const slug = String(blog?.slug || '').trim()
+          if (!slug)
+            return null
+          return {
+            loc: `/blog/${slug}`,
+            lastmod: blog?.lastmod,
+            priority: 0.6,
+            hasZhContent: blog?.hasZhContent !== false,
+          }
+        })
+        .filter(Boolean)
+    }
+  }
+
   const urls = [
     process.env.BLOG_SLUGS_API_URL || 'https://yunda-admin-system.yundasurrogacy.com/api/blog/slugs?limit=2000',
     'https://yunda-admin-system.yundasurrogacy.com/api/blog?limit=2000',

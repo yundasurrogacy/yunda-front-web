@@ -81,6 +81,7 @@ const introductionVideoSchema = computed(() => buildVideoObjectSchema({
   name: 'Yunda Surrogacy Introduction',
   description: 'An introductory video about Yunda Surrogacy, family-building support, and surrogacy coordination for intended parents and surrogates.',
   thumbnailUrl: '/images/pages/home/hero.webp',
+  uploadDate: '2025-10-25',
   embedUrl: 'https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1',
   url: '/',
   baseUrl: siteUrl.value || undefined,
