@@ -678,12 +678,15 @@ export interface EventSchemaOptions {
   description?: string
   startDate: string
   endDate?: string
+  /** `completed` is retained as a legacy alias for events that concluded as scheduled. */
   eventStatus?: 'scheduled' | 'postponed' | 'cancelled' | 'rescheduled' | 'moved-online' | 'completed'
   eventAttendanceMode?: 'offline' | 'online' | 'mixed'
   location?: EventSchemaLocation
   organizer: EventSchemaOrganization
   attendeeOrganization?: EventSchemaOrganization
   officialUrl?: string
+  eventUrl?: string
+  sameAs?: string | string[]
   offers?: EventSchemaOffer[]
   pageUrl: string
   pageEntityId?: string
@@ -700,7 +703,8 @@ const EVENT_STATUS_URLS = {
   'cancelled': 'https://schema.org/EventCancelled',
   'rescheduled': 'https://schema.org/EventRescheduled',
   'moved-online': 'https://schema.org/EventMovedOnline',
-  'completed': 'https://schema.org/EventCompleted',
+  // Schema.org has no EventCompleted; completed-as-scheduled events use EventScheduled.
+  'completed': 'https://schema.org/EventScheduled',
 } as const
 
 const EVENT_ATTENDANCE_MODE_URLS = {
@@ -723,6 +727,11 @@ export function buildEventSchema(options: EventSchemaOptions) {
   const inLanguage = options.inLanguage || (options.locale === 'zh' ? 'zh-CN' : 'en-US')
   const pageUrl = resolveLocalizedUrl(baseUrl, options.pageUrl, inLanguage)
   const image = Array.isArray(options.image) ? options.image : (options.image ? [options.image] : undefined)
+  const sameAs = Array.isArray(options.sameAs)
+    ? options.sameAs.map(item => resolveUrl(baseUrl, item))
+    : options.sameAs
+      ? resolveUrl(baseUrl, options.sameAs)
+      : undefined
 
   return cleanSchema({
     '@context': 'https://schema.org',
@@ -750,7 +759,10 @@ export function buildEventSchema(options: EventSchemaOptions) {
     'attendee': options.attendeeOrganization
       ? buildEventOrganization(options.attendeeOrganization, baseUrl)
       : undefined,
-    'url': options.officialUrl ? resolveUrl(baseUrl, options.officialUrl) : pageUrl,
+    'url': options.eventUrl
+      ? resolveLocalizedUrl(baseUrl, options.eventUrl, inLanguage)
+      : (options.officialUrl ? resolveUrl(baseUrl, options.officialUrl) : pageUrl),
+    'sameAs': sameAs,
     'offers': options.offers?.length
       ? options.offers.map(offer => cleanSchema({
           '@type': 'Offer',

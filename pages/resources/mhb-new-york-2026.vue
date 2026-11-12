@@ -12,8 +12,6 @@ import {
 
 const PAGE_PATH = '/resources/mhb-new-york-2026'
 const OFFICIAL_EVENT_URL = 'https://menhavingbabies.org/surrogacy-seminars/ny/'
-const OFFICIAL_REGISTRATION_URL = 'https://menhavingbabies.org/surrogacy-seminars/ny/registration/'
-const EVENT_STATE: 'upcoming' | 'past' = 'past'
 const EVENT_START = '2026-09-25'
 const EVENT_END = '2026-09-27'
 const EVENT_IMAGES = [
@@ -268,7 +266,7 @@ const pageSchema = computed(() => buildWebPageSchema({
   audience: locale.value === 'zh'
     ? ['男同志准父母', 'LGBTQ+ 准父母', '单身准父母', '国际准父母']
     : ['Gay intended parents', 'LGBTQ+ intended parents', 'Single intended parents', 'International intended parents'],
-  dateModified: '2026-10-09',
+  dateModified: '2026-10-12',
   inLanguage: inLanguage.value,
 }))
 
@@ -281,13 +279,16 @@ const eventSchema = computed(() => buildEventSchema({
   description: c.value.metaDescription,
   startDate: EVENT_START,
   endDate: EVENT_END,
-  eventStatus: EVENT_STATE === 'past' ? 'completed' : 'scheduled',
+  // Schema.org has no completed event status; this event took place as scheduled.
+  eventStatus: 'scheduled',
   eventAttendanceMode: 'offline',
   location: {
-    name: 'New York',
+    name: 'The Westin New York at Times Square',
     address: {
+      streetAddress: '270 West 43rd Street',
       addressLocality: 'New York',
       addressRegion: 'NY',
+      postalCode: '10036',
       addressCountry: 'US',
     },
   },
@@ -301,15 +302,8 @@ const eventSchema = computed(() => buildEventSchema({
     url: siteUrl.value,
   },
   officialUrl: OFFICIAL_EVENT_URL,
-  // Official price checked on 2026-10-08; retain it as an expired historical offer.
-  offers: [{
-    name: c.value.registrationName,
-    description: c.value.registrationNote,
-    url: OFFICIAL_REGISTRATION_URL,
-    price: 75,
-    priceCurrency: 'USD',
-    validThrough: EVENT_END,
-  }],
+  eventUrl: PAGE_PATH,
+  sameAs: OFFICIAL_EVENT_URL,
   image: EVENT_IMAGES,
   inLanguage: inLanguage.value,
 }))

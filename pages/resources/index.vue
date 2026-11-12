@@ -19,7 +19,10 @@ const PAGE_ASSETS = {
   hero: '/images/pages/resources/hero.webp',
 } as const
 
-const AVIF_IMAGE_BY_PATH: Record<string, string> = {}
+const AVIF_IMAGE_BY_PATH: Record<string, string> = {
+  '/images/pages/resources/instagram-event-01.jpg': '/images/pages/resources/instagram-event-01.avif',
+  '/images/pages/resources/instagram-event-02.jpg': '/images/pages/resources/instagram-event-02.avif',
+}
 
 const SUBSTACK_HOME = 'https://yundasurrogacy.substack.com/'
 const INSTAGRAM_HOME = 'https://www.instagram.com/yunda_surrogacy_/'
@@ -237,19 +240,6 @@ function getAvifImage(src: string) {
 const localePath = useLocalePath()
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
-const featuredEvent = computed(() => locale.value === 'zh'
-  ? {
-      title: '孕达参加 MHB New York 2026',
-      date: '2026 年 9 月 25–27 日 | 纽约',
-      body: '回顾孕达在 MHB 纽约活动的现场交流、展位展示、照片与视频。',
-      cta: '查看活动回顾',
-    }
-  : {
-      title: 'Yunda at MHB New York 2026',
-      date: 'September 25–27, 2026 | New York',
-      body: 'Explore on-site conversations, Yunda’s booth, photos, and videos from MHB New York 2026.',
-      cta: 'View event recap',
-    })
 const resourcesDirectAnswer = computed(() => locale.value === 'zh'
   ? '孕达资源与媒体中心把代孕教育内容、Substack 深度说明、代孕妈妈动态、活动资讯和联系入口集中在同一页面。它适合正在比较美国代孕流程、费用、资格、筛查、法律保障、保险、捐卵和跨境沟通的准父母，也适合正在了解代孕申请、补偿与支持的潜在代孕妈妈。博客和 Substack 内容用于解释常见问题；社媒动态用于展示团队活动和旅程片段；高风险决定仍应回到对应专题页面，并由法律、医疗、保险、托管或 IVF 专业人士确认。'
   : 'Yunda\'s Resources & Media Center brings together surrogacy education, Substack explainers, surrogate journey updates, event coverage, and ways to contact the team. It is for intended parents comparing U.S. surrogacy process, cost, eligibility, screening, legal protection, insurance, egg donation, and cross-border communication, as well as potential surrogates learning about application, compensation, and support. Blog and Substack content explain common questions; social updates show team activity and journey moments; high-stakes decisions should still be reviewed on the relevant service pages and confirmed by legal, medical, insurance, escrow, or IVF professionals.')
@@ -392,7 +382,7 @@ useHead(() => ({
     <main>
       <!-- 第一屏：左 Sage 底 + 标题；右侧宝宝图渐变融入（非左右对半分栏） -->
       <section class="w-full bg-white">
-        <div class="resources-hero relative isolate min-h-[min(52vw,320px)] w-full overflow-hidden bg-[var(--yunda-sky)] lg:min-h-[360px] sm:min-h-[300px] xl:min-h-[400px]">
+        <div class="resources-hero relative isolate min-h-[min(52vw,320px)] w-full overflow-hidden bg-[var(--yunda-sky)] sm:min-h-[300px] lg:min-h-[360px] xl:min-h-[400px]">
           <OptimizedPicture
             :src="PAGE_ASSETS.hero"
             alt=""
@@ -408,8 +398,8 @@ useHead(() => ({
             aria-hidden="true"
             class="resources-hero-fade pointer-events-none absolute inset-0"
           />
-          <div class="relative z-10 mx-auto h-full max-w-[1920px] min-h-[inherit] flex items-center px-6 py-12 lg:px-14 lg:py-14 sm:px-10 xl:px-20">
-            <h1 class="max-w-[min(100%,640px)] text-left text-[34px] font-semibold leading-[1.08] font-display lg:text-[48px] sm:text-[40px] xl:text-[52px]">
+          <div class="relative z-10 mx-auto flex h-full min-h-[inherit] max-w-[1920px] items-center px-6 py-12 sm:px-10 lg:px-14 lg:py-14 xl:px-20">
+            <h1 class="max-w-[min(100%,640px)] text-left font-display text-[34px] font-semibold leading-[1.08] sm:text-[40px] lg:text-[48px] xl:text-[52px]">
               <span class="sr-only">{{ c.heroAlt }} — </span>
               {{ c.heroTitle }}
             </h1>
@@ -417,14 +407,14 @@ useHead(() => ({
         </div>
 
         <nav
-          class="grid grid-cols-2 w-full lg:grid-cols-4"
+          class="grid w-full grid-cols-2 lg:grid-cols-4"
           aria-label="Resources sections"
         >
           <a
             v-for="item in sectionNav"
             :key="item.id"
             :href="`#${item.id}`"
-            class="min-h-[52px] flex items-center justify-center px-3 py-3.5 text-center text-[13px] font-semibold leading-snug font-display transition-opacity sm:min-h-[56px] lg:text-[17px] sm:text-[15px] hover:opacity-90"
+            class="flex min-h-[52px] items-center justify-center px-3 py-3.5 text-center font-display text-[13px] font-semibold leading-snug transition-opacity hover:opacity-90 sm:min-h-[56px] sm:text-[15px] lg:text-[17px]"
             :class="item.className"
           >
             {{ item.label }}
@@ -446,24 +436,24 @@ useHead(() => ({
 
       <section class="w-full bg-[var(--yunda-petal)] py-12 lg:py-16">
         <div class="mx-auto max-w-[1320px] px-6 lg:px-10">
-          <div class="border border-[var(--yunda-bark)]/10 rounded-[18px] bg-white/78 p-6 shadow-[0_12px_32px_rgba(55,40,25,0.06)] lg:p-8">
-            <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.16em] uppercase">
+          <div class="rounded-[18px] border border-[var(--yunda-bark)]/10 bg-white/78 p-6 shadow-[0_12px_32px_rgba(55,40,25,0.06)] lg:p-8">
+            <p class="text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.16em]">
               {{ locale === 'zh' ? '直接答案' : 'Direct answer' }}
             </p>
-            <h2 class="mt-3 text-[30px] font-semibold leading-[1.12] font-display lg:text-[38px]">
+            <h2 class="mt-3 font-display text-[30px] font-semibold leading-[1.12] lg:text-[38px]">
               {{ locale === 'zh' ? '这个资源中心应该怎么用？' : 'How should visitors use this resource center?' }}
             </h2>
             <p class="mt-5 max-w-5xl text-base text-[var(--yunda-bark)]/82 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ resourcesDirectAnswer }}
             </p>
           </div>
-          <div class="grid mt-5 gap-4 md:grid-cols-3">
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
             <article
               v-for="item in resourceUseCards"
               :key="item.title"
-              class="border border-[var(--yunda-bark)]/10 rounded-[16px] bg-white/72 p-5 shadow-[0_8px_24px_rgba(55,40,25,0.05)]"
+              class="rounded-[16px] border border-[var(--yunda-bark)]/10 bg-white/72 p-5 shadow-[0_8px_24px_rgba(55,40,25,0.05)]"
             >
-              <h3 class="text-[22px] font-semibold leading-snug font-display">
+              <h3 class="font-display text-[22px] font-semibold leading-snug">
                 {{ item.title }}
               </h3>
               <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.75]" style="font-family: var(--font-text)">
@@ -479,22 +469,22 @@ useHead(() => ({
         <BlogNewsSection />
       </div>
 
-      <section id="substack" class="w-full scroll-mt-28 bg-white py-14 lg:py-20">
+      <section id="substack" class="scroll-mt-28 w-full bg-white py-14 lg:py-20">
         <div class="mx-auto max-w-[1320px] px-6 lg:px-10">
-          <h2 class="text-[30px] font-semibold leading-[1.12] font-display lg:text-[36px]">
+          <h2 class="font-display text-[30px] font-semibold leading-[1.12] lg:text-[36px]">
             {{ c.substackTitle }}
           </h2>
           <p class="mt-5 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
             {{ c.substackIntro }}
           </p>
-          <div class="grid mt-10 gap-6 lg:grid-cols-3">
+          <div class="mt-10 grid gap-6 lg:grid-cols-3">
             <a
               v-for="post in substackCards"
               :key="`substack-${normalizeSubstackPostUrl(post.url)}`"
               :href="post.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="group h-full flex flex-col overflow-hidden border border-[#ebe4d8] rounded-2xl bg-[#faf8f5] shadow-[0_6px_24px_rgba(55,40,25,0.05)] transition-[box-shadow,transform] hover:shadow-[0_12px_36px_rgba(55,40,25,0.1)] hover:-translate-y-0.5"
+              class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#ebe4d8] bg-[#faf8f5] shadow-[0_6px_24px_rgba(55,40,25,0.05)] transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(55,40,25,0.1)]"
             >
               <div class="relative aspect-[16/10] overflow-hidden bg-[var(--yunda-petal)]">
                 <img
@@ -504,10 +494,10 @@ useHead(() => ({
                   loading="lazy"
                   decoding="async"
                 >
-                <div class="pointer-events-none absolute inset-0 from-black/18 via-transparent to-transparent bg-gradient-to-t opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <div class="flex flex-1 flex-col p-5">
-                <h3 class="text-[18px] font-bold leading-snug font-sans transition-colors lg:text-[20px] group-hover:text-[var(--yunda-maple)]" style="font-family: var(--font-text)">
+                <h3 class="font-sans text-[18px] font-bold leading-snug transition-colors group-hover:text-[var(--yunda-maple)] lg:text-[20px]" style="font-family: var(--font-text)">
                   {{ post.title }}
                 </h3>
                 <p class="mt-3 flex-1 text-sm text-[var(--yunda-bark)]/85 leading-[1.75]" style="font-family: var(--font-text)">
@@ -524,7 +514,7 @@ useHead(() => ({
             :href="SUBSTACK_HOME"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-8 inline-flex items-center justify-center border-2 border-[var(--yunda-bark)] rounded-[6px] bg-white px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)]"
+            class="mt-8 inline-flex items-center justify-center rounded-[6px] border-2 border-[var(--yunda-bark)] bg-white px-6 py-3 text-sm text-[var(--yunda-bark)] font-semibold tracking-[0.02em] transition-colors hover:border-[var(--yunda-maple)]"
             style="font-family: var(--font-text)"
           >
             {{ c.substackCta }}
@@ -533,22 +523,22 @@ useHead(() => ({
       </section>
 
       <section class="w-full bg-[color-mix(in_srgb,var(--yunda-petal)_90%,var(--yunda-sky)_10%)] py-14 lg:py-20">
-        <div class="mx-auto max-w-[1320px] px-6 space-y-14 lg:px-10">
+        <div class="mx-auto max-w-[1320px] space-y-14 px-6 lg:px-10">
           <div id="surrogates-updates" class="scroll-mt-28">
-            <h2 class="text-[30px] font-semibold leading-[1.12] font-display lg:text-[36px]">
+            <h2 class="font-display text-[30px] font-semibold leading-[1.12] lg:text-[36px]">
               {{ c.updatesTitle }}
             </h2>
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.updatesIntro }}
             </p>
-            <div class="grid grid-cols-2 mt-8 gap-4 lg:grid-cols-4 lg:gap-5">
+            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in surrogateUpdateCards"
                 :key="post.id"
                 :href="post.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)] hover:-translate-y-0.5"
+                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
                 :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
                 <OptimizedPicture
@@ -563,7 +553,7 @@ useHead(() => ({
                   decoding="async"
                 />
                 <div
-                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 from-black/78 via-black/45 to-transparent bg-gradient-to-t px-3 pb-3 pt-10 text-xs text-white sm:text-sm"
+                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
                   style="font-family: var(--font-text)"
                 >
                   <div class="flex items-center gap-3 font-semibold">
@@ -583,72 +573,82 @@ useHead(() => ({
           </div>
 
           <div id="events" class="scroll-mt-28">
-            <h2 class="text-[30px] font-semibold leading-[1.12] font-display lg:text-[36px]">
+            <h2 class="font-display text-[30px] font-semibold leading-[1.12] lg:text-[36px]">
               {{ c.eventsTitle }}
             </h2>
             <p class="mt-4 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
               {{ c.eventsIntro }}
             </p>
             <NuxtLink
-              :to="localePath('/resources/mhb-new-york-2026')"
-              class="group grid mt-8 overflow-hidden border border-[var(--yunda-bark)]/12 rounded-[8px] bg-white md:grid-cols-[0.8fr_1.2fr]"
+              :to="localePath('/resources/asrm-2026')"
+              class="group mt-8 grid overflow-hidden rounded-[18px] border border-[#d9e5f5] bg-white shadow-[0_10px_30px_rgba(25,88,174,0.1)] transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(25,88,174,0.16)] lg:grid-cols-[.78fr_1.22fr]"
             >
-              <OptimizedPicture
-                src="/images/events/mhb-new-york-2026/gallery/photo-07.webp"
-                :alt="locale === 'zh' ? '孕达在 MHB New York 2026 的展位' : 'Yunda booth at MHB New York 2026'"
-                width="1200"
-                height="900"
-                loading="lazy"
-                picture-class="block h-full"
-                img-class="aspect-[4/3] h-full w-full object-cover"
-              />
-              <div class="flex flex-col justify-center p-6 lg:p-9">
-                <p class="text-xs text-[var(--yunda-maple)] font-bold">
-                  {{ featuredEvent.date }}
+              <div class="relative min-h-[220px] overflow-hidden bg-[#c8103f] lg:min-h-[300px]">
+                <OptimizedPicture
+                  src="/images/events/asrm-2026/2026/asrm-baltimore-event-card.png"
+                  alt="Yunda Surrogacy at ASRM 2026 in Baltimore"
+                  picture-class="block h-full w-full"
+                  img-class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  width="1080"
+                  height="1350"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="flex flex-col justify-center px-6 py-7 lg:px-10 lg:py-10">
+                <p class="text-xs text-[#c8103f] font-bold uppercase tracking-[.24em]">
+                  {{ locale === 'zh' ? '专题活动' : 'Featured event' }}
                 </p>
-                <h3 class="mt-4 text-[28px] font-semibold leading-tight font-display lg:text-[34px]">
-                  {{ featuredEvent.title }}
+                <h3 class="mt-3 font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                  {{ locale === 'zh' ? 'Yunda Surrogacy 参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026' }}
                 </h3>
-                <p class="mt-4 text-[15px] leading-[1.75]">
-                  {{ featuredEvent.body }}
+                <p class="mt-4 max-w-2xl text-base text-[var(--yunda-bark)]/78 leading-7" style="font-family: var(--font-text)">
+                  {{ locale === 'zh' ? '活动信息、参会目的、关注议题、准父母问题清单与会后更新。' : 'Event details, why we are attending, topics we are following, intended-parent questions, and post-event updates.' }}
                 </p>
-                <span class="mt-6 text-sm text-[var(--yunda-maple)] font-bold underline underline-offset-4">{{ featuredEvent.cta }}</span>
+                <span class="mt-6 inline-flex w-fit items-center border border-[#c8103f] px-5 py-3 text-sm text-[#c8103f] font-bold transition-colors group-hover:bg-[#c8103f] group-hover:text-white">
+                  {{ locale === 'zh' ? '查看活动专题' : 'View event guide' }} →
+                </span>
               </div>
             </NuxtLink>
             <NuxtLink
-              :to="localePath('/resources/asrm-2026')"
-              class="group grid mt-6 overflow-hidden border border-[#ead0d9] rounded-[8px] bg-white md:grid-cols-[0.8fr_1.2fr]"
+              :to="localePath('/resources/mhb-new-york-2026')"
+              class="group mt-6 grid overflow-hidden rounded-[18px] border border-[#ead7cc] bg-white shadow-[0_10px_30px_rgba(160,76,40,0.1)] transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(160,76,40,0.16)] lg:grid-cols-[.78fr_1.22fr]"
             >
-              <OptimizedPicture
-                src="/images/events/asrm-2026/asrm-3.jpg"
-                :alt="locale === 'zh' ? '孕达参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026'"
-                width="1200"
-                height="1200"
-                loading="lazy"
-                picture-class="block h-full"
-                img-class="aspect-[4/3] h-full w-full object-cover"
-              />
-              <div class="flex flex-col justify-center p-6 lg:p-9">
-                <p class="text-xs text-[#c8103f] font-bold uppercase tracking-[.2em]">
-                  {{ locale === 'zh' ? 'ASRM 2026 专题活动' : 'ASRM 2026 Featured Event' }}
+              <div class="relative min-h-[220px] overflow-hidden bg-[#f4e9ec] lg:min-h-[300px]">
+                <OptimizedPicture
+                  src="/images/events/mhb-new-york-2026/yunda-mhb-introduction.webp"
+                  alt="Yunda Surrogacy at MHB New York 2026"
+                  picture-class="block h-full w-full"
+                  img-class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="flex flex-col justify-center px-6 py-7 lg:px-10 lg:py-10">
+                <p class="text-xs text-[#a04c28] font-bold uppercase tracking-[.24em]">
+                  {{ locale === 'zh' ? '专题活动' : 'Featured event' }}
                 </p>
-                <h3 class="mt-4 text-[28px] font-semibold leading-tight font-display lg:text-[34px]">
-                  {{ locale === 'zh' ? 'Yunda Surrogacy 参加 ASRM 2026' : 'Yunda Surrogacy at ASRM 2026' }}
+                <h3 class="mt-3 font-display text-[28px] text-[var(--yunda-bark)] font-semibold leading-tight lg:text-[38px]">
+                  {{ locale === 'zh' ? 'Yunda Surrogacy 参加 MHB New York 2026' : 'Yunda Surrogacy at MHB New York 2026' }}
                 </h3>
-                <p class="mt-4 text-[15px] leading-[1.75]">
-                  {{ locale === 'zh' ? '了解参会目的、关注议题和准父母可带去咨询的问题。' : 'Explore why we are attending, what we are following, and questions intended parents can bring.' }}
+                <p class="mt-4 max-w-2xl text-base text-[var(--yunda-bark)]/78 leading-7" style="font-family: var(--font-text)">
+                  {{ locale === 'zh' ? '查看 MHB New York 2026 的活动回顾、现场照片、视频与准父母资源。' : 'Explore the MHB New York 2026 recap, on-site photos, videos, and intended-parent resources.' }}
                 </p>
-                <span class="mt-6 text-sm text-[#c8103f] font-bold underline underline-offset-4">{{ locale === 'zh' ? '查看 ASRM 活动专题' : 'View the ASRM guide' }} →</span>
+                <span class="mt-6 inline-flex w-fit items-center border border-[#a04c28] px-5 py-3 text-sm text-[#a04c28] font-bold transition-colors group-hover:bg-[#a04c28] group-hover:text-white">
+                  {{ locale === 'zh' ? '查看活动专题' : 'View event recap' }} →
+                </span>
               </div>
             </NuxtLink>
-            <div class="grid grid-cols-2 mt-8 gap-4 lg:grid-cols-4 lg:gap-5">
+            <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
               <a
                 v-for="post in eventPostCards"
                 :key="post.id"
                 :href="post.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)] hover:-translate-y-0.5"
+                class="resources-ig-card group relative block overflow-hidden rounded-2xl bg-[var(--yunda-petal)] shadow-[0_6px_22px_rgba(55,40,25,0.06)] ring-1 ring-[#ebe4d8]/80 transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(55,40,25,0.12)]"
                 :aria-label="`${c.igViewPost}: ${post.alt}`"
               >
                 <OptimizedPicture
@@ -663,7 +663,7 @@ useHead(() => ({
                   decoding="async"
                 />
                 <div
-                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 from-black/78 via-black/45 to-transparent bg-gradient-to-t px-3 pb-3 pt-10 text-xs text-white sm:text-sm"
+                  class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/78 via-black/45 to-transparent px-3 pt-10 pb-3 text-xs text-white sm:text-sm"
                   style="font-family: var(--font-text)"
                 >
                   <div class="flex items-center gap-3 font-semibold">
@@ -696,7 +696,7 @@ useHead(() => ({
 
       <section class="w-full bg-white py-14 lg:py-20">
         <div class="mx-auto max-w-[960px] px-6 text-center lg:px-10">
-          <h2 class="text-[30px] font-semibold leading-[1.15] font-display lg:text-[36px]">
+          <h2 class="font-display text-[30px] font-semibold leading-[1.15] lg:text-[36px]">
             {{ c.ctaTitle }}
           </h2>
           <p class="mx-auto mt-5 max-w-3xl text-base text-[var(--yunda-bark)]/88 leading-[1.8] lg:text-[17px]" style="font-family: var(--font-text)">
