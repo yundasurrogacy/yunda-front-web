@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import process from 'node:process'
+import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import seoRoutes from './data/seo-routes.json'
 import zhMissingBlogs from './data/zh-missing-blogs.json'
