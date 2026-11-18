@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { useResizeObserver } from '@vueuse/core'
+import { usePreferredReducedMotion, useResizeObserver } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useScrollAnimation } from '~/composables/useScrollAnimation'
+import { surrogateGalleryMoments } from '~/data/surrogate-gallery-moments'
 
-export interface SurrogateGallerySlide { src: string, alt: string }
+export interface SurrogateGallerySlide { src: string, alt: string, title?: string, description?: string }
 
 const props = withDefaults(
   defineProps<{
@@ -18,27 +19,23 @@ const props = withDefaults(
   { title: undefined, subtitle: undefined, slides: undefined, variant: 'default', bannerSrc: undefined },
 )
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
+const reducedMotion = usePreferredReducedMotion()
+const isZh = computed(() => locale.value.startsWith('zh'))
+const tt = (en: string, zh: string) => isZh.value ? zh : en
 const heading = computed(() => props.title ?? t('home.surrogateGallerySection.title'))
-const subheading = computed(() => props.subtitle ?? t('home.surrogateGallerySection.subtitle'))
+const subheading = computed(() => props.subtitle ?? tt('Moments of care, connection, and support with the Yunda Surrogacy team.', '与 Yunda Surrogacy 团队一起经历的陪伴、交流与支持。'))
 
 useScrollAnimation()
 
-const defaultSlides: SurrogateGallerySlide[] = [
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-01.jpg', alt: 'Yunda surrogate receiving support during her journey' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-02.jpg', alt: 'Yunda team supporting a surrogate at a fertility clinic' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-03.jpg', alt: 'Surrogate preparing for a fertility clinic appointment' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-04.jpg', alt: 'Yunda team meeting a surrogate at GenPrime Fertility' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-05.jpg', alt: 'Yunda team supporting a surrogate and her partner' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-06.jpg', alt: 'Yunda team meeting surrogates at HRC Fertility' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-07.jpg', alt: 'Yunda team supporting a surrogate at Ember Fertility Center' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-08.jpg', alt: 'Yunda team meeting intended parents at a fertility clinic' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-10.jpg', alt: 'Yunda team supporting a surrogate during her journey' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-11.jpg', alt: 'Yunda surrogate meeting with the Yunda team' },
-]
+const defaultSlides = computed<SurrogateGallerySlide[]>(() => surrogateGalleryMoments.map(moment => ({
+  src: moment.src,
+  ...(isZh.value ? moment.zh : moment.en),
+})))
 
 const slides = computed(() =>
-  props.slides?.length ? props.slides : defaultSlides,
+  props.slides?.length ? props.slides : defaultSlides.value,
 )
 
 const slideGap = 18
@@ -55,18 +52,16 @@ const canGoNext = computed(() => currentIndex.value < maxStartIndex.value)
 
 const trackStyle = computed(() => ({
   transform: `translateX(-${currentIndex.value * slideWidthWithGap.value}px)`,
-  transition: enableTransition.value ? 'transform 0.8s ease-in-out' : 'none',
+  transition: enableTransition.value && reducedMotion.value !== 'reduce' ? 'transform 0.35s ease-in-out' : 'none',
   gap: `${slideGap}px`,
 }))
 
 const slideStyle = computed(() => ({
-  flexBasis: slidesPerView.value === 4
-    ? `calc((100% - ${slideGap * 3}px) / 4)`
-    : `calc((100% - ${slideGap}px) / 2)`,
+  flexBasis: `calc((100% - ${slideGap * (slidesPerView.value - 1)}px) / ${slidesPerView.value})`,
 }))
 
 function updateSlideMetrics() {
-  slidesPerView.value = window.innerWidth < 1024 ? 2 : 4
+  slidesPerView.value = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 4
   nextTick(() => {
     if (!trackRef.value)
       return
@@ -152,27 +147,34 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <div class="scroll-animate scroll-animate-delay-100 relative mt-12 overflow-hidden rounded-[26px] bg-white/80 px-3 py-4 shadow-[0_18px_40px_rgba(64,84,120,0.12)]">
-        <button
-          type="button"
-          aria-label="Previous slide"
-          class="absolute left-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
-          :class="!canGoPrev ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
-          :disabled="!canGoPrev"
-          @click="goToPrev"
-        >
-          <span class="text-xl">‹</span>
-        </button>
-        <button
-          type="button"
-          aria-label="Next slide"
-          class="absolute right-3 top-1/2 z-10 h-10 w-10 flex items-center justify-center rounded-full bg-white/90 text-[var(--primary-brown)] shadow-[0_10px_22px_rgba(39,31,24,0.16)] transition-all hover:bg-white hover:-translate-y-0.5"
-          :class="!canGoNext ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
-          :disabled="!canGoNext"
-          @click="goToNext"
-        >
-          <span class="text-xl">›</span>
-        </button>
+      <div class="scroll-animate scroll-animate-delay-100 mt-8 flex items-center justify-between gap-4">
+        <p class="text-sm text-[var(--yunda-bark)]/75" role="status" aria-live="polite" aria-atomic="true">
+          {{ tt(`${currentIndex + 1}–${Math.min(currentIndex + slidesPerView, slides.length)} of ${slides.length} moments`, `${currentIndex + 1}–${Math.min(currentIndex + slidesPerView, slides.length)} / ${slides.length} 个旅程片段`) }}
+        </p>
+        <div class="flex gap-2">
+          <button
+            type="button"
+            :aria-label="tt('Previous journey moments', '上一组旅程片段')"
+            class="gallery-control"
+            :class="!canGoPrev ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
+            :disabled="!canGoPrev"
+            @click="goToPrev"
+          >
+            <span class="text-xl">‹</span>
+          </button>
+          <button
+            type="button"
+            :aria-label="tt('Next journey moments', '下一组旅程片段')"
+            class="gallery-control"
+            :class="!canGoNext ? 'cursor-not-allowed opacity-35 hover:translate-y-0' : ''"
+            :disabled="!canGoNext"
+            @click="goToNext"
+          >
+            <span class="text-xl">›</span>
+          </button>
+        </div>
+      </div>
+      <div class="mt-5 overflow-hidden" role="region" :aria-label="heading" aria-roledescription="carousel">
         <div
           ref="trackRef"
           class="flex items-stretch"
@@ -184,19 +186,35 @@ onBeforeUnmount(() => {
             class="surrogate-slide flex-shrink-0"
             :style="slideStyle"
           >
-            <div class="h-full overflow-hidden rounded-4 bg-white shadow-[0_12px_32px_rgba(64,84,120,0.12)]">
+            <div class="h-full overflow-hidden rounded-4 bg-[var(--yunda-petal)] shadow-[0_8px_24px_rgba(60,36,21,0.06)]">
               <img
                 :src="slide.src"
                 :alt="slide.alt"
-                class="h-full w-full object-cover"
+                class="aspect-[4/5] w-full object-cover object-top"
                 width="640"
-                height="898"
+                height="800"
                 loading="lazy"
                 decoding="async"
               >
+              <div v-if="slide.title || slide.description" class="px-5 pb-6 pt-5">
+                <h3 v-if="slide.title" class="font-display text-[24px] text-[var(--yunda-bark)] font-semibold leading-tight">
+                  {{ slide.title }}
+                </h3>
+                <p v-if="slide.description" class="mt-2 text-[15px] text-[var(--yunda-bark)]/80 leading-relaxed">
+                  {{ slide.description }}
+                </p>
+              </div>
             </div>
           </article>
         </div>
+      </div>
+      <div class="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--yunda-bark)]/15 pt-6">
+        <p class="max-w-2xl text-sm text-[var(--yunda-bark)]/75 leading-relaxed">
+          {{ tt('See more moments and community updates in our Resources & Media Center.', '在资源与媒体中心查看旅程片段和社群动态。') }}
+        </p>
+        <NuxtLink :to="`${localePath('/resources')}#surrogates-updates`" class="gallery-updates-link">
+          {{ tt('Explore journey updates', '查看旅程动态') }} <span aria-hidden="true">↗</span>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -205,5 +223,34 @@ onBeforeUnmount(() => {
 <style scoped>
 .surrogate-slide {
   min-width: 0;
+}
+.gallery-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--yunda-bark) 25%, transparent);
+  border-radius: 50%;
+  color: var(--yunda-bark);
+  background: var(--yunda-petal);
+}
+.gallery-control:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--yunda-harvest) 30%, var(--yunda-petal));
+}
+.gallery-control:focus-visible,
+.gallery-updates-link:focus-visible {
+  outline: 2px solid var(--yunda-bark);
+  outline-offset: 4px;
+}
+.gallery-updates-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: var(--yunda-bark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 </style>

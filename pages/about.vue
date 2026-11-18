@@ -14,12 +14,21 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en, zh) => (isZh.value ? zh : en)
-const dateModified = '2026-10-21'
+const dateModified = '2026-11-17'
+const heroContent = computed(() => ({
+  title: tt('Where professional commitment meets heartfelt care', '专业之上，更有温度'),
+  description: tt('Yunda Surrogacy supports intended parents and surrogates with education, coordination, and case management. From the first conversation through the journey ahead, we help you understand each step and stay connected with the professionals involved.', 'Yunda Surrogacy（孕达代孕）为准父母与代孕妈妈提供信息教育、流程协调和个案管理。从初次咨询到旅程中的各个阶段，我们帮助您理解每一步，并与相关专业人士保持沟通。'),
+}))
+const teamSummaries = computed(() => ({
+  kareZhang: tt('After becoming a father through surrogacy, Kare founded Yunda Surrogacy. He leads company strategy, partnerships, and technology, drawing on his software development experience to make communication and case information clearer for families.', '通过代孕成为父亲后，Kare 创立了 Yunda Surrogacy。他负责公司战略、合作伙伴关系与技术创新，结合软件开发经验，让家庭更清楚地了解沟通进展与个案信息。'),
+  kaylaLuo: tt('Kayla leads operations, technology development, and cross-border initiatives at Yunda Surrogacy. With a background in public administration and data science, she focuses on clearer processes and communication for intended parents, surrogates, and partners.', 'Kayla 负责 Yunda Surrogacy 的运营、技术研发与跨境协作。结合公共管理和数据科学背景，她致力于让准父母、代孕妈妈与合作伙伴之间的流程和沟通更加清晰。'),
+  michaelSim: tt('Michael leads Asia-Pacific strategy and partnerships at Yunda Surrogacy. Working in assisted reproductive services since 2018, he connects intended parents with fertility professionals and supports communication across countries and cultures.', 'Michael 负责 Yunda Surrogacy 的亚太战略与合作伙伴关系。自 2018 年进入辅助生殖行业以来，他持续连接准父母与生殖领域专业人士，支持跨国家、跨文化的沟通协作。'),
+}))
 
 const trustStandards = computed(() => [
   {
     title: tt('Whole-journey coordination', '全旅程协调'),
-    body: tt('Yunda supports consultation, matching, clinic communication, screening coordination, legal timing, insurance review, escrow planning, pregnancy updates, and bilingual communication.', '孕达支持咨询、匹配、诊所沟通、筛查协调、法律时间线、保险审核、托管规划、孕期沟通和双语协作。'),
+    body: tt('Yunda Surrogacy supports consultation, matching, clinic communication, screening coordination, legal timing, insurance review, escrow planning, pregnancy updates, and bilingual communication.', 'Yunda Surrogacy（孕达代孕）支持咨询、匹配、诊所沟通、筛查协调、法律时间线、保险审核、托管规划、孕期沟通和双语协作。'),
   },
   {
     title: tt('Professional boundaries', '专业边界清晰'),
@@ -31,27 +40,20 @@ const trustStandards = computed(() => [
   },
 ])
 
-useHead({
-  title: t('about.meta.title'),
+useHead(() => ({
+  title: tt('About Us - Yunda Surrogacy', '关于我们 - Yunda Surrogacy（孕达代孕）'),
   meta: [
     {
       name: 'description',
-      content: t('about.meta.description'),
+      content: heroContent.value.description,
     },
   ],
-})
-
-const heroParagraphs = computed(() => [
-  t('about.hero.paragraph1'),
-  t('about.hero.paragraph2'),
-  t('about.hero.paragraph3'),
-  t('about.hero.highlight'),
-].filter(Boolean))
+}))
 
 function teamBio(nameKey, paragraphCount) {
   return Array.from(
     { length: paragraphCount },
-    (_, index) => t(`about.team.${nameKey}.bio.paragraph${index + 1}`),
+    (_, index) => t(`about.team.${nameKey}.bio.paragraph${index + 1}`).replace(/\bYunda(?! Surrogacy)\b/g, 'Yunda Surrogacy'),
   )
 }
 
@@ -65,15 +67,17 @@ const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
   ...member,
   title: t(`about.team.${member.key}.name`),
   jobTitle: t(`about.team.${member.key}.title`),
-  text: teamBio(member.key, member.paragraphCount).join(' '),
+  summary: teamSummaries.value[member.key],
+  paragraphs: teamBio(member.key, member.paragraphCount),
+  imageAlt: tt(`Portrait of ${t(`about.team.${member.key}.name`)} at Yunda Surrogacy`, `Yunda Surrogacy 团队成员 ${t(`about.team.${member.key}.name`)} 的肖像`),
 })))
 
 const aboutPageSchema = computed(() => buildWebPageSchema({
   baseUrl: siteUrl.value || undefined,
   url: '/about',
-  name: t('about.meta.title'),
-  description: t('about.meta.description'),
-  about: heroParagraphs.value.join(' '),
+  name: tt('About Us - Yunda Surrogacy', '关于我们 - Yunda Surrogacy（孕达代孕）'),
+  description: heroContent.value.description,
+  about: heroContent.value.description,
   audience: locale.value === 'zh'
     ? ['准父母', '代孕妈妈', '国际家庭']
     : ['Intended parents', 'Surrogates', 'International families'],
@@ -100,7 +104,7 @@ const teamPersonSchemas = computed(() => {
     '@id': `${baseUrl}/about#${member.id}`,
     'name': member.title,
     'jobTitle': member.jobTitle,
-    'description': member.text,
+    'description': member.summary,
     'url': `${baseUrl}${aboutPath}#${member.id}`,
     ...(member.image ? { image: `${baseUrl}${member.image}` } : {}),
     'worksFor': {
@@ -133,28 +137,28 @@ useHead(() => ({
 <template>
   <div class="bg-[var(--yunda-petal)]">
     <AppHeader />
-    <AboutHeroSection />
-    <AboutTeamSection />
+    <AboutHeroSection :title="heroContent.title" :description="heroContent.description" />
+    <AboutTeamSection :members="teamMembers" />
     <section class="bg-[var(--yunda-petal)] px-5 py-12 lg:px-20 lg:py-16">
       <div class="mx-auto max-w-300">
         <div class="max-w-4xl">
-          <p class="mb-3 text-xs text-[var(--yunda-maple)] font-extrabold uppercase tracking-[0.16em]">
+          <p class="mb-3 text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.16em] uppercase">
             {{ tt('Trust standards', '信任标准') }}
           </p>
-          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-semibold leading-[1.12] lg:text-[44px]">
-            {{ tt('How Yunda earns trust in a YMYL journey', '孕达如何在 YMYL 决策中建立信任') }}
+          <h2 class="text-[32px] text-[var(--yunda-bark)] font-semibold leading-[1.12] font-display lg:text-[44px]">
+            {{ tt('Clear guidance, thoughtful support', '清晰指引，细致支持') }}
           </h2>
           <p class="mt-5 text-base text-[var(--yunda-bark)]/82 leading-[1.8] lg:text-[18px]" style="font-family: var(--font-text)">
             {{ tt('Surrogacy involves family, health, legal identity, insurance, and significant financial planning. Our content and consultations are written to help people understand the path, ask better questions, and involve the right professionals before making irreversible decisions.', '代孕涉及家庭、健康、法律身份、保险和重要财务规划。我们的内容和咨询旨在帮助用户理解路径、提出更好的问题，并在做出重大决定前让合适专业人士参与。') }}
           </p>
         </div>
-        <div class="mt-7 grid gap-4 md:grid-cols-3">
+        <div class="grid mt-7 gap-4 md:grid-cols-3">
           <article
             v-for="item in trustStandards"
             :key="item.title"
-            class="rounded-[18px] border border-[var(--yunda-bark)]/10 bg-white/76 p-5 shadow-[0_10px_28px_rgba(61,42,31,0.05)]"
+            class="border border-[var(--yunda-bark)]/10 rounded-[18px] bg-white/76 p-5 shadow-[0_10px_28px_rgba(61,42,31,0.05)]"
           >
-            <h3 class="font-display text-[22px] text-[var(--yunda-bark)] font-semibold leading-snug">
+            <h3 class="text-[22px] text-[var(--yunda-bark)] font-semibold leading-snug font-display">
               {{ item.title }}
             </h3>
             <p class="mt-3 text-sm text-[var(--yunda-bark)]/78 leading-[1.75]" style="font-family: var(--font-text)">

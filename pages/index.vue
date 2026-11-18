@@ -13,7 +13,6 @@ import SurrogateGallerySection from '../components/home/SurrogateGallerySection.
 import WhatSetsUsApartSection from '../components/home/WhatSetsUsApartSection.vue'
 
 const { t, locale } = useI18n()
-const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 
@@ -38,7 +37,9 @@ const journeySteps = computed(() => [
 
 const professionalServiceSchema = computed(() => buildProfessionalServiceSchema({
   name: 'Yunda Surrogacy',
-  description: 'Yunda Surrogacy is a professional surrogacy agency supporting intended parents and surrogates through personalized matching, coordinated care, and trusted fertility, legal, and insurance partnerships.',
+  description: locale.value.startsWith('zh')
+    ? '从了解流程到安排下一步，Yunda Surrogacy（孕达代孕）为准父母与代母提供沟通、协调和个案管理支持。'
+    : 'From understanding the process to planning the next step, Yunda Surrogacy supports intended parents and surrogates with communication, coordination, and case management.',
   serviceType: 'Surrogacy agency services',
   areaServed: ['California', 'United States', 'International intended parents'],
   audience: ['Intended parents', 'Surrogates', 'International intended parents', 'LGBTQ intended parents', 'Single parents'],
@@ -87,19 +88,6 @@ const introductionVideoSchema = computed(() => buildVideoObjectSchema({
   baseUrl: siteUrl.value || undefined,
   locale: locale.value,
 }))
-
-const homeSurrogateSlides = [
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-01.jpg', alt: 'Yunda surrogate receiving support during her journey' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-02.jpg', alt: 'Yunda team supporting a surrogate at a fertility clinic' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-03.jpg', alt: 'Surrogate preparing for a fertility clinic appointment' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-04.jpg', alt: 'Yunda team meeting a surrogate at GenPrime Fertility' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-05.jpg', alt: 'Yunda team supporting a surrogate and her partner' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-06.jpg', alt: 'Yunda team meeting surrogates at HRC Fertility' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-07.jpg', alt: 'Yunda team supporting a surrogate at Ember Fertility Center' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-08.jpg', alt: 'Yunda team meeting intended parents at a fertility clinic' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-10.jpg', alt: 'Yunda team supporting a surrogate during her journey' },
-  { src: '/images/pages/home/meet-our-surrogates/surrogate-11.jpg', alt: 'Yunda surrogate meeting with the Yunda team' },
-]
 
 // SEO 配置
 useHead(() => ({
@@ -163,23 +151,24 @@ useHead(() => {
     <WhatSetsUsApartSection />
     <OurServicesSection />
     <CommitmentSection />
+    <SurrogateGallerySection />
     <section class="bg-[var(--yunda-petal)] px-4 py-[60px] md:px-20">
       <div class="mx-auto max-w-[1400px]">
-        <div class="grid gap-8 py-2 md:min-h-[500px] md:grid-cols-10 md:items-center md:gap-10">
+        <div class="grid gap-8 py-2 md:grid-cols-10 md:min-h-[500px] md:items-center md:gap-10">
           <div class="text-[var(--yunda-bark)] md:col-span-4">
-            <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
+            <h2 class="text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[42px]">
               Yunda Surrogacy - Building families. Creating futures.
             </h2>
-            <p class="mt-8 font-sans text-base leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
+            <p class="mt-8 text-base leading-[1.75] font-sans md:text-[17px]" style="font-family: var(--font-text)">
               At Yunda Surrogacy, we believe that every journey to parenthood deserves care, professionalism, and respect.
             </p>
-            <p class="mt-2 font-sans text-base leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
+            <p class="mt-2 text-base leading-[1.75] font-sans md:text-[17px]" style="font-family: var(--font-text)">
               Yunda Surrogacy is more than a bridge between families - we are a partner built on integrity, compassion, and commitment to creating life with love.
             </p>
           </div>
-          <div class="relative overflow-hidden rounded-[20px] shadow-[0_12px_34px_rgba(39,31,24,0.16)] aspect-video md:col-span-6 md:h-[500px] md:aspect-auto">
+          <div class="relative aspect-video overflow-hidden rounded-[20px] shadow-[0_12px_34px_rgba(39,31,24,0.16)] md:col-span-6 md:aspect-auto md:h-[500px]">
             <iframe
-              class="absolute left-1/2 top-1/2 h-full w-full max-w-none -translate-x-1/2 -translate-y-1/2 border-0 md:w-[108%]"
+              class="absolute left-1/2 top-1/2 h-full max-w-none w-full border-0 md:w-[108%] -translate-x-1/2 -translate-y-1/2"
               src="https://www.youtube.com/embed/SMSpodH686I?rel=0&modestbranding=1"
               title="Yunda Surrogacy Introduction"
               loading="lazy"
@@ -191,9 +180,6 @@ useHead(() => {
         </div>
       </div>
     </section>
-    <SurrogateGallerySection
-      :slides="homeSurrogateSlides"
-    />
     <GoogleReviewsSection />
     <BlogNewsSection />
     <AppFooter />
