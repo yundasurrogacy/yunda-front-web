@@ -1,46 +1,107 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-// HeroSection 专用动画：刷新时立即播放
-onMounted(() => {
-  const currentComponent = document.querySelector('.about-hero-section')
-  if (currentComponent) {
-    const element = currentComponent.querySelector('.scroll-animate')
-    if (element) {
-      element.classList.add('scroll-animate-init')
-      setTimeout(() => {
-        element.classList.add('animate-in')
-      }, 300)
-    }
-  }
-})
+defineProps<{ title: string, description: string }>()
+
+const { locale } = useI18n()
+const isZh = computed(() => (locale.value || '').startsWith('zh'))
+const tt = (en: string, zh: string) => (isZh.value ? zh : en)
 </script>
 
 <template>
-  <div class="about-hero-section relative min-h-50 w-full bg-[var(--yunda-petal)] px-8 py-12 lg:min-h-100 lg:px-12 lg:py-20">
-    <div class="scroll-animate mx-auto max-w-5xl text-center text-[var(--yunda-bark)]">
-      <h1 class="mb-6 font-display text-[38px] font-semibold leading-[1.1] lg:mb-8 lg:text-[52px]">
-        {{ $t('about.hero.title') }}
+  <section class="about-hero-section" aria-labelledby="about-heading">
+    <img
+      class="hero-background"
+      src="/images/pages/about/proposal-20261117/about-hero.webp"
+      alt=""
+      aria-hidden="true"
+      width="1920"
+      height="1020"
+      fetchpriority="high"
+      decoding="async"
+    >
+    <div class="hero-wash" aria-hidden="true" />
+    <div class="hero-copy">
+      <p class="hero-eyebrow">
+        {{ tt('About Yunda Surrogacy', '关于 Yunda Surrogacy（孕达代孕）') }}
+      </p>
+      <h1 id="about-heading">
+        {{ title }}
       </h1>
-      <div class="mx-auto max-w-5xl font-sans text-base leading-[1.75] lg:text-[19px]" style="font-family: var(--font-text)">
-        <p class="mb-4 whitespace-pre-line">
-          {{ $t('about.hero.paragraph1') }}
-        </p>
-        <p class="mb-4 whitespace-pre-line">
-          {{ $t('about.hero.paragraph2') }}
-        </p>
-        <p class="mb-4 whitespace-pre-line">
-          {{ $t('about.hero.paragraph3') }}
-          <span class="font-semibold"> {{ $t('about.hero.highlight') }}</span>
-        </p>
-      </div>
+      <p class="hero-description">
+        {{ description }}
+      </p>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.hero-gradient {
-  height: 667px;
-  top: 91px;
+.about-hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 28rem;
+  padding: clamp(4rem, 7vw, 7rem) 1.5rem;
+  background: var(--yunda-petal);
+  color: var(--yunda-bark);
+}
+
+.hero-background,
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background {
+  object-fit: cover;
+  object-position: center 48%;
+  opacity: 0.35;
+}
+
+.hero-wash {
+  background: color-mix(in srgb, var(--yunda-petal) 62%, transparent);
+}
+
+.hero-copy {
+  width: min(100%, 66rem);
+  text-align: center;
+}
+
+.hero-eyebrow {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-copy h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 4.3vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.hero-description {
+  max-width: 47rem;
+  margin: 1.75rem auto 0;
+  font-family: var(--font-text);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+@media (max-width: 479px) {
+  .about-hero-section {
+    min-height: 26rem;
+  }
 }
 </style>

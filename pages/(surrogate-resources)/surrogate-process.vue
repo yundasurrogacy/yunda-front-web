@@ -7,8 +7,18 @@ import SurrogateStepsComponent from '@/components/surrogacy/process/SurrogateSte
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const isZh = computed(() => (locale.value || '').startsWith('zh'))
 const tt = (en: string, zh: string) => (isZh.value ? zh : en)
+
+const introductionSupport = computed(() => [
+  tt('Candidate Screening', '候选人筛查'),
+  tt('Medical & Psychological Coordination', '医疗与心理评估协调'),
+  tt('Independent Legal Support', '独立法律支持'),
+  tt('Insurance Review', '保险审查'),
+  tt('Independent Escrow Coordination', '独立托管协调'),
+  tt('Matching Assistance', '匹配协助'),
+])
 
 const pageTitle = computed(() =>
   tt(
@@ -608,7 +618,62 @@ function setActiveStep(stepId: number) {
       ]"
     />
 
-    <!-- Hero / Overview -->
+    <section class="relative isolate overflow-hidden bg-[#faf1e0] px-4 py-12 text-[var(--yunda-bark)] md:px-8 md:py-16 lg:py-20" aria-labelledby="what-is-surrogacy">
+      <div class="pointer-events-none absolute h-80 w-80 rounded-full bg-[var(--yunda-sky)] opacity-50 -right-36 -top-40 md:right-[-6rem]" aria-hidden="true" />
+      <div class="pointer-events-none absolute h-56 w-56 rounded-full bg-[var(--yunda-harvest)] opacity-30 -bottom-36 -left-20" aria-hidden="true" />
+      <div class="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_21rem]">
+        <div>
+          <p class="mb-3 text-sm font-semibold tracking-[0.12em] uppercase">
+            {{ tt('Surrogacy Process Guide', '代孕流程指南') }}
+          </p>
+          <h1 id="what-is-surrogacy" class="mb-6 font-display text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            {{ tt('What Is Surrogacy?', '什么是代孕？') }}
+          </h1>
+          <p class="text-lg leading-relaxed">
+            {{ tt('Surrogacy is a journey in which a woman carries a pregnancy for intended parents who are unable to carry a child themselves, helping them fulfill their dream of building a family. Qualified surrogates may receive compensation that supports their own goals, depending on eligibility and agreement terms. In gestational surrogacy, the surrogate has no genetic relationship with the baby.', '代孕是由一位女性为意向父母孕育宝宝、帮助他们实现组建家庭梦想的旅程。符合条件的代孕妈妈可获得补偿，支持自己的生活目标，具体取决于资格及协议条款。在妊娠代孕中，代孕妈妈与宝宝没有遗传关系。') }}
+          </p>
+          <p class="mb-4 mt-6 text-lg leading-relaxed">
+            {{ tt('At Yunda Surrogacy, we provide personalized guidance throughout the journey, including:', 'Yunda Surrogacy（孕达代孕）在整个旅程中提供个性化指引，包括：') }}
+          </p>
+          <ul class="grid grid-cols-2 gap-3 xl:grid-cols-3">
+            <li v-for="support in introductionSupport" :key="support" class="flex min-h-20 items-center gap-3 border border-[#e9ded0] rounded-2xl bg-white px-3 py-4 text-base font-semibold leading-snug shadow-[0_4px_16px_rgba(60,36,21,0.04)] sm:px-4">
+              <span class="h-2 w-2 shrink-0 rounded-full bg-[var(--yunda-maple)]" aria-hidden="true" />
+              {{ support }}
+            </li>
+          </ul>
+          <p class="mt-4 text-sm leading-relaxed opacity-80">
+            {{ tt('Independent clinics, attorneys, insurance professionals, and escrow providers deliver their respective professional services. Yunda Surrogacy helps coordinate their roles.', '相关医疗、法律、保险及托管服务由独立专业机构提供，Yunda Surrogacy 协助对接与协调。') }}
+          </p>
+          <p class="mt-6 text-lg leading-relaxed">
+            <strong>{{ tt('More than a process,', '这不仅是一段流程，') }}</strong>
+            {{ tt('surrogacy is an act of compassion and generosity that brings hope, connection, and the joy of parenthood to families. Join us and become part of this meaningful journey.', '也是一份关怀与慷慨，为家庭带来希望、联结与迎接新生命的喜悦。欢迎加入我们，成为这段有意义旅程的一部分。') }}
+          </p>
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <NuxtLink :to="localePath('/be-surrogate')" class="inline-flex min-h-13 items-center justify-center !rounded-xl bg-[var(--yunda-bark)] px-6 py-3 text-lg text-white font-semibold transition-colors hover:bg-[#65412a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--yunda-bark)]">
+              {{ tt('Start Your Application', '开始申请') }}
+            </NuxtLink>
+            <a href="https://www.facebook.com/share/g/19M2Zx7XzD/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-13 items-center justify-center border border-[var(--yunda-bark)] !rounded-xl px-6 py-3 text-lg font-semibold transition-colors hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--yunda-bark)]">
+              {{ tt('Join Our Group', '加入我们的社群') }}
+              <span class="sr-only">{{ tt('(opens in a new tab)', '（在新标签页打开）') }}</span>
+            </a>
+          </div>
+        </div>
+        <div class="mx-auto hidden aspect-[4/5] w-full max-w-84 items-center justify-center border border-[#e9ded0] rounded-[2rem] bg-white px-7 shadow-[0_18px_40px_rgba(60,36,21,0.07)] lg:flex" aria-hidden="true">
+          <svg class="h-auto w-full" viewBox="0 0 300 340" fill="none">
+            <ellipse cx="146" cy="164" rx="132" ry="141" fill="#cad3d0" />
+            <ellipse cx="203" cy="206" rx="74" ry="93" fill="#bab58d" fill-opacity=".65" transform="rotate(-22 203 206)" />
+            <path d="M150 128C133 93 88 103 89 139c1 32 44 65 61 80 18-16 60-48 61-80 1-36-44-46-61-11Z" fill="#c17c45" />
+            <circle cx="150" cy="140" r="12" fill="#faf1e0" />
+            <path d="M76 104c-15 30-15 53 9 72m135 10c30 23 34 52 17 77" stroke="#665347" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M75 106c10-28 35-43 71-40-16 23-41 40-71 40Zm163 154c-29-2-53 12-66 37 29 1 53-9 66-37Z" fill="#665347" />
+            <circle cx="52" cy="213" r="7" fill="#c17c45" fill-opacity=".7" />
+            <circle cx="257" cy="88" r="6" fill="#bab58d" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step-by-step overview -->
     <section class="relative overflow-hidden bg-white py-24">
       <div class="container mx-auto max-w-7xl px-4">
         <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
@@ -616,9 +681,9 @@ function setActiveStep(stepId: number) {
             <p class="mb-3 inline-flex items-center rounded-full bg-[var(--yunda-petal)] px-4 py-1 text-sm text-[var(--primary-brown)] tracking-wide uppercase">
               {{ tt('Surrogacy process guide', '代孕流程指南') }}
             </p>
-            <h1 class="mb-8 text-4xl text-[var(--yunda-bark)] font-bold md:text-6xl" >
+            <h2 class="mb-8 text-4xl text-[var(--yunda-bark)] font-bold md:text-6xl" >
               {{ tt('Surrogacy Process: Step-by-Step Guide for Parents and Surrogates', '代孕流程：意向父母与代孕妈妈的分步指南') }}
-            </h1>
+            </h2>
             <div class="text-lg text-[var(--primary-brown)] leading-relaxed space-y-5 md:text-xl">
               <p>
                 {{ tt('In a typical gestational surrogacy process, you move through six stages: screening, matching, legal contracts, IVF and embryo transfer, pregnancy and delivery, then post-birth legal steps. This guide walks through each step in plain language so intended parents and surrogates know what to expect at every stage.', '典型的妊娠代孕流程包括六个阶段：筛查、匹配、法律合同、IVF 与胚胎移植、妊娠与分娩，以及产后法律步骤。本指南用清晰语言逐步说明，让意向父母与代孕妈妈清楚每一步的预期。') }}

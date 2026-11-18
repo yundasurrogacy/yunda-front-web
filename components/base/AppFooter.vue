@@ -45,252 +45,189 @@ const footerGroups = computed(() => [
 </script>
 
 <template>
-  <footer class="site-chrome-theme bg-[var(--yunda-petal)] px-4 py-10 font-sans md:px-20 md:py-12 xl:px-60" style="font-family: var(--font-text)">
-    <div class="mx-auto max-w-300 md:max-w-full">
-      <!-- Footer Content -->
+  <footer class="site-chrome-theme app-footer">
+    <div class="footer-container">
       <div class="footer-layout">
+        <!-- Brand, direct contact and QR codes share one column. -->
         <div class="footer-brand">
-          <picture>
+          <picture class="footer-logo">
             <source srcset="/images/shared/brand/logo.webp" type="image/webp">
-            <img src="/images/shared/brand/logo.png" alt="Yunda Logo" class="w-24 lg:w-28" loading="lazy" decoding="async">
+            <img src="/images/shared/brand/logo.png" alt="Yunda Surrogacy" width="112" loading="lazy" decoding="async">
           </picture>
-        </div>
-        <!-- Services Section (Mobile: Top, LG: Right side) -->
-        <div class="footer-services">
-          <div class="footer-links">
-            <div
-              v-for="group in footerGroups"
-              :key="group.title"
-              class="min-w-0 text-left space-y-2"
+          <div class="footer-social">
+            <a
+              href="https://www.instagram.com/yunda_surrogacy_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialLinks.instagram')"
+              class="footer-social-link"
             >
-              <h3 class="footer-guide-heading text-3.5 text-[var(--yunda-bark)] font-semibold uppercase lg:text-4.5">
-                {{ group.title }}
-              </h3>
-              <div class="space-y-1">
-                <NuxtLink
-                  v-for="(link, index) in group.links"
-                  :key="link.to"
-                  :to="localePath(link.to)"
-                  class="block text-3 text-[var(--yunda-bark)] font-normal uppercase transition-colors lg:text-3.5 hover:text-[var(--yunda-maple)]"
-                  :class="index === 0 ? 'font-semibold' : ''"
-                >
-                  {{ link.label }}
-                </NuxtLink>
-              </div>
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M7.5 0h9C20.64 0 24 3.36 24 7.5v9c0 4.14-3.36 7.5-7.5 7.5h-9C3.36 24 0 20.64 0 16.5v-9C0 3.36 3.36 0 7.5 0Zm0 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9Zm10.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+              </svg>
+              <span class="sr-only">{{ $t('footer.socialLinks.instagram') }}</span>
+            </a>
+            <a
+              href="https://www.facebook.com/people/Yunda-Surrogacy/61577914871802/"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialLinks.facebook')"
+              class="footer-social-link"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M13.5 24v-10h3.4l.5-4h-3.9V7.45c0-1.16.32-1.95 2-1.95h2.14V1.92A28.6 28.6 0 0 0 14.52 1C11.3 1 9.1 2.97 9.1 6.6V10H5.5v4h3.6v10h4.4Z" />
+              </svg>
+              <span class="sr-only">{{ $t('footer.socialLinks.facebook') }}</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@YundaSurrogacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialLinks.youtube')"
+              class="footer-social-link"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.8V8.2l6.3 3.8-6.3 3.8Z" />
+              </svg>
+              <span class="sr-only">{{ $t('footer.socialLinks.youtube') }}</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/yunda-surrogacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialLinks.linkedin')"
+              class="footer-social-link"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M5.5 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 9h4v13h-4V9Zm7 0h3.8v1.8h.1A4.4 4.4 0 0 1 18.2 8.7c4.1 0 4.8 2.7 4.8 6.2V22h-4v-6.3c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V22h-4V9Z" />
+              </svg>
+              <span class="sr-only">{{ $t('footer.socialLinks.linkedin') }}</span>
+            </a>
+            <a
+              href="https://www.tiktok.com/@yunda.surrogacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              class="footer-social-link"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M15.45 2h3.06c.25 1.93 1.3 3.48 3.49 4.33v3.13a9.2 9.2 0 0 1-3.46-1.08v6.9A5.72 5.72 0 1 1 13.6 9.6v3.24a2.55 2.55 0 1 0 1.85 2.44V2Z" />
+              </svg>
+              <span class="sr-only">TikTok</span>
+            </a>
+          </div>
+
+          <div class="footer-direct-contact">
+            <div>
+              <p class="footer-contact-label">
+                {{ $t('menu.phone') }}
+              </p>
+              <a :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`">
+                {{ $t('footer.phoneNumber') }}
+              </a>
+            </div>
+            <div>
+              <p class="footer-contact-label">
+                {{ $t('menu.email') }}
+              </p>
+              <a href="mailto:kaylal@yundasurrogacy.com">kaylal@yundasurrogacy.com</a>
             </div>
           </div>
-        </div>
 
-        <!-- Company Info (Mobile: Bottom, md: Left side) -->
-        <div class="footer-company">
-          <div>
-            <div class="min-w-0">
-
-
-              <!-- About Us Section -->
-              <div class="footer-company-nav text-left text-3.5 md:text-4.5">
-                <div class="space-y-1">
-                  <hr class="my-2 border-[var(--yunda-bark)]">
-                  <NuxtLink
-                    :to="localePath('/about')"
-                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-                  >
-                    {{ $t('menu.aboutUs') }}
-                  </NuxtLink>
-                  <hr class="my-2 border-[var(--yunda-bark)]">
-                  <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" target="_blank" rel="noopener noreferrer" class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]">{{ $t('menu.careers') }}</a>
-                  <hr class="my-2 border-[var(--yunda-bark)]">
-                  <NuxtLink
-                    :to="localePath('/resources')"
-                    prefetch
-                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-                  >
-                    {{ $t('menu.resources') }}
-                  </NuxtLink>
-                  <hr class="my-2 border-[var(--yunda-bark)]">
-                  <NuxtLink
-                    :to="localePath('/blog')"
-                    prefetch
-                    class="block text-[var(--yunda-bark)] font-normal uppercase transition-colors hover:text-[var(--yunda-maple)]"
-                  >
-                    {{ $t('menu.blog') }}
-                  </NuxtLink>
-                  <hr class="my-2 border-[var(--yunda-bark)]">
-                </div>
-              </div>
-
-              <!-- Social Links -->
-              <div class="footer-social mt-7 flex items-center gap-3 text-[var(--yunda-bark)]">
-                <a
-                  href="https://www.instagram.com/yunda_surrogacy_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :aria-label="$t('footer.socialLinks.instagram')"
-                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
-                >
-                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M7.5 0h9C20.64 0 24 3.36 24 7.5v9c0 4.14-3.36 7.5-7.5 7.5h-9C3.36 24 0 20.64 0 16.5v-9C0 3.36 3.36 0 7.5 0Zm0 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9Zm10.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
-                  </svg>
-                  <span class="sr-only">{{ $t('footer.socialLinks.instagram') }}</span>
-                </a>
-                <a
-                  href="https://www.facebook.com/people/Yunda-Surrogacy/61577914871802/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :aria-label="$t('footer.socialLinks.facebook')"
-                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
-                >
-                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M13.5 24v-10h3.4l.5-4h-3.9V7.45c0-1.16.32-1.95 2-1.95h2.14V1.92A28.6 28.6 0 0 0 14.52 1C11.3 1 9.1 2.97 9.1 6.6V10H5.5v4h3.6v10h4.4Z" />
-                  </svg>
-                  <span class="sr-only">{{ $t('footer.socialLinks.facebook') }}</span>
-                </a>
-                <a
-                  href="https://www.youtube.com/@YundaSurrogacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :aria-label="$t('footer.socialLinks.youtube')"
-                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
-                >
-                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.6 15.8V8.2l6.3 3.8-6.3 3.8Z" />
-                  </svg>
-                  <span class="sr-only">{{ $t('footer.socialLinks.youtube') }}</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/yunda-surrogacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :aria-label="$t('footer.socialLinks.linkedin')"
-                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
-                >
-                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM2.5 10h5v11.5h-5V10Zm8 0h4.8v1.57h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 5.9 3.33 5.9 7.67v4.73h-5v-4.2c0-1.01-.02-2.3-1.4-2.3-1.4 0-1.62 1.1-1.62 2.23v4.27h-5V10Z" />
-                  </svg>
-                  <span class="sr-only">{{ $t('footer.socialLinks.linkedin') }}</span>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@yunda.surrogacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="TikTok"
-                  class="h-7 w-7 inline-flex items-center justify-center transition-colors hover:text-[var(--yunda-maple)]"
-                >
-                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M15.45 2h3.06c.25 1.93 1.3 3.48 3.49 4.33v3.13a9.2 9.2 0 0 1-3.46-1.08v6.9A5.72 5.72 0 1 1 13.6 9.6v3.24a2.55 2.55 0 1 0 1.85 2.44V2Z" />
-                  </svg>
-                  <span class="sr-only">TikTok</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Phone and Email below Blog -->
-            <div class="footer-direct-contact mt-8 max-w-[20rem] text-left text-3.5 md:space-y-8 md:text-4.5">
-              <div>
-                <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                  {{ $t('menu.phone') }}
-                </p>
-                <a
-                  :href="`tel:${$t('footer.phoneNumber').replace(/[^0-9+]/g, '')}`"
-                  class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
-                >
-                  {{ $t('footer.phoneNumber') }}
-                </a>
-              </div>
-
-              <div>
-                <p class="text-[var(--yunda-bark)] font-normal uppercase">
-                  {{ $t('menu.email') }}
-                </p>
-                <a
-                  href="mailto:kaylal@yundasurrogacy.com"
-                  class="mt-1 block break-words text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
-                >
-                  kaylal@yundasurrogacy.com
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Messaging Contacts -->
-        <div class="footer-messaging">
-          <div class="grid grid-cols-2 gap-x-4 gap-y-8 text-left text-3.5 md:text-4">
-            <!-- WhatsApp -->
+          <div class="footer-messaging">
             <div v-if="locale === 'en'" class="footer-contact-block">
-              <p class="text-[var(--yunda-bark)] font-normal uppercase">
+              <p class="footer-contact-label">
                 {{ $t('menu.whatsapp') }}
               </p>
               <a
                 :href="`https://wa.me/${$t('footer.whatsappNumber').replace(/[^0-9+]/g, '')}`"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-1 block text-[var(--yunda-bark)] font-normal transition-colors hover:text-[var(--yunda-maple)] hover:underline"
               >
                 {{ $t('footer.whatsappNumber') }}
               </a>
-              <picture class="mt-3 block w-fit">
+              <picture>
                 <source srcset="/images/shared/contact/whatsapp.webp" type="image/webp">
-                <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" class="h-28 w-28 border border-[var(--yunda-bark)]/15 rounded shadow" loading="lazy" decoding="async">
+                <img src="/images/shared/contact/whatsapp.png" :alt="$t('menu.whatsapp')" width="112" height="112" loading="lazy" decoding="async">
               </picture>
             </div>
-
-            <!-- WeChat -->
             <div class="footer-contact-block">
-              <p class="text-[var(--yunda-bark)] font-normal uppercase">
+              <p class="footer-contact-label">
                 {{ $t('menu.wechat') }}
               </p>
-              <p class="mt-1 text-[var(--yunda-bark)] font-normal">
+              <p class="footer-messaging-id">
                 {{ $t('footer.wechatId') }}
               </p>
               <img
                 src="/images/shared/contact/wechat-yundaus1.jpg"
                 :alt="`${$t('menu.wechat')} ${$t('footer.wechatId')} QR code`"
-                class="mt-3 h-28 w-28 border border-[var(--yunda-bark)]/15 rounded object-contain shadow"
+                width="112"
+                height="112"
                 loading="lazy"
                 decoding="async"
               >
             </div>
           </div>
         </div>
+
+        <nav
+          v-for="(group, groupIndex) in footerGroups"
+          :key="group.title"
+          :aria-labelledby="`footer-guide-${groupIndex}`"
+          class="footer-nav"
+        >
+          <h3 :id="`footer-guide-${groupIndex}`" class="footer-heading">
+            {{ group.title }}
+          </h3>
+          <ul class="footer-link-list">
+            <li v-for="(link, index) in group.links" :key="link.to">
+              <NuxtLink :to="localePath(link.to)" :class="{ 'footer-overview': index === 0 }">
+                {{ link.label }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav footer-company-nav" aria-labelledby="footer-about-heading">
+          <h3 id="footer-about-heading" class="footer-heading">
+            <NuxtLink :to="localePath('/about')">
+              {{ $t('menu.aboutUs') }}
+            </NuxtLink>
+          </h3>
+          <ul class="footer-link-list">
+            <li>
+              <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" target="_blank" rel="noopener noreferrer">{{ $t('menu.careers') }}</a>
+            </li>
+            <li>
+              <NuxtLink :to="localePath('/resources')" prefetch>
+                {{ $t('menu.resources') }}
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink :to="localePath('/blog')" prefetch>
+                {{ $t('menu.blog') }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </nav>
       </div>
 
-      <!-- Policy Links -->
-      <div class="mt-4 border-t border-[var(--yunda-bark)]/20 pt-4 lg:mt-6">
-        <div class="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-4">
-          <NuxtLink
-            :to="localePath('/privacy-policy')"
-            class="text-2.5 text-[var(--yunda-bark)] font-normal transition-colors lg:text-2.75 hover:text-[var(--yunda-maple)]"
-          >
+      <div class="footer-legal">
+        <div class="footer-policies">
+          <NuxtLink :to="localePath('/privacy-policy')">
             {{ $t('footer.policyLinks.privacyPolicy') }}
           </NuxtLink>
-          <span class="hidden text-[var(--yunda-bark)] md:inline">|</span>
-          <NuxtLink
-            :to="localePath('/terms-of-service')"
-            class="text-2.5 text-[var(--yunda-bark)] font-normal transition-colors lg:text-2.75 hover:text-[var(--yunda-maple)]"
-          >
+          <NuxtLink :to="localePath('/terms-of-service')">
             {{ $t('footer.policyLinks.termsOfService') }}
           </NuxtLink>
-          <span class="hidden text-[var(--yunda-bark)] md:inline">|</span>
-          <NuxtLink
-            :to="localePath('/disclaimer')"
-            class="text-2.5 text-[var(--yunda-bark)] font-normal transition-colors lg:text-2.75 hover:text-[var(--yunda-maple)]"
-          >
+          <NuxtLink :to="localePath('/disclaimer')">
             {{ $t('footer.policyLinks.disclaimer') }}
           </NuxtLink>
-          <span class="hidden text-[var(--yunda-bark)] md:inline">|</span>
-          <NuxtLink
-            :to="localePath('/sitemap')"
-            class="text-2.5 text-[var(--yunda-bark)] font-normal transition-colors lg:text-2.75 hover:text-[var(--yunda-maple)]"
-          >
+          <NuxtLink :to="localePath('/sitemap')">
             {{ $t('footer.policyLinks.sitemap') }}
           </NuxtLink>
         </div>
-      </div>
-
-      <!-- Legal Disclaimer / Company Info -->
-      <div class="mt-4 border-t border-[var(--yunda-bark)]/20 pt-4 lg:mt-6">
-        <p class="whitespace-pre-line text-center text-2.5 text-[var(--yunda-bark)] font-normal lg:w-full lg:text-center lg:text-2.75">
+        <p class="footer-company-info">
           {{ $t('footer.companyInfo') }}
         </p>
       </div>
@@ -300,127 +237,297 @@ const footerGroups = computed(() => [
 </template>
 
 <style scoped>
+.app-footer {
+  padding: 2.5rem 1.25rem 2rem;
+  background: var(--yunda-petal);
+  color: var(--yunda-bark);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.footer-container {
+  max-width: 90rem;
+  margin-inline: auto;
+}
+
 .footer-layout {
   display: grid;
-  gap: 2.5rem 0;
+  gap: 2rem;
   align-items: start;
 }
 
-.footer-services { order: 4; min-width: 0; }
-.footer-brand { order: 1; }
-.footer-company { order: 2; min-width: 0; }
-.footer-messaging { order: 3; min-width: 0; }
-
-.footer-brand picture { display: block; }
-.footer-brand img { display: block; height: auto; }
-
-.footer-guide-heading,
-.footer-contact-block {
-  margin-top: 0.5rem;
-  padding-top: 0.75rem;
+.footer-layout > * {
+  min-width: 0;
 }
 
-.footer-guide-heading { margin-bottom: 1rem; white-space: nowrap; }
+.app-footer a {
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 160ms ease;
+}
 
-@media (min-width: 768px) {
+.app-footer a:hover {
+  color: var(--yunda-maple);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.app-footer a:focus-visible {
+  outline: 2px solid var(--yunda-bark);
+  outline-offset: 3px;
+  border-radius: 2px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer-brand {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.footer-logo,
+.footer-logo img {
+  display: block;
+  width: 7rem;
+  height: auto;
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-left: -0.5rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+
+.footer-social svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.footer-direct-contact {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.footer-contact-label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.footer-direct-contact a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.footer-messaging {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 17rem;
+}
+
+.footer-contact-block {
+  min-width: 0;
+  font-size: 0.875rem;
+}
+
+.footer-contact-block > a,
+.footer-messaging-id {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+}
+
+.footer-contact-block picture {
+  display: block;
+}
+
+.footer-contact-block img {
+  display: block;
+  width: 7rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border: 1px solid var(--yunda-harvest);
+  border-radius: 0.25rem;
+}
+
+.footer-heading {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.footer-heading a {
+  display: flex;
+  align-items: flex-start;
+  min-height: 2.75rem;
+}
+
+.footer-link-list {
+  display: grid;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-link-list a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.375rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.footer-overview {
+  font-weight: 600;
+}
+
+.footer-legal {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--yunda-harvest);
+  font-size: 0.875rem;
+}
+
+.footer-policies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem 1.5rem;
+}
+
+.footer-policies a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.footer-company-info {
+  max-width: 65rem;
+  margin: 0.75rem auto 0;
+  line-height: 1.75;
+  text-align: center;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 360px) and (max-width: 599px) {
+  .footer-link-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
   .footer-layout {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2rem;
-    row-gap: 2.5rem;
   }
-  .footer-brand { grid-column: 1; grid-row: 1; }
-  .footer-company { grid-column: 1; grid-row: 2; max-width: 32rem; }
-  .footer-messaging { grid-column: 2; grid-row: 2; }
-  .footer-services { grid-column: 1 / -1; grid-row: 3; }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  .footer-logo,
+  .footer-social,
+  .footer-direct-contact {
+    grid-column: 1;
+  }
+
+  .footer-messaging {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+  }
 }
 
 @media (min-width: 1024px) {
+  .app-footer {
+    padding: 3rem 2rem 2rem;
+  }
+
   .footer-layout {
-    grid-template-columns: minmax(0, 0.75fr) minmax(256px, 0.85fr) minmax(0, 2fr);
+    grid-template-columns: minmax(14rem, 1.25fr) repeat(3, minmax(0, 1fr)) minmax(0, 0.7fr);
+    column-gap: 1.5rem;
+    row-gap: 0.75rem;
   }
-  .footer-services { grid-column: 3; grid-row: 2; }
-}
 
-.footer-messaging img { width: 7rem; height: 7rem; max-width: none; }
-
-.footer-company-nav {
-  width: max-content;
-  max-width: 100%;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .footer-links {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-    column-gap: 3rem;
-    row-gap: 2.5rem;
+  .footer-brand {
+    gap: 1rem;
   }
-}
 
-@media (min-width: 1024px) {
-  .footer-links {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-    column-gap: 2rem;
+  .footer-nav {
+    display: grid;
+    grid-template-rows: minmax(3.5rem, max-content) auto;
+    gap: 0.75rem;
+    align-self: start;
+    align-items: start;
+  }
+
+  .footer-heading {
+    margin: 0;
+  }
+
+  .footer-heading a {
+    min-height: 0;
+  }
+
+  .footer-link-list a {
+    min-height: 2.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .footer-contact-block img {
+    width: 6rem;
+  }
+
+  .footer-legal {
+    margin-top: 2.5rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .footer-links {
+  .app-footer {
+    padding-inline: 3rem;
+  }
+
+  .footer-layout {
     column-gap: 2rem;
   }
-}
 
-@media (max-width: 767px) {
-  .footer-layout { row-gap: 1.5rem; }
-  .footer-brand img { width: 4.5rem; }
-  .footer-company-nav { width: 100%; }
-  .footer-company-nav > div {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1rem;
+  .footer-heading {
+    font-size: 1.25rem;
   }
-  .footer-company-nav hr { display: none; }
-  .footer-company-nav a {
-    display: flex;
-    align-items: center;
-    min-height: 2.75rem;
-    margin: 0;
-    font-size: 0.8125rem;
-  }
-  .footer-social { margin-top: 1rem; gap: 0.5rem; }
-  .footer-social a { width: 2.75rem; height: 2.75rem; }
-  .footer-direct-contact { margin-top: 1rem; max-width: 100%; }
-  .footer-direct-contact > div {
-    display: grid;
-    grid-template-columns: 3.5rem minmax(0, 1fr);
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-top: 0;
-    padding: 0.5rem 0;
-  }
-  .footer-direct-contact a { margin-top: 0; }
-  .footer-messaging > div { gap: 1rem; }
-  .footer-contact-block { margin-top: 0; padding-top: 0; }
-  .footer-contact-block > a { font-size: 0.8125rem; white-space: nowrap; }
-  .footer-links { gap: 1.5rem; }
-  .footer-guide-heading { margin-top: 0; padding-top: 0; margin-bottom: 0.75rem; }
-  .footer-links > div > div {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.25rem 1rem;
-  }
-  .footer-links a {
-    display: flex;
-    align-items: center;
-    min-height: 2.5rem;
-    margin-top: 0;
-    line-height: 1.5;
+
+  .footer-link-list a {
+    font-size: 1rem;
   }
 }
-
 </style>
