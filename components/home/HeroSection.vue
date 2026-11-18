@@ -306,7 +306,11 @@ function toggleMute() {
   backdrop-filter: blur(8px);
   color: var(--yunda-petal);
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
   box-shadow: 0 2px 8px rgba(60, 36, 21, 0.2);
 }
 

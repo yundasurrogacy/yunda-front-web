@@ -27,10 +27,10 @@ const tt = computed(() => locale.value.startsWith('zh')
       introduction: 'From understanding the process to planning the next step, Yunda Surrogacy supports intended parents and surrogates with communication, coordination, and case management.',
       imageAlt: 'Yunda Surrogacy team at ASRM',
       items: [
-        { title: 'Clear process coordination', description: 'We help organize information, discuss matching preferences, and follow up on next steps. Timing depends on mutual preferences, screening results, and the schedules of independent professionals.' },
-        { title: 'Cost and role transparency', descriptionPrefix: 'Understand the stages, scope of support, and ', descriptionLinkText: 'surrogacy cost breakdown', descriptionSuffix: '. Specific fees, third-party charges, and payment terms are set out in the relevant agreements and provider information.', link: '/surrogacy-cost' },
-        { title: 'Support shaped around you', description: 'We listen to your family circumstances, communication preferences, and journey goals to coordinate next steps. Independent clinics and medical professionals handle medical assessments and treatment plans.' },
-        { title: 'Coordination with professionals', description: 'We help connect you with clinics, independent attorneys, insurance professionals, and escrow providers, and follow up on communication and documents. Each provider is responsible for its own professional advice and services.' },
+        { title: 'Clear Process Coordination', description: 'We help organize information, discuss matching preferences, and follow up on next steps. Timing depends on mutual preferences, screening results, and the schedules of independent professionals.' },
+        { title: 'Cost And Role Transparency', descriptionPrefix: 'Understand the stages, scope of support, and ', descriptionLinkText: 'surrogacy cost breakdown', descriptionSuffix: '. Specific fees, third-party charges, and payment terms are set out in the relevant agreements and provider information.', link: '/surrogacy-cost' },
+        { title: 'Support Shaped Around You', description: 'We listen to your family circumstances, communication preferences, and journey goals to coordinate next steps. Independent clinics and medical professionals handle medical assessments and treatment plans.' },
+        { title: 'Coordination With Professionals', description: 'We help connect you with clinics, independent attorneys, insurance professionals, and escrow providers, and follow up on communication and documents. Each provider is responsible for its own professional advice and services.' },
       ],
     })
 
@@ -83,7 +83,7 @@ function focusFeature(index) {
             <h2 :id="`${sectionId}-heading`" class="mb-3 text-left text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display md:mb-4 md:mt-0 md:text-[42px]">
               {{ tt.title }}
             </h2>
-            <p class="mb-6 text-base text-[var(--yunda-bark)] leading-[1.75] font-sans">
+            <p class="feature-description mb-6 text-base text-[var(--yunda-bark)] leading-[1.75] font-sans md:text-[17px]">
               {{ tt.introduction }}
             </p>
             <div ref="featureList" class="flex flex-col gap-3">
@@ -123,7 +123,7 @@ function focusFeature(index) {
                   :id="`${sectionId}-panel-${index}`"
                   role="region"
                   :aria-labelledby="`${sectionId}-toggle-${index}`"
-                  class="px-4 pb-5 text-base text-[var(--yunda-bark)] leading-[1.75] font-sans md:pl-[72px] md:pr-5"
+                  class="feature-description px-4 pb-5 text-base text-[var(--yunda-bark)] leading-[1.75] font-sans md:pl-[72px] md:pr-5 md:text-[17px]"
                   style="font-family: var(--font-text)"
                 >
                   <template v-if="item.link">
@@ -148,6 +148,16 @@ function focusFeature(index) {
 </template>
 
 <style scoped>
+h2,
+.feature-toggle {
+  text-transform: capitalize;
+}
+
+.feature-description {
+  font-family: var(--font-text);
+  font-weight: 400;
+}
+
 .feature-item {
   border: 1px solid color-mix(in srgb, var(--yunda-bark) 18%, transparent);
   background: color-mix(in srgb, white 70%, var(--yunda-petal));

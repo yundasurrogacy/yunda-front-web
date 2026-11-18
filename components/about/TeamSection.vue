@@ -8,6 +8,9 @@ interface TeamMember {
   jobTitle: string
   summary: string
   paragraphs: string[]
+  responsibility: string
+  expertise: string
+  clientValue: string
   image?: string
   imageAlt?: string
 }
@@ -51,9 +54,20 @@ function toggleBio(memberId: string) {
           </p>
         </header>
         <div class="founder-bio member-bio">
-          <p class="founder-summary">
-            {{ founder.summary }}
-          </p>
+          <dl class="member-details">
+            <div>
+              <dt>{{ tt('Role & Personal Experience', '职责与亲身经历') }}</dt>
+              <dd>{{ founder.responsibility }}</dd>
+            </div>
+            <div>
+              <dt>{{ tt('Professional Strengths', '专业优势') }}</dt>
+              <dd>{{ founder.expertise }}</dd>
+            </div>
+            <div>
+              <dt>{{ tt('Value for Families', '客户价值') }}</dt>
+              <dd>{{ founder.clientValue }}</dd>
+            </div>
+          </dl>
           <button
             class="bio-toggle"
             type="button"
@@ -97,9 +111,20 @@ function toggleBio(memberId: string) {
                   {{ member.jobTitle }}
                 </p>
               </header>
-              <p class="member-bio member-summary">
-                {{ member.summary }}
-              </p>
+              <dl class="member-details member-bio">
+                <div>
+                  <dt>{{ tt('Responsibilities', '工作职责') }}</dt>
+                  <dd>{{ member.responsibility }}</dd>
+                </div>
+                <div>
+                  <dt>{{ tt('Professional Strengths', '专业优势') }}</dt>
+                  <dd>{{ member.expertise }}</dd>
+                </div>
+                <div>
+                  <dt>{{ tt('Value for Families', '客户价值') }}</dt>
+                  <dd>{{ member.clientValue }}</dd>
+                </div>
+              </dl>
               <button
                 class="bio-toggle"
                 type="button"
@@ -159,33 +184,30 @@ function toggleBio(memberId: string) {
   line-height: 1.1;
 }
 
-.founder-summary {
-  font-size: clamp(1.05rem, 1.45vw, 1.2rem);
-}
-
 .team-group-heading {
   padding-block: clamp(2.5rem, 4vw, 3.5rem) 2rem;
 }
 
 .team-grid {
   display: grid;
-  align-items: start;
+  align-items: stretch;
   gap: 2rem;
 }
 
 .member-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--yunda-bark) 15%, transparent);
   border-radius: 1.25rem;
   background: color-mix(in srgb, white 60%, var(--yunda-petal));
   padding: clamp(1.25rem, 2vw, 1.75rem);
+  height: 100%;
 }
 
 .member-portrait {
+  flex-shrink: 0;
   width: 100%;
-  max-width: 20rem;
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: 0.9rem;
@@ -229,8 +251,35 @@ function toggleBio(memberId: string) {
   line-height: 1.8;
 }
 
-.member-summary {
-  margin-top: 1rem;
+.member-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.member-details {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.member-copy .member-details {
+  flex: 1;
+  margin-top: 1.25rem;
+}
+
+.member-details dt {
+  margin-bottom: 0.35rem;
+  color: var(--yunda-bark);
+  font-weight: 600;
+}
+
+.member-details dd {
+  margin: 0;
+}
+
+.member-copy .bio-toggle {
+  align-self: flex-start;
+  margin-top: 1.5rem;
 }
 
 .full-bio {
@@ -273,12 +322,6 @@ function toggleBio(memberId: string) {
   outline-offset: 4px;
 }
 
-@media (min-width: 640px) {
-  .member-card {
-    grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 1fr);
-  }
-}
-
 @media (min-width: 1024px) {
   .founder-card {
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -294,23 +337,31 @@ function toggleBio(memberId: string) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .member-card {
-    grid-template-columns: minmax(0, 1fr);
+  .member-copy header {
+    min-height: 7.5rem;
   }
 
-  .member-portrait {
-    max-width: none;
-    aspect-ratio: 4 / 3;
+  .member-copy .member-details {
+    grid-template-rows: repeat(3, minmax(min-content, 1fr));
   }
 }
-
 @media (min-width: 1280px) {
   .member-card {
-    grid-template-columns: minmax(13rem, 0.85fr) minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    align-items: start;
   }
 
   .member-portrait {
     aspect-ratio: 3 / 4;
+  }
+
+  .member-copy {
+    align-self: stretch;
+  }
+
+  .member-copy header {
+    min-height: 0;
   }
 }
 </style>

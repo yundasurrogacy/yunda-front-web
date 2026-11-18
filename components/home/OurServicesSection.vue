@@ -14,7 +14,7 @@ useScrollAnimation()
         <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div class="order-2 space-y-6 lg:order-1">
             <div>
-              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
+              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
                 {{ $t('home.costSection.title2') }}
               </h2>
             </div>
@@ -89,7 +89,7 @@ useScrollAnimation()
           </div>
           <div class="space-y-6">
             <div>
-              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] lg:text-[42px]">
+              <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
                 {{ $t('home.parentsSurrogatesSection.surrogateSubtitle') }}
               </h2>
             </div>
@@ -123,3 +123,10 @@ useScrollAnimation()
     </div>
   </section>
 </template>
+
+<style scoped>
+h2,
+.yunda-type-button {
+  text-transform: capitalize;
+}
+</style>

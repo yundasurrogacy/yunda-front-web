@@ -25,6 +25,24 @@ const teamSummaries = computed(() => ({
   michaelSim: tt('Michael leads Asia-Pacific strategy and partnerships at Yunda Surrogacy. Working in assisted reproductive services since 2018, he connects intended parents with fertility professionals and supports communication across countries and cultures.', 'Michael 负责 Yunda Surrogacy 的亚太战略与合作伙伴关系。自 2018 年进入辅助生殖行业以来，他持续连接准父母与生殖领域专业人士，支持跨国家、跨文化的沟通协作。'),
 }))
 
+const teamDetails = computed(() => ({
+  kareZhang: {
+    responsibility: tt('After becoming a father through surrogacy, Kare founded Yunda Surrogacy and now leads its strategy, partnerships, and technology innovation.', '通过代孕成为父亲后，Kare 创立了 Yunda Surrogacy，现负责公司战略、合作伙伴关系与技术创新。'),
+    expertise: tt('His software development and digital media background informs the company’s bilingual CRM and case-management tools.', '他将软件开发与数字媒体经验运用于公司的双语 CRM 平台及个案管理工具。'),
+    clientValue: tt('He focuses on clearer communication and case visibility so intended parents can stay informed and connected throughout their journey.', '他关注清晰沟通与个案进度透明，帮助准父母在旅程中及时了解信息，并与团队保持联系。'),
+  },
+  kaylaLuo: {
+    responsibility: tt('Kayla oversees operations, technology development, business strategy, and cross-border initiatives at Yunda Surrogacy.', 'Kayla 负责 Yunda Surrogacy 的运营管理、技术研发、业务战略与跨境协作。'),
+    expertise: tt('She combines public administration and data science training with English, Mandarin, and German language skills.', '她结合公共管理与数据科学的专业背景，以及英语、中文和德语能力开展工作。'),
+    clientValue: tt('She works to simplify complex processes and improve communication for intended parents, surrogates, and international partners.', '她致力于简化复杂流程，改善准父母、代孕妈妈与国际合作伙伴之间的沟通。'),
+  },
+  michaelSim: {
+    responsibility: tt('Michael leads Asia-Pacific strategy, business development, and partnerships for Yunda Surrogacy.', 'Michael 负责 Yunda Surrogacy 在亚太地区的战略、业务拓展与合作伙伴关系。'),
+    expertise: tt('He has worked in assisted reproductive services since 2018, building relationships with fertility clinics, physicians, and industry partners.', '自 2018 年进入辅助生殖行业以来，他持续与生殖中心、医生和行业伙伴建立合作关系。'),
+    clientValue: tt('He connects intended parents with reproductive resources and helps simplify communication across countries and cultures.', '他为准父母连接生殖领域资源，帮助跨国家、跨文化的沟通更加清晰。'),
+  },
+}))
+
 const trustStandards = computed(() => [
   {
     title: tt('Whole-journey coordination', '全旅程协调'),
@@ -68,6 +86,7 @@ const teamMembers = computed(() => teamMemberDefinitions.map(member => ({
   title: t(`about.team.${member.key}.name`),
   jobTitle: t(`about.team.${member.key}.title`),
   summary: teamSummaries.value[member.key],
+  ...teamDetails.value[member.key],
   paragraphs: teamBio(member.key, member.paragraphCount),
   imageAlt: tt(`Portrait of ${t(`about.team.${member.key}.name`)} at Yunda Surrogacy`, `Yunda Surrogacy 团队成员 ${t(`about.team.${member.key}.name`)} 的肖像`),
 })))

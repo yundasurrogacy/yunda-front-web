@@ -838,33 +838,31 @@ function focusApplication() {
               >
                 {{ tt('Apply to Be a Surrogate With Clear Pay, Protection, and Support', '在清晰补偿、保障与支持下申请成为代孕妈妈') }}
               </h1>
-              <p
-                class="text-4 text-white/95 leading-snug lg:text-[1.05rem] sm:text-4.5 lg:leading-relaxed"
-                style="font-family: var(--font-text)"
-              >
-                {{ tt('Start with a private eligibility review. Yunda Surrogacy helps you understand compensation, screening, and each next step before you decide to continue.', '从私密资格评估开始。Yunda Surrogacy（孕达代孕）协助你了解补偿、筛查与后续步骤，再由你决定是否继续。') }}
-              </p>
               <div class="w-full text-left" style="font-family: var(--font-text)">
-                <p class="flex flex-wrap items-baseline justify-center gap-x-3 text-[var(--yunda-maple)]">
-                  <strong class="text-[48px] font-bold leading-tight sm:text-[60px] lg:text-[64px]">$50,000</strong>
-                  <span class="text-4.5 font-semibold sm:text-5">{{ t.landing.heroBaseLabel }}</span>
+                <p class="mx-auto max-w-120 text-center text-[1.1rem] text-white font-semibold leading-[1.55] sm:text-[1.25rem]">
+                  <span class="block">{{ t.landing.heroCompensationLine1 }}</span>
+                  <span class="block">{{ t.landing.heroCompensationLine2 }}</span>
                 </p>
-                <p class="mt-1 flex flex-wrap items-baseline justify-center gap-x-3 text-[var(--yunda-maple)]">
-                  <strong class="text-[36px] font-bold leading-tight sm:text-[44px]">+ $11,000</strong>
-                  <span class="text-4 font-semibold sm:text-4.5">{{ t.landing.heroSupportLabel }}</span>
-                </p>
-                <p class="mx-auto mt-3 max-w-120 text-center text-3.5 text-white leading-relaxed">
-                  {{ t.landing.heroCompensationNote }}
-                  <NuxtLink :to="localePath('/benefit')" class="mt-1 inline-block text-white underline underline-offset-4 hover:text-[var(--yunda-maple)]">
-                    {{ tt('View compensation & benefits overview', '查看补偿与福利总览') }}
-                  </NuxtLink>
-                </p>
+                <details class="mx-auto mt-3 max-w-120 text-center text-base text-white font-normal leading-[1.75] md:text-[17px]">
+                  <summary class="cursor-pointer underline underline-offset-4">
+                    {{ tt('Compensation Eligibility & Conditions', '补偿资格与条件') }}
+                  </summary>
+                  <p class="mt-2">
+                    {{ t.landing.heroCompensationNote }}
+                  </p>
+                </details>
+                <NuxtLink
+                  :to="localePath('/benefit')"
+                  class="mx-auto mt-2 block w-fit text-center text-3.5 text-white underline underline-offset-4 transition-colors hover:text-[var(--yunda-maple)]"
+                >
+                  {{ tt('View Compensation & Benefits Overview', '查看补偿与福利总览') }}
+                </NuxtLink>
               </div>
-              <ul class="grid w-full grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+              <ul class="grid w-full grid-cols-1 gap-x-5 gap-y-3 min-[380px]:grid-cols-2">
                 <li
                   v-for="(point, index) in t.landing.heroSupportPoints"
                   :key="point"
-                  class="flex items-center gap-3 border border-white/40 rounded-3 bg-white/12 px-4 py-3 text-left text-3.5 text-white font-medium leading-snug backdrop-blur-sm"
+                  class="flex items-center gap-3 border border-white/30 rounded-3 bg-white/15 px-4 py-3 text-left text-3.5 text-white font-semibold leading-snug backdrop-blur-sm sm:text-4"
                 >
                   <svg class="h-7 w-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path :d="heroSupportIcons[index]" />
@@ -872,9 +870,6 @@ function focusApplication() {
                   <span>{{ point }}</span>
                 </li>
               </ul>
-              <p class="text-3.5 text-white leading-relaxed">
-                {{ t.landing.heroRoleNote }}
-              </p>
             </div>
 
             <div
@@ -903,7 +898,7 @@ function focusApplication() {
 
               <div v-if="currentStep === 1" class="mb-3 rounded-3 bg-[rgba(234,232,208,0.32)] p-3 text-[var(--yunda-bark)]">
                 <p class="text-4 font-bold leading-snug">
-                  {{ tt('Start with a private eligibility review', '从私密资格评估开始') }}
+                  {{ tt('Start With a Private Eligibility Review', '从私密资格评估开始') }}
                 </p>
                 <p class="mt-1 text-3.5 leading-relaxed">
                   {{ tt('This application helps us understand your health history, pregnancy experience, timeline, and preferences. There is no obligation to move forward.', '这份申请会帮助我们了解你的健康情况、怀孕经历、时间安排和偏好。提交申请不代表你必须继续。') }}
@@ -1687,7 +1682,7 @@ function focusApplication() {
           </div>
 
           <p
-            class="shrink-0 px-4 pb-5 pt-1 text-center text-3.5 text-white font-medium leading-snug tracking-wide sm:pb-6 md:text-4.5 sm:text-4"
+            class="shrink-0 px-4 pb-7 pt-3 text-center text-3.5 text-white font-medium leading-[1.65] tracking-wide sm:pb-8 md:text-4.5 sm:text-4"
             style="font-family: var(--font-text); text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55)"
           >
             {{ t.landing.heroPillars }}
@@ -1707,8 +1702,6 @@ function focusApplication() {
         { label: tt('ASRM ethics opinion', 'ASRM 伦理意见'), href: 'https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/' },
       ]"
     />
-
-    <AssociationSection variant="plain" class="!pb-0" />
 
     <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-8 md:px-16 md:pb-16 md:pt-12">
       <div class="mx-auto max-w-320">
@@ -1743,10 +1736,10 @@ function focusApplication() {
             <p class="mb-4 text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.18em]">
               {{ t.landing.facebookGroupEyebrow }}
             </p>
-            <h2 id="surrogate-facebook-group-title" class="max-w-220 font-display text-[32px] text-white font-semibold leading-[1.1] sm:text-[42px] md:text-[52px]">
+            <h2 id="surrogate-facebook-group-title" class="max-w-220 font-display text-[32px] text-white font-medium leading-[1.15] md:text-[42px]">
               {{ t.landing.facebookGroupTitle }}
             </h2>
-            <p class="mx-auto mt-5 max-w-190 text-4.5 text-white/92 leading-relaxed md:text-5" style="font-family: var(--font-text)">
+            <p class="mx-auto mt-5 max-w-190 text-base text-white/92 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ t.landing.facebookGroupDescription }}
             </p>
             <a
@@ -1763,12 +1756,12 @@ function focusApplication() {
         <div class="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <p class="text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.16em]">
-              {{ tt('Protection and support', '保障与支持') }}
+              {{ tt('Protection and Support', '保障与支持') }}
             </p>
-            <h2 class="mt-3 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
-              {{ tt('You should understand your protection before saying yes', '在同意前，你应该清楚自己的保障') }}
+            <h2 class="mt-3 font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
+              {{ tt('You Should Understand Your Protection Before Saying Yes', '在同意前，你应该清楚自己的保障') }}
             </h2>
-            <p class="mt-5 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+            <p class="mt-5 text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ tt('Yunda coordinates the practical details that matter most to surrogate candidates: legal support, insurance review, escrow, screening, and communication.', '孕达会协调代孕妈妈最关心的实际事项：法律支持、保险审查、托管、筛查和沟通。') }}
             </p>
           </div>
@@ -1781,7 +1774,7 @@ function focusApplication() {
               <p class="text-4.5 text-[var(--yunda-bark)] font-bold">
                 {{ pillar.title }}
               </p>
-              <p class="mt-3 text-4 text-[var(--yunda-bark)]/82 leading-relaxed">
+              <p class="mt-3 text-base text-[var(--yunda-bark)]/82 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
                 {{ pillar.body }}
               </p>
             </div>
@@ -1792,12 +1785,12 @@ function focusApplication() {
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
               <p class="text-3.5 text-[var(--yunda-cream)]/75 font-bold uppercase tracking-[0.16em]">
-                {{ tt('After you apply', '提交申请后') }}
+                {{ tt('After You Apply', '提交申请后') }}
               </p>
-              <h2 class="mt-3 font-display text-[30px] font-medium leading-[1.15] md:text-[38px]">
-                {{ tt('What happens after you submit the application', '提交申请后会发生什么') }}
+              <h2 class="mt-3 font-display text-[32px] font-medium leading-[1.15] md:text-[42px]">
+                {{ tt('What Happens After You Submit the Application', '提交申请后会发生什么') }}
               </h2>
-              <p class="mt-4 text-4.5 text-[var(--yunda-petal)]/82 leading-relaxed">
+              <p class="mt-4 text-base text-[var(--yunda-petal)]/82 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
                 {{ tt('After applying, Yunda reviews your information privately and explains next steps before any commitment. If you may qualify, the team walks you through records, screening, compensation, legal coordination, insurance review, escrow, and matching.', '提交后，孕达会私密审核你的信息，并在任何承诺前说明下一步。如果你可能符合条件，团队会解释病历、筛查、补偿、法律协调、保险审查、托管和匹配流程。') }}
               </p>
             </div>
@@ -1808,7 +1801,7 @@ function focusApplication() {
                 class="rounded-3 bg-white/10 p-5"
               >
                 <span class="text-3.5 text-[var(--yunda-cream)]/75 font-bold">0{{ index + 1 }}</span>
-                <p class="mt-3 text-4.5 leading-relaxed">
+                <p class="mt-3 text-base font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
                   {{ step }}
                 </p>
               </li>
@@ -1816,22 +1809,24 @@ function focusApplication() {
           </div>
           <button
             type="button"
-            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-petal)] px-8 py-3.5 text-4 text-[var(--yunda-bark)] tracking-[0.02em] uppercase transition hover:opacity-90"
+            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-petal)] px-8 py-3.5 text-4 text-[var(--yunda-bark)] tracking-[0.02em] transition hover:opacity-90"
             @click="focusApplication"
           >
-            {{ tt('Start private review', '开始私密评估') }}
+            {{ tt('Start Private Review', '开始私密评估') }}
           </button>
         </div>
       </div>
     </section>
 
+    <AssociationSection variant="plain" />
+
     <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-320">
-        <h2 class="text-center font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[36px]">
-          {{ tt('Understand the details before you move forward', '继续前先了解关键细节') }}
+        <h2 class="text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
+          {{ tt('Understand the Details Before You Move Forward', '继续前先了解关键细节') }}
         </h2>
         <p
-          class="mx-auto mt-5 max-w-200 text-center text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5"
+          class="mx-auto mt-5 max-w-200 text-center text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]"
           style="font-family: var(--font-text)"
         >
           {{ tt('These short videos explain the practical topics most surrogate candidates ask about first: insurance, legal coordination, and escrow payment protection.', '这些短视频会说明代孕妈妈候选人最先关心的实际问题：保险、法律协调和托管付款保障。') }}
@@ -1841,7 +1836,7 @@ function focusApplication() {
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortInsurance }}
             </p>
-            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ tt('What coverage review means and why it matters before medical steps begin.', '说明保险审查的含义，以及为什么它应在医疗步骤前明确。') }}
             </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
@@ -1859,7 +1854,7 @@ function focusApplication() {
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortLegal }}
             </p>
-            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ tt('How legal coordination helps clarify rights, responsibilities, and decisions.', '说明法律协调如何帮助明确权利、责任和决策边界。') }}
             </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
@@ -1877,7 +1872,7 @@ function focusApplication() {
             <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
               {{ t.landing.shortEscrow }}
             </p>
-            <p class="mb-5 min-h-16 text-center text-4 text-[var(--yunda-bark)]/78 leading-relaxed">
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ tt('How escrow helps protect compensation handling during the journey.', '说明托管账户如何在流程中保障补偿付款安排。') }}
             </p>
             <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
@@ -1899,12 +1894,12 @@ function focusApplication() {
       <div class="mx-auto max-w-260">
         <div class="mx-auto max-w-220 text-center">
           <p class="text-3.5 text-[var(--yunda-maple)] font-bold uppercase tracking-[0.16em]">
-            {{ tt('Questions before applying', '申请前常见问题') }}
+            {{ tt('Questions Before Applying', '申请前常见问题') }}
           </p>
-          <h2 class="mt-3 font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
-            {{ tt('Get clear answers before sharing your application', '填写申请前，先获得清晰答案') }}
+          <h2 class="mt-3 font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
+            {{ tt('Get Clear Answers Before Sharing Your Application', '填写申请前，先获得清晰答案') }}
           </h2>
-          <p class="mt-5 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+          <p class="mt-5 text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
             {{ tt('The application starts a private review. These answers help clarify pay, privacy, commitment, and what happens next.', '提交申请会开启私密评估。以下内容帮助你先了解补偿、隐私、承诺和后续流程。') }}
           </p>
         </div>
@@ -1919,25 +1914,25 @@ function focusApplication() {
               <span>{{ item.q }}</span>
               <span class="mt-1 text-6 leading-none transition group-open:rotate-45">+</span>
             </summary>
-            <p class="mt-4 max-w-220 text-4 text-[var(--yunda-bark)]/82 leading-relaxed md:text-4.5">
+            <p class="mt-4 max-w-220 text-base text-[var(--yunda-bark)]/82 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
               {{ item.a }}
             </p>
           </details>
         </div>
 
         <div class="mt-12 rounded-4 bg-white/60 px-5 py-8 text-center shadow-[0_14px_34px_rgba(71,48,33,0.08)] md:px-10 md:py-10">
-          <h2 class="font-display text-[30px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[38px]">
-            {{ tt('Ready for a private eligibility review?', '准备开始私密资格评估了吗？') }}
+          <h2 class="font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
+            {{ tt('Ready for a Private Eligibility Review?', '准备开始私密资格评估了吗？') }}
           </h2>
-          <p class="mx-auto mt-4 max-w-190 text-4.5 text-[var(--yunda-bark)] leading-relaxed md:text-5" style="font-family: var(--font-text)">
+          <p class="mx-auto mt-4 max-w-190 text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
             {{ tt('Share your application with Yunda and our team will help you understand whether this journey may be a fit.', '向孕达提交申请，我们的团队会帮助你了解这段旅程是否可能适合你。') }}
           </p>
           <button
             type="button"
-            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] uppercase transition hover:opacity-90"
+            class="yunda-type-button shadow-inner-white-soft mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-8 py-3.5 text-4 text-[var(--yunda-petal)] tracking-[0.02em] transition hover:opacity-90"
             @click="focusApplication"
           >
-            {{ tt('Start my application', '开始我的申请') }}
+            {{ tt('Start My Application', '开始我的申请') }}
           </button>
         </div>
       </div>
