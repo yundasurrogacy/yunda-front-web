@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "node scripts/generate-xml-sitemaps.cjs && pnpm install --frozen-lockfile",
   "routes": [
     {
       "src": "/be-surrogate/success",
