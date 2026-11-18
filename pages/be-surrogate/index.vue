@@ -855,6 +855,9 @@ function focusApplication() {
                 </p>
                 <p class="mx-auto mt-3 max-w-120 text-center text-3.5 text-white leading-relaxed">
                   {{ t.landing.heroCompensationNote }}
+                  <NuxtLink :to="localePath('/benefit')" class="mt-1 inline-block text-white underline underline-offset-4 hover:text-[var(--yunda-maple)]">
+                    {{ tt('View compensation & benefits overview', '查看补偿与福利总览') }}
+                  </NuxtLink>
                 </p>
               </div>
               <ul class="grid w-full grid-cols-1 gap-3 min-[380px]:grid-cols-2">
@@ -1699,7 +1702,6 @@ function focusApplication() {
       :note="tt('This page explains Yunda surrogate application support, compensation education, eligibility review, escrow coordination, insurance review, and matching support. Final eligibility depends on medical records, screening, legal review, and program requirements.', '本页说明孕达为代孕妈妈申请者提供的申请支持、补偿说明、资格评估、托管协调、保险审查与匹配支持。最终资格取决于病历、筛查、法律审核与项目要求。')"
       :sources="[
         { label: tt('Surrogate requirements', '代孕妈妈资格'), href: localePath('/surrogate-requirements') },
-        { label: tt('Compensation & benefits overview', '补偿与福利总览'), href: localePath('/benefit') },
         { label: tt('Surrogate compensation', '代孕补偿'), href: localePath('/surrogate-compensation') },
         { label: tt('ASRM carrier guidance', 'ASRM 妊娠载体指南'), href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/' },
         { label: tt('ASRM ethics opinion', 'ASRM 伦理意见'), href: 'https://www.asrm.org/practice-guidance/ethics-opinions/consideration-of-the-gestational-carrier-an-ethics-committee-opinion-2023/' },
