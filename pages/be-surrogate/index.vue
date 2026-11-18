@@ -12,7 +12,7 @@ import FormPhoneInput from '@/components/form/FormPhoneInput.vue'
 import FormRadio from '@/components/form/FormRadio.vue'
 import FormSelect from '@/components/form/FormSelect.vue'
 import AssociationSection from '@/components/home/AssociationSection.vue'
-import SurrogateGallerySection from '@/components/home/SurrogateGallerySection.vue'
+import GcInformationSection from '@/components/home/GcInformationSection.vue'
 import { useApi } from '~/composables/useApi'
 import {
   applyFormFromStorage,
@@ -1943,11 +1943,7 @@ function focusApplication() {
       </div>
     </section>
 
-    <SurrogateGallerySection
-      variant="plain"
-      :title="t.landing.galleryTitle"
-      :subtitle="t.landing.gallerySubtitle"
-    />
+    <GcInformationSection />
 
     <AppFooter />
   </div>
