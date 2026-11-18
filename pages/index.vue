@@ -5,11 +5,11 @@ import AppFooter from '../components/base/AppFooter.vue'
 import AppHeader from '../components/base/AppHeader.vue'
 import BlogNewsSection from '../components/home/BlogNewsSection.vue'
 import CommitmentSection from '../components/home/CommitmentSection.vue'
+import GcInformationSection from '../components/home/GcInformationSection.vue'
 import GoogleReviewsSection from '../components/home/GoogleReviewsSection.vue'
 import HeroSection from '../components/home/HeroSection.vue'
 import OurServicesSection from '../components/home/OurServicesSection.vue'
 import StatsSection from '../components/home/StatsSection.vue'
-import SurrogateGallerySection from '../components/home/SurrogateGallerySection.vue'
 import WhatSetsUsApartSection from '../components/home/WhatSetsUsApartSection.vue'
 
 const { t, locale } = useI18n()
@@ -144,19 +144,19 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="bg-[var(--yunda-petal)]">
+  <div class="home-page bg-[var(--yunda-petal)]">
     <AppHeader />
     <HeroSection />
     <StatsSection />
     <WhatSetsUsApartSection />
     <OurServicesSection />
     <CommitmentSection />
-    <SurrogateGallerySection />
+    <GcInformationSection id="meet-our-surrogates" />
     <section class="bg-[var(--yunda-petal)] px-4 py-[60px] md:px-20">
       <div class="mx-auto max-w-[1400px]">
         <div class="grid gap-8 py-2 md:grid-cols-10 md:min-h-[500px] md:items-center md:gap-10">
           <div class="text-[var(--yunda-bark)] md:col-span-4">
-            <h2 class="text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display lg:text-[42px]">
+            <h2 class="text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display md:text-[42px]">
               Yunda Surrogacy - Building families. Creating futures.
             </h2>
             <p class="mt-8 text-base leading-[1.75] font-sans md:text-[17px]" style="font-family: var(--font-text)">
@@ -187,4 +187,19 @@ useHead(() => {
 </template>
 
 <style scoped>
+.home-page :deep(h1),
+.home-page :deep(h2),
+.home-page :deep(h3),
+.home-page :deep(button),
+.home-page :deep(.yunda-type-button) {
+  text-transform: capitalize;
+}
+
+#meet-our-surrogates {
+  scroll-margin-top: 7rem;
+}
+
+#meet-our-surrogates :deep(.surrogate-card-status dd) {
+  text-transform: capitalize;
+}
 </style>

@@ -4,6 +4,19 @@ import MobileApplyCta from './MobileApplyCta.vue'
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 
+function titleCaseLabel(label) {
+  if (!locale.value.startsWith('en'))
+    return label
+
+  return label.replace(/[a-z]+(?:['’][a-z]+)*/gi, (word) => {
+    if (['IVF', 'LGBTQ', 'LGBTQIA'].includes(word.toUpperCase()))
+      return word.toUpperCase()
+
+    const rest = word === word.toUpperCase() ? word.slice(1).toLowerCase() : word.slice(1)
+    return word.charAt(0).toUpperCase() + rest
+  })
+}
+
 const footerGroups = computed(() => [
   {
     title: t('footer.sections.intendedParentsGuide'),
@@ -177,12 +190,12 @@ const footerGroups = computed(() => [
           class="footer-nav"
         >
           <h3 :id="`footer-guide-${groupIndex}`" class="footer-heading">
-            {{ group.title }}
+            {{ titleCaseLabel(group.title) }}
           </h3>
           <ul class="footer-link-list">
             <li v-for="(link, index) in group.links" :key="link.to">
               <NuxtLink :to="localePath(link.to)" :class="{ 'footer-overview': index === 0 }">
-                {{ link.label }}
+                {{ titleCaseLabel(link.label) }}
               </NuxtLink>
             </li>
           </ul>
@@ -191,21 +204,21 @@ const footerGroups = computed(() => [
         <nav class="footer-nav footer-company-nav" aria-labelledby="footer-about-heading">
           <h3 id="footer-about-heading" class="footer-heading">
             <NuxtLink :to="localePath('/about')">
-              {{ $t('menu.aboutUs') }}
+              {{ titleCaseLabel($t('menu.aboutUs')) }}
             </NuxtLink>
           </h3>
           <ul class="footer-link-list">
             <li>
-              <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" target="_blank" rel="noopener noreferrer">{{ $t('menu.careers') }}</a>
+              <a href="https://www.indeed.com/cmp/Yunda-Surrogacy" target="_blank" rel="noopener noreferrer">{{ titleCaseLabel($t('menu.careers')) }}</a>
             </li>
             <li>
               <NuxtLink :to="localePath('/resources')" prefetch>
-                {{ $t('menu.resources') }}
+                {{ titleCaseLabel($t('menu.resources')) }}
               </NuxtLink>
             </li>
             <li>
               <NuxtLink :to="localePath('/blog')" prefetch>
-                {{ $t('menu.blog') }}
+                {{ titleCaseLabel($t('menu.blog')) }}
               </NuxtLink>
             </li>
           </ul>
@@ -215,16 +228,16 @@ const footerGroups = computed(() => [
       <div class="footer-legal">
         <div class="footer-policies">
           <NuxtLink :to="localePath('/privacy-policy')">
-            {{ $t('footer.policyLinks.privacyPolicy') }}
+            {{ titleCaseLabel($t('footer.policyLinks.privacyPolicy')) }}
           </NuxtLink>
           <NuxtLink :to="localePath('/terms-of-service')">
-            {{ $t('footer.policyLinks.termsOfService') }}
+            {{ titleCaseLabel($t('footer.policyLinks.termsOfService')) }}
           </NuxtLink>
           <NuxtLink :to="localePath('/disclaimer')">
-            {{ $t('footer.policyLinks.disclaimer') }}
+            {{ titleCaseLabel($t('footer.policyLinks.disclaimer')) }}
           </NuxtLink>
           <NuxtLink :to="localePath('/sitemap')">
-            {{ $t('footer.policyLinks.sitemap') }}
+            {{ titleCaseLabel($t('footer.policyLinks.sitemap')) }}
           </NuxtLink>
         </div>
         <p class="footer-company-info">
@@ -243,7 +256,7 @@ const footerGroups = computed(() => [
   color: var(--yunda-bark);
   font-family: var(--font-text);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .footer-container {
@@ -378,6 +391,7 @@ const footerGroups = computed(() => [
   line-height: 1.4;
   overflow-wrap: anywhere;
   text-wrap: balance;
+  text-transform: capitalize;
 }
 
 .footer-heading a {
@@ -388,7 +402,7 @@ const footerGroups = computed(() => [
 
 .footer-link-list {
   display: grid;
-  gap: 0.125rem;
+  gap: 0.4rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -400,7 +414,8 @@ const footerGroups = computed(() => [
   min-height: 2.75rem;
   padding-block: 0.375rem;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.65;
+  text-transform: capitalize;
 }
 
 .footer-overview {
@@ -408,6 +423,8 @@ const footerGroups = computed(() => [
 }
 
 .footer-legal {
+  display: grid;
+  row-gap: 0.25rem;
   margin-top: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--yunda-harvest);
@@ -419,19 +436,20 @@ const footerGroups = computed(() => [
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem 1.5rem;
+  gap: 0.5rem 1.5rem;
 }
 
 .footer-policies a {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
+  text-transform: capitalize;
 }
 
 .footer-company-info {
   max-width: 65rem;
-  margin: 0.75rem auto 0;
-  line-height: 1.75;
+  margin: 0 auto;
+  line-height: 1.65;
   text-align: center;
   white-space: pre-line;
   overflow-wrap: anywhere;

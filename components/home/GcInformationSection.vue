@@ -55,7 +55,7 @@ function statusText(status: string) {
             decoding="async"
           >
 
-          <div class="px-6 pb-7 pt-5">
+          <div class="surrogate-card-content px-6 pb-8 pt-5">
             <div class="flex items-center gap-2 text-xs text-[#a66c3d] font-bold tracking-[0.08em] uppercase">
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
                 <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z" />
@@ -63,7 +63,7 @@ function statusText(status: string) {
               <span>{{ profile.state }}</span>
             </div>
 
-            <dl class="mt-4 space-y-2.5 text-[15px] text-[var(--yunda-bark)] leading-relaxed">
+            <dl class="surrogate-card-details mt-5 text-[15px] text-[var(--yunda-bark)] leading-[1.7]">
               <div class="flex items-baseline justify-between gap-4">
                 <dt class="font-medium">{{ tt('Age', '年龄') }}</dt>
                 <dd>{{ profile.age }}</dd>
@@ -76,9 +76,9 @@ function statusText(status: string) {
                 <dt class="font-medium">{{ tt('Partnered', '合作年份') }}</dt>
                 <dd>{{ profile.partnered }}</dd>
               </div>
-              <div class="border-t border-[var(--yunda-bark)]/10 pt-2.5">
+              <div class="surrogate-card-status mt-4 border-t border-[var(--yunda-bark)]/15 pt-3.5">
                 <dt class="font-medium">{{ tt('Current Status', '当前状态') }}</dt>
-                <dd class="mt-1 text-[#a66c3d] font-semibold">
+                <dd class="mt-2 text-[#a66c3d] font-semibold leading-[1.6]">
                   {{ statusText(profile.status) }}
                 </dd>
               </div>
@@ -89,3 +89,23 @@ function statusText(status: string) {
     </div>
   </section>
 </template>
+
+<style scoped>
+.surrogate-card-content {
+  min-height: 18rem;
+}
+
+.surrogate-card-details > div:not(.surrogate-card-status) + div:not(.surrogate-card-status) {
+  margin-top: 0.75rem;
+}
+
+.surrogate-card-status {
+  min-height: 6.5rem;
+}
+
+@media (min-width: 1280px) {
+  .surrogate-card-content {
+    min-height: 18.5rem;
+  }
+}
+</style>
