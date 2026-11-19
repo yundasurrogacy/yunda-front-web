@@ -29,7 +29,7 @@ const partners = [
     "
   >
     <div class="mx-auto max-w-320">
-      <h2 class="scroll-animate mb-12 text-center text-7.5 font-semibold md:text-10" >
+      <h2 class="scroll-animate mb-12 text-center text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] font-display md:text-[42px]">
         {{ $t('home.associationSection.title') }}
       </h2>
       <div class="scroll-animate scroll-animate-delay-100 grid grid-cols-3 items-center justify-items-center gap-x-5 gap-y-8 md:flex md:flex-nowrap md:justify-center md:gap-8 lg:gap-10">
