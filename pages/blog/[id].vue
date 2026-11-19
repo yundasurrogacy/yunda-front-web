@@ -149,6 +149,7 @@ const blogApiUrl = computed(() => {
 // 棣栧厛灏濊瘯閫氳繃route_id鏌ヨ锛屽鏋滃け璐ュ垯閫氳繃id鏌ヨ
 const { data: blog, pending: loading, error } = await useFetch(blogApiUrl, {
   key: blogCacheKey.value,
+  ...(import.meta.server ? { retry: 3, retryDelay: 1000, timeout: 20000 } : {}),
   server: true, // 淇濇寔鏈嶅姟绔覆鏌撲互鏀寔 SEO
   default: () => null,
   // 娣诲姞瀹㈡埛绔紦瀛橈紝10鍒嗛挓鍐呬笉閲嶅璇锋眰
