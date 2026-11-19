@@ -424,9 +424,8 @@ const footerGroups = computed(() => [
 
 .footer-legal {
   display: grid;
-  row-gap: 0.25rem;
   margin-top: 2rem;
-  padding-top: 1.25rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--yunda-harvest);
   font-size: 0.875rem;
 }
@@ -436,7 +435,7 @@ const footerGroups = computed(() => [
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem 1.5rem;
+  gap: 0 1.5rem;
 }
 
 .footer-policies a {
@@ -528,6 +527,10 @@ const footerGroups = computed(() => [
 
   .footer-legal {
     margin-top: 2.5rem;
+  }
+
+  .footer-policies a {
+    min-height: 1.75rem;
   }
 }
 
