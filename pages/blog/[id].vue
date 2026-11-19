@@ -17,6 +17,14 @@ const resolvedSiteUrl = computed(() => siteUrl.value || 'https://www.yundasurrog
 const apiBase = computed(() => (runtimeConfig.public.apiBase || 'https://yunda-admin-system.yundasurrogacy.com').replace(/\/$/, ''))
 const fallbackBlogImage = '/images/pages/blog/fallback-hero.jpg'
 
+const storyCoverDescriptions: Record<string, string> = {
+  'a-meaningful-step-toward-another-familys-dream': 'A woman holding a bouquet of pink roses',
+  'a-gift-that-goes-beyond-one-moment': 'A woman holding a Yunda Surrogacy tote in the HRC Fertility lobby',
+  'choosing-trust-along-the-way': 'Three people standing together in a waiting room',
+  'a-new-beginning-with-experience-behind-her': 'Three people standing together at GenPrime Fertility',
+}
+const storyCoverAlt = computed(() => storyCoverDescriptions[String(route.params.id)] || '')
+
 const blogCopyEn = {
   meta: {
     title: 'Surrogacy Blog | Yunda Surrogacy Knowledge Center',
@@ -752,7 +760,7 @@ const readingTimeLabel = computed(() => {
 })
 
 const quickAnswerText = computed(() => {
-  if (!blog.value)
+  if (!blog.value || storyCoverAlt.value)
     return ''
 
   return buildLocalizedBlogDescription(blog.value, 155)
@@ -1001,10 +1009,10 @@ const blogPostingSchema = computed(() => {
     baseUrl,
     locale: locale.value,
     author: authorName,
-    authorType: authorName === blogCopy.value.authorDefault ? 'Organization' : 'Person',
+    authorType: storyCoverAlt.value || authorName === blogCopy.value.authorDefault ? 'Organization' : 'Person',
     datePublished: blog.value.created_at,
     dateModified: blog.value.updated_at,
-    reviewedBy: blogReviewer.value,
+    reviewedBy: storyCoverAlt.value ? undefined : blogReviewer.value,
     citation: structuredBlogContent.value.citations,
     keywords: uniqueValues([
       ...(blog.value.tags ? blog.value.tags.split('|').map(tag => tag.trim()).filter(Boolean) : []),
@@ -1078,7 +1086,7 @@ const blogStructuredData = computed(() => {
       '@id': `${pageUrl}#article`,
     },
     dateModified: blog.value.updated_at,
-    reviewedBy: blogReviewer.value,
+    reviewedBy: storyCoverAlt.value ? undefined : blogReviewer.value,
     locale: locale.value,
   })
   const { '@context': _webpageContext, ...webpageNode } = webpageSchema
@@ -1237,7 +1245,8 @@ useHead(() => (blogStructuredData.value
         </nav>
 
         <header class="mb-8">
-          <div class="mb-6 aspect-[16/8.5] max-h-[520px] w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]">
+          <div class="mb-6 w-full overflow-hidden rounded-[8px] bg-white shadow-[0_20px_55px_rgba(65,45,30,0.12)]"
+            :class="storyCoverAlt ? 'aspect-video' : 'aspect-[16/8.5] max-h-[520px]'">
             <picture class="contents">
               <source
                 v-if="!blog.cover_img_url"
@@ -1248,10 +1257,10 @@ useHead(() => (blogStructuredData.value
               <img
                 :src="currentBlogHeroImage"
                 :srcset="blog.cover_img_url ? undefined : fallbackBlogJpegSrcset"
-                :alt="getBlogTitle(blog)"
+                :alt="storyCoverAlt || getBlogTitle(blog)"
                 class="size-full object-cover"
-                width="1600"
-                height="1066"
+                :width="storyCoverAlt ? 2047 : 1600"
+                :height="storyCoverAlt ? 1152 : 1066"
                 sizes="(min-width: 1440px) 1376px, 100vw"
                 loading="eager"
                 fetchpriority="high"
@@ -1284,7 +1293,7 @@ useHead(() => (blogStructuredData.value
                 <Icon name="lucide:calendar-days" class="h-4 w-4 text-[var(--yunda-maple)]" />
                 {{ formatDate(blog.created_at) }}
               </span>
-              <span class="inline-flex items-center gap-2">
+              <span v-if="!storyCoverAlt" class="inline-flex items-center gap-2">
                 <Icon name="lucide:shield-check" class="h-4 w-4 text-[var(--yunda-maple)]" />
                 {{ blogCopy.reviewedByLabel }} Kayla Luo
               </span>
@@ -1307,7 +1316,7 @@ useHead(() => (blogStructuredData.value
             </section>
 
             <section
-              v-if="citableFaqs.length"
+              v-if="!storyCoverAlt && citableFaqs.length"
               class="brand-card key-questions-card mb-6 border rounded-[8px] p-5 md:p-6"
               aria-labelledby="blog-key-questions"
             >
@@ -1367,7 +1376,16 @@ useHead(() => (blogStructuredData.value
                 </div>
               </div>
 
-              <section class="mt-10 rounded-[8px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] md:p-7">
+              <section v-if="storyCoverAlt" class="mt-8 flex flex-wrap gap-3">
+                <NuxtLink to="/be-surrogate?step=1" class="yunda-type-button rounded-full bg-[var(--yunda-bark)] px-5 py-3 text-[var(--yunda-petal)]">
+                  Apply Now
+                </NuxtLink>
+                <NuxtLink to="/surrogate-process" class="yunda-type-button border border-[var(--yunda-bark)]/30 rounded-full px-5 py-3 text-[var(--yunda-bark)]">
+                  Surrogacy Process Guide
+                </NuxtLink>
+              </section>
+
+              <section v-else class="mt-10 rounded-[8px] bg-[var(--yunda-bark)] p-5 text-[var(--yunda-petal)] md:p-7">
                 <p class="font-display text-2xl font-medium leading-tight">
                   {{ conversionCopy.finalCtaTitle }}
                 </p>
@@ -1392,7 +1410,7 @@ useHead(() => (blogStructuredData.value
                 </div>
               </section>
 
-              <section class="reviewed-card mt-8 border rounded-[8px] p-5">
+              <section v-if="!storyCoverAlt" class="reviewed-card mt-8 border rounded-[8px] p-5">
                 <div class="flex gap-4">
                   <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--yunda-petal)] text-[var(--yunda-maple)] shadow-sm">
                     <Icon name="lucide:badge-check" class="h-5 w-5" />
@@ -1605,6 +1623,50 @@ useHead(() => (blogStructuredData.value
 </template>
 
 <style scoped>
+.blog-rich-content :deep(.story-article-card) {
+  margin-block: 0 1.25rem;
+  padding: clamp(1.125rem, 3vw, 1.75rem);
+  border: 1px solid #e4d6c4;
+  border-radius: 1rem;
+  background: #fdf7ed;
+}
+
+.blog-rich-content :deep(.story-article-card > h2) {
+  margin-top: 0;
+}
+
+.blog-rich-content :deep(.story-article-facts) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: 0.5rem;
+}
+
+.blog-rich-content :deep(.story-article-facts > div) {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  background: #f2e5d3;
+}
+
+.blog-rich-content :deep(.story-article-facts dt) {
+  font-size: 0.75rem;
+}
+
+.blog-rich-content :deep(.story-article-facts dd) {
+  margin-inline-start: 0;
+  font-weight: 600;
+}
+
+.blog-rich-content :deep(.story-article-card details) {
+  padding-block: 0.75rem;
+  border-top: 1px solid #e4d6c4;
+}
+
+.blog-rich-content :deep(.story-article-card summary) {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
 /* 鏂囩珷鍐呭鏍峰紡浼樺寲 */
 .prose {
   max-width: none;
