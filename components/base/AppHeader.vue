@@ -1,5 +1,6 @@
 <script setup>
 import { computed, defineAsyncComponent, ref } from 'vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const SideMenu = defineAsyncComponent(() => import('./SideMenu.vue'))
 
@@ -60,7 +61,9 @@ const isHomePage = computed(() => route.path === homePath.value)
       </NuxtLink>
     </div>
 
-    <div class="z-10 w-28 shrink-0" aria-hidden="true" />
+    <div class="z-10 w-28 flex shrink-0 justify-end">
+      <LanguageSwitcher />
+    </div>
   </header>
 
   <!-- SideMenu Component -->
