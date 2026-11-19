@@ -111,20 +111,9 @@ function toggleBio(memberId: string) {
                   {{ member.jobTitle }}
                 </p>
               </header>
-              <dl class="member-details member-bio">
-                <div>
-                  <dt>{{ tt('Responsibilities', '工作职责') }}</dt>
-                  <dd>{{ member.responsibility }}</dd>
-                </div>
-                <div>
-                  <dt>{{ tt('Professional Strengths', '专业优势') }}</dt>
-                  <dd>{{ member.expertise }}</dd>
-                </div>
-                <div>
-                  <dt>{{ tt('Value for Families', '客户价值') }}</dt>
-                  <dd>{{ member.clientValue }}</dd>
-                </div>
-              </dl>
+              <p class="member-bio member-summary">
+                {{ member.summary }}
+              </p>
               <button
                 class="bio-toggle"
                 type="button"
@@ -202,7 +191,6 @@ function toggleBio(memberId: string) {
   border-radius: 1.25rem;
   background: color-mix(in srgb, white 60%, var(--yunda-petal));
   padding: clamp(1.25rem, 2vw, 1.75rem);
-  height: 100%;
 }
 
 .member-portrait {
@@ -262,9 +250,8 @@ function toggleBio(memberId: string) {
   gap: 1.25rem;
 }
 
-.member-copy .member-details {
-  flex: 1;
-  margin-top: 1.25rem;
+.member-summary {
+  margin-block: 0.75rem;
 }
 
 .member-details dt {
@@ -279,7 +266,7 @@ function toggleBio(memberId: string) {
 
 .member-copy .bio-toggle {
   align-self: flex-start;
-  margin-top: 1.5rem;
+  margin-top: auto;
 }
 
 .full-bio {
@@ -336,15 +323,8 @@ function toggleBio(memberId: string) {
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .member-copy header {
-    min-height: 7.5rem;
-  }
-
-  .member-copy .member-details {
-    grid-template-rows: repeat(3, minmax(min-content, 1fr));
-  }
 }
+
 @media (min-width: 1280px) {
   .member-card {
     display: grid;
@@ -358,10 +338,6 @@ function toggleBio(memberId: string) {
 
   .member-copy {
     align-self: stretch;
-  }
-
-  .member-copy header {
-    min-height: 0;
   }
 }
 </style>

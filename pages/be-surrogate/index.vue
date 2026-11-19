@@ -839,9 +839,13 @@ function focusApplication() {
                 {{ tt('Apply to Be a Surrogate With Clear Pay, Protection, and Support', '在清晰补偿、保障与支持下申请成为代孕妈妈') }}
               </h1>
               <div class="w-full text-left" style="font-family: var(--font-text)">
-                <p class="mx-auto max-w-120 text-center text-[1.1rem] text-white font-semibold leading-[1.55] sm:text-[1.25rem]">
-                  <span class="block">{{ t.landing.heroCompensationLine1 }}</span>
-                  <span class="block">{{ t.landing.heroCompensationLine2 }}</span>
+                <p class="flex flex-wrap items-baseline justify-center gap-x-3 text-center text-white">
+                  <strong class="text-[48px] text-[var(--yunda-maple)] font-bold leading-tight lg:text-[64px] sm:text-[60px]">$50,000</strong>
+                  <span class="text-4.5 font-semibold">{{ t.landing.heroCompensationBaseDescription }}</span>
+                </p>
+                <p class="mt-1 flex flex-wrap items-baseline justify-center gap-x-3 text-center text-white">
+                  <strong class="text-[36px] text-[var(--yunda-maple)] font-bold leading-tight sm:text-[44px]">$11,000</strong>
+                  <span class="text-4 font-semibold">{{ t.landing.heroCompensationSupportDescription }}</span>
                 </p>
                 <details class="mx-auto mt-3 max-w-120 text-center text-base text-white font-normal leading-[1.75] md:text-[17px]">
                   <summary class="cursor-pointer underline underline-offset-4">
