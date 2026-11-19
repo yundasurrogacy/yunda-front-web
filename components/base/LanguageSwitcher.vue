@@ -13,6 +13,8 @@ const currentLocale = computed(() => locale.value)
       type="button"
       class="transition-opacity hover:opacity-80"
       :class="{ 'font-bold': currentLocale === 'en' }"
+      aria-label="English"
+      :aria-pressed="currentLocale === 'en'"
       @click="setLocale('en')"
     >
       EN
@@ -20,11 +22,13 @@ const currentLocale = computed(() => locale.value)
     <span class="text-black/35" aria-hidden="true">/</span>
     <button
       type="button"
-      class="font-['SourceHanSerifCN'] transition-opacity hover:opacity-80"
+      class="transition-opacity hover:opacity-80"
       :class="{ 'font-bold': currentLocale === 'zh' }"
+      aria-label="简体中文"
+      :aria-pressed="currentLocale === 'zh'"
       @click="setLocale('zh')"
     >
-      中文
+      CN
     </button>
   </div>
 </template>
