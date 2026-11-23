@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { gcProfiles } from '~/data/gc-profiles'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const isZh = computed(() => locale.value.startsWith('zh'))
 const tt = (en: string, zh: string) => isZh.value ? zh : en
 
