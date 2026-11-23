@@ -40,10 +40,12 @@ function statusText(status: string) {
       </div>
 
       <div class="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-        <article
+        <NuxtLink
           v-for="(profile, index) in gcProfiles"
           :key="profile.image"
-          class="overflow-hidden rounded-[24px] bg-white shadow-[0_12px_30px_rgba(60,36,21,0.09)]"
+          :to="localePath(profile.blogPath)"
+          class="group block overflow-hidden rounded-[24px] bg-white shadow-[0_12px_30px_rgba(60,36,21,0.09)] transition hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(60,36,21,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--yunda-maple)]"
+          :aria-label="tt('Read surrogate story ' + (index + 1), '阅读第 ' + (index + 1) + ' 位代孕妈妈故事')"
         >
           <img
             :src="profile.image"
@@ -84,7 +86,7 @@ function statusText(status: string) {
               </div>
             </dl>
           </div>
-        </article>
+        </NuxtLink>
       </div>
     </div>
   </section>

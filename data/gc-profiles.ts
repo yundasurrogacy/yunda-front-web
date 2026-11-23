@@ -5,6 +5,7 @@ export interface GcProfile {
   previousBirths: number
   partnered: number
   status: string
+  blogPath: string
 }
 
 export const gcProfiles: GcProfile[] = [
@@ -15,6 +16,7 @@ export const gcProfiles: GcProfile[] = [
     previousBirths: 1,
     partnered: 2026,
     status: 'Complete embryo transfer',
+    blogPath: '/blog/a-meaningful-step-toward-another-familys-dream',
   },
   {
     image: '/images/pages/be-surrogate/gc-profiles/gc-02.png',
@@ -23,6 +25,7 @@ export const gcProfiles: GcProfile[] = [
     previousBirths: 3,
     partnered: 2024,
     status: 'Finish the journey',
+    blogPath: '/blog/a-gift-that-goes-beyond-one-moment',
   },
   {
     image: '/images/pages/be-surrogate/gc-profiles/gc-03.png',
@@ -31,6 +34,7 @@ export const gcProfiles: GcProfile[] = [
     previousBirths: 2,
     partnered: 2025,
     status: 'Finish the journey',
+    blogPath: '/blog/choosing-trust-along-the-way',
   },
   {
     image: '/images/pages/be-surrogate/gc-profiles/gc-04.png',
@@ -39,5 +43,6 @@ export const gcProfiles: GcProfile[] = [
     previousBirths: 3,
     partnered: 2026,
     status: 'Confirmed pregnancy',
+    blogPath: '/blog/a-new-beginning-with-experience-behind-her',
   },
 ]
