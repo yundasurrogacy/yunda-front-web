@@ -1712,6 +1712,76 @@ function focusApplication() {
       ]"
     />
 
+    <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
+      <div class="mx-auto max-w-320">
+        <h2 class="text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
+          {{ tt('Understand the Details Before You Move Forward', '继续前先了解关键细节') }}
+        </h2>
+        <p
+          class="mx-auto mt-5 max-w-200 text-center text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]"
+          style="font-family: var(--font-text)"
+        >
+          {{ tt('These short videos explain the practical topics most surrogate candidates ask about first: insurance, legal coordination, and escrow payment protection.', '这些短视频会说明代孕妈妈候选人最先关心的实际问题：保险、法律协调和托管付款保障。') }}
+        </p>
+        <div class="grid grid-cols-1 mt-12 gap-12 md:grid-cols-3 md:gap-8">
+          <div class="flex flex-col items-center md:px-4">
+            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
+              {{ t.landing.shortInsurance }}
+            </p>
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
+              {{ tt('What coverage review means and why it matters before medical steps begin.', '说明保险审查的含义，以及为什么它应在医疗步骤前明确。') }}
+            </p>
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/mOwFngnTZvo"
+                title="Yunda Surrogacy — Insurance"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+          <div class="flex flex-col items-center md:px-4">
+            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
+              {{ t.landing.shortLegal }}
+            </p>
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
+              {{ tt('How legal coordination helps clarify rights, responsibilities, and decisions.', '说明法律协调如何帮助明确权利、责任和决策边界。') }}
+            </p>
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/TN4rMZfbhGg"
+                title="Yunda Surrogacy — Legal"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+          <div class="flex flex-col items-center md:px-4">
+            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
+              {{ t.landing.shortEscrow }}
+            </p>
+            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
+              {{ tt('How escrow helps protect compensation handling during the journey.', '说明托管账户如何在流程中保障补偿付款安排。') }}
+            </p>
+            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
+              <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/1oBL9IwOONg"
+                title="Yunda Surrogacy — Escrow"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="bg-[var(--yunda-petal)] px-4 pb-12 pt-8 md:px-16 md:pb-16 md:pt-12">
       <div class="mx-auto max-w-320">
         <nav id="surrogate-guides" class="grid scroll-mt-32 grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8" :aria-label="t.landing.guidesLabel">
@@ -1829,75 +1899,6 @@ function focusApplication() {
 
     <AssociationSection variant="plain" />
 
-    <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
-      <div class="mx-auto max-w-320">
-        <h2 class="text-center font-display text-[32px] text-[var(--yunda-bark)] font-medium leading-[1.15] md:text-[42px]">
-          {{ tt('Understand the Details Before You Move Forward', '继续前先了解关键细节') }}
-        </h2>
-        <p
-          class="mx-auto mt-5 max-w-200 text-center text-base text-[var(--yunda-bark)] font-normal leading-[1.75] md:text-[17px]"
-          style="font-family: var(--font-text)"
-        >
-          {{ tt('These short videos explain the practical topics most surrogate candidates ask about first: insurance, legal coordination, and escrow payment protection.', '这些短视频会说明代孕妈妈候选人最先关心的实际问题：保险、法律协调和托管付款保障。') }}
-        </p>
-        <div class="grid grid-cols-1 mt-12 gap-12 md:grid-cols-3 md:gap-8">
-          <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
-              {{ t.landing.shortInsurance }}
-            </p>
-            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
-              {{ tt('What coverage review means and why it matters before medical steps begin.', '说明保险审查的含义，以及为什么它应在医疗步骤前明确。') }}
-            </p>
-            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
-              <iframe
-                class="h-full w-full"
-                src="https://www.youtube.com/embed/mOwFngnTZvo"
-                title="Yunda Surrogacy — Insurance"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              />
-            </div>
-          </div>
-          <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
-              {{ t.landing.shortLegal }}
-            </p>
-            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
-              {{ tt('How legal coordination helps clarify rights, responsibilities, and decisions.', '说明法律协调如何帮助明确权利、责任和决策边界。') }}
-            </p>
-            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
-              <iframe
-                class="h-full w-full"
-                src="https://www.youtube.com/embed/TN4rMZfbhGg"
-                title="Yunda Surrogacy — Legal"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              />
-            </div>
-          </div>
-          <div class="flex flex-col items-center md:px-4">
-            <p class="mb-4 text-5 text-[var(--yunda-bark)] font-bold">
-              {{ t.landing.shortEscrow }}
-            </p>
-            <p class="mb-5 min-h-16 text-center text-base text-[var(--yunda-bark)]/78 font-normal leading-[1.75] md:text-[17px]" style="font-family: var(--font-text)">
-              {{ tt('How escrow helps protect compensation handling during the journey.', '说明托管账户如何在流程中保障补偿付款安排。') }}
-            </p>
-            <div class="aspect-[9/16] max-w-68 w-full overflow-hidden rounded-4 bg-black shadow-lg">
-              <iframe
-                class="h-full w-full"
-                src="https://www.youtube.com/embed/1oBL9IwOONg"
-                title="Yunda Surrogacy — Escrow"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="bg-[var(--yunda-petal)] px-4 py-12 md:px-16 md:py-16">
       <div class="mx-auto max-w-260">
