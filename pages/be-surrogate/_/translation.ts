@@ -261,7 +261,12 @@ export const translations = {
       heroBaseLabel: 'Base Compensation',
       heroSupportLabel: 'Estimated Support Benefits',
       heroCompensationNote: 'For qualified surrogates. Amounts depend on eligibility, agreement terms, medical events, approved reimbursements, and program requirements. Support benefits are not all cash compensation.',
-      heroSupportPoints: ['Transparent Compensation Structure', 'Independent Escrow Protection', 'Legal & Insurance Guidance', 'Dedicated Personal Support'],
+      heroSupportPoints: [
+        { label: 'Transparent Compensation Structure', to: '/blog/a-new-beginning-with-experience-behind-her' },
+        { label: 'Independent Escrow Protection', to: '/blog/a-gift-that-goes-beyond-one-moment' },
+        { label: 'Legal & Insurance Guidance', to: '/blog/choosing-trust-along-the-way' },
+        { label: 'Dedicated Personal Support', to: '/blog/a-meaningful-step-toward-another-familys-dream' },
+      ],
       guidesLabel: 'Explore surrogate guides',
       guides: [
         { label: 'Surrogacy Process Guide', description: 'Understand the steps from screening to birth.' },
@@ -583,7 +588,12 @@ export const translations = {
       heroBaseLabel: '基础补偿',
       heroSupportLabel: '预估福利支持',
       heroCompensationNote: '适用于符合条件的代孕妈妈。具体金额取决于资格、协议条款、医疗事件、获批报销及项目要求；福利支持并非全部为现金补偿。',
-      heroSupportPoints: ['补偿结构透明', '独立资金托管', '法律与保险协调', '个人支持'],
+      heroSupportPoints: [
+        { label: '补偿结构透明', to: '/blog/a-new-beginning-with-experience-behind-her' },
+        { label: '独立资金托管', to: '/blog/a-gift-that-goes-beyond-one-moment' },
+        { label: '法律与保险协调', to: '/blog/choosing-trust-along-the-way' },
+        { label: '个人支持', to: '/blog/a-meaningful-step-toward-another-familys-dream' },
+      ],
       guidesLabel: '了解代孕妈妈指南',
       guides: [
         { label: '代孕流程指南', description: '了解从筛查到分娩的各个步骤。' },

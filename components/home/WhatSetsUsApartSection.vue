@@ -16,10 +16,10 @@ const tt = computed(() => locale.value.startsWith('zh')
       introduction: '从了解流程到安排下一步，Yunda Surrogacy（孕达代孕）为准父母与代母提供沟通、协调和个案管理支持。',
       imageAlt: 'Yunda Surrogacy 团队参加 ASRM 会议',
       items: [
-        { title: '清晰的流程协调', description: '我们协助整理资料、沟通匹配偏好并跟进下一步安排。实际进度取决于各方意愿、筛选结果及独立专业机构的安排。' },
-        { title: '费用与职责说明', descriptionPrefix: '了解各阶段安排、服务范围与', descriptionLinkText: '代孕费用构成', descriptionSuffix: '。具体费用、第三方收费与付款条件以相应协议及专业机构说明为准。', link: '/surrogacy-cost' },
-        { title: '贴合个人情况的支持', description: '我们了解您的家庭情况、沟通偏好与旅程目标，协调适合的下一步。医学评估与治疗方案由独立诊所和医疗专业人士负责。' },
-        { title: '独立专业服务的衔接', description: '我们协助衔接诊所、独立律师、保险及托管服务方，并跟进沟通与文件安排。相关专业判断及服务由各自机构负责。' },
+        { title: '清晰的流程协调', descriptionPrefix: '我们协助整理资料、沟通匹配偏好并跟进下一步安排。阅读', descriptionLinkText: '代孕流程中的真实经历', descriptionSuffix: '，了解协调如何融入旅程。实际进度取决于各方意愿、筛选结果及独立专业机构的安排。', link: '/blog/a-meaningful-step-toward-another-familys-dream' },
+        { title: '费用与职责说明', descriptionPrefix: '了解各阶段安排、服务范围与', descriptionLinkText: '有经验的代孕妈妈故事', descriptionSuffix: '。具体费用、第三方收费与付款条件以相应协议及专业机构说明为准。', link: '/blog/a-new-beginning-with-experience-behind-her' },
+        { title: '贴合个人情况的支持', descriptionPrefix: '我们了解您的家庭情况、沟通偏好与旅程目标。阅读', descriptionLinkText: '一段关于沟通与信任的代孕经历', descriptionSuffix: '，了解支持如何贯穿旅程。医学评估与治疗方案由独立诊所和医疗专业人士负责。', link: '/blog/choosing-trust-along-the-way' },
+        { title: '独立专业服务的衔接', descriptionPrefix: '我们协助衔接诊所、独立律师、保险及托管服务方。阅读', descriptionLinkText: '一次预约协调经历', descriptionSuffix: '，了解沟通支持如何运作。相关专业判断及服务由各自机构负责。', link: '/blog/a-gift-that-goes-beyond-one-moment' },
       ],
     }
   : {
@@ -27,10 +27,10 @@ const tt = computed(() => locale.value.startsWith('zh')
       introduction: 'From understanding the process to planning the next step, Yunda Surrogacy supports intended parents and surrogates with communication, coordination, and case management.',
       imageAlt: 'Yunda Surrogacy team at ASRM',
       items: [
-        { title: 'Clear Process Coordination', description: 'We help organize information, discuss matching preferences, and follow up on next steps. Timing depends on mutual preferences, screening results, and the schedules of independent professionals.' },
-        { title: 'Cost And Role Transparency', descriptionPrefix: 'Understand the stages, scope of support, and ', descriptionLinkText: 'surrogacy cost breakdown', descriptionSuffix: '. Specific fees, third-party charges, and payment terms are set out in the relevant agreements and provider information.', link: '/surrogacy-cost' },
-        { title: 'Support Shaped Around You', description: 'We listen to your family circumstances, communication preferences, and journey goals to coordinate next steps. Independent clinics and medical professionals handle medical assessments and treatment plans.' },
-        { title: 'Coordination With Professionals', description: 'We help connect you with clinics, independent attorneys, insurance professionals, and escrow providers, and follow up on communication and documents. Each provider is responsible for its own professional advice and services.' },
+        { title: 'Clear Process Coordination', descriptionPrefix: 'We help organize information, discuss matching preferences, and follow up on next steps. Read', descriptionLinkText: 'one surrogate’s experience of the process', descriptionSuffix: ' to see how coordination can fit into a journey. Timing depends on mutual preferences, screening results, and the schedules of independent professionals.', link: '/blog/a-meaningful-step-toward-another-familys-dream' },
+        { title: 'Cost And Role Transparency', descriptionPrefix: 'Understand the stages, scope of support, and read', descriptionLinkText: 'a story from an experienced carrier', descriptionSuffix: '. Specific fees, third-party charges, and payment terms are set out in the relevant agreements and provider information.', link: '/blog/a-new-beginning-with-experience-behind-her' },
+        { title: 'Support Shaped Around You', descriptionPrefix: 'We listen to your family circumstances, communication preferences, and journey goals. Read', descriptionLinkText: 'a story about communication and trust', descriptionSuffix: ' to see how support can shape the experience. Independent clinics and medical professionals handle medical assessments and treatment plans.', link: '/blog/choosing-trust-along-the-way' },
+        { title: 'Coordination With Professionals', descriptionPrefix: 'We help connect you with clinics, independent attorneys, insurance professionals, and escrow providers. Read', descriptionLinkText: 'how appointment coordination can work in practice', descriptionSuffix: ' while each provider remains responsible for its own professional advice and services.', link: '/blog/a-gift-that-goes-beyond-one-moment' },
       ],
     })
 
