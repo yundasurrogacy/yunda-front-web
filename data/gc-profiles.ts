@@ -37,7 +37,7 @@ export const gcProfiles: GcProfile[] = [
     blogPath: '/blog/choosing-trust-along-the-way',
   },
   {
-    image: '/images/pages/be-surrogate/gc-profiles/gc-04.png',
+    image: '/images/pages/be-surrogate/gc-profiles/gc-04-genprime.png',
     age: 30,
     state: 'CA',
     previousBirths: 3,
