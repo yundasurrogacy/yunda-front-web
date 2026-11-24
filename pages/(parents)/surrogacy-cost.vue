@@ -77,14 +77,14 @@ const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$
 
 const translations = {
   en: {
-    metaTitle: 'Surrogacy Cost in California & the U.S. | Yunda',
+    metaTitle: 'Surrogacy Cost in California & the U.S. | Yunda Surrogacy',
     metaDesc:
       'Surrogacy costs can vary widely, especially in California, depending on insurance, legal steps, medical factors, and surrogate compensation.',
     breadcrumb: ['For Intended Parents', 'Surrogacy Cost'],
     hero: {
       title: 'Surrogacy Cost in California: How Much Does Surrogacy Cost in the U.S.?',
       lead:
-        'Transparent, all-in surrogacy pricing in California and across the U.S. so you can plan with confidence and clarity.',
+        'Clear, planning-focused surrogacy cost guidance for California and across the U.S. so you can compare included, separate, and case-dependent expenses.',
       primary: 'Get a Personalized Cost Estimate',
       secondary: 'Become a Parent',
       totalLabel: 'Estimated Program Total',
@@ -164,8 +164,8 @@ const translations = {
             'Covers base surrogate compensation and related support. Final compensation may vary depending on match details and case circumstances.',
         },
       ],
-      fixedTitle: 'Fixed Costs',
-      fixedIntro: 'These are the main costs included in the estimated program total:',
+      fixedTitle: 'Included in the Estimated Program Total',
+      fixedIntro: 'These are the main program costs shown in the 2026 estimate. The estimate is for planning and is not a fixed quote:',
       fixedList: [
         'Agency service fee',
         'Trust account management',
@@ -539,8 +539,8 @@ const translations = {
           description: '涵盖基础代孕补偿及相关支持，最终金额因匹配与个案情况而异。',
         },
       ],
-      fixedTitle: '固定费用',
-      fixedIntro: '以下为项目预估总额中的主要费用：',
+      fixedTitle: '项目预估总额中的包含项目',
+      fixedIntro: '以下为 2026 年费用预估中的主要项目。该金额用于规划，不是固定报价：',
       fixedList: [
         '机构服务费',
         '信托账户管理',
@@ -1246,7 +1246,7 @@ onUnmounted(() => {
               </h2>
             </div>
             <p class="body-text lg:col-span-2">
-              {{ locale === 'zh' ? '加州和美国代孕费用通常由机构协调、代孕妈妈补偿、筛查、法律协调、保险审查、托管或信托账户、IVF 诊所费用、获批报销以及个案医疗或孕期变量共同组成。比较报价时，应先看服务范围，再看总价；IVF 诊所费用、胚胎创建、供卵、新生儿医疗、额外保险、旅行、双胎、剖宫产、卧床或额外移植都可能改变最终预算。孕达的公开费用内容用于帮助准父母做规划，不是保证报价。' : 'A surrogacy cost estimate usually combines agency coordination, surrogate compensation, screening support, legal coordination, insurance review, escrow or trust account administration, IVF clinic expenses, approved reimbursements, and case-dependent medical or pregnancy costs. Compare the scope first, then the total number. IVF clinic fees, embryo creation, donor egg services, newborn medical care, extra insurance, travel, twins, C-section, bed rest, or additional transfers may change the final budget. Yunda uses public cost content for planning guidance, not as a guaranteed quote. The safest comparison asks what is included, what is separate, when funds are due, and which professional must confirm each item.' }}
+              {{ locale === 'zh' ? '加州和美国代孕费用通常由机构协调、代孕妈妈补偿、筛查、法律协调、保险审查、托管或信托账户、IVF 诊所费用、获批报销以及个案医疗或孕期变量共同组成。比较报价时，应先看服务范围，再看总价；IVF 诊所费用、胚胎创建、供卵、新生儿医疗、额外保险、旅行、双胎、剖宫产、卧床或额外移植都可能改变最终预算。Yunda Surrogacy 的公开费用内容用于帮助准父母做规划，不是保证报价。' : 'A surrogacy cost estimate usually combines agency coordination, surrogate compensation, screening support, legal coordination, insurance review, escrow or trust account administration, IVF clinic expenses, approved reimbursements, and case-dependent medical or pregnancy costs. Compare the scope first, then the total number. IVF clinic fees, embryo creation, donor egg services, newborn medical care, extra insurance, travel, twins, C-section, bed rest, or additional transfers may change the final budget. Yunda Surrogacy uses public cost content for planning guidance, not as a guaranteed quote. The safest comparison asks what is included, what is separate, when funds are due, and which professional must confirm each item.' }}
             </p>
           </div>
         </div>

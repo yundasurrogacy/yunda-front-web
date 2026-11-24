@@ -999,7 +999,7 @@ async function handleSubmit() {
             {{ tt('Understand the Cost Before You Commit', '承诺前，先理解费用') }}
           </h2>
           <p class="mt-5 text-[var(--yunda-bark)] leading-[1.75]">
-            {{ tt('Surrogacy cost depends on your embryo status, IVF clinic, surrogate match, legal path, insurance needs, escrow, and pregnancy-related expenses. Yunda helps you separate fixed costs from case-dependent costs and ask better questions before you move forward.', '代孕费用取决于胚胎状态、IVF 诊所、代母匹配、法律路径、保险需求、托管与孕期相关费用。孕达帮助你区分固定费用和个案相关费用，并在推进前提出更清晰的问题。') }}
+            {{ tt('Surrogacy cost depends on your embryo status, IVF clinic, surrogate match, legal path, insurance needs, escrow, and pregnancy-related expenses. Yunda helps you separate included program costs from case-dependent costs and ask better questions before you move forward.', '代孕费用取决于胚胎状态、IVF 诊所、代母匹配、法律路径、保险需求、托管与孕期相关费用。孕达帮助你区分项目预估中的包含项目和个案相关费用，并在推进前提出更清晰的问题。') }}
           </p>
           <NuxtLink :to="localePath('/surrogacy-cost')" class="mt-6 inline-flex items-center gap-2 text-[var(--yunda-bark)] font-bold underline-offset-4 hover:underline">
             {{ tt('Review Surrogacy Cost Breakdown', '查看代孕费用拆解') }}
