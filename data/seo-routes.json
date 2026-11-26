@@ -16,6 +16,7 @@
     { "loc": "/resources/mhb-new-york-2026", "priority": 0.7, "lastmod": "2026-08-12" },
     { "loc": "/resources/asrm-2026", "priority": 0.7, "lastmod": "2026-10-21" },
     { "loc": "/egg-donation", "priority": 0.9 },
+    { "loc": "/egg-donors", "priority": 0.9 },
     { "loc": "/partner-ivf-clinics", "priority": 0.9 },
     { "loc": "/single-parents-lgbtq", "priority": 0.9 },
     { "loc": "/surrogacy-cost", "priority": 0.9 },
