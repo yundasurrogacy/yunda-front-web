@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/base/AppFooter.vue'
 import AppHeader from '@/components/base/AppHeader.vue'
@@ -9,9 +9,13 @@ import SeoTrustNote from '@/components/base/SeoTrustNote.vue'
 import { buildCoreServicePageSchemas } from '~/utils/schema'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const runtimeConfig = useRuntimeConfig()
 const siteUrl = computed(() => (runtimeConfig.public.siteUrl || '').replace(/\/$/, ''))
 const pagePath = '/egg-donors'
+const activeStage = ref(0)
+const revealRoot = ref<HTMLElement | null>(null)
+let revealObserver: IntersectionObserver | null = null
 
 const translations = {
   en: {
@@ -22,11 +26,11 @@ const translations = {
     eyebrow: 'Egg donor program guidance',
     title: 'Donating Eggs: How to Become an Egg Donor',
     lead: 'If you are thinking about donating eggs, start with a clear view of the process, screening, time commitment, and questions to ask before you apply.',
-    body: 'Yunda Surrogacy provides education and coordination for people exploring an egg donor program. A private conversation can help you understand the next step. The fertility clinic and qualified medical professionals decide whether you meet medical and donor-eligibility requirements.',
+    body: 'Yunda Surrogacy provides education and coordination for people exploring an egg donor program. Egg donation is also called oocyte or ovum donation, so searches for donating ovum may describe the same general path. A private conversation can help you understand the next step. The fertility clinic and qualified medical professionals decide whether you meet medical and donor-eligibility requirements.',
     primaryCta: 'Ask About the Donor Program',
     secondaryCta: 'Review Donor Requirements',
     answerTitle: 'How to donate eggs in five stages',
-    answerIntro: 'The exact egg donation process depends on the donor program and fertility clinic. Most programs move through an initial inquiry, records review, medical and genetic screening, an approved donation cycle, and recovery follow-up.',
+    answerIntro: 'The exact egg donation process, sometimes called the egg donor process, depends on the donor program and fertility clinic. Most programs move through an initial inquiry, records review, medical and genetic screening, an approved donation cycle, and recovery follow-up.',
     quickFactsTitle: 'What you can confirm before applying',
     quickFacts: [
       { title: 'Eligibility varies', body: 'Programs and clinics may set their own limits for age, health history, reproductive history, lifestyle, location, and appointment availability.' },
@@ -62,9 +66,13 @@ const translations = {
     screeningBody: 'U.S. reproductive tissue programs follow applicable FDA requirements for donor screening and testing. Professional guidance may also address medical history, genetic risk, infectious-disease testing, counseling, and informed consent. The required steps depend on the donor relationship, program, clinic, and applicable rules.',
     screeningLink: 'Read FDA donor information',
     processLink: 'Read ASRM donation guidance',
+    processPageCta: 'Read the full egg donation process guide',
+    compensationPageCta: 'Review compensation and expenses',
     faqTitle: 'Egg donor questions',
     faqs: [
       { q: 'How do I donate my eggs?', a: 'Start by contacting a real egg donor program and asking about its requirements, screening, clinic relationship, privacy terms, and next step. The clinic decides whether you are medically eligible before any donation cycle.' },
+      { q: 'How can you donate your eggs?', a: 'You can start by contacting an egg donor program, sharing the information requested for an initial review, and asking what screening and clinic steps come next. The program and clinic explain the requirements before you decide whether to continue.' },
+      { q: 'What does donating ovum mean?', a: 'Donating ovum is another term for egg donation or oocyte donation. It refers to providing eggs through a donor program for use in fertility treatment. The applicable medical, consent, privacy, and legal steps depend on the program and clinic.' },
       { q: 'What are the requirements for egg donation?', a: 'Requirements vary by program and clinic. They may include age, health history, reproductive history, lifestyle, infectious-disease testing, genetic review, counseling, and the ability to attend required appointments. A public guide cannot make a final eligibility decision.' },
       { q: 'What happens during the egg donation process?', a: 'The process commonly includes an initial inquiry, records review, medical and genetic screening, clinic approval, a monitored treatment cycle, egg retrieval, and follow-up. Your clinic should explain the medical steps for your case.' },
       { q: 'How long does egg donation take?', a: 'Timing varies with records, screening, clinic scheduling, donor availability, and whether a cycle is delayed or cancelled. Ask the program for a case-specific estimate after the initial review.' },
@@ -132,6 +140,8 @@ const translations = {
     screeningBody: '美国生殖组织项目需要遵循适用的 FDA 供体筛查与检测要求。专业指南也可能涉及病史、遗传风险、传染病检测、咨询和知情同意。具体步骤取决于供体关系、项目、诊所和适用规则。',
     screeningLink: '阅读 FDA 供体说明',
     processLink: '阅读 ASRM 捐赠指南',
+    processPageCta: '查看完整捐卵流程指南',
+    compensationPageCta: '了解补偿与费用安排',
     faqTitle: '捐卵常见问题',
     faqs: [
       { q: '如何捐卵？', a: '可以先联系真实的供卵项目，询问要求、筛查、合作诊所、隐私条款和下一步。是否适合进入捐赠周期，由诊所在医疗审核后判断。' },
@@ -157,6 +167,7 @@ const translations = {
 }
 
 const c = computed(() => translations[locale.value as 'en' | 'zh'] || translations.en)
+const selectedStage = computed(() => c.value.stages[activeStage.value] || c.value.stages[0])
 const breadcrumbItems = computed(() => [
   { label: c.value.breadcrumbParent, to: '/surrogates' },
   { label: c.value.breadcrumbCurrent },
@@ -200,10 +211,10 @@ useHead(() => ({
     { name: 'description', content: c.value.seoDescription },
     { property: 'og:title', content: c.value.seoTitle },
     { property: 'og:description', content: c.value.seoDescription },
-    { property: 'og:image', content: `${siteUrl.value}/images/pages/surrogacy-process/hero.jpg` },
+    { property: 'og:image', content: `${siteUrl.value}/images/pages/surrogacy-process/hero.png` },
     { name: 'twitter:title', content: c.value.seoTitle },
     { name: 'twitter:description', content: c.value.seoDescription },
-    { name: 'twitter:image', content: `${siteUrl.value}/images/pages/surrogacy-process/hero.jpg` },
+    { name: 'twitter:image', content: `${siteUrl.value}/images/pages/surrogacy-process/hero.png` },
   ],
   script: pageSchemas.value.map((schema, index) => ({
     key: `schema-egg-donors-${index}`,
@@ -211,125 +222,232 @@ useHead(() => ({
     children: JSON.stringify(schema),
   })),
 }))
+onMounted(() => {
+  if (!revealRoot.value || !('IntersectionObserver' in window))
+    return
+  revealRoot.value.classList.add('motion-ready')
+  const elements = Array.from(revealRoot.value.querySelectorAll<HTMLElement>('[data-reveal]'))
+  revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting)
+        return
+      entry.target.classList.add('is-visible')
+      observer.unobserve(entry.target)
+    })
+  }, { threshold: 0.12 })
+  elements.forEach(element => revealObserver?.observe(element))
+})
+
+onBeforeUnmount(() => revealObserver?.disconnect())
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
+  <div ref="revealRoot" class="egg-donors-page min-h-screen bg-[var(--yunda-petal)] text-[var(--yunda-bark)]">
     <AppHeader />
     <BreadcrumbNav :items="breadcrumbItems" />
 
     <main>
-      <section class="relative overflow-hidden bg-gradient-to-br from-[var(--yunda-petal)] via-[#fff7ef] to-white">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute left-[-12%] top-[-25%] h-100 w-100 rounded-full bg-white/75 blur-3xl" />
-          <div class="absolute right-[-12%] top-[-10%] h-120 w-120 rounded-full bg-[var(--yunda-sky)]/18 blur-3xl" />
-        </div>
-        <div class="relative grid mx-auto max-w-320 gap-10 px-6 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:py-20">
-          <div>
-            <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.18em] uppercase">{{ c.eyebrow }}</p>
-            <h1 class="mt-4 text-10.5 text-[var(--yunda-bark)] font-semibold leading-[1.08] font-display lg:text-14">{{ c.title }}</h1>
-            <p class="mt-6 text-lg text-[var(--yunda-bark)]/88 font-medium leading-[1.75]">{{ c.lead }}</p>
-            <p class="mt-4 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">{{ c.body }}</p>
+      <section class="donor-overview-hero relative overflow-hidden">
+        <div class="hero-grid pointer-events-none absolute inset-0" />
+        <div class="relative grid mx-auto max-w-320 gap-12 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:px-10 lg:py-24">
+          <div data-reveal class="hero-copy">
+            <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.18em] uppercase">
+              {{ c.eyebrow }}
+            </p>
+            <p class="hero-kicker mt-6">
+              01 / 05
+            </p>
+            <h1 class="mt-3 max-w-4xl text-10.5 text-[var(--yunda-bark)] font-semibold leading-[1.02] font-display lg:text-15">
+              {{ c.title }}
+            </h1>
+            <p class="mt-6 text-lg text-[var(--yunda-bark)]/88 font-medium leading-[1.75]">
+              {{ c.lead }}
+            </p>
+            <p class="mt-4 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.body }}
+            </p>
             <div class="mt-8 flex flex-wrap gap-3">
               <a href="mailto:kaylal@yundasurrogacy.com" class="inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-6 py-3.5 text-sm text-white font-bold shadow-[0_16px_34px_rgba(61,42,31,0.2)] transition hover:-translate-y-0.5">{{ c.primaryCta }}</a>
-              <a href="#screening" class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/35 rounded-3 bg-white/80 px-6 py-3.5 text-sm text-[var(--yunda-bark)] font-bold transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5">{{ c.secondaryCta }}</a>
+              <a :href="localePath('/egg-donor-requirements')" class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/35 rounded-3 bg-white/80 px-6 py-3.5 text-sm text-[var(--yunda-bark)] font-bold transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5">{{ c.secondaryCta }}</a>
             </div>
           </div>
-          <div class="relative overflow-hidden border border-[var(--yunda-maple)]/20 rounded-7 bg-white shadow-[0_28px_70px_rgba(61,42,31,0.16)]">
-            <OptimizedPicture src="/images/pages/surrogacy-process/hero.jpg" avif-src="/images/pages/surrogacy-process/hero.avif" :alt="c.title" width="1024" height="683" sizes="(max-width: 1024px) 100vw, 48vw" loading="eager" decoding="async" fetchpriority="high" picture-class="contents" img-class="aspect-[4/3] h-full w-full object-cover" />
+          <div data-reveal class="hero-index" :aria-label="locale === 'zh' ? '捐卵指南章节' : 'Egg donation guide sections'">
+            <div class="index-orbit" aria-hidden="true">
+              <span>EGG<br>DONOR<br>GUIDE</span>
+            </div>
+            <div class="index-list">
+              <a :href="localePath('/egg-donor-requirements')" class="index-link"><span>01</span><span>{{ locale === 'zh' ? '资格要求' : 'Requirements' }}</span><i>↗</i></a>
+              <a href="#process" class="index-link is-current"><span>02</span><span>{{ locale === 'zh' ? '五阶段流程' : 'Five-stage process' }}</span><i>↓</i></a>
+              <a href="#screening" class="index-link"><span>03</span><span>{{ locale === 'zh' ? '筛查准备' : 'Screening preparation' }}</span><i>↓</i></a>
+              <a :href="localePath('/egg-donor-compensation')" class="index-link"><span>04</span><span>{{ locale === 'zh' ? '补偿与费用' : 'Compensation' }}</span><i>↗</i></a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="bg-white px-6 py-12 lg:px-10 lg:py-16">
-        <div class="mx-auto max-w-320 border border-[var(--yunda-maple)]/20 rounded-6 bg-[var(--yunda-petal)]/55 p-6 shadow-[0_14px_38px_rgba(61,42,31,0.06)] lg:p-8">
-          <h2 class="text-7 font-semibold leading-tight font-display lg:text-9">{{ c.answerTitle }}</h2>
-          <p class="mt-4 max-w-4xl text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">{{ c.answerIntro }}</p>
+      <section data-reveal class="bg-white px-6 py-12 lg:px-10 lg:py-16">
+        <div class="grid mx-auto max-w-320 gap-6 border-y border-[var(--yunda-maple)]/25 py-7 lg:grid-cols-[0.25fr_0.75fr] lg:items-center lg:py-9">
+          <p class="section-number">
+            A / START HERE
+          </p>
+          <div>
+            <h2 class="text-7 font-semibold leading-tight font-display lg:text-9">
+              {{ c.answerTitle }}
+            </h2>
+            <p class="mt-4 max-w-4xl text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+              {{ c.answerIntro }}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section class="px-6 py-14 lg:px-10 lg:py-18">
+      <section data-reveal class="px-6 py-14 lg:px-10 lg:py-18">
         <div class="mx-auto max-w-320">
-          <h2 class="text-8 font-semibold leading-tight font-display lg:text-10">{{ c.quickFactsTitle }}</h2>
-          <div class="grid mt-8 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <article v-for="fact in c.quickFacts" :key="fact.title" class="border border-[var(--yunda-maple)]/18 rounded-5 bg-white p-5 shadow-[0_12px_30px_rgba(61,42,31,0.05)]">
-              <h3 class="text-lg font-bold leading-snug">{{ fact.title }}</h3>
-              <p class="mt-3 text-sm text-[var(--yunda-bark)]/74 leading-7">{{ fact.body }}</p>
+          <h2 class="text-8 font-semibold leading-tight font-display lg:text-10">
+            {{ c.quickFactsTitle }}
+          </h2>
+          <div class="grid mt-8 gap-4 lg:grid-cols-4 md:grid-cols-2">
+            <article v-for="(fact, index) in c.quickFacts" :key="fact.title" class="fact-card" :style="{ '--card-delay': `${index * 80}ms` }">
+              <span class="fact-index">0{{ index + 1 }}</span>
+              <h3 class="mt-8 text-lg font-bold leading-snug">
+                {{ fact.title }}
+              </h3>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/74 leading-7">
+                {{ fact.body }}
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="bg-white/70 px-6 py-16 lg:px-10 lg:py-22">
+      <section id="process" data-reveal class="bg-white/70 px-6 py-16 lg:px-10 lg:py-22">
         <div class="mx-auto max-w-320">
-          <div class="grid gap-5 lg:grid-cols-2">
-            <article v-for="stage in c.stages" :key="stage.title" class="overflow-hidden border border-[var(--yunda-bark)]/10 rounded-6 bg-white shadow-[0_14px_40px_rgba(61,42,31,0.06)]">
-              <OptimizedPicture :src="stage.img" :avif-src="stage.avif" :alt="stage.alt" width="1536" height="1024" sizes="(max-width: 1024px) 100vw, 50vw" loading="lazy" decoding="async" picture-class="contents" img-class="aspect-[16/9] w-full object-cover" />
-              <div class="p-6 lg:p-7">
-                <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.16em] uppercase">{{ stage.label }}</p>
-                <h2 class="mt-2 text-xl font-bold leading-snug lg:text-2xl">{{ stage.title }}</h2>
-                <p class="mt-3 text-base text-[var(--yunda-bark)]/76 leading-[1.75]">{{ stage.body }}</p>
+          <div class="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p class="section-number">
+                B / THE PATH
+              </p><h2 class="mt-3 text-8 font-semibold leading-tight font-display lg:text-11">
+                {{ c.answerTitle }}
+              </h2>
+            </div>
+            <p class="max-w-md text-sm text-[var(--yunda-bark)]/65 leading-7">
+              {{ locale === 'zh' ? '点击阶段编号，查看每一步需要了解的事项。' : 'Select a stage to see what to understand before moving forward.' }}
+            </p>
+          </div>
+          <div class="stage-shell">
+            <nav class="stage-rail" :aria-label="locale === 'zh' ? '捐卵阶段' : 'Egg donation stages'">
+              <button v-for="(stage, index) in c.stages" :key="stage.title" type="button" class="stage-tab" :class="{ 'is-active': activeStage === index }" @click="activeStage = index">
+                <span class="stage-tab-number">0{{ index + 1 }}</span><span class="stage-tab-label">{{ stage.label }}</span>
+              </button>
+            </nav>
+            <div class="stage-detail">
+              <div class="stage-detail-copy">
+                <p class="text-xs text-[var(--yunda-maple)] font-extrabold tracking-[0.16em] uppercase">
+                  {{ selectedStage.label }}
+                </p><h3 class="mt-3 text-3xl font-semibold leading-tight font-display lg:text-5xl">
+                  {{ selectedStage.title }}
+                </h3><p class="mt-5 max-w-xl text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+                  {{ selectedStage.body }}
+                </p><div class="mt-8 flex items-center gap-3 text-xs text-[var(--yunda-bark)]/55 font-bold tracking-[0.12em] uppercase">
+                  <span>{{ locale === 'zh' ? '下一步' : 'Next step' }}</span><span class="h-px w-12 bg-[var(--yunda-maple)]/50" /><span>0{{ Math.min(activeStage + 2, c.stages.length) }}</span>
+                </div>
               </div>
-            </article>
+              <div class="stage-detail-media">
+                <OptimizedPicture :src="selectedStage.img" :avif-src="selectedStage.avif" :alt="selectedStage.alt" width="1536" height="1024" sizes="(max-width: 1024px) 100vw, 48vw" loading="lazy" decoding="async" picture-class="contents" img-class="h-full min-h-72 w-full object-cover" />
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <a :href="localePath('/egg-donor-process')" class="inline-flex items-center justify-center border border-[var(--yunda-maple)]/35 rounded-3 bg-white px-6 py-3.5 text-sm text-[var(--yunda-bark)] font-bold transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5">{{ c.processPageCta }} →</a>
+            <a :href="localePath('/egg-donor-compensation')" class="ml-3 inline-flex items-center justify-center border border-[var(--yunda-maple)]/35 rounded-3 bg-white px-6 py-3.5 text-sm text-[var(--yunda-bark)] font-bold transition hover:border-[var(--yunda-maple)] hover:-translate-y-0.5">{{ c.compensationPageCta }} →</a>
           </div>
         </div>
       </section>
 
-      <section class="px-6 py-16 lg:px-10 lg:py-22">
+      <section data-reveal class="px-6 py-16 lg:px-10 lg:py-22">
         <div class="mx-auto max-w-320">
           <div class="max-w-4xl">
-            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">{{ c.programTitle }}</h2>
-            <p class="mt-5 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">{{ c.programIntro }}</p>
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.programTitle }}
+            </h2>
+            <p class="mt-5 text-base text-[var(--yunda-bark)]/76 leading-[1.8] lg:text-lg">
+              {{ c.programIntro }}
+            </p>
           </div>
           <div class="grid mt-10 gap-5 md:grid-cols-2">
-            <article v-for="card in c.programCards" :key="card.title" class="border border-[var(--yunda-bark)]/10 rounded-5 bg-white p-6 shadow-[0_14px_38px_rgba(61,42,31,0.05)]">
-              <h3 class="text-xl font-bold">{{ card.title }}</h3>
-              <p class="mt-3 text-sm text-[var(--yunda-bark)]/76 leading-7">{{ card.body }}</p>
+            <article v-for="(card, index) in c.programCards" :key="card.title" class="program-card" :style="{ '--card-delay': `${index * 90}ms` }">
+              <span class="card-arrow" aria-hidden="true">↗</span>
+              <h3 class="text-xl font-bold">
+                {{ card.title }}
+              </h3>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/76 leading-7">
+                {{ card.body }}
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="screening" class="bg-[var(--yunda-bark)] px-6 py-16 text-white lg:px-10 lg:py-22">
-        <div class="mx-auto grid max-w-320 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <section id="screening" data-reveal class="screening-section bg-[var(--yunda-bark)] px-6 py-16 text-white lg:px-10 lg:py-22">
+        <div class="grid mx-auto max-w-320 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">{{ c.screeningTitle }}</h2>
-            <p class="mt-5 text-base text-white/76 leading-[1.8] lg:text-lg">{{ c.screeningBody }}</p>
+            <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+              {{ c.screeningTitle }}
+            </h2>
+            <p class="mt-5 text-base text-white/76 leading-[1.8] lg:text-lg">
+              {{ c.screeningBody }}
+            </p>
             <div class="mt-6 flex flex-wrap gap-4 text-sm font-bold">
               <a href="https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/what-you-should-know-reproductive-tissue-donation" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">{{ c.screeningLink }} →</a>
               <a href="https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-regarding-gamete-and-embryo-donation" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">{{ c.processLink }} →</a>
             </div>
           </div>
           <div class="rounded-6 bg-white/8 p-6 lg:p-8">
-            <h3 class="text-2xl font-bold">{{ c.checklistTitle }}</h3>
-            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-              <li v-for="item in c.checklist" :key="item" class="flex gap-3 text-sm text-white/84 leading-6"><span class="mt-0.5 text-[var(--yunda-sky)] font-black" aria-hidden="true">✓</span><span>{{ item }}</span></li>
+            <h3 class="text-2xl font-bold">
+              {{ c.checklistTitle }}
+            </h3>
+            <ul class="grid mt-6 gap-3 sm:grid-cols-2">
+              <li v-for="item in c.checklist" :key="item" class="flex gap-3 text-sm text-white/84 leading-6">
+                <span class="mt-0.5 text-[var(--yunda-sky)] font-black" aria-hidden="true">✓</span><span>{{ item }}</span>
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <SeoTrustNote :updated="c.trustUpdated" :reviewed-by="c.trustReviewed" :note="c.trustNote" :sources="[
-        { label: c.sourceFda, href: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/what-you-should-know-reproductive-tissue-donation' },
-        { label: c.sourceAsrm, href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-regarding-gamete-and-embryo-donation' },
-      ]" />
+      <SeoTrustNote
+        :updated="c.trustUpdated" :reviewed-by="c.trustReviewed" :note="c.trustNote" :sources="[
+          { label: c.sourceFda, href: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/what-you-should-know-reproductive-tissue-donation' },
+          { label: c.sourceAsrm, href: 'https://www.asrm.org/practice-guidance/practice-committee-documents/guidance-regarding-gamete-and-embryo-donation' },
+        ]"
+      />
 
-      <section class="px-6 py-16 lg:px-10 lg:py-22">
+      <section data-reveal class="px-6 py-16 lg:px-10 lg:py-22">
         <div class="mx-auto max-w-320">
-          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">{{ c.faqTitle }}</h2>
+          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+            {{ c.faqTitle }}
+          </h2>
           <div class="grid mt-9 gap-4 lg:grid-cols-2">
             <details v-for="faq in c.faqs" :key="faq.q" class="group border border-[var(--yunda-bark)]/10 rounded-4 bg-white px-5 py-4 shadow-[0_10px_30px_rgba(61,42,31,0.05)]">
-              <summary class="cursor-pointer list-none text-base font-bold leading-7"><span class="flex items-start justify-between gap-4"><span>{{ faq.q }}</span><span class="text-[var(--yunda-maple)] transition group-open:rotate-45" aria-hidden="true">+</span></span></summary>
-              <p class="mt-3 text-sm text-[var(--yunda-bark)]/74 leading-7">{{ faq.a }}</p>
+              <summary class="cursor-pointer list-none text-base font-bold leading-7">
+                <span class="flex items-start justify-between gap-4"><span>{{ faq.q }}</span><span class="text-[var(--yunda-maple)] transition group-open:rotate-45" aria-hidden="true">+</span></span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--yunda-bark)]/74 leading-7">
+                {{ faq.a }}
+              </p>
             </details>
           </div>
         </div>
       </section>
 
-      <section class="from-[#f6d7b8] via-[var(--yunda-petal)] to-[#dce9ef] bg-gradient-to-r px-6 py-16 lg:px-10 lg:py-20">
+      <section data-reveal class="final-cta from-[#f6d7b8] via-[var(--yunda-petal)] to-[#dce9ef] bg-gradient-to-r px-6 py-16 lg:px-10 lg:py-20">
         <div class="mx-auto max-w-4xl text-center">
-          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">{{ c.finalTitle }}</h2>
-          <p class="mx-auto mt-5 max-w-3xl text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">{{ c.finalBody }}</p>
+          <h2 class="text-8 font-semibold leading-tight font-display lg:text-11">
+            {{ c.finalTitle }}
+          </h2>
+          <p class="mx-auto mt-5 max-w-3xl text-base text-[var(--yunda-bark)]/78 leading-[1.8] lg:text-lg">
+            {{ c.finalBody }}
+          </p>
           <a href="mailto:kaylal@yundasurrogacy.com" class="mt-8 inline-flex items-center justify-center rounded-3 bg-[var(--yunda-bark)] px-7 py-4 text-sm text-white font-bold shadow-[0_16px_34px_rgba(61,42,31,0.2)]">{{ c.finalCta }}</a>
         </div>
       </section>
@@ -338,3 +456,244 @@ useHead(() => ({
     <AppFooter />
   </div>
 </template>
+
+<style scoped>
+.donor-overview-hero {
+  min-height: min(780px, 82vh);
+  background: linear-gradient(135deg, #f8eee6 0%, var(--yunda-petal) 58%, #e5f0f2 100%);
+}
+.hero-grid {
+  opacity: 0.4;
+  background-image:
+    linear-gradient(rgba(61, 42, 31, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 42, 31, 0.06) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  mask-image: linear-gradient(90deg, black, transparent 80%);
+}
+.hero-kicker,
+.section-number {
+  color: var(--yunda-maple);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero-index {
+  position: relative;
+  min-height: 20rem;
+  padding: 2rem 0 0 2rem;
+}
+.index-orbit {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  display: grid;
+  width: 15rem;
+  height: 15rem;
+  place-items: center;
+  border: 1px solid rgba(191, 117, 67, 0.42);
+  border-radius: 50%;
+  color: var(--yunda-maple);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-align: center;
+  animation: donor-orbit 12s ease-in-out infinite alternate;
+}
+.index-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.8rem;
+  max-width: 22rem;
+  margin-top: 7rem;
+  margin-left: auto;
+}
+.index-link {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(61, 42, 31, 0.18);
+  padding: 0.8rem 0;
+  color: rgba(61, 42, 31, 0.6);
+  font-size: 0.9rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+.index-link:hover,
+.index-link.is-current {
+  color: var(--yunda-bark);
+  transform: translateX(-0.35rem);
+}
+.index-link span:first-child {
+  color: var(--yunda-maple);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.index-link i {
+  font-style: normal;
+  color: var(--yunda-maple);
+}
+.fact-card,
+.program-card {
+  position: relative;
+  border: 1px solid rgba(61, 42, 31, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1.5rem;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.fact-card:hover,
+.program-card:hover {
+  border-color: rgba(191, 117, 67, 0.45);
+  box-shadow: 0 20px 45px rgba(61, 42, 31, 0.1);
+  transform: translateY(-0.35rem);
+}
+.fact-index {
+  color: var(--yunda-maple);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.stage-shell {
+  border: 1px solid rgba(61, 42, 31, 0.16);
+  border-radius: 1.5rem;
+  background: white;
+  overflow: hidden;
+}
+.stage-rail {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(61, 42, 31, 0.14);
+  padding: 0.75rem;
+  scrollbar-width: thin;
+}
+.stage-tab {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  color: rgba(61, 42, 31, 0.58);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+.stage-tab:hover,
+.stage-tab.is-active {
+  background: var(--yunda-bark);
+  color: white;
+  transform: translateY(-0.15rem);
+}
+.stage-tab-number {
+  color: var(--yunda-maple);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.stage-tab.is-active .stage-tab-number {
+  color: #f6b987;
+}
+.stage-detail {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 22rem;
+}
+.stage-detail-copy {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+.stage-detail-media {
+  min-height: 22rem;
+  background: #eee7df;
+}
+.card-arrow {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  color: var(--yunda-maple);
+  transition: transform 0.3s ease;
+}
+.program-card:hover .card-arrow {
+  transform: translate(0.25rem, -0.25rem);
+}
+.screening-section {
+  position: relative;
+  overflow: hidden;
+}
+.screening-section::before {
+  position: absolute;
+  top: -10rem;
+  right: -4rem;
+  width: 24rem;
+  height: 24rem;
+  border: 1px solid rgba(246, 185, 135, 0.22);
+  border-radius: 50%;
+  content: '';
+  animation: donor-orbit 16s ease-in-out infinite alternate-reverse;
+}
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.motion-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes donor-orbit {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  to {
+    transform: translate3d(-1rem, 0.75rem, 0) rotate(6deg);
+  }
+}
+@media (max-width: 767px) {
+  .donor-overview-hero {
+    min-height: auto;
+  }
+  .hero-index {
+    min-height: 16rem;
+    padding-left: 0;
+  }
+  .index-orbit {
+    right: -3rem;
+    width: 12rem;
+    height: 12rem;
+  }
+  .index-list {
+    margin-top: 5rem;
+  }
+  .stage-detail {
+    grid-template-columns: 1fr;
+  }
+  .stage-detail-media {
+    min-height: 16rem;
+    order: -1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .index-orbit,
+  .screening-section::before {
+    animation: none;
+  }
+  .motion-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+</style>
